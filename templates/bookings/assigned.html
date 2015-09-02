@@ -1,0 +1,25 @@
+
+<ion-view view-title="我的预约">
+
+<ion-content>
+
+
+   <div class="list">
+
+     <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="booking in bookings" 
+       type="item-text-wrap" href="#">
+        <img ng-src="img/profile2.png">
+        <h2>{{booking.product.issuer}}</h2>
+        <p>{{booking.consultant.username}} 将会尽快为你服务</p>
+      
+      </ion-item>
+
+  	</div>
+
+</ion-content>
+
+</ion-view>
+
+
+
+

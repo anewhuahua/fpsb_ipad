@@ -1,0 +1,55 @@
+<ion-view class="common-person-view">
+
+  	<ion-content>
+    
+	  	    <ul class="gfnleful"><!-- 左边大分类开始-->
+              <div class="gjxnrtopyy2"></div><!-- 内容top阴影 --> 
+               
+              <li>
+                <div class="gfnulitp" ng-click="selectItem('index')" ng-class="{gjxtjcss: data.selectedItem=='index'}">
+                  <a>账户总览</a>
+                  <em><img src="teImg/glefultprg.png" /></em>
+                </div>
+              </li>
+              <li>
+                <div class="gfnulitp" ng-click="selectItem('bookings')" ng-class="{gjxtjcss: data.selectedItem=='bookings'}">
+                  <a>我的预约</a>
+                  <em><img src="teImg/glefultprg.png" /></em>
+                </div>
+              </li>
+              <li>
+                <div class="gfnulitp" ng-click="selectItem('orders')" ng-class="{gjxtjcss: data.selectedItem=='orders'}">
+                  <a>我的订单</a>
+                  <em><img src="teImg/glefultprg.png" /></em>
+                </div>
+
+                <div class="gfnulibm" ng-if="showItem('orders')">
+                  <a href="" ng-click="selectItem('orders-under-push')" ng-class="{gjxtjcss : data.selectedItem=='orders-under-push'}">待报备</a>
+                  <a href="" ng-click="selectItem('orders-under-check')" ng-class="{gjxtjcss : data.selectedItem=='orders-under-check'}">待审核</a>
+                  <a href="" ng-click="selectItem('orders-complete')" ng-class="{gjxtjcss : data.selectedItem=='orders-complete'}">已完成</a>
+                  <a href="" ng-click="selectItem('orders-under-pay')" ng-class="{gjxtjcss : data.selectedItem=='orders-under-pay'}">待付款</a>
+                </div>
+              </li>
+              <li>
+                <div class="gfnulitp" ng-click="logout()" ng-class="{gjxtjcss: data.selectedItem=='logout'}">
+                  <a>注销用户</a>
+                  <em><img src="teImg/glefultprg.png" /></em>
+                </div>
+              </li>
+              <li>
+              
+    
+            
+            </ul><!-- 左边大分类结束-->
+
+  </ion-content>
+
+  <multiple-views-support width="25%" />
+</ion-view>
+
+
+
+
+
+
+

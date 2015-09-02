@@ -1,0 +1,62 @@
+<ion-view view-title="{{booking.customer.name}}的预约">
+
+
+<ion-nav-buttons side="left">
+  <a class="button-light left"
+    ng-click="myGoBack()">
+    <i class="ion-arrow-left-c"></i>返回客户界面
+  </a>
+
+</ion-nav-buttons>-
+
+
+<ion-content>
+<div class="card">
+  <ion-item class="item-remove-animate  item-icon-bottom"  
+       type="item-text-wrap" href="#">
+        <p>&nbsp</p>
+        <h2>{{booking.product.name}}</h2>
+        <p>&nbsp</p>
+        <p>目标规模</p>
+        <p>{{booking.product.start}}</p>
+        <p>&nbsp</p>
+        <p>认购费用</p>
+        <p>{{booking.product.cost}}</p>
+        <p>&nbsp</p>
+        <p>剩余时间</p>
+        <p>{{booking.product.last}}</p>
+        <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
+  </ion-item>
+</div>
+<!--
+<div class="card">
+  <div class="item item-text-wrap">
+        <p>&nbsp</p>
+        <h2>{{booking.customer.name}}</h2>
+        <p>&nbsp</p>
+        <p>电话</p>
+        <p>{{booking.customer.mobile}}</p>
+        <p>&nbsp</p>
+        <p>地址</p>
+        <p>{{booking.customer.address}}</p>
+        <p>&nbsp</p>
+        <p>客户理财评测等级</p>
+        <p>{{booking.customer.level}}</p>
+  </div>
+</div>-->
+
+<!--
+<div style="font-size:100px;">
+<i class="icon ion-hammer calm"></i>
+</div>-->
+
+
+</ion-content>
+</ion-view>
+<!--
+<ion-footer-bar class="bar-dark" style="height:70px;font-size:70px">
+    <div class="button-bar">  
+      <a class="button button-balanced">立即服务</a>
+    </div>
+</ion-footer-bar>-->
+

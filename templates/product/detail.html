@@ -1,0 +1,72 @@
+<ion-view view-title="{{detail.name}}">
+
+
+<ion-nav-buttons side="left">
+  <a class="button-light left"
+    ng-click="myGoBack()">
+    <i class="ion-arrow-left-c"></i> 返回
+  </a>
+
+</ion-nav-buttons>-
+
+
+<ion-nav-buttons side="right">
+
+
+   <a class="button-light right"
+    ng-click="myGoBack()">
+    <i class="ion-ios-cart"></i> 购物车
+  </a>
+
+</ion-nav-buttons>
+
+
+
+<ion-content>
+
+
+<div class="card">
+  <ion-item class="item-remove-animate  item-icon-bottom"  
+       type="item-text-wrap">
+       <p>&nbsp</p>
+        <h2>{{detail.name}}</h2>
+        <p>&nbsp</p>
+        <p>目标规模</p>
+        <p>{{detail.start}}</p>
+        <p>&nbsp</p>
+        <p>认购费用</p>
+        <p>{{detail.cost}}</p>
+        <p>&nbsp</p>
+        <p>剩余时间</p>
+        <p>{{detail.last}}</p>
+        <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
+  </ion-item>
+</div>
+
+<div class="card">
+  <div class="item item-text-wrap">
+  <p>&nbsp</p>
+  <h2>详情</h2>
+  <p>&nbsp</p>
+	<p>{{detail.detail}}</p>
+  </div>
+</div>
+
+<!--
+<div style="font-size:100px;">
+<i class="icon ion-hammer calm"></i>
+</div>-->
+
+
+</ion-content>
+</ion-view>
+
+<ion-footer-bar class="bar-dark" style="height:70px;font-size:70px">
+
+    <div class="button-bar">  
+      <a class="button button-clear icon ion-heart"></a>
+      <a class="button button-clear icon ion-social-yen"></a>
+    </div>
+
+</ion-footer-bar>
+

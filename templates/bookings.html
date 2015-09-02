@@ -1,0 +1,37 @@
+<ion-side-menus enable-menu-with-back-views="true">
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-stable">
+       
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+
+      <ion-nav-buttons side="right">
+         <a class="button-light left ion-android-arrow-back"
+    		href="#main/toolbox">
+    		 返回
+  		</a>
+      </ion-nav-buttons>
+
+    </ion-nav-bar>
+    <ion-nav-view name="bookings"></ion-nav-view>
+  
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left" width="230">
+    <ion-header-bar class="bar-stable">
+      <h1 class="title">预约菜单</h1>
+    </ion-header-bar>
+    <ion-content>
+      <ion-list>
+        <ion-item  href="#/bookings/unassigned">
+          未分配预约
+        </ion-item>
+        <ion-item  href="#/bookings/assigned">
+          已分配预约
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

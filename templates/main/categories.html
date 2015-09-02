@@ -1,0 +1,72 @@
+
+
+
+<ion-view>
+
+    <ion-content>
+      <div class="list">
+
+        <!--
+           <a class="item item-avatar"  href="#/main/products/categories/1" ng-class="{'item-energized' : selectedCategory==1}" ng-click="selectedCategory = 1">-->
+
+    
+
+            <a class="item item-avatar"  href="#/main/products/categories/{{category.id}}" ng-class="{'item-energized' : selectedCategory=={{category.id}}}" ng-repeat="category in data.categories">
+              <img src="{{category.image}}"/>
+              {{category.name}}
+            </a>
+            <!--
+            <a class="item item-avatar" href="#/main/products/categories/2" ng-class="{'item-energized' : selectedCategory==2}"> 
+              <img src="img/lbanr1img1.png"/>
+              私募基金
+            </a>
+            <a class="item item-avatar" href="#/main/products/categories/3" ng-class="{'item-energized' : selectedCategory==3}">
+              <img src="img/lbanr1img3.png"/>
+              信托产品
+            </a>
+            <a class="item item-avatar" href="#/main/products/categories/4" ng-class="{'item-energized' : selectedCategory==4}">
+              <img src="img/lbanr1img4.png"/>
+              保险产品
+            </a>
+             <a class="item item-avatar" href="#/main/products/categories/5" ng-class="{'item-energized' : selectedCategory==5}">
+              <img src="img/lbanr1img5.png"/>
+              服务产品
+            </a>-->
+      </div>
+
+  </ion-content>
+
+<!--
+    <script id="templates/main/products/categories.html" type="text/ng-template">
+      <ion-popover-view>
+        <ion-content>
+          <div class="list" ng-click="popover.hide()">
+            <a class="item" href="#main/products/categories/1">
+              公募基金
+            </a>
+            <a class="item" href="#main/products/categories/2">
+              私募基金
+            </a>
+            <a class="item" href="#main/products/categories/3">
+              信托产品
+            </a>
+            <a class="item" href="#main/products/categories/4">
+              组合产品
+            </a>
+             <a class="item" href="#main/products/categories/5">
+              服务类产品
+            </a>
+          </div>
+        </ion-content>
+      </ion-popover-view>
+    </script>
+-->
+  <multiple-views-support width="25%" />
+</ion-view>
+
+
+
+
+
+
+

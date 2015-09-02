@@ -1,0 +1,24 @@
+
+<ion-view view-title="我的客户">
+
+<ion-content>
+
+
+   <div class="list">
+
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="customer in customers" 
+       type="item-text-wrap" href="#/booking/detail">
+        <img ng-src="{{customer.face}}">
+        <h2>{{customer.name}}</h2>
+        <p>{{customer.name}}</p>
+        <p style="color:red;">{{customer.status}}</p>
+      </ion-item>
+
+  </div>
+</ion-content>
+
+</ion-view>
+
+
+
+

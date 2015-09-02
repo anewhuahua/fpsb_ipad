@@ -1,0 +1,557 @@
+<ion-view view-title="我的" class="common-person-view">
+
+      <ion-nav-title>
+           <div class="logotop"><img src="img/logotop.png" title="" alt="" /></div>
+         
+  
+      </ion-nav-title>
+  <ion-content ng-switch on="customer.win">
+
+      <ion-refresher
+              refreshing-text="数据正在加载中..."
+              pulling-icon="ion-ios-arrow-down"
+              spinner="bubbles"
+              pulling-text="下拉刷新"
+              on-refresh="doRefresh()">
+      </ion-refresher>
+
+<!-- index -->
+<div class="main1" ng-switch-when='index'>
+
+       <div class="gnr2dadv"><!--内容右侧开始-->
+              
+                
+                <div class="gjxnr1dv"><!-- 内容1开始 -->
+                  
+                
+                  <div class="gjxnrtopyy"></div>
+                  <!-- 内容top阴影 -->
+                
+                  <div class="gjxnr3">
+                    <!-- 内容1右边部分开始 -->
+                    <span>总资产(元)</span>
+                    <em>541300.20</em>
+                    <div class="gjxnr3bmdv">
+                      <span>预期总收益：35000 </span>
+                      <em>实际已收益：25030 </em>
+                    </div>
+                  </div>
+                  <!-- 内容右边部分结束 -->
+                
+                  <div class="gjxnrr2">
+                    <!-- 内容1左边部分开始 -->
+                    <div class="gjxnrr2lef"><img src="teImg/ghnr1lef.png" /></div>
+                    <div class="gjxnrr2rig">
+                      <p class="gjxnrr2rigp1">李明<span>先生</span>,<em>下午</em>好</p>
+                      <p class="gjxnrr2rigp2"><span><img src="teImg/gjxnrtaa.png" /></span> <em>白金用户</em> <i>已认证</i></p>
+                    </div>
+                  </div>
+                  <!-- 内容1左边部分结束 -->
+                
+                </div><!-- 内容1结束 -->
+  
+              <div class="gnr2ma"> 
+                 <div class="gnr2nra"><!--全部订单-s-->
+                         <a href="" class="gnr2nratop" ng-click="selectPage('orders')">
+                             <p> 
+                               <em><img src="teImg/gnr2nr1toplf1.jpg" /></em>  
+                               <span>查看全部订单</span> 
+                             </p>
+                            
+                         </a>
+                         
+                         
+                         <ul class="gnr2nrabm">
+                            <li><a href="" ng-click="selectPage('orders-under-push')">
+                               <div><img src="teImg/gnr2rabm1.png" title="" alt="" /></div>
+                               <em>待报备</em>
+                            </a></li>
+                            <li><a href="" ng-click="selectPage('orders-under-check')">
+                               <div><img src="teImg/gnr2rabm2.png" title="" alt="" /></div>
+                               <em>待审核</em>
+                            </a></li>
+                            <li><a href="" ng-click="selectPage('orders-complete')">
+                               <div><img src="teImg/gnr2rabm3.png" title="" alt="" /></div>
+                               <em>已完成</em>
+                            </a></li>
+                            <li><a href="" ng-click="selectPage('orders-under-pay')">
+                               <div><img src="teImg/gnr2rabm4.png" title="" alt="" /></div>
+                               <em>待付款</em>
+                            </a></li>
+                         </ul> 
+                 </div><!--全部订单-e-->
+                 
+                 
+                 <div class="gnr2nrb"><!--已完成订单-s-->
+                   
+                     <div class="gnr2nrbtp">
+                        <span>[私募]粤财·瀚信中鼎盈丰2期</span>
+                        <a href=""><em>查看详情</em><i></i></a>
+                     </div>
+                     
+                     <div class="gnr2nrbbm">
+                       <div class="gnr2nrblef">
+                          <div><img src="teImg/gnr2rabm3.png" title="" alt="" /></div>
+                          <em>已完成</em>
+                       </div>
+                       
+                       <ul class="gnr2nrbbmrig">
+                         <li><span>当前持有资产(元)</span>  <em>28000</em></li>
+                         <li><span>投资笔数(笔)</span>  <em>10</em></li>
+                         <li><span>当前投资收益(元)</span>  <em>280</em></li>
+                         <li><span>预期收益(元)</span>  <em>200</em></li>
+                       </ul>
+                       
+                     </div>
+                 
+                 </div><!--已完成订单-e-->
+                 
+                 
+                 <div class="gnr2nrb"><!--已完成订单-s-->
+                   
+                     <div class="gnr2nrbtp">
+                        <span>[私募]粤财·瀚信中鼎盈丰2期</span>
+                        <a href=""><em>查看详情</em><i></i></a>
+                     </div>
+                     
+                     <div class="gnr2nrbbm">
+                       <div class="gnr2nrblef">
+                          <div><img src="teImg/gnr2rabm2.png" title="" alt="" /></div>
+                          <em>已完成</em>
+                       </div>
+                       
+                       <ul class="gnr2nrbbmrig">
+                         <li><span>当前持有资产(元)</span>  <em>28000</em></li>
+                         <li><span>投资笔数(笔)</span>  <em>10</em></li>
+                         <li><span>当前投资收益(元)</span>  <em>280</em></li>
+                         <li><span>预期收益(元)</span>  <em>200</em></li>
+                       </ul>
+                       
+                     </div>
+ 
+                 </div><!--已完成订单-e-->
+                 
+                 
+                 <div class="gnr2nrb"><!--已完成订单-s-->
+                   
+                     <div class="gnr2nrbtp">
+                        <span>[私募]粤财·瀚信中鼎盈丰2期</span>
+                        <a href=""><em>查看详情</em><i></i></a>
+                     </div>
+                     
+                     <div class="gnr2nrbbm">
+                       <div class="gnr2nrblef">
+                          <div><img src="teImg/gnr2rabm1.png" title="" alt="" /></div>
+                          <em>已完成</em>
+                       </div>
+                       
+                       <ul class="gnr2nrbbmrig">
+                         <li><span>当前持有资产(元)</span>  <em>28000</em></li>
+                         <li><span>投资笔数(笔)</span>  <em>10</em></li>
+                         <li><span>当前投资收益(元)</span>  <em>280</em></li>
+                         <li><span>预期收益(元)</span>  <em>200</em></li>
+                       </ul>
+                       
+                     </div>
+    
+                 </div><!--已完成订单-e-->
+                 
+                 
+                 <div class="gnr2nrc">
+                 
+                   <div class="gnr2nrctop" ng-click="selectPage('bookings')">
+                      <p> 
+                         <em><img src="teImg/headr2.png" /></em>  
+                         <span>我的理财师</span> 
+                       </p>
+                       <a href=""><em>查看全部</em><i></i></a>
+                   </div>
+                   
+                   <div class="gnr2nrc1" ng-click="selectPage('bookings')">
+                      <div class="gnr2nrc1lf">
+                        <span><img src="teImg/gnr2nrclef1.jpg" /></span>
+                        <em>王海</em>
+                      </div> 
+                      <div class="gnrnrcrig">
+                         <span class="gnr2nrcrig">我已为您创造财富 <em>82934894.3 </em>元</span>
+                         <div class="gnr2ncrgbm">
+                            <span>当前服务产品</span>
+                            <p>
+                              <em>粤财·瀚信丰2期(<i>审核中</i>)</em>
+                              <em>粤财·瀚信中鼎盈丰1期(<i>已完成</i>)</em>
+                            </p>
+                         </div>
+                      
+                      </div>
+                      
+                      
+                   
+                   </div>
+                   
+                   
+                   
+                   
+                   
+                   <div class="gnr2nrctopd">
+                      <p> 
+                         <em><img src='teImg/cpxqsclog.png' /></em>  
+                         <span>我的关注</span> 
+                       </p>
+                       <a href=""><em>查看全部</em><i></i></a>
+                   </div>
+                   
+                   <div class="gnr2nre" ng-click="showProduct()">
+                     <span>推荐</span>
+                     <em>热销</em>
+                     <i>粤财·瀚信中鼎盈丰2期</i>
+                   </div>
+                   <div class="gnr2nre" ng-click="showProduct()">
+                     <span>推荐</span>
+                     <em>热销</em>
+                     <i>粤财·瀚信中鼎盈丰2期</i>
+                   </div>
+             
+
+                 </div>
+                 
+            </div>
+      </div>
+</div>
+<!-- index -->
+<!-- orders -->
+<div class="main1" ng-switch-when='orders'>
+            <div class="gnr2dadv"><!--内容右侧开始-->
+
+                <div class="gjxnrtopyy"></div>
+                <!-- 内容top阴影 -->
+
+                <div class="gnr2ma"> 
+       
+                 <ul class="qbgnr2nrul">
+                  <!--ng-class="{gjxqbcss}"-->
+                    <li ><a href="" ng-class="{gjxqbcss: customer.orders=='orders'}" ng-click="selectPage('orders')">
+                       <div><img src="teImg/gnr2rabm11a.png" title="" alt="" /></div>
+                       <em>全部订单</em>
+                    </a></li>
+                    <li><a href="" ng-class="{gjxqbcss: customer.orders=='orders-under-push'}" ng-click="selectPage('orders-under-push')">
+                       <div><img src="teImg/gnr2rabm1.png" title="" alt="" /></div>
+                       <em>待报备</em>
+                    </a></li>
+                    <li><a href="" ng-class="{gjxqbcss: customer.orders=='orders-under-check'}" ng-click="selectPage('orders-under-check')">
+                       <div><img src="teImg/gnr2rabm2.png" title="" alt="" /></div>
+                       <em>待审核</em>
+                    </a></li>
+                    <li><a href="" ng-class="{gjxqbcss: customer.orders=='orders-complete'}" ng-click="selectPage('orders-complete')">
+                       <div><img src="teImg/gnr2rabm3.png" title="" alt="" /></div>
+                       <em>已完成</em>
+                    </a></li>
+                    <li><a href="" ng-class="{gjxqbcss: customer.orders=='orders-under-pay'}" ng-click="selectPage('orders-under-pay')">
+                       <div><img src="teImg/gnr2rabm4.png" title="" alt="" /></div>
+                       <em>待付款</em>
+                    </a></li>
+                 </ul> 
+                 
+                 
+                 <div class="gnr2nrb"><!--已完成订单-s-->
+                   
+                     <div class="gnr2nrbtp">
+                        <span>[私募]粤财·瀚信中鼎盈丰2期</span>
+                        <a href=""><em>查看详情</em><i></i></a>
+                     </div>
+                     
+                     <div class="gnr2nrbbm">
+                       <div class="gnr2nrblef">
+                          <div><img src="teImg/gnr2rabm3.png" title="" alt="" /></div>
+                          <em>已完成</em>
+                       </div>
+                       
+                       <ul class="gnr2nrbbmrig">
+                         <li><span>当前持有资产(元)</span>  <em>28000</em></li>
+                         <li><span>投资笔数(笔)</span>  <em>10</em></li>
+                         <li><span>当前投资收益(元)</span>  <em>280</em></li>
+                         <li><span>预期收益(元)</span>  <em>200</em></li>
+                       </ul>
+                       
+                     </div>
+                 </div><!--已完成订单-e-->
+                 
+                 
+                 <div class="gnr2nrb"><!--已完成订单-s-->
+                   
+                     <div class="gnr2nrbtp">
+                        <span>[私募]粤财·瀚信中鼎盈丰2期</span>
+                        <a href=""><em>查看详情</em><i></i></a>
+                     </div>
+                     
+                     <div class="gnr2nrbbm">
+                       <div class="gnr2nrblef">
+                          <div><img src="teImg/gnr2rabm2.png" title="" alt="" /></div>
+                          <em>已完成</em>
+                       </div>
+                       
+                       <ul class="gnr2nrbbmrig">
+                         <li><span>当前持有资产(元)</span>  <em>28000</em></li>
+                         <li><span>投资笔数(笔)</span>  <em>10</em></li>
+                         <li><span>当前投资收益(元)</span>  <em>280</em></li>
+                         <li><span>预期收益(元)</span>  <em>200</em></li>
+                       </ul>
+                       
+                     </div>
+                 </div><!--已完成订单-e-->
+                 
+                 
+                 <div class="gnr2nrb"><!--已完成订单-s-->
+                   
+                     <div class="gnr2nrbtp">
+                        <span>[私募]粤财·瀚信中鼎盈丰2期</span>
+                        <a href=""><em>查看详情</em><i></i></a>
+                     </div>
+                     
+                     <div class="gnr2nrbbm">
+                       <div class="gnr2nrblef">
+                          <div><img src="teImg/gnr2rabm1.png" title="" alt="" /></div>
+                          <em>已完成</em>
+                       </div>
+                       
+                       <ul class="gnr2nrbbmrig">
+                         <li><span>当前持有资产(元)</span>  <em>28000</em></li>
+                         <li><span>投资笔数(笔)</span>  <em>10</em></li>
+                         <li><span>当前投资收益(元)</span>  <em>280</em></li>
+                         <li><span>预期收益(元)</span>  <em>200</em></li>
+                       </ul>
+                       
+                     </div>
+    
+                 </div><!--已完成订单-e-->
+                 
+                 <div class="gnr2nrb"><!--已完成订单-s-->
+                   
+                     <div class="gnr2nrbtp">
+                        <span>[私募]粤财·瀚信中鼎盈丰2期</span>
+                        <a href=""><em>查看详情</em><i></i></a>
+                     </div>
+                     
+                     <div class="gnr2nrbbm">
+                       <div class="gnr2nrblef">
+                          <div><img src="teImg/gnr2rabm3.png" title="" alt="" /></div>
+                          <em>已完成</em>
+                       </div>
+                       
+                       <ul class="gnr2nrbbmrig">
+                         <li><span>当前持有资产(元)</span>  <em>28000</em></li>
+                         <li><span>投资笔数(笔)</span>  <em>10</em></li>
+                         <li><span>当前投资收益(元)</span>  <em>280</em></li>
+                         <li><span>预期收益(元)</span>  <em>200</em></li>
+                       </ul>
+                       
+                     </div>
+                 
+                 
+                 
+                 </div><!--已完成订单-e-->
+                 
+                 
+                 <div class="gnr2nrb"><!--已完成订单-s-->
+                   
+                     <div class="gnr2nrbtp">
+                        <span>[私募]粤财·瀚信中鼎盈丰2期</span>
+                        <a href=""><em>查看详情</em><i></i></a>
+                     </div>
+                     
+                     <div class="gnr2nrbbm">
+                       <div class="gnr2nrblef">
+                          <div><img src="teImg/gnr2rabm2.png" title="" alt="" /></div>
+                          <em>已完成</em>
+                       </div>
+                       
+                       <ul class="gnr2nrbbmrig">
+                         <li><span>当前持有资产(元)</span>  <em>28000</em></li>
+                         <li><span>投资笔数(笔)</span>  <em>10</em></li>
+                         <li><span>当前投资收益(元)</span>  <em>280</em></li>
+                         <li><span>预期收益(元)</span>  <em>200</em></li>
+                       </ul>
+                       
+                     </div>
+                 
+                 
+                 
+                 </div><!--已完成订单-e-->
+                 
+                 
+                 <div class="gnr2nrb"><!--已完成订单-s-->
+                   
+                     <div class="gnr2nrbtp">
+                        <span>[私募]粤财·瀚信中鼎盈丰2期</span>
+                        <a href=""><em>查看详情</em><i></i></a>
+                     </div>
+                     
+                     <div class="gnr2nrbbm">
+                       <div class="gnr2nrblef">
+                          <div><img src="teImg/gnr2rabm1.png" title="" alt="" /></div>
+                          <em>已完成</em>
+                       </div>
+                       
+                       <ul class="gnr2nrbbmrig">
+                         <li><span>当前持有资产(元)</span>  <em>28000</em></li>
+                         <li><span>投资笔数(笔)</span>  <em>10</em></li>
+                         <li><span>当前投资收益(元)</span>  <em>280</em></li>
+                         <li><span>预期收益(元)</span>  <em>200</em></li>
+                       </ul>
+                       
+                     </div>
+    
+                 </div><!--已完成订单-e-->
+                 
+                <div class="gnr2nrb"><!--已完成订单-s-->
+                   
+                     <div class="gnr2nrbtp">
+                        <span>[私募]粤财·瀚信中鼎盈丰2期</span>
+                        <a href=""><em>查看详情</em><i></i></a>
+                     </div>
+                     
+                     <div class="gnr2nrbbm">
+                       <div class="gnr2nrblef">
+                          <div><img src="teImg/gnr2rabm2.png" title="" alt="" /></div>
+                          <em>已完成</em>
+                       </div>
+                       
+                       <ul class="gnr2nrbbmrig">
+                         <li><span>当前持有资产(元)</span>  <em>28000</em></li>
+                         <li><span>投资笔数(笔)</span>  <em>10</em></li>
+                         <li><span>当前投资收益(元)</span>  <em>280</em></li>
+                         <li><span>预期收益(元)</span>  <em>200</em></li>
+                       </ul>
+                       
+                     </div>
+                 </div><!--已完成订单-e-->
+                 
+                 
+                 <div class="gnr2nrb"><!--已完成订单-s-->
+                   
+                     <div class="gnr2nrbtp">
+                        <span>[私募]粤财·瀚信中鼎盈丰2期</span>
+                        <a href=""><em>查看详情</em><i></i></a>
+                     </div>
+                     
+                     <div class="gnr2nrbbm">
+                       <div class="gnr2nrblef">
+                          <div><img src="teImg/gnr2rabm1.png" title="" alt="" /></div>
+                          <em>已完成</em>
+                       </div>
+                       
+                       <ul class="gnr2nrbbmrig">
+                         <li><span>当前持有资产(元)</span>  <em>28000</em></li>
+                         <li><span>投资笔数(笔)</span>  <em>10</em></li>
+                         <li><span>当前投资收益(元)</span>  <em>280</em></li>
+                         <li><span>预期收益(元)</span>  <em>200</em></li>
+                       </ul>
+                       
+                     </div>
+    
+                 </div><!--已完成订单-e-->
+                 
+                 <div class="gnr2nrb"><!--已完成订单-s-->
+                   
+                     <div class="gnr2nrbtp">
+                        <span>[私募]粤财·瀚信中鼎盈丰2期</span>
+                        <a href=""><em>查看详情</em><i></i></a>
+                     </div>
+                     
+                     <div class="gnr2nrbbm">
+                       <div class="gnr2nrblef">
+                          <div><img src="teImg/gnr2rabm3.png" title="" alt="" /></div>
+                          <em>已完成</em>
+                       </div>
+                       
+                       <ul class="gnr2nrbbmrig">
+                         <li><span>当前持有资产(元)</span>  <em>28000</em></li>
+                         <li><span>投资笔数(笔)</span>  <em>10</em></li>
+                         <li><span>当前投资收益(元)</span>  <em>280</em></li>
+                         <li><span>预期收益(元)</span>  <em>200</em></li>
+                       </ul>
+                       
+                     </div>
+                 </div><!--已完成订单-e-->
+            </div>
+      </div>
+</div>
+<!-- orders -->
+<!-- bookings -->
+<div class="main1" ng-switch-when='bookings'>
+    <div class="gnr2dadv"><!--内容右侧开始-->
+
+                <div class="gjxnrtopyy"></div>
+                <!-- 内容top阴影 -->
+
+                <div class="gnr2ma"> 
+                  
+                  
+                   <div class="glcsqtop"><!--理财师top-s-->
+                      <span></span>
+                      <em>我的理财师</em>
+                   </div><!--理财师top-e-->
+                   
+                   <div class="glcsbmdv">
+                        
+                        <div class="glcsbmf">
+                           <p><img src="teImg/gnr2nrclef1.jpg" /></p>
+                           <span>王海</span>
+                           <em>高级理财师</em>
+                           <i>已认证</i>
+                        </div><!--理财师简介左边-->
+                        
+                        <div class="lcsmr">
+                           <p class="lcsmrp1">
+                              <span>联系方式</span>
+                              <em><img src="teImg/dhlog.png" /></em>
+                              <i>136346481113</i>
+                              <em><img src="teImg/lcsgdw.png" /></em>
+                              <i>wh1243pm</i>
+                           </p>
+                           <p class="lcsmrp2">我已为您创造财富<span> 578592589 </span>元</p>
+                           <b>首席金服高级理财师，十年从业经验，为客户创造超过1200万利润先后于中国人民银行总行从事金融研究与实务工作，竭诚为您服务。</b> 
+                           
+                           
+                           
+                        </div><!--理财师简介右边-->
+                        
+                   </div>
+                  
+                   <div class="glcsqxxtop"><em>我的预约</em></div>
+                      
+                      
+                   <div class="gnr2nrb" ng-repeat='booking in customer.bookings'><!--已完成订单-s-->
+                     
+                       <div class="gnr2nrbtp">
+                          <span>{{booking.product.issuer}}</span>
+                          
+                       </div>
+                       
+                       <div class="gnr2nrbbm">
+                         <div class="gnr2nrblef">
+                            <div><img src="teImg/gnr2rabm2.png" title="" alt="" /></div>
+                            <em>已预约</em>
+                         </div>
+                         
+                         <ul class="gnr2nrbbmrig">
+                           <li><span>预期年化</span>  <em>10.50%</em></li>
+                           <li><span>理财期限</span>  <em>120天</em></li>
+                           <li><span>认购费用</span>  <em>10万起</em></li>
+                           
+                         </ul>
+                         
+                       </div>
+                   </div><!--已完成订单-e-->
+                   
+                 
+                 
+              </div>
+         
+        </div><!--内容右侧结束-->
+</div>
+<!-- bookings -->
+    
+  </ion-content>
+  <multiple-views-support width="75%" />
+</ion-view>
+

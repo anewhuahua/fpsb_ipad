@@ -1,0 +1,162 @@
+
+<ion-view class="common-person-view">
+  <ion-nav-title>
+       <div class="logotop"><img src="img/logotop.png" title="" alt="" /></div>
+  </ion-nav-title>
+
+
+  <!--<ion-nav-buttons side="left">
+      <a class="button  button-icon button-clear ion-navicon" ng-click="popover.show($event);">
+      </a>
+        
+  </ion-nav-buttons>-->
+
+
+    <ion-content>
+       <ion-refresher
+              refreshing-text="数据正在加载中..."
+              pulling-icon="ion-ios-arrow-down"
+              spinner="bubbles"
+              pulling-text="下拉刷新"
+              on-refresh="doRefresh()">
+      </ion-refresher>
+      <!--
+
+      <div class="bar-subheader bar-stable">
+      <div class="button-bar">
+        <a class="button button-balanced">按价格</a>
+        <a class="button button-clear">按收益</a>
+        <a class="button button-clear">按时间</a>
+      </div>
+    </div>-->
+
+     
+      <!--
+      <div class="list">
+          <a class="item item-avatar"  ng-repeat="product in products |filter:{category: categoryID}" href="#/product/detail/12">
+          <img src="img/download.png">
+        <h2>{{product.name}}</h2>
+        <p>六个月  预期收益</p>
+        <p>100万起  10%</p>
+        </a>
+      </div>
+    -->
+
+
+  
+       
+<div class="main1"><!-- 中间内容开始 -->  
+
+
+            <div class="gnr2dadv"><!--内容右侧开始-->
+
+                <div class="gjxnrtopyy"></div>
+                <!-- 内容top阴影 -->
+                
+                
+                <ul class="gjfxdvpp">
+                  <li> <a href="">
+                    <span>排序</span>
+                    <em class="curdis"></em>
+                   </a></li>
+                  <li><a href="">
+                    <span>筛选</span>
+                    <em></em>
+                   </a></li> 
+                </ul><!--发现外层top-e-->
+                
+                
+                
+                
+                <div class="gnr2ma"> <!--发现内容主体外层-->
+          
+                  <div class="xyglcsrrdv" ng-repeat="product in data.products" ng-click="showProduct(product)"><!--发现内容主体-->
+                  
+                      <div class="xxlsrrp">
+                        <span class="xxlsyyss1">推荐</span>
+                        <span class="xxlsyyss2">热销</span>
+                        <em>{{product.issuer}}</em>
+                      </div>
+                      
+                      <div class="ssxqbmdv">
+                          <span class="ssxqmf1">63%</span>
+                          <p><span>10.50%</span> <em>预期年化</em></p>
+                          <p><span>120天</span> <em>理财期限</em></p>
+                          <div class="xxxqrr"> 
+                            <span>目标规模 <em> 36,500.00 </em>万元</span>
+                            <span>认购费用 <em> 100 </em>万起</span>
+                            <span>剩余时间 <em> 21 </em>天</span>
+                          </div>
+                      </div>
+                      
+                  </div>  <!--发现内容主体-->
+                      
+              </div><!--发现内容主体外层-->
+            </div><!--内容右侧结束-->
+
+
+<!--
+    <ul class="cplbanr2ul">
+                <li ng-repeat="product in data.products"><a href="" ng-click="showProduct(product.id)">
+                   <div class="cqlbanr2uldv1"><span>推荐</span> <em>热销</em> <i>{{product.issuer}}</i> </div>
+                   
+                   <div class="cqlbanr2uldv2">
+                        <div class="cqlbar2v2lef"> <em>10.50%</em> <span>预期年化</span> </div>
+                        <div class="cqlbar2v2lef"> <em>120天</em> <span>理财期限</span> </div>
+                        <div class="cqlbar2v2rig">
+                          <span>目标规模<em>36,500.00</em>万元</span>
+                          <span>认购费用<em>10</em>万 起</span>
+                          <span>剩余时间<em>24</em>天</span>
+                        </div>
+                   </div>
+                   
+                   <div class="cqlbar2v2bm"><img src="teImg/lbanr2u2jdt.jpg" title="" alt="" /></div>
+
+                </a></li>
+                
+              </ul>-->
+</div>
+      
+  <ion-infinite-scroll
+    ng-if="data.more" 
+    on-infinite="loadMore()" 
+    immediate-check="false"
+    distance="1%"><p>小金奋力加载中...</p>
+  </ion-infinite-scroll>
+
+  </ion-content>
+
+<!--
+    <script id="templates/main/products/categories.html" type="text/ng-template">
+      <ion-popover-view>
+        <ion-content>
+          <div class="list" ng-click="popover.hide()">
+            <a class="item" href="#main/products/categories/1">
+              公募基金
+            </a>
+            <a class="item" href="#main/products/categories/2">
+              私募基金
+            </a>
+            <a class="item" href="#main/products/categories/3">
+              信托产品
+            </a>
+            <a class="item" href="#main/products/categories/4">
+              组合产品
+            </a>
+             <a class="item" href="#main/products/categories/5">
+              服务类产品
+            </a>
+          </div>
+        </ion-content>
+      </ion-popover-view>
+    </script>
+-->
+  <multiple-views-support width="75%" />
+</ion-view>
+
+
+
+
+
+
+
