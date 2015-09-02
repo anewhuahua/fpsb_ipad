@@ -129,7 +129,8 @@ angular.module('starter', ['ionic', 'ionicMultipleViews','starter.controllers', 
     url: '/detail/:bookingId',
     views: {
       'booking-menu': {
-         templateUrl: 'templates/booking/booking_menu.html'
+         templateUrl: 'templates/booking/booking_menu.html',
+         controller: 'bookingMenuCtrl'
       },
 
       'booking-detail': {

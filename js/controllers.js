@@ -28,12 +28,14 @@ angular.module('starter.controllers', [])
 
 .controller('bookingCtrl', function($scope, $stateParams) {
 })
-
+.controller('bookingMenuCtrl', function($scope, $stateParams, $ionicHistory) {
+  $scope.goBack = function() {
+    console.log('goback');
+    $ionicHistory.goBack();
+  }
+})
 .controller('bookingDetailCtrl', function($scope, $stateParams, Main) {
-  $scope.booking ='1';
-  console.log('tyson-----');
   var bid = $stateParams.bookingId;
-  console.log('tyson'+bid);
   $scope.booking = Main.consultant.getBooking(bid);
   console.log($scope.booking);
 })

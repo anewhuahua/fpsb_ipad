@@ -282,7 +282,6 @@
                 
 
                 <div class="gnr2ma"> 
-                  <a href="#/booking/detail/123">dsafdsgsdgdsgsg</a>
                    <div ng-if="isCollapse('pendings-bookings')">
                     <div class="xyglcsqtop" ng-click="expand('pendings-bookings')">
                       <em>您有{{consultant.pendings.bookings.length}}个新预约</em><i></i>
@@ -293,28 +292,28 @@
                     <div class="xyglcsqtop" ng-click="collapse('pendings-bookings')">
                       <em>您有{{consultant.pendings.bookings.length}}个新预约</em><span></span>
                     </div>
-
+                    
                     <div class="wdyydv" ng-repeat="booking in consultant.pendings.bookings" ><!-- 我的预约-s -->
-                       <a href="#/booking/detail/{{booking.id}}">
-                       <div class="wdyydvtop"><span>2015 / 08 / 28</span> <em>[新预约]</em> </div>
-                       <div class="sdyybmdv">
-                           <div class="wdyyf"><img src="teImg/ghnr1lef.png" /></div>
-                           <div class="sdyyr">
-                                <p class="wdyyrp1">
-                                   <span>王海先生 </span>
-                                   <em>白金用户</em>
-                                   <i>已认证</i>
-                                   <b>电话：1300004500 </b>
-                                </p>
-                                
-                                <div class="wdyynr2v">
-                                   <span>{{booking.product.issuer}} </span>
-                                   <em>预期年化: 10.50%</em>
-                                   <a href=""><span>查看详情</span> <em></em></a>
-                                </div>
-                           </div>
-                       </div>
-                       </a>
+                       <!--<a href="#/booking/detail/{{booking.id}}">-->
+                         <div class="wdyydvtop"><span>2015 / 08 / 28</span> <em>[新预约]</em> </div>
+                         <div class="sdyybmdv">
+                             <div class="wdyyf"><img src="teImg/ghnr1lef.png" /></div>
+                             <div class="sdyyr">
+                                  <p class="wdyyrp1">
+                                     <span>王海先生 </span>
+                                     <em>白金用户</em>
+                                     <i>已认证</i>
+                                     <b>电话：1300004500 </b>
+                                  </p>
+                                  
+                                  <div class="wdyynr2v">
+                                     <span>{{booking.product.issuer}} </span>
+                                     <em>预期年化: 10.50%</em>
+                                     <a href="#/booking/detail/{{booking.id}}"><span>查看详情</span> <em></em></a>
+                                  </div>
+                             </div>
+                         </div>
+                      <!-- </a>-->
                     </div><!-- 我的预约-e -->
 
 
