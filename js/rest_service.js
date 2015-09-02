@@ -99,50 +99,81 @@ angular.module('rest.service', [])
         finallyHandler();
       });
     },
+    customer: {
+      v1: {
+        addBooking: function(cid, pid, successHandler, errorHandler, finallyHandler) {
+          var req = {
+              method: 'POST',
+              url: domain+'ChiefFinancierService/api/customer/v1/customers/' + cid + '/bookings?productId=' + pid,
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
 
-    addBooking: function(cid, pid, successHandler, errorHandler, finallyHandler) {
-      var req = {
-          method: 'POST',
-          url: domain+'ChiefFinancierService/api/customer/v1/customers/' + cid + '/bookings?productId=' + pid,
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        };
+            //console.log(pid);
+          $http(req).success(function(data){
+            successHandler(data);
+          }).error(function(res, status){
+            errorHandler(status);
+          }).finally(function(){
+            finallyHandler();
+          });
+        },
+        queryBookings: function (param, cid, successHandler, errorHandler, finallyHandler) {
+          state  = param.state || 'initiated';
+          offset = param.offset || '0';
+          limit  = param.limit || '25'
 
-        //console.log(pid);
-      $http(req).success(function(data){
-        successHandler(data);
-      }).error(function(res, status){
-        errorHandler(status);
-      }).finally(function(){
-        finallyHandler();
-      });
-    },
+          var req = {
+              method: 'GET',
+              url: domain+'ChiefFinancierService/api/customer/v1/customers/' + cid + 
+              '/bookings?state=' + state + '&offset=' + offset + '&limit=' + limit,
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
+          $http(req).success(function(data){
+            successHandler(data);
+          }).error(function(res, status){
+            errorHandler(status);
+          }).finally(function(){
+            finallyHandler();
+          });
+        }
 
-    queryBookings: function (param, cid, successHandler, errorHandler, finallyHandler) {
-      state  = param.state || 'initiated';
-      offset = param.offset || '0';
-      limit  = param.limit || '25'
+      } // v1
 
-      var req = {
-          method: 'GET',
-          url: domain+'ChiefFinancierService/api/customer/v1/customers/' + cid + 
-          '/bookings?state=' + state + '&offset=' + offset + '&limit=' + limit,
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        };
-      $http(req).success(function(data){
-        successHandler(data);
-      }).error(function(res, status){
-        errorHandler(status);
-      }).finally(function(){
-        finallyHandler();
-      });
-    }
+    }, // customer
+
+    consultant: {
+      v1: {
+        queryBookings: function (param, id, successHandler, errorHandler, finallyHandler) {
+          state  = param.state || 'initiated';
+          offset = param.offset || '0';
+          limit  = param.limit || '25'
+
+          var req = {
+              method: 'GET',
+              url: domain+'ChiefFinancierService/api/consultant/v1/consultants/' + id + 
+              '/bookings?state=' + state + '&offset=' + offset + '&limit=' + limit,
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
+          $http(req).success(function(data){
+            successHandler(data);
+          }).error(function(res, status){
+            errorHandler(status);
+          }).finally(function(){
+            finallyHandler();
+          });
+        }
+
+      } // v1
+    } // consultant
 
 
-  }
+  } // return
 
 
 });

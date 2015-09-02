@@ -15,6 +15,190 @@ $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
+.booking-view {
+  /* 头部 */
+  /* 财商测试 -开始 */
+  /* 财商测试 -结束 */
+  /* 财商测试 -答案-开始 */
+  /* 财商测试 -答案-结束 */ }
+  .booking-view a {
+    text-decoration: none; }
+  .booking-view .content {
+    color: #333;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    padding: 0.88rem 0rem 0.99rem 0rem;
+    position: absolute;
+    top: 0;
+    min-width: 3.2rem;
+    margin: 0 auto;
+    max-width: 15.36rem;
+    background: #f0f0f0; }
+  .booking-view .main1 {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: auto;
+    overflow-x: hidden;
+    text-align: left; }
+  .booking-view .cstestlef {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    float: left;
+    position: relative;
+    z-index: 5;
+    background: #fff; }
+  .booking-view .cststlogo {
+    width: 40%;
+    margin: 1.6rem auto 0.57rem auto; }
+  .booking-view .cststlogo > img {
+    width: 100%; }
+  .booking-view .cststlfnr {
+    display: block;
+    width: 80%;
+    margin: auto;
+    font-size: 0.26rem;
+    line-height: 0.36rem;
+    color: #546f93;
+    text-indent: 0.6rem; }
+  .booking-view .cststmbj {
+    width: 90%;
+    position: absolute;
+    left: 0rem;
+    bottom: 0rem;
+    z-index: -1; }
+  .booking-view .cststmbj > img {
+    width: 100%; }
+  .booking-view .cstestrig {
+    width: 100%;
+    height: 100%;
+    float: right;
+    overflow-y: auto; }
+  .booking-view .cstestrigul {
+    width: 94%;
+    margin: 0.4rem auto 0rem auto; }
+  .booking-view .cstestrigul > li {
+    margin-bottom: 0.4rem; }
+  .booking-view .cststtit {
+    display: block;
+    width: 100%;
+    height: 0.7rem;
+    overflow: hidden;
+    background: #8392a5;
+    font-size: 0.28rem;
+    line-height: 0.7rem;
+    color: #fff;
+    border-radius: 0.02rem;
+    padding: 0rem 0.4rem; }
+  .booking-view .cststnr {
+    background: #fff;
+    border-radius: 0.02rem;
+    width: 100%;
+    padding: 0.3rem 0rem;
+    margin-top: 0.12rem; }
+  .booking-view .cststnr1 {
+    width: 100%;
+    min-height: 0.26rem;
+    padding: 0rem 0.4rem;
+    margin-top: 0.12rem;
+    font-size: 0.26rem;
+    line-height: 0.34rem;
+    color: #426189; }
+  .booking-view .cststnr1:first-child {
+    margin-top: 0rem; }
+  .booking-view .cststfxk {
+    margin-right: 0.3rem; }
+  .booking-view .cststbtn {
+    width: 94%;
+    height: 1.2rem;
+    margin: 0.2rem auto 0.55rem auto;
+    border-radius: 0.02rem;
+    overflow: hidden; }
+  .booking-view .cststjt {
+    width: 50%;
+    height: 1.2rem;
+    float: left;
+    font-size: 0.36rem;
+    line-height: 0.36rem;
+    color: #fff;
+    background: #e79700;
+    border: none;
+    -webkit-appearance: none;
+    text-align: center;
+    border-radius: 0rem; }
+  .booking-view .cststcz {
+    width: 50%;
+    height: 1.2rem;
+    float: left;
+    font-size: 0.36rem;
+    line-height: 0.36rem;
+    color: #fff;
+    background: #d1d1d1;
+    border: none;
+    -webkit-appearance: none;
+    text-align: center;
+    border-radius: 0rem; }
+  .booking-view .cststtc {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 11;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#99373737', endColorstr='#99373737');
+    background: rgba(55, 55, 55, 0.6); }
+  .booking-view .cststma {
+    width: 82%;
+    height: 12.6rem;
+    position: absolute;
+    left: 50%;
+    margin-left: -41%;
+    top: 50%;
+    margin-top: -6.3rem;
+    border-radius: 0.03rem;
+    overflow: hidden;
+    background: #fff; }
+  .booking-view .cststclobtn {
+    width: 0.38rem;
+    position: absolute;
+    top: 0.45rem;
+    right: 0.45rem;
+    z-index: 12; }
+  .booking-view .cststclobtn > img {
+    width: 100%; }
+  .booking-view .cststtclog {
+    width: 1.32rem;
+    margin: 18% auto 0.35rem auto; }
+  .booking-view .cststtclog > img {
+    width: 100%; }
+  .booking-view .cststjg {
+    display: block;
+    width: 90%;
+    font-size: 0.48rem;
+    color: #546f93;
+    line-height: 0.48rem;
+    margin: auto;
+    text-align: center; }
+  .booking-view .cstsjs {
+    display: block;
+    width: 67%;
+    margin: 0.55rem auto 0.45rem auto;
+    font-size: 0.26rem;
+    color: #546f93;
+    line-height: 0.4rem;
+    text-indent: 0.55rem; }
+  .booking-view .cststaa {
+    display: block;
+    width: 72%;
+    height: 1.15rem;
+    margin: auto;
+    text-align: center;
+    font-size: 0.32rem;
+    color: #ffffff;
+    line-height: 1.15rem;
+    background: #e79700;
+    border-radius: 0.03rem; }
+
 .exam-view {
   /* 头部 */
   /* 财商测试 -开始 */

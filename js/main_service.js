@@ -8,8 +8,13 @@ angular.module('main.service',[])
     {id: 3, name: "信托产品",  key:'trusts',      image:'teImg/lbanr1img3.png', page:0, products:[]},
     {id: 4, name: "保险产品",  key:'insurances',  image:'teImg/lbanr1img4.png', page:0, products:[]}
   ];
-  var bookings = [];
-  var bookings 
+
+  var customer = {
+    bookings: []
+  };
+  var consultant = {
+    bookings: []
+  };
 
   // todo  then.error.finally 后续做一下
   var parseRestSuccess = function(fname, data, successHandler, errorHandler) {
@@ -182,38 +187,68 @@ angular.module('main.service',[])
       }
     },
 
-    addBooking: function(pid, successHandler, errorHandler, finallyHandler) {
-      if(id) {
-        Rest.addBooking(id, pid, function(data){
-          if (parseRestSuccess('addBooking', data, successHandler, errorHandler)) { 
-            bookings.unshift(data.result);
+    customer: {
+      addBooking: function(pid, successHandler, errorHandler, finallyHandler) {
+        if(id) {
+          Rest.customer.v1.addBooking(id, pid, function(data){
+            if (parseRestSuccess('addBooking', data, successHandler, errorHandler)) { 
+              customer.bookings.unshift(data.result);
+            }
+          }, function(status){
+            parseRestError('addBooking',  status, errorHandler);
+          }, 
+          finallyHandler());
+        } else {
+          console.log('main.service addBooking failed for no customer id');
+          errorHandler('请先登入');
+          finallyHandler();
+        }
+      }, 
+      getBookings: function() {
+        return customer.bookings;
+      },
+      queryBookings: function(param, successHandler, errorHandler, finallyHandler) {
+        Rest.customer.v1.queryBookings(param, id, function(data){
+          if(parseRestSuccess('queryBookings', data, successHandler, errorHandler)) {
+            customer.bookings.length = 0;
+            for (var i=0;i<data.result.length;i++) {
+              customer.bookings.unshift(data.result[i]);
+            }
           }
         }, function(status){
-          parseRestError('addBooking',  status, errorHandler);
+          parseRestError('queryBookings',  status, errorHandler);
         }, 
         finallyHandler());
-      } else {
-        console.log('main.service addBooking failed for no customer id');
-        errorHandler('请先登入');
-        finallyHandler();
       }
-    },
-    getBookings: function() {
-      return bookings;
-    },
-    queryBookings: function(param, successHandler, errorHandler, finallyHandler) {
-      Rest.queryBookings(param, id, function(data){
-        if(parseRestSuccess('queryBooking', data, successHandler, errorHandler)) {
-          bookings.length = 0;
-          for (var i=0;i<data.result.length;i++) {
-            bookings.unshift(data.result[i]);
+    }, // customer
+    consultant: {
+      getBookings: function() {
+        return consultant.bookings;
+      },
+      getBooking: function(bid) {
+        for (var i=0; i<consultant.bookings.length; i++) {
+          if(consultant.bookings[i].id == bid) {
+            return consultant.bookings[i];
           }
         }
-      }, function(status){
-        parseRestError('queryBooking',  status, errorHandler);
-      }, 
-      finallyHandler());
-    },
+      },
+      queryBookings: function(param, successHandler, errorHandler, finallyHandler) {
+        param.state = 'assigned';
+        Rest.consultant.v1.queryBookings(param, id, function(data){
+          if(parseRestSuccess('queryBookings', data, successHandler, errorHandler)) {
+            consultant.bookings.length = 0;
+            for (var i=0;i<data.result.length;i++) {
+              consultant.bookings.unshift(data.result[i]);
+            }
+          }
+        }, function(status){
+          parseRestError('queryBookings',  status, errorHandler);
+        }, 
+        finallyHandler());
+      }
+    }, // consultant
+
+    
     
     getCategories: function(){
       return categories;

@@ -26,6 +26,14 @@ angular.module('starter.controllers', [])
   }
 })
 
+.controller('bookingCtrl', function($scope) {
+})
+.controller('bookingDetailCtrl', function($scope, $stateParams, Main) {
+  var bid = $stateParams.bookingId;
+  console.log('tyson'+bid);
+  $scope.booking = Main.consultant.getBooking(bid);
+})
+
 .controller('mainCtrl', function($scope, $state, $window, $ionicHistory, $timeout,Main) {
 
   $scope.data = {
@@ -74,7 +82,7 @@ angular.module('starter.controllers', [])
   $scope.addBooking= function() {
     if($scope.data.looking_product) {
       //console.log('booking add');
-      Main.addBooking($scope.data.looking_product.id, function(data){
+      Main.customer.addBooking($scope.data.looking_product.id, function(data){
         $scope.data.warning.status = 'success';
         $scope.data.warning.words = '您的预约已成功提交!' +
                                      '您的理财师将马上与您联系，请保持电话通畅!';
@@ -375,6 +383,15 @@ angular.module('starter.controllers', [])
 })
 
 .controller('mainConsultantCtrl', function($scope, $state, $ionicModal, $timeout, MultipleViewsManager, Main) {
+  
+//** common function
+  var refreshData = function() {
+    Main.consultant.queryBookings({}, function(data){
+    }, function(status){}, function(){});
+  }
+//**
+
+//** controller data
   $scope.consultant = {
     win: 'index',
     suffix: '',
@@ -382,18 +399,26 @@ angular.module('starter.controllers', [])
     customers: {},
     pendings: {}
   };
-  //$scope.consultant.pendings.orders = 
-  //$scope.consultant.pendings.bookings =
-  
+//**
+
+//** initialize
+  $scope.consultant.pendings.bookings = Main.consultant.getBookings();
+  refreshData();
+//**
+
 
   MultipleViewsManager.updated(function(params) {
     var arr = params.msg.split("-");
     $scope.consultant.win = arr[0];
     $scope.consultant.suffix = arr[1];
   });
+
+//** 下拉刷新
   $scope.doRefresh = function() {
+    refreshData();
     $scope.$broadcast('scroll.refreshComplete');
   };
+//**
 
   $scope.selectPage = function(item) {            
     MultipleViewsManager.updateViewLeft('main-consultant-toolbox', {msg: item});
@@ -450,8 +475,8 @@ angular.module('starter.controllers', [])
     orders: 'orders',
     bookings: []
   };
-  $scope.customer.bookings = Main.getBookings();
-  Main.queryBookings({}, function(data){
+  $scope.customer.bookings = Main.customer.getBookings();
+  Main.customer.queryBookings({}, function(data){
   }, function(status){}, function(){});
 
   MultipleViewsManager.updated(function(params) {
@@ -468,7 +493,7 @@ angular.module('starter.controllers', [])
   }
   $scope.doRefresh = function() {
     //console.log('tyson');
-    Main.queryBookings({}, function(data){
+    Main.customer.queryBookings({}, function(data){
     }, function(status){}, function(){});
     $scope.$broadcast('scroll.refreshComplete');
   }
