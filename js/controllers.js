@@ -26,7 +26,7 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('bookingCtrl', function($scope, $stateParams) {
+.controller('commonCtrl', function($scope, $stateParams) {
 })
 .controller('bookingMenuCtrl', function($scope, $stateParams, $ionicHistory) {
   $scope.goBack = function() {
@@ -37,8 +37,22 @@ angular.module('starter.controllers', [])
 .controller('bookingDetailCtrl', function($scope, $stateParams, Main) {
   var bid = $stateParams.bookingId;
   $scope.booking = Main.consultant.getBooking(bid);
-  console.log($scope.booking);
+  //console.log($scope.booking);
 })
+.controller('orderMenuCtrl', function($scope, $stateParams, $ionicHistory) {
+  $scope.goBack = function() {
+    console.log('goback');
+    $ionicHistory.goBack();
+  }
+})
+.controller('orderDetailCtrl', function($scope, $stateParams, Main) {
+  console.log('124455');
+  var oid = $stateParams.orderId;
+  console.log(oid);
+  //$scope.booking = Main.consultant.getBooking(bid);
+  //console.log($scope.booking);
+})
+
 
 
 .controller('mainCtrl', function($scope, $state, $window, $ionicHistory, $timeout,Main) {

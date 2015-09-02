@@ -119,23 +119,37 @@ angular.module('starter', ['ionic', 'ionicMultipleViews','starter.controllers', 
 
 
   // booking
-  .state('booking', {
-    url: '/booking',
+  .state('common', {
+    url: '/common',
     abstract: true,
-    templateUrl: 'templates/booking.html'
+    templateUrl: 'templates/common.html'
   })
 
-  .state('booking.detail', {
-    url: '/detail/:bookingId',
+  .state('common.booking_detail', {
+    url: '/booking/detail/:bookingId',
     views: {
       'booking-menu': {
-         templateUrl: 'templates/booking/booking_menu.html',
+         templateUrl: 'templates/common/booking_menu.html',
          controller: 'bookingMenuCtrl'
       },
 
       'booking-detail': {
-         templateUrl: 'templates/booking/booking_detail.html',
+         templateUrl: 'templates/common/booking_detail.html',
          controller: 'bookingDetailCtrl'
+      }
+    }
+  })
+  .state('common.order_detail', {
+    url: '/order/detail/:orderId',
+    views: {
+      'order-menu': {
+         templateUrl: 'templates/common/order_menu.html',
+         controller: 'orderMenuCtrl'
+      },
+
+      'order-detail': {
+         templateUrl: 'templates/common/order_detail.html',
+         controller: 'orderDetailCtrl'
       }
     }
   })
@@ -164,47 +178,7 @@ angular.module('starter', ['ionic', 'ionicMultipleViews','starter.controllers', 
 
 
   $urlRouterProvider.otherwise('/main/index');
-  //$urlRouterProvider.otherwise('/common/register');
 
-  /*
-  .state('tab.dash', {
-    url: '/dash',
-    views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
-      }
-    }
-  })
-
-  .state('tab.chats', {
-      url: '/chats',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
-        }
-      }
-    })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
-        }
-      }
-    })
-
-  .state('tab.account', {
-    url: '/account',
-    views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
-      }
-    }
-  });*/
 
 
 });

@@ -274,7 +274,7 @@
 </div> <!--main1-->
 <!--index-->
 
-<!--预约列表开始-->
+<!--待办事项-->
 <div class="main1" ng-switch-when='pendings'>
              <div class="gnr2dadv"><!--内容右侧开始-->
 
@@ -282,8 +282,7 @@
                 
 
                 <div class="gnr2ma"> 
-                  <a href="#/booking/detail/1234">123444</a>
-                  <a href="#/main/index">main</a>
+                 
                    <div ng-if="isCollapse('pendings-bookings')">
                     <div class="xyglcsqtop" ng-click="expand('pendings-bookings')">
                       <em>您有{{consultant.pendings.bookings.length}}个新预约</em><i></i>
@@ -357,7 +356,7 @@
                 </div>
             </div><!--内容右侧结束-->
 </div>
-<!--预约列表完成-->
+<!--待办事项完成-->
     
 <div class="main1" ng-switch-when='customers'>
   <div class="gnr2dadv"><!--内容右侧开始-->
