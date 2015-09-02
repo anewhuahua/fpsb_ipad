@@ -116,7 +116,30 @@ angular.module('starter', ['ionic', 'ionicMultipleViews','starter.controllers', 
     }
   })
 
-  // exam
+
+
+  // booking
+  .state('booking', {
+    url: '/booking',
+    abstract: true,
+    templateUrl: 'templates/booking.html'
+  })
+
+  .state('booking.detail', {
+    url: '/detail/:bookingId',
+    views: {
+      'booking-menu': {
+         templateUrl: 'templates/booking/booking_menu.html'
+      },
+
+      'booking-detail': {
+         templateUrl: 'templates/booking/booking_detail.html',
+         controller: 'bookingDetailCtrl'
+      }
+    }
+  })
+
+    // exam
   .state('exam', {
     url: '/exam',
     abstract: true,
@@ -135,31 +158,8 @@ angular.module('starter', ['ionic', 'ionicMultipleViews','starter.controllers', 
          controller: 'examCustomerCtrl'
       }
     }
-  })
-
-  // booking
-  .state('booking', {
-    url: '/booking',
-    abstract: true,
-    templateUrl: 'templates/booking.html',
-    controller: 'bookingCtrl'
-  })
-
-  .state('booking.detail', {
-    url: '/detail/:bookingId',
-    views: {
-      'booking-menu': {
-         templateUrl: 'templates/booking/booking_menu.html'
-      },
-      'booking-detail': {
-         templateUrl: 'templates/booking/booking_detail.html',
-         controller: 'bookingDetailCtrl'
-      }
-    }
   });
 
-
-  
 
 
   $urlRouterProvider.otherwise('/main/index');
