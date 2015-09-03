@@ -27,6 +27,19 @@ angular.module('starter.controllers', [])
 })
 
 .controller('commonCtrl', function($scope, $stateParams) {
+  $scope.data = {
+    popup: ''
+  };
+  $scope.showProduct = function(product) {
+    $scope.data.popup = 'privateFund';
+    $scope.data.looking_product = product;
+    console.log("looking product: "+product.id);
+    console.log(product);
+  }
+  $scope.closeProduct = function() {
+    $scope.data.popup = '';
+    $scope.data.looking_product = null;
+  }
 })
 .controller('bookingMenuCtrl', function($scope, $stateParams, $ionicHistory) {
   $scope.goBack = function() {
@@ -35,6 +48,7 @@ angular.module('starter.controllers', [])
   }
 })
 .controller('bookingDetailCtrl', function($scope, $stateParams, Main) {
+  
   var bid = $stateParams.bookingId;
   $scope.booking = Main.consultant.getBooking(bid);
   //console.log($scope.booking);
@@ -46,7 +60,7 @@ angular.module('starter.controllers', [])
   }
 })
 .controller('orderDetailCtrl', function($scope, $stateParams, Main) {
-  console.log('124455');
+  //console.log('124455');
   var oid = $stateParams.orderId;
   console.log(oid);
   //$scope.booking = Main.consultant.getBooking(bid);
@@ -525,6 +539,7 @@ angular.module('starter.controllers', [])
   //** controller data
   $scope.customer = {
     win: 'index',
+    suffix: '',
     //orders: 'orders',
     bookings: {},
     orders: {}
@@ -538,15 +553,23 @@ angular.module('starter.controllers', [])
 
   MultipleViewsManager.updated(function(params) {
     var arr = params.msg.split("-");
-    //$scope.customer.orders = params.msg;
+
     $scope.customer.win = arr[0];
+    $scope.customer.suffix = '';
+    for(var i=1;i<arr.length;i++) {
+      $scope.customer.suffix = $scope.customer.suffix + '-' + arr[i];
+    }
   });
 
   $scope.selectPage = function(item) {            
     MultipleViewsManager.updateViewLeft('main-my-toolbox', {msg: item});
-    //$scope.customer.orders = item;
+    
     var arr = item.split("-");
     $scope.customer.win = arr[0];
+    $scope.customer.suffix = '';
+    for(var i=1;i<arr.length;i++) {
+      $scope.customer.suffix = $scope.customer.suffix + '-' + arr[i];
+    }
   }
   $scope.doRefresh = function() {
     refreshData();

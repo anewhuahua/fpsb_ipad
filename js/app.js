@@ -122,7 +122,8 @@ angular.module('starter', ['ionic', 'ionicMultipleViews','starter.controllers', 
   .state('common', {
     url: '/common',
     abstract: true,
-    templateUrl: 'templates/common.html'
+    templateUrl: 'templates/common.html',
+    controller: 'commonCtrl'
   })
 
   .state('common.booking_detail', {

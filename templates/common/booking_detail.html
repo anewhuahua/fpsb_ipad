@@ -31,10 +31,10 @@
                      </div><!--右边-s-->
                   </div><!--客户详情-e-->
                   
-                  <div class="xyglcsqtop"><em>当前预约产品</em></div>
+                  <div class="xyglcsqtop" ng-click="showCommonProduct()"><em>当前预约产品</em></div>
 
                   <div class="xyglcsrrdv"> <!--我的预约详情-->
-                      <div class="xxlsrrp">
+                      <div class="xxlsrrp" ng-click="showProduct(booking.product)">
                         <span class="xxlsyyss1">推荐</span>
                         <span class="xxlsyyss2">热销</span>
                         <em>{{booking.product.issuer}}</em>
@@ -42,8 +42,7 @@
                         <b>完成服务</b>
                       </div>
                       
-                      
-                      <div class="ssxqbmdv">
+                      <div class="ssxqbmdv" ng-click="showProduct(booking.product)">
                           <span class="ssxqmf1">63%</span>
                           <p><span>10.50%</span> <em>预期年化</em></p>
                           <p><span>120天</span> <em>理财期限</em></p>
@@ -54,6 +53,8 @@
                           </div>
                           
                       </div> 
+
+                      
                   </div>  <!--我的预约详情-->
 
 
