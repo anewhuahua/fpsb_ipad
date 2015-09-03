@@ -125,6 +125,29 @@ angular.module('starter.controllers', [])
     }
   }
 
+  $scope.addOrder = function() {
+    if($scope.data.looking_product) {
+      //console.log('booking add');
+      Main.customer.submitOrder($scope.data.looking_product.id, function(data){
+        $scope.data.warning.status = 'success';
+        $scope.data.warning.words = '您的订单已成功提交!' +
+                                     '您的理财师将马上与您联系进行后续服务，请保持电话通畅!';
+        $scope.$broadcast("AddOrder", data);
+        //console.log(data);
+        //console.log("tyson");
+      }, function(error){
+        $scope.data.warning.status = 'fail';
+        $scope.data.warning.words = error;
+      }, function(){
+
+      });
+    } else {
+      console.log("no product id for order");
+      $scope.data.warning.status = 'fail';
+      $scope.data.warning.words = '请去发现页购买产品';
+    }
+  }
+
 
   //$scope.verifyCode = "";
   $scope.auth = {
@@ -491,35 +514,49 @@ angular.module('starter.controllers', [])
 
 
 .controller('mainCustomerCtrl', function($scope, $state, $ionicModal, $timeout, MultipleViewsManager, Main) {
+  //** common function
+  var refreshData = function() {
+    Main.customer.queryBookings({}, function(data){
+    }, function(status){}, function(){});
+    Main.customer.queryOrders({}, function(data){
+    }, function(status){}, function(){});
+  }
+  //**
+  //** controller data
   $scope.customer = {
     win: 'index',
-    orders: 'orders',
-    bookings: []
+    //orders: 'orders',
+    bookings: {},
+    orders: {}
   };
-  $scope.customer.bookings = Main.customer.getBookings();
-  Main.customer.queryBookings({}, function(data){
-  }, function(status){}, function(){});
+  //**
+  //** initialize
+  $scope.customer.bookings.data = Main.customer.getBookings();
+  $scope.customer.orders.data = Main.customer.getOrders();
+  refreshData();
+  //**
 
   MultipleViewsManager.updated(function(params) {
     var arr = params.msg.split("-");
-    $scope.customer.orders = params.msg;
+    //$scope.customer.orders = params.msg;
     $scope.customer.win = arr[0];
   });
 
   $scope.selectPage = function(item) {            
     MultipleViewsManager.updateViewLeft('main-my-toolbox', {msg: item});
-    $scope.customer.orders = item;
+    //$scope.customer.orders = item;
     var arr = item.split("-");
     $scope.customer.win = arr[0];
   }
   $scope.doRefresh = function() {
-    //console.log('tyson');
-    Main.customer.queryBookings({}, function(data){
-    }, function(status){}, function(){});
+    refreshData();
     $scope.$broadcast('scroll.refreshComplete');
   }
   $scope.$on("AddBooking", function(event,msg) {
-     // nothing to do now
+  // nothing to do now
+  });
+   $scope.$on("AddOrder", function(event,msg) {
+  // nothing to do now
   });
 
 });

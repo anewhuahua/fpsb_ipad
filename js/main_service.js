@@ -10,10 +10,12 @@ angular.module('main.service',[])
   ];
 
   var customer = {
-    bookings: []
+    bookings: [],
+    orders: []
   };
   var consultant = {
-    bookings: []
+    bookings: [],
+    orders: []
   };
 
   // todo  then.error.finally 后续做一下
@@ -219,7 +221,41 @@ angular.module('main.service',[])
           parseRestError('queryBookings',  status, errorHandler);
         }, 
         finallyHandler());
+      },
+      submitOrder: function(pid, successHandler, errorHandler, finallyHandler) {
+        if(id) {
+          Rest.customer.v1.submitOrder(id, pid, function(data){
+            if (parseRestSuccess('submitOrder', data, successHandler, errorHandler)) { 
+              customer.orders.unshift(data.result);
+            }
+          }, function(status){
+            parseRestError('submitOrder', status, errorHandler);
+          }, 
+          finallyHandler());
+        } else {
+          console.log('main.service submitOrder failed for no customer id');
+          errorHandler('请先登入');
+          finallyHandler();
+        }
+      },
+      getOrders: function() {
+        return customer.orders;
+      },
+      queryOrders: function(param, successHandler, errorHandler, finallyHandler) {
+        Rest.customer.v1.queryOrders(param, id, function(data){
+          if(parseRestSuccess('queryOrders', data, successHandler, errorHandler)) {
+            customer.orders.length = 0;
+            for (var i=0;i<data.result.length;i++) {
+              customer.orders.unshift(data.result[i]);
+            }
+          }
+        }, function(status){
+          parseRestError('queryOrders',  status, errorHandler);
+        }, 
+        finallyHandler());
       }
+
+
     }, // customer
     consultant: {
       getBookings: function() {

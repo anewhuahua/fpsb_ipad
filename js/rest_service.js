@@ -139,6 +139,45 @@ angular.module('rest.service', [])
           }).finally(function(){
             finallyHandler();
           });
+        },
+        submitOrder: function(cid, pid, successHandler, errorHandler, finallyHandler) {
+          var req = {
+              method: 'POST',
+              url: domain+'ChiefFinancierService/api/customer/v1/customers/' + cid + 
+              '/orders?productId=' + pid,
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
+          $http(req).success(function(data){
+            successHandler(data);
+          }).error(function(res, status){
+            errorHandler(status);
+          }).finally(function(){
+            finallyHandler();
+          });
+        },
+        queryOrders: function (param, cid, successHandler, errorHandler, finallyHandler) {
+          state  = param.state || 'initiated';
+          offset = param.offset || '0';
+          limit  = param.limit || '25'
+
+          var req = {
+              method: 'GET',
+              url: domain+'ChiefFinancierService/api/customer/v1/customers/' + cid + 
+              '/orders?state=' + state + '&offset=' + offset + '&limit=' + limit,
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
+          $http(req).success(function(data){
+            console.log(data);
+            successHandler(data);
+          }).error(function(res, status){
+            errorHandler(status);
+          }).finally(function(){
+            finallyHandler();
+          });
         }
 
       } // v1
