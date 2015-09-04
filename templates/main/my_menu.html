@@ -30,9 +30,21 @@
                   <a href="" ng-click="selectItem('orders-under-pay')" ng-class="{gjxtjcss : data.selectedItem=='orders-under-pay'}">待付款</a>
                 </div>
               </li>
+
+              <li>
+                <div class="gfnulitp" ng-click="selectItem('information')" ng-class="{gjxtjcss: data.selectedItem=='information'}">
+                  <a>我的资料</a>
+                  <em><img src="teImg/glefultprg.png" /></em>
+                </div>
+                <div class="gfnulibm" ng-if="showItem('information')">
+                  <a href="" ng-click="selectItem('information-bank')" ng-class="{gjxtjcss : data.selectedItem=='information-bank'}">银行卡信息</a>
+                  <a href="" ng-click="selectItem('information-password')" ng-class="{gjxtjcss : data.selectedItem=='information-password'}">登入密码</a>
+                </div>
+              </li>
+
               <li>
                 <div class="gfnulitp" ng-click="logout()" ng-class="{gjxtjcss: data.selectedItem=='logout'}">
-                  <a>注销用户</a>
+                  <a>退出登入</a>
                   <em><img src="teImg/glefultprg.png" /></em>
                 </div>
               </li>

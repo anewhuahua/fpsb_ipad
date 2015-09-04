@@ -1314,6 +1314,8 @@ $dark:                            #444 !default;
 
 .common-person-view {
   /* 头部 */
+  /*账户-银行卡认证-s*/
+  /*账户-银行卡认证-e*/
   /*发现页-s*/
   /*发现页-e*/
   /*工具箱-我的预约详情页-s*/
@@ -1359,6 +1361,189 @@ $dark:                            #444 !default;
     overflow: auto;
     overflow-x: hidden;
     text-align: left; }
+  .common-person-view .zhyhktpul {
+    width: 93%;
+    height: 0.7rem;
+    margin: 0.4rem auto 0.35rem auto;
+    border-radius: 0.03rem;
+    overflow: hidden;
+    background: #fff; }
+  .common-person-view .zhyhktpul > li {
+    width: 33.3%;
+    height: 0.7rem;
+    float: left;
+    border-left: 0.01rem #f3f2f5 solid; }
+  .common-person-view .zhyhktpul > li:first-child {
+    border: none; }
+  .common-person-view .zhyhktpul > li > a {
+    display: block;
+    font-size: 0.3rem;
+    color: #395983;
+    line-height: 0.7rem;
+    text-align: center; }
+  .common-person-view .zhyhkpulcss {
+    background: #e79700;
+    color: #fff !important; }
+  .common-person-view .zhyhkpulcss > a {
+    background: #e79700;
+    color: #fff !important; }
+  .common-person-view .zhyhknr {
+    width: 93%;
+    margin: auto; }
+  .common-person-view .zhyhknr1, .common-person-view .zhyhknr2, .common-person-view .zhyhknr3 {
+    width: 100%;
+    height: 0.9rem;
+    background: #fff;
+    margin-bottom: 0.17rem;
+    overflow: hidden; }
+  .common-person-view .zhyhknr1 > span, .common-person-view .zhyhknr2 > span, .common-person-view .zhyhknr3 > span {
+    float: left;
+    width: 21%;
+    height: 100%;
+    padding-left: 2%;
+    font-size: 0.36rem;
+    color: #635f6b;
+    line-height: 0.9rem; }
+  .common-person-view .zhyhknr1 > input {
+    width: 78%;
+    height: 0.4rem;
+    float: right;
+    margin-top: 0.25rem;
+    font-size: 0.36rem;
+    color: #635f6b;
+    line-height: 0.38rem;
+    border: none; }
+  .common-person-view .zhyhknr2 > a {
+    width: 67%;
+    height: 0.4rem;
+    float: left;
+    margin-top: 0.25rem;
+    border: none;
+    font-size: 0.36rem;
+    color: #635f6b;
+    line-height: 0.38rem; }
+  .common-person-view .zhyhknr2 > input {
+    float: right;
+    margin-right: 4%;
+    background: url(../teImg/glefultprg.png) no-repeat;
+    width: 0.18rem;
+    height: 0.33rem;
+    background-size: cover;
+    margin-top: 0.28rem;
+    border: none; }
+  .common-person-view .zhyhknr3 > a {
+    float: right;
+    width: 20%;
+    height: 0.75rem;
+    border-left: 0.02rem #f3f2f5 solid;
+    text-align: center;
+    font-size: 0.24rem;
+    color: #e79700;
+    line-height: 0.75rem;
+    margin-top: 0.07rem; }
+  .common-person-view .yhkqd {
+    width: 100%;
+    height: 1.15rem;
+    background: #e79700;
+    font-size: 0.36rem;
+    color: #fff;
+    line-height: 1.15rem;
+    display: block;
+    border: none;
+    border-radius: 0.03rem;
+    overflow: hidden;
+    margin-top: 0.3rem; }
+  .common-person-view .zhyhknr3 > input {
+    width: 57%;
+    height: 0.4rem;
+    float: left;
+    margin-top: 0.25rem;
+    font-size: 0.36rem;
+    color: #635f6b;
+    line-height: 0.38rem;
+    border: none; }
+  .common-person-view .hkgrdv2 {
+    width: 100%;
+    height: 0.9rem;
+    overflow: hidden;
+    margin-bottom: 0.17rem; }
+  .common-person-view .zhgdvf {
+    width: 71%;
+    height: 0.9rem;
+    float: left;
+    background: #fff; }
+  .common-person-view .zhgdvf > span {
+    float: left;
+    width: 27%;
+    height: 100%;
+    padding-left: 3%;
+    font-size: 0.36rem;
+    color: #635f6b;
+    line-height: 0.9rem; }
+  .common-person-view .zhgdvf > input {
+    float: right;
+    width: 63%;
+    height: 0.4rem;
+    float: right;
+    margin-top: 0.25rem;
+    margin-right: 3%;
+    font-size: 0.36rem;
+    color: #635f6b;
+    line-height: 0.38rem;
+    border: none; }
+  .common-person-view .shkdsr {
+    width: 28%;
+    float: right;
+    font-size: 0.36rem;
+    line-height: 0.9rem;
+    color: #635f6b; }
+  .common-person-view .shkdsr > label {
+    margin-left: 19%; }
+  .common-person-view .shkdsr > label:first-child {
+    margin-left: 6%; }
+  .common-person-view .shkdsrnan {
+    margin-left: 4%; }
+  .common-person-view .zhkhimgdv {
+    width: 100%;
+    background: #fff;
+    height: 1.7rem;
+    margin-bottom: 0.17rem;
+    overflow: hidden; }
+  .common-person-view .zhkhimgdv > span {
+    float: left;
+    width: 21%;
+    height: 100%;
+    padding-left: 2%;
+    font-size: 0.36rem;
+    color: #635f6b;
+    line-height: 1.7rem; }
+  .common-person-view .zhkhimgdv > p {
+    width: 50%;
+    float: left;
+    height: 1.7rem;
+    position: relative;
+    z-index: 1;
+    margin-left: 8%; }
+  .common-person-view .zhkhimgdv > p > img {
+    display: block;
+    width: 1.14rem;
+    height: 1.14rem;
+    border-radius: 50%;
+    overflow: hidden;
+    position: absolute;
+    z-index: 2;
+    left: 0rem;
+    top: 0.28rem; }
+  .common-person-view .zhkhimgdv > p > a {
+    display: block;
+    width: 2.41rem;
+    height: 0.44rem;
+    position: absolute;
+    z-index: 3;
+    bottom: 0.24rem;
+    left: 0.73rem;
+    background: url(../teImg/khyhkimg.png) no-repeat;
+    background-size: cover; }
   .common-person-view .gjfxdvpp {
     width: 96%;
     height: 0.9rem;

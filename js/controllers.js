@@ -328,7 +328,7 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('mainIndexCtrl', function($scope, Main) {
+.controller('mainIndexCtrl', function($scope, $cordovaCamera, Main) {
 
   //Rest.getProducts({type:'privatefunds'});
   //Rest.login('customer','password');
@@ -527,7 +527,7 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('mainCustomerCtrl', function($scope, $state, $ionicModal, $timeout, MultipleViewsManager, Main) {
+.controller('mainCustomerCtrl', function($scope, $state, $ionicModal, $timeout, $cordovaCamera, MultipleViewsManager, Main) {
   //** common function
   var refreshData = function() {
     Main.customer.queryBookings({}, function(data){
@@ -542,12 +542,16 @@ angular.module('starter.controllers', [])
     suffix: '',
     //orders: 'orders',
     bookings: {},
-    orders: {}
+    orders: {},
+    information: {}
   };
   //**
   //** initialize
   $scope.customer.bookings.data = Main.customer.getBookings();
   $scope.customer.orders.data = Main.customer.getOrders();
+  $scope.customer.information.profile = {
+    touxiang: "teImg/ghnr1lef.png" 
+  };
   refreshData();
   //**
 
@@ -581,6 +585,30 @@ angular.module('starter.controllers', [])
    $scope.$on("AddOrder", function(event,msg) {
   // nothing to do now
   });
+
+
+
+  $scope.takePhoto=function(){
+    var options = {  
+      quality: 50,  
+      destinationType: Camera.DestinationType.DATA_URL,  
+      sourceType: Camera.PictureSourceType.Camera,  
+      allowEdit: false,  
+      encodingType: Camera.EncodingType.JPEG,  
+      cameraDirection: 1,
+      targetWidth: 100,  
+      targetHeight: 100,  
+      popoverOptions: CameraPopoverOptions,  
+      saveToPhotoAlbum: false  
+    }
+    //console.log("tyson");
+    $cordovaCamera.getPicture(options).then(function(imageData) {
+        $scope.customer.information.profile.touxiang = "data:image/jpeg;base64," + imageData; 
+        //image.src = "data:image/jpeg;base64," + imageData;  
+      }, function(err) {  
+        // error  
+      });  
+   }
 
 });
 
