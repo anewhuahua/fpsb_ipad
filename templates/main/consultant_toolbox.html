@@ -382,7 +382,46 @@
   </div><!--内容右侧结束-->
 </div>
 
+<!-- information -->
+<div class="main1" ng-switch-when='information'>
+  <div class="gnr2dadv"><!--内容右侧开始-->
 
+      <div class="gjxnrtopyy"></div>
+                <!-- 内容top阴影 -->
+      <ul class="zhyhktpul">
+        <li class="zhyhkpulcss"><a href="">个人信息设置</a></li>
+        <li><a href="">银行卡认证</a></li>
+        <li><a href="">密码设置</a></li>
+      </ul>
+                
+      <div class="zhyhknr"><!--我的账户-银行卡认证内容部分-s-->
+        <form>
+                       
+          <div class="zhkhimgdv">
+            <span>设置头像</span>
+            <p>
+              <img src={{consultant.information.profile.touxiang}} ng-click="takePhoto()"/>
+              <a href="" ng-click="takePhoto()"></a>
+            </p>           
+          </div>
+          <div class="hkgrdv2">
+            <div class="zhgdvf"><span>真实姓名</span> <input type="text" placeholder="请输入您的真实姓名" /></div>
+            <div class="shkdsr">
+              <label>男 <input name="first" type="radio" value="" class="shkdsrnan" /></label>
+              <label>女 <input name="first" type="radio" value="" class="shkdsrnan" /></label>
+            </div>
+          </div>
+                          
+          <div class="zhyhknr3"><span>手 机 号</span> <input type="text" placeholder="请输入您要修改的手机号证码"/> <a href="">修改</a></div>
+          <div class="zhyhknr3"><span>邮箱地址</span> <input type="text" placeholder="请输入您要绑定的邮箱"/> <a href="">绑定</a></div>
+          <input class="yhkqd" value="确定"  type="submit"/>
+      </form>
+                
+    </div><!--我的账户-银行卡认证内容部分-e-->
+              
+  </div><!--内容右侧结束-->
+</div>
+<!-- information -->
 
 
     

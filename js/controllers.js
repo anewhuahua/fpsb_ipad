@@ -440,7 +440,7 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('mainConsultantCtrl', function($scope, $state, $ionicModal, $timeout, MultipleViewsManager, Main) {
+.controller('mainConsultantCtrl', function($scope, $state, $timeout, $cordovaCamera, MultipleViewsManager, Main) {
   
 //** common function
   var refreshData = function() {
@@ -455,13 +455,18 @@ angular.module('starter.controllers', [])
     suffix: '',
     bookings: {},
     customers: {},
-    pendings: {}
+    pendings: {},
+    information: {}
   };
 //**
 
 //** initialize
   $scope.consultant.pendings.bookings = Main.consultant.getBookings();
+  $scope.consultant.information.profile = {
+    touxiang: "teImg/ghnr1lef.png" 
+  };
   refreshData();
+
 //**
 
 
@@ -502,6 +507,28 @@ angular.module('starter.controllers', [])
   $scope.isCollapse = function(item){
     return !(item == ($scope.consultant.win+'-'+$scope.consultant.suffix));
   };
+
+  $scope.takePhoto=function(){
+    var options = {  
+      quality: 50,  
+      destinationType: Camera.DestinationType.DATA_URL,  
+      sourceType: Camera.PictureSourceType.Camera,  
+      allowEdit: false,  
+      encodingType: Camera.EncodingType.JPEG,  
+      cameraDirection: 1,
+      targetWidth: 100,  
+      targetHeight: 100,  
+      popoverOptions: CameraPopoverOptions,  
+      saveToPhotoAlbum: false  
+    }
+    //console.log("tyson");
+    $cordovaCamera.getPicture(options).then(function(imageData) {
+        $scope.consultant.information.profile.touxiang = "data:image/jpeg;base64," + imageData; 
+        //image.src = "data:image/jpeg;base64," + imageData;  
+      }, function(err) {  
+        // error  
+      });  
+   }
 
 
 })
