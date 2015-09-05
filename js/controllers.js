@@ -80,7 +80,30 @@ angular.module('starter.controllers', [])
     },
     categories: [],
     toolbox:'index',
-    looking_product: null
+    looking_product: '',
+    dialog: {
+      step: 10000,
+      minimal: 10000,
+      maximum: 1000000,
+      booking: {
+        quantity: 10000
+      },
+      order: {
+        quantity: 10000
+      },
+      increase: function() {
+        if($scope.data.dialog.booking.quantity + $scope.data.dialog.step <= $scope.data.dialog.maximum) {
+          $scope.data.dialog.booking.quantity += $scope.data.dialog.step;
+          $scope.data.dialog.order.quantity += $scope.data.dialog.step; 
+        }
+      },
+      decrease: function () {
+        if($scope.data.dialog.booking.quantity - $scope.data.dialog.step >= $scope.data.dialog.minimal) {
+          $scope.data.dialog.booking.quantity -= $scope.data.dialog.step;
+          $scope.data.dialog.order.quantity -= $scope.data.dialog.step;
+        }
+      }
+    }
   };
 
   Main.login({}, function(){ 
@@ -109,12 +132,31 @@ angular.module('starter.controllers', [])
       $ionicHistory.goBack();
     }
   }
+
   $scope.closeWarning = function(win) {
     $scope.data.warning.status='';
     $scope.data.warning.words = '';
   }
+  $scope.backProduct = function() {
+    if($scope.data.looking_product) {
+      $scope.data.popup = 'privateFund';
+    }
+  }
+  $scope.bookingDialog = function() {
+    if ($scope.data.looking_product) {
+      //$scope.data.looking_product = null;
+      $scope.data.popup = 'BookingDialog';
+    }
+  }
+  $scope.orderDialog = function() {
+    if ($scope.data.looking_product) {
+      //$scope.data.looking_product = null;
+      $scope.data.popup = 'OrderDialog';
+    }
+  }
 
-  $scope.addBooking= function() {
+  $scope.addBooking= function(quantity) {
+    // todo quantity
     if($scope.data.looking_product) {
       //console.log('booking add');
       Main.customer.addBooking($scope.data.looking_product.id, function(data){
@@ -130,13 +172,15 @@ angular.module('starter.controllers', [])
         $scope.data.warning.words = error;
 
       }, function(){
-
       });
     } else {
       console.log("no product id for booking");
       $scope.data.warning.status = 'fail';
       $scope.data.warning.words = '请去发现页预约产品';
+
     }
+    $scope.data.looking_product=null;
+    $scope.data.popup = '';
   }
 
   $scope.addOrder = function() {
@@ -160,6 +204,8 @@ angular.module('starter.controllers', [])
       $scope.data.warning.status = 'fail';
       $scope.data.warning.words = '请去发现页购买产品';
     }
+    $scope.data.looking_product=null;
+    $scope.data.popup = '';
   }
 
 
@@ -468,20 +514,66 @@ angular.module('starter.controllers', [])
   refreshData();
 
 //**
-
-
-  MultipleViewsManager.updated(function(params) {
-    var arr = params.msg.split("-");
-    $scope.consultant.win = arr[0];
-    $scope.consultant.suffix = arr[1];
-  });
-
 //** 下拉刷新
   $scope.doRefresh = function() {
     refreshData();
     $scope.$broadcast('scroll.refreshComplete');
   };
 //**
+
+
+
+
+
+  MultipleViewsManager.updated(function(params) {
+    var arr = params.msg.split("-");
+
+    $scope.consultant.win = arr[0];
+    $scope.consultant.suffix = '';
+    for(var i=1;i<arr.length;i++) {
+      $scope.consultant.suffix = $scope.consultant.suffix + '-' + arr[i];
+    }
+  });
+  $scope.selectPage = function(item) {            
+    MultipleViewsManager.updateViewLeft('main-consultant-toolbox', {msg: item});
+    
+    var arr = item.split("-");
+    $scope.consultant.win = arr[0];
+    $scope.consultant.suffix = '';
+    for(var i=1;i<arr.length;i++) {
+      $scope.consultant.suffix = $scope.consultant.suffix + '-' + arr[i];
+    }
+  }
+  $scope.expand = function(item) {      
+    //if(item)      
+    MultipleViewsManager.updateViewLeft('main-consultant-toolbox', {msg: item});
+    var arr = item.split("-");
+    $scope.consultant.win = arr[0];
+    $scope.consultant.suffix = '';
+    for(var i=1;i<arr.length;i++) {
+      $scope.consultant.suffix = $scope.consultant.suffix + '-' + arr[i];
+    }
+  };
+  $scope.collapse = function(item) {
+    var arr = item.split("-");
+    $scope.consultant.win = arr[0];
+    $scope.consultant.suffix= ''; 
+    MultipleViewsManager.updateViewLeft('main-consultant-toolbox', {msg: arr[0]});
+  };
+  $scope.isExpand = function(item){
+    return item == ($scope.consultant.win+$scope.consultant.suffix);
+  };
+  $scope.isCollapse = function(item){
+    return !(item == ($scope.consultant.win+$scope.consultant.suffix));
+  };
+
+
+/*
+  MultipleViewsManager.updated(function(params) {
+    var arr = params.msg.split("-");
+    $scope.consultant.win = arr[0];
+    $scope.consultant.suffix = arr[1];
+  });
 
   $scope.selectPage = function(item) {            
     MultipleViewsManager.updateViewLeft('main-consultant-toolbox', {msg: item});
@@ -507,7 +599,7 @@ angular.module('starter.controllers', [])
   $scope.isCollapse = function(item){
     return !(item == ($scope.consultant.win+'-'+$scope.consultant.suffix));
   };
-
+  */
   $scope.takePhoto=function(){
     var options = {  
       quality: 50,  

@@ -33,6 +33,102 @@ navigation history that also transitions its views in and out.
 
 
   <div ng-switch on="data.popup">
+
+   <!-- 产品详情预约开始 -->
+    <div class="cpyyxxdv"  ng-switch-when="BookingDialog">
+      <div class="cpyyxxdvm">
+  
+      <div class="zcback" ng-click="backProduct()"><img src="teImg/zcback.png" /></div><!-- 返回 -->
+      <div class="zcclos" ng-click="closePopup('BookingDialog')"><img src="teImg/zcclose.png" /></div><!-- 关闭 -->
+          
+          <span class="zcwjtit1">预 约</span>
+          <span class="xpqqyyt2">{{data.looking_product.issuer}}</span>
+          
+          <div class="xpqqt3">
+             <p>
+               <span>预期年化 </span>
+               <em> 10.50%</em>
+             </p>
+             <p>
+               <span>理财期限 </span>
+               <em>  18个月</em>
+             </p>
+          </div>
+          
+          
+          <div class="cpxqyynrdv">
+             <div class="cpxqyynrdvyy"></div>
+             <span class="cpxqyynrsp1">预约金额</span>
+            <form>
+             <div class="ccyyjjdv">
+               
+                  <input type="button" class="xpwwyyf" ng-click='data.dialog.decrease()' />
+                  <input type="text" class="xpwwyym" placeholder="{{data.dialog.booking.quantity}}"/>
+                  <input type="button" class="xpwwyyr" ng-click='data.dialog.increase()' />
+               
+             </div>
+             <p class="xxccms"><span>最低10000起</span> <span>每10000累加</span> <span>最高可以预约20份</span></p>
+             <p class="zcmmjs">
+                <span><img src="teImg/zcmmjslog2.jpg" /></span>
+                <em>我已阅读并同意<i>《首席金服用户协议》</i></em>
+             </p>
+          </div>
+          
+          <input type="submit"  class="ccxxdvtj" value="提交预约" ng-click="addBooking()"/>
+          
+        </form>  
+      </div>
+    </div>
+   <!-- 产品详情预约结束 -->
+
+   <!-- 产品详情申购开始 -->
+    <div class="cpyyxxdv"  ng-switch-when="OrderDialog">
+      <div class="cpyyxxdvm">
+  
+          <div class="zcback" ng-click="backProduct()"><img src="teImg/zcback.png" /></div><!-- 返回 -->
+          <div class="zcclos" ng-click="closePopup('OrderDialog')"><img src="teImg/zcclose.png" /></div><!-- 关闭 -->
+          
+          <span class="zcwjtit1">申 购</span>
+          <span class="xpqqyyt2">{{data.looking_product.issuer}}</span>
+          
+          <div class="xpqqt3">
+             <p>
+               <span>预期年化 </span>
+               <em> 10.50%</em>
+             </p>
+             <p>
+               <span>理财期限 </span>
+               <em>  18个月</em>
+             </p>
+          </div>
+          
+          
+          <div class="cpxqyynrdv">
+             <div class="cpxqyynrdvyy"></div>
+             <span class="cpxqyynrsp1">申购金额</span>
+            <form>
+             <div class="ccyyjjdv">
+               
+                  <input type="button" class="xpwwyyf" ng-click='data.dialog.decrease()' />
+                  <input type="text" class="xpwwyym" placeholder="{{data.dialog.order.quantity}}"/>
+                  <input type="button" class="xpwwyyr" ng-click='data.dialog.increase()' />
+               
+             </div>
+             <p class="xxccms"><span>最低10000起</span> <span>每10000累加</span> <span>最高可以预约20份</span></p>
+             <p class="zcmmjs">
+                <span><img src="teImg/zcmmjslog2.jpg" /></span>
+                <em>我已阅读并同意<i>《首席金服用户协议》</i></em>
+             </p>
+          </div>
+          
+          <input type="submit"  class="ccxxdvtj" value="提交申购" ng-click="addOrder()"/>
+          
+        </form>  
+      </div>
+    </div>
+   <!-- 产品申购结束 -->
+
+
   <div class="prxqdv" ng-switch-when="privateFund"><!-- 私募产品详情页弹窗开始 -->
   <div class="prxqdvma"><!-- 私募产品详情页弹窗主体 -->
     
@@ -41,7 +137,7 @@ navigation history that also transitions its views in and out.
       <div class="prxqhead">
              <span class="prxqh1">推荐</span>
              <span class="prxqh2">热销</span>
-             <span class="prxqh3">粤财·瀚信中鼎盈丰2期</span>
+             <span class="prxqh3">{{data.looking_product.issuer}}</span>
              <em class="prxqh5" ng-click='closeProduct()'></em>
              <em class="prxqh4"></em>
       </div>
@@ -151,8 +247,8 @@ navigation history that also transitions its views in and out.
     
     
     <div class="prxqbm"><!-- 私募产品详情页弹窗主体 底部部分-->
-      <a href="" class="prxqaa2" ng-click="addBooking()">预约产品</a>
-      <a href="" class="prxqaa1" ng-click="addOrder()">立即申购</a>
+      <a href="" class="prxqaa2" ng-click="bookingDialog()">预约产品</a>
+      <a href="" class="prxqaa1" ng-click="orderDialog()">立即申购</a>
     </div><!-- 私募产品详情页弹窗主体 底部部分-->
 
   </div><!-- 私募产品详情页弹窗主体 --> 

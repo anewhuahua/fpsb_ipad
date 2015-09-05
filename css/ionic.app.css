@@ -1455,12 +1455,12 @@ $dark:                            #444 !default;
     margin-top: 0.3rem; }
   .common-person-view .zhyhknr3 > input {
     width: 57%;
-    height: 0.4rem;
+    height: 0.5rem;
     float: left;
     margin-top: 0.25rem;
     font-size: 0.36rem;
     color: #635f6b;
-    line-height: 0.38rem;
+    line-height: 0.5rem;
     border: none; }
   .common-person-view .hkgrdv2 {
     width: 100%;
@@ -1483,13 +1483,13 @@ $dark:                            #444 !default;
   .common-person-view .zhgdvf > input {
     float: right;
     width: 63%;
-    height: 0.4rem;
+    height: 0.5rem;
     float: right;
     margin-top: 0.25rem;
     margin-right: 3%;
     font-size: 0.36rem;
     color: #635f6b;
-    line-height: 0.38rem;
+    line-height: 0.5rem;
     border: none; }
   .common-person-view .shkdsr {
     width: 28%;
@@ -3481,7 +3481,9 @@ $dark:                            #444 !default;
   /*登陆开始*/
   /*登陆结束*/
   /*提示页-s*/
-  /*提示页-s*/ }
+  /*提示页-s*/
+  /*预约*/
+  /*预约*/ }
   .common-main-view ul, .common-main-view li {
     list-style-type: none; }
   .common-main-view input {
@@ -4568,6 +4570,119 @@ $dark:                            #444 !default;
     color: #fff;
     line-height: 0.5rem;
     text-align: center; }
+  .common-main-view .cpyyxxdv {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 9;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#99373737', endColorstr='#99373737');
+    background: rgba(55, 55, 55, 0.6); }
+  .common-main-view .cpyyxxdvm {
+    width: 82%;
+    background: #fff;
+    position: absolute;
+    left: 50%;
+    margin-left: -41%;
+    top: 10%;
+    border-radius: 0.03rem; }
+  .common-main-view .xpqqyyt2 {
+    display: block;
+    font-size: 0.36rem;
+    color: #395983;
+    line-height: 0.36rem;
+    margin-top: 0.6rem;
+    text-align: center; }
+  .common-main-view .xpqqt3 {
+    width: 5.15rem;
+    margin: 0.3rem auto;
+    overflow: hidden; }
+  .common-main-view .xpqqt3 > p {
+    float: left;
+    margin-left: 0.7rem; }
+  .common-main-view .xpqqt3 > p:first-child {
+    margin-left: 0rem; }
+  .common-main-view .xpqqt3 > p > span {
+    font-size: 0.28rem;
+    color: #395983;
+    line-height: 0.36rem; }
+  .common-main-view .xpqqt3 > p > em {
+    font-size: 0.28rem;
+    color: #e79907;
+    line-height: 0.36rem; }
+  .common-main-view .cpxqyynrdv {
+    width: 100%;
+    background: #f3f2f5;
+    position: relative;
+    z-index: 1;
+    padding-top: 0.9rem;
+    padding-bottom: 0.5rem; }
+  .common-main-view .cpxqyynrdvyy {
+    width: 100%;
+    height: 0.25rem;
+    background: url(../teImg/ggqwq.png) repeat-x;
+    position: absolute;
+    top: 0rem;
+    left: 0rem; }
+  .common-main-view .cpxqyynrsp1 {
+    display: block;
+    font-size: 0.36rem;
+    color: #635f6b;
+    line-height: 0.5rem;
+    text-align: center; }
+  .common-main-view .ccyyjjdv {
+    width: 88%;
+    height: 0.9rem;
+    margin: 0.32rem auto; }
+  .common-main-view .xpwwyyf {
+    display: block;
+    width: 11%;
+    height: 0.9rem;
+    float: left;
+    background: url(../teImg/yyccbtnbj1.jpg) no-repeat;
+    background-size: cover;
+    -webkit-appearance: none;
+    border: none; }
+  .common-main-view .xpwwyyr {
+    display: block;
+    width: 11%;
+    height: 0.9rem;
+    float: left;
+    background: url(../teImg/yyccbtnbj2_05.jpg) no-repeat;
+    background-size: cover;
+    -webkit-appearance: none;
+    border: none; }
+  .common-main-view .xpwwyym {
+    width: 78%;
+    height: 0.9rem;
+    float: left;
+    font-size: 0.36rem;
+    color: #1d1d26;
+    line-height: 0.9rem;
+    text-align: center;
+    background: #fff;
+    border: none; }
+  .common-main-view .xxccms {
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    font-size: 0.3rem;
+    color: #1d1d26;
+    line-height: 0.5rem;
+    margin-bottom: 0.5rem; }
+  .common-main-view .xxccms > span {
+    display: inline-block;
+    margin-right: 0.6rem; }
+  .common-main-view .ccxxdvtj {
+    display: block;
+    width: 100%;
+    height: 0.8rem;
+    background: #e79700;
+    font-size: 0.36rem;
+    color: #fff;
+    line-height: 0.8rem;
+    text-align: center;
+    -webkit-appearance: none;
+    border: none; }
 
 .common-register-view {
   /* 注册-忘记密码-开始 */

@@ -389,14 +389,13 @@
       <div class="gjxnrtopyy"></div>
                 <!-- 内容top阴影 -->
       <ul class="zhyhktpul">
-        <li class="zhyhkpulcss"><a href="">个人信息设置</a></li>
-        <li><a href="">银行卡认证</a></li>
-        <li><a href="">密码设置</a></li>
+        <li ng-class="{zhyhkpulcss: consultant.win + consultant.suffix=='information'}" ng-click="selectPage('information')"><a href="">个人信息设置</a></li>
+        <li ng-class="{zhyhkpulcss: consultant.win + consultant.suffix=='information-bank'}" ng-click="selectPage('information-bank')"><a href="">银行卡认证</a></li>
+        <li ng-class="{zhyhkpulcss: consultant.win + consultant.suffix=='information-password'}" ng-click="selectPage('information-password')"><a href="">密码设置</a></li>
       </ul>
                 
       <div class="zhyhknr"><!--我的账户-银行卡认证内容部分-s-->
-        <form>
-                       
+        <form ng-if="consultant.win + consultant.suffix=='information'">           
           <div class="zhkhimgdv">
             <span>设置头像</span>
             <p>
@@ -416,8 +415,28 @@
           <div class="zhyhknr3"><span>邮箱地址</span> <input type="text" placeholder="请输入您要绑定的邮箱"/> <a href="">绑定</a></div>
           <input class="yhkqd" value="确定"  type="submit"/>
       </form>
+      <form ng-if="consultant.win + consultant.suffix=='information-bank'">
+        <div class="zhyhknr1"><span>开户人姓名</span> <input type="text"  placeholder="请输入您的姓名"/></div>
+        <div class="zhyhknr2"><span>选择银行</span> <a href="">请选择</a><input type="button" /></div>
+        <div class="zhyhknr1"><span>银行卡号</span> <input type="text" placeholder="该银行卡为您提现、回款时的默认银行卡" /></div>
+        <div class="zhyhknr1"><span>身份证号码</span> <input type="text" placeholder="请填写您的真实身份证号，验证后不得修改" /></div>
+        <div class="zhyhknr3"><span>验 证 码</span> <input type="text" placeholder="请填写您接收到的验证码"/> <a href="">43秒后重发</a></div>
+        <input class="yhkqd" value="确定"  type="submit"/>
+      </form>
+      <form ng-if="consultant.win + consultant.suffix=='information-password'">
+          <div class="zhyhknr1"><span>当前密码</span> <input type="text"  placeholder="请输入您的原始登录密码"/></div>
+          <div class="zhyhknr1"><span>新 密 码</span> <input type="text" placeholder="8-20位，必须含有字母" /></div>
+          <div class="zhyhknr1"><span>确认新密码</span> <input type="text" placeholder="请重复输入你的密码" /></div>
+          <div class="zhyhknr3"><span>验 证 码</span> <input type="text" placeholder="请填写您接收到的验证码"/> <a href="">43秒后重发</a></div>
+          <input class="yhkqd" value="确定"  type="submit"/>
+      </form>      
                 
     </div><!--我的账户-银行卡认证内容部分-e-->
+
+
+
+                
+
               
   </div><!--内容右侧结束-->
 </div>
