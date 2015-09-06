@@ -20,18 +20,17 @@
 }
 
 .bar-header {
-   height:90px;
+   height:1.66rem;
 
 
 }
 .bar-header .title {
-   height: 90px;
-   line-height: 150px;
+   height: 1.66rem;
+   line-height: 1.66rem;
 }
 
 .has-header {
-   top: 90px;
+   top: 1.66rem;
 }
-
 
 

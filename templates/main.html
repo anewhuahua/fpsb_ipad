@@ -7,6 +7,13 @@ navigation history that also transitions its views in and out.
 </ion-nav-bar>
 <div class="common-main-view">
 
+  <div class="header">
+           <div class="logotop"><img src="teImg/logotop.png" title="" alt="" /></div>
+           <ul class="heul">
+              <li class="helib"><a href=""><img src="teImg/headr2.png" title="" alt="" /></a></li>
+           </ul>
+  </div>
+
 
 
 <!--提示页-->
@@ -365,12 +372,12 @@ navigation history that also transitions its views in and out.
 <ion-tabs class="tabs-icon-bottom tabs-bottom tabs-color-light tabs-dark" ng-switch on="data.person.role">
 
   <!-- Index Tab -->
-  <ion-tab title="首页" icon-off="ion-ios-pulse" icon-on="ion-ios-pulse-strong" href="#/main/index">
+  <ion-tab title="首页" icon-off="ion-ios-home-outline" icon-on="ion-ios-home" href="#/main/index">
     <ion-nav-view name="main-index"></ion-nav-view>
   </ion-tab>
 
   <!-- Products Tab -->
-  <ion-tab title="发现" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" href="#/main/products/categories/1">
+  <ion-tab title="发现" icon-off="ion-ios-search" icon-on="ion-ios-search-strong" href="#/main/products/categories/1">
     <ion-nav-view name="main-categories"></ion-nav-view>
     <ion-nav-view name="main-products"></ion-nav-view>
   </ion-tab>
@@ -382,17 +389,17 @@ navigation history that also transitions its views in and out.
     <ion-nav-view name="main-my-toolbox"></ion-nav-view>
   </ion-tab>-->
   
-  <ion-tab title="我的" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" href="#/main/guest" ng-switch-when="Guest">
+  <ion-tab title="我的" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" href="#/main/guest" ng-switch-when="Guest">
     <ion-nav-view name="main-guest"></ion-nav-view>
   </ion-tab>
 
-  <ion-tab title="我的" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" href="#/main/my" ng-switch-when='Customer'>
+  <ion-tab title="我的" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" href="#/main/my" ng-switch-when='Customer'>
     <ion-nav-view name="main-my-menu"></ion-nav-view>
     <ion-nav-view name="main-my-toolbox"></ion-nav-view>
   </ion-tab>
 
 
-  <ion-tab title="我的" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" href="#/main/toolbox" ng-switch-when='Consultant'>
+  <ion-tab title="我的" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" href="#/main/toolbox" ng-switch-when='Consultant'>
     <ion-nav-view name="main-consultant-menu"></ion-nav-view>
     <ion-nav-view name="main-consultant-toolbox"></ion-nav-view>
   </ion-tab>

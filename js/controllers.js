@@ -26,10 +26,14 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('commonCtrl', function($scope, $stateParams) {
+.controller('commonCtrl', function($scope, $stateParams, $ionicHistory) {
   $scope.data = {
     popup: ''
   };
+  $scope.goBack = function() {
+    console.log('goback');
+    $ionicHistory.goBack();
+  }
   $scope.showProduct = function(product) {
     $scope.data.popup = 'privateFund';
     $scope.data.looking_product = product;
@@ -42,10 +46,7 @@ angular.module('starter.controllers', [])
   }
 })
 .controller('bookingMenuCtrl', function($scope, $stateParams, $ionicHistory) {
-  $scope.goBack = function() {
-    console.log('goback');
-    $ionicHistory.goBack();
-  }
+
 })
 .controller('bookingDetailCtrl', function($scope, $stateParams, Main) {
   
@@ -54,10 +55,7 @@ angular.module('starter.controllers', [])
   //console.log($scope.booking);
 })
 .controller('orderMenuCtrl', function($scope, $stateParams, $ionicHistory) {
-  $scope.goBack = function() {
-    console.log('goback');
-    $ionicHistory.goBack();
-  }
+
 })
 .controller('orderDetailCtrl', function($scope, $stateParams, Main) {
   //console.log('124455');
