@@ -23,7 +23,11 @@ $royal:                           #886aea !default;
   /*工具箱-客户详情-s*/
   /*工具箱-客户详情-e*/
   /* 私募产品详情页-开始 */
-  /* 私募产品详情页-结束*/ }
+  /* 私募产品详情页-结束*/
+  /*订单详情-s*/
+  /*订单详情-e*/
+  /*订单状态-s*/
+  /*订单状态-e*/ }
   .booking-view a {
     text-decoration: none; }
   .booking-view .content {
@@ -1126,6 +1130,192 @@ $royal:                           #886aea !default;
     color: #fff;
     text-align: center;
     margin-bottom: 0.2rem; }
+  .booking-view .ddxqtopqhul {
+    width: 100%;
+    height: 0.7rem;
+    margin-bottom: 0.2rem;
+    overflow: hidden;
+    border-radius: 0.03rem;
+    background: #fff; }
+  .booking-view .ddxqtopqhul > li {
+    width: 50%;
+    height: 100%;
+    float: left;
+    font-size: 0.3rem;
+    color: #4e6079;
+    line-height: 0.7rem;
+    text-align: center; }
+  .booking-view .ddxqtopqhul > li > a {
+    display: block;
+    color: #4e6079; }
+  .booking-view .ddxqcss {
+    background: #e79700;
+    color: #fff !important; }
+  .booking-view .ddxqcss > a {
+    color: #fff !important; }
+  .booking-view .ddxqbmm {
+    margin-top: 0.3rem !important; }
+  .booking-view .xxlsrrp > a {
+    float: right;
+    width: 1.35rem;
+    height: 0.3rem;
+    overflow: hidden;
+    margin: 0.21rem 0.5rem 0rem 0rem; }
+  .booking-view .xxlsrrp > a > em {
+    font-size: 0.24rem;
+    color: #8e8a95;
+    line-height: 0.3rem;
+    float: left; }
+  .booking-view .xxlsrrp > a > i {
+    background: url(../teImg/gnr2nr1toprg3.png) no-repeat;
+    background-size: cover;
+    width: 0.26rem;
+    height: 0.23rem;
+    float: right;
+    margin-top: 0.05rem; }
+  .booking-view .ddxqxx {
+    width: 100%;
+    background: #fff;
+    overflow: hidden;
+    margin-top: 0.35rem; }
+  .booking-view .ddxqxx > span {
+    display: block;
+    width: 100%;
+    height: 0.68rem;
+    font-size: 0.3rem;
+    color: #395983;
+    line-height: 0.7rem;
+    padding-left: 0.4rem;
+    border-bottom: 0.02rem #f3f2f5 solid; }
+  .booking-view .ddxqxx > p {
+    width: 100%;
+    padding: 0.2rem 0.4rem; }
+  .booking-view .ddxqxx > p > em {
+    display: block;
+    font-size: 0.24rem;
+    color: #395983;
+    line-height: 0.24rem;
+    margin-bottom: 0.12rem; }
+  .booking-view .ddxqff {
+    width: 25%;
+    height: 100%;
+    float: left;
+    background: #fff;
+    overflow: hidden;
+    overflow-y: auto;
+    border-radius: 0rem;
+    margin-top: -0.02rem;
+    position: relative;
+    z-index: 1; }
+  .booking-view .ddxxfimg {
+    width: 40%;
+    margin: 1.6rem auto 0.5rem auto; }
+  .booking-view .ddxxfimg > img {
+    width: 100%; }
+  .booking-view .ddxqff > a {
+    background: url(../teImg/ddxxfback.jpg) no-repeat;
+    width: 1.76rem;
+    height: 0.35rem;
+    margin: auto;
+    display: block;
+    background-size: cover; }
+  .booking-view .ddxxbm {
+    position: absolute;
+    left: 0rem;
+    bottom: 0rem;
+    width: 90%; }
+  .booking-view .ddxxbm > img {
+    width: 100%; }
+  .booking-view .ddztdv {
+    width: 100%;
+    height: 1.05rem;
+    background: #fff;
+    margin-top: 0.3rem; }
+  .booking-view .ddztf {
+    width: 41%;
+    height: 100%;
+    float: left;
+    position: relative;
+    border-right: 0.02rem solid #f3f2f5; }
+  .booking-view .ddztfimg {
+    width: 0.56rem;
+    height: 0.55rem;
+    margin: 0.17rem 0rem 0rem 0.55rem; }
+  .booking-view .ddztfimg > img {
+    width: 100%; }
+  .booking-view .ddztspan {
+    position: absolute;
+    left: 0.89rem;
+    top: 0.45rem;
+    width: 2.98rem;
+    height: 0.44rem;
+    display: block; }
+  .booking-view .ddztspan > img {
+    width: 100%; }
+  .booking-view .ddztrrs {
+    width: 58%;
+    height: 100%;
+    float: right;
+    font-size: 0.24rem;
+    color: #aaaaab;
+    line-height: 1.05rem;
+    padding-left: 0.3rem; }
+  .booking-view .ddztxz {
+    width: 100%;
+    height: 0.9rem;
+    background: #fff;
+    margin-top: 0.2rem; }
+  .booking-view .ddxtxzf {
+    width: 23%;
+    height: 100%;
+    float: left;
+    font-size: 0.36rem;
+    color: #635f6b;
+    line-height: 0.9rem;
+    text-align: center; }
+  .booking-view .ddxtzm {
+    width: 77%;
+    height: 100%;
+    float: left;
+    position: relative; }
+  .booking-view .ddxtzm > select, .booking-view .ddxtzm > option {
+    width: 100%;
+    border: none;
+    border-radius: 0rem;
+    background: none; }
+  .booking-view .ddxtzm > select {
+    height: 0.9rem;
+    font-size: 0.36rem;
+    color: #1d1d26;
+    line-height: 0.9rem;
+    position: relative;
+    z-index: 5; }
+  .booking-view .ddztxr {
+    width: 24%;
+    height: 0.74rem;
+    margin-top: 0.08rem;
+    border-left: 0.02rem solid #f3f2f5;
+    position: absolute;
+    right: 0rem;
+    top: 0rem;
+    z-index: 2; }
+  .booking-view .ddztxr > img {
+    display: block;
+    width: 0.34rem;
+    margin: 0.3rem auto 0rem auto; }
+  .booking-view .ddztqd {
+    width: 100%;
+    height: 1.15rem;
+    margin-top: 0.4rem;
+    font-size: 0.36rem;
+    color: #fff;
+    line-height: 1.15rem;
+    text-align: center;
+    background: #e79700;
+    border-radius: 0.03rem;
+    border: none;
+    overflow: hidden;
+    -webkit-appearance: none; }
 
 .exam-view {
   /* 头部 */
@@ -1340,7 +1530,15 @@ $royal:                           #886aea !default;
   /* 注册-忘记密码-开始 */
   /* 注册-忘记密码-结束 */
   /*登陆开始*/
-  /*登陆结束*/ }
+  /*登陆结束*/
+  /*理财师认证-s*/
+  /*理财师认证-e*/
+  /*订单详情-s*/
+  /*订单详情-e*/
+  /*订单状态-s*/
+  /*订单状态-e*/
+  /*工作规划-s*/
+  /*工作规划-s*/ }
   .common-person-view a {
     text-decoration: none; }
   .common-person-view .content {
@@ -1362,6 +1560,16 @@ $royal:                           #886aea !default;
     overflow: auto;
     overflow-x: hidden;
     text-align: left; }
+  .common-person-view input[type=”button”], .common-person-view input[type=”submit”], .common-person-view input[type=”reset”] {
+    -webkit-appearance: none; }
+  .common-person-view :-moz-placeholder {
+    color: #635F6B; }
+  .common-person-view ::-moz-placeholder {
+    color: #635F6B; }
+  .common-person-view input:-ms-input-placeholder, .common-person-view textarea:-ms-input-placeholder {
+    color: #635F6B; }
+  .common-person-view input::-webkit-input-placeholder, .common-person-view textarea::-webkit-input-placeholder {
+    color: #635F6B; }
   .common-person-view .cpyyxxdv {
     width: 100%;
     height: 100%;
@@ -1526,9 +1734,9 @@ $royal:                           #886aea !default;
     line-height: 0.9rem; }
   .common-person-view .zhyhknr1 > input {
     width: 78%;
-    height: 0.4rem;
+    height: 0.5rem;
     float: right;
-    margin-top: 0.25rem;
+    margin-top: 0.18rem;
     font-size: 0.36rem;
     color: #635f6b;
     line-height: 0.38rem;
@@ -1576,9 +1784,9 @@ $royal:                           #886aea !default;
     -webkit-appearance: none; }
   .common-person-view .zhyhknr3 > input {
     width: 57%;
-    height: 0.4rem;
+    height: 0.5rem;
     float: left;
-    margin-top: 0.25rem;
+    margin-top: 0.18rem;
     font-size: 0.36rem;
     color: #635f6b;
     line-height: 0.38rem;
@@ -1604,9 +1812,9 @@ $royal:                           #886aea !default;
   .common-person-view .zhgdvf > input {
     float: right;
     width: 63%;
-    height: 0.4rem;
+    height: 0.5rem;
     float: right;
-    margin-top: 0.25rem;
+    margin-top: 0.18rem;
     margin-right: 3%;
     font-size: 0.36rem;
     color: #635f6b;
@@ -3238,7 +3446,8 @@ $royal:                           #886aea !default;
     color: #395983;
     margin: 0.23rem 0rem 0rem 0.26rem; }
   .common-person-view .gjxtjcss {
-    background: #e79700; }
+    background: #e79700;
+    color: #fff !important; }
   .common-person-view .gjxtjcss > a {
     color: #fff !important; }
   .common-person-view .gjxtjcss > em {
@@ -3249,7 +3458,7 @@ $royal:                           #886aea !default;
     width: 100%;
     height: 100%;
     position: fixed;
-    z-index: 9;
+    z-index: 113;
     filter: progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#99373737', endColorstr='#99373737');
     background: rgba(55, 55, 55, 0.6); }
   .common-person-view .zcmain1 {
@@ -3427,7 +3636,7 @@ $royal:                           #886aea !default;
     color: #e79700; }
   .common-person-view .lbalogonew {
     position: relative;
-    z-index: 3; }
+    z-index: 113; }
   .common-person-view .lbalndv {
     position: fixed;
     z-index: 99;
@@ -3581,6 +3790,399 @@ $royal:                           #886aea !default;
     font-size: 0.26rem;
     color: #fff;
     line-height: 0.26rem; }
+  .common-person-view .lcsrzdv {
+    width: 93%;
+    margin: 0.4rem auto; }
+  .common-person-view .lcsrzqy {
+    width: 100%;
+    height: 0.9rem;
+    background: #fff;
+    overflow: hidden;
+    border-radius: 0.02rem; }
+  .common-person-view .lcsrzq1 {
+    width: 17%;
+    float: left;
+    font-size: 0.36rem;
+    color: #635f6b;
+    line-height: 0.9rem;
+    text-align: center; }
+  .common-person-view .lcsrzq2 {
+    height: 0.74rem;
+    margin-top: 0.08rem;
+    border-left: 0.02rem solid #f3f2f5;
+    width: 27.5%;
+    float: left;
+    position: relative;
+    z-index: 11; }
+  .common-person-view .lcsrzq2 > select, .common-person-view .lcsrzq2 > select > option {
+    width: 100%;
+    border: none;
+    font-size: 0.36rem;
+    color: #1d1d26;
+    line-height: 0.74rem;
+    padding-left: 0.3rem;
+    border-radius: 0rem;
+    background: none; }
+  .common-person-view .lcsrzq2 > select {
+    height: 0.74rem; }
+  .common-person-view .lcsrztvc {
+    width: 6.2rem;
+    height: 3.3rem;
+    position: fixed;
+    left: 50%;
+    margin-left: -3.1rem;
+    top: 24%;
+    z-index: 99;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#99373737', endColorstr='#99373737');
+    background: rgba(55, 55, 55, 0.6);
+    border-radius: 0.03rem;
+    overflow: hidden;
+    display: none; }
+  .common-person-view .lcsrztvc > img {
+    display: block;
+    width: 0.7rem;
+    height: 0.7rem;
+    margin: 0.7rem auto 0.28rem auto; }
+  .common-person-view .lcsrztvc > span, .common-person-view .lcsrztvc > em {
+    display: block;
+    width: 90%;
+    margin: auto;
+    font-size: 0.3rem;
+    color: #fff;
+    line-height: 0.36rem;
+    text-align: center;
+    margin-bottom: 0.13rem; }
+  .common-person-view .hgjxmid {
+    width: 80% !important; }
+  .common-person-view .lcsrrx {
+    width: 0.33rem;
+    height: 0.2rem;
+    position: absolute;
+    right: 0.36rem;
+    top: 0.3rem;
+    z-index: 11; }
+  .common-person-view .lcsrrx > img {
+    width: 100%; }
+  .common-person-view .ddxqtopqhul {
+    width: 100%;
+    height: 0.7rem;
+    margin-bottom: 0.2rem;
+    overflow: hidden;
+    border-radius: 0.03rem;
+    background: #fff; }
+  .common-person-view .ddxqtopqhul > li {
+    width: 50%;
+    height: 100%;
+    float: left;
+    font-size: 0.3rem;
+    color: #4e6079;
+    line-height: 0.7rem;
+    text-align: center; }
+  .common-person-view .ddxqtopqhul > li > a {
+    display: block;
+    color: #4e6079; }
+  .common-person-view .ddxqcss {
+    background: #e79700;
+    color: #fff !important; }
+  .common-person-view .ddxqcss > a {
+    color: #fff !important; }
+  .common-person-view .ddxqbmm {
+    margin-top: 0.3rem !important; }
+  .common-person-view .xxlsrrp > a {
+    float: right;
+    width: 1.35rem;
+    height: 0.3rem;
+    overflow: hidden;
+    margin: 0.21rem 0.5rem 0rem 0rem; }
+  .common-person-view .xxlsrrp > a > em {
+    font-size: 0.24rem;
+    color: #8e8a95;
+    line-height: 0.3rem;
+    float: left; }
+  .common-person-view .xxlsrrp > a > i {
+    background: url(../teImg/gnr2nr1toprg3.png) no-repeat;
+    background-size: cover;
+    width: 0.26rem;
+    height: 0.23rem;
+    float: right;
+    margin-top: 0.05rem; }
+  .common-person-view .ddxqxx {
+    width: 100%;
+    background: #fff;
+    overflow: hidden;
+    margin-top: 0.35rem; }
+  .common-person-view .ddxqxx > span {
+    display: block;
+    width: 100%;
+    height: 0.68rem;
+    font-size: 0.3rem;
+    color: #395983;
+    line-height: 0.7rem;
+    padding-left: 0.4rem;
+    border-bottom: 0.02rem #f3f2f5 solid; }
+  .common-person-view .ddxqxx > p {
+    width: 100%;
+    padding: 0.2rem 0.4rem; }
+  .common-person-view .ddxqxx > p > em {
+    display: block;
+    font-size: 0.24rem;
+    color: #395983;
+    line-height: 0.24rem;
+    margin-bottom: 0.12rem; }
+  .common-person-view .ddxqff {
+    width: 100%;
+    height: 15rem;
+    float: left;
+    background: #fff;
+    overflow: hidden;
+    overflow-y: auto;
+    border-radius: 0rem;
+    margin-top: -0.02rem;
+    position: relative;
+    z-index: 1; }
+  .common-person-view .ddxxfimg {
+    width: 40%;
+    margin: 1.6rem auto 0.5rem auto; }
+  .common-person-view .ddxxfimg > img {
+    width: 100%; }
+  .common-person-view .ddxqff > a {
+    background: url(../teImg/ddxxfback.jpg) no-repeat;
+    width: 1.76rem;
+    height: 0.35rem;
+    margin: auto;
+    display: block;
+    background-size: cover; }
+  .common-person-view .ddxxbm {
+    position: absolute;
+    left: 0rem;
+    bottom: 0rem;
+    width: 90%; }
+  .common-person-view .ddxxbm > img {
+    width: 100%; }
+  .common-person-view .ddztdv {
+    width: 100%;
+    height: 1.05rem;
+    background: #fff;
+    margin-top: 0.3rem; }
+  .common-person-view .ddztf {
+    width: 41%;
+    height: 100%;
+    float: left;
+    position: relative;
+    border-right: 0.02rem solid #f3f2f5; }
+  .common-person-view .ddztfimg {
+    width: 0.56rem;
+    height: 0.55rem;
+    margin: 0.17rem 0rem 0rem 0.55rem; }
+  .common-person-view .ddztfimg > img {
+    width: 100%; }
+  .common-person-view .ddztspan {
+    position: absolute;
+    left: 0.89rem;
+    top: 0.45rem;
+    width: 2.98rem;
+    height: 0.44rem;
+    display: block; }
+  .common-person-view .ddztspan > img {
+    width: 100%; }
+  .common-person-view .ddztrrs {
+    width: 58%;
+    height: 100%;
+    float: right;
+    font-size: 0.24rem;
+    color: #aaaaab;
+    line-height: 1.05rem;
+    padding-left: 0.3rem; }
+  .common-person-view .ddztxz {
+    width: 100%;
+    height: 0.9rem;
+    background: #fff;
+    margin-top: 0.2rem; }
+  .common-person-view .ddxtxzf {
+    width: 23%;
+    height: 100%;
+    float: left;
+    font-size: 0.36rem;
+    color: #635f6b;
+    line-height: 0.9rem;
+    text-align: center; }
+  .common-person-view .ddxtzm {
+    width: 77%;
+    height: 100%;
+    float: left;
+    position: relative; }
+  .common-person-view .ddxtzm > select, .common-person-view .ddxtzm > option {
+    width: 100%;
+    border: none;
+    border-radius: 0rem;
+    background: none; }
+  .common-person-view .ddxtzm > select {
+    height: 0.9rem;
+    font-size: 0.36rem;
+    color: #1d1d26;
+    line-height: 0.9rem;
+    position: relative;
+    z-index: 5; }
+  .common-person-view .ddztxr {
+    width: 24%;
+    height: 0.74rem;
+    margin-top: 0.08rem;
+    border-left: 0.02rem solid #f3f2f5;
+    position: absolute;
+    right: 0rem;
+    top: 0rem;
+    z-index: 2; }
+  .common-person-view .ddztxr > img {
+    display: block;
+    width: 0.34rem;
+    margin: 0.3rem auto 0rem auto; }
+  .common-person-view .ddztqd {
+    width: 100%;
+    height: 1.15rem;
+    margin-top: 0.4rem;
+    font-size: 0.36rem;
+    color: #fff;
+    line-height: 1.15rem;
+    text-align: center;
+    background: #e79700;
+    border-radius: 0.03rem;
+    border: none;
+    overflow: hidden;
+    -webkit-appearance: none; }
+  .common-person-view .gzghp1 {
+    width: 93%;
+    height: 2.2rem;
+    margin: 0.4rem auto 0.37rem auto;
+    background: #e79700;
+    overflow: hidden;
+    border-radius: 0.02rem; }
+  .common-person-view .gzghp1 > span {
+    display: block;
+    font-size: 0.3rem;
+    color: #fff;
+    line-height: 0.3rem;
+    text-align: center;
+    margin-top: 0.36rem; }
+  .common-person-view .gzghp1 > em {
+    display: block;
+    height: 0.8rem;
+    font-size: 0.46rem;
+    color: #fff;
+    line-height: 0.8rem;
+    text-align: center;
+    border-bottom: 0.01rem #c35300 solid; }
+  .common-person-view .gzghp1mx {
+    width: 100%;
+    border-bottom: 0.01rem #f8c800 solid; }
+  .common-person-view .gzghp1 > p {
+    width: 55%;
+    margin: auto;
+    font-size: 0.24rem;
+    color: #fff;
+    line-height: 0.7rem;
+    overflow: hidden; }
+  .common-person-view .gzghp1 > p > em {
+    float: left; }
+  .common-person-view .gzghp1 > p > i {
+    float: right; }
+  .common-person-view .gzghp2 {
+    width: 93%;
+    height: 0.5rem;
+    margin: auto;
+    background: #fff;
+    overflow: hidden;
+    border-radius: 0.02rem; }
+  .common-person-view .gzghp2 > span {
+    float: left;
+    background: url(../teImg/lcsnr2img.png) no-repeat;
+    width: 0.44rem;
+    height: 0.44rem;
+    background-size: cover;
+    margin: 0.04rem 0.22rem 0.35rem 0.35rem; }
+  .common-person-view .gzghp2 > em {
+    float: left;
+    font-size: 0.3rem;
+    color: #395983;
+    line-height: 0.5rem; }
+  .common-person-view .gzghnr3dv {
+    width: 93%;
+    height: 1.9rem;
+    margin: 0.12rem auto 0.4rem auto;
+    background: #fff; }
+  .common-person-view .gzghnr3f {
+    width: 28%;
+    height: 100%;
+    float: left; }
+  .common-person-view .gzghnr3f > span {
+    display: block;
+    background: url(../teImg/gzghnr3fs.png) no-repeat;
+    background-size: cover;
+    width: 1.55rem;
+    height: 1.55rem;
+    margin: 0.19rem auto;
+    font-size: 0.36rem;
+    color: #e89440;
+    line-height: 0.36rem;
+    padding-top: 0.85rem;
+    text-align: center; }
+  .common-person-view .gzghnr3r {
+    float: right;
+    width: 71%;
+    height: 100%;
+    border-left: 0.02rem #f3f2f5 solid;
+    font-size: 0.3rem;
+    line-height: 0.94rem; }
+  .common-person-view .gzghnr3r > p {
+    overflow: hidden;
+    padding-left: 0.3rem;
+    border-top: 0.02rem #f3f2f5 solid; }
+  .common-person-view .gzghnr3r > p > span {
+    width: 100%;
+    height: 0.94rem;
+    color: #395983; }
+  .common-person-view .gzghnr3r > p > span > em {
+    color: #e79700 !important; }
+  .common-person-view .gzghnr3r > p:first-child {
+    border: none;
+    color: #395983; }
+  .common-person-view .gzghp5 {
+    width: 93%;
+    height: 0.5rem;
+    margin: auto;
+    background: #fff;
+    overflow: hidden;
+    border-radius: 0.02rem; }
+  .common-person-view .gzghp5 > span {
+    float: left;
+    background: url(../teImg/gzghnr4r.png) no-repeat;
+    width: 0.44rem;
+    height: 0.44rem;
+    background-size: cover;
+    margin: 0.04rem 0.22rem 0.35rem 0.35rem; }
+  .common-person-view .gzghp5 > em {
+    float: left;
+    font-size: 0.3rem;
+    color: #395983;
+    line-height: 0.5rem; }
+  .common-person-view .gzghnrjlul {
+    width: 93%;
+    margin: 0.13rem auto;
+    overflow: hidden;
+    background: #fff; }
+  .common-person-view .gzghnrjlul > li {
+    width: 100%;
+    height: 0.68rem;
+    border-top: 0.02rem #f3f2f5 solid; }
+  .common-person-view .gzghnrjlul > li:first-child {
+    border: none; }
+  .common-person-view .gzghnrjlul > li > span {
+    float: left;
+    margin-left: 0.52rem;
+    font-size: 0.24rem;
+    color: #395983;
+    line-height: 0.7rem; }
+  .common-person-view .gzghnrjlul > li > span > em {
+    color: #e79700; }
 
 .common-main-view {
   /****iconfont****/
@@ -3674,7 +4276,7 @@ $royal:                           #886aea !default;
     position: absolute;
     top: 0.3rem;
     left: 0;
-    z-index: 100;
+    z-index: 10;
     width: 100%;
     height: 1.36rem;
     background: #fff;
@@ -4343,7 +4945,7 @@ $royal:                           #886aea !default;
     width: 100%;
     height: 100%;
     position: fixed;
-    z-index: 9;
+    z-index: 113;
     filter: progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#99373737', endColorstr='#99373737');
     background: rgba(55, 55, 55, 0.6); }
   .common-main-view .zcmain1 {

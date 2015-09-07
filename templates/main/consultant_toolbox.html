@@ -95,12 +95,12 @@
                  
                  
                  <!--工作规划-s-->
-                 <a href="" class="lcsgnr2nratop">
+                 <a href="" class="lcsgnr2nratop" ng-click=selectPage('planning')>
                        <p> 
                          <em><img src="teImg/lcsnr2img.png" /></em>  
                          <span>工作规划</span> 
                        </p>
-                       <div href=""><em></em><i></i></div>
+                       <div href="" ><em></em><i></i></div>
                    </a>
                    <div class="lcsnrma">
                      
@@ -430,18 +430,146 @@
       </form>      
                 
     </div><!--我的账户-银行卡认证内容部分-e-->
-
-
-
-                
-
-              
+   
   </div><!--内容右侧结束-->
 </div>
 <!-- information -->
 
 
-    
+<!-- planning -->
+<div class="main1" ng-switch-when='planning'>
+  <div class="gnr2dadv" ng-if="consultant.win + consultant.suffix=='planning'">
+              
+              <div class="gzghp1">
+                 <span>总业绩(元)</span>
+                 <em>541300.20</em>
+                 <div class="gzghp1mx"></div>
+                 <p>
+                   <em>目标业绩：3500000 </em>
+                   <i>已获佣金：250030 </i>
+                 </p>
+              </div>
+              
+              <div class="gzghp2">
+                 <span></span>
+                 <em>月度规划</em>
+              </div>
+              <div class="gzghnr3dv">
+                <div class="gzghnr3f"><span>63%</span></div>
+                <div class="gzghnr3r">
+                   <p><span>2015年已完成业绩（ 元） <em> 541300.20</em></span></p>
+                   <p><span>2015年目标业绩（元） <em> 541300.20</em></span></p>
+                </div>
+              </div>
+              
+              
+              <div class="gzghp2">
+                 <span></span>
+                 <em>年度规划</em>
+              </div>
+              <div class="gzghnr3dv">
+                <div class="gzghnr3f"><span>63%</span></div>
+                <div class="gzghnr3r">
+                   <p><span>2015年已完成业绩（ 元） <em> 541300.20</em></span></p>
+                   <p><span>2015年目标业绩（元） <em> 541300.20</em></span></p>
+                </div>
+              </div>
+              
+              
+              <div class="gzghp5">
+                 <span></span>
+                 <em>历史记录</em>
+              </div>
+              <ul class="gzghnrjlul">
+                 <li>
+                    <span>2015.07</span>
+                    <span>最终业绩（元） <em> 541300.20</em></span>
+                    <span>目标业绩（元） <em> 3500000  </em></span>
+                    <span>完成率：<em>120%</em></span>
+                 </li>
+                 <li>
+                    <span>2015.06</span>
+                    <span>最终业绩（元） <em> 541300.20</em></span>
+                    <span>目标业绩（元） <em> 3500000  </em></span>
+                    <span>完成率：<em>120%</em></span>
+                 </li>
+              </ul>  
+ 
+  </div><!--gnr2dadv-->
+</div>
+<!-- planning -->
+<!-- orders -->
+<div class="main1" ng-switch-when='orders'>
+
+    <div class="gnr2dadv"><!--内容右侧开始-->
+
+
+
+            <div class="gnr2ma"> 
+                <ul class="qbgnr2nrul">
+                  <!--ng-class="{gjxqbcss}"-->
+                    <li ><a href="" ng-class="{gjxqbcss: consultant.win + consultant.suffix=='orders'}" ng-click="selectPage('orders')">
+                       <div><img src="teImg/gnr2rabm11a.png" title="" alt="" /></div>
+                       <em>全部订单</em>
+                    </a></li>
+                    <li><a href="" ng-class="{gjxqbcss: consultant.win + consultant.suffix=='orders-under-push'}" ng-click="selectPage('orders-under-push')">
+                       <div><img src="teImg/gnr2rabm1.png" title="" alt="" /></div>
+                       <em>待报备</em>
+                    </a></li>
+                    <li><a href="" ng-class="{gjxqbcss: consultant.win + consultant.suffix=='orders-under-check'}" ng-click="selectPage('orders-under-check')">
+                       <div><img src="teImg/gnr2rabm2.png" title="" alt="" /></div>
+                       <em>待审核</em>
+                    </a></li>
+                    <li><a href="" ng-class="{gjxqbcss: consultant.win + consultant.suffix=='orders-complete'}" ng-click="selectPage('orders-complete')">
+                       <div><img src="teImg/gnr2rabm3.png" title="" alt="" /></div>
+                       <em>已完成</em>
+                    </a></li>
+                    <li><a href="" ng-class="{gjxqbcss: consultant.win + consultant.suffix=='orders-under-pay'}" ng-click="selectPage('orders-under-pay')">
+                       <div><img src="teImg/gnr2rabm4.png" title="" alt="" /></div>
+                       <em>待付款</em>
+                    </a></li>
+                 </ul> 
+                 <ul class="qbgnr2nrul">
+                     <div class="gjxnrtpyyre">  
+                        <div class="khlbtop"><!--内容top开始-->  
+                          <a  href="###" class="khlbtopf"> <span>全 部</span> <em></em></a>
+                            <div class="khlbpr">
+                              <form>
+                                <input type="text"  class="khlbprput" placeholder="请输入客户的姓名"/>
+                                <input type="submit" class="khlbprtj" value="" />
+                              </form>
+                            </div> 
+                        </div><!--内容top结束-->
+                      </div>  
+                 </ul>
+                 <div class="gnr2nrb"><!--已完成订单-s-->
+                   
+                     <div class="gnr2nrbtp">
+                        <span>粤财-瀚信中鼎盈丰2期</span>
+                        <a href="#/common/order/detail/{{order.id}}"><em>查看详情</em><i></i></a>
+                     </div>
+                     
+                     <div class="gnr2nrbbm">
+                       <div class="gnr2nrblef">
+                          <div><img src="teImg/gnr2rabm3.png" title="" alt="" /></div>
+                          <em>新订单</em>
+                       </div>
+                       
+                       <ul class="gnr2nrbbmrig">
+                         <li><span>当前持有资产(元)</span>  <em>28000</em></li>
+                         <li><span>投资笔数(笔)</span>  <em>10</em></li>
+                         <li><span>当前投资收益(元)</span>  <em>280</em></li>
+                         <li><span>预期收益(元)</span>  <em>200</em></li>
+                       </ul>
+                       
+                     </div>
+                 </div><!--已完成订单-e-->
+            </div>
+    </div>
+</div>
+<!-- orders -->
+
+
   </ion-content>
   <multiple-views-support width="75%" />
 </ion-view>

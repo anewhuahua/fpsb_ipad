@@ -19,6 +19,19 @@ angular.module('starter', ['ionic', 'ngCordova', 'ionicMultipleViews','starter.c
     }
 
     ionic.Platform.fullScreen();
+
+    window.plugins.jPushPlugin.init();
+    window.plugins.jPushPlugin.setDebugMode(true); 
+    window.plugins.jPushPlugin.getRegistrationID(function(data){
+     try {
+        console.log("JPushPlugin:registrationID is "+data)               
+      } catch(exception) {
+        console.log(exception);
+      }
+      });
+    //window.plugins.jPushPlugin.setApplicationIconBadgeNumber(0);
+
+
   });
 })
 

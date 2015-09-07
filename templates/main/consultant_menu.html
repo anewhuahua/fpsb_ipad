@@ -40,15 +40,24 @@
                 </div>
               </li>
               <li>
-                <div class="gfnulitp">
+                <div class="gfnulitp" ng-click="selectItem('orders')" ng-class="{gjxtjcss: data.selectedItem=='orders'}">
                   <a>订单跟踪</a>
                   <em><img src="teImg/glefultprg.png" /></em>
                 </div>
+                <div class="gfnulibm" ng-if="showItem('orders')">
+                  <a href="" ng-click="selectItem('orders-under-push')" ng-class="{gjxtjcss : data.selectedItem=='orders-under-push'}">待报备</a>
+                  <a href="" ng-click="selectItem('orders-under-check')" ng-class="{gjxtjcss : data.selectedItem=='orders-under-check'}">待审核</a>
+                  <a href="" ng-click="selectItem('orders-complete')" ng-class="{gjxtjcss : data.selectedItem=='orders-complete'}">已完成</a>
+                  <a href="" ng-click="selectItem('orders-under-pay')" ng-class="{gjxtjcss : data.selectedItem=='orders-under-pay'}">待付款</a>
+                </div>
               </li>
-             <li>
-                <div class="gfnulitp">
+                <div class="gfnulitp" ng-click="selectItem('planning')" ng-class="{gjxtjcss: data.selectedItem=='planning'}">
                   <a>工作规划</a>
                   <em><img src="teImg/glefultprg.png" /></em>
+                </div>
+                <div class="gfnulibm" ng-if="showItem('planning')">
+                  <a href="" ng-click="selectItem('planning-tips')" ng-class="{gjxtjcss : data.selectedItem=='planning-tips'}">工作任务</a>
+                  <a href="" ng-click="selectItem('planning-notes')" ng-class="{gjxtjcss : data.selectedItem=='planning-notes'}">记事备忘</a>
                 </div>
               </li>
               

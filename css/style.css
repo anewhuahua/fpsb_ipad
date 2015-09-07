@@ -33,4 +33,26 @@
    top: 1.66rem;
 }
 
+input[type=”button”], input[type=”submit”], input[type=”reset”] {-webkit-appearance: none;}
+
+:-moz-placeholder { 
+    color: #635F6B;  
+}
+
+::-moz-placeholder { 
+    color: #635F6B;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+    color: #635F6B;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    color: #635F6B;
+}
+
+
+
 

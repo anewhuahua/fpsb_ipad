@@ -61,6 +61,13 @@ angular.module('starter.controllers', [])
   //console.log('124455');
   var oid = $stateParams.orderId;
   console.log(oid);
+
+  $scope.data.win = 'detail';
+
+  $scope.selectWin = function(item){
+    console.log(item);
+    $scope.data.win=item;
+  }
   //$scope.booking = Main.consultant.getBooking(bid);
   //console.log($scope.booking);
 })
@@ -602,7 +609,7 @@ angular.module('starter.controllers', [])
     var options = {  
       quality: 50,  
       destinationType: Camera.DestinationType.DATA_URL,  
-      sourceType: Camera.PictureSourceType.Camera,  
+      sourceType: Camera.PictureSourceType.PHOTOLIBRARY,  
       allowEdit: false,  
       encodingType: Camera.EncodingType.JPEG,  
       cameraDirection: 1,
@@ -660,7 +667,8 @@ angular.module('starter.controllers', [])
     //orders: 'orders',
     bookings: {},
     orders: {},
-    information: {}
+    information: {},
+    other: {}
   };
   //**
   //** initialize
@@ -668,6 +676,9 @@ angular.module('starter.controllers', [])
   $scope.customer.orders.data = Main.customer.getOrders();
   $scope.customer.information.profile = {
     touxiang: "teImg/ghnr1lef.png" 
+  };
+  $scope.customer.other.promotion = {
+    stuff: "teImg/ddztjh.png"
   };
   refreshData();
   //**
@@ -705,11 +716,11 @@ angular.module('starter.controllers', [])
 
 
 
-  $scope.takePhoto=function(){
+  $scope.takePhoto=function(param){
     var options = {  
       quality: 50,  
       destinationType: Camera.DestinationType.DATA_URL,  
-      sourceType: Camera.PictureSourceType.Camera,  
+      sourceType: Camera.PictureSourceType.PHOTOLIBRARY,  
       allowEdit: false,  
       encodingType: Camera.EncodingType.JPEG,  
       cameraDirection: 1,
@@ -720,7 +731,11 @@ angular.module('starter.controllers', [])
     }
     //console.log("tyson");
     $cordovaCamera.getPicture(options).then(function(imageData) {
-        $scope.customer.information.profile.touxiang = "data:image/jpeg;base64," + imageData; 
+        if(param == 'information') {
+          $scope.customer.information.profile.touxiang = "data:image/jpeg;base64," + imageData; 
+        } else if (param == 'promotion') {
+          $scope.customer.other.promotion.stuff = "data:image/jpeg;base64," + imageData; 
+        }
         //image.src = "data:image/jpeg;base64," + imageData;  
       }, function(err) {  
         // error  

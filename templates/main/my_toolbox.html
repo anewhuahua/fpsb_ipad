@@ -368,8 +368,8 @@
           <div class="zhkhimgdv">
             <span>设置头像</span>
             <p>
-              <img src={{customer.information.profile.touxiang}} ng-click="takePhoto()"/>
-              <a href="" ng-click="takePhoto()"></a>
+              <img src={{customer.information.profile.touxiang}} ng-click="takePhoto('information')"/>
+              <a href="" ng-click="takePhoto('information')"></a>
             </p>           
           </div>
           <div class="hkgrdv2">
@@ -411,7 +411,77 @@
 </div>
 <!-- information -->
 
+<!-- other -->
+<div class="main1" ng-switch-when='other'>
+            <div class="gnr2dadv">
 
+                <div class="gjxnrtopyy"></div> <!-- 内容top阴影 -->
+               
+
+                
+                <div class="lcsrzdv"><!--理财师认证--s-->
+                   <form>
+                       
+                        <div class="hkgrdv2">
+                          <div class="zhgdvf"><span>真实姓名</span> <input type="text"  /></div>
+                          <div class="shkdsr">
+                            <label>男 <input name="first" type="radio" value="" class="shkdsrnan" /></label>
+                            <label>女 <input name="first" type="radio" value="" class="shkdsrnan" /></label>
+                          </div>
+                        </div>
+                          
+                        <div class="zhyhknr1"><span>身 份 证 号</span> <input type="text" placeholder="" /></div>
+                        <div class="zhyhknr1"><span>所属机构</span> <input type="text" placeholder="" /></div>
+                        
+                        <div class="lcsrzqy">
+                           <div class="lcsrzq1">所在区域</div>
+                           <div class="lcsrzq2">
+                             <div class="lcsrrx"><img src="teImg/khlbxia.png" /></div>
+                             <select>
+                                <option value="volvo">请选择</option>
+                                <option value="saab">浙江省</option>
+                                <option value="opel">已完成</option>
+                                <option value="audi">未通过</option>
+                              </select>
+                           </div>
+                           <div class="lcsrzq2">
+                             <div class="lcsrrx"><img src="teImg/khlbxia.png" /></div>
+                             <select>
+                                <option value="volvo">请选择</option>
+                                <option value="saab">杭州市</option>
+                                <option value="opel">已完成</option>
+                                <option value="audi">未通过</option>
+                              </select>
+                           </div>
+                           <div class="lcsrzq2">
+                             <div class="lcsrrx"><img src="teImg/khlbxia.png" /></div>
+                             <select>
+                                <option value="volvo">请选择</option>
+                                <option value="saab">江干区</option>
+                                <option value="opel">已完成</option>
+                                <option value="audi">未通过</option>
+                              </select>
+                           </div>
+                           
+                        </div>
+                        
+                        
+                        <div class="ddztdv">
+                            <div class="ddztf">
+                               <div class="ddztfimg" ng-click="takePhoto('promotion')"><img src="teImg/ddztwj_03.png" /></div>
+                               <a class="ddztspan" ng-click="takePhoto('promotion')"><img src="{{customer.other.promotion.stuff}}"/></a>
+                            </div>
+                            <span class="ddztrrs">上传您的身份证和相关资格证书</span>
+                        </div> 
+                        
+                      <input class="yhkqd" value="确定"  type="submit"/>
+                   </form>
+                
+                </div><!--理财师认证-e-->
+                
+              </div><!--gnr2dadv-->
+</div>
+<!-- other -->
 
   </ion-content>
   <multiple-views-support width="75%" />

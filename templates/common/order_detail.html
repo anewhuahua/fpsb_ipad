@@ -2,13 +2,113 @@
 
 
     <ion-content>
-      <div class="main1">
+      <ul class="ddxqtopqhul"><!--top分类-s-->
+                   	<li ng-class="{ddxqcss : data.win=='detail'}"><a href="" ng-click="selectWin('detail')">订单详情</a></li>
+                    <li ng-class="{ddxqcss : data.win=='status'}"><a href="" ng-click="selectWin('status')">订单状态</a></li>
+      </ul><!--top分类-e-->
+      <div class="main1" ng-if="data.win=='detail'">
 
-        <div>tyson tyson</div>
-           
+          <div class="gnr2dadv"><!--内容右侧开始-->
+
+              <div class="gnr2ma" > 
+                   <div class="gnr2nrb"><!--已完成订单-s-->
+                     
+                       <div class="gnr2nrbtp">
+                          <span>订单状态：已完成</span>
+                       </div>
+                       
+                       <div class="gnr2nrbbm">
+                         <div class="gnr2nrblef">
+                            <div><img src="teImg/gnr2rabm3.png" title="" alt="" /></div>
+                            <em>已完成</em>
+                         </div>
+                         
+                         <ul class="gnr2nrbbmrig">
+                           <li><span>当前持有资产(元)</span>  <em>28000</em></li>
+                           <li><span>投资笔数(笔)</span>  <em>10</em></li>
+                           <li><span>当前投资收益(元)</span>  <em>280</em></li>
+                           <li><span>预期收益(元)</span>  <em>200</em></li>
+                         </ul>
+                         
+                       </div>
+                   </div><!--已完成订单-e-->
+                   
+                   
+                   <div class="xyglcsrrdv ddxqbmm" ng-click="showProduct()"><!--推荐-s-->
+                      <div class="xxlsrrp">
+                        <span class="xxlsyyss1">推荐</span>
+                        <span class="xxlsyyss2">热销</span>
+                        <em>粤财·瀚信中鼎盈丰2期</em>
+                        <a href=""><em>查看详情</em><i></i></a>
+                      </div>
+                      
+                      
+                      <div class="ssxqbmdv">
+                          <span class="ssxqmf1">63%</span>
+                          <p><span>10.50%</span> <em>预期年化</em></p>
+                          <p><span>120天</span> <em>理财期限</em></p>
+                          <div class="xxxqrr"> 
+                            <span>目标规模 <em> 36,500.00 </em>万元</span>
+                            <span>认购费用 <em> 100 </em>万起</span>
+                            <span>剩余时间 <em> 21 </em>天</span>
+                          </div>
+                          
+                      </div>
+                  </div>  <!--推荐-e-->
+                  
+                  
+                  <div class="ddxqxx"><!--订单信息-s-->
+                     <span>订单信息</span>
+                     <p>
+                        <em>交  易  号：576877888766566</em>
+                        <em>创建时间：2015-08-08</em>
+                        <em>付款时间：2015-09-01</em>
+                     </p>
+                   
+                  </div><!--订单信息-e-->
+              </div>
+
+           </div><!--内容右侧结束-->
+      </div> <!--main1-->
+
+
+      <div class="main1" ng-if="data.win=='status'">
+      	<div class="gnr2dadv" style="height:7rem"><!--内容右侧开始-->
+              <div class="gnr2ma"> 
+  
+                  <div class="ddztdv">
+                  
+                    <div class="ddztf">
+                       <div class="ddztfimg"><img src="teImg/ddztwj_03.png" /></div>
+                       <a class="ddztspan"><img src="teImg/ddztjh.png" /></a>
+                    </div>
+                    
+                    <span class="ddztrrs">上传相关汇款证明</span>
+                    
+                  </div>  
+                  
+                  <div class="ddztxz">
+                     <form>
+                     <span class="ddxtxzf">更改状态</span>
+                     <div class="ddxtzm">
+                       <div class="ddztxr"><img src="teImg/khlbxia.png" /></div>
+                       <select>
+                          <option value="volvo">待报备</option>
+                          <option value="saab">待审核</option>
+                          <option value="opel">已完成</option>
+                          <option value="audi">未通过</option>
+                        </select>
+                     </div>
+                     
+                     <input type="submit" class="ddztqd" />
+                    </form> 
+                  </div>
+              </div>
+        
+        </div><!--内容右侧结束-->
+      </div> <!--main1-->
        
 
-      </div> <!--main1-->
     </ion-content>
   <multiple-views-support width="75%" />
 </ion-view>
