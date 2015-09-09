@@ -74,7 +74,46 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('mainCtrl', function($scope, $state, $window, $ionicHistory, $timeout,Main) {
+.controller('mainCtrl', function($scope, $state, $window, $cordovaNetwork, $rootScope, $ionicHistory, $timeout, Main) {
+
+   document.addEventListener("deviceready", function () {
+        $scope.network = $cordovaNetwork.getNetwork();
+        $scope.isOnline = $cordovaNetwork.isOnline();
+        $scope.$apply();
+
+        // listen for Online event
+        $rootScope.$on('$cordovaNetwork:online', function(event, networkState){
+          /*
+          window.plugins.jPushPlugin.init();
+          window.plugins.jPushPlugin.setDebugMode(true); 
+          console.log('11');
+          window.plugins.jPushPlugin.getRegistrationID(function(data){
+          try {
+              console.log("JPushPlugin:registrationID is "+data)               
+            } catch(exception) {
+              console.log(exception);
+            }
+          });
+          window.plugins.jPushPlugin.receiveMessageIniOSCallback = function(data) {
+            console.log('tyson' + data);
+          }
+
+          broadCast  refresh
+          */
+            console.log("got online");
+            $scope.isOnline = true;
+            $scope.network = $cordovaNetwork.getNetwork();
+            $scope.$apply();
+        })
+
+        // listen for Offline event
+        $rootScope.$on('$cordovaNetwork:offline', function(event, networkState){
+            console.log("got offline");
+            $scope.isOnline = false;
+            $scope.network = $cordovaNetwork.getNetwork();
+            $scope.$apply();
+        })
+  }, false);
 
   $scope.data = {
     person: {},
