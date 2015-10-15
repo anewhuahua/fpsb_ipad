@@ -191,21 +191,33 @@
                    <div class="gnr2nrctopd">
                       <p> 
                          <em><img src='teImg/cpxqsclog.png' /></em>  
-                         <span>我的关注</span> 
+                         <span>我的预约</span> 
                        </p>
                        <a href=""><em>查看全部</em><i></i></a>
                    </div>
                    
-                   <div class="gnr2nre" ng-click="showProduct()">
-                     <span>推荐</span>
-                     <em>热销</em>
-                     <i>粤财·瀚信中鼎盈丰2期</i>
-                   </div>
-                   <div class="gnr2nre" ng-click="showProduct()">
-                     <span>推荐</span>
-                     <em>热销</em>
-                     <i>粤财·瀚信中鼎盈丰2期</i>
-                   </div>
+                   <div class="gnr2nrb" ng-repeat='booking in customer.bookings.data'><!--已完成订单-s-->
+                     
+                       <div class="gnr2nrbtp">
+                          <span>{{booking.product.issuer}}</span>
+                          
+                       </div>
+                       
+                       <div class="gnr2nrbbm">
+                         <div class="gnr2nrblef">
+                            <div><img src="teImg/gnr2rabm2.png" title="" alt="" /></div>
+                            <em>已预约</em>
+                         </div>
+                         
+                         <ul class="gnr2nrbbmrig">
+                           <li><span>预期年化</span>  <em>10.50%</em></li>
+                           <li><span>理财期限</span>  <em>120天</em></li>
+                           <li><span>认购费用</span>  <em>10万起</em></li>
+                           
+                         </ul>
+                         
+                       </div>
+                   </div><!--已完成订单-e-->
              
 
                  </div>
@@ -246,6 +258,15 @@
                        <em>待付款</em>
                     </a></li>
                  </ul> 
+
+          
+                                <select>
+                                  <option value="volvo">待报备</option>
+                                  <option value="saab">待审核</option>
+                                  <option value="opel">已完成</option>
+                                  <option value="audi">未通过</option>
+                                </select>
+            
                  
                  
                  <div class="gnr2nrb" ng-repeat="order in customer.orders.data"><!--已完成订单-s-->

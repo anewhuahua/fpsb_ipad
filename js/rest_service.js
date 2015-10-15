@@ -71,7 +71,7 @@ angular.module('rest.service', [])
 
     getProducts: function(param, successHandler, errorHandler, finallyHandler) {
       type = param.type
-      state  = param.state || 'active';
+      state  = param.state || 'open';
       offset = param.offset || '0';
       limit  = param.limit || '25'
 
@@ -120,7 +120,7 @@ angular.module('rest.service', [])
           });
         },
         queryBookings: function (param, cid, successHandler, errorHandler, finallyHandler) {
-          state  = param.state || 'initiated';
+          state  = param.state || 'all';
           offset = param.offset || '0';
           limit  = param.limit || '25'
 
@@ -140,11 +140,11 @@ angular.module('rest.service', [])
             finallyHandler();
           });
         },
-        submitOrder: function(cid, pid, successHandler, errorHandler, finallyHandler) {
+        submitOrder: function(cid, pid, money, successHandler, errorHandler, finallyHandler) {
           var req = {
               method: 'POST',
               url: domain+'ChiefFinancierService/api/customer/v1/customers/' + cid + 
-              '/orders?productId=' + pid,
+              '/orders?productId=' + pid + '&quota=' + money,
               headers: {
                 'Content-Type': 'application/json'
               }
@@ -158,14 +158,14 @@ angular.module('rest.service', [])
           });
         },
         queryOrders: function (param, cid, successHandler, errorHandler, finallyHandler) {
-          state  = param.state || 'initiated';
+          state  = param.state || 'all';
           offset = param.offset || '0';
           limit  = param.limit || '25'
 
           var req = {
               method: 'GET',
               url: domain+'ChiefFinancierService/api/customer/v1/customers/' + cid + 
-              '/orders?state=' + state + '&offset=' + offset + '&limit=' + limit,
+              '/orders?state=' + state + '&offset=' + offset + '&limit=' + limit +'&sort=desc',
               headers: {
                 'Content-Type': 'application/json'
               }
@@ -194,7 +194,7 @@ angular.module('rest.service', [])
           var req = {
               method: 'GET',
               url: domain+'ChiefFinancierService/api/consultant/v1/consultants/' + id + 
-              '/bookings?state=' + state + '&offset=' + offset + '&limit=' + limit,
+              '/bookings?state=' + state + '&offset=' + offset + '&limit=' + limit +'&sort=desc',
               headers: {
                 'Content-Type': 'application/json'
               }

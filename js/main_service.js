@@ -3,18 +3,26 @@ angular.module('main.service',[])
   var id = null;
   var role = 'Guest';
   var categories = [
-    {id: 1, name: "公募基金",  key:'publicfunds', image:'teImg/lbanr1img1.png', page:0, products:[]},
-    {id: 2, name: "私募基金",  key:'privatefunds',image:'teImg/lbanr1img2.png', page:0, products:[]},
-    {id: 3, name: "信托产品",  key:'trusts',      image:'teImg/lbanr1img3.png', page:0, products:[]},
-    {id: 4, name: "保险产品",  key:'insurances',  image:'teImg/lbanr1img4.png', page:0, products:[]}
+    {id: 1, name: "公募基金",  key:'publicfunds', image:'teImg/lbaitemimg2.png', page:0, products:[]},
+    {id: 2, name: "私募基金",  key:'privatefunds',image:'teImg/lbaitemimg3.png', page:0, products:[]},
+    {id: 3, name: "信托产品",  key:'trusts',      image:'teImg/lbaitemimg4.png', page:0, products:[]},
+    {id: 4, name: "保险产品",  key:'insurances',  image:'teImg/lbaitemimg5.png', page:0, products:[]}
   ];
 
   var customer = {
     bookings: [],
-    orders: []
+    orders: {
+      all: [],
+      initiated: [],
+      paid: [],
+      running: [],
+      completed: []
+    }
   };
   var consultant = {
-    bookings: [],
+    bookings: {
+      all: []
+    },
     orders: []
   };
 
@@ -49,6 +57,10 @@ angular.module('main.service',[])
   };
 
   return {
+    getRole: function() {
+      return role;
+    },
+
     login: function(param, successHandler, errorHandler, finallyHandler) {
       var username = null;
       var password = null;
@@ -222,11 +234,12 @@ angular.module('main.service',[])
         }, 
         finallyHandler());
       },
-      submitOrder: function(pid, successHandler, errorHandler, finallyHandler) {
+      submitOrder: function(pid, money, successHandler, errorHandler, finallyHandler) {
         if(id) {
-          Rest.customer.v1.submitOrder(id, pid, function(data){
+          Rest.customer.v1.submitOrder(id, pid, money, function(data){
             if (parseRestSuccess('submitOrder', data, successHandler, errorHandler)) { 
-              customer.orders.unshift(data.result);
+              customer.orders.all.unshift(data.result);
+              customer.orders.initiated.unshift(data.result);
             }
           }, function(status){
             parseRestError('submitOrder', status, errorHandler);
@@ -243,11 +256,14 @@ angular.module('main.service',[])
       },
       queryOrders: function(param, successHandler, errorHandler, finallyHandler) {
         Rest.customer.v1.queryOrders(param, id, function(data){
+          var state  = param.state || 'all';
           if(parseRestSuccess('queryOrders', data, successHandler, errorHandler)) {
+            /*
             customer.orders.length = 0;
             for (var i=0;i<data.result.length;i++) {
               customer.orders.unshift(data.result[i]);
-            }
+            }*/
+            customer.orders[state] = data.result;
           }
         }, function(status){
           parseRestError('queryOrders',  status, errorHandler);
@@ -257,14 +273,17 @@ angular.module('main.service',[])
 
 
     }, // customer
+
+////////////////////////////////////////////////
+
     consultant: {
       getBookings: function() {
         return consultant.bookings;
       },
       getBooking: function(bid) {
-        for (var i=0; i<consultant.bookings.length; i++) {
-          if(consultant.bookings[i].id == bid) {
-            return consultant.bookings[i];
+        for (var i=0; i<consultant.bookings.all.length; i++) {
+          if(consultant.bookings.all[i].id == bid) {
+            return consultant.bookings.all[i];
           }
         }
       },
@@ -272,10 +291,9 @@ angular.module('main.service',[])
         param.state = 'assigned';
         Rest.consultant.v1.queryBookings(param, id, function(data){
           if(parseRestSuccess('queryBookings', data, successHandler, errorHandler)) {
-            consultant.bookings.length = 0;
-            for (var i=0;i<data.result.length;i++) {
-              consultant.bookings.unshift(data.result[i]);
-            }
+            
+            consultant.bookings['all'] = data.result;
+            
           }
         }, function(status){
           parseRestError('queryBookings',  status, errorHandler);
@@ -284,7 +302,9 @@ angular.module('main.service',[])
       }
     }, // consultant
 
-    
+
+
+
     
     getCategories: function(){
       return categories;
