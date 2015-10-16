@@ -119,15 +119,17 @@ angular.module('rest.service', [])
             finallyHandler();
           });
         },
+        
         queryBookings: function (param, cid, successHandler, errorHandler, finallyHandler) {
           state  = param.state || 'all';
           offset = param.offset || '0';
-          limit  = param.limit || '25'
+          limit  = param.limit || '25';
+          type   = param.type || 'all';
 
           var req = {
               method: 'GET',
               url: domain+'ChiefFinancierService/api/customer/v1/customers/' + cid + 
-              '/bookings?state=' + state + '&offset=' + offset + '&limit=' + limit,
+              '/bookings?state=' + state + '&producttype=' + type + '&offset=' + offset + '&limit=' + limit +'&sort=desc',
               headers: {
                 'Content-Type': 'application/json'
               }
@@ -160,12 +162,13 @@ angular.module('rest.service', [])
         queryOrders: function (param, cid, successHandler, errorHandler, finallyHandler) {
           state  = param.state || 'all';
           offset = param.offset || '0';
-          limit  = param.limit || '25'
+          limit  = param.limit || '25';
+          type   = param.type || 'all';
 
           var req = {
               method: 'GET',
               url: domain+'ChiefFinancierService/api/customer/v1/customers/' + cid + 
-              '/orders?state=' + state + '&offset=' + offset + '&limit=' + limit +'&sort=desc',
+              '/orders?state=' + state + '&producttype=' + type + '&offset=' + offset + '&limit=' + limit +'&sort=desc',
               headers: {
                 'Content-Type': 'application/json'
               }
@@ -189,12 +192,13 @@ angular.module('rest.service', [])
         queryBookings: function (param, id, successHandler, errorHandler, finallyHandler) {
           state  = param.state || 'initiated';
           offset = param.offset || '0';
-          limit  = param.limit || '25'
+          limit  = param.limit || '25';
+          type   = param.type || 'all';
 
           var req = {
               method: 'GET',
               url: domain+'ChiefFinancierService/api/consultant/v1/consultants/' + id + 
-              '/bookings?state=' + state + '&offset=' + offset + '&limit=' + limit +'&sort=desc',
+              '/bookings?state=' + state + '&producttype=' + type + '&offset=' + offset + '&limit=' + limit +'&sort=desc',
               headers: {
                 'Content-Type': 'application/json'
               }

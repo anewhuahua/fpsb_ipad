@@ -1512,6 +1512,9 @@ $royal:                           #886aea !default;
   /*工具箱-我的预约详情页-s*/
   /*工具箱-我的预约详情页-e*/
   /*工具箱-客户列表-s*/
+  /*.khlbtop{width:70%; height:0.9rem; position:fixed; top:1.2rem; right:2.4%;z-index:3;}*/
+  /*客户列表页筛选10.15-s*/
+  /*客户列表页筛选10.15-e*/
   /*工具箱-客户列表-s*/
   /*工具箱-客户详情-s*/
   /*工具箱-客户详情-e*/
@@ -1538,7 +1541,11 @@ $royal:                           #886aea !default;
   /*订单状态-s*/
   /*订单状态-e*/
   /*工作规划-s*/
-  /*工作规划-s*/ }
+  /*工作规划-s*/
+  /*select10.15-s*/
+  /*select10.15-e*/
+  /*预约,订单列表10.16-s*/
+  /*预约,订单列表10.16-e*/ }
   .common-person-view a {
     text-decoration: none; }
   .common-person-view .content {
@@ -2191,6 +2198,32 @@ $royal:                           #886aea !default;
     filter: progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#99373737', endColorstr='#99373737');
     background: rgba(55, 55, 55, 0.6);
     display: none; }
+  .common-person-view .sekkgdvbb {
+    width: 30%;
+    height: 0.9rem;
+    background: #fff;
+    float: left;
+    overflow: hidden;
+    position: relative; }
+  .common-person-view .kkxxbbsele {
+    width: 100%;
+    height: 100%;
+    background: none;
+    border: 0;
+    text-align: center;
+    font-size: 0.36rem;
+    color: #a8a8aa;
+    line-height: 0.9rem; }
+  .common-person-view .aakhbb2 {
+    background: url(../teImg/khlbxia.png) no-repeat;
+    background-size: cover;
+    width: 0.5rem;
+    height: 0.26rem;
+    margin: auto;
+    position: absolute;
+    z-index: 5;
+    right: 4%;
+    top: 0.35rem; }
   .common-person-view .khxqtop {
     width: 100%;
     height: 2.1rem;
@@ -4183,6 +4216,48 @@ $royal:                           #886aea !default;
     line-height: 0.7rem; }
   .common-person-view .gzghnrjlul > li > span > em {
     color: #e79700; }
+  .common-person-view .cpfggdv {
+    width: 100%;
+    height: 0.9rem;
+    background: #fff;
+    margin: auto;
+    margin-top: 0.1rem;
+    overflow: hidden;
+    border-radius: 3px;
+    position: relative; }
+  .common-person-view .cpfggdv > select {
+    width: 105%;
+    height: 0.9rem;
+    border: 0;
+    background: none;
+    font-size: 0.36rem;
+    color: #a8a8aa;
+    line-height: 0.9rem;
+    padding-left: 3%;
+    position: relative;
+    z-index: 7; }
+  .common-person-view .twtwdv {
+    width: 100%;
+    background: #fff;
+    height: 1rem;
+    border-radius: 3px;
+    overflow: hidden;
+    margin: auto;
+    margin-bottom: 0.1rem; }
+  .common-person-view .twtwdvf {
+    width: 16%;
+    float: left; }
+  .common-person-view .twtwdvf > img {
+    display: block;
+    width: 0.65rem;
+    height: 0.65rem;
+    margin: 0.17rem auto; }
+  .common-person-view .twtwdv > span {
+    float: right;
+    width: 83%;
+    font-size: 0.3rem;
+    color: #395983;
+    line-height: 1rem; }
 
 .common-main-view {
   /****iconfont****/

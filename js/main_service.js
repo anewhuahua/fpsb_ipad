@@ -9,8 +9,61 @@ angular.module('main.service',[])
     {id: 4, name: "保险产品",  key:'insurances',  image:'teImg/lbaitemimg5.png', page:0, products:[]}
   ];
 
+  var optionBookingState = {
+    all:     {name: '全部' ,    image: ''},
+    served:  {name: '完成服务',  image: ''},
+    unserved:{name: '未服务',   image: ''}
+  };
+  var optionOrderState = {
+    all:     {name: '全部',    image: ''},
+    all:     {name: '未付款',   image: ''},
+    all:     {name: '已付款',   image: ''},
+    all:     {name: '待审核',   image: ''},
+    all:     {name: '申购完成', image: ''}
+  };
+
+  var optionProductType = [];
+
+  var Bookings = function(s, t) {
+    var data = [];
+    var count = 0;  
+    var cursor = 0;
+    var type = t;
+    var state = s;
+
+    var add = function(item) {
+      this.count = this.data.unshift(item);
+    };
+
+    var more = function(){
+
+    };
+
+
+  };
+
+
+
+  
   var customer = {
-    bookings: [],
+    bookings: {},
+    orders: {}
+  };
+
+  var consultant = {
+    bookings: {},
+    orders: {}
+  };
+/*
+  var customer = {
+    bookings: {
+      all: {
+
+      },
+      served: [],
+      unserved: []
+    },
+
     orders: {
       all: [],
       initiated: [],
@@ -19,12 +72,27 @@ angular.module('main.service',[])
       completed: []
     }
   };
+
   var consultant = {
     bookings: {
-      all: []
+      all: [],
+      served: [],
+      unserved: [],
+      pendings: []
     },
-    orders: []
+
+    orders: {
+      all: [],
+      initiated: [],
+      paid: [],
+      running: [],
+      completed: []
+    }
+
   };
+*/
+
+
 
   // todo  then.error.finally 后续做一下
   var parseRestSuccess = function(fname, data, successHandler, errorHandler) {
@@ -206,7 +274,7 @@ angular.module('main.service',[])
         if(id) {
           Rest.customer.v1.addBooking(id, pid, function(data){
             if (parseRestSuccess('addBooking', data, successHandler, errorHandler)) { 
-              customer.bookings.unshift(data.result);
+              customer.bookings.unserved.unshift(data.result);
             }
           }, function(status){
             parseRestError('addBooking',  status, errorHandler);
@@ -218,11 +286,15 @@ angular.module('main.service',[])
           finallyHandler();
         }
       }, 
-      getBookings: function() {
-        return customer.bookings;
+
+      getBookings: function(param) {
+        return customer.bookings[param];
       },
+
       queryBookings: function(param, successHandler, errorHandler, finallyHandler) {
+
         Rest.customer.v1.queryBookings(param, id, function(data){
+
           if(parseRestSuccess('queryBookings', data, successHandler, errorHandler)) {
             customer.bookings.length = 0;
             for (var i=0;i<data.result.length;i++) {
@@ -234,6 +306,8 @@ angular.module('main.service',[])
         }, 
         finallyHandler());
       },
+
+
       submitOrder: function(pid, money, successHandler, errorHandler, finallyHandler) {
         if(id) {
           Rest.customer.v1.submitOrder(id, pid, money, function(data){

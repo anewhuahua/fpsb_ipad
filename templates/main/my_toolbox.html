@@ -234,9 +234,8 @@
                 <!-- 内容top阴影 -->
 
                 <div class="gnr2ma"> 
-       
+                 <!--
                  <ul class="qbgnr2nrul">
-                  <!--ng-class="{gjxqbcss}"-->
                     <li ><a href="" ng-class="{gjxqbcss: customer.win + customer.suffix=='orders'}" ng-click="selectPage('orders')">
                        <div><img src="teImg/gnr2rabm11a.png" title="" alt="" /></div>
                        <em>全部订单</em>
@@ -257,19 +256,83 @@
                        <div><img src="teImg/gnr2rabm4.png" title="" alt="" /></div>
                        <em>待付款</em>
                     </a></li>
-                 </ul> 
+                 </ul>-->
+                  <ion-scroll direction="x">
+                    <div class="lbanr1">
+                      <ul class="qbgnr2nrul">
+                        <li><a href="#/main/products/categories/1">
+                           <div><img src="img/lbanr1img2.png" title="" alt="" /></div>
+                           <em>公募产品</em>
+                        </a></li>
+                        <li><a href="#/main/products/categories/3">
+                           <div><img src="img/lbanr1img3.png" title="" alt="" /></div>
+                           <em>信托产品</em>
+                        </a></li>
+                        <li><a href="#/main/products/categories/4">
+                           <div><img src="img/lbanr1img4.png" title="" alt="" /></div>
+                           <em>保险产品</em>
+                        </a></li>
+                        <li><a href="#/main/products/categories/5">
+                           <div><img src="img/lbanr1img5.png" title="" alt="" /></div>
+                           <em>服务产品</em>
+                        </a></li>
+                         <li><a href="">
+                           <div><img src="img/lbanr1img6.png" title="" alt="" /></div>
+                           <em>组合产品</em>
+                        </a></li>
+                        <li><a href="">
+                           <div><img src="img/lbanr1img6.png" title="" alt="" /></div>
+                           <em>组合产品</em>
+                        </a></li>
+                      </ul>
+                    </div>   
+                  </ion-scroll>   
 
           
-                                <select>
-                                  <option value="volvo">待报备</option>
-                                  <option value="saab">待审核</option>
-                                  <option value="opel">已完成</option>
-                                  <option value="audi">未通过</option>
-                                </select>
+                <!--订单状态-s-->
+               <div class="cpfggdv">
+                        <select class="cpfggdvse">
+                            <option value="volvo">私募产品</option>
+                            <option value="saab">Saab</option>
+                            <option value="opel">Opel</option>
+                            <option value="audi">Audi</option>
+                         </select>
+                         <a class="aakhbb2" href=""></a> 
+                 
+               </div>
+               <!--订单状态-e-->       
             
-                 
-                 
-                 <div class="gnr2nrb" ng-repeat="order in customer.orders.data"><!--已完成订单-s-->
+                  <!--修改新增部分-s-->
+                    <div class="glcsqxxtop"><em>当前服务产品</em></div>
+                    
+                    <div class="twtwdv">
+                        <div class="twtwdvf"><img src='teImg/gnr2rabm3.png' /></div>
+                        <span>[私募]粤财·瀚信中鼎盈丰2期</span>
+                    </div>
+                    
+                    <div class="twtwdv">
+                        <div class="twtwdvf"><img src='teImg/gnr2rabm2.png' /></div>
+                        <span>[私募]粤财·瀚信中鼎盈丰2期</span>
+                    </div>
+                    
+                    <div class="twtwdv">
+                        <div class="twtwdvf"><img src='teImg/gnr2rabm1.png' /></div>
+                        <span>[私募]粤财·瀚信中鼎盈丰2期</span>
+                    </div>
+                    
+                    <div class="twtwdv">
+                        <div class="twtwdvf"><img src='teImg/unserved.png' /></div>
+                        <span>[私募]粤财·瀚信中鼎盈丰2期</span>
+                    </div>
+                    
+                    <div class="twtwdv">
+                        <div class="twtwdvf"><img src='teImg/served.png' /></div>
+                        <span>[私募]粤财·瀚信中鼎盈丰2期</span>
+                    </div>
+                    
+                   <!--修改新增部分-s-->
+                 <!--
+                 <div class="gnr2nrb" ng-repeat="order in customer.orders.data">
                    
                      <div class="gnr2nrbtp">
                         <span>{{order.product.issuer}}</span>
@@ -290,8 +353,7 @@
                        </ul>
                        
                      </div>
-                 </div><!--已完成订单-e-->
-                 
+                 </div> -->
                 
             </div>
       </div>
