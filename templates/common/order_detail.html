@@ -1,3 +1,5 @@
+
+
 <ion-view class="booking-view">
 
 
@@ -14,35 +16,27 @@
                    <div class="gnr2nrb"><!--已完成订单-s-->
                      
                        <div class="gnr2nrbtp">
-                          <span>订单状态：已完成</span>
+                          <span>订单状态：{{data.orderState[data.order.state.toLowerCase()].name}}</span>
                        </div>
                        
                        <div class="gnr2nrbbm">
                          <div class="gnr2nrblef">
-                            <div><img src="teImg/gnr2rabm3.png" title="" alt="" /></div>
-                            <em>已完成</em>
+                            <div><img src="{{data.orderState[data.order.state.toLowerCase()].image}}" title="" alt="" /></div>
+                            <em>{{data.orderState[data.order.state.toLowerCase()].name}}</em>
                          </div>
                          
                          <ul class="gnr2nrbbmrig">
-                           <li><span>当前持有资产(元)</span>  <em>28000</em></li>
-                           <li><span>投资笔数(笔)</span>  <em>10</em></li>
-                           <li><span>当前投资收益(元)</span>  <em>280</em></li>
-                           <li><span>预期收益(元)</span>  <em>200</em></li>
+                           <li><span>投资金额(元)</span>  <em>30000</em></li>
+                           <li><span>投资收益(元)</span>  <em>待计算</em></li>
                          </ul>
                          
                        </div>
                    </div><!--已完成订单-e-->
                    
                    
-                   <div class="xyglcsrrdv ddxqbmm" ng-click="showProduct()"><!--推荐-s-->
-                      <div class="xxlsrrp">
-                        <span class="xxlsyyss1">推荐</span>
-                        <span class="xxlsyyss2">热销</span>
-                        <em>粤财·瀚信中鼎盈丰2期</em>
-                        <a href=""><em>查看详情</em><i></i></a>
-                      </div>
-                      
-                      
+                  
+                          
+                      <!--
                       <div class="ssxqbmdv">
                           <span class="ssxqmf1">63%</span>
                           <p><span>10.50%</span> <em>预期年化</em></p>
@@ -53,8 +47,15 @@
                             <span>剩余时间 <em> 21 </em>天</span>
                           </div>
                           
-                      </div>
-                  </div>  <!--推荐-e-->
+                      </div>-->
+
+                      <div class="twtwdv" ng-click="showProduct(data.order.product)">
+                        <!--<div class="twtwdvf"><img src='teImg/gnr2rabm3.png' /></div>-->
+                        <div class="twtwdvf"><img src='{{data.productType[data.order.product.type.toLowerCase()].image}}' /></div>
+                        <span>{{data.order.product.issuer}}</span>
+                      </div>   
+
+
                   
                   
                   <div class="ddxqxx"><!--订单信息-s-->

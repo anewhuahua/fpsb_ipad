@@ -119,7 +119,27 @@ angular.module('rest.service', [])
             finallyHandler();
           });
         },
-        
+        queryBookingsCount: function(param, cid, successHandler, errorHandler, finallyHandler) {
+          type  = param.type   || 'all';
+          state = param.state  || 'all';
+          var req = {
+              method: 'GET',
+              url: domain+'ChiefFinancierService/api/customer/v1/customers/' + cid + 
+              '/bookings/count?' + '&producttype=' + type + '&state=' + state,
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
+          $http(req).success(function(data){
+            successHandler(data);
+          }).error(function(res, status){
+            errorHandler(status);
+          }).finally(function(){
+            finallyHandler();
+          });
+        },
+
+
         queryBookings: function (param, cid, successHandler, errorHandler, finallyHandler) {
           state  = param.state || 'all';
           offset = param.offset || '0';

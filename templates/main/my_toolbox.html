@@ -258,31 +258,11 @@
                     </a></li>
                  </ul>-->
                   <ion-scroll direction="x">
-                    <div class="lbanr1">
+                    <div class="lbanr1" style="width: 1000px">
                       <ul class="qbgnr2nrul">
-                        <li><a href="#/main/products/categories/1">
-                           <div><img src="img/lbanr1img2.png" title="" alt="" /></div>
-                           <em>公募产品</em>
-                        </a></li>
-                        <li><a href="#/main/products/categories/3">
-                           <div><img src="img/lbanr1img3.png" title="" alt="" /></div>
-                           <em>信托产品</em>
-                        </a></li>
-                        <li><a href="#/main/products/categories/4">
-                           <div><img src="img/lbanr1img4.png" title="" alt="" /></div>
-                           <em>保险产品</em>
-                        </a></li>
-                        <li><a href="#/main/products/categories/5">
-                           <div><img src="img/lbanr1img5.png" title="" alt="" /></div>
-                           <em>服务产品</em>
-                        </a></li>
-                         <li><a href="">
-                           <div><img src="img/lbanr1img6.png" title="" alt="" /></div>
-                           <em>组合产品</em>
-                        </a></li>
-                        <li><a href="">
-                           <div><img src="img/lbanr1img6.png" title="" alt="" /></div>
-                           <em>组合产品</em>
+                        <li ng-repeat="type in data.productType"><a href="#">
+                           <div><img src="{{type.image}}" title="" alt="" /></div>
+                           <em>{{type.name}}产品</em>
                         </a></li>
                       </ul>
                     </div>   
@@ -292,10 +272,7 @@
                 <!--订单状态-s-->
                <div class="cpfggdv">
                         <select class="cpfggdvse">
-                            <option value="volvo">私募产品</option>
-                            <option value="saab">Saab</option>
-                            <option value="opel">Opel</option>
-                            <option value="audi">Audi</option>
+                            <option ng-repeat="opt in data.orderState" value="{{opt.state}}">{{opt.name}}</option>
                          </select>
                          <a class="aakhbb2" href=""></a> 
                  
@@ -303,61 +280,24 @@
                <!--订单状态-e-->       
             
                   <!--修改新增部分-s-->
-                    <div class="glcsqxxtop"><em>当前服务产品</em></div>
-                    
+                    <div class="glcsqxxtop"><em>我的订单</em></div>
+
+                    <div class="twtwdv" ng-repeat="order in data.orders['all'].data" ng-click="goProductDetail(order.id)">
+                        <!--<div class="twtwdvf"><img src='teImg/gnr2rabm3.png' /></div>-->
+                        <div class="twtwdvf"><img src='{{data.orderState[order.state.toLowerCase()].image}}' /></div>
+                        <span>[{{data.productType[order.product.type.toLowerCase()].name}}] {{order.product.issuer}}</span>
+                    </div>   
+                    <!--
                     <div class="twtwdv">
                         <div class="twtwdvf"><img src='teImg/gnr2rabm3.png' /></div>
                         <span>[私募]粤财·瀚信中鼎盈丰2期</span>
-                    </div>
-                    
-                    <div class="twtwdv">
-                        <div class="twtwdvf"><img src='teImg/gnr2rabm2.png' /></div>
-                        <span>[私募]粤财·瀚信中鼎盈丰2期</span>
-                    </div>
-                    
-                    <div class="twtwdv">
-                        <div class="twtwdvf"><img src='teImg/gnr2rabm1.png' /></div>
-                        <span>[私募]粤财·瀚信中鼎盈丰2期</span>
-                    </div>
-                    
-                    <div class="twtwdv">
-                        <div class="twtwdvf"><img src='teImg/unserved.png' /></div>
-                        <span>[私募]粤财·瀚信中鼎盈丰2期</span>
-                    </div>
-                    
-                    <div class="twtwdv">
-                        <div class="twtwdvf"><img src='teImg/served.png' /></div>
-                        <span>[私募]粤财·瀚信中鼎盈丰2期</span>
-                    </div>
-                    
-                   <!--修改新增部分-s-->
-                 <!--
-                 <div class="gnr2nrb" ng-repeat="order in customer.orders.data">
-                   
-                     <div class="gnr2nrbtp">
-                        <span>{{order.product.issuer}}</span>
-                        <a href="#/common/orders/detail/{{order.id}}"><em>查看详情</em><i></i></a>
-                     </div>
-                     
-                     <div class="gnr2nrbbm">
-                       <div class="gnr2nrblef">
-                          <div><img src="teImg/gnr2rabm3.png" title="" alt="" /></div>
-                          <em>新订单</em>
-                       </div>
-                       
-                       <ul class="gnr2nrbbmrig">
-                         <li><span>当前持有资产(元)</span>  <em>28000</em></li>
-                         <li><span>投资笔数(笔)</span>  <em>10</em></li>
-                         <li><span>当前投资收益(元)</span>  <em>280</em></li>
-                         <li><span>预期收益(元)</span>  <em>200</em></li>
-                       </ul>
-                       
-                     </div>
-                 </div> -->
-                
+                    </div>-->
+         
             </div>
       </div>
 </div>
+
+
 <!-- orders -->
 <!-- bookings -->
 <div class="main1" ng-switch-when='bookings'>
@@ -367,8 +307,7 @@
                 <!-- 内容top阴影 -->
 
                 <div class="gnr2ma"> 
-                  
-                  
+
                    <div class="glcsqtop"><!--理财师top-s-->
                       <span></span>
                       <em>我的理财师</em>
@@ -395,42 +334,20 @@
                            <b>首席金服高级理财师，十年从业经验，为客户创造超过1200万利润先后于中国人民银行总行从事金融研究与实务工作，竭诚为您服务。</b> 
                            
                            
-                           
                         </div><!--理财师简介右边-->
                         
                    </div>
                   
                    <div class="glcsqxxtop"><em>我的预约</em></div>
-                      
-                      
-                   <div class="gnr2nrb" ng-repeat='booking in customer.bookings.data'><!--已完成订单-s-->
-                     
-                       <div class="gnr2nrbtp">
-                          <span>{{booking.product.issuer}}</span>
-                          
-                       </div>
-                       
-                       <div class="gnr2nrbbm">
-                         <div class="gnr2nrblef">
-                            <div><img src="teImg/gnr2rabm2.png" title="" alt="" /></div>
-                            <em>已预约</em>
-                         </div>
-                         
-                         <ul class="gnr2nrbbmrig">
-                           <li><span>预期年化</span>  <em>10.50%</em></li>
-                           <li><span>理财期限</span>  <em>120天</em></li>
-                           <li><span>认购费用</span>  <em>10万起</em></li>
-                           
-                         </ul>
-                         
-                       </div>
-                   </div><!--已完成订单-e-->
-                   
-                 
-                 
+                   <div class="twtwdv" ng-repeat="booking in data.bookings['all'].data" ng-click="showProduct(booking.product)">
+                        <!--<div class="twtwdvf"><img src='teImg/gnr2rabm3.png' /></div>-->
+                        <div class="twtwdvf"><img src='{{data.bookingState[booking.state.toLowerCase()].image}}' /></div>
+                        <span>[{{data.productType[booking.product.type.toLowerCase()].name}}] {{booking.product.issuer}}</span>
+                    </div>   
+
               </div>
          
-        </div><!--内容右侧结束-->
+    </div><!--内容右侧结束-->
 </div>
 <!-- bookings -->
     

@@ -61,9 +61,14 @@ angular.module('starter.controllers', [])
   //console.log('124455');
   var oid = $stateParams.orderId;
   console.log(oid);
+  if (Main.getRole() == 'Customer') {
+    $scope.data.order = Main.customer.getOrder(oid);
+  } else if(Main.getRole() == 'Consultant') {
+  }
+  $scope.data.orderState = Main.getOrderState();
+  $scope.data.productType = Main.getProductType();
 
   $scope.data.win = 'detail';
-
   $scope.selectWin = function(item){
     console.log(item);
     $scope.data.win=item;
@@ -691,13 +696,7 @@ angular.module('starter.controllers', [])
 
 
 .controller('mainCustomerCtrl', function($scope, $state, $ionicModal, $timeout, $cordovaCamera, MultipleViewsManager, Main) {
-  //** common function
-  var refreshData = function() {
-    Main.customer.queryBookings({}, function(data){
-    }, function(status){}, function(){});
-    Main.customer.queryOrders({}, function(data){
-    }, function(status){}, function(){});
-  }
+
   //**
   //** controller data
   $scope.customer = {
@@ -709,18 +708,45 @@ angular.module('starter.controllers', [])
     information: {},
     other: {}
   };
+  $scope.data = {
+    productType: Main.getProductType(),
+    orderState: Main.getOrderState(),
+    bookingState: Main.getBookingState(),
+    bookings: Main.customer.getBookings(),
+    orders: Main.customer.getOrders()
+  };
+
   //**
   //** initialize
-  $scope.customer.bookings.data = Main.customer.getBookings();
-  $scope.customer.orders.data = Main.customer.getOrders();
+  //$scope.customer.orders.data = Main.customer.getOrders();
   $scope.customer.information.profile = {
     touxiang: "teImg/ghnr1lef.png" 
   };
   $scope.customer.other.promotion = {
     stuff: "teImg/ddztjh.png"
   };
+  $scope.goProductDetail = function(oid) {
+    $state.go('common.order_detail', {orderId: oid});
+  }
+
+  //**
+  //** common function
+  var refreshData = function() {
+    //console.log($scope.data.bookings['all'].data);
+    for (var key in $scope.data.bookings){
+      //console.log($scope.data.bookings[key]);
+      Main.customer.queryBookings($scope.data.bookings[key], function(data){
+      }, function(status){}, function(){});
+    }
+    for (var key in $scope.data.orders){
+      //console.log($scope.data.orders[key]);
+      Main.customer.queryOrders($scope.data.orders[key], function(data){
+      }, function(status){}, function(){});
+    }    
+  }
   refreshData();
   //**
+
 
   MultipleViewsManager.updated(function(params) {
     var arr = params.msg.split("-");

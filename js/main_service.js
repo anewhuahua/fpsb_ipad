@@ -1,7 +1,7 @@
 angular.module('main.service',[])
 .factory('Main', function(Rest, Storage) {
-  var id = null;
-  var role = 'Guest';
+
+// Dictionary
   var categories = [
     {id: 1, name: "公募基金",  key:'publicfunds', image:'teImg/lbaitemimg2.png', page:0, products:[]},
     {id: 2, name: "私募基金",  key:'privatefunds',image:'teImg/lbaitemimg3.png', page:0, products:[]},
@@ -10,89 +10,119 @@ angular.module('main.service',[])
   ];
 
   var optionBookingState = {
-    all:     {name: '全部' ,    image: ''},
-    served:  {name: '完成服务',  image: ''},
-    unserved:{name: '未服务',   image: ''}
+    all:             {state: 'all',            name: '全部' ,         image: ''},
+    initiated:       {state:' initiated',      name: '待分配理财师',   image: 'teImg/unserved.png'},
+    assigned:        {state: 'assigned',       name: '已分配理财师',   image: 'teImg/unserved.png'},
+    accepted:        {state: 'accepted',       name: '理财师已接受',   image: 'teImg/unserved.png'},
+    completed:       {state: 'completed',      name: '服务完成',      image: 'teImg/served.png'},
+    cancelled:       {state: 'cancelled',      name: '预约取消',      image: 'teImg/unserved.png'}
   };
   var optionOrderState = {
-    all:     {name: '全部',    image: ''},
-    all:     {name: '未付款',   image: ''},
-    all:     {name: '已付款',   image: ''},
-    all:     {name: '待审核',   image: ''},
-    all:     {name: '申购完成', image: ''}
+    all:             {state: 'all',            name: '全部' ,         image: 'teImg/gnr2rabm11.png'},
+    initiated:       {state: 'initiated',      name: '已提交' ,       image: 'teImg/gnr2rabm1.png'},
+    paid:            {state: 'paid',           name: '已付款' ,       image: 'teImg/gnr2rabm3.png'},
+    documented:      {state: 'documented',     name: '资料已上传',     image: 'teImg/gnr2rabm4.png'},
+    completed:       {state: 'completed',      name: '已完成',        image: 'teImg/gnr2rabm2.png'},
+    cancelled:       {state: 'cancelled',      name: '已取消',        image: 'teImg/gnr2rabm4.png'},
+    rejected:        {state: 'rejected',       name: '已拒绝',        image: 'teImg/gnr2rabm4.png'},
   };
-
-  var optionProductType = [];
-
-  var Bookings = function(s, t) {
-    var data = [];
-    var count = 0;  
-    var cursor = 0;
-    var type = t;
-    var state = s;
-
-    var add = function(item) {
-      this.count = this.data.unshift(item);
-    };
-
-    var more = function(){
-
-    };
-
-
+  var optionProductType = {
+    alltype:         {type:  'alltype',          name: '全部',         image: 'teImg/gnr2rabm11.png'},
+    privatefund:     {type:  'privatefund',    name: '私募',         image: 'teImg/lbaitemimg3.png'},
+    publicfund:      {type:  'publicfund',     name: '公募',         image: 'teImg/lbaitemimg2.png'},
+    trust:           {type:  'trust',          name: '信托',         image: 'teImg/lbaitemimg4.png'},
+    portfolio:       {type:  'portfolio',      name: '资管',         image: 'teImg/lbaitemimg6.png'},
+    insurance:       {type:  'insurance',      name: '保险',         image: 'teImg/lbaitemimg5.png'}
   };
 
 
-
-  
-  var customer = {
-    bookings: {},
-    orders: {}
-  };
-
-  var consultant = {
-    bookings: {},
-    orders: {}
-  };
-/*
-  var customer = {
-    bookings: {
-      all: {
-
-      },
-      served: [],
-      unserved: []
+// bookings
+  var Bookings = function(){
+    this.data = [];
+    this.count = 0;
+    this.cursor = 0;
+  }
+  Bookings.prototype = {
+    getData: function(){
+      return this.data;
     },
+    getCount: function(){
+      return this.count;
+    },
+    getCursor: function(){
+      return this.cursor;
+    }
+  }
 
-    orders: {
-      all: [],
-      initiated: [],
-      paid: [],
-      running: [],
-      completed: []
+  var StateBookings = function(param) {
+    this.state = param.state;
+    this.getState = function(){
+      return this.state;
+    }
+  }
+  StateBookings.prototype = new Bookings();   
+
+  var TypeBookings = function(param) {
+    this.type = param.type;
+    this.getType = function() {
+      if (this.type=='alltype'){
+        return 'all';
+      } else {
+        return this.type;
+      }
     }
   };
+  TypeBookings.prototype = new Bookings();
 
-  var consultant = {
-    bookings: {
-      all: [],
-      served: [],
-      unserved: [],
-      pendings: []
-    },
-
-    orders: {
-      all: [],
-      initiated: [],
-      paid: [],
-      running: [],
-      completed: []
+// orders
+  var Orders = function(){
+    this.data = [];
+    this.count = 0;
+    this.cursor = 0;
+  }
+  var StateOrders = function(param) {
+    this.state = param.state;
+    this.getState = function(){
+      return this.state;
     }
-
   };
-*/
+  StateOrders.prototype = new Orders();   
+
+  var TypeOrders = function(param) {
+    this.type = param.type;
+    this.getType = function() {
+      if (this.type=='alltype'){
+        return 'all';
+      } else {
+        return this.type;
+      }
+    }
+  };
+  TypeOrders.prototype = new Orders();
+
+// Global member
+  var roleCustomer = {
+    bookings: {},
+    orders:   {}
+  };
+  var id = null;
+  var role = 'Guest';
 
 
+// Initialize
+  var Init = function(){
+    for (var key in optionBookingState){
+      roleCustomer.bookings[key] = new StateBookings(optionBookingState[key]);
+    }
+    for (var key in optionOrderState){
+      roleCustomer.orders[key]   = new StateOrders(optionOrderState[key]);
+    }
+    for (var type in optionProductType){
+      roleCustomer.bookings[type] = new TypeBookings(optionProductType[type]);
+      roleCustomer.orders[type]   = new TypeOrders(optionProductType[type]);
+    }
+  }();
+  //console.log(roleCustomer);
 
   // todo  then.error.finally 后续做一下
   var parseRestSuccess = function(fname, data, successHandler, errorHandler) {
@@ -125,6 +155,15 @@ angular.module('main.service',[])
   };
 
   return {
+    getProductType: function(){
+      return optionProductType;
+    },
+    getOrderState: function(){
+      return optionOrderState;
+    },
+    getBookingState: function(){
+      return optionBookingState;
+    },
     getRole: function() {
       return role;
     },
@@ -140,7 +179,7 @@ angular.module('main.service',[])
         }
       } else if (param.username && param.password) {
         username = param.username;
-        password = param.password
+        password = param.password;
       } else {
 
       }
@@ -287,25 +326,64 @@ angular.module('main.service',[])
         }
       }, 
 
-      getBookings: function(param) {
-        return customer.bookings[param];
+      getBookings: function() {
+        return roleCustomer.bookings;
+      },
+      getOrders: function() {
+        return roleCustomer.orders;
+      },
+      getOrder: function(oid) {
+        for (var key in optionOrderState){
+          for (var i=0; i<roleCustomer.orders[key].data.length;i++){
+            if (roleCustomer.orders[key].data[i].id == oid) {     
+              return roleCustomer.orders[key].data[i];
+            }
+          } 
+        }
+        for (var key in optionProductType){
+          for (var i=0; i<roleCustomer.orders[key].data.length;i++){
+            if (roleCustomer.orders[key].data[i].id == oid) {
+              return roleCustomer.orders[key].data[i];
+            }
+          } 
+        }
       },
 
-      queryBookings: function(param, successHandler, errorHandler, finallyHandler) {
+      queryBookingsCount: function(bookings) {
+        if (bookings.constructor ==  TypeBookings) {
+          Rest.queryBookingsCount({type: bookings.getType()}, function(data){
+            console.log(data);
+            bookings.count = 1;
+          }, function(status){}, function(){});
+        } else if (bookings.constructor ==  StateBookings) {
+          Rest.queryBookingsCount({type: bookings.getState()}, function(data){
+            console.log(data);
+            bookings.count = 1;
+          }, function(status){}, function(){});
+        }
+      },
+
+      queryBookings: function(bookings, successHandler, errorHandler, finallyHandler) {
+        var param = {};
+       
+        if (bookings instanceof TypeBookings) {
+          param = {type:  bookings.getType()};
+        } else if (bookings instanceof StateBookings) {
+          param = {state: bookings.getState()};
+        } else {
+        }
 
         Rest.customer.v1.queryBookings(param, id, function(data){
-
           if(parseRestSuccess('queryBookings', data, successHandler, errorHandler)) {
-            customer.bookings.length = 0;
-            for (var i=0;i<data.result.length;i++) {
-              customer.bookings.unshift(data.result[i]);
-            }
+            bookings.data = data.result;
           }
         }, function(status){
-          parseRestError('queryBookings',  status, errorHandler);
+          parseRestError('queryBookings', status, errorHandler);
         }, 
         finallyHandler());
       },
+
+
 
 
       submitOrder: function(pid, money, successHandler, errorHandler, finallyHandler) {
@@ -325,34 +403,34 @@ angular.module('main.service',[])
           finallyHandler();
         }
       },
-      getOrders: function() {
-        return customer.orders;
-      },
-      queryOrders: function(param, successHandler, errorHandler, finallyHandler) {
+
+      queryOrders: function(orders, successHandler, errorHandler, finallyHandler) {
+        var param = {};
+        if (orders instanceof TypeOrders) {
+          param = {type:  orders.getType()};
+        } else if (orders instanceof StateOrders) {
+          param = {state: orders.getState()};
+        } else {
+        }
+
         Rest.customer.v1.queryOrders(param, id, function(data){
           var state  = param.state || 'all';
           if(parseRestSuccess('queryOrders', data, successHandler, errorHandler)) {
-            /*
-            customer.orders.length = 0;
-            for (var i=0;i<data.result.length;i++) {
-              customer.orders.unshift(data.result[i]);
-            }*/
-            customer.orders[state] = data.result;
+            orders.data = data.result;
           }
         }, function(status){
           parseRestError('queryOrders',  status, errorHandler);
         }, 
         finallyHandler());
       }
-
-
     }, // customer
 
 ////////////////////////////////////////////////
 
     consultant: {
+
       getBookings: function() {
-        return consultant.bookings;
+        return null;
       },
       getBooking: function(bid) {
         for (var i=0; i<consultant.bookings.all.length; i++) {
