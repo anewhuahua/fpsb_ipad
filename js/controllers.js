@@ -684,14 +684,17 @@ angular.module('starter.controllers', [])
     $scope.data.selectedItem = params.msg;
   });
 
-  $scope.selectItem = function(item) {
+
+    $scope.selectItem = function(item) {
       MultipleViewsManager.updateView('main-my-toolbox', {msg: item});
       $scope.data.selectedItem = item;
-  }
-  $scope.showItem = function(item){
-    var arr = $scope.data.selectedItem.split("-");
-    return (arr[0] == item)
-  }
+    }
+    $scope.showItem = function(item){
+      var arr = $scope.data.selectedItem.split("-");
+      return (arr[0] == item)
+    }
+
+  
 })
 
 
@@ -713,7 +716,8 @@ angular.module('starter.controllers', [])
     orderState: Main.getOrderState(),
     bookingState: Main.getBookingState(),
     bookings: Main.customer.getBookings(),
-    orders: Main.customer.getOrders()
+    orders: Main.customer.getOrders(),
+    currentOrderState: 'all'
   };
 
   //**
@@ -743,6 +747,7 @@ angular.module('starter.controllers', [])
       Main.customer.queryOrders($scope.data.orders[key], function(data){
       }, function(status){}, function(){});
     }    
+    //console.log($scope.data.currentOrderState);
   }
   refreshData();
   //**
@@ -756,6 +761,7 @@ angular.module('starter.controllers', [])
     for(var i=1;i<arr.length;i++) {
       $scope.customer.suffix = $scope.customer.suffix + '-' + arr[i];
     }
+
   });
 
   $scope.selectPage = function(item) {            

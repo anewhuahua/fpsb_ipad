@@ -109,6 +109,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'ionicMultipleViews','starter.c
   .state('main.my', {
     url: '/my',
     views: {
+      
       'main-my-menu': {
          templateUrl: 'templates/main/my_menu.html',
          controller: 'CustomerMenuCtrl'

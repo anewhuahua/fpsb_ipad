@@ -270,8 +270,9 @@
 
           
                 <!--订单状态-s-->
+             
                <div class="cpfggdv">
-                        <select class="cpfggdvse">
+                        <select class="cpfggdvse" ng-model="data.currentOrderState">
                             <option ng-repeat="opt in data.orderState" value="{{opt.state}}">{{opt.name}}</option>
                          </select>
                          <a class="aakhbb2" href=""></a> 
@@ -280,6 +281,7 @@
                <!--订单状态-e-->       
             
                   <!--修改新增部分-s-->
+                  
                     <div class="glcsqxxtop"><em>我的订单</em></div>
 
                     <div class="twtwdv" ng-repeat="order in data.orders['all'].data" ng-click="goProductDetail(order.id)">
