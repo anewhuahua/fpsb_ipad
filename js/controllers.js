@@ -716,9 +716,9 @@ angular.module('starter.controllers', [])
     orders: Main.customer.getOrders(),
 
     currentOrderState: 'all',
-    currentOrder = null,
+    currentOrder: null,
     currentBookingState: 'all',
-    currentBooking = null
+    currentBooking: null
   };
 
   //**
