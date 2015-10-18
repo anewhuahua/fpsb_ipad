@@ -384,7 +384,9 @@ angular.module('main.service',[])
       },
 
 
+      queryMoreBookings: function(bookings, successHandler, errorHandler, finallyHandler){  //currentBooking
 
+      },
 
       submitOrder: function(pid, money, successHandler, errorHandler, finallyHandler) {
         if(id) {

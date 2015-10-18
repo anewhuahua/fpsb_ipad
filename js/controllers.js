@@ -571,9 +571,6 @@ angular.module('starter.controllers', [])
 //**
 
 
-
-
-
   MultipleViewsManager.updated(function(params) {
     var arr = params.msg.split("-");
 
@@ -717,7 +714,11 @@ angular.module('starter.controllers', [])
     bookingState: Main.getBookingState(),
     bookings: Main.customer.getBookings(),
     orders: Main.customer.getOrders(),
-    currentOrderState: 'all'
+
+    currentOrderState: 'all',
+    currentOrder = null,
+    currentBookingState: 'all',
+    currentBooking = null
   };
 
   //**
