@@ -148,7 +148,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'ionicMultipleViews','starter.c
   .state('promotion.product_detail', {
     url: '/product/detail/:promotionId',
     views: {
-      'booking-detail': {
+      'promotion-product-detail': {
          templateUrl: 'templates/promotion/product_detail.html',
          controller: 'promotionDetailCtrl'
       }

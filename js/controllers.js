@@ -14,6 +14,9 @@ angular.module('starter.controllers', [])
   //});
 })
 
+.controller('promotionDetailCtrl', function($scope){
+
+})
 
 .controller('examCtrl', function($scope) {
   $scope.win = {
@@ -423,11 +426,16 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('mainIndexCtrl', function($scope, $cordovaCamera, Main) {
+.controller('mainIndexCtrl', function($scope, $state, Main) {
 
   //Rest.getProducts({type:'privatefunds'});
   //Rest.login('customer','password');
   $scope.data.categories = Main.getCategories();
+
+  $scope.goPromotion =  function(id){
+    $state.go('promotion.product_detail', {promotionId: id});
+  }
+
 })
 .controller('mainGuestCtrl', function($scope, Main) {
   $scope.$on('$ionicView.enter',function(){

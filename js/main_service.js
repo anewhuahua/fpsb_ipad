@@ -426,8 +426,8 @@ angular.module('main.service',[])
       queryOrders: function(orders, successHandler, errorHandler, finallyHandler) {
         var param = {};
         if (orders instanceof TypeOrders) {
-          //param = {type:  orders.getType()};
-          param = {type:  'PrivateFund'};
+          param = {type:  orders.getType()};
+          //param = {type:  'PrivateFund'};
           //console.log('tyson: '+param);
         } else if (orders instanceof StateOrders) {
           param = {state: orders.getState()};
