@@ -47,94 +47,20 @@
                 </div><!-- 内容1结束 -->
   
               <div class="gnr2ma"> 
-                 <div class="gnr2nra1"><!--全部订单-s-->
-                         <a href="" class="gnr2nratop" ng-click="selectPage('orders', 'all')">
-                             <p> 
-                               <em><img src="teImg/gnr2nr1toplf1.jpg" /></em>  
-                               <span>查看全部订单</span> 
-                             </p>
-                            
-                         </a>
-                         
-                 </div><!--全部订单-e-->
-                 
-                 
-                 <div class="gnr2nrb"><!--已完成订单-s-->
-                   
-                     <div class="gnr2nrbtp">
-                        <span>[私募]粤财·瀚信中鼎盈丰2期</span>
-                        <a href=""><em>查看详情</em><i></i></a>
-                     </div>
-                     
-                     <div class="gnr2nrbbm">
-                       <div class="gnr2nrblef">
-                          <div><img src="teImg/gnr2rabm3.png" title="" alt="" /></div>
-                          <em>已完成</em>
-                       </div>
+                  <div class="gnr2nrc">
+                    <div class="gnr2nrctop" ng-click="selectPage('orders', 'all')">
+                      <p> 
+                         <em><img src="teImg/gnr2nr1toplf1.jpg" /></em>  
+                         <span>查看全部订单</span> 
+                       </p>
                        
-                       <ul class="gnr2nrbbmrig">
-                         <li><span>当前持有资产(元)</span>  <em>28000</em></li>
-                         <li><span>投资笔数(笔)</span>  <em>10</em></li>
-                         <li><span>当前投资收益(元)</span>  <em>280</em></li>
-                         <li><span>预期收益(元)</span>  <em>200</em></li>
-                       </ul>
-                       
-                     </div>
+                   </div>
+                     <div class="twtwdv" ng-repeat="order in data.orders['all'].data | limitTo: 3" ng-click="goProductDetail(order.id)">
+                        <!--<div class="twtwdvf"><img src='teImg/gnr2rabm3.png' /></div>-->
+                        <div class="twtwdvf"><img src='{{data.orderState[order.state.toLowerCase()].image}}' /> <em>{{data.orderState[order.state.toLowerCase()].name}}</em> </div>
+                        <span>[{{data.productType[order.product.type.toLowerCase()].name}}] {{order.product.issuer}}</span>
+                    </div>   
                  
-                 </div><!--已完成订单-e-->
-                 
-                 
-                 <div class="gnr2nrb"><!--已完成订单-s-->
-                   
-                     <div class="gnr2nrbtp">
-                        <span>[私募]粤财·瀚信中鼎盈丰2期</span>
-                        <a href=""><em>查看详情</em><i></i></a>
-                     </div>
-                     
-                     <div class="gnr2nrbbm">
-                       <div class="gnr2nrblef">
-                          <div><img src="teImg/gnr2rabm2.png" title="" alt="" /></div>
-                          <em>已完成</em>
-                       </div>
-                       
-                       <ul class="gnr2nrbbmrig">
-                         <li><span>当前持有资产(元)</span>  <em>28000</em></li>
-                         <li><span>投资笔数(笔)</span>  <em>10</em></li>
-                         <li><span>当前投资收益(元)</span>  <em>280</em></li>
-                         <li><span>预期收益(元)</span>  <em>200</em></li>
-                       </ul>
-                       
-                     </div>
- 
-                 </div><!--已完成订单-e-->
-                 
-                 
-                 <div class="gnr2nrb"><!--已完成订单-s-->
-                   
-                     <div class="gnr2nrbtp">
-                        <span>[私募]粤财·瀚信中鼎盈丰2期</span>
-                        <a href=""><em>查看详情</em><i></i></a>
-                     </div>
-                     
-                     <div class="gnr2nrbbm">
-                       <div class="gnr2nrblef">
-                          <div><img src="teImg/gnr2rabm1.png" title="" alt="" /></div>
-                          <em>已完成</em>
-                       </div>
-                       
-                       <ul class="gnr2nrbbmrig">
-                         <li><span>当前持有资产(元)</span>  <em>28000</em></li>
-                         <li><span>投资笔数(笔)</span>  <em>10</em></li>
-                         <li><span>当前投资收益(元)</span>  <em>280</em></li>
-                         <li><span>预期收益(元)</span>  <em>200</em></li>
-                       </ul>
-                       
-                     </div>
-    
-                 </div><!--已完成订单-e-->
-                 
-                 
-                 <div class="gnr2nrc">
                  
                    <div class="gnr2nrctop" ng-click="selectPage('bookings', 'all')">
                       <p> 
@@ -152,53 +78,32 @@
                       <div class="gnrnrcrig">
                          <span class="gnr2nrcrig">我已为您创造财富 <em>82934894.3 </em>元</span>
                          <div class="gnr2ncrgbm">
-                            <span>当前服务产品</span>
+                            <span>竭诚为客户服务, 首席金服特约</span>
+                            <!--
                             <p>
                               <em>粤财·瀚信丰2期(<i>审核中</i>)</em>
                               <em>粤财·瀚信中鼎盈丰1期(<i>已完成</i>)</em>
-                            </p>
+                            </p>-->
                          </div>
                       
                       </div>
-                      
-                      
-                   
                    </div>
                    
                    
+
                    
-                   
-                   
-                   <div class="gnr2nrctopd">
+                   <div class="gnr2nrctopd" ng-click="selectPage('bookings', 'all')">
                       <p> 
-                         <em><img src='teImg/cpxqsclog.png' /></em>  
-                         <span>我的预约</span> 
+                         <em><img src='teImg/gnr2nr1toplf1.jpg' /></em>  
+                         <span>查看全部预约</span> 
                        </p>
-                       <a href=""><em>查看全部</em><i></i></a>
                    </div>
                    
-                   <div class="gnr2nrb" ng-repeat='booking in customer.bookings.data'><!--已完成订单-s-->
-                     
-                       <div class="gnr2nrbtp">
-                          <span>{{booking.product.issuer}}</span>
-                          
-                       </div>
-                       
-                       <div class="gnr2nrbbm">
-                         <div class="gnr2nrblef">
-                            <div><img src="teImg/gnr2rabm2.png" title="" alt="" /></div>
-                            <em>已预约</em>
-                         </div>
-                         
-                         <ul class="gnr2nrbbmrig">
-                           <li><span>预期年化</span>  <em>10.50%</em></li>
-                           <li><span>理财期限</span>  <em>120天</em></li>
-                           <li><span>认购费用</span>  <em>10万起</em></li>
-                           
-                         </ul>
-                         
-                       </div>
-                   </div><!--已完成订单-e-->
+                   <div class="twtwdv" ng-repeat="booking in data.bookings['all'].data | limitTo: 5" ng-click="showProduct(booking.product)">
+                        <!--<div class="twtwdvf"><img src='teImg/gnr2rabm3.png' /></div>-->
+                        <div class="twtwdvf"><img src='{{data.bookingState[booking.state.toLowerCase()].image}}' /> <em>{{data.bookingState[booking.state.toLowerCase()].name}}</em> </div>
+                        <span>[{{data.productType[booking.product.type.toLowerCase()].name}}] {{booking.product.issuer}}</span>
+                    </div>   
              
 
                  </div>

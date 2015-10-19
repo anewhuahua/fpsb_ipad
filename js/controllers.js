@@ -739,6 +739,7 @@ angular.module('starter.controllers', [])
     bookings: Main.customer.getBookings(),
     orders: Main.customer.getOrders(),
 
+
     currentOrderState: 'all',
     currentOrder: null,
     currentBookingState: 'all',
@@ -763,32 +764,14 @@ angular.module('starter.controllers', [])
     $state.go('common.order_detail', {orderId: oid});
   };
 
-  /*
-  var initialize = function() {
-    Main.customer.queryBookings($scope.data.bookings['all'], function(data){
-    }, function(status){}, function(){});
-    Main.customer.queryOrders($scope.data.orders['all'], function(data){
-    }, function(status){}, function(){});
-  }();  //立即执行*/
 
   var refreshData = function() {
-    //console.log($scope.data.bookings['all'].data);
-    /*
-    for (var key in $scope.data.bookings){
-      //console.log($scope.data.bookings[key]);
-      Main.customer.queryBookings($scope.data.bookings[key], function(data){
-      }, function(status){}, function(){});
-    }
-    for (var key in $scope.data.orders){
-      //console.log($scope.data.orders[key]);
-      Main.customer.queryOrders($scope.data.orders[key], function(data){
-      }, function(status){}, function(){});
-    } */
-
     Main.customer.queryOrders($scope.data.currentOrder, function(data){
     }, function(status){}, function(){});
     Main.customer.queryBookings($scope.data.currentBooking, function(data){
     }, function(status){}, function(){});
+
+
     //console.log($scope.data.currentOrderState);
   };
   $scope.selectOrders = function(param){
@@ -816,6 +799,14 @@ angular.module('starter.controllers', [])
   
     $scope.customer.win = first;
     $scope.customer.subWin = second;
+
+    if($scope.customer.win == 'orders') {
+      $scope.data.currentOrder = $scope.data.orders[second];
+      refreshData();
+    } else if ($scope.customer.win == 'bookings') {
+      $scope.data.currentBooking = $scope.data.bookings[second];
+      refreshData();
+    }
   });
 
   $scope.selectPage = function(first, second) {            
