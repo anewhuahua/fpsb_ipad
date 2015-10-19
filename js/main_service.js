@@ -10,7 +10,7 @@ angular.module('main.service',[])
   ];
 
   var optionBookingState = {
-    all:             {state: 'all',            name: '全部' ,         image: ''},
+    //all:             {state: 'all',            name: '全部' ,         image: ''},
     initiated:       {state:' initiated',      name: '待分配理财师',   image: 'teImg/unserved.png'},
     assigned:        {state: 'assigned',       name: '已分配理财师',   image: 'teImg/unserved.png'},
     accepted:        {state: 'accepted',       name: '理财师已接受',   image: 'teImg/unserved.png'},
@@ -18,7 +18,7 @@ angular.module('main.service',[])
     cancelled:       {state: 'cancelled',      name: '预约取消',      image: 'teImg/unserved.png'}
   };
   var optionOrderState = {
-    all:             {state: 'all',            name: '全部' ,         image: 'teImg/gnr2rabm11.png'},
+    //all:             {state: 'all',            name: '全部' ,         image: 'teImg/gnr2rabm11.png'},
     initiated:       {state: 'initiated',      name: '已提交' ,       image: 'teImg/gnr2rabm1.png'},
     paid:            {state: 'paid',           name: '已付款' ,       image: 'teImg/gnr2rabm3.png'},
     documented:      {state: 'documented',     name: '资料已上传',     image: 'teImg/gnr2rabm4.png'},
@@ -27,7 +27,7 @@ angular.module('main.service',[])
     rejected:        {state: 'rejected',       name: '已拒绝',        image: 'teImg/gnr2rabm4.png'},
   };
   var optionProductType = {
-    alltype:         {type:  'alltype',          name: '全部',         image: 'teImg/gnr2rabm11.png'},
+    all:             {type:  'all',            name: '全部',         image: 'teImg/gnr2rabm11.png'},
     privatefund:     {type:  'privatefund',    name: '私募',         image: 'teImg/lbaitemimg3.png'},
     publicfund:      {type:  'publicfund',     name: '公募',         image: 'teImg/lbaitemimg2.png'},
     trust:           {type:  'trust',          name: '信托',         image: 'teImg/lbaitemimg4.png'},

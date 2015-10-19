@@ -740,27 +740,33 @@ angular.module('starter.controllers', [])
 
   //**
   //** initialize
-  //$scope.customer.orders.data = Main.customer.getOrders();
+  $scope.data.currentOrder = $scope.data.orders['all'];
+  $scope.data.currentBooking = $scope.data.bookings['all'];
+
   $scope.customer.information.profile = {
     touxiang: "teImg/ghnr1lef.png" 
   };
   $scope.customer.other.promotion = {
     stuff: "teImg/ddztjh.png"
   };
-  $scope.goProductDetail = function(oid) {
-    $state.go('common.order_detail', {orderId: oid});
-  };
-  $scope.selectOrders = function(orders){
-    $scope.data.currentOrders = orders;
-  };
-  $scope.selectBookings =function(bookings) {
-    $scope.data.currentBookings = bookings;
-  }
 
   //**
   //** common function
+  $scope.goProductDetail = function(oid) {
+    $state.go('common.order_detail', {orderId: oid});
+  };
+
+  /*
+  var initialize = function() {
+    Main.customer.queryBookings($scope.data.bookings['all'], function(data){
+    }, function(status){}, function(){});
+    Main.customer.queryOrders($scope.data.orders['all'], function(data){
+    }, function(status){}, function(){});
+  }();  //立即执行*/
+
   var refreshData = function() {
     //console.log($scope.data.bookings['all'].data);
+    /*
     for (var key in $scope.data.bookings){
       //console.log($scope.data.bookings[key]);
       Main.customer.queryBookings($scope.data.bookings[key], function(data){
@@ -770,12 +776,25 @@ angular.module('starter.controllers', [])
       //console.log($scope.data.orders[key]);
       Main.customer.queryOrders($scope.data.orders[key], function(data){
       }, function(status){}, function(){});
-    }    
+    } */
+
+    Main.customer.queryOrders($scope.data.currentOrder, function(data){
+    }, function(status){}, function(){});
+    Main.customer.queryBookings($scope.data.currentBooking, function(data){
+    }, function(status){}, function(){});
     //console.log($scope.data.currentOrderState);
+  };
+  $scope.selectOrders = function(param){
+    $scope.data.currentOrder = $scope.data.orders[param];
+    refreshData();
+  };
+  $scope.selectBookings =function(param) {
+    $scope.data.currentBooking = $scope.data.bookings[param];
+    refreshData();
   }
   refreshData();
+  
   //**
-
   $scope.showContent = function(first, second){
     if ($scope.customer.win==first && $scope.customer.subWin==second){
       return true;

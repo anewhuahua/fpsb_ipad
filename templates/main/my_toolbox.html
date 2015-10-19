@@ -242,7 +242,7 @@
                   <ion-scroll direction="x">
                     <div class="lbanr1" style="width: 1000px">
                       <ul class="qbgnr2nrul">
-                        <li ng-repeat="type in data.productType" ng-class="{gjxqbcss: showContent('orders', '{{type.type}}')}" ng-click="selectPage('orders', '{{type.type}}')"><a href="#">
+                        <li ng-repeat="type in data.productType" ng-class="{gjxqbcss: showContent('orders', '{{type.type}}')}" ng-click="selectPage('orders', '{{type.type}}'); selectOrders('{{type.type}}');"><a href="#">
                            <div><img src="{{type.image}}" title="" alt="" /></div>
                            <em>{{type.name}}产品</em>
                         </a></li>
@@ -266,7 +266,7 @@
                   
                     <div class="glcsqxxtop"><em>我的订单</em></div>
 
-                    <div class="twtwdv" ng-repeat="order in data.orders['all'].data" ng-click="goProductDetail(order.id)">
+                    <div class="twtwdv" ng-repeat="order in data.currentOrder.data" ng-click="goProductDetail(order.id)">
                         <!--<div class="twtwdvf"><img src='teImg/gnr2rabm3.png' /></div>-->
                         <div class="twtwdvf"><img src='{{data.orderState[order.state.toLowerCase()].image}}' /> <em>{{data.orderState[order.state.toLowerCase()].name}}</em> </div>
                         <span>[{{data.productType[order.product.type.toLowerCase()].name}}] {{order.product.issuer}}</span>
