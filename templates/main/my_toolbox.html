@@ -47,8 +47,8 @@
                 </div><!-- 内容1结束 -->
   
               <div class="gnr2ma"> 
-                 <div class="gnr2nra"><!--全部订单-s-->
-                         <a href="" class="gnr2nratop" ng-click="selectPage('orders')">
+                 <div class="gnr2nra1"><!--全部订单-s-->
+                         <a href="" class="gnr2nratop" ng-click="selectPage('orders', 'all')">
                              <p> 
                                <em><img src="teImg/gnr2nr1toplf1.jpg" /></em>  
                                <span>查看全部订单</span> 
@@ -56,25 +56,6 @@
                             
                          </a>
                          
-                         
-                         <ul class="gnr2nrabm">
-                            <li><a href="" ng-click="selectPage('orders-under-push')">
-                               <div><img src="teImg/gnr2rabm1.png" title="" alt="" /></div>
-                               <em>待报备</em>
-                            </a></li>
-                            <li><a href="" ng-click="selectPage('orders-under-check')">
-                               <div><img src="teImg/gnr2rabm2.png" title="" alt="" /></div>
-                               <em>待审核</em>
-                            </a></li>
-                            <li><a href="" ng-click="selectPage('orders-complete')">
-                               <div><img src="teImg/gnr2rabm3.png" title="" alt="" /></div>
-                               <em>已完成</em>
-                            </a></li>
-                            <li><a href="" ng-click="selectPage('orders-under-pay')">
-                               <div><img src="teImg/gnr2rabm4.png" title="" alt="" /></div>
-                               <em>待付款</em>
-                            </a></li>
-                         </ul> 
                  </div><!--全部订单-e-->
                  
                  
@@ -155,15 +136,15 @@
                  
                  <div class="gnr2nrc">
                  
-                   <div class="gnr2nrctop" ng-click="selectPage('bookings')">
+                   <div class="gnr2nrctop" ng-click="selectPage('bookings', 'all')">
                       <p> 
                          <em><img src="teImg/headr2.png" /></em>  
                          <span>我的理财师</span> 
                        </p>
-                       <a href=""><em>查看全部</em><i></i></a>
+                       
                    </div>
                    
-                   <div class="gnr2nrc1" ng-click="selectPage('bookings')">
+                   <div class="gnr2nrc1" ng-click="selectPage('bookings', 'all')">
                       <div class="gnr2nrc1lf">
                         <span><img src="teImg/gnr2nrclef1.jpg" /></span>
                         <em>王海</em>
@@ -257,10 +238,11 @@
                        <em>待付款</em>
                     </a></li>
                  </ul>-->
+            
                   <ion-scroll direction="x">
                     <div class="lbanr1" style="width: 1000px">
                       <ul class="qbgnr2nrul">
-                        <li ng-repeat="type in data.productType"><a href="#">
+                        <li ng-repeat="type in data.productType" ng-class="{gjxqbcss: showContent('orders', '{{type.type}}')}" ng-click="selectPage('orders', '{{type.type}}')"><a href="#">
                            <div><img src="{{type.image}}" title="" alt="" /></div>
                            <em>{{type.name}}产品</em>
                         </a></li>
@@ -286,7 +268,7 @@
 
                     <div class="twtwdv" ng-repeat="order in data.orders['all'].data" ng-click="goProductDetail(order.id)">
                         <!--<div class="twtwdvf"><img src='teImg/gnr2rabm3.png' /></div>-->
-                        <div class="twtwdvf"><img src='{{data.orderState[order.state.toLowerCase()].image}}' /></div>
+                        <div class="twtwdvf"><img src='{{data.orderState[order.state.toLowerCase()].image}}' /> <em>{{data.orderState[order.state.toLowerCase()].name}}</em> </div>
                         <span>[{{data.productType[order.product.type.toLowerCase()].name}}] {{order.product.issuer}}</span>
                     </div>   
                     <!--
@@ -343,7 +325,7 @@
                    <div class="glcsqxxtop"><em>我的预约</em></div>
                    <div class="twtwdv" ng-repeat="booking in data.bookings['all'].data" ng-click="showProduct(booking.product)">
                         <!--<div class="twtwdvf"><img src='teImg/gnr2rabm3.png' /></div>-->
-                        <div class="twtwdvf"><img src='{{data.bookingState[booking.state.toLowerCase()].image}}' /></div>
+                        <div class="twtwdvf"><img src='{{data.bookingState[booking.state.toLowerCase()].image}}' /> <em>{{data.bookingState[booking.state.toLowerCase()].name}}</em> </div>
                         <span>[{{data.productType[booking.product.type.toLowerCase()].name}}] {{booking.product.issuer}}</span>
                     </div>   
 
@@ -360,13 +342,13 @@
       <div class="gjxnrtopyy"></div>
                 <!-- 内容top阴影 -->
       <ul class="zhyhktpul">
-        <li ng-class="{zhyhkpulcss: customer.win + customer.suffix=='information'}" ng-click="selectPage('information')"><a href="">个人信息设置</a></li>
-        <li ng-class="{zhyhkpulcss: customer.win + customer.suffix=='information-bank'}" ng-click="selectPage('information-bank')"><a href="">银行卡认证</a></li>
-        <li ng-class="{zhyhkpulcss: customer.win + customer.suffix=='information-password'}" ng-click="selectPage('information-password')"><a href="">密码设置</a></li>
+        <li ng-class="{zhyhkpulcss: showContent('information', 'person')}" ng-click="selectPage('information', 'person')"><a href="">个人信息设置</a></li>
+        <li ng-class="{zhyhkpulcss: showContent('information', 'bank')}" ng-click="selectPage('information', 'bank')"><a href="">银行卡认证</a></li>
+        <li ng-class="{zhyhkpulcss: showContent('information', 'password')}" ng-click="selectPage('information', 'password')"><a href="">密码设置</a></li>
       </ul>
                 
       <div class="zhyhknr"><!--我的账户-银行卡认证内容部分-s-->
-        <form ng-if="customer.win + customer.suffix=='information'">           
+        <form ng-if="showContent('information', 'person')">           
           <div class="zhkhimgdv">
             <span>设置头像</span>
             <p>
@@ -386,7 +368,7 @@
           <div class="zhyhknr3"><span>邮箱地址</span> <input type="text" placeholder="请输入您要绑定的邮箱"/> <a href="">绑定</a></div>
           <input class="yhkqd" value="确定"  type="submit"/>
       </form>
-      <form ng-if="customer.win + customer.suffix=='information-bank'">
+      <form ng-if="showContent('information', 'bank')">
         <div class="zhyhknr1"><span>开户人姓名</span> <input type="text"  placeholder="请输入您的姓名"/></div>
         <div class="zhyhknr2"><span>选择银行</span> <a href="">请选择</a><input type="button" /></div>
         <div class="zhyhknr1"><span>银行卡号</span> <input type="text" placeholder="该银行卡为您提现、回款时的默认银行卡" /></div>
@@ -394,7 +376,7 @@
         <div class="zhyhknr3"><span>验 证 码</span> <input type="text" placeholder="请填写您接收到的验证码"/> <a href="">43秒后重发</a></div>
         <input class="yhkqd" value="确定"  type="submit"/>
       </form>
-      <form ng-if="customer.win + customer.suffix=='information-password'">
+      <form ng-if="showContent('information', 'password')">
           <div class="zhyhknr1"><span>当前密码</span> <input type="text"  placeholder="请输入您的原始登录密码"/></div>
           <div class="zhyhknr1"><span>新 密 码</span> <input type="text" placeholder="8-20位，必须含有字母" /></div>
           <div class="zhyhknr1"><span>确认新密码</span> <input type="text" placeholder="请重复输入你的密码" /></div>
@@ -484,6 +466,14 @@
               </div><!--gnr2dadv-->
 </div>
 <!-- other -->
+<!--
+  <ion-infinite-scroll
+    ng-if="data.currentBooking.data.length<=data.currentBooking.count" 
+    on-infinite="loadMore()" 
+    immediate-check="false"
+    distance="1%"><p>小金奋力加载中...</p>
+  </ion-infinite-scroll>
+-->
 
   </ion-content>
   <multiple-views-support width="75%" />

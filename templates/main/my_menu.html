@@ -6,43 +6,45 @@
               <div class="gjxnrtopyy2"></div><!-- 内容top阴影 --> 
                
               <li>
-                <div class="gfnulitp" ng-click="selectItem('index')" ng-class="{gjxtjcss: data.selectedItem=='index'}">
+                <div class="gfnulitp" ng-click="selectMenu('index','all')" ng-class="{gjxtjcss: highLight('index','all')}">
                   <a>账户总览</a>
                   <em><img src="teImg/glefultprg.png" /></em>
                 </div>
               </li>
               <li>
-                <div class="gfnulitp" ng-click="selectItem('bookings')" ng-class="{gjxtjcss: data.selectedItem=='bookings'}">
+                <div class="gfnulitp" ng-click="selectMenu('bookings', 'all')" ng-class="{gjxtjcss: highLight('bookings','all')}">
                   <a>我的预约</a>
                   <em><img src="teImg/glefultprg.png" /></em>
                 </div>
               </li>
               <li>
-                <div class="gfnulitp" ng-click="selectItem('orders')" ng-class="{gjxtjcss: data.selectedItem=='orders'}">
+                <div class="gfnulitp" ng-click="selectMenu('orders', 'all')" ng-class="{gjxtjcss: highLight('orders','all')}">
                   <a>我的订单</a>
                   <em><img src="teImg/glefultprg.png" /></em>
                 </div>
 
-                <div class="gfnulibm" ng-if="showItem('orders')">
+                <div class="gfnulibm" ng-if="showSubMenu('orders')">
+                   <a ng-repeat="type in data.productType" href="" ng-click="selectMenu('orders', '{{type.type}}')" ng-class="{gjxtjcss : highLight('orders', '{{type.type}}')}">{{type.name}}</a>
+                  <!--
                   <a href="" ng-click="selectItem('orders-under-push')" ng-class="{gjxtjcss : data.selectedItem=='orders-under-push'}">待报备</a>
                   <a href="" ng-click="selectItem('orders-under-check')" ng-class="{gjxtjcss : data.selectedItem=='orders-under-check'}">待审核</a>
                   <a href="" ng-click="selectItem('orders-complete')" ng-class="{gjxtjcss : data.selectedItem=='orders-complete'}">已完成</a>
-                  <a href="" ng-click="selectItem('orders-under-pay')" ng-class="{gjxtjcss : data.selectedItem=='orders-under-pay'}">待付款</a>
+                  <a href="" ng-click="selectItem('orders-under-pay')" ng-class="{gjxtjcss : data.selectedItem=='orders-under-pay'}">待付款</a>-->
                 </div>
               </li>
 
               <li>
-                <div class="gfnulitp" ng-click="selectItem('information')" ng-class="{gjxtjcss: data.selectedItem=='information'}">
+               <div class="gfnulitp" ng-click="selectMenu('information','person')" ng-class="{gjxtjcss: highLight('information','person')}">
                   <a>我的资料</a>
                   <em><img src="teImg/glefultprg.png" /></em>
                 </div>
-                <div class="gfnulibm" ng-if="showItem('information')">
-                  <a href="" ng-click="selectItem('information-bank')" ng-class="{gjxtjcss : data.selectedItem=='information-bank'}">银行卡信息</a>
-                  <a href="" ng-click="selectItem('information-password')" ng-class="{gjxtjcss : data.selectedItem=='information-password'}">登入密码</a>
+                <div class="gfnulibm" ng-if="showSubMenu('information')">
+                  <a href="" ng-click="selectMenu('information', 'bank')" ng-class="{gjxtjcss : highLight('information','bank')}">银行卡信息</a>
+                  <a href="" ng-click="selectMenu('information', 'password')" ng-class="{gjxtjcss : highLight('information','password')}">登入密码</a>
                 </div>
               </li>
               <li>
-                <div class="gfnulitp" ng-click="selectItem('other')" ng-class="{gjxtjcss: data.selectedItem=='other'}">
+                <div class="gfnulitp" ng-click="selectMenu('other', 'all')" ng-class="{gjxtjcss: highLight('other','all')}">
                   <a>其他</a>
                   <em><img src="teImg/glefultprg.png" /></em>
                 </div>
@@ -50,7 +52,7 @@
               <li>
 
               <li>
-                <div class="gfnulitp" ng-click="logout()" ng-class="{gjxtjcss: data.selectedItem=='logout'}">
+                <div class="gfnulitp" ng-click="logout()">
                   <a>退出登入</a>
                   <em><img src="teImg/glefultprg.png" /></em>
                 </div>

@@ -348,7 +348,7 @@ angular.module('main.service',[])
           } 
         }
       },
-
+      /*
       queryBookingsCount: function(bookings) {
         if (bookings.constructor ==  TypeBookings) {
           Rest.queryBookingsCount({type: bookings.getType()}, function(data){
@@ -362,10 +362,9 @@ angular.module('main.service',[])
           }, function(status){}, function(){});
         }
       },
-
+      */
       queryBookings: function(bookings, successHandler, errorHandler, finallyHandler) {
         var param = {};
-       
         if (bookings instanceof TypeBookings) {
           param = {type:  bookings.getType()};
         } else if (bookings instanceof StateBookings) {
@@ -385,6 +384,24 @@ angular.module('main.service',[])
 
 
       queryMoreBookings: function(bookings, successHandler, errorHandler, finallyHandler){  //currentBooking
+        var param = {};
+        if (bookings instanceof TypeBookings) {
+          param = {type:  bookings.getType()};
+        } else if (bookings instanceof StateBookings) {
+          param = {state: bookings.getState()};
+        } else {
+        }
+
+        Rest.queryBookingsCount(param, function(data){console.log('11'); console.log(data);}, function(status){}, function(){});
+        /*
+        Rest.customer.v1.queryBookings(param, id, function(data){
+          if(parseRestSuccess('queryBookings', data, successHandler, errorHandler)) {
+            bookings.data = data.result;
+          }
+        }, function(status){
+          parseRestError('queryBookings', status, errorHandler);
+        }, 
+        finallyHandler());*/
 
       },
 

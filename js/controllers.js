@@ -672,26 +672,41 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('CustomerMenuCtrl', function($scope, $state, MultipleViewsManager){
+.controller('CustomerMenuCtrl', function($scope, $state, Main, MultipleViewsManager){
   $scope.data = {
-    selectedItem : "index"
+    mainMenu: "index",
+    subMenu: "",
+    productType: Main.getProductType()
   }
+  //delete $scope.data.productType['alltype'];
+
   MultipleViewsManager.updatedLeft(function(params) {
     //console.log(params);
-    $scope.data.selectedItem = params.msg;
+    $scope.data.mainMenu = params.main;
+    $scope.data.subMenu  = params.sub;
   });
 
-
-    $scope.selectItem = function(item) {
-      MultipleViewsManager.updateView('main-my-toolbox', {msg: item});
-      $scope.data.selectedItem = item;
+    /////////////
+    $scope.selectMenu = function(first, second) {
+      $scope.data.mainMenu = first;
+      $scope.data.subMenu = second;
+      MultipleViewsManager.updateView('main-my-toolbox', {main: first, sub: second});
     }
-    $scope.showItem = function(item){
-      var arr = $scope.data.selectedItem.split("-");
-      return (arr[0] == item)
+    $scope.showSubMenu = function(main) {
+      if($scope.data.mainMenu == main) {
+        return true;
+      } else {
+        return false;
+      }
     }
-
-  
+    $scope.highLight = function(first, second) {
+      if($scope.data.mainMenu == first && $scope.data.subMenu == second) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    
 })
 
 
@@ -701,12 +716,14 @@ angular.module('starter.controllers', [])
   //** controller data
   $scope.customer = {
     win: 'index',
+    subWin: 'all',
+
     suffix: '',
     //orders: 'orders',
     bookings: {},
     orders: {},
     information: {},
-    other: {}
+    other: {},
   };
   $scope.data = {
     productType: Main.getProductType(),
@@ -732,6 +749,12 @@ angular.module('starter.controllers', [])
   };
   $scope.goProductDetail = function(oid) {
     $state.go('common.order_detail', {orderId: oid});
+  };
+  $scope.selectOrders = function(orders){
+    $scope.data.currentOrders = orders;
+  };
+  $scope.selectBookings =function(bookings) {
+    $scope.data.currentBookings = bookings;
   }
 
   //**
@@ -753,32 +776,34 @@ angular.module('starter.controllers', [])
   refreshData();
   //**
 
+  $scope.showContent = function(first, second){
+    if ($scope.customer.win==first && $scope.customer.subWin==second){
+      return true;
+    } else {
+      return false;
+    }
+  };
 
   MultipleViewsManager.updated(function(params) {
-    var arr = params.msg.split("-");
-
-    $scope.customer.win = arr[0];
-    $scope.customer.suffix = '';
-    for(var i=1;i<arr.length;i++) {
-      $scope.customer.suffix = $scope.customer.suffix + '-' + arr[i];
-    }
-
+    var first = params.main;
+    var second = params.sub;
+  
+    $scope.customer.win = first;
+    $scope.customer.subWin = second;
   });
 
-  $scope.selectPage = function(item) {            
-    MultipleViewsManager.updateViewLeft('main-my-toolbox', {msg: item});
+  $scope.selectPage = function(first, second) {            
+    MultipleViewsManager.updateViewLeft('main-my-toolbox', {main: first, sub: second});
     
-    var arr = item.split("-");
-    $scope.customer.win = arr[0];
-    $scope.customer.suffix = '';
-    for(var i=1;i<arr.length;i++) {
-      $scope.customer.suffix = $scope.customer.suffix + '-' + arr[i];
-    }
+    $scope.customer.win = first;
+    $scope.customer.subWin = second;
   }
   $scope.doRefresh = function() {
     refreshData();
     $scope.$broadcast('scroll.refreshComplete');
   }
+
+
   $scope.$on("AddBooking", function(event,msg) {
   // nothing to do now
   });
