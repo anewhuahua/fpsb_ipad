@@ -138,6 +138,22 @@ angular.module('starter', ['ionic', 'ngCordova', 'ionicMultipleViews','starter.c
   })
 
 
+  // promotion
+  .state('promotion', {
+    url: '/promotion',
+    abstract: true,
+    templateUrl: 'templates/promotion.html'
+  })
+
+  .state('promotion.product_detail', {
+    url: '/product/detail/:promotionId',
+    views: {
+      'booking-detail': {
+         templateUrl: 'templates/promotion/product_detail.html',
+         controller: 'promotionDetailCtrl'
+      }
+    }
+  })
 
   // booking
   .state('common', {

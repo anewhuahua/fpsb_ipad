@@ -29,7 +29,9 @@ $royal:                           #886aea !default;
   /*订单状态-s*/
   /*订单状态-e*/
   /*理财师当前服务产品新增10.19-修改-s*/
-  /*理财师当前服务产品新增10.19-修改-e*/ }
+  /*理财师当前服务产品新增10.19-修改-e*/
+  /*预约内容页1019-s*/
+  /*预约内容页1019-e*/ }
   .booking-view a {
     text-decoration: none; }
   .booking-view .content {
@@ -1348,6 +1350,96 @@ $royal:                           #886aea !default;
     font-size: 0.3rem;
     color: #395983;
     line-height: 1.2rem; }
+  .booking-view .cpyyxzj {
+    width: 90%;
+    margin: 0.4rem auto 0;
+    overflow: hidden; }
+  .booking-view .yyprxqh1, .booking-view .yyprxqh2 {
+    float: left;
+    width: 0.8rem;
+    height: 0.31rem;
+    text-align: center;
+    font-size: 0.28rem;
+    line-height: 0.32rem;
+    color: #fefefe;
+    border-radius: 0.03rem;
+    margin-top: 0.08rem; }
+  .booking-view .yyprxqh1 {
+    background: #e79700; }
+  .booking-view .yyprxqh2 {
+    background: #e30000;
+    margin-left: 0.13rem; }
+  .booking-view .yyprxqh3 {
+    width: 0.49rem;
+    height: 0.45rem;
+    float: right; }
+  .booking-view .yyprxqh3 > img {
+    width: 0.49rem;
+    height: 0.45rem; }
+  .booking-view .cpyyxzj2 {
+    width: 100%;
+    margin: auto;
+    padding: 0 5% 0.4rem 5%;
+    border-bottom: 2px #d9d9d9 solid;
+    overflow: hidden; }
+  .booking-view .cpyyxzj2 > span, .booking-view .cpyyxzj2 > em, .booking-view .cpyyxzj2 > i {
+    display: block; }
+  .booking-view .cpyyxzj2 > span {
+    font-size: 0.3rem;
+    line-height: 0.3rem;
+    color: #647690;
+    margin-top: 0.3rem; }
+  .booking-view .cpyyxzj2 > em {
+    font-size: 0.3rem;
+    line-height: 0.24rem;
+    color: #e79700;
+    margin-top: 0.2rem; }
+  .booking-view .cpyyxzj2 > i {
+    font-size: 0.24rem;
+    line-height: 0.24rem;
+    color: #618eae;
+    margin-top: 0.14rem; }
+  .booking-view .cpyyxzj3 {
+    width: 90%;
+    margin: auto;
+    overflow: hidden;
+    padding-top: 0.3rem;
+    padding-bottom: 0.75rem; }
+  .booking-view .cpyyxzj3 > span, .booking-view .cpyyxzj3 > i, .booking-view .cpyyxzj3 > em {
+    display: block;
+    font-size: 0.24rem;
+    line-height: 0.36rem; }
+  .booking-view .cpyyxzj3 > span {
+    color: #e79700; }
+  .booking-view .cpyyxzj3 > em {
+    color: #647690; }
+  .booking-view .cpyyxzj3 > i {
+    color: #647690;
+    margin-top: 0.35rem; }
+  .booking-view .cpydgdv {
+    width: 90%;
+    margin: auto;
+    overflow: hidden; }
+  .booking-view .cpydgdv > a {
+    display: block;
+    border-radius: 0.03rem;
+    text-align: center;
+    line-height: 0.65rem;
+    color: #fff;
+    width: 45%;
+    height: 0.65rem;
+    font-size: 0.24rem; }
+  .booking-view .ccdgaa1 {
+    float: left;
+    background: #4b8cd9; }
+  .booking-view .ccdgaa2 {
+    float: right;
+    background: #e79700; }
+  .booking-view .ccgdimg {
+    margin: 0.4rem auto;
+    width: 100%; }
+  .booking-view .ccgdimg > img {
+    width: 100%; }
 
 .exam-view {
   /* 头部 */
