@@ -125,7 +125,7 @@ angular.module('rest.service', [])
           var req = {
               method: 'GET',
               url: domain+'ChiefFinancierService/api/customer/v1/customers/' + cid + 
-              '/bookings/count?' + '&producttype=' + type + '&state=' + state,
+              '/bookings/count?' + '&productType=' + type + '&state=' + state,
               headers: {
                 'Content-Type': 'application/json'
               }
@@ -149,7 +149,7 @@ angular.module('rest.service', [])
           var req = {
               method: 'GET',
               url: domain+'ChiefFinancierService/api/customer/v1/customers/' + cid + 
-              '/bookings?state=' + state + '&producttype=' + type + '&offset=' + offset + '&limit=' + limit +'&sort=desc',
+              '/bookings?state=' + state + '&productType=' + type + '&offset=' + offset + '&limit=' + limit +'&sort=desc',
               headers: {
                 'Content-Type': 'application/json'
               }
@@ -188,7 +188,7 @@ angular.module('rest.service', [])
           var req = {
               method: 'GET',
               url: domain+'ChiefFinancierService/api/customer/v1/customers/' + cid + 
-              '/orders?state=' + state + '&producttype=' + type + '&offset=' + offset + '&limit=' + limit +'&sort=desc',
+              '/orders?state=' + state + '&productType=' + type + '&offset=' + offset + '&limit=' + limit +'&sort=desc',
               headers: {
                 'Content-Type': 'application/json'
               }
@@ -218,7 +218,7 @@ angular.module('rest.service', [])
           var req = {
               method: 'GET',
               url: domain+'ChiefFinancierService/api/consultant/v1/consultants/' + id + 
-              '/bookings?state=' + state + '&producttype=' + type + '&offset=' + offset + '&limit=' + limit +'&sort=desc',
+              '/bookings?state=' + state + '&productType=' + type + '&offset=' + offset + '&limit=' + limit +'&sort=desc',
               headers: {
                 'Content-Type': 'application/json'
               }

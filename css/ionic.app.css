@@ -2577,6 +2577,8 @@ $royal:                           #886aea !default;
   .common-person-view .gjxqbcss {
     background: #e79700 !important;
     color: #fff !important; }
+  .common-person-view .gjxqbcss > a {
+    color: #fff !important; }
   .common-person-view .qbgnr2nrul > li {
     height: 1.5rem;
     float: left;

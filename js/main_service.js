@@ -427,13 +427,13 @@ angular.module('main.service',[])
         var param = {};
         if (orders instanceof TypeOrders) {
           param = {type:  orders.getType()};
+          console.log('tyson: '+param);
         } else if (orders instanceof StateOrders) {
           param = {state: orders.getState()};
         } else {
         }
 
         Rest.customer.v1.queryOrders(param, id, function(data){
-          var state  = param.state || 'all';
           if(parseRestSuccess('queryOrders', data, successHandler, errorHandler)) {
             orders.data = data.result;
           }

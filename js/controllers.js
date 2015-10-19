@@ -718,7 +718,6 @@ angular.module('starter.controllers', [])
     win: 'index',
     subWin: 'all',
 
-    suffix: '',
     //orders: 'orders',
     bookings: {},
     orders: {},
