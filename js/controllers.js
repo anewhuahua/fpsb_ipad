@@ -41,8 +41,10 @@ angular.module('starter.controllers', [])
     $scope.data.popup = 'privateFund';
     $scope.data.looking_product = product;
     console.log("looking product: "+product.id);
-    console.log(product);
+    //console.log(product);
   }
+
+
   $scope.closeProduct = function() {
     $scope.data.popup = '';
     $scope.data.looking_product = null;
@@ -133,6 +135,9 @@ angular.module('starter.controllers', [])
     categories: [],
     toolbox:'index',
     looking_product: '',
+    product_act_booking: true,
+    product_act_order:   true,
+
     dialog: {
       step: 10000,
       minimal: 10000,
@@ -166,12 +171,34 @@ angular.module('starter.controllers', [])
     });
   
 
-  $scope.showProduct = function(product) {
+  $scope.showProduct = function(product, param) {
     $scope.data.popup = 'privateFund';
     $scope.data.looking_product = product;
     console.log("looking product: "+product.id);
-    console.log(product);
+    
+    $scope.data.product_act_booking = true;
+    $scope.data.product_act_order = true;
+
+    if (param == 'NoBooking') {
+      $scope.data.product_act_booking = false;
+    } else if (param == 'NoOrder') {
+      $scope.data.product_act_order = false;
+    } else {
+
+    }
+    //console.log(product);
   }
+  $scope.enableBooking = function() {
+    return $scope.data.product_act_booking;
+  }
+  $scope.enableOrder = function() {
+    if ($scope.data.looking_product.type.toLowerCase() == 'publicfund') {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   $scope.closeProduct = function() {
     $scope.data.popup = '';
     $scope.data.looking_product = null;
@@ -214,16 +241,7 @@ angular.module('starter.controllers', [])
       $scope.data.popup = 'OrderDialog';
     }
   }
-  $scope.enableBooking = function() {
-    return true;
-  }
-  $scope.enableOrder = function() {
-    if ($scope.data.looking_product.type.toLowerCase() == 'publicfund') {
-      return true;
-    } else {
-      return false;
-    }
-  }
+
   
 
   $scope.addBooking= function(quantity) {
@@ -739,7 +757,6 @@ angular.module('starter.controllers', [])
 
 .controller('mainCustomerCtrl', function($scope, $state, $ionicModal, $timeout, $rootScope,
                                         $cordovaCamera, MultipleViewsManager, Main) {
-
   //**
   //** controller data
   $scope.customer = {
@@ -765,6 +782,7 @@ angular.module('starter.controllers', [])
     currentBookingState: 'all',
     currentBooking: null
   };
+
 
   //**
   //** initialize

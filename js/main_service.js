@@ -439,6 +439,7 @@ angular.module('main.service',[])
 
         Rest.customer.v1.queryOrders(param, id, function(data){
           if(parseRestSuccess('queryOrders', data, successHandler, errorHandler)) {
+             // tyson todo 试下这个 orders.data = data.result 这个方式
              orders.data.length = 0;
              for (var i=0;i<data.result.length;i++){
                orders.data.push(data.result[i]);

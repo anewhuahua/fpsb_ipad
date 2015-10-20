@@ -4495,7 +4495,9 @@ $royal:                           #886aea !default;
   /*首页新增10.17-s*/
   /*首页新增10.17-e*/
   /*变灰色10.19-s*/
-  /*变灰色10.19-s*/ }
+  /*变灰色10.19-s*/
+  /*上下页10.20-s*/
+  /*上下页10.20-e*/ }
   .common-main-view ul, .common-main-view li {
     list-style-type: none; }
   .common-main-view input {
@@ -5771,6 +5773,22 @@ $royal:                           #886aea !default;
     color: #fff;
     text-align: center;
     float: left; }
+  .common-main-view .xzsxbn {
+    position: absolute;
+    right: 1.4%;
+    top: 0.62rem;
+    overflow: hidden; }
+  .common-main-view .xzsxbn > a {
+    width: 1.41rem;
+    height: 1.56rem;
+    display: block;
+    float: left;
+    background-size: contain; }
+  .common-main-view .xzsxbtn1 {
+    background: url(../teImg/nexbtn1.png) no-repeat; }
+  .common-main-view .xzsxbtn2 {
+    background: url(../teImg/nexbtn2.png) no-repeat;
+    margin-left: 0.1rem; }
 
 .common-register-view {
   /* 注册-忘记密码-开始 */

@@ -99,7 +99,7 @@
                        </p>
                    </div>
                    
-                   <div class="twtwdv" ng-repeat="booking in data.bookings['all'].data | limitTo: 5" ng-click="showProduct(booking.product)">
+                   <div class="twtwdv" ng-repeat="booking in data.bookings['all'].data | limitTo: 5" ng-click="showProduct(booking.product, 'NoBooking')">
                         <!--<div class="twtwdvf"><img src='teImg/gnr2rabm3.png' /></div>-->
                         <div class="twtwdvf"><img src='{{data.bookingState[booking.state.toLowerCase()].image}}' /> <em>{{data.bookingState[booking.state.toLowerCase()].name}}</em> </div>
                         <span>[{{data.productType[booking.product.type.toLowerCase()].name}}] {{booking.product.issuer}}</span>
