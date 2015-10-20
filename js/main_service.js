@@ -105,6 +105,11 @@ angular.module('main.service',[])
     bookings: {},
     orders:   {}
   };
+  var roleConsultant = {
+    bookings: {},
+    orders:   {}
+  };
+
   var id = null;
   var role = 'Guest';
 
@@ -112,14 +117,18 @@ angular.module('main.service',[])
 // Initialize
   var Init = function(){
     for (var key in optionBookingState){
-      roleCustomer.bookings[key] = new StateBookings(optionBookingState[key]);
+      roleCustomer.bookings[key]   = new StateBookings(optionBookingState[key]);
+      roleConsultant.bookings[key] = new StateBookings(optionBookingState[key]);
     }
     for (var key in optionOrderState){
-      roleCustomer.orders[key]   = new StateOrders(optionOrderState[key]);
+      roleCustomer.orders[key]     = new StateOrders(optionOrderState[key]);
+      roleConsultant.orders[key]   = new StateOrders(optionOrderState[key]);
     }
     for (var type in optionProductType){
-      roleCustomer.bookings[type] = new TypeBookings(optionProductType[type]);
-      roleCustomer.orders[type]   = new TypeOrders(optionProductType[type]);
+      roleCustomer.bookings[type]   = new TypeBookings(optionProductType[type]);
+      roleConsultant.bookings[type] = new TypeBookings(optionProductType[type]);
+      roleCustomer.orders[type]     = new TypeOrders(optionProductType[type]);
+      roleConsultant.orders[type]   = new TypeOrders(optionProductType[type]);
     }
   }();
   //console.log(roleCustomer);
@@ -348,21 +357,8 @@ angular.module('main.service',[])
           } 
         }
       },
-      /*
-      queryBookingsCount: function(bookings) {
-        if (bookings.constructor ==  TypeBookings) {
-          Rest.queryBookingsCount({type: bookings.getType()}, function(data){
-            console.log(data);
-            bookings.count = 1;
-          }, function(status){}, function(){});
-        } else if (bookings.constructor ==  StateBookings) {
-          Rest.queryBookingsCount({type: bookings.getState()}, function(data){
-            console.log(data);
-            bookings.count = 1;
-          }, function(status){}, function(){});
-        }
-      },
-      */
+      
+
       queryBookings: function(bookings, successHandler, errorHandler, finallyHandler) {
         var param = {};
         if (bookings instanceof TypeBookings) {
@@ -412,8 +408,8 @@ angular.module('main.service',[])
         if(id) {
           Rest.customer.v1.submitOrder(id, pid, money, function(data){
             if (parseRestSuccess('submitOrder', data, successHandler, errorHandler)) { 
-              customer.orders.all.unshift(data.result);
-              customer.orders.initiated.unshift(data.result);
+              //customer.orders.all.unshift(data.result);
+              //customer.orders.initiated.unshift(data.result);
             }
           }, function(status){
             parseRestError('submitOrder', status, errorHandler);
@@ -456,29 +452,62 @@ angular.module('main.service',[])
 
     consultant: {
 
+      
       getBookings: function() {
-        return null;
+        return roleConsultant.bookings;
       },
-      getBooking: function(bid) {
-        for (var i=0; i<consultant.bookings.all.length; i++) {
-          if(consultant.bookings.all[i].id == bid) {
-            return consultant.bookings.all[i];
-          }
+      getOrders: function() {
+        return roleConsultant.orders;
+      },
+
+      queryBookings: function(bookings, successHandler, errorHandler, finallyHandler) {
+        var param = {};
+        if (bookings instanceof TypeBookings) {
+          param = {type:  bookings.getType()};
+        } else if (bookings instanceof StateBookings) {
+          param = {state: bookings.getState()};
+        } else {
         }
-      },
-      queryBookings: function(param, successHandler, errorHandler, finallyHandler) {
-        param.state = 'assigned';
+
         Rest.consultant.v1.queryBookings(param, id, function(data){
           if(parseRestSuccess('queryBookings', data, successHandler, errorHandler)) {
-            
-            consultant.bookings['all'] = data.result;
-            
+            bookings.data.length = 0;
+            for (var i=0;i<data.result.length;i++){
+              bookings.data.push(data.result[i]);
+            }
           }
         }, function(status){
-          parseRestError('queryBookings',  status, errorHandler);
+          parseRestError('queryBookings', status, errorHandler);
+        }, 
+        finallyHandler());
+      },
+
+      queryOrders: function(orders, successHandler, errorHandler, finallyHandler) {
+        var param = {};
+        if (orders instanceof TypeOrders) {
+          param = {type:  orders.getType()};
+          //param = {type:  'PrivateFund'};
+          //console.log('tyson: '+param);
+        } else if (orders instanceof StateOrders) {
+          param = {state: orders.getState()};
+        } else {
+        }
+
+        Rest.customer.v1.queryOrders(param, id, function(data){
+          if(parseRestSuccess('queryOrders', data, successHandler, errorHandler)) {
+             // tyson todo 试下这个 orders.data = data.result 这个方式
+             orders.data.length = 0;
+             for (var i=0;i<data.result.length;i++){
+               orders.data.push(data.result[i]);
+             }
+          }
+        }, function(status){
+          parseRestError('queryOrders',  status, errorHandler);
         }, 
         finallyHandler());
       }
+
+      
     }, // consultant
 
 

@@ -211,7 +211,7 @@ angular.module('rest.service', [])
     consultant: {
       v1: {
         queryBookings: function (param, id, successHandler, errorHandler, finallyHandler) {
-          state  = param.state || 'initiated';
+          state  = param.state || 'all';
           offset = param.offset || '0';
           limit  = param.limit || '25';
           type   = param.type || 'all';
@@ -220,6 +220,29 @@ angular.module('rest.service', [])
               method: 'GET',
               url: domain+'ChiefFinancierService/api/consultant/v1/consultants/' + id + 
               '/bookings?state=' + state + '&productType=' + type + '&offset=' + offset + '&limit=' + limit +'&sort=desc',
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
+          $http(req).success(function(data){
+            successHandler(data);
+          }).error(function(res, status){
+            errorHandler(status);
+          }).finally(function(){
+            finallyHandler();
+          });
+        },
+
+        queryOrders: function (param, id, successHandler, errorHandler, finallyHandler) {
+          state  = param.state || 'all';
+          offset = param.offset || '0';
+          limit  = param.limit || '25';
+          type   = param.type || 'all';
+
+          var req = {
+              method: 'GET',
+              url: domain+'ChiefFinancierService/api/consultant/v1/consultants/' + id + 
+              '/orders?state=' + state + '&productType=' + type + '&offset=' + offset + '&limit=' + limit +'&sort=desc',
               headers: {
                 'Content-Type': 'application/json'
               }

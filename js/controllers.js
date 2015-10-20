@@ -561,102 +561,184 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('ConsultantMenuCtrl', function($scope, $state, MultipleViewsManager){
+.controller('ConsultantMenuCtrl', function($scope, $state, Main, MultipleViewsManager){
   $scope.data = {
-    selectedItem : "index"
+    mainMenu: "index",
+    subMenu: "",
+    productType: Main.getProductType()
   }
-  $scope.selectItem = function(item) {
-      MultipleViewsManager.updateView('main-consultant-toolbox', {msg: item});
-      $scope.data.selectedItem = item;
-  }
-  $scope.showItem = function(item){
-    var arr = $scope.data.selectedItem.split("-");
-    return (arr[0] == item)
-  }
+
   MultipleViewsManager.updatedLeft(function(params) {
-    console.log(params);
-    $scope.data.selectedItem = params.msg;
+    //console.log(params);
+    $scope.data.mainMenu = params.main;
+    $scope.data.subMenu  = params.sub;
   });
 
+    /////////////
+    $scope.selectMenu = function(first, second) {
+      $scope.data.mainMenu = first;
+      $scope.data.subMenu = second;
+      MultipleViewsManager.updateView('main-consultant-toolbox', {main: first, sub: second});
+    }
+    $scope.showSubMenu = function(main) {
+      if($scope.data.mainMenu == main) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    $scope.highLight = function(first, second) {
+      if($scope.data.mainMenu == first && $scope.data.subMenu == second) {
+        return true;
+      } else {
+        return false;
+      }
+    }
 })
 
-.controller('mainConsultantCtrl', function($scope, $state, $timeout, $cordovaCamera, MultipleViewsManager, Main) {
-  
-//** common function
-  var refreshData = function() {
-    Main.consultant.queryBookings({}, function(data){
-    }, function(status){}, function(){});
-  }
-//**
 
+
+
+.controller('CustomerMenuCtrl', function($scope, $state, Main, MultipleViewsManager){
+  $scope.data = {
+    mainMenu: "index",
+    subMenu: "",
+    productType: Main.getProductType()
+  }
+  //delete $scope.data.productType['alltype'];
+
+  MultipleViewsManager.updatedLeft(function(params) {
+    //console.log(params);
+    $scope.data.mainMenu = params.main;
+    $scope.data.subMenu  = params.sub;
+  });
+
+    /////////////
+    $scope.selectMenu = function(first, second) {
+      $scope.data.mainMenu = first;
+      $scope.data.subMenu = second;
+      MultipleViewsManager.updateView('main-my-toolbox', {main: first, sub: second});
+    }
+    $scope.showSubMenu = function(main) {
+      if($scope.data.mainMenu == main) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    $scope.highLight = function(first, second) {
+      if($scope.data.mainMenu == first && $scope.data.subMenu == second) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    
+})
+
+
+
+.controller('mainConsultantCtrl', function($scope, $state, $timeout, $cordovaCamera, MultipleViewsManager, Main) {
+
+//** 
 //** controller data
   $scope.consultant = {
     win: 'index',
-    suffix: '',
+    subWin: 'all',
+
+    orders: {},
     bookings: {},
     customers: {},
     pendings: {},
-    information: {}
+    information: {},
+    message:{}
   };
-//**
 
+  $scope.data = {
+    productType: Main.getProductType(),
+    orderState: Main.getOrderState(),
+    bookingState: Main.getBookingState(),
+    bookings: Main.consultant.getBookings(),
+    orders: Main.consultant.getOrders(),
+
+
+    currentOrderState: 'all',
+    currentOrder: null,
+    currentBookingState: 'all',
+    currentBooking: null
+  };
+
+//**
 //** initialize
-  $scope.consultant.pendings.bookings = Main.consultant.getBookings();
+  $scope.data.currentOrder = $scope.data.orders['all'];
+  $scope.data.currentBooking = $scope.data.bookings['all'];
+
   $scope.consultant.information.profile = {
     touxiang: "teImg/ghnr1lef.png" 
   };
-  refreshData();
+
 
 //**
-//** 下拉刷新
+//** common function
+
+  $scope.goProductDetail = function(oid) {
+    $state.go('common.order_detail', {orderId: oid});
+  };
+  var refreshData = function() {
+    Main.consultant.queryOrders($scope.data.currentOrder, function(data){
+    }, function(status){}, function(){});
+    Main.consultant.queryBookings($scope.data.currentBooking, function(data){
+    }, function(status){}, function(){});
+    //console.log($scope.data.currentOrderState);
+  };
+  $scope.selectOrders = function(param){
+    $scope.data.currentOrder = $scope.data.orders[param];
+    refreshData();
+  };
+  $scope.selectBookings =function(param) {
+    $scope.data.currentBooking = $scope.data.bookings[param];
+    refreshData();
+  }
+  refreshData();
+
+
   $scope.doRefresh = function() {
     refreshData();
     $scope.$broadcast('scroll.refreshComplete');
   };
-//**
 
 
   MultipleViewsManager.updated(function(params) {
-    var arr = params.msg.split("-");
+    var first = params.main;
+    var second = params.sub;
+  
+    $scope.consultant.win = first;
+    $scope.consultant.subWin = second;
 
-    $scope.consultant.win = arr[0];
-    $scope.consultant.suffix = '';
-    for(var i=1;i<arr.length;i++) {
-      $scope.consultant.suffix = $scope.consultant.suffix + '-' + arr[i];
+    if($scope.consultant.win == 'orders') {
+      $scope.data.currentOrder = $scope.data.orders[second];
+      refreshData();
+    } else if ($scope.consultant.win == 'bookings') {
+      $scope.data.currentBooking = $scope.data.bookings[second];
+      refreshData();
     }
   });
-  $scope.selectPage = function(item) {            
-    MultipleViewsManager.updateViewLeft('main-consultant-toolbox', {msg: item});
+
+  $scope.showContent = function(first, second){
+    if ($scope.consultant.win==first && $scope.consultant.subWin==second){
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  $scope.selectPage = function(first, second) {            
+    MultipleViewsManager.updateViewLeft('main-consultant-toolbox', {main: first, sub: second});
     
-    var arr = item.split("-");
-    $scope.consultant.win = arr[0];
-    $scope.consultant.suffix = '';
-    for(var i=1;i<arr.length;i++) {
-      $scope.consultant.suffix = $scope.consultant.suffix + '-' + arr[i];
-    }
+    $scope.customer.win = first;
+    $scope.customer.subWin = second;
   }
-  $scope.expand = function(item) {      
-    //if(item)      
-    MultipleViewsManager.updateViewLeft('main-consultant-toolbox', {msg: item});
-    var arr = item.split("-");
-    $scope.consultant.win = arr[0];
-    $scope.consultant.suffix = '';
-    for(var i=1;i<arr.length;i++) {
-      $scope.consultant.suffix = $scope.consultant.suffix + '-' + arr[i];
-    }
-  };
-  $scope.collapse = function(item) {
-    var arr = item.split("-");
-    $scope.consultant.win = arr[0];
-    $scope.consultant.suffix= ''; 
-    MultipleViewsManager.updateViewLeft('main-consultant-toolbox', {msg: arr[0]});
-  };
-  $scope.isExpand = function(item){
-    return item == ($scope.consultant.win+$scope.consultant.suffix);
-  };
-  $scope.isCollapse = function(item){
-    return !(item == ($scope.consultant.win+$scope.consultant.suffix));
-  };
+
 
 
 /*
@@ -715,46 +797,6 @@ angular.module('starter.controllers', [])
 
 
 })
-
-
-.controller('CustomerMenuCtrl', function($scope, $state, Main, MultipleViewsManager){
-  $scope.data = {
-    mainMenu: "index",
-    subMenu: "",
-    productType: Main.getProductType()
-  }
-  //delete $scope.data.productType['alltype'];
-
-  MultipleViewsManager.updatedLeft(function(params) {
-    //console.log(params);
-    $scope.data.mainMenu = params.main;
-    $scope.data.subMenu  = params.sub;
-  });
-
-    /////////////
-    $scope.selectMenu = function(first, second) {
-      $scope.data.mainMenu = first;
-      $scope.data.subMenu = second;
-      MultipleViewsManager.updateView('main-my-toolbox', {main: first, sub: second});
-    }
-    $scope.showSubMenu = function(main) {
-      if($scope.data.mainMenu == main) {
-        return true;
-      } else {
-        return false;
-      }
-    }
-    $scope.highLight = function(first, second) {
-      if($scope.data.mainMenu == first && $scope.data.subMenu == second) {
-        return true;
-      } else {
-        return false;
-      }
-    }
-    
-})
-
-
 .controller('mainCustomerCtrl', function($scope, $state, $ionicModal, $timeout, $rootScope,
                                         $cordovaCamera, MultipleViewsManager, Main) {
   //**

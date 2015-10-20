@@ -25,11 +25,6 @@
 
                 <div class="gfnulibm" ng-if="showSubMenu('orders')">
                    <a ng-repeat="type in data.productType" href="" ng-click="selectMenu('orders', '{{type.type}}')" ng-class="{gjxtjcss : highLight('orders', '{{type.type}}')}">{{type.name}}</a>
-                  <!--
-                  <a href="" ng-click="selectItem('orders-under-push')" ng-class="{gjxtjcss : data.selectedItem=='orders-under-push'}">待报备</a>
-                  <a href="" ng-click="selectItem('orders-under-check')" ng-class="{gjxtjcss : data.selectedItem=='orders-under-check'}">待审核</a>
-                  <a href="" ng-click="selectItem('orders-complete')" ng-class="{gjxtjcss : data.selectedItem=='orders-complete'}">已完成</a>
-                  <a href="" ng-click="selectItem('orders-under-pay')" ng-class="{gjxtjcss : data.selectedItem=='orders-under-pay'}">待付款</a>-->
                 </div>
               </li>
 

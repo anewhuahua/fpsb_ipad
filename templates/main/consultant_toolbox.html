@@ -14,6 +14,7 @@
               on-refresh="doRefresh()">
       </ion-refresher>
 
+
 <!--index-->
 <div class="main1" ng-switch-when="index">
 
@@ -274,85 +275,42 @@
 
 <!--待办事项-->
 <div class="main1" ng-switch-when='pendings'>
-             <div class="gnr2dadv"><!--内容右侧开始-->
-
-                <div class="gjxnrtopyy"></div><!-- 内容top阴影 -->
-                
-
-                <div class="gnr2ma"> 
+       <div class="gnr2dadv"><!--内容右侧开始-->
+              
+              <div class="gnr2ma"> 
+                  <div class="gnr2nrc">
+                    <div class="gnr2nrctop" ng-click="selectPage('orders', 'all')">
+                      <p> 
+                         <em><img src="teImg/gnr2nr1toplf1.jpg" /></em>  
+                         <span>查看全部订单</span> 
+                       </p>
+                       
+                   </div>
+                     <div class="twtwdv" ng-repeat="order in data.orders['all'].data | limitTo: 6" ng-click="goProductDetail(order.id)">
+                        <!--<div class="twtwdvf"><img src='teImg/gnr2rabm3.png' /></div>-->
+                        <div class="twtwdvf"><img src='{{data.orderState[order.state.toLowerCase()].image}}' /> <em>{{data.orderState[order.state.toLowerCase()].name}}</em> </div>
+                        <span>[{{data.productType[order.product.type.toLowerCase()].name}}] {{order.product.issuer}}</span>
+                    </div>   
                  
-                   <div ng-if="isCollapse('pendings-bookings')">
-                    <div class="xyglcsqtop" ng-click="expand('pendings-bookings')">
-                      <em>您有{{consultant.pendings.bookings.length}}个新预约</em><i></i>
-                    </div>
+                   
+                   <div class="gnr2nrctopd" ng-click="selectPage('bookings', 'all')">
+                      <p> 
+                         <em><img src='teImg/gnr2nr1toplf1.jpg' /></em>  
+                         <span>查看全部预约</span> 
+                       </p>
                    </div>
-                   <div ng-if="isExpand('pendings-bookings')"> 
+                   
+                   <div class="twtwdv" ng-repeat="booking in data.bookings['all'].data | limitTo: 6" ng-click="showProduct(booking.product, 'NoBooking')">
+                        <!--<div class="twtwdvf"><img src='teImg/gnr2rabm3.png' /></div>-->
+                        <div class="twtwdvf"><img src='{{data.bookingState[booking.state.toLowerCase()].image}}' /> <em>{{data.bookingState[booking.state.toLowerCase()].name}}</em> </div>
+                        <span>[{{data.productType[booking.product.type.toLowerCase()].name}}] {{booking.product.issuer}}</span>
+                    </div>   
+             
 
-                    <div class="xyglcsqtop" ng-click="collapse('pendings-bookings')">
-                      <em>您有{{consultant.pendings.bookings.length}}个新预约</em><span></span>
-                    </div>
-
-                    <div class="wdyydv" ng-repeat="booking in consultant.pendings.bookings" ><!-- 我的预约-s -->
-                       <!--<a href="#/booking/detail/{{booking.id}}">-->
-                         <div class="wdyydvtop"><span>2015 / 08 / 28</span> <em>[新预约]</em> </div>
-                         <div class="sdyybmdv">
-                             <div class="wdyyf"><img src="teImg/ghnr1lef.png" /></div>
-                             <div class="sdyyr">
-                                  <p class="wdyyrp1">
-                                     <span>王海先生 </span>
-                                     <em>白金用户</em>
-                                     <i>已认证</i>
-                                     <b>电话：1300004500 </b>
-                                  </p>
-                                  
-                                  <div class="wdyynr2v">
-                                     <span>{{booking.product.issuer}} </span>
-                                     <em>预期年化: 10.50%</em>
-                                     <a href="#/common/booking/detail/{{booking.id}}"><span>查看详情</span> <em></em></a>
-                                  </div>
-                             </div>
-                         </div>
-                      <!-- </a>-->
-                    </div><!-- 我的预约-e -->
-
-
-                   </div>
-                   <div ng-if="isCollapse('pendings-orders')"> 
-                    <div class="xyglcsqtop" ng-click="expand('pendings-orders')">
-                      <em>您有{{consultant.pendings.orders.length}}个新订单</em><i></i>
-                    </div>
-                   </div>
-                   <div ng-if="isExpand('pendings-orders')"> 
-                    <div class="xyglcsqtop" ng-click="collapse('pendings-orders')">
-                      <em>您有{{consultant.pendings.orders.length}}个新订单</em><span></span>
-                    </div>
-                   </div>
-                  <!--
-                    <div class="wdyydv" ng-repeat='booking in consultant.pendings'>
-                      
-                       <div class="wdyydvtop"><span>2015 / 08 / 28</span> <em>[未服务]</em> </div>
-                       <div class="sdyybmdv">
-                           <div class="wdyyf"><img src="teImg/ghnr1lef.png" /></div>
-                           <div class="sdyyr">
-                                <p class="wdyyrp1">
-                                   <span>王海先生 </span>
-                                   <em>白金用户</em>
-                                   <i>已认证</i>
-                                   <b>电话：1300004500 </b>
-                                </p>
-                                
-                                <div class="wdyynr2v">
-                                   <span>[保险]阳光分红型人寿 </span>
-                                   <em>返佣比2%</em>
-                                   <a href=""><span>查看详情</span> <em></em></a>
-                                </div>
-                           </div>
-                       </div>
-
-                    </div>-->
-                
-                </div>
-            </div><!--内容右侧结束-->
+                 </div>
+                 
+            </div>
+      </div>
 </div>
 <!--待办事项完成-->
     
@@ -365,7 +323,7 @@
                        <div class="sekkgdvbb">
                          <select class="kkxxbbsele">
                             <option value="volvo">全 部</option>
-                            <option value="saab">Saab</option>
+                            <option value="saab">我的好友</option>
                             <option value="opel">Opel</option>
                             <option value="audi">Audi</option>
                          </select> 
@@ -451,7 +409,7 @@
 
 <!-- planning -->
 <div class="main1" ng-switch-when='planning'>
-  <div class="gnr2dadv" ng-if="consultant.win + consultant.suffix=='planning'">
+  <div class="gnr2dadv">
               
               <div class="gzghp1">
                  <span>总业绩(元)</span>
@@ -511,6 +469,7 @@
   </div><!--gnr2dadv-->
 </div>
 <!-- planning -->
+
 <!-- orders -->
 <div class="main1" ng-switch-when='orders'>
 
@@ -518,29 +477,16 @@
 
 
             <div class="gnr2ma"> 
-                <ul class="qbgnr2nrul">
-                  <!--ng-class="{gjxqbcss}"-->
-                    <li ><a href="" ng-class="{gjxqbcss: consultant.win + consultant.suffix=='orders'}" ng-click="selectPage('orders')">
-                       <div><img src="teImg/gnr2rabm11a.png" title="" alt="" /></div>
-                       <em>全部订单</em>
-                    </a></li>
-                    <li><a href="" ng-class="{gjxqbcss: consultant.win + consultant.suffix=='orders-under-push'}" ng-click="selectPage('orders-under-push')">
-                       <div><img src="teImg/gnr2rabm1.png" title="" alt="" /></div>
-                       <em>待报备</em>
-                    </a></li>
-                    <li><a href="" ng-class="{gjxqbcss: consultant.win + consultant.suffix=='orders-under-check'}" ng-click="selectPage('orders-under-check')">
-                       <div><img src="teImg/gnr2rabm2.png" title="" alt="" /></div>
-                       <em>待审核</em>
-                    </a></li>
-                    <li><a href="" ng-class="{gjxqbcss: consultant.win + consultant.suffix=='orders-complete'}" ng-click="selectPage('orders-complete')">
-                       <div><img src="teImg/gnr2rabm3.png" title="" alt="" /></div>
-                       <em>已完成</em>
-                    </a></li>
-                    <li><a href="" ng-class="{gjxqbcss: consultant.win + consultant.suffix=='orders-under-pay'}" ng-click="selectPage('orders-under-pay')">
-                       <div><img src="teImg/gnr2rabm4.png" title="" alt="" /></div>
-                       <em>待付款</em>
-                    </a></li>
-                 </ul> 
+                <ion-scroll direction="x">
+                    <div class="lbanr1" style="width: 1000px">
+                      <ul class="qbgnr2nrul">
+                        <li ng-repeat="type in data.productType" ng-class="{gjxqbcss: showContent('orders', '{{type.type}}')}" ng-click="selectPage('orders', '{{type.type}}'); selectOrders('{{type.type}}');"><a href="#">
+                           <div><img src="{{type.image}}" title="" alt="" /></div>
+                           <em>{{type.name}}产品</em>
+                        </a></li>
+                      </ul>
+                    </div>   
+                  </ion-scroll>  
                  
                 <div class="gjxnrtpyyre" style=" width:100%; height:0.9rem; overflow:hidden; margin-top:0.1rem;">  
                   <div class="khlbtop" style="top:0;"><!--内容top开始--> 
@@ -594,6 +540,79 @@
     </div>
 </div>
 <!-- orders -->
+
+<!-- bookings -->
+<div class="main1" ng-switch-when='bookings'>
+
+    <div class="gnr2dadv"><!--内容右侧开始-->
+
+
+            <div class="gnr2ma"> 
+                <ion-scroll direction="x">
+                    <div class="lbanr1" style="width: 1000px">
+                      <ul class="qbgnr2nrul">
+                        <li ng-repeat="type in data.productType" ng-class="{gjxqbcss: showContent('bookings', '{{type.type}}')}" ng-click="selectPage('bookings', '{{type.type}}'); selectBookings('{{type.type}}');"><a href="#">
+                           <div><img src="{{type.image}}" title="" alt="" /></div>
+                           <em>{{type.name}}产品</em>
+                        </a></li>
+                      </ul>
+                    </div>   
+                  </ion-scroll>  
+                 
+                <div class="gjxnrtpyyre" style=" width:100%; height:0.9rem; overflow:hidden; margin-top:0.1rem;">  
+                  <div class="khlbtop" style="top:0;"><!--内容top开始--> 
+                  
+                       <div class="sekkgdvbb">
+                         <select class="kkxxbbsele">
+                            <option value="volvo">全 部</option>
+                            <option value="saab">Saab</option>
+                            <option value="opel">Opel</option>
+                            <option value="audi">Audi</option>
+                         </select> 
+                         <a class="aakhbb2" href=""></a> 
+                       </div> 
+                      
+                      <div class="khlbpr">
+                        <form>
+                             <input type="text"  class="khlbprput" placeholder="请输入客户的姓名"/>
+                             <input type="submit" class="khlbprtj" value="" />
+                        </form>
+                      </div> 
+                  </div><!--内容top结束-->
+                </div> 
+
+
+                 <div class="gnr2nrb"><!--已完成订单-s-->
+                   
+                     <div class="gnr2nrbtp">
+                        <span>粤财-瀚信中鼎盈丰2期</span>
+                        <a href="#/common/order/detail/{{order.id}}"><em>查看详情</em><i></i></a>
+                     </div>
+                     
+                     <div class="gnr2nrbbm">
+                       <div class="gnr2nrblef">
+                          <div><img src="teImg/gnr2rabm3.png" title="" alt="" /></div>
+                          <em>新订单</em>
+                       </div>
+                       
+                       <ul class="gnr2nrbbmrig">
+                         <li><span>当前持有资产(元)</span>  <em>28000</em></li>
+                         <li><span>投资笔数(笔)</span>  <em>10</em></li>
+                         <li><span>当前投资收益(元)</span>  <em>280</em></li>
+                         <li><span>预期收益(元)</span>  <em>200</em></li>
+                       </ul>
+                       
+                     </div>
+                 </div><!--已完成订单-e-->
+
+
+
+            </div>
+    </div>
+</div>
+<!-- bookings -->
+
+
 
 
   </ion-content>

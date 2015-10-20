@@ -7,80 +7,117 @@
             <ul class="gfnleful"><!-- 左边大分类开始-->
               <div class="gjxnrtopyy2"></div><!-- 内容top阴影 --> 
                
+
               <li>
-                <div class="gfnulitp" ng-click="selectItem('index')" ng-class="{gjxtjcss: data.selectedItem=='index'}">
+                <div class="gfnulitp" ng-click="selectMenu('index','all')" ng-class="{gjxtjcss: highLight('index','all')}">
                   <a>账户总览</a>
                   <em><img src="teImg/glefultprg.png" /></em>
                 </div>
               </li>
               <li>
-                <div class="gfnulitp" ng-click="selectItem('pendings')" ng-class="{gjxtjcss : data.selectedItem=='pendings'}">
+                <div class="gfnulitp" ng-click="selectMenu('pendings', 'all')" ng-class="{gjxtjcss: highLight('pendings','all')}">
                   <a>待办事项</a>
                   <em><img src="teImg/glefultprg.png" /></em>
                 </div>
-                <div class="gfnulibm" ng-if="showItem('pendings')">
-                  <a href="" ng-click="selectItem('pendings-bookings')" ng-class="{gjxtjcss : data.selectedItem=='pendings-bookings'}">新预约</a>
-                  <a href="" ng-click="selectItem('pendings-orders')" ng-class="{gjxtjcss : data.selectedItem=='pendings-orders'}">新订单</a>
-                </div>
               </li>
               <li>
-                <div class="gfnulitp" ng-click="selectItem('customers')" ng-class="{gjxtjcss : data.selectedItem=='customers'}">
+                <div class="gfnulitp" ng-click="selectMenu('customers', 'all')" ng-class="{gjxtjcss: highLight('customers','all')}">
                   <a>我的客户</a>
                   <em><img src="teImg/glefultprg.png" /></em>
                 </div>
               </li>
+
+
               <li>
-                <div class="gfnulitp" ng-click="selectItem('money')" ng-class="{gjxtjcss : data.selectedItem=='money'}">
-                  <a>佣金管理</a>
+                <div class="gfnulitp" ng-click="selectMenu('orders', 'all')" ng-class="{gjxtjcss: highLight('orders','all')}">
+                  <a>客户订单</a>
                   <em><img src="teImg/glefultprg.png" /></em>
                 </div>
-                <div class="gfnulibm" ng-if="showItem('money')">
-                  <a href="" ng-click="selectItem('money-unpaid')" ng-class="{gjxtjcss : data.selectedItem=='money-unpaid'}">未结算佣金</a>
-                  <a href="" ng-click="selectItem('money-paid')" ng-class="{gjxtjcss : data.selectedItem=='money-paid'}">已结算佣金</a>
-                </div>
-              </li>
-              <li>
-                <div class="gfnulitp" ng-click="selectItem('orders')" ng-class="{gjxtjcss: data.selectedItem=='orders'}">
-                  <a>订单跟踪</a>
-                  <em><img src="teImg/glefultprg.png" /></em>
-                </div>
-                <div class="gfnulibm" ng-if="showItem('orders')">
-                  <a href="" ng-click="selectItem('orders-under-push')" ng-class="{gjxtjcss : data.selectedItem=='orders-under-push'}">待报备</a>
-                  <a href="" ng-click="selectItem('orders-under-check')" ng-class="{gjxtjcss : data.selectedItem=='orders-under-check'}">待审核</a>
-                  <a href="" ng-click="selectItem('orders-complete')" ng-class="{gjxtjcss : data.selectedItem=='orders-complete'}">已完成</a>
-                  <a href="" ng-click="selectItem('orders-under-pay')" ng-class="{gjxtjcss : data.selectedItem=='orders-under-pay'}">待付款</a>
-                </div>
-              </li>
-                <div class="gfnulitp" ng-click="selectItem('planning')" ng-class="{gjxtjcss: data.selectedItem=='planning'}">
-                  <a>工作规划</a>
-                  <em><img src="teImg/glefultprg.png" /></em>
-                </div>
-                <div class="gfnulibm" ng-if="showItem('planning')">
-                  <a href="" ng-click="selectItem('planning-tips')" ng-class="{gjxtjcss : data.selectedItem=='planning-tips'}">工作任务</a>
-                  <a href="" ng-click="selectItem('planning-notes')" ng-class="{gjxtjcss : data.selectedItem=='planning-notes'}">记事备忘</a>
-                </div>
-              </li>
-              
-              <li>
-                <div class="gfnulitp" ng-click="selectItem('information')" ng-class="{gjxtjcss: data.selectedItem=='information'}">
-                  <a>我的资料</a>
-                  <em><img src="teImg/glefultprg.png" /></em>
-                </div>
-                <div class="gfnulibm" ng-if="showItem('information')">
-                  <a href="" ng-click="selectItem('information-bank')" ng-class="{gjxtjcss : data.selectedItem=='information-bank'}">银行卡信息</a>
-                  <a href="" ng-click="selectItem('information-password')" ng-class="{gjxtjcss : data.selectedItem=='information-password'}">登入密码</a>
+                <div class="gfnulibm" ng-if="showSubMenu('orders')">
+                   <a ng-repeat="type in data.productType" href="" ng-click="selectMenu('orders', '{{type.type}}')" ng-class="{gjxtjcss : highLight('orders', '{{type.type}}')}">{{type.name}}</a>
                 </div>
               </li>
 
               <li>
-                <div class="gfnulitp" ng-click="logout()" ng-class="{gjxtjcss: data.selectedItem=='logout'}">
+                <div class="gfnulitp" ng-click="selectMenu('bookings', 'all')" ng-class="{gjxtjcss: highLight('bookings','all')}">
+                  <a>客户预约</a>
+                  <em><img src="teImg/glefultprg.png" /></em>
+                </div>
+
+                <div class="gfnulibm" ng-if="showSubMenu('bookings')">
+                   <a ng-repeat="type in data.productType" href="" ng-click="selectMenu('bookings', '{{type.type}}')" ng-class="{gjxtjcss : highLight('bookings', '{{type.type}}')}">{{type.name}}</a>
+                </div>
+              </li>
+
+              <li>
+                <div class="gfnulitp" ng-click="selectMenu('commissions', 'all')" ng-class="{gjxtjcss: highLight('commissions','all')}">
+                  <a>我的佣金</a>
+                  <em><img src="teImg/glefultprg.png" /></em>
+                </div>
+
+                <div class="gfnulibm" ng-if="showSubMenu('commissions')">
+                   <a ng-click="selectMenu('commissions', 'paid')" ng-class="{gjxtjcss : highLight('commissions', 'paid')}">已结算</a>
+                   <a ng-click="selectMenu('commissions', 'unpaid')" ng-class="{gjxtjcss : highLight('commissions', 'unpaid')}">未结算</a>
+                </div>
+              </li>
+
+              <li>
+                <div class="gfnulitp" ng-click="selectMenu('planning', 'all')" ng-class="{gjxtjcss: highLight('planning','all')}">
+                  <a>工作规划</a>
+                  <em><img src="teImg/glefultprg.png" /></em>
+                </div>
+              </li>
+
+              <li>
+               <div class="gfnulitp" ng-click="selectMenu('information','person')" ng-class="{gjxtjcss: highLight('information','person')}">
+                  <a>我的资料</a>
+                  <em><img src="teImg/glefultprg.png" /></em>
+                </div>
+                <div class="gfnulibm" ng-if="showSubMenu('information')">
+                  <a href="" ng-click="selectMenu('information', 'bank')" ng-class="{gjxtjcss : highLight('information','bank')}">银行卡信息</a>
+                  <a href="" ng-click="selectMenu('information', 'password')" ng-class="{gjxtjcss : highLight('information','password')}">登入密码</a>
+                </div>
+              </li>
+
+              <li>
+                <div class="gfnulitp" ng-click="selectMenu('message', 'all')" ng-class="{gjxtjcss: highLight('message','all')}">
+                  <a>我的消息</a>
+                  <em><img src="teImg/glefultprg.png" /></em>
+                </div>
+              </li>
+
+              
+              <li>
+                <div class="gfnulitp" ng-click="selectMenu('investment','all')" ng-class="{gjxtjcss: highLight('investment','all')}">
+                  <a>个人投资</a>
+                  <em><img src="teImg/glefultprg.png" /></em>
+                </div>
+                <div class="gfnulibm" ng-if="showSubMenu('investment')">
+                  <a href="" ng-click="selectMenu('investment', 'orders')"   ng-class="{gjxtjcss : highLight('investment','orders')}">我的订单</a>
+                  <a href="" ng-click="selectMenu('investment', 'bookings')" ng-class="{gjxtjcss : highLight('investment','bookings')}">我的预约</a>
+                </div>
+              </li>
+
+              <li>
+                <div class="gfnulitp" ng-click="selectMenu('group','all')" ng-class="{gjxtjcss: highLight('group','all')}">
+                  <a>我的团队</a>
+                  <em><img src="teImg/glefultprg.png" /></em>
+                </div>
+                <div class="gfnulibm" ng-if="showSubMenu('group')">
+                  <a href="" ng-click="selectMenu('group', 'orders')"   ng-class="{gjxtjcss : highLight('group','orders')}">预约分配</a>
+                  <a href="" ng-click="selectMenu('group', 'tasks')" ng-class="{gjxtjcss : highLight('group','tasks')}">任务分配</a>
+                  <a href="" ng-click="selectMenu('group', 'performance')" ng-class="{gjxtjcss : highLight('group','performance')}">业绩查询</a>
+                </div>
+              </li>
+
+          
+              <li>
+                <div class="gfnulitp" ng-click="logout()">
                   <a>退出登入</a>
                   <em><img src="teImg/glefultprg.png" /></em>
                 </div>
               </li>
-              <li>
-    
-            
+
             </ul><!-- 左边大分类结束-->
     
 
