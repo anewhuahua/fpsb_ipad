@@ -313,7 +313,7 @@ angular.module('main.service',[])
         if(id) {
           Rest.customer.v1.addBooking(id, pid, function(data){
             if (parseRestSuccess('addBooking', data, successHandler, errorHandler)) { 
-              customer.bookings.unserved.unshift(data.result);
+              //customer.bookings.unserved.unshift(data.result);
             }
           }, function(status){
             parseRestError('addBooking',  status, errorHandler);
