@@ -737,7 +737,8 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('mainCustomerCtrl', function($scope, $state, $ionicModal, $timeout, $cordovaCamera, MultipleViewsManager, Main) {
+.controller('mainCustomerCtrl', function($scope, $state, $ionicModal, $timeout, $rootScope,
+                                        $cordovaCamera, MultipleViewsManager, Main) {
 
   //**
   //** controller data
