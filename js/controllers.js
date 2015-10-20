@@ -807,16 +807,18 @@ angular.module('starter.controllers', [])
   //**
   //** event listen function
   $rootScope.$on('ChangeWindow', function(event, args){
+    MultipleViewsManager.updateViewLeft('main-my-toolbox', {main: args.win, sub: args.subWin});
     $scope.customer.win = args.win;
     $scope.customer.subWin = args.subWin;
 
     if($scope.customer.win == 'orders') {
-      $scope.data.currentOrder = $scope.data.orders[args.subWin];
+      $scope.data.currentOrder = $scope.data.orders['all'];
       refreshData();
     } else if ($scope.customer.win == 'bookings') {
-      $scope.data.currentBooking = $scope.data.bookings[args.subWin];
+      $scope.data.currentBooking = $scope.data.bookings['all'];
       refreshData();
     }
+
   });
 
   /*为了使增加orders或者bookings可以更新
