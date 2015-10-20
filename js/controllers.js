@@ -82,7 +82,7 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('mainCtrl', function($scope, $state, $window, $cordovaNetwork, $rootScope, $ionicHistory, $timeout, Main) {
+.controller('mainCtrl', function($scope, $state, $window, $cordovaNetwork, $rootScope, $ionicHistory, $timeout, Main, Notify) {
 
    document.addEventListener("deviceready", function () {
         $scope.network = $cordovaNetwork.getNetwork();
@@ -187,7 +187,15 @@ angular.module('starter.controllers', [])
 
   $scope.closeWarning = function(win) {
     $scope.data.warning.status='';
-    $scope.data.warning.words = '';
+    //$scope.data.warning.words = '';
+
+    if ($scope.data.warning.words.indexOf('您的预约已成功提交')>=0) {
+      Notify.notify('booking');
+    } else if ($scope.data.warning.words.indexOf('您的订单已成功提交')>=0) {
+      Notify.notify('order');
+    } else {
+
+    }
   }
   $scope.backProduct = function() {
     if($scope.data.looking_product) {
@@ -206,6 +214,17 @@ angular.module('starter.controllers', [])
       $scope.data.popup = 'OrderDialog';
     }
   }
+  $scope.enableBooking = function() {
+    return true;
+  }
+  $scope.enableOrder = function() {
+    if ($scope.data.looking_product.type.toLowerCase() == 'publicfund') {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  
 
   $scope.addBooking= function(quantity) {
     // todo quantity
@@ -785,13 +804,24 @@ angular.module('starter.controllers', [])
   refreshData();
   
   //**
-  $scope.showContent = function(first, second){
-    if ($scope.customer.win==first && $scope.customer.subWin==second){
-      return true;
-    } else {
-      return false;
+  //** event listen function
+  $rootScope.$on('ChangeWindow', function(event, args){
+    $scope.customer.win = args.win;
+    $scope.customer.subWin = args.subWin;
+
+    if($scope.customer.win == 'orders') {
+      $scope.data.currentOrder = $scope.data.orders[args.subWin];
+      refreshData();
+    } else if ($scope.customer.win == 'bookings') {
+      $scope.data.currentBooking = $scope.data.bookings[args.subWin];
+      refreshData();
     }
-  };
+  });
+
+  /*为了使增加orders或者bookings可以更新
+  $scope.$on('$ionicView.enter', function() {
+    refreshData();
+  });*/
 
   MultipleViewsManager.updated(function(params) {
     var first = params.main;
@@ -809,6 +839,14 @@ angular.module('starter.controllers', [])
     }
   });
 
+  $scope.showContent = function(first, second){
+    if ($scope.customer.win==first && $scope.customer.subWin==second){
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   $scope.selectPage = function(first, second) {            
     MultipleViewsManager.updateViewLeft('main-my-toolbox', {main: first, sub: second});
     
@@ -819,15 +857,6 @@ angular.module('starter.controllers', [])
     refreshData();
     $scope.$broadcast('scroll.refreshComplete');
   }
-
-
-  $scope.$on("AddBooking", function(event,msg) {
-  // nothing to do now
-  });
-   $scope.$on("AddOrder", function(event,msg) {
-  // nothing to do now
-  });
-
 
 
   $scope.takePhoto=function(param){

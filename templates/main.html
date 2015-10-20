@@ -254,9 +254,14 @@ navigation history that also transitions its views in and out.
     
     
     <div class="prxqbm"><!-- 私募产品详情页弹窗主体 底部部分-->
-      <a href="" class="prxqaa2" ng-click="bookingDialog()">预约产品</a>
-      <a href="" class="prxqaa1" ng-click="orderDialog()">立即申购</a>
+
+      <a ng-if="enableBooking()" href="" class="prxqaa2" ng-click="addBooking()">预约产品</a>
+      <a ng-if="!enableBooking()" href="" class="prxqaa119">预约产品</a>
+      <a ng-if="enableOrder()" href="" class="prxqaa1" ng-click="orderDialog()">立即申购</a>
+      <a ng-if="!enableOrder()" href="" class="prxqaa119">立即申购</a>
+
     </div><!-- 私募产品详情页弹窗主体 底部部分-->
+
 
   </div><!-- 私募产品详情页弹窗主体 --> 
 </div><!-- 私募产品详情页弹窗结束 -->

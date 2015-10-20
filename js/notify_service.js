@@ -1,6 +1,19 @@
 angular.module('notify.service',['main.service'])
 .factory('Notify', function($rootScope, $state, $timeout, Main) {
+  var option = {
+    Customer: {
+      booking: {state: 'main.my', win:'bookings', sub:'all'},
+      order:   {state: 'main.my', win:'orders', sub:'all'}
+    },
+    Consultant: {
+      booking: {state: 'main.toolbox', win:'bookings', sub:'all'},
+      order:   {state: 'main.toolbox', win:'orders', sub:'all'}
+    }
+  };
+
+
   return {
+    /*
     send: function(msg, data) {
       //$state.go('main.my');
       if(msg == 'AddBooking') {
@@ -9,30 +22,18 @@ angular.module('notify.service',['main.service'])
       	//$rootScope.
       	//console.log(msg);
       }
-    },
+    },*/
 
     notify: function(msg) {
-      var role = Main.getRole();
-      if (msg == 'booking') {
-        if (role == 'Customer') {
-          $state.go('main.my');
-          $timeout(function() { 
-            $rootScope.$broadcast('ChangeWindow', {win:'bookings'});
-          }, 500); 
-        } else if (role == 'Consultant') {
-
-        }
-      }
-      else {
-        if (role == 'Customer') {
-          $state.go('main.my');
-          $timeout(function() { 
-            $rootScope.$broadcast('ChangeWindow', {win:'orders'});
-          }, 500); 
-        }
-
-      }
-      
+      var role   = Main.getRole();
+      var state  = option[role][msg].state;
+      var first  = option[role][msg].win;
+      var second = option[role][msg].sub;
+      $state.go(state);
+      $timeout(function() { 
+        $rootScope.$broadcast('ChangeWindow', {win:first, sub:second});
+      }, 500); 
     }
   }
+
 });
