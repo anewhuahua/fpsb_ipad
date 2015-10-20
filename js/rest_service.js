@@ -155,6 +155,7 @@ angular.module('rest.service', [])
               }
             };
           $http(req).success(function(data){
+            console.log(data);
             successHandler(data);
           }).error(function(res, status){
             errorHandler(status);
