@@ -374,7 +374,10 @@ angular.module('main.service',[])
 
         Rest.customer.v1.queryBookings(param, id, function(data){
           if(parseRestSuccess('queryBookings', data, successHandler, errorHandler)) {
-            bookings.data = data.result;
+            bookings.data.length = 0;
+            for (var i=0;i<data.result.length;i++){
+              bookings.data.push(data.result[i]);
+            }
           }
         }, function(status){
           parseRestError('queryBookings', status, errorHandler);
@@ -436,7 +439,10 @@ angular.module('main.service',[])
 
         Rest.customer.v1.queryOrders(param, id, function(data){
           if(parseRestSuccess('queryOrders', data, successHandler, errorHandler)) {
-            orders.data = data.result;
+             orders.data.length = 0;
+             for (var i=0;i<data.result.length;i++){
+               orders.data.push(data.result[i]);
+             }
           }
         }, function(status){
           parseRestError('queryOrders',  status, errorHandler);
