@@ -30,6 +30,10 @@ $royal:                           #886aea !default;
   /*订单状态-e*/
   /*理财师当前服务产品新增10.19-修改-s*/
   /*理财师当前服务产品新增10.19-修改-e*/
+  /*个人信息新增1021-s*/
+  /*个人信息新增1021-s*/
+  /*个人信息新增1019-s*/
+  /*个人信息新增1019-e*/
   /*预约内容页1019-s*/
   /*预约内容页1019-e*/ }
   .booking-view a {
@@ -1350,6 +1354,73 @@ $royal:                           #886aea !default;
     font-size: 0.3rem;
     color: #395983;
     line-height: 1.2rem; }
+  .booking-view .gjxxztj {
+    width: 100%;
+    height: 0.78rem;
+    overflow: hidden;
+    margin: 0.2rem auto 0; }
+  .booking-view .gjxxztj > a {
+    width: 50%;
+    float: left;
+    height: 100%;
+    font-size: 0.36rem;
+    line-height: 0.78rem;
+    color: #fff;
+    text-align: center; }
+  .booking-view .gjjtqa1 {
+    background: #d32e00; }
+  .booking-view .gjjtqa2 {
+    background: #e79700; }
+  .booking-view .grxzxzaa {
+    width: 93%;
+    height: 0.7rem;
+    margin: auto;
+    margin: 0.4rem auto 0.3rem auto;
+    background: #e79700;
+    overflow: hidden;
+    display: block;
+    font-size: 0.3rem;
+    line-height: 0.7rem;
+    color: #fff;
+    text-align: center; }
+  .booking-view .grxxrzpul {
+    width: 93%;
+    height: 0.7rem;
+    margin: 0.4rem auto 0.3rem auto;
+    background: #fff;
+    overflow: hidden; }
+  .booking-view .grxxrzpul > li {
+    width: 50%;
+    height: 100%;
+    float: left; }
+  .booking-view .grxxrzpul > li > a {
+    display: block;
+    font-size: 0.3rem;
+    line-height: 0.7rem;
+    color: #395983;
+    text-align: center; }
+  .booking-view .grxxlbdv {
+    width: 93%;
+    height: 0.8rem;
+    margin: auto;
+    background: #fff;
+    margin-bottom: 0.2rem; }
+  .booking-view .grxxlbdv > div {
+    width: 12%;
+    float: left;
+    padding-top: 0.2rem; }
+  .booking-view .grxxlbdv > div > img {
+    display: block;
+    width: 0.48rem;
+    height: 0.44rem;
+    margin: auto; }
+  .booking-view .grxxlbdv > em {
+    width: 75%;
+    float: left;
+    font-size: 0.3rem;
+    line-height: 0.8rem;
+    color: #395983;
+    overflow: hidden; }
   .booking-view .cpyyxzj {
     width: 90%;
     margin: 0.4rem auto 0;
@@ -1673,7 +1744,11 @@ $royal:                           #886aea !default;
   /*上下页10.20-s*/
   /*上下页10.20-e*/
   /*个人信息新增1019-s*/
-  /*个人信息新增1019-e*/ }
+  /*个人信息新增1019-e*/
+  /*订单列表1021*/
+  /*订单列表1021*/
+  /*个人信息新增1021-s*/
+  /*个人信息新增1021-s*/ }
   .common-person-view a {
     text-decoration: none; }
   .common-person-view .content {
@@ -4468,6 +4543,60 @@ $royal:                           #886aea !default;
     line-height: 0.8rem;
     color: #395983;
     overflow: hidden; }
+  .common-person-view .lbxzxzdv {
+    width: 93%;
+    margin: 0.5rem auto;
+    overflow: hidden; }
+  .common-person-view .twtwdv2 {
+    width: 100%;
+    background: #fff;
+    height: 1.2rem;
+    padding: 0.1rem 0;
+    border-radius: 3px;
+    overflow: hidden;
+    margin: auto;
+    margin-bottom: 0.1rem; }
+  .common-person-view .twtwdvf1 {
+    width: 10%;
+    float: left;
+    border-left: 1px #f3f2f5 solid; }
+  .common-person-view .twtwdv2 > div:first-child {
+    border-left: 0; }
+  .common-person-view .twtwdvf1 > img {
+    display: block;
+    width: 0.65rem;
+    height: 0.65rem;
+    margin: 0.07rem auto; }
+  .common-person-view .twtwdvf1 > em {
+    display: block;
+    height: 0.2rem;
+    font-size: 0.18rem;
+    line-height: 0.18rem;
+    color: #395983;
+    text-align: center; }
+  .common-person-view .twtwdv2 > span {
+    float: right;
+    width: 76%;
+    font-size: 0.3rem;
+    color: #395983;
+    line-height: 1.2rem; }
+  .common-person-view .gjxxztj {
+    width: 100%;
+    height: 0.78rem;
+    overflow: hidden;
+    margin: 0.2rem auto 0; }
+  .common-person-view .gjxxztj > a {
+    width: 50%;
+    float: left;
+    height: 100%;
+    font-size: 0.36rem;
+    line-height: 0.78rem;
+    color: #fff;
+    text-align: center; }
+  .common-person-view .gjjtqa1 {
+    background: #d32e00; }
+  .common-person-view .gjjtqa2 {
+    background: #e79700; }
 
 .common-main-view {
   /****iconfont****/

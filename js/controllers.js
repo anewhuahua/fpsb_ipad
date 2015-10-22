@@ -56,7 +56,7 @@ angular.module('starter.controllers', [])
 .controller('bookingDetailCtrl', function($scope, $stateParams, Main) {
   
   var bid = $stateParams.bookingId;
-  $scope.booking = Main.consultant.getBooking(bid);
+  //$scope.booking = Main.consultant.getBooking(bid);
   //console.log($scope.booking);
 })
 .controller('orderMenuCtrl', function($scope, $stateParams, $ionicHistory) {
@@ -681,8 +681,11 @@ angular.module('starter.controllers', [])
 //**
 //** common function
 
-  $scope.goProductDetail = function(oid) {
+  $scope.goOrderDetail = function(oid) {
     $state.go('common.order_detail', {orderId: oid});
+  };
+  $scope.goBookingDetail = function(bid) {
+    $state.go('common.booking_detail', {bookingId: bid});
   };
   var refreshData = function() {
     Main.consultant.queryOrders($scope.data.currentOrder, function(data){
@@ -735,8 +738,8 @@ angular.module('starter.controllers', [])
   $scope.selectPage = function(first, second) {            
     MultipleViewsManager.updateViewLeft('main-consultant-toolbox', {main: first, sub: second});
     
-    $scope.customer.win = first;
-    $scope.customer.subWin = second;
+    $scope.consultant.win = first;
+    $scope.consultant.subWin = second;
   }
 
 
