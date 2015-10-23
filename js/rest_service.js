@@ -210,6 +210,27 @@ angular.module('rest.service', [])
 
     consultant: {
       v1: {
+        queryCustomers: function (param, id, successHandler, errorHandler, finallyHandler) {
+          offset = param.offset || '0';
+          limit  = param.limit || '24';
+
+          var req = {
+              method: 'GET',
+              url: domain+'ChiefFinancierService/api/consultant/v1/consultants/' + id + 
+              '/customers?&offset=' + offset + '&limit=' + limit,
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
+          $http(req).success(function(data){
+            successHandler(data);
+          }).error(function(res, status){
+            errorHandler(status);
+          }).finally(function(){
+            finallyHandler();
+          });
+        },
+
         queryBookings: function (param, id, successHandler, errorHandler, finallyHandler) {
           state  = param.state || 'all';
           offset = param.offset || '0';
@@ -243,6 +264,28 @@ angular.module('rest.service', [])
               method: 'GET',
               url: domain+'ChiefFinancierService/api/consultant/v1/consultants/' + id + 
               '/orders?state=' + state + '&productType=' + type + '&offset=' + offset + '&limit=' + limit +'&sort=desc',
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
+          $http(req).success(function(data){
+            successHandler(data);
+          }).error(function(res, status){
+            errorHandler(status);
+          }).finally(function(){
+            finallyHandler();
+          });
+        },
+
+        submitOrder: function(param, id, successHandler, errorHandler, finallyHandler) {
+          pid   = param.product;
+          quota = param.quota;
+          cid   = param.customer;
+
+          var req = {
+              method: 'POST',
+              url: domain+'ChiefFinancierService/api/consultant/v1/consultants/' + id + 
+              '/orders?productId=' + pid + '&quota=' + quota +'&customerId=' + cid,
               headers: {
                 'Content-Type': 'application/json'
               }

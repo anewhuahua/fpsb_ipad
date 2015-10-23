@@ -107,7 +107,10 @@ angular.module('main.service',[])
   };
   var roleConsultant = {
     bookings: {},
-    orders:   {}
+    orders:   {},
+    customers: {
+      data: []
+    }     //后续有分组
   };
 
   var id = null;
@@ -370,10 +373,12 @@ angular.module('main.service',[])
 
         Rest.customer.v1.queryBookings(param, id, function(data){
           if(parseRestSuccess('queryBookings', data, successHandler, errorHandler)) {
+            /*
             bookings.data.length = 0;
             for (var i=0;i<data.result.length;i++){
               bookings.data.push(data.result[i]);
-            }
+            }*/
+            bookings.data = data.result;
           }
         }, function(status){
           parseRestError('queryBookings', status, errorHandler);
@@ -435,11 +440,7 @@ angular.module('main.service',[])
 
         Rest.customer.v1.queryOrders(param, id, function(data){
           if(parseRestSuccess('queryOrders', data, successHandler, errorHandler)) {
-             // tyson todo 试下这个 orders.data = data.result 这个方式
-             orders.data.length = 0;
-             for (var i=0;i<data.result.length;i++){
-               orders.data.push(data.result[i]);
-             }
+             orders.data = data.result;  
           }
         }, function(status){
           parseRestError('queryOrders',  status, errorHandler);
@@ -459,6 +460,9 @@ angular.module('main.service',[])
       getOrders: function() {
         return roleConsultant.orders;
       },
+      getCustomers: function() {
+        return roleConsultant.customers;
+      },
 
       queryBookings: function(bookings, successHandler, errorHandler, finallyHandler) {
         var param = {};
@@ -471,10 +475,7 @@ angular.module('main.service',[])
 
         Rest.consultant.v1.queryBookings(param, id, function(data){
           if(parseRestSuccess('queryBookings', data, successHandler, errorHandler)) {
-            bookings.data.length = 0;
-            for (var i=0;i<data.result.length;i++){
-              bookings.data.push(data.result[i]);
-            }
+            bookings.data = data.result;
           }
         }, function(status){
           parseRestError('queryBookings', status, errorHandler);
@@ -493,27 +494,49 @@ angular.module('main.service',[])
         } else {
         }
 
-        Rest.customer.v1.queryOrders(param, id, function(data){
+        Rest.consultant.v1.queryOrders(param, id, function(data){
           if(parseRestSuccess('queryOrders', data, successHandler, errorHandler)) {
-             // tyson todo 试下这个 orders.data = data.result 这个方式
-             orders.data.length = 0;
-             for (var i=0;i<data.result.length;i++){
-               orders.data.push(data.result[i]);
-             }
+             orders.data = data.result; 
           }
         }, function(status){
           parseRestError('queryOrders',  status, errorHandler);
         }, 
         finallyHandler());
+      },
+
+      queryCustomers: function(customers, successHandler, errorHandler, finallyHandler) {
+        var param = {};
+        Rest.consultant.v1.queryCustomers(param, id, function(data){
+          if(parseRestSuccess('queryCustomers', data, successHandler, errorHandler)) {
+             console.log(data.result);
+             customers.data = data.result; 
+          }
+        }, function(status){
+          parseRestError('queryCustomers',  status, errorHandler);
+        }, 
+        finallyHandler());
+      },
+
+      submitOrder: function(booking, money, successHandler, errorHandler, finallyHandler) {
+        var param = {
+          customer: booking.customer.id,
+          quota:    money,
+          product:  booking.product.id
+        };
+        
+        Rest.consultant.v1.submitOrder(param, id, function(data){
+          if (parseRestSuccess('submitOrder', data, successHandler, errorHandler)) { 
+            console.log('submitorder success');
+          }
+        }, function(status){
+          parseRestError('submitOrder', status, errorHandler);
+        }, 
+        finallyHandler()); 
       }
 
-      
     }, // consultant
 
 
-
-
-    
     getCategories: function(){
       return categories;
     },

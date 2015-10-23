@@ -28,18 +28,18 @@
           
             <div class="gjxnr3">
               <!-- 内容1右边部分开始 -->
-              <span>总资产(元)</span>
-              <em>541300.20</em>
+              <span>佣金收益(元)</span>
+              <em>41300.20</em>
               <div class="gjxnr3bmdv">
-                <span>预期总收益：35000 </span>
-                <em>实际已收益：25030 </em>
+                <span>您有3条新消息</span>
+                <!--<em>投资收益：25030 </em>-->
               </div>
             </div>
             <!-- 内容右边部分结束 -->
           
             <div class="gjxnrr2">
               <!-- 内容1左边部分开始 -->
-              <div class="gjxnrr2lef"><img src="teImg/ghnr1lef.png" /></div>
+              <div class="gjxnrr2lef"><img src="teImg/gnr2nrclef1.jpg" /></div>
               <div class="gjxnrr2rig">
                 <p class="gjxnrr2rigp1">李明<span>先生</span>,<em>下午</em>好</p>
                 <p class="gjxnrr2rigp2"><span><img src="teImg/gjxnrtaa.png" /></span> <em>理财师</em> <i>已认证</i></p>
@@ -60,14 +60,19 @@
                            <div href=""></div>
                        </a>
                        <ul class="lcsgnr2nrabm">
-                            <li><a href="">
+
+                            <!--
+                            <li ng-repeat="customer in data.customers.data"><a href="">
                                <div><img src="teImg/ghnr1lef.png" title="" alt="" /></div>
                                <em>客户1</em>
-                            </a></li>
+                            </a></li>-->
+                            
                             <li><a href="">
                                <div><img src="teImg/ghnr1lef.png" title="" alt="" /></div>
-                               <em>客户1</em>
+                               <em>王海</em>
                             </a></li>
+
+                            <!--
                             <li><a href="">
                                <div><img src="teImg/ghnr1lef.png" title="" alt="" /></div>
                                <em>客户1</em>
@@ -87,7 +92,7 @@
                              <li><a href="">
                                <div><img src="teImg/ghnr1lef.png" title="" alt="" /></div>
                                <em>客户1</em>
-                            </a></li>
+                            </a></li>-->
 
                             
                          </ul> 
@@ -130,25 +135,25 @@
                      <div class="lcsyjtop"><span>佣金总额（元）</span>  <em> 541300.20</em></div>
                      <ul class="lcsnrul">
                        <li>
-                         <span><em></em>客户 : 李明先生</span> 
+                         <span><em></em>客户 : 王海先生</span> 
                          <span>返佣：<i>35000</i> </span>
                          <span>交易号：0232011</span>
                          <span>时间 ：2015.08.07</span>
                        </li>
                        <li>
-                         <span><em></em>客户 : 李明先生</span> 
+                         <span><em></em>客户 : 王海先生</span> 
                          <span>返佣：<i>35000</i> </span>
                          <span>交易号：0232011</span>
                          <span>时间 ：2015.08.07</span>
                        </li>
                        <li>
-                         <span><em></em>客户 : 李明先生</span> 
+                         <span><em></em>客户 : 王海先生</span> 
                          <span>返佣：<i>35000</i> </span>
                          <span>交易号：0232011</span>
                          <span>时间 ：2015.08.07</span>
                        </li>
                        <li>
-                         <span><em></em>客户 : 李明先生</span> 
+                         <span><em></em>客户 : 王海先生</span> 
                          <span>返佣：<i>35000</i> </span>
                          <span>交易号：0232011</span>
                          <span>时间 ：2015.08.07</span>
@@ -160,16 +165,19 @@
                    <a href="" class="lcsgnr2nratop" ng-click=selectPage('orders')>
                        <p> 
                          <em><img src="teImg/lcsnr3t.png" /></em>  
-                         <span>客户订单</span> 
+                         <span>查看全部交易</span> 
                        </p>
                        <div href=""></div>
                    </a>
                    
-                    <div class="twtwdv2" ng-click="goOrderDetail(11)">
+                    <div class="twtwdv2" ng-repeat="order in data.orders['all'].data | limitTo: 3" ng-click="goOrderDetail(11)">
                         <div class="twtwdvf1"><img src="teImg/ghnr1lef.png" /> <em>姓名</em></div>
                         <div class="twtwdvf1"><img src="teImg/gnr2rabm3.png" /> <em>已提交</em></div>
                         <span>[私募]粤财·瀚信中鼎盈丰2期</span>
                     </div>
+
+
+                    <!--
                     <div class="twtwdv2" ng-click="goOrderDetail(11)">
                         <div class="twtwdvf1"><img src="teImg/ghnr1lef.png" /> <em>姓名</em></div>
                         <div class="twtwdvf1"><img src="teImg/gnr2rabm1.png" /> <em>已完成</em></div>
@@ -180,20 +188,23 @@
                         <div class="twtwdvf1"><img src="teImg/gnr2rabm2.png" /> <em>资料已提交</em></div>
                         <span>[私募]粤财·瀚信中鼎盈丰4期</span>
                     </div>
+                    -->
+
                     &nbsp;
 
                    <a href="" class="lcsgnr2nratop" ng-click=selectPage('bookings')>
                        <p> 
                          <em><img src="teImg/lcsnr3t.png" /></em>  
-                         <span>客户预约</span> 
+                         <span>查看全部预约</span> 
                        </p>
                        <div href=""></div>
                    </a>
-                   <div class="twtwdv2" ng-click="goBookingDetail(12)">
-                        <div class="twtwdvf1"><img src="teImg/ghnr1lef.png" /> <em>姓名</em></div>
-                        <div class="twtwdvf1"><img src="teImg/unserved.png" /> <em>未服务</em></div>
-                        <span>[私募]粤财·瀚信中鼎盈丰2期</span>
-                    </div>
+                   <div class="twtwdv2" ng-repeat="booking in data.bookings['all'].data | limitTo: 5" ng-click="goBookingDetail(booking.id)">
+                        <div class="twtwdvf1"><img src="teImg/ghnr1lef.png" /> <em>王海</em></div>
+                        <div class="twtwdvf1"><img src='{{data.bookingState[booking.state.toLowerCase()].image}}'/> <em>{{data.bookingState[booking.state.toLowerCase()].name}}</em></div>
+                        <span>[{{data.productType[booking.product.type.toLowerCase()].name}}] {{booking.product.issuer}}</span>
+                   </div>
+                    <!--
                     <div class="twtwdv2" ng-click="goBookingDetail(13)">
                         <div class="twtwdvf1"><img src="teImg/ghnr1lef.png" /> <em>姓名</em></div>
                         <div class="twtwdvf1"><img src="teImg/served.png" /> <em>服务完成</em></div>
@@ -203,7 +214,7 @@
                         <div class="twtwdvf1"><img src="teImg/ghnr1lef.png" /> <em>姓名</em></div>
                         <div class="twtwdvf1"><img src="teImg/served.png" /> <em>服务完成</em></div>
                         <span>[私募]粤财·瀚信中鼎盈丰4期</span>
-                    </div>
+                    </div>-->
                    
 
                 
@@ -239,7 +250,7 @@
                        </p>
                    </div>
                    
-                   <div class="twtwdv" ng-repeat="booking in data.bookings['all'].data | limitTo: 6" ng-click="showProduct(booking.product, 'NoBooking')">
+                   <div class="twtwdv" ng-repeat="booking in data.bookings['all'].data | limitTo: 6" ng-click="showBookingProduct(booking)">
                         <!--<div class="twtwdvf"><img src='teImg/gnr2rabm3.png' /></div>-->
                         <div class="twtwdvf"><img src='{{data.bookingState[booking.state.toLowerCase()].image}}' /> <em>{{data.bookingState[booking.state.toLowerCase()].name}}</em> </div>
                         <span>[{{data.productType[booking.product.type.toLowerCase()].name}}] {{booking.product.issuer}}</span>
@@ -517,6 +528,8 @@
 
 
             </div>
+                  
+
                   <div class="lbxzxzdv">
                     <div class="twtwdv2" ng-click="goBookingDetail(12)">
                         <div class="twtwdvf1"><img src="teImg/ghnr1lef.png" /> <em>姓名</em></div>

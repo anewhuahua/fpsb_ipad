@@ -135,6 +135,7 @@ angular.module('starter.controllers', [])
     categories: [],
     toolbox:'index',
     looking_product: '',
+    looking_booking: null,
     product_act_booking: true,
     product_act_order:   true,
 
@@ -179,6 +180,8 @@ angular.module('starter.controllers', [])
     $scope.data.product_act_booking = true;
     $scope.data.product_act_order = true;
 
+
+
     if (param == 'NoBooking') {
       $scope.data.product_act_booking = false;
     } else if (param == 'NoOrder') {
@@ -188,14 +191,37 @@ angular.module('starter.controllers', [])
     }
     //console.log(product);
   }
+
+  $scope.showBookingProduct = function(booking) {
+    $scope.data.popup = 'privateFund';
+    $scope.data.looking_product = booking.product;
+    $scope.data.looking_booking = booking;
+
+    $scope.data.product_act_booking = false;
+    $scope.data.product_act_order = true;
+  } 
+
   $scope.enableBooking = function() {
-    return $scope.data.product_act_booking;
+    if (!$scope.data.product_act_booking) {
+      return false;
+    } else {
+      if($scope.data.person.role == 'Consultant') {
+        return false;
+      } else if ($scope.data.person.role == 'Customer'){
+        return true;
+      }
+    }
   }
   $scope.enableOrder = function() {
     if ($scope.data.looking_product.type.toLowerCase() == 'publicfund') {
       return true;
     } else {
-      return false;
+      if($scope.data.person.role == 'Consultant') {
+       
+        return true;
+      } else if ($scope.data.person.role == 'Customer'){
+        return false;
+      }
     }
   }
 
@@ -207,6 +233,9 @@ angular.module('starter.controllers', [])
     if ($scope.data.popup == win) {
       $scope.data.popup = '';
     }
+    $scope.data.looking_booking = null;
+
+
     if (win == 'login') {
       $ionicHistory.goBack();
     }
@@ -273,28 +302,48 @@ angular.module('starter.controllers', [])
   }
 
   $scope.addOrder = function() {
-    if($scope.data.looking_product) {
-      //console.log('booking add');
-      Main.customer.submitOrder($scope.data.looking_product.id, function(data){
-        $scope.data.warning.status = 'success';
-        $scope.data.warning.words = '您的订单已成功提交!' +
-                                     '您的理财师将马上与您联系进行后续服务，请保持电话通畅!';
-        $scope.$broadcast("AddOrder", data);
-        //console.log(data);
-        //console.log("tyson");
-      }, function(error){
-        $scope.data.warning.status = 'fail';
-        $scope.data.warning.words = error;
-      }, function(){
 
-      });
+    if ($scope.data.looking_booking) {
+        Main.consultant.submitOrder($scope.data.looking_booking, 20000, function(data){
+          $scope.data.warning.status = 'success';
+          $scope.data.warning.words = '您的订单已成功提交!' +
+                                       '您的理财师将马上与您联系进行后续服务，请保持电话通畅!';
+          $scope.$broadcast("AddOrder", data);
+          //console.log(data);
+          //console.log("tyson");
+        }, function(error){
+          $scope.data.warning.status = 'fail';
+          $scope.data.warning.words = error;
+        }, function(){
+        });
+        $scope.data.looking_product=null;
+        $scope.data.popup = '';
+        $scope.data.looking_booking=null;
+
     } else {
-      console.log("no product id for order");
-      $scope.data.warning.status = 'fail';
-      $scope.data.warning.words = '请去发现页购买产品';
+      if($scope.data.looking_product) {
+        //console.log('booking add');
+        Main.customer.submitOrder($scope.data.looking_product.id, function(data){
+          $scope.data.warning.status = 'success';
+          $scope.data.warning.words = '您的订单已成功提交!' +
+                                       '您的理财师将马上与您联系进行后续服务，请保持电话通畅!';
+          $scope.$broadcast("AddOrder", data);
+          //console.log(data);
+          //console.log("tyson");
+        }, function(error){
+          $scope.data.warning.status = 'fail';
+          $scope.data.warning.words = error;
+        }, function(){
+
+        });
+      } else {
+        console.log("no product id for order");
+        $scope.data.warning.status = 'fail';
+        $scope.data.warning.words = '请去发现页购买产品';
+      }
+      $scope.data.looking_product=null;
+      $scope.data.popup = '';
     }
-    $scope.data.looking_product=null;
-    $scope.data.popup = '';
   }
 
 
@@ -660,7 +709,7 @@ angular.module('starter.controllers', [])
     bookingState: Main.getBookingState(),
     bookings: Main.consultant.getBookings(),
     orders: Main.consultant.getOrders(),
-
+    customers: Main.consultant.getCustomers(),
 
     currentOrderState: 'all',
     currentOrder: null,
@@ -691,6 +740,8 @@ angular.module('starter.controllers', [])
     Main.consultant.queryOrders($scope.data.currentOrder, function(data){
     }, function(status){}, function(){});
     Main.consultant.queryBookings($scope.data.currentBooking, function(data){
+    }, function(status){}, function(){});
+    Main.consultant.queryCustomers($scope.data.customers, function(data){
     }, function(status){}, function(){});
     //console.log($scope.data.currentOrderState);
   };
@@ -821,7 +872,6 @@ angular.module('starter.controllers', [])
     bookings: Main.customer.getBookings(),
     orders: Main.customer.getOrders(),
 
-
     currentOrderState: 'all',
     currentOrder: null,
     currentBookingState: 'all',
@@ -843,7 +893,7 @@ angular.module('starter.controllers', [])
 
   //**
   //** common function
-  $scope.goProductDetail = function(oid) {
+  $scope.goOrderDetail = function(oid) {
     $state.go('common.order_detail', {orderId: oid});
   };
 
@@ -859,10 +909,12 @@ angular.module('starter.controllers', [])
   };
   $scope.selectOrders = function(param){
     $scope.data.currentOrder = $scope.data.orders[param];
+    //$scope.$apply();
     refreshData();
   };
   $scope.selectBookings =function(param) {
     $scope.data.currentBooking = $scope.data.bookings[param];
+    //$scope.$apply();
     refreshData();
   }
   refreshData();
@@ -881,14 +933,12 @@ angular.module('starter.controllers', [])
       $scope.data.currentBooking = $scope.data.bookings['all'];
       refreshData();
     }
-
   });
 
   /*为了使增加orders或者bookings可以更新
   $scope.$on('$ionicView.enter', function() {
     refreshData();
   });*/
-
   MultipleViewsManager.updated(function(params) {
     var first = params.main;
     var second = params.sub;
@@ -923,7 +973,6 @@ angular.module('starter.controllers', [])
     refreshData();
     $scope.$broadcast('scroll.refreshComplete');
   }
-
 
   $scope.takePhoto=function(param){
     var options = {  

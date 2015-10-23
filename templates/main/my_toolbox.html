@@ -55,7 +55,7 @@
                        </p>
                        
                    </div>
-                     <div class="twtwdv" ng-repeat="order in data.orders['all'].data | limitTo: 3" ng-click="goProductDetail(order.id)">
+                     <div class="twtwdv" ng-repeat="order in data.orders['all'].data | limitTo: 3" ng-click="goOrderDetail(order.id)">
                         <!--<div class="twtwdvf"><img src='teImg/gnr2rabm3.png' /></div>-->
                         <div class="twtwdvf"><img src='{{data.orderState[order.state.toLowerCase()].image}}' /> <em>{{data.orderState[order.state.toLowerCase()].name}}</em> </div>
                         <span>[{{data.productType[order.product.type.toLowerCase()].name}}] {{order.product.issuer}}</span>
@@ -73,7 +73,7 @@
                    <div class="gnr2nrc1" ng-click="selectPage('bookings', 'all')">
                       <div class="gnr2nrc1lf">
                         <span><img src="teImg/gnr2nrclef1.jpg" /></span>
-                        <em>王海</em>
+                        <em>李明</em>
                       </div> 
                       <div class="gnrnrcrig">
                          <span class="gnr2nrcrig">我已为您创造财富 <em>82934894.3 </em>元</span>
@@ -171,7 +171,7 @@
                   
                     <div class="glcsqxxtop"><em>我的订单</em></div>
 
-                    <div class="twtwdv" ng-repeat="order in data.currentOrder.data" ng-click="goProductDetail(order.id)">
+                    <div class="twtwdv" ng-repeat="order in data.currentOrder.data" ng-click="goOrderDetail(order.id)">
                         <!--<div class="twtwdvf"><img src='teImg/gnr2rabm3.png' /></div>-->
                         <div class="twtwdvf"><img src='{{data.orderState[order.state.toLowerCase()].image}}' /> <em>{{data.orderState[order.state.toLowerCase()].name}}</em> </div>
                         <span>[{{data.productType[order.product.type.toLowerCase()].name}}] {{order.product.issuer}}</span>
