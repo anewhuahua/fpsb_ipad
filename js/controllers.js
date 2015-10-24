@@ -29,8 +29,12 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('commonCtrl', function($scope, $stateParams, $ionicHistory) {
+.controller('commonCtrl', function($scope, $stateParams, $ionicHistory, Factory, Main, Notify) {
   $scope.data = {
+    warning: {
+      status: '',
+      words: ''
+    },
     popup: ''
   };
   $scope.goBack = function() {
@@ -40,36 +44,116 @@ angular.module('starter.controllers', [])
   $scope.showProduct = function(product) {
     $scope.data.popup = 'privateFund';
     $scope.data.looking_product = product;
-    console.log("looking product: "+product.id);
+    //console.log("looking product: "+product.id);
     //console.log(product);
   }
-
-
   $scope.closeProduct = function() {
     $scope.data.popup = '';
     $scope.data.looking_product = null;
   }
+
+  $scope.closePopup = function(win) {
+    if ($scope.data.popup == win) {
+      $scope.data.popup = '';
+    }
+    $scope.data.looking_booking = null;
+    $scope.data.order_option = null;
+  }
+
+  $scope.orderDialog = function(booking) {
+    $scope.data.looking_booking = booking;
+    $scope.data.order_option = Factory.newOption(10000, 200000, 10000);
+    $scope.data.popup = 'OrderDialog';
+
+  }
+
+  $scope.closeWarning = function(win) {
+    $scope.data.warning.status='';
+
+    if ($scope.data.warning.words.indexOf('您的预约已成功提交')>=0) {
+      
+    } else if ($scope.data.warning.words.indexOf('您的订单已成功提交')>=0) {
+      $scope.data.popup = '';  
+      //Notify.notify('order');
+    } else {
+    }
+  }
+
+  $scope.addOrder = function(booking) {
+    Main.consultant.submitOrder(booking, $scope.data.order_option.quantity, function(data){
+      $scope.data.warning.status = 'success';
+      $scope.data.warning.words = '您的订单已成功提交!' +
+                                       '您的理财师将马上与您联系进行后续服务，请保持电话通畅!';
+      //$scope.$broadcast("AddOrder", data);
+    }, function(error){
+      $scope.data.warning.status = 'fail';
+      $scope.data.warning.words = error;
+    }, function(){
+    });
+  }
+
+
+  $scope.acceptBooking = function(booking) {
+    Main.consultant.acceptBooking(booking, function(data){
+      $scope.data.warning.status= 'success';
+      $scope.data.warning.words = '您已接受客户预约，请尽快与客户取得联系!';
+      booking.state = 'accpeted';
+    }, function(error){
+      $scope.data.warning.status = 'fail';
+      $scope.data.warning.words = error;
+    }, function(){});
+  }
+
+  $scope.completeBooking = function(booking) {
+    Main.consultant.completeBooking(booking, function(data){
+      $scope.data.warning.status= 'success';
+      $scope.data.warning.words = '预约服务完成!';
+      booking.state = 'completed';
+    }, function(error){
+      $scope.data.warning.status = 'fail';
+      $scope.data.warning.words = error;
+    }, function(){});
+  }
+
 })
+
 .controller('bookingMenuCtrl', function($scope, $stateParams, $ionicHistory) {
 
 })
+
 .controller('bookingDetailCtrl', function($scope, $stateParams, Main) {
   
   var bid = $stateParams.bookingId;
-  //$scope.booking = Main.consultant.getBooking(bid);
-  //console.log($scope.booking);
+  $scope.booking = Main.consultant.getBooking(bid);
+
+  $scope.data = {    
+    bookingState: Main.getBookingState(),
+    productType: Main.getProductType()
+  };
+
+
+
 })
+
+
 .controller('orderMenuCtrl', function($scope, $stateParams, $ionicHistory) {
 
 })
-.controller('orderDetailCtrl', function($scope, $stateParams, Main) {
+
+
+.controller('orderDetailCtrl', function($scope, $stateParams, $ionicActionSheet, Main) {
   //console.log('124455');
   var oid = $stateParams.orderId;
+
+
+
   console.log(oid);
   if (Main.getRole() == 'Customer') {
     $scope.data.order = Main.customer.getOrder(oid);
   } else if(Main.getRole() == 'Consultant') {
+    $scope.data.order = Main.consultant.getOrder(oid);
   }
+
   $scope.data.orderState = Main.getOrderState();
   $scope.data.productType = Main.getProductType();
 
@@ -80,6 +164,85 @@ angular.module('starter.controllers', [])
   }
   //$scope.booking = Main.consultant.getBooking(bid);
   //console.log($scope.booking);
+
+
+  $scope.choosePicMenu = function() {
+    var type = 'gallery';
+    var option = {  
+      quality: 50,  
+      destinationType: Camera.DestinationType.DATA_URL,  
+      sourceType: Camera.PictureSourceType.PHOTOLIBRARY,  
+      allowEdit: false,  
+      encodingType: Camera.EncodingType.JPEG,  
+      cameraDirection: 1,
+      targetWidth: 100,  
+      targetHeight: 100,  
+      popoverOptions: CameraPopoverOptions,  
+      saveToPhotoAlbum: false  
+    }
+
+    $ionicActionSheet.show({
+        buttons: [
+            { text: '拍照' },
+            { text: '从相册选择' }
+        ],
+        titleText: '选择照片',
+        cancelText: '取消',
+        cancel: function() {
+        },
+        
+        buttonClicked: function(index) {
+            if(index == 0){
+              option.sourceType = Camera.PictureSourceType.
+              //type = 'camera';
+
+            }else if(index == 1){
+              option.sourceType = Camera.PictureSourceType.PHOTOLIBRARY;
+
+              //type = 'gallery';
+            }
+　　　　　　　//Camera.getPicture(type)->根据选择的“选取图片”的方式进行选取
+            Camera.getPicture(type).then(
+　　　　　　　　　 //返回一个imageURI，记录了照片的路径
+                function (imageURI) {
+                    $scope.me.image = imageURI;
+　　　　　　　　　　　 //更新页面上的照片
+                    $scope.img = imageURI;
+                    $scope.$apply();
+                },
+                function (err) {
+                });
+            return true;
+        }
+    });
+
+
+  }
+
+
+  $scope.takePhoto=function(){
+    var options = {  
+      quality: 50,  
+      destinationType: Camera.DestinationType.DATA_URL,  
+      sourceType: Camera.PictureSourceType.PHOTOLIBRARY,  
+      allowEdit: false,  
+      encodingType: Camera.EncodingType.JPEG,  
+      cameraDirection: 1,
+      targetWidth: 100,  
+      targetHeight: 100,  
+      popoverOptions: CameraPopoverOptions,  
+      saveToPhotoAlbum: false  
+    }
+    //console.log("tyson");
+    $cordovaCamera.getPicture(options).then(function(imageData) {
+        $scope.consultant.information.profile.touxiang = "data:image/jpeg;base64," + imageData; 
+        //image.src = "data:image/jpeg;base64," + imageData;  
+      }, function(err) {  
+        // error  
+      });  
+   }
+
+
 })
 
 
@@ -687,7 +850,7 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('mainConsultantCtrl', function($scope, $state, $timeout, $cordovaCamera, MultipleViewsManager, Main) {
+.controller('mainConsultantCtrl', function($scope, $rootScope, $state, $timeout, $cordovaCamera, MultipleViewsManager, Main) {
 
 //** 
 //** controller data
@@ -726,6 +889,22 @@ angular.module('starter.controllers', [])
     touxiang: "teImg/ghnr1lef.png" 
   };
 
+
+  //**
+  //** event listen function
+  $rootScope.$on('ChangeWindow', function(event, args){
+    MultipleViewsManager.updateViewLeft('main-consultant-toolbox', {main: args.win, sub: args.subWin});
+    $scope.consultant.win = args.win;
+    $scope.consultant.subWin = args.subWin;
+
+    if($scope.consultant.win == 'orders') {
+      $scope.data.currentOrder = $scope.data.orders['all'];
+      refreshData();
+    } else if ($scope.customer.win == 'bookings') {
+      $scope.data.currentBooking = $scope.data.bookings['all'];
+      refreshData();
+    }
+  });
 
 //**
 //** common function
@@ -794,39 +973,6 @@ angular.module('starter.controllers', [])
   }
 
 
-
-/*
-  MultipleViewsManager.updated(function(params) {
-    var arr = params.msg.split("-");
-    $scope.consultant.win = arr[0];
-    $scope.consultant.suffix = arr[1];
-  });
-
-  $scope.selectPage = function(item) {            
-    MultipleViewsManager.updateViewLeft('main-consultant-toolbox', {msg: item});
-    var arr = item.split("-");
-    $scope.consultant.win = arr[0];
-  };
-  $scope.expand = function(item) {      
-    //if(item)      
-    MultipleViewsManager.updateViewLeft('main-consultant-toolbox', {msg: item});
-    var arr = item.split("-");
-    $scope.consultant.win = arr[0];
-    $scope.consultant.suffix = arr[1]; 
-  };
-  $scope.collapse = function(item) {
-    var arr = item.split("-");
-    $scope.consultant.win = arr[0];
-    $scope.consultant.suffix= 'none'; 
-    MultipleViewsManager.updateViewLeft('main-consultant-toolbox', {msg: arr[0]});
-  };
-  $scope.isExpand = function(item){
-    return item == ($scope.consultant.win+'-'+$scope.consultant.suffix);
-  };
-  $scope.isCollapse = function(item){
-    return !(item == ($scope.consultant.win+'-'+$scope.consultant.suffix));
-  };
-  */
   $scope.takePhoto=function(){
     var options = {  
       quality: 50,  

@@ -35,7 +35,9 @@ $royal:                           #886aea !default;
   /*个人信息新增1019-s*/
   /*个人信息新增1019-e*/
   /*预约内容页1019-s*/
-  /*预约内容页1019-e*/ }
+  /*预约内容页1019-e*/
+  /*变灰色10.19-s*/
+  /*变灰色10.19-s*/ }
   .booking-view a {
     text-decoration: none; }
   .booking-view .content {
@@ -1371,6 +1373,21 @@ $royal:                           #886aea !default;
     background: #d32e00; }
   .booking-view .gjjtqa2 {
     background: #e79700; }
+  .booking-view .gjjtqa3 {
+    background: #a09d9d; }
+  .booking-view .gjxxztj1 {
+    width: 100%;
+    height: 0.78rem;
+    overflow: hidden;
+    margin: 0.2rem auto 0; }
+  .booking-view .gjxxztj1 > a {
+    width: 100%;
+    float: left;
+    height: 100%;
+    font-size: 0.36rem;
+    line-height: 0.78rem;
+    color: #fff;
+    text-align: center; }
   .booking-view .grxzxzaa {
     width: 93%;
     height: 0.7rem;
@@ -1511,6 +1528,15 @@ $royal:                           #886aea !default;
     width: 100%; }
   .booking-view .ccgdimg > img {
     width: 100%; }
+  .booking-view .prxqaa119 {
+    width: 50%;
+    height: 0.8rem;
+    background: #a09d9d;
+    font-size: 0.36rem;
+    line-height: 0.8rem;
+    color: #fff;
+    text-align: center;
+    float: left; }
 
 .exam-view {
   /* 头部 */
@@ -1748,7 +1774,9 @@ $royal:                           #886aea !default;
   /*订单列表1021*/
   /*订单列表1021*/
   /*个人信息新增1021-s*/
-  /*个人信息新增1021-s*/ }
+  /*个人信息新增1021-s*/
+  /*工具箱-佣金-s*/
+  /*工具箱-佣金-e*/ }
   .common-person-view a {
     text-decoration: none; }
   .common-person-view .content {
@@ -4597,6 +4625,93 @@ $royal:                           #886aea !default;
     background: #d32e00; }
   .common-person-view .gjjtqa2 {
     background: #e79700; }
+  .common-person-view .gjxppm {
+    width: 100%;
+    font-size: 0.3rem;
+    color: #fff;
+    line-height: 0.7rem;
+    overflow: hidden;
+    text-align: center;
+    font-weight: normal; }
+  .common-person-view .gzghnrjlul2 {
+    width: 93%;
+    margin: 0.13rem auto;
+    overflow: hidden;
+    background: #fff; }
+  .common-person-view .gzghnrjlul2 > li {
+    width: 100%;
+    height: 0.68rem;
+    border-top: 0.06rem #f3f2f5 solid;
+    display: inline-block;
+    text-align: center;
+    line-height: 0.2rem; }
+  .common-person-view .gzghnrjlul2 > li:first-child {
+    border: none; }
+  .common-person-view .gzghnrjlul2 > li > span {
+    padding: 0rem 0.25rem;
+    display: inline-block;
+    text-align: center;
+    font-size: 0.24rem;
+    color: #395983;
+    line-height: 0.7rem; }
+  .common-person-view .gzghnrjlul2 > li > span > em {
+    color: #e79700; }
+  .common-person-view .gzghnrjlul2 > li > span > i {
+    width: 0.06rem;
+    height: 0.06rem;
+    background: #e79700;
+    margin: 0rem 0.15rem 0.07rem 0rem;
+    display: inline-block; }
+  .common-person-view .gzgyjnr2dv {
+    width: 93%;
+    height: 2.1rem;
+    margin: -0.09rem auto 0rem auto;
+    background: #fff; }
+  .common-person-view .gzgyjnr2dv > p {
+    padding-top: 0.2rem;
+    overflow: hidden; }
+  .common-person-view .gzgyjnr2dv > p > span {
+    float: left;
+    font-size: 0.26rem;
+    color: #395983;
+    line-height: 0.26rem;
+    margin-left: 0.5rem; }
+  .common-person-view .gzgyjnr2dv > p > em {
+    float: left;
+    font-size: 0.26rem;
+    color: #e89440;
+    line-height: 0.26rem;
+    margin-left: 0.35rem; }
+  .common-person-view .gzgyjnr2dv2 > span {
+    padding: 0rem 0.62rem;
+    display: inline-block;
+    text-align: center;
+    overflow: hidden;
+    margin-top: 0.45rem; }
+  .common-person-view .gzgyjnr2dv2 > span > em {
+    display: block;
+    font-size: 0.24rem;
+    color: #395983;
+    line-height: 0.24rem; }
+  .common-person-view .gzgyjnr2dv2 > span > i {
+    display: block;
+    font-size: 0.3rem;
+    color: #e89440;
+    line-height: 0.3rem;
+    margin-top: 0.25rem; }
+  .common-person-view .gzgyjnr3x {
+    display: block;
+    height: 0.3rem;
+    width: 93%;
+    background: #fff;
+    margin: auto; }
+  .common-person-view .gzgyjnr3x > span {
+    display: block;
+    background: url(../teImg/khlbshang.png) no-repeat;
+    background-size: cover;
+    width: 0.33rem;
+    height: 0.18rem;
+    margin: auto; }
 
 .common-main-view {
   /****iconfont****/

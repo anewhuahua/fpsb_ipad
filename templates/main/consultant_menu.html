@@ -22,7 +22,7 @@
               </li>
               <li>
                 <div class="gfnulitp" ng-click="selectMenu('customers', 'all')" ng-class="{gjxtjcss: highLight('customers','all')}">
-                  <a>我的客户</a>
+                  <a>服务客户</a>
                   <em><img src="teImg/glefultprg.png" /></em>
                 </div>
               </li>
@@ -30,7 +30,7 @@
 
               <li>
                 <div class="gfnulitp" ng-click="selectMenu('orders', 'all')" ng-class="{gjxtjcss: highLight('orders','all')}">
-                  <a>客户订单</a>
+                  <a>客户成交</a>
                   <em><img src="teImg/glefultprg.png" /></em>
                 </div>
                 <div class="gfnulibm" ng-if="showSubMenu('orders')">
@@ -51,7 +51,7 @@
 
               <li>
                 <div class="gfnulitp" ng-click="selectMenu('commissions', 'all')" ng-class="{gjxtjcss: highLight('commissions','all')}">
-                  <a>我的佣金</a>
+                  <a>工作佣金</a>
                   <em><img src="teImg/glefultprg.png" /></em>
                 </div>
 
@@ -86,8 +86,19 @@
                 </div>
               </li>
 
-              
+
               <li>
+                <div class="gfnulitp">
+                  <a></a>
+                  <em></em>
+                </div>
+                <div class="gfnulibm" >
+                  <a></a>
+                </div>
+              </li>
+
+
+               <li>
                 <div class="gfnulitp" ng-click="selectMenu('investment','orders')" ng-class="{gjxtjcss: highLight('investment','orders')}">
                   <a>个人投资</a>
                   <em><img src="teImg/glefultprg.png" /></em>
@@ -98,17 +109,6 @@
                 </div>
               </li>
 
-              <li>
-                <div class="gfnulitp" ng-click="selectMenu('group','all')" ng-class="{gjxtjcss: highLight('group','all')}">
-                  <a>我的团队</a>
-                  <em><img src="teImg/glefultprg.png" /></em>
-                </div>
-                <div class="gfnulibm" ng-if="showSubMenu('group')">
-                  <a href="" ng-click="selectMenu('group', 'orders')"   ng-class="{gjxtjcss : highLight('group','orders')}">预约分配</a>
-                  <a href="" ng-click="selectMenu('group', 'tasks')" ng-class="{gjxtjcss : highLight('group','tasks')}">任务分配</a>
-                  <a href="" ng-click="selectMenu('group', 'performance')" ng-class="{gjxtjcss : highLight('group','performance')}">业绩查询</a>
-                </div>
-              </li>
 
           
               <li>

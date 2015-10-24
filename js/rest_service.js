@@ -253,6 +253,26 @@ angular.module('rest.service', [])
             finallyHandler();
           });
         },
+        updateBooking: function(param, id, successHandler, errorHandler, finallyHandler) {
+          state   = param.state;
+          booking = param.booking;
+
+          var req = {
+              method: 'PUT',
+              url: domain+'ChiefFinancierService/api/consultant/v1/consultants/' + id + 
+              '/bookings/' + booking + '?state=' + state,
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
+          $http(req).success(function(data){
+            successHandler(data);
+          }).error(function(res, status){
+            errorHandler(status);
+          }).finally(function(){
+            finallyHandler();
+          });
+        },
 
         queryOrders: function (param, id, successHandler, errorHandler, finallyHandler) {
           state  = param.state || 'all';

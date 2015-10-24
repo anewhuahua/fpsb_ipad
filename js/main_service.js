@@ -457,6 +457,41 @@ angular.module('main.service',[])
       getBookings: function() {
         return roleConsultant.bookings;
       },
+
+      getBooking: function(bid) {
+        for (var key in optionBookingState){
+          for (var i=0; i<roleConsultant.bookings[key].data.length;i++){
+            if (roleConsultant.bookings[key].data[i].id == bid) {     
+              return roleConsultant.bookings[key].data[i];
+            }
+          } 
+        }
+        for (var key in optionProductType){
+          for (var i=0; i<roleConsultant.bookings[key].data.length;i++){
+            if (roleConsultant.bookings[key].data[i].id == bid) {
+              return roleConsultant.bookings[key].data[i];
+            }
+          } 
+        }
+      },
+
+      getOrder: function(oid) {
+        for (var key in optionOrderState){
+          for (var i=0; i<roleConsultant.orders[key].data.length;i++){
+            if (roleConsultant.orders[key].data[i].id == oid) {     
+              return roleConsultant.orders[key].data[i];
+            }
+          } 
+        }
+        for (var key in optionProductType){
+          for (var i=0; i<roleConsultant.orders[key].data.length;i++){
+            if (roleConsultant.orders[key].data[i].id == oid) {
+              return roleConsultant.orders[key].data[i];
+            }
+          } 
+        }
+      },
+
       getOrders: function() {
         return roleConsultant.orders;
       },
@@ -529,10 +564,41 @@ angular.module('main.service',[])
             console.log('submitorder success');
           }
         }, function(status){
-          parseRestError('submitOrder', status, errorHandler);
+        }, 
+        finallyHandler()); 
+      },
+
+      acceptBooking: function(booking, successHandler, errorHandler, finallyHandler) {
+        var param = {
+          booking: booking.id,
+          state:   'accepted'
+        };
+        
+        Rest.consultant.v1.updateBooking(param, id, function(data){
+          if (parseRestSuccess('acceptBooking', data, successHandler, errorHandler)) { 
+          }
+        }, function(status){
+          parseRestError('acceptBooking', status, errorHandler);
+        }, 
+        finallyHandler()); 
+      },
+
+      completeBooking: function(booking, successHandler, errorHandler, finallyHandler) {
+        var param = {
+          booking: booking.id,
+          state:   'completed'
+        };
+        
+        Rest.consultant.v1.updateBooking(param, id, function(data){
+          if (parseRestSuccess('completeBooking', data, successHandler, errorHandler)) { 
+          }
+        }, function(status){
+          parseRestError('completeBooking', status, errorHandler);
         }, 
         finallyHandler()); 
       }
+
+
 
     }, // consultant
 
@@ -549,12 +615,7 @@ angular.module('main.service',[])
     }
 
 
-    /*
-    setBookings: function(pr) {
-      bookings.unshift(pr);
-      console.log('tyson');
-      console.log(bookings);
-    }*/
+    
 
   }
 

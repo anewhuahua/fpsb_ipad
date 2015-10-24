@@ -34,21 +34,6 @@
                    </div><!--已完成订单-e-->
                    
                    
-                  
-                          
-                      <!--
-                      <div class="ssxqbmdv">
-                          <span class="ssxqmf1">63%</span>
-                          <p><span>10.50%</span> <em>预期年化</em></p>
-                          <p><span>120天</span> <em>理财期限</em></p>
-                          <div class="xxxqrr"> 
-                            <span>目标规模 <em> 36,500.00 </em>万元</span>
-                            <span>认购费用 <em> 100 </em>万起</span>
-                            <span>剩余时间 <em> 21 </em>天</span>
-                          </div>
-                          
-                      </div>-->
-
                       <div class="twtwdv" ng-click="showProduct(data.order.product)">
                         <!--<div class="twtwdvf"><img src='teImg/gnr2rabm3.png' /></div>-->
                         <div class="twtwdvf"><img src='{{data.productType[data.order.product.type.toLowerCase()].image}}' /> <em>{{data.productType[data.order.product.type.toLowerCase()].name}}</em></div>
@@ -56,7 +41,6 @@
                       </div>   
 
 
-                  
                   
                   <div class="ddxqxx"><!--订单信息-s-->
                      <span>订单信息</span>
@@ -79,7 +63,7 @@
   
                   <div class="ddztdv">
                   
-                    <div class="ddztf">
+                    <div class="ddztf" ng-click="choosePicMenu()">
                        <div class="ddztfimg"><img src="teImg/ddztwj_03.png" /></div>
                        <a class="ddztspan"><img src="teImg/ddztjh.png" /></a>
                     </div>
@@ -87,7 +71,11 @@
                     <span class="ddztrrs">上传相关汇款证明</span>
                     
                   </div>  
-                  
+                  <input type="submit" class="ddztqd" />
+
+                  <img src="teImg/ddztwj_03.png">
+                </div>
+                  <!--
                   <div class="ddztxz">
                      <form>
                      <span class="ddxtxzf">更改状态</span>
@@ -103,7 +91,7 @@
                      
                      <input type="submit" class="ddztqd" />
                     </form> 
-                  </div>
+                  </div>-->
               </div>
         
         </div><!--内容右侧结束-->

@@ -26,7 +26,6 @@ angular.module('factory.service',[])
 
    
 
-
   return {
     newOption: function(min, max, step) {
       return Option.create(min, max, step);
