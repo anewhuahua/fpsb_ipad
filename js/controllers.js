@@ -250,7 +250,8 @@ angular.module('starter.controllers', [])
       //upload成功的话
       function uploadSuccess(r) {
           var resp = JSON.parse(r.response);
-          if(resp.status == 0){
+          //console.log(resp);
+          if(resp.successful){
       　　　　 //返回前一页面
               //$navHistory.back();
               console.log('success');
