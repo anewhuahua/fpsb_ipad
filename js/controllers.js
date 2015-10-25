@@ -97,7 +97,8 @@ angular.module('starter.controllers', [])
     Main.consultant.acceptBooking(booking, function(data){
       $scope.data.warning.status= 'success';
       $scope.data.warning.words = '您已接受客户预约，请尽快与客户取得联系!';
-      booking.state = 'accpeted';
+      booking.state = 'accepted';
+      $scope.$apply();
     }, function(error){
       $scope.data.warning.status = 'fail';
       $scope.data.warning.words = error;
@@ -109,6 +110,7 @@ angular.module('starter.controllers', [])
       $scope.data.warning.status= 'success';
       $scope.data.warning.words = '预约服务完成!';
       booking.state = 'completed';
+      $scope.$apply();
     }, function(error){
       $scope.data.warning.status = 'fail';
       $scope.data.warning.words = error;
