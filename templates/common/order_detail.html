@@ -28,6 +28,7 @@
                          <ul class="gnr2nrbbmrig">
                            <li><span>投资金额(元)</span>  <em>30000</em></li>
                            <li><span>投资收益(元)</span>  <em>待计算</em></li>
+                           <li ng-if="enableCommission()"><span>佣金收益(元)</span>  <em>待计算</em></li>
                          </ul>
                          
                        </div>
@@ -46,8 +47,8 @@
                      <span>订单信息</span>
                      <p>
                         <em>交  易  号：576877888766566</em>
+                        <em>客户姓名：王海</em>
                         <em>创建时间：2015-08-08</em>
-                        <em>付款时间：2015-09-01</em>
                      </p>
                    
                   </div><!--订单信息-e-->
@@ -58,7 +59,7 @@
 
 
       <div class="main1" ng-if="data.win=='status'">
-      	<div class="gnr2dadv" style="height:7rem"><!--内容右侧开始-->
+      	<div class="gnr2dadv" ><!--内容右侧开始-->
               <div class="gnr2ma"> 
   
                   <div class="ddztdv">
@@ -71,9 +72,13 @@
                     <span class="ddztrrs">上传相关汇款证明</span>
                     
                   </div>  
-                  <input type="submit" class="ddztqd" />
+                  <input type="submit" class="ddztqd" value="提交" ng-click="upload()"/>
 
-                  <img src="teImg/ddztwj_03.png">
+                  
+                </div>
+
+                <div class="gnr2ma" style="height:600px;"> 
+                  <img ng-src="{{img}}" style="height:600px;"/>
                 </div>
                   <!--
                   <div class="ddztxz">

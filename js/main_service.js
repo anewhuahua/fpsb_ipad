@@ -396,7 +396,23 @@ angular.module('main.service',[])
         } else {
         }
 
-        Rest.queryBookingsCount(param, function(data){console.log('11'); console.log(data);}, function(status){}, function(){});
+        Rest.customer.v1.queryBookingsCount(param, function(data){
+          console.log('11'); console.log(data);
+          /*
+          if(data.result > bookings.data.length) {
+            Rest.customer.v1.queryBookings(param, id, function(data){
+              if(parseRestSuccess('queryBookings', data, successHandler, errorHandler)) {
+                bookings.data = data.result;
+              }
+            }, function(status){
+              parseRestError('queryBookings', status, errorHandler);
+            }, 
+            finallyHandler());
+          }*/
+        }, function(status){}, function(){});
+
+
+
         /*
         Rest.customer.v1.queryBookings(param, id, function(data){
           if(parseRestSuccess('queryBookings', data, successHandler, errorHandler)) {
@@ -453,6 +469,9 @@ angular.module('main.service',[])
 
     consultant: {
 
+      getUploadUrl: function(oid) {
+        return Rest.consultant.v1.queryUploadUrl(id, oid);
+      },
       
       getBookings: function() {
         return roleConsultant.bookings;

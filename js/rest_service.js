@@ -210,6 +210,12 @@ angular.module('rest.service', [])
 
     consultant: {
       v1: {
+
+        queryUploadUrl: function(id, oid) {
+          return domain+'ChiefFinancierService/api/consultant/v1/consultants/' + id + 
+              '/orders/' + oid + '/documents' 
+        },
+
         queryCustomers: function (param, id, successHandler, errorHandler, finallyHandler) {
           offset = param.offset || '0';
           limit  = param.limit || '24';

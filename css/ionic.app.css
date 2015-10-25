@@ -4712,6 +4712,13 @@ $royal:                           #886aea !default;
     width: 0.33rem;
     height: 0.18rem;
     margin: auto; }
+  .common-person-view .yczttjdv {
+    width: 100%;
+    margin: 0.15rem auto;
+    border-radius: 3px;
+    overflow: hidden; }
+  .common-person-view .yczttjdv > img {
+    width: 100%; }
 
 .common-main-view {
   /****iconfont****/

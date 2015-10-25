@@ -141,10 +141,9 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('orderDetailCtrl', function($scope, $stateParams, $ionicActionSheet, Main) {
+.controller('orderDetailCtrl', function($scope, $stateParams, $ionicActionSheet, $cordovaCamera, $ionicPopup, Main) {
   //console.log('124455');
   var oid = $stateParams.orderId;
-
 
 
   console.log(oid);
@@ -153,6 +152,9 @@ angular.module('starter.controllers', [])
   } else if(Main.getRole() == 'Consultant') {
     $scope.data.order = Main.consultant.getOrder(oid);
   }
+
+
+
 
   $scope.data.orderState = Main.getOrderState();
   $scope.data.productType = Main.getProductType();
@@ -165,18 +167,26 @@ angular.module('starter.controllers', [])
   //$scope.booking = Main.consultant.getBooking(bid);
   //console.log($scope.booking);
 
+  $scope.enableCommission =function() {
+    if(Main.getRole() == 'Consultant') {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 
   $scope.choosePicMenu = function() {
     var type = 'gallery';
     var option = {  
-      quality: 50,  
-      destinationType: Camera.DestinationType.DATA_URL,  
+      quality: 90,  
+      destinationType: Camera.DestinationType.FILE_URI,  
       sourceType: Camera.PictureSourceType.PHOTOLIBRARY,  
       allowEdit: false,  
       encodingType: Camera.EncodingType.JPEG,  
       cameraDirection: 1,
-      targetWidth: 100,  
-      targetHeight: 100,  
+      targetWidth: 600,  
+      targetHeight: 600,  
       popoverOptions: CameraPopoverOptions,  
       saveToPhotoAlbum: false  
     }
@@ -193,7 +203,7 @@ angular.module('starter.controllers', [])
         
         buttonClicked: function(index) {
             if(index == 0){
-              option.sourceType = Camera.PictureSourceType.
+              option.sourceType = Camera.PictureSourceType.CAMERA;
               //type = 'camera';
 
             }else if(index == 1){
@@ -202,10 +212,10 @@ angular.module('starter.controllers', [])
               //type = 'gallery';
             }
 　　　　　　　//Camera.getPicture(type)->根据选择的“选取图片”的方式进行选取
-            Camera.getPicture(type).then(
+            $cordovaCamera.getPicture(option).then(
 　　　　　　　　　 //返回一个imageURI，记录了照片的路径
                 function (imageURI) {
-                    $scope.me.image = imageURI;
+                    //$scope.me.image = imageURI;
 　　　　　　　　　　　 //更新页面上的照片
                     $scope.img = imageURI;
                     $scope.$apply();
@@ -216,32 +226,59 @@ angular.module('starter.controllers', [])
         }
     });
 
+    $scope.upload = function() {
+      //新建文件上传选项，并设置文件key，name，type
+      var options = new FileUploadOptions();
+      options.fileKey="ffile";
+      options.fileName=$scope.img.substr($scope.img.lastIndexOf('/')+1);
+      options.mimeType="image/jpeg";
+      //用params保存其他参数，例如昵称，年龄之类
+      var params = {};
+      params['name'] = 'tyson';
+      //把params添加到options的params中
+      options.params = params;
+      //新建FileTransfer对象
+      var ft = new FileTransfer();
+      //上传文件
+      
+      ft.upload(
+          $scope.img,
+          encodeURI(Main.consultant.getUploadUrl(oid)),//把图片及其他参数发送到这个URL，相当于一个请求，在后台接收图片及其他参数然后处理
+          uploadSuccess,
+          uploadError,
+          options);
+      //upload成功的话
+      function uploadSuccess(r) {
+          var resp = JSON.parse(r.response);
+          if(resp.status == 0){
+      　　　　 //返回前一页面
+              //$navHistory.back();
+              console.log('success');
+              $ionicPopup.alert({
+                  title: '提示信息',
+                  cssClass: 'alert-text',
+                  template:  '上传成功!'
+              });
+          }else{
+              $ionicPopup.alert({
+                  title: '提示信息',
+                  cssClass: 'alert-text',
+                  template:  '上传失败!'
+              });
+          }
+      }
+      //upload失败的话
+      function uploadError(error) {
+        console.log(error);
+        $ionicPopup.alert({
+                  title: '提示信息',
+                  cssClass: 'alert-text',
+                  template:  '上传失败!'
+              });
+      }
 
+    };
   }
-
-
-  $scope.takePhoto=function(){
-    var options = {  
-      quality: 50,  
-      destinationType: Camera.DestinationType.DATA_URL,  
-      sourceType: Camera.PictureSourceType.PHOTOLIBRARY,  
-      allowEdit: false,  
-      encodingType: Camera.EncodingType.JPEG,  
-      cameraDirection: 1,
-      targetWidth: 100,  
-      targetHeight: 100,  
-      popoverOptions: CameraPopoverOptions,  
-      saveToPhotoAlbum: false  
-    }
-    //console.log("tyson");
-    $cordovaCamera.getPicture(options).then(function(imageData) {
-        $scope.consultant.information.profile.touxiang = "data:image/jpeg;base64," + imageData; 
-        //image.src = "data:image/jpeg;base64," + imageData;  
-      }, function(err) {  
-        // error  
-      });  
-   }
-
 
 })
 
@@ -288,6 +325,11 @@ angular.module('starter.controllers', [])
         })
   }, false);
 
+
+
+
+  
+
   $scope.data = {
     person: {},
     popup: '',
@@ -333,6 +375,18 @@ angular.module('starter.controllers', [])
       $scope.data.person = profile;
       console.log($scope.data.person.role);
     });
+
+   // login every 10 minutes to avoid session expired.
+   setInterval(function(){
+     Main.login({}, function(){ 
+    }, function(){
+    }, function(profile){
+      $scope.data.person = profile;
+      console.log('tyson');
+      //console.log($scope.data.person.role);
+    });
+    }, 1000*60*10);
+
   
 
   $scope.showProduct = function(product, param) {
