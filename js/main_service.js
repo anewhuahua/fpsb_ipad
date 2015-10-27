@@ -396,7 +396,7 @@ angular.module('main.service',[])
         } else {
         }
 
-        Rest.customer.v1.queryBookingsCount(param, function(data){
+        Rest.customer.v1.queryBookingsCount(param, id, function(data){
           console.log('tyson'); console.log(data);
           /*
           if(data.result > bookings.data.length) {
