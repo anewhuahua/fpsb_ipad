@@ -1092,7 +1092,7 @@ angular.module('starter.controllers', [])
   $scope.data.currentOrder = $scope.data.orders['all'];
   $scope.data.currentBooking = $scope.data.bookings['all'];
 
-  var aaa =  Main.customer.queryMoreBookings(currentBooking, function(data){}, function(status){},function(){});
+  var aaa =  Main.customer.queryMoreBookings($scope.data.currentBooking, function(data){}, function(status){},function(){});
 
 
   $scope.customer.information.profile = {
