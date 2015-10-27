@@ -397,7 +397,7 @@ angular.module('main.service',[])
         }
 
         Rest.customer.v1.queryBookingsCount(param, function(data){
-          console.log('11'); console.log(data);
+          console.log('tyson'); console.log(data);
           /*
           if(data.result > bookings.data.length) {
             Rest.customer.v1.queryBookings(param, id, function(data){
