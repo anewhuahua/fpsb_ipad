@@ -937,6 +937,9 @@ angular.module('starter.controllers', [])
     currentBooking: null
   };
 
+
+
+
 //**
 //** initialize
   $scope.data.currentOrder = $scope.data.orders['all'];
@@ -1082,10 +1085,15 @@ angular.module('starter.controllers', [])
   };
 
 
+
+
   //**
   //** initialize
   $scope.data.currentOrder = $scope.data.orders['all'];
   $scope.data.currentBooking = $scope.data.bookings['all'];
+
+  var aaa =  Main.customer.queryMoreBookings(currentBooking, function(data){}, function(status){},function(){});
+
 
   $scope.customer.information.profile = {
     touxiang: "teImg/ghnr1lef.png" 
