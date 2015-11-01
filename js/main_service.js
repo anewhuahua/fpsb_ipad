@@ -2,12 +2,48 @@ angular.module('main.service',[])
 .factory('Main', function(Rest, Storage) {
 
 // Dictionary
+
+  var sorts = {
+    publicfunds: [
+      {key:'lastMonth',      name:'近一月'},
+      {key:'lastThreeMonth', name:'近三月'},
+      {key:'lastHalfYear',   name:'近半年'}
+    ],
+
+    privatefunds: [
+    ],
+
+    trusts: [
+    ],
+
+    insurances: [
+    ]
+  };
+  var filter = {
+    publicfunds: [
+
+    ]    
+  };
+
+
   var categories = [
-    {id: 1, name: "公募基金",  key:'publicfunds', image:'teImg/lbaitemimg2.png', page:0, products:[]},
-    {id: 2, name: "私募基金",  key:'privatefunds',image:'teImg/lbaitemimg3.png', page:0, products:[]},
-    {id: 3, name: "信托产品",  key:'trusts',      image:'teImg/lbaitemimg4.png', page:0, products:[]},
-    {id: 4, name: "保险产品",  key:'insurances',  image:'teImg/lbaitemimg5.png', page:0, products:[]}
+    {id: 1, child: true,  name: "公募基金",  key:'publicfunds',   image:'teImg/lbaitemimg2.png', products:{data:[]}},
+    {id: 2, child: false, name: "私募基金",  key:'privatefunds',  image:'teImg/lbaitemimg3.png', products:{data:[]}},
+    {id: 3, child: false, name: "信托产品",  key:'trusts',        image:'teImg/lbaitemimg4.png', products:{data:[]}},
+    {id: 4, child: false, name: "保险产品",  key:'insurances',    image:'teImg/lbaitemimg5.png', products:{data:[]}},
+    {id: 5, child: false, name: "资管产品",  key:'portfolios',    image:'teImg/lbaitemimg6.png', products:{data:[]}},
+    {id: 6, child: false, name: "家族信托",  key:'familytrusts',  image:'teImg/lbaitemimg1.png', products:{data:[]}},
   ];
+
+  var externals = [
+    {id: 7,  child: false, name: "海外保险",  key:'publicfunds',   image:'teImg/lbaitemimg2.png', products:{data:[]}},
+    {id: 8,  child: false, name: "海外信托",  key:'privatefunds',  image:'teImg/lbaitemimg3.png', products:{data:[]}},
+    {id: 9,  child: false, name: "身份安排",  key:'trusts',        image:'teImg/lbaitemimg4.png', products:{data:[]}},
+    {id: 10, child: false, name: "海外置业",  key:'insurances',    image:'teImg/lbaitemimg5.png', products:{data:[]}},
+    {id: 11, child: false, name: "其他服务",  key:'portfolios',    image:'teImg/lbaitemimg6.png', products:{data:[]}}
+  ]
+
+
 
   var optionBookingState = {
     //all:             {state: 'all',            name: '全部' ,         image: ''},
@@ -115,7 +151,6 @@ angular.module('main.service',[])
 
   var id = null;
   var role = 'Guest';
-
 
 // Initialize
   var Init = function(){
@@ -264,7 +299,7 @@ angular.module('main.service',[])
         errorHandler(res);
       }, finallyHandler);
     },
-
+/*
     getProducts: function(param, successHandler, errorHandler, finallyHandler){
       var key = "";
       var tmp = null;
@@ -318,6 +353,88 @@ angular.module('main.service',[])
       } else {
         console.error('main.service getProducts error: no cid '+cid);
       }
+    },
+
+  Rest.customer.v1.queryBookingsCount(param, id, function(data){
+          if(parseRestSuccess('queryBookingsCount', data, successHandler, errorHandler)) {
+            var count = data.result;
+            if (count > bookings.data.length) {
+              //param.offset = parseInt(bookings.data.length/25) * 25 
+              param.offset = bookings.data.length;
+              param.limit = 25;                                    //tyson need to update
+
+              Rest.customer.v1.queryBookings(param, id, function(data){
+                if(parseRestSuccess('queryMoreBookings', data, successHandler, errorHandler)) {
+                  for(var i=0;i<data.result.length;i++) {
+                    bookings.data.push(data.result[i]);
+                  }
+                }
+              }, function(status){
+                parseRestError('queryMoreBookings', status, errorHandler);
+              }, 
+              finallyHandler());
+            }
+          }
+        }, function(status){
+          parseRestError('queryBookingsCount', status, errorHandler);
+        }, function(){});
+
+*/
+
+    getProducts: function(category, successHandler, errorHandler, finallyHandler){
+      var param = {};
+      param.type = category.key;
+      param.offset = 0;
+      param.limit = 10;
+
+      Rest.getProducts(param, function(data){
+        if(parseRestSuccess('getProducts', data, successHandler, errorHandler)) {  
+          category.products.data = data.result;
+        }
+      }, function(status){
+        parseRestError('getProducts', status, errorHandler);
+      }, finallyHandler());
+        
+    },
+
+    getMoreProducts: function(category, successHandler, errorHandler, finallyHandler){
+      var param = {};
+      param.type = category.key;
+  
+      Rest.getProductsCount(param, function(data){
+        if(parseRestSuccess('getMoreProducts', data, successHandler, errorHandler)) {
+          var count = data.result;
+          if (count > category.products.data.length) {
+            param.offset = category.products.data.length;
+            param.limit = 10;       
+          
+            Rest.getProducts(param, function(res){
+              if(parseRestSuccess('getProducts', res, successHandler, errorHandler)) {  
+                category.products.data = category.products.data.concat(res.result);
+              }
+            }, function(status){}, function(){});
+          }
+        }
+      }, function(status){
+        parseRestError('getMoreProducts', status, errorHandler);
+      }, finallyHandler());
+
+    },
+
+    //tyson
+    getMockProducts: function(){
+      var data = [];
+      for(var i=0;i<20;i++) {
+        data[i] = [i,i,i,i,i,i,i,i,i,i,i,i,i];
+      }
+      return data;
+    },
+    getMoreMockProducts: function(){
+      var data = [];
+      for(var i=0;i<40;i++) {
+        data[i] = [i,i,i,i,i,i,i,i,i,i,i,i,i];
+      }
+      return data;
     },
 
     customer: {
@@ -397,32 +514,28 @@ angular.module('main.service',[])
         }
 
         Rest.customer.v1.queryBookingsCount(param, id, function(data){
-          console.log('tyson'); console.log(data);
-          /*
-          if(data.result > bookings.data.length) {
-            Rest.customer.v1.queryBookings(param, id, function(data){
-              if(parseRestSuccess('queryBookings', data, successHandler, errorHandler)) {
-                bookings.data = data.result;
-              }
-            }, function(status){
-              parseRestError('queryBookings', status, errorHandler);
-            }, 
-            finallyHandler());
-          }*/
-        }, function(status){}, function(){});
+          if(parseRestSuccess('queryBookingsCount', data, successHandler, errorHandler)) {
+            var count = data.result;
+            if (count > bookings.data.length) {
+              //param.offset = parseInt(bookings.data.length/25) * 25 
+              param.offset = bookings.data.length;
+              param.limit = 25;                                    //tyson need to update
 
-
-
-        /*
-        Rest.customer.v1.queryBookings(param, id, function(data){
-          if(parseRestSuccess('queryBookings', data, successHandler, errorHandler)) {
-            bookings.data = data.result;
+              Rest.customer.v1.queryBookings(param, id, function(data){
+                if(parseRestSuccess('queryMoreBookings', data, successHandler, errorHandler)) {
+                  for(var i=0;i<data.result.length;i++) {
+                    bookings.data.push(data.result[i]);
+                  }
+                }
+              }, function(status){
+                parseRestError('queryMoreBookings', status, errorHandler);
+              }, 
+              finallyHandler());
+            }
           }
         }, function(status){
-          parseRestError('queryBookings', status, errorHandler);
-        }, 
-        finallyHandler());*/
-
+          parseRestError('queryBookingsCount', status, errorHandler);
+        }, function(){});
       },
 
       submitOrder: function(pid, money, successHandler, errorHandler, finallyHandler) {
@@ -624,6 +737,9 @@ angular.module('main.service',[])
 
     getCategories: function(){
       return categories;
+    },
+    getExternals: function() {
+      return externals;
     },
     getCategory: function(cid) {
       for (idx in categories) {

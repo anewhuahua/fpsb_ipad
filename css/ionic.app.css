@@ -37,7 +37,9 @@ $royal:                           #886aea !default;
   /*预约内容页1019-s*/
   /*预约内容页1019-e*/
   /*变灰色10.19-s*/
-  /*变灰色10.19-s*/ }
+  /*变灰色10.19-s*/
+  /*公墓列表10.30-s*/
+  /*公墓列表10.30-s*/ }
   .booking-view a {
     text-decoration: none; }
   .booking-view .content {
@@ -1537,6 +1539,92 @@ $royal:                           #886aea !default;
     color: #fff;
     text-align: center;
     float: left; }
+  .booking-view .gmlbtopp {
+    width: 100%;
+    margin: auto;
+    background: #426189;
+    overflow: hidden;
+    line-height: 0.01rem;
+    text-align: center; }
+  .booking-view .gmlbtopp > a {
+    display: inline-block;
+    text-align: center;
+    font-size: 0.24rem;
+    color: #cecece;
+    line-height: 0.45rem;
+    padding: 0 0.35rem; }
+  .booking-view .gmlbnr2p {
+    width: 96%;
+    height: 0.5rem;
+    margin: 0.11rem auto 0.16rem auto;
+    background: #e79700;
+    line-height: 0.01rem;
+    text-align: center; }
+  .booking-view .gmlbnr2p > a {
+    float: left;
+    text-align: center;
+    font-size: 0.24rem;
+    color: #fff;
+    line-height: 0.5rem;
+    padding: 0 0.2rem; }
+  .booking-view .gmlbnrdv {
+    width: 96%;
+    height: 0.7rem;
+    margin: auto;
+    background: #fff;
+    line-height: 0;
+    overflow: hidden;
+    margin-bottom: 0.05rem; }
+  .booking-view .curshi {
+    margin-left: 0.22rem; }
+  .booking-view .gmlbnrdv > i {
+    font-size: 0.24rem;
+    color: #426189;
+    width: 2.4rem;
+    height: 100%;
+    overflow: hidden;
+    border-right: 1px #f3f2f5 solid;
+    text-align: center;
+    line-height: 0.31rem;
+    padding: 0.05rem 0.3rem;
+    float: left; }
+  .booking-view .gmlbnrdv > span {
+    float: left;
+    font-size: 0.24rem;
+    color: #e70000;
+    line-height: 0.7rem; }
+  .booking-view .gmlbnrdv > span > em {
+    font-size: 0.24rem;
+    color: #686868;
+    line-height: 0.28rem;
+    display: block;
+    margin-top: 0.12rem; }
+  .booking-view .gmlbnrdv > span > i {
+    font-size: 0.18rem;
+    color: #808080;
+    line-height: 0.22rem;
+    display: block; }
+  .booking-view .gmlbnrdv > em {
+    font-size: 0.24rem;
+    color: #e70000;
+    line-height: 0.7rem;
+    float: left; }
+  .booking-view .gmlbnrdv > a {
+    float: left;
+    width: 0.97rem;
+    height: 0.4rem;
+    margin-top: 0.15rem;
+    background: #dc0000;
+    font-size: 0.24rem;
+    color: #fff;
+    line-height: 0.4rem;
+    text-align: center; }
+  .booking-view .gmlbnrdv > a, .booking-view .gmlbnrdv > span, .booking-view .gmlbnrdv > em {
+    margin-left: 0.42rem; }
+  .booking-view .curgreen {
+    color: #4ec25a !important; }
+  .booking-view .curcssbj {
+    background: #b7b7b7 !important; }
 
 .exam-view {
   /* 头部 */
@@ -4748,7 +4836,9 @@ $royal:                           #886aea !default;
   /*变灰色10.19-s*/
   /*变灰色10.19-s*/
   /*上下页10.20-s*/
-  /*上下页10.20-e*/ }
+  /*上下页10.20-e*/
+  /*首页新增10.27-s*/
+  /*首页新增10.27-e*/ }
   .common-main-view ul, .common-main-view li {
     list-style-type: none; }
   .common-main-view input {
@@ -5010,7 +5100,7 @@ $royal:                           #886aea !default;
     position: absolute;
     left: 0rem; }
   .common-main-view .lbanr1 > ul > li {
-    width: 16%;
+    width: 2.5rem;
     float: left; }
   .common-main-view .lbanr1 > ul > li > a > div {
     width: 1.24rem;
@@ -6040,6 +6130,68 @@ $royal:                           #886aea !default;
   .common-main-view .xzsxbtn2 {
     background: url(../teImg/nexbtn2.png) no-repeat;
     margin-left: 0.1rem; }
+  .common-main-view .synr3qq {
+    width: 100%;
+    height: 0.85rem;
+    margin: 0 auto;
+    background: url(../teImg/synredvbjtop.jpg) repeat-x;
+    padding-top: 0.35rem;
+    overflow: hidden; }
+  .common-main-view .synr3qqa1 {
+    width: 2.25rem;
+    height: 0.5rem;
+    float: left;
+    margin-left: 2%;
+    background: #88aeca;
+    font-size: 0.24rem;
+    line-height: 0.5rem;
+    color: #fff;
+    text-align: center;
+    border-radius: 3px;
+    overflow: hidden; }
+  .common-main-view .synr3qqa2 {
+    width: 2.25rem;
+    height: 0.5rem;
+    float: left;
+    margin-left: 2%;
+    background: #88aeca;
+    font-size: 0.24rem;
+    line-height: 0.5rem;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    overflow: hidden; }
+  .common-main-view .synr3qqa3 {
+    width: 2.25rem;
+    height: 0.5rem;
+    float: left;
+    margin-left: 2%;
+    background: #88aeca;
+    font-size: 0.24rem;
+    line-height: 0.5rem;
+    color: #fff;
+    text-align: center;
+    border-radius: 3px;
+    overflow: hidden; }
+  .common-main-view .synr3cur {
+    background: #fff;
+    color: #577094; }
+  .common-main-view .synr3qq > span {
+    background: url(../teImg/lbanr1tlog.png) no-repeat;
+    width: 0.36rem;
+    background-size: cover;
+    height: 0.34rem;
+    float: right; }
+  .common-main-view .synr3qq > em {
+    float: right;
+    font-size: 0.26rem;
+    line-height: 0.36rem;
+    color: #395983;
+    margin-right: 2%; }
+  .common-main-view .sy3qqbombj {
+    background: url(../teImg/synredvbjbom.jpg) repeat-x;
+    width: 100%;
+    height: 0.5rem; }
 
 .common-register-view {
   /* 注册-忘记密码-开始 */

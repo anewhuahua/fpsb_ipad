@@ -119,7 +119,23 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('bookingMenuCtrl', function($scope, $stateParams, $ionicHistory) {
+
+
+
+.controller('commonPublicCtrl', function($scope, $stateParams, $ionicScrollDelegate, $ionicHistory, Main) {
+ 
+  //console.log($ionicScrollDelegate.$getByHandle('scroll-2').getScrollPosition());
+  $scope.products = {};
+  $scope.products.data = Main.getMockProducts();
+
+  $scope.loadMore = function(){
+    setTimeout(function(){
+      $scope.products.data = Main.getMoreMockProducts();
+      console.log("infinite scroll stop");
+      $scope.$broadcast('scroll.infiniteScrollComplete');
+    }, 1000);
+  };
+
 
 })
 
@@ -141,6 +157,8 @@ angular.module('starter.controllers', [])
 .controller('orderMenuCtrl', function($scope, $stateParams, $ionicHistory) {
 
 })
+
+
 
 
 .controller('orderDetailCtrl', function($scope, $stateParams, $ionicActionSheet, $cordovaCamera, $ionicPopup, Main) {
@@ -732,17 +750,30 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('mainIndexCtrl', function($scope, $state, Main) {
-
-  //Rest.getProducts({type:'privatefunds'});
-  //Rest.login('customer','password');
+.controller('mainIndexCtrl', function($scope, $state,$ionicScrollDelegate, Main) {
   $scope.data.categories = Main.getCategories();
+  $scope.data.externals = Main.getExternals();
+  $scope.data.main = 'internal'
 
   $scope.goPromotion =  function(id){
     $state.go('promotion.product_detail', {promotionId: id});
   }
 
+  $scope.goMainCategory = function(main){
+    console.log(main);
+    $scope.data.main = main;
+    if (main=='internal') {
+      setTimeout(function(){$ionicScrollDelegate.$getByHandle('internalScroll').scrollBottom(false);}, 1);
+      setTimeout(function(){$ionicScrollDelegate.$getByHandle('internalScroll').scrollTop(true);}, 500);
+    } else if (main=='external') {
+      setTimeout(function(){$ionicScrollDelegate.$getByHandle('externalScroll').scrollBottom(false);}, 1);
+      setTimeout(function(){$ionicScrollDelegate.$getByHandle('externalScroll').scrollTop(true);}, 500);
+    }
+  }
+
+
 })
+
 .controller('mainGuestCtrl', function($scope, Main) {
   $scope.$on('$ionicView.enter',function(){
     $scope.data.popup='login';
@@ -760,73 +791,49 @@ angular.module('starter.controllers', [])
 
 .controller('mainProductsCtrl', function($scope,$ionicPopover,$stateParams,$state, Main) {
   $scope.data = {
-    products:[],
-    category:{},
+    categories: Main.getCategories(),
     more:true
   };
 
   var cid = $stateParams.categoryID;
-
-  Main.getProducts({'cid':cid},
-  function(cata){
-    if (cata) {
-      $scope.data.products=cata.products;
-      $scope.data.category=cata;
+  for(var i = 0; i<$scope.data.categories.length; i++){
+    if($scope.data.categories[i].id == cid) {
+      $scope.data.category = $scope.data.categories[i];
     }
-   
-  }, function(){
- 
-  }, function(){
+  }
 
-  });
+  Main.getProducts($scope.data.category, function(data){
+  }, function(status){}, function(){});
 
   $scope.loadMore = function(){
     setTimeout(function(){
-       Main.getProducts({'cid':cid, 'page':$scope.data.category.page+1}
-      , function(cata){
-        if(!cata) {
+      var count = $scope.data.category.products.data.length;
+      Main.getMoreProducts($scope.data.category, function(data){
+      }, function(status){}, function(){
+        if (count == $scope.data.category.products.data.length){
           $scope.data.more=false;
-          return;
         }
-        $scope.data.products=cata.products;
-        $scope.data.category=cata;
-      },function(status){
-        console.log(status);
-        if(status==0) {
-          console.log('无网络连接');
-          //$scope.data.more=false;
-        }
-      },function(){
         console.log("infinite scroll stop");
         $scope.$broadcast('scroll.infiniteScrollComplete');
       });
-     }, 1000);
-   
-  }
+    }, 1000);
+  };
 
   $scope.doRefresh = function() {
     setTimeout(function(){
       console.log('refresh');
-     
-      Main.getProducts({
-        'cid':cid, 'page':1
-        },function(cata){
-          if(cata) {
-            $scope.data.products=cata.products;
-            $scope.data.category=cata;
-          }
-        },function(){
-
-        },function(){
-          console.log("refresh stop");
-          $scope.$broadcast('scroll.refreshComplete');
-           $scope.data.more=true;
-        });
+      Main.getProducts($scope.data.category, function(data){
+      }, function(status){}, function(){
+        console.log("refresh stop");
+        $scope.$broadcast('scroll.refreshComplete');
+        $scope.data.more=true;
+      });
     }, 1000);
-  }
-  //Rest.getProducts({type:'privatefunds'});
+  };
+})
 
 
+.controller('publicFundsListCtrl', function($scope,$stateParams,$state, Main) {
 })
 
 
@@ -1092,7 +1099,7 @@ angular.module('starter.controllers', [])
   $scope.data.currentOrder = $scope.data.orders['all'];
   $scope.data.currentBooking = $scope.data.bookings['all'];
 
-  var aaa =  Main.customer.queryMoreBookings($scope.data.currentBooking, function(data){}, function(status){},function(){});
+  //var aaa =  Main.customer.queryMoreBookings($scope.data.currentBooking, function(data){}, function(status){},function(){});
 
 
   $scope.customer.information.profile = {

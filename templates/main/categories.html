@@ -9,9 +9,12 @@
         <!--
            <a class="item item-avatar"  href="#/main/products/categories/1" ng-class="{'item-energized' : selectedCategory==1}" ng-click="selectedCategory = 1">-->
 
-    
+            <a class="item item-avatar"  href="#/common/publicfunds" ng-class="{'item-energized' : selectedCategory=='1'}">
+              <img src="teImg/lbaitemimg2.png"/>
+              公募基金
+            </a>
 
-            <a class="item item-avatar"  href="#/main/products/categories/{{category.id}}" ng-class="{'item-energized' : selectedCategory=={{category.id}}}" ng-repeat="category in data.categories">
+            <a class="item item-avatar"  href="#/main/products/categories/{{category.id}}" ng-if="category.key!='publicfunds'" ng-class="{'item-energized' : selectedCategory=={{category.id}}}" ng-repeat="category in data.categories">
               <img src="{{category.image}}"/>
               {{category.name}}
             </a>

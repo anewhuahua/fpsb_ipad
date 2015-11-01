@@ -1,0 +1,63 @@
+<ion-nav-bar>
+</ion-nav-bar>
+<div class="common-main-view">
+
+  <div class="header">
+          <ul class="leul">
+              <li class="lelia"><a href="#/main/index"><img src="teImg/zcback.png" title="" alt="" /></a></li>
+           </ul>
+           <div class="logotop"><img src="teImg/logotop.png" title="" alt="" /></div>
+  </div>
+
+</div>
+
+
+<ion-view>
+
+  <ion-content class="content cls" delegate-handle="scroll-2" >
+
+        <div class="main1">
+
+         
+
+          <ion-scroll direction="x" delegate-handle="scroll-2" style="float:left; width:50%">
+          <div style="width:150%">
+            <div>title  color  rate cool dog </div>
+            <div ng-repeat="data in products.data">
+              {{data[0]}} &nbsp; {{data[1]}} &nbsp; {{data[2]}} &nbsp; {{data[3]}} &nbsp; {{data[4]}}   
+            </div>
+          </div>
+          </ion-scroll>
+
+           <div style="float:left; width:50%">
+            <div>22222222</div>
+            <div>22222222</div>
+            <div>22222222</div>
+            <div>22222222</div>
+            <div>22222222</div>
+            <div>22222222</div>
+            <div>22222222</div>
+            <div>22222222</div>
+            <div>22222222</div>
+            <div>22222222</div>
+            <div>22222222</div>
+            <div>22222222</div>
+            <div>22222222</div>
+            <div>22222222</div>
+          </div>
+
+
+        </div>
+  <ion-infinite-scroll
+    on-infinite="loadMore()" 
+    immediate-check="false"
+    distance="1%"><p>小金奋力加载中...</p>
+  </ion-infinite-scroll>
+
+  </ion-content>
+
+  </ion-content>
+</ion-view>
+
+
+

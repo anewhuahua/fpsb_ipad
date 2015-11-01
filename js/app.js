@@ -96,6 +96,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'ionicMultipleViews','starter.c
     }
   })
 
+
+
   .state('main.guest', {
     url: '/guest',
     views: {
@@ -163,6 +165,16 @@ angular.module('starter', ['ionic', 'ngCordova', 'ionicMultipleViews','starter.c
     controller: 'commonCtrl'
   })
 
+  .state('common.public', {
+    url: '/public',
+    views: {
+      'common-public': {
+         templateUrl: 'templates/public.html',
+         controller: 'commonPublicCtrl'
+      }
+    }
+  })
+
   .state('common.booking_detail', {
     url: '/booking/detail/:bookingId',
     views: {
@@ -191,6 +203,17 @@ angular.module('starter', ['ionic', 'ngCordova', 'ionicMultipleViews','starter.c
       }
     }
   })
+  .state('common.publicfunds', {
+    url: '/publicfunds',
+    views: {
+      'publicfunds': {
+         templateUrl: 'templates/common/publicfunds.html',
+         controller: 'publicFundsListCtrl'
+      }
+    }
+  })
+
+
 
     // exam
   .state('exam', {

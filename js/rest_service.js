@@ -73,7 +73,7 @@ angular.module('rest.service', [])
       type = param.type
       state  = param.state || 'open';
       offset = param.offset || '0';
-      limit  = param.limit || '25'
+      limit  = param.limit || '10'
 
       var req = {
           method: 'GET',
@@ -99,6 +99,30 @@ angular.module('rest.service', [])
         finallyHandler();
       });
     },
+
+    getProductsCount: function(param, successHandler, errorHandler, finallyHandler) {
+      type = param.type
+      state  = param.state || 'open';
+      var req = {
+          method: 'GET',
+          url: domain+'ChiefFinancierService/api/common/v1/' +
+                type + '/count?' +
+                'state=' + state,
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        };
+
+      $http(req).success(function(data){
+        successHandler(data);
+      }).error(function(res, status){
+        errorHandler(status);
+      }).finally(function(){
+        finallyHandler();
+      });
+    },
+
+
     customer: {
       v1: {
         addBooking: function(cid, pid, successHandler, errorHandler, finallyHandler) {
