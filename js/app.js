@@ -81,7 +81,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'ionicMultipleViews','starter.c
   })
 
   .state('main.products', {
-    url: '/products/categories/:categoryID',
+    cache: false,
+    url: '/products/categories/:parentID/:categoryID',
     views: {
       'main-products': {
          templateUrl: 'templates/main/products.html',
@@ -95,7 +96,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'ionicMultipleViews','starter.c
       }
     }
   })
-
 
 
   .state('main.guest', {
@@ -178,11 +178,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'ionicMultipleViews','starter.c
   .state('common.booking_detail', {
     url: '/booking/detail/:bookingId',
     views: {
-      'booking-menu': {
-         templateUrl: 'templates/common/booking_menu.html',
-         controller: 'bookingMenuCtrl'
-      },
-
+      
       'booking-detail': {
          templateUrl: 'templates/common/booking_detail.html',
          controller: 'bookingDetailCtrl'
@@ -208,7 +204,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'ionicMultipleViews','starter.c
     views: {
       'publicfunds': {
          templateUrl: 'templates/common/publicfunds.html',
-         controller: 'publicFundsListCtrl'
+         controller: 'publicfundsCtrl'
       }
     }
   })

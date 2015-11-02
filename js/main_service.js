@@ -30,17 +30,18 @@ angular.module('main.service',[])
     {id: 1, child: true,  name: "公募基金",  key:'publicfunds',   image:'teImg/lbaitemimg2.png', products:{data:[]}},
     {id: 2, child: false, name: "私募基金",  key:'privatefunds',  image:'teImg/lbaitemimg3.png', products:{data:[]}},
     {id: 3, child: false, name: "信托产品",  key:'trusts',        image:'teImg/lbaitemimg4.png', products:{data:[]}},
-    {id: 4, child: false, name: "保险产品",  key:'insurances',    image:'teImg/lbaitemimg5.png', products:{data:[]}},
-    {id: 5, child: false, name: "资管产品",  key:'portfolios',    image:'teImg/lbaitemimg6.png', products:{data:[]}},
-    {id: 6, child: false, name: "家族信托",  key:'familytrusts',  image:'teImg/lbaitemimg1.png', products:{data:[]}},
+    {id: 4, child: false, name: "资管产品",  key:'portfolios',    image:'teImg/lbaitemimg5.png', products:{data:[]}},
+    {id: 5, child: false, name: "保险产品",  key:'insurances',    image:'teImg/lbaitemimg6.png', products:{data:[]}},
+    {id: 6, child: false, name: "家族信托",  key:'familytrusts',  image:'teImg/lbaitemimg7.png', products:{data:[]}},
   ];
 
   var externals = [
-    {id: 7,  child: false, name: "海外保险",  key:'publicfunds',   image:'teImg/lbaitemimg2.png', products:{data:[]}},
-    {id: 8,  child: false, name: "海外信托",  key:'privatefunds',  image:'teImg/lbaitemimg3.png', products:{data:[]}},
-    {id: 9,  child: false, name: "身份安排",  key:'trusts',        image:'teImg/lbaitemimg4.png', products:{data:[]}},
-    {id: 10, child: false, name: "海外置业",  key:'insurances',    image:'teImg/lbaitemimg5.png', products:{data:[]}},
-    {id: 11, child: false, name: "其他服务",  key:'portfolios',    image:'teImg/lbaitemimg6.png', products:{data:[]}}
+    {id: 7,  child: false, name: "海外保险",  key:'external1',    image:'teImg/lbaitemimg2.png', products:{data:[]}},
+    {id: 8,  child: false, name: "海外信托",  key:'external2',    image:'teImg/lbaitemimg3.png', products:{data:[]}},
+    {id: 9,  child: false, name: "海外投资",  key:'external3',    image:'teImg/lbaitemimg4.png', products:{data:[]}},
+    {id: 10, child: false, name: "身份安排",  key:'external4',    image:'teImg/lbaitemimg5.png', products:{data:[]}},
+    {id: 11, child: false, name: "海外置业",  key:'external5',    image:'teImg/lbaitemimg6.png', products:{data:[]}},
+    {id: 12, child: false, name: "其他服务",  key:'external5',    image:'teImg/lbaitemimg7.png', products:{data:[]}}
   ]
 
 
@@ -735,12 +736,18 @@ angular.module('main.service',[])
     }, // consultant
 
 
-    getCategories: function(){
-      return categories;
+    getCategories: function(parent){
+      if (parent == 0) {
+        console.log('internal');
+        return categories;
+      } else if (parent == 1) {
+        console.log('external');
+        return externals;
+      } else {
+        return null;
+      }
     },
-    getExternals: function() {
-      return externals;
-    },
+
     getCategory: function(cid) {
       for (idx in categories) {
         if(categories[idx].id == cid) {

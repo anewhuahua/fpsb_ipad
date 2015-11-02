@@ -4,38 +4,39 @@
 <ion-view>
 
     <ion-content>
-      <div class="list">
+     
 
-        <!--
-           <a class="item item-avatar"  href="#/main/products/categories/1" ng-class="{'item-energized' : selectedCategory==1}" ng-click="selectedCategory = 1">-->
-
-            <a class="item item-avatar"  href="#/common/publicfunds" ng-class="{'item-energized' : selectedCategory=='1'}">
+      <div class="list" ng-if="data.parentCategory==0">
+            <a class="item item-avatar"  href="#/common/publicfunds">
               <img src="teImg/lbaitemimg2.png"/>
               公募基金
             </a>
 
-            <a class="item item-avatar"  href="#/main/products/categories/{{category.id}}" ng-if="category.key!='publicfunds'" ng-class="{'item-energized' : selectedCategory=={{category.id}}}" ng-repeat="category in data.categories">
+            <a class="item item-avatar"  href="#/main/products/categories/0/{{category.id}}" ng-if="category.key!='publicfunds'" ng-class="{'item-energized' : selectedCategory=={{category.id}}}" ng-repeat="category in data.categories">
               <img src="{{category.image}}"/>
               {{category.name}}
             </a>
-            <!--
-            <a class="item item-avatar" href="#/main/products/categories/2" ng-class="{'item-energized' : selectedCategory==2}"> 
-              <img src="img/lbanr1img1.png"/>
-              私募基金
+
+            <a class="item item-avatar"  href="#/main/products/categories/1/7">
+              <img src="teImg/lbaitemimg8.png"/>
+              海外投资
             </a>
-            <a class="item item-avatar" href="#/main/products/categories/3" ng-class="{'item-energized' : selectedCategory==3}">
-              <img src="img/lbanr1img3.png"/>
-              信托产品
-            </a>
-            <a class="item item-avatar" href="#/main/products/categories/4" ng-class="{'item-energized' : selectedCategory==4}">
-              <img src="img/lbanr1img4.png"/>
-              保险产品
-            </a>
-             <a class="item item-avatar" href="#/main/products/categories/5" ng-class="{'item-energized' : selectedCategory==5}">
-              <img src="img/lbanr1img5.png"/>
-              服务产品
-            </a>-->
       </div>
+
+
+
+      <div class="list" ng-if="data.parentCategory==1">
+            <a class="item item-avatar"  href="#/main/products/categories/1/{{category.id}}"  ng-class="{'item-energized' : selectedCategory=={{category.id}}}" ng-repeat="category in data.categories">
+              <img src="{{category.image}}"/>
+              {{category.name}}
+            </a> 
+
+            <a class="item item-avatar"  href="#/main/products/categories/0/3">
+              <img src="teImg/lbaitemimg8.png"/>
+              国内投资
+            </a>   
+      </div>
+
 
   </ion-content>
 

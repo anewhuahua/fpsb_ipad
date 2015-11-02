@@ -122,12 +122,18 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('commonPublicCtrl', function($scope, $stateParams, $ionicScrollDelegate, $ionicHistory, Main) {
+.controller('publicfundsCtrl', function($scope, $stateParams, $ionicScrollDelegate, $ionicHistory, Main) {
  
   //console.log($ionicScrollDelegate.$getByHandle('scroll-2').getScrollPosition());
-  $scope.products = {};
-  $scope.products.data = Main.getMockProducts();
+  //$scope.products = {};
+  //$scope.products.data = Main.getMockProducts();
 
+  $scope.data = {
+    key: 0
+  };
+  $scope.sortKey = function(key) {
+    $scope.data.key = key;
+  }
   $scope.loadMore = function(){
     setTimeout(function(){
       $scope.products.data = Main.getMoreMockProducts();
@@ -306,6 +312,10 @@ angular.module('starter.controllers', [])
 
 
 .controller('mainCtrl', function($scope, $state, $window, $cordovaNetwork, $rootScope, $ionicHistory, $timeout, Main, Notify) {
+
+   $scope.goMainPage = function() {
+      window.open('http://biaoweihui.idea-source.net/', '_system');
+   }
 
    document.addEventListener("deviceready", function () {
         $scope.network = $cordovaNetwork.getNetwork();
@@ -751,8 +761,8 @@ angular.module('starter.controllers', [])
 
 
 .controller('mainIndexCtrl', function($scope, $state,$ionicScrollDelegate, Main) {
-  $scope.data.categories = Main.getCategories();
-  $scope.data.externals = Main.getExternals();
+  $scope.data.categories = Main.getCategories(0);
+  $scope.data.externals = Main.getCategories(1);
   $scope.data.main = 'internal'
 
   $scope.goPromotion =  function(id){
@@ -785,17 +795,28 @@ angular.module('starter.controllers', [])
 
 
 .controller('mainCategoriesCtrl', function($scope,$ionicPopover,$stateParams, Main) {
-  $scope.data.categories = Main.getCategories();
+  var parentId = parseInt($stateParams.parentID);
   $scope.selectedCategory = $stateParams.categoryID;
+
+  console.log(parentId);
+  $scope.data.categories = Main.getCategories(parentId);
+  $scope.data.parentCategory = parentId;
+
 })
 
 .controller('mainProductsCtrl', function($scope,$ionicPopover,$stateParams,$state, Main) {
+
+  var cid = $stateParams.categoryID;
+  var parentId = $stateParams.parentID;
+
+
   $scope.data = {
-    categories: Main.getCategories(),
+    categories: Main.getCategories(parentId),
+    parentCategory: parentId,
     more:true
   };
 
-  var cid = $stateParams.categoryID;
+
   for(var i = 0; i<$scope.data.categories.length; i++){
     if($scope.data.categories[i].id == cid) {
       $scope.data.category = $scope.data.categories[i];

@@ -29,7 +29,7 @@
                     <em>541300.20</em>
                     <div class="gjxnr3bmdv">
                       <span>预期总收益：35000 </span>
-                      <em>实际已收益：25030 </em>
+                    
                     </div>
                   </div>
                   <!-- 内容右边部分结束 -->
@@ -38,7 +38,7 @@
                     <!-- 内容1左边部分开始 -->
                     <div class="gjxnrr2lef"><img src="teImg/ghnr1lef.png" /></div>
                     <div class="gjxnrr2rig">
-                      <p class="gjxnrr2rigp1">王海<span>先生</span>,<em>下午</em>好</p>
+                      <p class="gjxnrr2rigp1">王海,<em>您</em>好</p>
                       <p class="gjxnrr2rigp2"><span><img src="teImg/gjxnrtaa.png" /></span> <em>白金用户</em> <i>已认证</i></p>
                     </div>
                   </div>
@@ -143,7 +143,7 @@
                        <em>待付款</em>
                     </a></li>
                  </ul>-->
-            
+                <!--
                   <ion-scroll direction="x">
                     <div class="lbanr1" style="width: 1000px">
                       <ul class="qbgnr2nrul">
@@ -155,8 +155,8 @@
                     </div>   
                   </ion-scroll>   
 
-          
-                <!--订单状态-s-->
+           
+     
              
                <div class="cpfggdv">
                         <select class="cpfggdvse" ng-model="data.currentOrderState">
@@ -165,14 +165,14 @@
                          <a class="aakhbb2" href=""></a> 
                  
                </div>
-               <!--订单状态-e-->   
-
+              
                <div class="yczttjdv"><img src="teImg/ztzt.jpg" /></div>    
-            
-                  <!--修改新增部分-s-->
-                  
-                    <div class="glcsqxxtop"><em>我的订单</em></div>
+              --> 
 
+                  <!--修改新增部分-s-->
+                   
+                    
+              
                     <div class="twtwdv" ng-repeat="order in data.currentOrder.data" ng-click="goOrderDetail(order.id)">
                         <!--<div class="twtwdvf"><img src='teImg/gnr2rabm3.png' /></div>-->
                         <div class="twtwdvf"><img src='{{data.orderState[order.state.toLowerCase()].image}}' /> <em>{{data.orderState[order.state.toLowerCase()].name}}</em> </div>

@@ -1539,6 +1539,13 @@ $royal:                           #886aea !default;
     color: #fff;
     text-align: center;
     float: left; }
+  .booking-view .gmlbzzjtbj {
+    background: url(../teImg/gmlbzz10jt.png) no-repeat;
+    width: 0.07rem;
+    height: 0.19rem;
+    background-size: cover;
+    display: inline-block;
+    margin-left: 0.05rem; }
   .booking-view .gmlbtopp {
     width: 100%;
     margin: auto;
@@ -1625,6 +1632,8 @@ $royal:                           #886aea !default;
     color: #4ec25a !important; }
   .booking-view .curcssbj {
     background: #b7b7b7 !important; }
+  .booking-view .scroll-content {
+    background: #f0f0f0; }
 
 .exam-view {
   /* 头部 */
