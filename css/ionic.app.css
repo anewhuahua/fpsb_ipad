@@ -1539,6 +1539,8 @@ $royal:                           #886aea !default;
     color: #fff;
     text-align: center;
     float: left; }
+  .booking-view .scroll-content {
+    background: #f0f0f0; }
   .booking-view .gmlbzzjtbj {
     background: url(../teImg/gmlbzz10jt.png) no-repeat;
     width: 0.07rem;
@@ -1568,12 +1570,13 @@ $royal:                           #886aea !default;
     line-height: 0.01rem;
     text-align: center; }
   .booking-view .gmlbnr2p > a {
+    width: 8.3%;
     float: left;
     text-align: center;
     font-size: 0.24rem;
     color: #fff;
     line-height: 0.5rem;
-    padding: 0 0.2rem; }
+    text-align: center; }
   .booking-view .gmlbnrdv {
     width: 96%;
     height: 0.7rem;
@@ -1587,13 +1590,13 @@ $royal:                           #886aea !default;
   .booking-view .gmlbnrdv > i {
     font-size: 0.24rem;
     color: #426189;
-    width: 2.4rem;
+    width: 21%;
     height: 100%;
     overflow: hidden;
     border-right: 1px #f3f2f5 solid;
     text-align: center;
     line-height: 0.31rem;
-    padding: 0.05rem 0.3rem;
+    padding: 0.05rem 2%;
     float: left; }
   .booking-view .gmlbnrdv > span {
     float: left;
@@ -1627,13 +1630,12 @@ $royal:                           #886aea !default;
     line-height: 0.4rem;
     text-align: center; }
   .booking-view .gmlbnrdv > a, .booking-view .gmlbnrdv > span, .booking-view .gmlbnrdv > em {
-    margin-left: 0.42rem; }
+    width: 8.2%;
+    text-align: center; }
   .booking-view .curgreen {
     color: #4ec25a !important; }
   .booking-view .curcssbj {
     background: #b7b7b7 !important; }
-  .booking-view .scroll-content {
-    background: #f0f0f0; }
 
 .exam-view {
   /* 头部 */
