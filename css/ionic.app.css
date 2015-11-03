@@ -1539,6 +1539,12 @@ $royal:                           #886aea !default;
     color: #fff;
     text-align: center;
     float: left; }
+  .booking-view .gmgmff {
+    width: 91.8%;
+    float: left; }
+  .booking-view .gmgmrr {
+    width: 8.2%;
+    float: right; }
   .booking-view .scroll-content {
     background: #f0f0f0; }
   .booking-view .gmlbzzjtbj {
@@ -1554,18 +1560,19 @@ $royal:                           #886aea !default;
     background: #426189;
     overflow: hidden;
     line-height: 0.01rem;
-    text-align: center; }
+    text-align: center;
+    height: 0.7rem; }
   .booking-view .gmlbtopp > a {
     display: inline-block;
     text-align: center;
-    font-size: 0.24rem;
+    font-size: 0.28rem;
     color: #cecece;
-    line-height: 0.45rem;
+    line-height: 0.7rem;
     padding: 0 0.35rem; }
   .booking-view .gmlbnr2p {
     width: 96%;
     height: 0.5rem;
-    margin: 0.11rem auto 0.16rem auto;
+    margin: 0.2rem auto 0.16rem auto;
     background: #e79700;
     line-height: 0.01rem;
     text-align: center; }
@@ -1587,10 +1594,10 @@ $royal:                           #886aea !default;
     margin-bottom: 0.05rem; }
   .booking-view .curshi {
     margin-left: 0.22rem; }
-  .booking-view .gmlbnrdv > i {
+  .booking-view .gmlbnrdv > .gmgmff > i {
     font-size: 0.24rem;
     color: #426189;
-    width: 21%;
+    width: 23%;
     height: 100%;
     overflow: hidden;
     border-right: 1px #f3f2f5 solid;
@@ -1598,28 +1605,28 @@ $royal:                           #886aea !default;
     line-height: 0.31rem;
     padding: 0.05rem 2%;
     float: left; }
-  .booking-view .gmlbnrdv > span {
+  .booking-view .gmlbnrdv > .gmgmff > span {
     float: left;
     font-size: 0.24rem;
     color: #e70000;
     line-height: 0.7rem; }
-  .booking-view .gmlbnrdv > span > em {
+  .booking-view .gmlbnrdv > .gmgmff > span > em {
     font-size: 0.24rem;
     color: #686868;
     line-height: 0.28rem;
     display: block;
     margin-top: 0.12rem; }
-  .booking-view .gmlbnrdv > span > i {
+  .booking-view .gmlbnrdv > .gmgmff > span > i {
     font-size: 0.18rem;
     color: #808080;
     line-height: 0.22rem;
     display: block; }
-  .booking-view .gmlbnrdv > em {
+  .booking-view .gmlbnrdv > .gmgmff > em {
     font-size: 0.24rem;
     color: #e70000;
     line-height: 0.7rem;
     float: left; }
-  .booking-view .gmlbnrdv > a {
+  .booking-view .gmlbnrdv > .gmgmrr > a {
     float: left;
     width: 0.97rem;
     height: 0.4rem;
@@ -1629,9 +1636,13 @@ $royal:                           #886aea !default;
     color: #fff;
     line-height: 0.4rem;
     text-align: center; }
-  .booking-view .gmlbnrdv > a, .booking-view .gmlbnrdv > span, .booking-view .gmlbnrdv > em {
-    width: 8.2%;
+  .booking-view .gmlbnrdv > .gmgmff > span, .booking-view .gmlbnrdv > .gmgmff > em {
+    width: 9.1%;
     text-align: center; }
+  .booking-view .gmgmrr {
+    width: 8.2%; }
+  .booking-view .gmgmrr > a {
+    width: 100%; }
   .booking-view .curgreen {
     color: #4ec25a !important; }
   .booking-view .curcssbj {
@@ -5076,14 +5087,13 @@ $royal:                           #886aea !default;
     border-radius: 26px; }
   .common-main-view .lbanr11bj {
     width: 100%;
-    height: 3.45rem;
+    height: 3rem;
     background: #f3f2f5; }
   .common-main-view .lbanr1tit {
     display: block;
     width: 96%;
     height: 0.35rem;
-    margin: auto;
-    padding: 0.3rem 0rem 0.8rem 0rem; }
+    margin: auto; }
   .common-main-view .lbanr1tit > em {
     display: block;
     float: left;
@@ -5100,13 +5110,13 @@ $royal:                           #886aea !default;
     font-style: normal; }
   .common-main-view .lbanr1 {
     width: 100%;
-    height: 2rem;
+    height: 2.1rem;
     overflow: hidden;
     position: relative; }
   .common-main-view .lbanr1 > ul {
     width: 100%;
     height: 1.8rem;
-    margin-top: 0.2rem;
+    margin-top: 0.3rem;
     overflow: hidden;
     position: absolute;
     left: 0rem; }
@@ -5271,7 +5281,7 @@ $royal:                           #886aea !default;
     padding-bottom: 0.8rem; }
   .common-main-view .prxqmanr1 {
     background: #ffffff;
-    padding: 0.4rem 0rem 0.2rem 0rem; }
+    padding: 0.4rem 0rem 0rem; }
   .common-main-view .prxqhead {
     width: 91%;
     margin: auto;
@@ -5300,15 +5310,15 @@ $royal:                           #886aea !default;
     color: #395983;
     margin-left: 0.2rem; }
   .common-main-view .prxqh4 {
-    background: url(../teImg/cpxqfxlog.png) no-repeat;
-    width: 0.49rem;
-    height: 0.45rem;
+    background: url(../teImg/likeit.png) no-repeat;
+    width: 0.54rem;
+    height: 0.54rem;
     background-size: cover;
-    margin-right: 0.5rem; }
+    margin-right: 0.2rem; }
   .common-main-view .prxqh5 {
-    background: url(../teImg/zcclose.png) no-repeat;
-    width: 0.53rem;
-    height: 0.43rem;
+    background: url(../teImg/x.png) no-repeat;
+    width: 0.54rem;
+    height: 0.54rem;
     background-size: cover; }
   .common-main-view .prxqnr2lf {
     display: block;
@@ -5445,11 +5455,7 @@ $royal:                           #886aea !default;
     z-index: 13; }
   .common-main-view .prxqbm {
     width: 101%;
-    height: 0.8rem;
-    position: absolute;
-    left: 0rem;
-    bottom: 0rem;
-    z-index: 6; }
+    height: 0.8rem; }
   .common-main-view .prxqaa1 {
     width: 50%;
     height: 0.8rem;
@@ -6153,10 +6159,10 @@ $royal:                           #886aea !default;
     height: 0.5rem;
     float: left;
     margin-left: 2%;
-    background: #88aeca;
+    background: #fff;
     font-size: 0.24rem;
     line-height: 0.5rem;
-    color: #fff;
+    color: #577094;
     text-align: center;
     border-radius: 3px;
     overflow: hidden; }
@@ -6165,10 +6171,10 @@ $royal:                           #886aea !default;
     height: 0.5rem;
     float: left;
     margin-left: 2%;
-    background: #88aeca;
+    background: #fff;
     font-size: 0.24rem;
     line-height: 0.5rem;
-    color: #fff;
+    color: #577094;
     text-align: center;
     border-radius: 2px;
     overflow: hidden; }
@@ -6177,16 +6183,16 @@ $royal:                           #886aea !default;
     height: 0.5rem;
     float: left;
     margin-left: 2%;
-    background: #88aeca;
+    background: #fff;
     font-size: 0.24rem;
     line-height: 0.5rem;
-    color: #fff;
+    color: #577094;
     text-align: center;
     border-radius: 3px;
     overflow: hidden; }
   .common-main-view .synr3cur {
-    background: #fff;
-    color: #577094; }
+    background: #88aeca;
+    color: #fff; }
   .common-main-view .synr3qq > span {
     background: url(../teImg/lbanr1tlog.png) no-repeat;
     width: 0.36rem;
