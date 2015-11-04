@@ -14,55 +14,13 @@
 <!-- index -->
 <div class="main1" ng-switch-when='index'>
 
-       <div class="gnr2dadv"><!--内容右侧开始-->
-              
-                
-                <div class="gjxnr1dv"><!-- 内容1开始 -->
-                  
-                
-                  <div class="gjxnrtopyy"></div>
-                  <!-- 内容top阴影 -->
-                
-                  <div class="gjxnr3">
-                    <!-- 内容1右边部分开始 -->
-                    <span>总资产(元)</span>
-                    <em>541300.20</em>
-                    <div class="gjxnr3bmdv">
-                      <span>预期总收益：35000 </span>
-                    
-                    </div>
-                  </div>
-                  <!-- 内容右边部分结束 -->
-                
-                  <div class="gjxnrr2">
-                    <!-- 内容1左边部分开始 -->
-                    <div class="gjxnrr2lef"><img src="teImg/ghnr1lef.png" /></div>
-                    <div class="gjxnrr2rig">
-                      <p class="gjxnrr2rigp1">王海,<em>您</em>好</p>
-                      <p class="gjxnrr2rigp2"><span><img src="teImg/gjxnrtaa.png" /></span> <em>白金用户</em> <i>已认证</i></p>
-                    </div>
-                  </div>
-                  <!-- 内容1左边部分结束 -->
-                
-                </div><!-- 内容1结束 -->
-  
-              <div class="gnr2ma"> 
-                  <div class="gnr2nrc">
-                    <div class="gnr2nrctop" ng-click="selectPage('orders', 'all')">
-                      <p> 
-                         <em><img src="teImg/gnr2nr1toplf1.jpg" /></em>  
-                         <span>查看全部订单</span> 
-                       </p>
-                       
-                   </div>
-                  
-
-                  <ion-list>
+  <!--
+                 <ion-list>
         
                   <ion-item class="lcsslwsl">
                      <div class="lcsslwslf1"><img src="teImg/lbaitemimg2.png" /> <span>完成</span></div>
                      <span class="lccslwf2">阳光人寿分红型</span>
-                     <div class="lcssr3"><img src="teImg/wslimg.png" /></div>
+                     <div class="lcssr3"><img src="teImg/wsl11.png" /></div>
                      <ion-option-button class="button-assertive">
                           投诉 
                         </ion-option-button>
@@ -70,7 +28,7 @@
                   <ion-item class="lcsslwsl">
                      <div class="lcsslwslf1"><img src="teImg/lbaitemimg2.png" /> <span>完成</span></div>
                      <span class="lccslwf2">阳光人寿分红型</span>
-                     <div class="lcssr3"><img src="teImg/wslimg.png" /></div>
+                     <div class="lcssr3b"><img src="teImg/ywc11.png" /></div>
                      <ion-option-button class="button-energized">
                           投诉 
                         </ion-option-button>
@@ -78,56 +36,107 @@
 
 
                   </ion-list> 
-                 
-                 
-                   <div class="gnr2nrctop" ng-click="selectPage('bookings', 'all')">
-                      <p> 
-                         <em><img src="teImg/headr2.png" /></em>  
-                         <span>我的理财师</span> 
-                       </p>
-                       
-                   </div>
+                --> 
+
+  <div class="gnr2dadv"><!--内容右侧开始-->
+            
+                <div class="gnr2ma"> 
+       
                    
-                   <div class="gnr2nrc1" ng-click="selectPage('bookings', 'all')">
-                      <div class="gnr2nrc1lf">
-                        <span><img src="teImg/gnr2nrclef1.jpg" /></span>
-                        <em>李明</em>
-                      </div> 
-                      <div class="gnrnrcrig">
-                         <span class="gnr2nrcrig">我已为您创造财富 <em>82934894.3 </em>元</span>
-                         <div class="gnr2ncrgbm">
-                            <span>竭诚为客户服务, 首席金服特约</span>
-                            <!--
-                            <p>
-                              <em>粤财·瀚信丰2期(<i>审核中</i>)</em>
-                              <em>粤财·瀚信中鼎盈丰1期(<i>已完成</i>)</em>
-                            </p>-->
-                         </div>
-                      
+                   
+                   <div class="khzlzz1">
+                      <div class="khzlzz1a"><span>王海，下午好！</span> 
+                        <a href="" ng-click="updateProfile(1)" ng-if="!enableUpdatedProfile(1)">编辑</a>
+                        <a href="" ng-click="cancelUpdateProfile(1)" ng-if="enableUpdatedProfile(1)">取消</a>
                       </div>
+                      <div class="khzlzz1b">
+                      
+                         <div class="khzlzz1bf">
+                            <div class="khzlzz1bfimg"><img src="teImg/ghnr1lef.png" /></div>
+                            <div ng-if="!enableUpdatedProfile(1)" class="khzlzz1bfw">王海</div>
+                            <input ng-if="enableUpdatedProfile(1)" class="khzlzz1bfwu" placeholder="王海" />
+                          
+                         </div>
+                         <div class="khzlzz1br">
+                            <div class="khzlzz1br1"><span>邮 箱</span>
+                              <div ng-if="!enableUpdatedProfile(1)">111@gmail.com</div>
+                              <input ng-if="enableUpdatedProfile(1)"/>
+                            </div>
+                            <div class="khzlzz1br2"><span>手 机 号 码</span><div>124123</div></div>
+                            <div class="khzlzz1br2"><span>财 商 得 分</span><div>{{data.profile.data.score}}</div></div>
+                         </div>
+                         
+                      </div>
+                      
                    </div>
                    
                    
-
+                   <div class="khzlzz2tit"><span></span><em>我的理财师</em></div>
                    
-                   <div class="gnr2nrctopd" ng-click="selectPage('bookings', 'all')">
-                      <p> 
-                         <em><img src='teImg/gnr2nr1toplf1.jpg' /></em>  
-                         <span>查看全部预约</span> 
-                       </p>
+                   <div class="khzlzz2">
+                       
+                       <div class="khzlzz2a">
+                          <div class="khzlzz2af"><img src="teImg/gnr2nrclef1.jpg" /></div> 
+                          <div class="khzlzz2ar">
+                               <em>王海 </em>
+                               <span>电话  168000000</span>
+                               <span>邮箱  1111111@sina.com</span>
+                          </div>
+                       </div>
+                       <div class="khzlzz2b">
+                          <div class="khzlzz2bf">         背   景   </div> 
+                          <div class="khzlzz2br">长江商学院mba</div>
+                       </div>
+                       <div class="khzlzz2c">
+                          <div class="khzlzz2cf">资质认证</div> 
+                          <ul class="khzlzz2cr">
+                             <li><img src="teImg/zslog.jpg" /></li>
+                             <li><img src="teImg/zslog2.jpg" /></li>
+                             <li><img src="teImg/zslog3.jpg" /></li>
+                             <li><img src="teImg/zslog4.jpg" /></li>
+                          </ul>
+                       </div>
+                   
                    </div>
                    
-                   <div class="twtwdv" ng-repeat="booking in data.bookings['all'].data | limitTo: 5" ng-click="showProduct(booking.product, 'NoBooking')">
-                        <!--<div class="twtwdvf"><img src='teImg/gnr2rabm3.png' /></div>-->
-                        <div class="twtwdvf"><img src='{{data.bookingState[booking.state.toLowerCase()].image}}' /> <em>{{data.bookingState[booking.state.toLowerCase()].name}}</em> </div>
-                        <span>[{{data.productType[booking.product.type.toLowerCase()].name}}] {{booking.product.issuer}}</span>
-                    </div>   
-             
+                   
+                   <div class="khzlzz3a"><span>密码修改</span> 
+                    <a href="" ng-click="updateProfile(3)" ng-if="!enableUpdatedProfile(3)">编辑</a>
+                    <a href="" ng-click="cancelUpdateProfile(3)" ng-if="enableUpdatedProfile(3)">取消</a>
+                   </div>
 
-                 </div>
-                 
-            </div>
-      </div>
+                   <div ng-if="enableUpdatedProfile(3)">
+                     <div class="khzlzz3a1">
+                         <span>当前登录密码</span>
+                         <!--<div>32525fsgf</div>-->
+                         <input type='password' placeholder="请输入当前密码" />
+                     </div>
+                     <div class="khzlzz3a1">
+                         <span>新 密 码</span>
+                         <!--<div>8-20位，必须含有字母</div>-->
+                         <input type='password' placeholder="请设置您的新密码" />
+                     </div>
+                     <div class="khzlzz3a1">
+                         <span>确认新密码</span>
+                         <input type='password' placeholder="请重复输入您的密码" />
+                     </div>
+                     <div class="khzlzz3a1">
+                         <span>手 机 号</span>
+                         <input placeholder="请输入您的手机号码" />
+                     </div>
+                     <div class="khzlzzyzm">
+                         <span>验 证 码</span>
+                         <input value=""  placeholder="请输入验证码" />
+                         <a href="">43秒后重新发送</a> 
+                     </div>
+                     <input type="submit" value="确定" class="khzlqdqd"/>
+                   </div>
+
+              </div>
+              
+            </div><!--内容右侧结束-->
+
+ 
 </div>
 <!-- index -->
 <!-- orders -->

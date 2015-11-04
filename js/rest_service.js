@@ -125,6 +125,26 @@ angular.module('rest.service', [])
 
     customer: {
       v1: {
+        queryCustomer: function(cid, successHandler, errorHandler, finallyHandler) {
+          var req = {
+              method: 'GET',
+              url: domain+'ChiefFinancierService/api/customer/v1/customers/' + cid,
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
+
+            //console.log(pid);
+          $http(req).success(function(data){
+            //console.log(data);
+            successHandler(data);
+          }).error(function(res, status){
+            errorHandler(status);
+          }).finally(function(){
+            finallyHandler();
+          });
+        },
+
         addBooking: function(cid, pid, successHandler, errorHandler, finallyHandler) {
           var req = {
               method: 'POST',

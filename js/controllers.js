@@ -1092,6 +1092,7 @@ angular.module('starter.controllers', [])
   $scope.customer = {
     win: 'index',
     subWin: 'all',
+    updatedProfile: 0,
 
     //orders: 'orders',
     bookings: {},
@@ -1105,14 +1106,14 @@ angular.module('starter.controllers', [])
     bookingState: Main.getBookingState(),
     bookings: Main.customer.getBookings(),
     orders: Main.customer.getOrders(),
+    profile: Main.getProfile(),
 
     currentOrderState: 'all',
     currentOrder: null,
     currentBookingState: 'all',
-    currentBooking: null
+    currentBooking: null,
+
   };
-
-
 
 
   //**
@@ -1120,7 +1121,6 @@ angular.module('starter.controllers', [])
   $scope.data.currentOrder = $scope.data.orders['all'];
   $scope.data.currentBooking = $scope.data.bookings['all'];
 
-  //var aaa =  Main.customer.queryMoreBookings($scope.data.currentBooking, function(data){}, function(status){},function(){});
 
 
   $scope.customer.information.profile = {
@@ -1132,6 +1132,22 @@ angular.module('starter.controllers', [])
 
   //**
   //** common function
+  $scope.updateProfile = function(num){
+    $scope.customer.updatedProfile = num;
+  };
+  $scope.enableUpdatedProfile = function(num){
+    if ($scope.customer.updatedProfile == num) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+  $scope.cancelUpdateProfile = function(num) {
+    if ($scope.customer.updatedProfile == num) {
+      $scope.customer.updatedProfile = 0;
+    }
+  };
+
   $scope.goOrderDetail = function(oid) {
     $state.go('common.order_detail', {orderId: oid});
   };
@@ -1143,6 +1159,7 @@ angular.module('starter.controllers', [])
     Main.customer.queryBookings($scope.data.currentBooking, function(data){
     }, function(status){}, function(){});
 
+    Main.customer.queryCustomer(function(data){},function(status){}, function(){});
 
     //console.log($scope.data.currentOrderState);
   };

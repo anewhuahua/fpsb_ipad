@@ -152,6 +152,9 @@ angular.module('main.service',[])
 
   var id = null;
   var role = 'Guest';
+  var profile = {
+    data: {}
+  };
 
 // Initialize
   var Init = function(){
@@ -215,6 +218,7 @@ angular.module('main.service',[])
     getRole: function() {
       return role;
     },
+    
 
     login: function(param, successHandler, errorHandler, finallyHandler) {
       var username = null;
@@ -438,7 +442,32 @@ angular.module('main.service',[])
       return data;
     },
 
+    getProfile: function() {
+      return profile;
+    },
+
     customer: {
+
+  
+      queryCustomer: function(successHandler, errorHandler, finallyHandler) {
+        Rest.customer.v1.queryCustomer(id, function(data){
+            if (parseRestSuccess('queryCustomer', data, successHandler, errorHandler)) { 
+              //customer.bookings.unserved.unshift(data.result);
+              profile.data = data.result;
+              if(profile.data.score==0) {
+                profile.data.score="还未进行财商测试";
+              }
+            }
+          }, function(status){
+            parseRestError('queryCustomer',  status, errorHandler);
+          }, 
+          finallyHandler());
+      },
+
+      updataCustomer: function(pro, successHandler, errorHandler, finallyHandler) {
+
+      },
+
       addBooking: function(pid, successHandler, errorHandler, finallyHandler) {
         if(id) {
           Rest.customer.v1.addBooking(id, pid, function(data){
