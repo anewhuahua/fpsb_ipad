@@ -1085,7 +1085,7 @@ angular.module('starter.controllers', [])
 
 
 })
-.controller('mainCustomerCtrl', function($scope, $state, $ionicModal, $timeout, $rootScope,
+.controller('mainCustomerCtrl', function($scope, $state, $ionicModal, $ionicScrollDelegate, $timeout, $rootScope,
                                         $cordovaCamera, MultipleViewsManager, Main) {
   //**
   //** controller data
@@ -1209,6 +1209,8 @@ angular.module('starter.controllers', [])
       $scope.data.currentBooking = $scope.data.bookings[second];
       refreshData();
     }
+
+    setTimeout(function(){$ionicScrollDelegate.$getByHandle('mainScroll').scrollTop(true);}, 500);
   });
 
   $scope.showContent = function(first, second){

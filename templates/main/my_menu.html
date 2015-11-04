@@ -7,7 +7,7 @@
                
               <li>
                 <div class="gfnulitp" ng-click="selectMenu('index','all')" ng-class="{gjxtjcss: highLight('index','all')}">
-                  <a>账户总览</a>
+                  <a>个人中心</a>
                   <em><img src="teImg/glefultprg.png" /></em>
                 </div>
               </li>
@@ -22,12 +22,8 @@
                   <a>我的投资</a>
                   <em><img src="teImg/glefultprg.png" /></em>
                 </div>
-
-                <div class="gfnulibm" ng-if="showSubMenu('orders')">
-                   <a ng-repeat="type in data.productType" href="" ng-click="selectMenu('orders', '{{type.type}}')" ng-class="{gjxtjcss : highLight('orders', '{{type.type}}')}">{{type.name}}</a>
-                </div>
               </li>
-
+              <!--
               <li>
                <div class="gfnulitp" ng-click="selectMenu('information','person')" ng-class="{gjxtjcss: highLight('information','person')}">
                   <a>我的资料</a>
@@ -38,13 +34,14 @@
                   <a href="" ng-click="selectMenu('information', 'password')" ng-class="{gjxtjcss : highLight('information','password')}">登入密码</a>
                 </div>
               </li>
-
+              
               <li>
                 <div class="gfnulitp" ng-click="selectMenu('other', 'all')" ng-class="{gjxtjcss: highLight('other','all')}">
                   <a>其他</a>
                   <em><img src="teImg/glefultprg.png" /></em>
                 </div>
               </li>
+              -->
 
               <li>
                 <div class="gfnulitp" ng-click="selectMenu('message', 'all')" ng-class="{gjxtjcss: highLight('message','all')}">
