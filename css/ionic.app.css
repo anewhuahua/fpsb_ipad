@@ -1505,7 +1505,9 @@ $royal:                           #886aea !default;
     color: #647690; }
   .booking-view .cpyyxzj3 > i {
     color: #647690;
-    margin-top: 0.35rem; }
+    margin-top: 0.35rem;
+    text-indent: 0.48rem;
+    text-align: justify; }
   .booking-view .cpydgdv {
     width: 90%;
     margin: auto;
@@ -1542,7 +1544,13 @@ $royal:                           #886aea !default;
   .booking-view .gmgmff {
     width: 91.8%;
     float: left; }
+  .booking-view .gmgmff1 {
+    width: 91.8%;
+    float: left; }
   .booking-view .gmgmrr {
+    width: 8.2%;
+    float: right; }
+  .booking-view .gmgmrr1 {
     width: 8.2%;
     float: right; }
   .booking-view .scroll-content {
@@ -1576,8 +1584,16 @@ $royal:                           #886aea !default;
     background: #e79700;
     line-height: 0.01rem;
     text-align: center; }
-  .booking-view .gmlbnr2p > a {
-    width: 8.3%;
+  .booking-view .gmlbnr2p > .gmgmff1 > a {
+    width: 9.1%;
+    float: left;
+    text-align: center;
+    font-size: 0.24rem;
+    color: #fff;
+    line-height: 0.5rem;
+    text-align: center; }
+  .booking-view .gmlbnr2p > .gmgmrr1 > a {
+    width: 100%;
     float: left;
     text-align: center;
     font-size: 0.24rem;
@@ -1642,11 +1658,21 @@ $royal:                           #886aea !default;
   .booking-view .gmgmrr {
     width: 8.2%; }
   .booking-view .gmgmrr > a {
-    width: 100%; }
+    width: 100%;
+    margin-top: 0.15rem;
+    margin-left: 0.1rem; }
   .booking-view .curgreen {
     color: #4ec25a !important; }
   .booking-view .curcssbj {
     background: #b7b7b7 !important; }
+  .booking-view .xxlniuhuang1 {
+    width: 0.72rem;
+    height: 0.47rem;
+    margin-top: -0.03rem;
+    float: left;
+    margin-left: 0.26rem;
+    background: url(../teImg/fire.gif) no-repeat;
+    background-size: cover; }
 
 .exam-view {
   /* 头部 */
@@ -2327,6 +2353,14 @@ $royal:                           #886aea !default;
     color: #fff;
     line-height: 0.32rem;
     text-align: center; }
+  .common-person-view .xxlniuhuang {
+    width: 0.72rem;
+    height: 0.47rem;
+    margin-top: 0.13rem;
+    float: left;
+    margin-left: 0.26rem;
+    background: url(../teImg/fire.gif) no-repeat;
+    background-size: cover; }
   .common-person-view .xxlsrrp > em {
     float: left;
     font-size: 0.3rem;
@@ -4615,6 +4649,12 @@ $royal:                           #886aea !default;
     font-size: 0.3rem;
     color: #395983;
     line-height: 1.2rem; }
+  .common-person-view .twtwdvdesc {
+    float: right;
+    width: 83%;
+    font-size: 0.3rem;
+    color: #395983;
+    line-height: 1.2rem; }
   .common-person-view .xzsxbn {
     position: absolute;
     right: 2.9%;
@@ -4829,6 +4869,39 @@ $royal:                           #886aea !default;
     overflow: hidden; }
   .common-person-view .yczttjdv > img {
     width: 100%; }
+  .common-person-view .lcsslwsl {
+    width: 100%;
+    height: 0.95rem;
+    background: #fff; }
+  .common-person-view .lcsslwslf1 {
+    width: 12%;
+    height: 0.95rem;
+    float: left; }
+  .common-person-view .lcsslwslf1 > img {
+    width: 0.64rem;
+    height: 0.64rem;
+    display: block;
+    margin: 0.05rem auto 0.03rem auto; }
+  .common-person-view .lcsslwslf1 > span {
+    display: block;
+    font-size: 0.14rem;
+    color: #575757;
+    line-height: 0.2rem;
+    text-align: center; }
+  .common-person-view .lccslwf2 {
+    width: 80%;
+    float: left;
+    font-size: 0.3rem;
+    color: #395983;
+    line-height: 0.95rem; }
+  .common-person-view .lcssr3 {
+    width: 0.81rem;
+    height: 0.73rem;
+    float: right;
+    margin-top: -0.05rem;
+    margin-right: -0.05rem; }
+  .common-person-view .lcssr3 > img {
+    width: 100%; }
 
 .common-main-view {
   /****iconfont****/
@@ -4967,7 +5040,7 @@ $royal:                           #886aea !default;
     top: 0.1rem; }
   .common-main-view .helia {
     width: 0.68rem;
-    height: 0.68rem;
+    height: 1rem;
     float: left;
     margin-right: 0.55rem; }
   .common-main-view .helia > a > img {
@@ -4977,6 +5050,12 @@ $royal:                           #886aea !default;
     height: 0.68rem;
     float: right; }
   .common-main-view .helib > a > img {
+    width: 100%; }
+  .common-main-view .helib1 {
+    width: 1.8rem;
+    height: 1rem;
+    float: right; }
+  .common-main-view .helib1 > a > img {
     width: 100%; }
   .common-main-view .foot {
     background: #080202;
@@ -5039,8 +5118,7 @@ $royal:                           #886aea !default;
   .common-main-view .scroll {
     margin: 0 auto;
     overflow: hidden;
-    position: relative;
-    border-bottom: 0.01rem #dcdcdc solid; }
+    position: relative; }
   .common-main-view .scroll_box {
     overflow: hidden;
     visibility: hidden;
@@ -6209,6 +6287,14 @@ $royal:                           #886aea !default;
     background: url(../teImg/synredvbjbom.jpg) repeat-x;
     width: 100%;
     height: 0.5rem; }
+  .common-main-view .xxlniuhuang1 {
+    width: 0.72rem;
+    height: 0.47rem;
+    margin-top: -0.03rem;
+    float: left;
+    margin-left: 0.26rem;
+    background: url(../teImg/fire.gif) no-repeat;
+    background-size: cover; }
 
 .common-register-view {
   /* 注册-忘记密码-开始 */

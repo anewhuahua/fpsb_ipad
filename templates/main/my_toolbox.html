@@ -55,11 +55,29 @@
                        </p>
                        
                    </div>
-                     <div class="twtwdv" ng-repeat="order in data.orders['all'].data | limitTo: 3" ng-click="goOrderDetail(order.id)">
-                        <!--<div class="twtwdvf"><img src='teImg/gnr2rabm3.png' /></div>-->
-                        <div class="twtwdvf"><img src='{{data.orderState[order.state.toLowerCase()].image}}' /> <em>{{data.orderState[order.state.toLowerCase()].name}}</em> </div>
-                        <span>[{{data.productType[order.product.type.toLowerCase()].name}}] {{order.product.issuer}}</span>
-                    </div>   
+                  
+
+                  <ion-list>
+        
+                  <ion-item class="lcsslwsl">
+                     <div class="lcsslwslf1"><img src="teImg/lbaitemimg2.png" /> <span>完成</span></div>
+                     <span class="lccslwf2">阳光人寿分红型</span>
+                     <div class="lcssr3"><img src="teImg/wslimg.png" /></div>
+                     <ion-option-button class="button-assertive">
+                          投诉 
+                        </ion-option-button>
+                  </ion-item>
+                  <ion-item class="lcsslwsl">
+                     <div class="lcsslwslf1"><img src="teImg/lbaitemimg2.png" /> <span>完成</span></div>
+                     <span class="lccslwf2">阳光人寿分红型</span>
+                     <div class="lcssr3"><img src="teImg/wslimg.png" /></div>
+                     <ion-option-button class="button-energized">
+                          投诉 
+                        </ion-option-button>
+                  </ion-item>
+
+
+                  </ion-list> 
                  
                  
                    <div class="gnr2nrctop" ng-click="selectPage('bookings', 'all')">

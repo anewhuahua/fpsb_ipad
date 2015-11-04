@@ -12,13 +12,16 @@
 
     <ion-slide-box does-continue="true" auto-play="true" show-pager="true" class="tyson">
       <ion-slide>
-        <img src="img/ban01.jpg">
+        <img src="teImg/banner.png">
       </ion-slide>
       <ion-slide>
-        <img src="img/ban02.jpg">
+        <img src="teImg/banner1.png">
       </ion-slide>
       <ion-slide>
-        <img src="img/ban03.jpg">
+        <img src="teImg/banner2.png">
+      </ion-slide>
+      <ion-slide>
+        <img src="teImg/banner3.png">
       </ion-slide>
     </ion-slide-box>
       
@@ -43,11 +46,11 @@
                <em>【首席金服消息】粤财·瀚信中鼎盈丰2期，强势登场！</em>
                <span></span>
            </div>
-           
+      <!--<div class="sy3qqbombj"></div>-->     
 
       <div class="lbanr11bj">
       <span class="lbanr1tit"> <i></i></span>
-      <ion-scroll direction="x" ng-if="data.main=='internal'" delegate-handle="internalScroll">
+      <ion-scroll direction="x" ng-if="data.main=='internal'" delegate-handle="internalScroll" scrollbar-x="false">
         <div class="lbanr1" style="width:200%">
                 <ul>
 
@@ -64,7 +67,7 @@
         </div>   
       </ion-scroll>  
 
-      <ion-scroll direction="x" ng-if="data.main=='external'" delegate-handle="externalScroll">
+      <ion-scroll direction="x" ng-if="data.main=='external'" delegate-handle="externalScroll" scrollbar-x="false">
         <div class="lbanr1" style="width:200%">
                 <ul>
                   <li ng-repeat="category in data.externals"><a href="#/main/products/categories/1/{{category.id}}">
