@@ -311,7 +311,7 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('mainCtrl', function($scope, $state, $window, $cordovaNetwork, $rootScope, $ionicHistory, $timeout, Main, Notify) {
+.controller('mainCtrl', function($scope, $state, $window, $cordovaNetwork, $ionicPopup, $rootScope, $ionicHistory, $timeout, Main, Notify) {
 
    $scope.goMainPage = function() {
       window.open('http://biaoweihui.idea-source.net/', '_system');
@@ -362,7 +362,10 @@ angular.module('starter.controllers', [])
   
 
   $scope.data = {
-    person: {},
+    person: {
+      status:0,
+      profile:{}
+    },
     popup: '',
     warning: {
       status: '',
@@ -401,19 +404,20 @@ angular.module('starter.controllers', [])
   };
 
   Main.login({}, function(){ 
+      $scope.data.person.status = 1;
     }, function(){
     }, function(profile){
-      $scope.data.person = profile;
-      console.log($scope.data.person.role);
+      $scope.data.person.profile = profile;
+      //console.log($scope.data.person.role);
     });
 
    // login every 10 minutes to avoid session expired.
    setInterval(function(){
      Main.login({}, function(){ 
+      $scope.data.person.status = 1;
     }, function(){
     }, function(profile){
-      $scope.data.person = profile;
-      console.log('tyson');
+      $scope.data.person.profile = profile;
       //console.log($scope.data.person.role);
     });
     }, 1000*60*10);
@@ -648,12 +652,30 @@ angular.module('starter.controllers', [])
 
       });
   }
-  $scope.logout = function() {
+
+
+  var logout = function() {
     $state.go('main.index');
     Main.logout(function(profile){ 
-      $scope.data.person = profile;
+      $scope.data.person.profile = null;
+      $scope.data.person.status = 0;
       $window.location.reload();
     });
+  }
+  $scope.alertLogout = function() {
+     var confirmPopup = $ionicPopup.confirm({
+       title: '提醒',
+       template: '确认退出登入?'
+     });
+     confirmPopup.then(function(res) {
+       if(res) {
+         logout();
+       } else {
+       }
+     });
+  };
+  $scope.logout = function() {
+    logout();
   }
   $scope.backLogin = function() {
     $scope.data.popup = 'login';

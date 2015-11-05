@@ -5314,7 +5314,7 @@ $royal:                           #886aea !default;
   .common-main-view .leul {
     position: absolute;
     left: 2%;
-    top: 0.1rem; }
+    top: 0.2rem; }
   .common-main-view .lelia {
     width: 0.68rem;
     height: 0.68rem;
@@ -5327,6 +5327,12 @@ $royal:                           #886aea !default;
     height: 0.68rem;
     float: right; }
   .common-main-view .lelib > a > img {
+    width: 100%; }
+  .common-main-view .lelib1 {
+    width: 1.62rem;
+    height: 0.5rem;
+    float: left; }
+  .common-main-view .lelib1 > a > img {
     width: 100%; }
   .common-main-view .heul {
     position: absolute;
@@ -5350,6 +5356,12 @@ $royal:                           #886aea !default;
     height: 1rem;
     float: right; }
   .common-main-view .helib1 > a > img {
+    width: 100%; }
+  .common-main-view .helib2 {
+    width: 1.02rem;
+    height: 1rem;
+    float: right; }
+  .common-main-view .helib2 > a > img {
     width: 100%; }
   .common-main-view .foot {
     background: #080202;

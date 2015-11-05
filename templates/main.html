@@ -8,9 +8,14 @@ navigation history that also transitions its views in and out.
 <div class="common-main-view">
 
   <div class="header">
-           <div class="logotop" ng-click="goMainPage()"><img src="teImg/logo.png" title="" alt="" /></div>
+           <ul class="leul">
+              <li class="lelib1"><a href="" ng-click="goMainPage()"><img src="teImg/fpsb-logo.png" title="" alt="" /></a></li>
+           </ul>
+
+           <div class="logotop"><img src="teImg/logo.png" title="" alt="" /></div>
            <ul class="heul">
-              <li class="helib1"><a href=""><img src="teImg/loginregister.png" title="" alt="" /></a></li>
+              <li class="helib1" ng-if="!data.person.status"><a href="#/main/guest"><img src="teImg/loginregister.png" title="" alt="" /></a></li>
+              <li class="helib2" ng-if="data.person.status" ng-click="alertLogout()"><a href=""><img src="teImg/exit.png" title="" alt="" /></a></li>
            </ul>
   </div>
 
@@ -377,7 +382,7 @@ navigation history that also transitions its views in and out.
 
 
 
-<ion-tabs class="tabs-icon-bottom tabs-bottom tabs-color-light tabs-dark" ng-switch on="data.person.role">
+<ion-tabs class="tabs-icon-bottom tabs-bottom tabs-color-light tabs-dark" ng-switch on="data.person.profile.role">
 
   <!-- Index Tab -->
   <ion-tab title="首页" icon-off="ion-ios-home-outline" icon-on="ion-ios-home" href="#/main/index">
