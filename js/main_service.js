@@ -155,6 +155,9 @@ angular.module('main.service',[])
   var profile = {
     data: {}
   };
+  var liked = {
+    data: []
+  };
 
 // Initialize
   var Init = function(){
@@ -172,6 +175,9 @@ angular.module('main.service',[])
       roleCustomer.orders[type]     = new TypeOrders(optionProductType[type]);
       roleConsultant.orders[type]   = new TypeOrders(optionProductType[type]);
     }
+
+    liked.data = Storage.getObject('liked') || [];
+
   }();
   //console.log(roleCustomer);
 
@@ -304,87 +310,6 @@ angular.module('main.service',[])
         errorHandler(res);
       }, finallyHandler);
     },
-/*
-    getProducts: function(param, successHandler, errorHandler, finallyHandler){
-      var key = "";
-      var tmp = null;
-      var step = 10;
-      cid = param.cid;    // category id
-      page = param.page || 1;
-      if(cid) {
-        for (idx in categories) {
-          if(categories[idx].id == cid) {
-            key = categories[idx].key;
-            tmp = categories[idx];
-            console.log(key);
-            break;
-          }
-        }
-
-        Rest.getProducts({type:key, 
-                          state:param.state, 
-                          offset:(page-1) * step, 
-                          limit:step},
-                          function(data){
-                            if(page == tmp.page+1) {    //底部分页刷新
-                              if(data.result.length==0) {
-                                successHandler(null);
-                                return;
-                              }
-                              tmp.products  = tmp.products.concat(data.result);
-                              tmp.page = page;
-                              //console.log('main.service getProducts success for page:'+page);
-                              Storage.setObject(key, tmp);
-                              successHandler(tmp);
-                            } 
-                            else if(page == 1){         //顶部下拉刷新
-                              tmp.products = data.result;
-                              tmp.page = 1;
-                              console.log('main.service getProducts success for page:'+page);
-                              Storage.setObject(key, tmp);
-                              successHandler(tmp);
-                            } else {
-                                // todo !important: 就是那种length 不等于step的时候如何存储
-                            }
-                          }, 
-                          function(status){
-                            console.error('main.service getProducts error:', 
-                                           status);
-                            //console.log(res);
-                            //console.log(status);
-                            errorHandler(status);
-                          }, 
-                          finallyHandler());
-      } else {
-        console.error('main.service getProducts error: no cid '+cid);
-      }
-    },
-
-  Rest.customer.v1.queryBookingsCount(param, id, function(data){
-          if(parseRestSuccess('queryBookingsCount', data, successHandler, errorHandler)) {
-            var count = data.result;
-            if (count > bookings.data.length) {
-              //param.offset = parseInt(bookings.data.length/25) * 25 
-              param.offset = bookings.data.length;
-              param.limit = 25;                                    //tyson need to update
-
-              Rest.customer.v1.queryBookings(param, id, function(data){
-                if(parseRestSuccess('queryMoreBookings', data, successHandler, errorHandler)) {
-                  for(var i=0;i<data.result.length;i++) {
-                    bookings.data.push(data.result[i]);
-                  }
-                }
-              }, function(status){
-                parseRestError('queryMoreBookings', status, errorHandler);
-              }, 
-              finallyHandler());
-            }
-          }
-        }, function(status){
-          parseRestError('queryBookingsCount', status, errorHandler);
-        }, function(){});
-
-*/
 
     getProducts: function(category, successHandler, errorHandler, finallyHandler){
       var param = {};
@@ -446,9 +371,37 @@ angular.module('main.service',[])
       return profile;
     },
 
-    customer: {
+    getLiked: function(){
+      return liked;
+    },
 
-  
+    likeIt: function(product) {
+      console.log(liked.data.length);
+      if (liked.data.length <= 60) {
+        for(var i=0; i<liked.data.length;i++) {
+          if (liked.data[i].id==product.id) {
+            return {ret: 0, msg: '请不要重复收藏'};
+          }
+        }
+        liked.data.unshift(product);
+        Storage.setObject('liked', liked.data);
+        return {ret: 1, msg: '已收藏'};
+      } else {
+        return {ret: 0, msg: '超出最大收藏数量60'}
+      }
+    },
+
+    hateIt: function(product) {
+      for(var i=0; i<liked.data.length;i++) {
+        if (liked.data[i].id==product.id) {
+          liked.data.splice(i,1);
+          Storage.setObject('liked', liked.data);
+          return {ret: 1, msg: '已取消收藏'};
+        }
+      }
+    },
+
+    customer: {
       queryCustomer: function(successHandler, errorHandler, finallyHandler) {
         Rest.customer.v1.queryCustomer(id, function(data){
             if (parseRestSuccess('queryCustomer', data, successHandler, errorHandler)) { 
@@ -508,7 +461,6 @@ angular.module('main.service',[])
         }
       },
       
-
       queryBookings: function(bookings, successHandler, errorHandler, finallyHandler) {
         var param = {};
         if (bookings instanceof TypeBookings) {

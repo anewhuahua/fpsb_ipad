@@ -45,7 +45,7 @@
        
 
                    <div class="khzlzz1">
-                      <div class="khzlzz1a"><span>尊敬的王海，您好！</span> 
+                      <div class="khzlzz1a"><span>王海，您好！</span> 
                         <a href="" ng-click="updateProfile(1)" ng-if="!enableUpdatedProfile(1)">完善资料</a>
                         <a href="" ng-click="cancelUpdateProfile(1)" ng-if="enableUpdatedProfile(1)">取消</a>
                       </div>
@@ -281,6 +281,47 @@
     </div><!--内容右侧结束-->
 </div>
 <!-- bookings -->
+
+<!-- fav -->
+<div class="main1" ng-switch-when='like'>
+    <div class="gnr2dadv"><!--内容右侧开始-->
+
+                <div class="gjxnrtopyy"></div>
+                <!-- 内容top阴影 -->
+
+                <div class="gnr2ma"> 
+
+                  
+
+                
+
+
+                  <ion-list>
+
+                    <ion-item class="lcsslwsl" ng-repeat="product in data.liked.data">
+                       <div class="lcsslwslf1"><img src='teImg/lbaitemimg3.png' /> <span>私募</span></div>
+                       <span class="lccslwf2">{{product.issuer}}</span>
+                    
+                          <ion-option-button class="button-assertive">
+                            删除
+                          </ion-option-button>
+                    </ion-item>
+
+                  
+
+                  </ion-list> 
+                  <!--
+                   <div class="twtwdv" ng-repeat="booking in data.bookings['all'].data" ng-click="showProduct(booking.product, 'NoBooking')">
+                        <div class="twtwdvf"><img src='{{data.bookingState[booking.state.toLowerCase()].image}}' /> <em>{{data.bookingState[booking.state.toLowerCase()].name}}</em> </div>
+                        <span>[{{data.productType[booking.product.type.toLowerCase()].name}}] {{booking.product.issuer}}</span>
+                    </div>  --> 
+
+              </div>
+         
+    </div><!--内容右侧结束-->
+</div>
+<!-- fav -->
+
     
 <!-- information -->
 <div class="main1" ng-switch-when='information'>

@@ -1673,6 +1673,14 @@ $royal:                           #886aea !default;
     margin-left: 0.26rem;
     background: url(../teImg/fire.gif) no-repeat;
     background-size: cover; }
+  .booking-view .gjxnrtopyy2 {
+    width: 100%;
+    background: url(../teImg/ggqwq.png) repeat-x;
+    height: 0.08rem;
+    position: absolute;
+    left: 0rem;
+    top: 0rem;
+    z-index: 5; }
 
 .exam-view {
   /* 头部 */
@@ -6601,6 +6609,14 @@ $royal:                           #886aea !default;
     margin-left: 0.26rem;
     background: url(../teImg/fire.gif) no-repeat;
     background-size: cover; }
+  .common-main-view .gjxnrtopyy2 {
+    width: 100%;
+    background: url(../teImg/ggqwq.png) repeat-x;
+    height: 0.08rem;
+    position: absolute;
+    left: 0rem;
+    top: 0rem;
+    z-index: 5; }
 
 .common-register-view {
   /* 注册-忘记密码-开始 */

@@ -52,6 +52,7 @@ angular.module('starter.controllers', [])
     $scope.data.looking_product = null;
   }
 
+
   $scope.closePopup = function(win) {
     if ($scope.data.popup == win) {
       $scope.data.popup = '';
@@ -314,7 +315,7 @@ angular.module('starter.controllers', [])
 .controller('mainCtrl', function($scope, $state, $window, $cordovaNetwork, $ionicPopup, $rootScope, $ionicHistory, $timeout, Main, Notify) {
 
    $scope.goMainPage = function() {
-      window.open('http://biaoweihui.idea-source.net/', '_system');
+      window.open('http://biaoweihui.idea-source.net/abstract/', '_system');
    }
 
    document.addEventListener("deviceready", function () {
@@ -457,9 +458,9 @@ angular.module('starter.controllers', [])
     if (!$scope.data.product_act_booking) {
       return false;
     } else {
-      if($scope.data.person.role == 'Consultant') {
+      if($scope.data.person.profile.role == 'Consultant') {
         return false;
-      } else if ($scope.data.person.role == 'Customer'){
+      } else if ($scope.data.person.profile.role == 'Customer'){
         return true;
       }
     }
@@ -468,10 +469,10 @@ angular.module('starter.controllers', [])
     if ($scope.data.looking_product.type.toLowerCase() == 'publicfund') {
       return true;
     } else {
-      if($scope.data.person.role == 'Consultant') {
+      if($scope.data.person.profile.role == 'Consultant') {
        
         return true;
-      } else if ($scope.data.person.role == 'Customer'){
+      } else if ($scope.data.person.profile.role == 'Customer'){
         return false;
       }
     }
@@ -481,6 +482,12 @@ angular.module('starter.controllers', [])
     $scope.data.popup = '';
     $scope.data.looking_product = null;
   }
+  $scope.likeIt = function() {
+    if($scope.data.looking_product) {
+      console.log(Main.likeIt($scope.data.looking_product));
+    }
+  }
+
   $scope.closePopup = function(win) {
     if ($scope.data.popup == win) {
       $scope.data.popup = '';
@@ -648,7 +655,7 @@ angular.module('starter.controllers', [])
       }, function(profile){
         $scope.auth.login.username = '';
         $scope.auth.login.password = '';
-        $scope.data.person = profile;
+        $scope.data.person.profile = profile;
 
       });
   }
@@ -1150,6 +1157,8 @@ angular.module('starter.controllers', [])
     currentBookingState: 'all',
     currentBooking: null,
 
+    liked: null
+
   };
 
 
@@ -1157,7 +1166,7 @@ angular.module('starter.controllers', [])
   //** initialize
   $scope.data.currentOrder = $scope.data.orders['all'];
   $scope.data.currentBooking = $scope.data.bookings['all'];
-
+  $scope.data.liked = Main.getLiked();
 
 
   $scope.customer.information.profile = {

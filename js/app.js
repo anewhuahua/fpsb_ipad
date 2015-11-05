@@ -71,6 +71,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'angular-flot', 'ionicMultipleV
   })
 
   .state('main.index', {
+    cache: false,
     url: '/index',
     views: {
         'main-index': {

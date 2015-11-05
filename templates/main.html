@@ -61,7 +61,7 @@ navigation history that also transitions its views in and out.
                <em> 10.50%</em>
              </p>
              <p>
-               <span>理财期限 </span>
+               <span>产品期限 </span>
                <em>  18个月</em>
              </p>
           </div>
@@ -108,7 +108,7 @@ navigation history that also transitions its views in and out.
                <em> 10.50%</em>
              </p>
              <p>
-               <span>理财期限 </span>
+               <span>产品期限 </span>
                <em>  18个月</em>
              </p>
           </div>
@@ -151,7 +151,7 @@ navigation history that also transitions its views in and out.
              
 
              <em class="prxqh5" ng-click='closeProduct()'></em>
-             <em class="prxqh4"></em>
+             <em class="prxqh4" ng-click='likeIt()'></em>
       </div>
     
     
@@ -169,12 +169,12 @@ navigation history that also transitions its views in and out.
           </div>
           <div class="prxqrpnr1">
             <span>18个月</span>
-            <em>理财期限  </em>
+            <em>产品期限  </em>
           </div>
           <div class="prxqrpnr3">
             <p><i>目标规模</i><em>100000000</em><span>万元</span></p>
             <p><i>认购金额</i><em>300-599</em><span>万元</span></p>
-            <p><i>剩余时间</i><em>26</em><span>天</span></p>
+            <p><i>募集状态</i><em>剩余26</em><span>天</span></p>
           </div>
         </div><!-- 右边的上半部分 -->
         
@@ -194,10 +194,10 @@ navigation history that also transitions its views in and out.
 
     <div class="prxqbm"><!-- 私募产品详情页弹窗主体 底部部分-->
 
-      <a ng-if="enableBooking()" href="" class="prxqaa2" ng-click="addBooking()">预约产品</a>
-      <a ng-if="!enableBooking()" href="" class="prxqaa119">预约产品</a>
+      <a ng-if="enableBooking()" href="" class="prxqaa2" ng-click="addBooking()">预约/咨询</a>
+      <a ng-if="!enableBooking()" href="" class="prxqaa119">预约/咨询</a>
       <a ng-if="enableOrder()" href="" class="prxqaa1" ng-click="orderDialog()">立即申购</a>
-      <a ng-if="!enableOrder()" href="" class="prxqaa119">立即申购</a>
+      <a ng-if="!enableOrder()" href="" class="prxqaa119">认购/申购</a>
 
     </div><!-- 私募产品详情页弹窗主体 底部部分-->
 
