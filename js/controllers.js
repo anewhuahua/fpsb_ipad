@@ -761,6 +761,21 @@ angular.module('starter.controllers', [])
 
 
 .controller('mainIndexCtrl', function($scope, $state,$ionicScrollDelegate, Main) {
+  /*
+  $scope.dataset = [{ data: [], yaxis: 1, label: 'sin' }]
+  $scope.options = {
+    legend: {
+      container: '#legend',
+      show: true
+    }
+  }
+
+  for (var i = 0; i < 14; i += 0.5) {
+    $scope.dataset[0].data.push([i, Math.sin(i)])
+  }
+  */
+
+
   $scope.data.categories = Main.getCategories(0);
   $scope.data.externals = Main.getCategories(1);
   $scope.data.main = 'internal'
