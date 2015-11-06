@@ -142,18 +142,43 @@ angular.module('starter.controllers', [])
   //$scope.products.data = Main.getMockProducts();
 
   $scope.data = {
-    key: 0
+    key: 0,
+    category: Main.getCategory(1)
   };
   $scope.sortKey = function(key) {
     $scope.data.key = key;
   }
+
+  Main.getProducts($scope.data.category, function(data){
+  }, function(status){}, function(){});
+ 
+  /*
   $scope.loadMore = function(){
     setTimeout(function(){
-      $scope.products.data = Main.getMoreMockProducts();
-      console.log("infinite scroll stop");
-      $scope.$broadcast('scroll.infiniteScrollComplete');
+      var count = $scope.data.category.products.data.length;
+      Main.getMoreProducts($scope.data.category, function(data){
+      }, function(status){}, function(){
+        if (count == $scope.data.category.products.data.length){
+          $scope.data.more=false;
+        }
+        console.log("infinite scroll stop");
+        $scope.$broadcast('scroll.infiniteScrollComplete');
+      });
     }, 1000);
   };
+  
+  $scope.doRefresh = function() {
+    setTimeout(function(){
+      console.log('refresh');
+      Main.getProducts($scope.data.category, function(data){
+      }, function(status){}, function(){
+        console.log("refresh stop");
+        $scope.$broadcast('scroll.refreshComplete');
+        $scope.data.more=true;
+      });
+    }, 1000);
+  };
+  */
 
 
 })
@@ -388,32 +413,8 @@ angular.module('starter.controllers', [])
     toolbox:'index',
     looking_product: '',
     looking_booking: null,
-    product_act_booking: true,
-    product_act_order:   true,
+    optionOperation: null
 
-    dialog: {
-      step: 10000,
-      minimal: 10000,
-      maximum: 1000000,
-      booking: {
-        quantity: 10000
-      },
-      order: {
-        quantity: 10000
-      },
-      increase: function() {
-        if($scope.data.dialog.booking.quantity + $scope.data.dialog.step <= $scope.data.dialog.maximum) {
-          $scope.data.dialog.booking.quantity += $scope.data.dialog.step;
-          $scope.data.dialog.order.quantity += $scope.data.dialog.step; 
-        }
-      },
-      decrease: function () {
-        if($scope.data.dialog.booking.quantity - $scope.data.dialog.step >= $scope.data.dialog.minimal) {
-          $scope.data.dialog.booking.quantity -= $scope.data.dialog.step;
-          $scope.data.dialog.order.quantity -= $scope.data.dialog.step;
-        }
-      }
-    }
   };
 
   Main.login({}, function(){ 
@@ -445,35 +446,12 @@ angular.module('starter.controllers', [])
       } else {
         $scope.data.popup = 'privateFund';
         $scope.data.looking_product = product;
-      }
-    }
-
-    //console.log("looking product: "+product.id);
-    //console.log(product);
-  }
-
-
-
-  $scope.enableBooking = function() {
-    if (!$scope.data.product_act_booking) {
-      return false;
-    } else {
-      if($scope.data.person.profile.role == 'Consultant') {
-        return false;
-      } else if ($scope.data.person.profile.role == 'Customer'){
-        return true;
-      }
-    }
-  }
-  $scope.enableOrder = function() {
-    if ($scope.data.looking_product.type.toLowerCase() == 'publicfund') {
-      return true;
-    } else {
-      if($scope.data.person.profile.role == 'Consultant') {
-       
-        return true;
-      } else if ($scope.data.person.profile.role == 'Customer'){
-        return false;
+        $scope.data.optionOperation= Main.getOperation(product, $scope.addBooking, $scope.orderDialog, function(){
+          $ionicPopup.alert({
+            title: '系统提示',
+            template: '请先登入'
+          });
+        });
       }
     }
   }
@@ -517,22 +495,15 @@ angular.module('starter.controllers', [])
       $scope.data.popup = 'privateFund';
     }
   }
-  $scope.bookingDialog = function() {
-    if ($scope.data.looking_product) {
-      //$scope.data.looking_product = null;
-      $scope.data.popup = 'BookingDialog';
-    }
-  }
+
+
   $scope.orderDialog = function() {
     if ($scope.data.looking_product) {
       //$scope.data.looking_product = null;
       $scope.data.popup = 'OrderDialog';
     }
   }
-
-  
-
-  $scope.addBooking= function(quantity) {
+  $scope.addBooking= function() {
     // todo quantity
     if($scope.data.looking_product) {
       //console.log('booking add');
@@ -1272,6 +1243,8 @@ angular.module('starter.controllers', [])
     
     $scope.customer.win = first;
     $scope.customer.subWin = second;
+
+    setTimeout(function(){$ionicScrollDelegate.$getByHandle('mainScroll').scrollTop(true);}, 500);
   }
   $scope.doRefresh = function() {
     refreshData();

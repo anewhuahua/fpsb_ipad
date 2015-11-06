@@ -168,6 +168,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'angular-flot', 'ionicMultipleV
 
  
   .state('common.service', {
+    cache: false,
     url: '/service/:productId',
     views: {
       'common-service': {
@@ -202,6 +203,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'angular-flot', 'ionicMultipleV
     }
   })
   .state('common.publicfunds', {
+    cache: false,
     url: '/publicfunds',
     views: {
       'publicfunds': {

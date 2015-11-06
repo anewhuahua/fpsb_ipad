@@ -75,6 +75,10 @@ angular.module('rest.service', [])
       offset = param.offset || '0';
       limit  = param.limit || '10'
 
+      if (type.toLowerCase()=='publicfunds' && limit=='10') {
+        limit = '25';
+      }
+
       var req = {
           method: 'GET',
           url: domain+'ChiefFinancierService/api/common/v1/' +

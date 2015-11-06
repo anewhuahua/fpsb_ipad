@@ -1754,7 +1754,6 @@ $royal:                           #886aea !default;
     width: 90%;
     height: 0.51rem;
     overflow: hidden;
-    float: left;
     font-size: 0.3rem;
     color: #395983;
     line-height: 0.49rem; }
@@ -6140,6 +6139,15 @@ $royal:                           #886aea !default;
     color: #fff;
     text-align: center;
     float: left; }
+  .common-main-view .prxqaa3 {
+    width: 100%;
+    height: 0.8rem;
+    background: #d42d00;
+    font-size: 0.36rem;
+    line-height: 0.8rem;
+    color: #fff;
+    text-align: center;
+    display: block; }
   .common-main-view .zctsypr {
     width: 6.2rem;
     height: 3.3rem;
@@ -6749,9 +6757,10 @@ $royal:                           #886aea !default;
     background: url(../teImg/sytjbj1.jpg) no-repeat;
     background-size: cover; }
   .common-main-view .sytjdv2 {
-    background: url(../teImg/sytjbj2.jpg) repeat-x; }
+    background: url(../teImg/ycxzimg1.jpg) repeat-x;
+    background-size: cover; }
   .common-main-view .sytjdv3 {
-    background: url(../teImg/sytjbj3.jpg) repeat-x; }
+    background: url(../teImg/sytjbj2.jpg) repeat-x; }
   .common-main-view .sytjdv1 > span, .common-main-view .sytjdv1 > em, .common-main-view .sytjdv1 > i, .common-main-view .sytjdv2 > span, .common-main-view .sytjdv2 > em, .common-main-view .sytjdv2 > i, .common-main-view .sytjdv3 > span, .common-main-view .sytjdv3 > em, .common-main-view .sytjdv3 > i {
     width: 100%;
     padding: 0rem 2%;
@@ -6777,16 +6786,20 @@ $royal:                           #886aea !default;
   .common-main-view .sytjdv1 > span {
     color: #8491a4; }
   .common-main-view .sytjdv2 > span {
-    color: #fff; }
+    color: #8491a4; }
   .common-main-view .sytjdv3 > span {
     color: #f3f2f5; }
   .common-main-view .sytjdv1 > em {
     color: #e89440; }
-  .common-main-view .sytjdv2 > em, .common-main-view .sytjdv3 > em {
+  .common-main-view .sytjdv2 > em {
+    color: #e89440; }
+  .common-main-view .sytjdv3 > em {
     color: #dbe7ed; }
   .common-main-view .sytjdv1 > i {
     color: #88aec9; }
-  .common-main-view .sytjdv2 > i, .common-main-view .sytjdv3 > i {
+  .common-main-view .sytjdv2 > i {
+    color: #88aec9; }
+  .common-main-view .sytjdv3 > i {
     color: #f3f2f5; }
   .common-main-view .prxqaa119 {
     width: 50%;

@@ -146,78 +146,31 @@
                 <!-- 内容top阴影 -->
 
                 <div class="gnr2ma"> 
-                 <!--
-                 <ul class="qbgnr2nrul">
-                    <li ><a href="" ng-class="{gjxqbcss: customer.win + customer.suffix=='orders'}" ng-click="selectPage('orders')">
-                       <div><img src="teImg/gnr2rabm11a.png" title="" alt="" /></div>
-                       <em>全部订单</em>
-                    </a></li>
-                    <li><a href="" ng-class="{gjxqbcss: customer.win + customer.suffix=='orders-under-push'}" ng-click="selectPage('orders-under-push')">
-                       <div><img src="teImg/gnr2rabm1.png" title="" alt="" /></div>
-                       <em>待报备</em>
-                    </a></li>
-                    <li><a href="" ng-class="{gjxqbcss: customer.win + customer.suffix=='orders-under-check'}" ng-click="selectPage('orders-under-check')">
-                       <div><img src="teImg/gnr2rabm2.png" title="" alt="" /></div>
-                       <em>待审核</em>
-                    </a></li>
-                    <li><a href="" ng-class="{gjxqbcss: customer.win + customer.suffix=='orders-complete'}" ng-click="selectPage('orders-complete')">
-                       <div><img src="teImg/gnr2rabm3.png" title="" alt="" /></div>
-                       <em>已完成</em>
-                    </a></li>
-                    <li><a href="" ng-class="{gjxqbcss: customer.win + customer.suffix=='orders-under-pay'}" ng-click="selectPage('orders-under-pay')">
-                       <div><img src="teImg/gnr2rabm4.png" title="" alt="" /></div>
-                       <em>待付款</em>
-                    </a></li>
-                 </ul>-->
-                <!--
-                  <ion-scroll direction="x">
-                    <div class="lbanr1" style="width: 1000px">
-                      <ul class="qbgnr2nrul">
-                        <li ng-repeat="type in data.productType" ng-class="{gjxqbcss: showContent('orders', '{{type.type}}')}" ng-click="selectPage('orders', '{{type.type}}'); selectOrders('{{type.type}}');"><a href="#">
-                           <div><img src="{{type.image}}" title="" alt="" /></div>
-                           <em>{{type.name}}产品</em>
-                        </a></li>
-                      </ul>
-                    </div>   
-                  </ion-scroll>   
-
-           
-     
-             
-               <div class="cpfggdv">
-                        <select class="cpfggdvse" ng-model="data.currentOrderState">
-                            <option ng-repeat="opt in data.orderState" value="{{opt.state}}">{{opt.name}}</option>
-                         </select>
-                         <a class="aakhbb2" href=""></a> 
-                 
-               </div>
-              
-               <div class="yczttjdv"><img src="teImg/ztzt.jpg" /></div>    
-              --> 
-
                   <!--修改新增部分-s-->
                     
                    <div class="khzlzz3a"><span>咨询，预约</span> 
-                    <a href="" ng-click="updateProfile(3)" ng-if="!enableUpdatedProfile(4)">查看未完成</a>
-                    <a href="" ng-click="cancelUpdateProfile(3)" ng-if="enableUpdatedProfile(4)">查看全部</a>
+                    <a href="" ng-click="selectPage('orders', 'all'); selectOrders('all');" ng-if="showContent('orders', 'todo')">
+                      查看全部
+                    </a>
+                    <a href="" ng-click="selectPage('orders', 'todo');  selectOrders('todo');"  ng-if="showContent('orders', 'all')">
+                    查看未完成
+                    </a>
                    </div>
 
 
                   <ion-list>
 
-                    <ion-item class="lcsslwsl" ng-repeat="order in data.currentOrder.data" ng-click="goOrderDetail(order.id)" >
+                    <ion-item class="lcsslwsl" ng-repeat="order in data.currentOrder.data" ng-click="goOrderDetail(order.id)">
                        <div class="lcsslwslf1"><img src='{{data.productType[order.product.type.toLowerCase()].image}}' /> <span>{{data.productType[order.product.type.toLowerCase()].name}}</span></div>
                        <span class="lccslwf2">{{order.product.issuer}}</span>
                        <div class="lcssr3b">
-                        <img src="teImg/wwc11.png" ng-if="order.state.toLowerCase()!='initiated'"/>
-                        <img src="teImg/ywc11.png" ng-if="order.state.toLowerCase()=='initiated'"/>
+                        <img src="teImg/wwc11.png" ng-if="order.state.toLowerCase()!='completed'"/>
+                        <img src="teImg/ywc11.png" ng-if="order.state.toLowerCase()=='completed'"/>
                        </div>
                        <ion-option-button class="button-energized">
                             投诉 
                           </ion-option-button>
                     </ion-item>
-
-                  
 
                   </ion-list> 
 
@@ -251,8 +204,12 @@
                   
 
                    <div class="khzlzz3a"><span>咨询，预约</span> 
-                    <a href="" ng-click="updateProfile(3)" ng-if="!enableUpdatedProfile(4)">查看未受理</a>
-                    <a href="" ng-click="cancelUpdateProfile(3)" ng-if="enableUpdatedProfile(4)">查看全部</a>
+                    <a href="" ng-click="selectPage('bookings','all');  selectBookings('all')" ng-if="showContent('bookings', 'todo')">
+                      查看全部
+                    </a>
+                    <a href="" ng-click="selectPage('bookings','todo'); selectBookings('todo')" ng-if="showContent('bookings','all')">
+                      查看未处理
+                    </a>
                    </div>
 
 
@@ -261,7 +218,8 @@
                     <ion-item class="lcsslwsl" ng-repeat="booking in data.currentBooking.data" ng-click="showProduct(booking.product, 'NoBooking')" >
                        <div class="lcsslwslf1"><img src='{{data.productType[booking.product.type.toLowerCase()].image}}' /> <span>{{data.productType[booking.product.type.toLowerCase()].name}}</span></div>
                        <span class="lccslwf2">{{booking.product.issuer}}</span>
-                       <div class="lcssr3"><img src="teImg/wsl11.png" /></div>
+                       <div class="lcssr3" ng-if="booking.state!='completed'"><img src="teImg/wsl11.png" /></div>
+                       <div class="lcssr3" ng-if="booking.state=='completed'"><img src="teImg/ysl11.png" /></div>
                        <ion-option-button class="button-energized">
                             投诉 
                           </ion-option-button>

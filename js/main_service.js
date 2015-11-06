@@ -36,31 +36,32 @@ angular.module('main.service',[])
   ];
 
   var externals = [
-    {id: 7,  child: false, state: 'common.service',   name: "海外保险",  key:'external1',    image:'teImg/lbaitemimg2.png', products:{data:[]}},
-    {id: 8,  child: false, state: 'common.service',   name: "海外信托",  key:'external2',    image:'teImg/lbaitemimg3.png', products:{data:[]}},
-    {id: 9,  child: false, state: 'common.service',   name: "海外投资",  key:'external3',    image:'teImg/lbaitemimg4.png', products:{data:[]}},
-    {id: 10, child: false, state: 'common.service',   name: "身份安排",  key:'external4',    image:'teImg/lbaitemimg5.png', products:{data:[]}},
-    {id: 11, child: false, state: 'common.service',   name: "海外置业",  key:'external5',    image:'teImg/lbaitemimg6.png', products:{data:[]}},
-    {id: 12, child: false, state: 'common.service',   name: "其他服务",  key:'external5',    image:'teImg/lbaitemimg7.png', products:{data:[]}}
+    {id: 7,  child: false, state: 'common.service',   name: "海外保险",  key:'external1',    image:'teImg/haiwaibaoxian.png', products:{data:[]}},
+    {id: 8,  child: false, state: 'common.service',   name: "海外信托",  key:'external2',    image:'teImg/haiwaixintuo.png', products:{data:[]}},
+    {id: 9,  child: false, state: 'common.service',   name: "海外投资",  key:'external3',    image:'teImg/haiwaitouzi.png', products:{data:[]}},
+    {id: 10, child: false, state: 'common.service',   name: "身份安排",  key:'external4',    image:'teImg/shenfenanpai.png', products:{data:[]}},
+    {id: 11, child: false, state: 'common.service',   name: "海外置业",  key:'external5',    image:'teImg/haiwaizhiye.png', products:{data:[]}},
+    {id: 12, child: false, state: 'common.service',   name: "其他服务",  key:'external5',    image:'teImg/qita.png', products:{data:[]}}
   ]
 
 
   var optionBookingState = {
-    //all:             {state: 'all',            name: '全部' ,         image: ''},
-    initiated:       {state:' initiated',      name: '待分配理财师',   image: 'teImg/unserved.png'},
-    assigned:        {state: 'assigned',       name: '已分配理财师',   image: 'teImg/unserved.png'},
-    accepted:        {state: 'accepted',       name: '理财师已接受',   image: 'teImg/unserved.png'},
-    completed:       {state: 'completed',      name: '服务完成',      image: 'teImg/served.png'},
-    cancelled:       {state: 'cancelled',      name: '预约取消',      image: 'teImg/unserved.png'}
+    //initiated:       {state:' initiated',      name: '待分配理财师',   image: 'teImg/unserved.png'},
+    //assigned:        {state: 'assigned',       name: '已分配理财师',   image: 'teImg/unserved.png'},
+    //accepted:        {state: 'accepted',       name: '理财师已接受',   image: 'teImg/unserved.png'},
+    completed:       {state: 'completed',      name: '已处理',      image: 'teImg/served.png'},
+    todo:            {state: 'todo',           name: '未处理',      image: 'teImg/unserved.png'}
+    //cancelled:       {state: 'cancelled',      name: '预约取消',      image: 'teImg/unserved.png'}
   };
   var optionOrderState = {
     //all:             {state: 'all',            name: '全部' ,         image: 'teImg/gnr2rabm11.png'},
-    initiated:       {state: 'initiated',      name: '已提交' ,       image: 'teImg/gnr2rabm1.png'},
-    paid:            {state: 'paid',           name: '已付款' ,       image: 'teImg/gnr2rabm3.png'},
-    documented:      {state: 'documented',     name: '资料已上传',     image: 'teImg/gnr2rabm4.png'},
+    //initiated:       {state: 'initiated',      name: '已提交' ,       image: 'teImg/gnr2rabm1.png'},
+    //paid:            {state: 'paid',           name: '已付款' ,       image: 'teImg/gnr2rabm3.png'},
+    //documented:      {state: 'documented',     name: '资料已上传',     image: 'teImg/gnr2rabm4.png'},
     completed:       {state: 'completed',      name: '已完成',        image: 'teImg/gnr2rabm2.png'},
-    cancelled:       {state: 'cancelled',      name: '已取消',        image: 'teImg/gnr2rabm4.png'},
-    rejected:        {state: 'rejected',       name: '已拒绝',        image: 'teImg/gnr2rabm4.png'},
+    todo:            {state: 'todo',           name: '未完成',        image: 'teImg/gnr2rabm4.png'}
+    //cancelled:       {state: 'cancelled',      name: '已取消',        image: 'teImg/gnr2rabm4.png'},
+    //rejected:        {state: 'rejected',       name: '已拒绝',        image: 'teImg/gnr2rabm4.png'},
   };
   var optionProductType = {
     all:             {type:  'all',            name: '全部',         image: 'teImg/gnr2rabm11.png'},
@@ -379,10 +380,13 @@ angular.module('main.service',[])
       return data;
     },
 
+    // 身份相关
     getProfile: function() {
       return profile;
     },
 
+
+    // 收藏相关
     getLiked: function(){
       return liked;
     },
@@ -412,6 +416,21 @@ angular.module('main.service',[])
           Storage.setObject('liked'+id, liked.data);
           return {ret: 1, msg: '已取消收藏'};
         }
+      }
+    },
+
+    // operation相关
+    getOperation: function(product, bookingHandler, orderHandler, errorHandler) {
+      if (role=='Customer') {
+        if (product.type.toLowerCase()=='publicfund') {
+          return {enabled: true, name: '认购/申购', action: orderHandler};
+        } else {
+          return {enabled: true, name: '预约/咨询', action: bookingHandler};
+        }
+      } else if (role=='Consultant') {
+        return {enabled: true, name: '认购/申购', action: orderHandler};
+      } else {      // include 'Guest' and other
+        return {enabled: false, name: '预约/咨询', action: errorHandler};
       }
     },
 
