@@ -29,7 +29,7 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('commonCtrl', function($scope, $stateParams, $ionicHistory, Factory, Main, Notify) {
+.controller('commonCtrl', function($scope, $state, $stateParams, $ionicHistory, Factory, Main, Notify) {
   $scope.data = {
     warning: {
       status: '',
@@ -37,13 +37,25 @@ angular.module('starter.controllers', [])
     },
     popup: ''
   };
+
+
+
   $scope.goBack = function() {
     console.log('goback');
     $ionicHistory.goBack();
   }
   $scope.showProduct = function(product) {
-    $scope.data.popup = 'privateFund';
-    $scope.data.looking_product = product;
+
+    if(product){
+      ret = Main.productGoState(product);
+
+      if (ret.go) {
+        $state.go(ret.go, {productId: 2});
+      } else {
+        $scope.data.popup = 'privateFund';
+        $scope.data.looking_product = product;
+      }
+    }
     //console.log("looking product: "+product.id);
     //console.log(product);
   }
@@ -423,36 +435,24 @@ angular.module('starter.controllers', [])
     });
     }, 1000*60*10);
 
-  
+  $scope.showProduct = function(product) {
 
-  $scope.showProduct = function(product, param) {
-    $scope.data.popup = 'privateFund';
-    $scope.data.looking_product = product;
-    console.log("looking product: "+product.id);
-    
-    $scope.data.product_act_booking = true;
-    $scope.data.product_act_order = true;
+    if(product){
+      ret = Main.productGoState(product)
 
-
-
-    if (param == 'NoBooking') {
-      $scope.data.product_act_booking = false;
-    } else if (param == 'NoOrder') {
-      $scope.data.product_act_order = false;
-    } else {
-
+      if (ret.go) {
+        $state.go(ret.go, {productId: 2});
+      } else {
+        $scope.data.popup = 'privateFund';
+        $scope.data.looking_product = product;
+      }
     }
+
+    //console.log("looking product: "+product.id);
     //console.log(product);
   }
 
-  $scope.showBookingProduct = function(booking) {
-    $scope.data.popup = 'privateFund';
-    $scope.data.looking_product = booking.product;
-    $scope.data.looking_booking = booking;
 
-    $scope.data.product_act_booking = false;
-    $scope.data.product_act_order = true;
-  } 
 
   $scope.enableBooking = function() {
     if (!$scope.data.product_act_booking) {

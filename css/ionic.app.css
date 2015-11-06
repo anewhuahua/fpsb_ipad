@@ -39,7 +39,9 @@ $royal:                           #886aea !default;
   /*变灰色10.19-s*/
   /*变灰色10.19-s*/
   /*公墓列表10.30-s*/
-  /*公墓列表10.30-s*/ }
+  /*公墓列表10.30-s*/
+  /*发现境内列表 详情11.5*/
+  /*发现境内列表 详情11.5*/ }
   .booking-view a {
     text-decoration: none; }
   .booking-view .content {
@@ -1681,6 +1683,138 @@ $royal:                           #886aea !default;
     left: 0rem;
     top: 0rem;
     z-index: 5; }
+  .booking-view .fxlbdvt {
+    width: 100%;
+    height: 3.1rem;
+    padding: 0.3rem 0rem 0.15rem 0rem;
+    overflow: hidden;
+    background: #fff;
+    border-radius: 0.03rem;
+    margin: 0rem auto 0.35rem auto; }
+  .booking-view .fxlbdvtp {
+    width: 100%;
+    height: 0.57rem;
+    padding: 0rem 1% 0.2rem 1%;
+    overflow: hidden;
+    border-bottom: 1px #f3f2f5 solid; }
+  .booking-view .fxlbsa1, .booking-view .fxlbsa2 {
+    float: left;
+    margin-left: 1%;
+    width: 0.8rem;
+    height: 0.35rem;
+    font-size: 0.3rem;
+    color: #fff;
+    line-height: 0.35rem;
+    text-align: center;
+    border-radius: 0.03rem; }
+  .booking-view .fxlbsa1 {
+    background: #e79700; }
+  .booking-view .fxlbsa2 {
+    background: #e30000; }
+  .booking-view .fxlbem {
+    font-size: 0.3rem;
+    color: #395983;
+    line-height: 0.35rem;
+    float: left;
+    margin-left: 1%; }
+  .booking-view .fxlbdvtm {
+    width: 100%;
+    padding: 0.15rem 1% 0rem 2%;
+    overflow: hidden; }
+  .booking-view .fxlbdvtmimg {
+    width: 36%;
+    float: left; }
+  .booking-view .fxlbdvtmimg > img {
+    width: 100%; }
+  .booking-view .fxlbdvtm > span {
+    float: right;
+    width: 61%;
+    font-size: 0.3rem;
+    color: #395983;
+    line-height: 0.4rem;
+    text-align: justify; }
+  .booking-view .jnxqtop {
+    width: 100%;
+    margin: auto;
+    overflow: hidden;
+    padding: 0.85rem 3.5% 0.45rem 3.5%;
+    background: #fff; }
+  .booking-view .jnxqtopimg {
+    width: 34%;
+    float: left; }
+  .booking-view .jnxqtopimg > img {
+    width: 100%; }
+  .booking-view .jnxqtopr {
+    width: 63%;
+    float: right; }
+  .booking-view .jnxqtopr1 {
+    width: 100%;
+    overflow: hidden; }
+  .booking-view .jnxqtopr1 > span {
+    width: 90%;
+    height: 0.51rem;
+    overflow: hidden;
+    float: left;
+    font-size: 0.3rem;
+    color: #395983;
+    line-height: 0.49rem; }
+  .booking-view .jnxqtopr1 > em {
+    float: right;
+    width: 0.49rem;
+    height: 0.49rem;
+    background: url(../teImg/likedit.png) no-repeat;
+    background-size: cover; }
+  .booking-view .jnxqtopr1 > p {
+    float: right;
+    width: 0.49rem;
+    height: 0.49rem;
+    background: url(../teImg/likeit.png) no-repeat;
+    background-size: cover; }
+  .booking-view .jnxqtopr > span {
+    text-align: justify;
+    font-size: 0.26rem;
+    color: #395983;
+    line-height: 0.38rem;
+    display: block;
+    margin: 0.1rem auto 0.2rem auto; }
+  .booking-view .jnxqtopr > a {
+    height: 0.6rem;
+    width: 100%;
+    font-size: 0.36rem;
+    color: #fff;
+    line-height: 0.6rem;
+    display: block;
+    background: #e79700;
+    margin: auto;
+    text-align: center;
+    border-radius: 0.03rem; }
+  .booking-view .xqmmdv {
+    background: #f3f2f5;
+    width: 100%;
+    padding: 0.5rem 3.5% 0.45rem 3.5%;
+    position: relative;
+    z-index: 1;
+    font-size: 0.24rem;
+    color: #395983;
+    line-height: 0.48rem; }
+  .booking-view .xqmmdvbj {
+    background: url(../teImg/jnxqbj1.jpg) repeat-x;
+    width: 100%;
+    height: 2.47rem;
+    position: absolute;
+    left: 0rem;
+    top: 0rem;
+    z-index: 2; }
+  .booking-view .xqmmdv > p {
+    display: block;
+    font-size: 0.24rem;
+    color: #395983;
+    line-height: 0.48rem;
+    text-indent: 0.48rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 3;
+    text-align: justify; }
 
 .exam-view {
   /* 头部 */
@@ -1922,7 +2056,9 @@ $royal:                           #886aea !default;
   /*工具箱-佣金-s*/
   /*工具箱-佣金-e*/
   /*客户总览11.3-s*/
-  /*客户总览11.3-s*/ }
+  /*客户总览11.3-s*/
+  /*发现境内列表 详情11.5*/
+  /*发现境内列表 详情11.5*/ }
   .common-person-view a {
     text-decoration: none; }
   .common-person-view .content {
@@ -2371,6 +2507,19 @@ $royal:                           #886aea !default;
     margin-left: 0.26rem;
     background: url(../teImg/fire.gif) no-repeat;
     background-size: cover; }
+  .common-person-view .xxlniuhuang12 {
+    float: left;
+    margin-left: 1%;
+    width: 0.72rem;
+    height: 0.47rem;
+    font-size: 0.3rem;
+    color: #fff;
+    line-height: 0.35rem;
+    text-align: center;
+    border-radius: 0.03rem;
+    background: url(../teImg/fire.gif) no-repeat;
+    background-size: cover;
+    margin-top: -0.1rem; }
   .common-person-view .xxlsrrp > em {
     float: left;
     font-size: 0.3rem;
@@ -5204,6 +5353,131 @@ $royal:                           #886aea !default;
     text-align: center;
     margin-top: 0.2rem;
     border: none; }
+  .common-person-view .fxlbdvt {
+    width: 100%;
+    height: 3.1rem;
+    padding: 0.3rem 0rem 0.15rem 0rem;
+    overflow: hidden;
+    background: #fff;
+    border-radius: 0.03rem;
+    margin: 0rem auto 0.35rem auto; }
+  .common-person-view .fxlbdvtp {
+    width: 100%;
+    height: 0.57rem;
+    padding: 0rem 1% 0.2rem 1%;
+    border-bottom: 1px #f3f2f5 solid; }
+  .common-person-view .fxlbsa1, .common-person-view .fxlbsa2 {
+    float: left;
+    margin-left: 1%;
+    width: 0.8rem;
+    height: 0.35rem;
+    font-size: 0.3rem;
+    color: #fff;
+    line-height: 0.35rem;
+    text-align: center;
+    border-radius: 0.03rem; }
+  .common-person-view .fxlbsa1 {
+    background: #e79700; }
+  .common-person-view .fxlbsa2 {
+    background: #e30000; }
+  .common-person-view .fxlbem {
+    font-size: 0.3rem;
+    color: #395983;
+    line-height: 0.35rem;
+    float: left;
+    margin-left: 1%; }
+  .common-person-view .fxlbdvtm {
+    width: 100%;
+    padding: 0.15rem 1% 0rem 2%;
+    overflow: hidden; }
+  .common-person-view .fxlbdvtmimg {
+    width: 36%;
+    float: left; }
+  .common-person-view .fxlbdvtmimg > img {
+    width: 100%; }
+  .common-person-view .fxlbdvtm > span {
+    float: right;
+    width: 61%;
+    font-size: 0.3rem;
+    color: #395983;
+    line-height: 0.4rem;
+    text-align: justify; }
+  .common-person-view .jnxqtop {
+    width: 100%;
+    margin: auto;
+    overflow: hidden;
+    padding: 0.85rem 3.5% 0.45rem 3.5%;
+    background: #fff; }
+  .common-person-view .jnxqtopimg {
+    width: 34%;
+    float: left; }
+  .common-person-view .jnxqtopimg > img {
+    width: 100%; }
+  .common-person-view .jnxqtopr {
+    width: 63%;
+    float: right; }
+  .common-person-view .jnxqtopr1 {
+    width: 100%;
+    overflow: hidden; }
+  .common-person-view .jnxqtopr1 > span {
+    width: 90%;
+    height: 0.51rem;
+    overflow: hidden;
+    float: left;
+    font-size: 0.3rem;
+    color: #395983;
+    line-height: 0.49rem; }
+  .common-person-view .jnxqtopr1 > em {
+    float: right;
+    width: 0.49rem;
+    height: 0.49rem;
+    background: url(../teImg/jnxqax.png) no-repeat;
+    background-size: cover; }
+  .common-person-view .jnxqtopr > span {
+    text-align: justify;
+    font-size: 0.26rem;
+    color: #395983;
+    line-height: 0.38rem;
+    display: block;
+    margin: 0.1rem auto 0.2rem auto; }
+  .common-person-view .jnxqtopr > a {
+    height: 0.6rem;
+    width: 100%;
+    font-size: 0.36rem;
+    color: #fff;
+    line-height: 0.6rem;
+    display: block;
+    background: #e79700;
+    margin: auto;
+    text-align: center;
+    border-radius: 0.03rem; }
+  .common-person-view .xqmmdv {
+    background: #f3f2f5;
+    width: 100%;
+    padding: 0.5rem 3.5% 0.45rem 3.5%;
+    position: relative;
+    z-index: 1;
+    font-size: 0.24rem;
+    color: #395983;
+    line-height: 0.48rem; }
+  .common-person-view .xqmmdvbj {
+    background: url(../teImg/jnxqbj1.jpg) repeat-x;
+    width: 100%;
+    height: 2.47rem;
+    position: absolute;
+    left: 0rem;
+    top: 0rem;
+    z-index: 2; }
+  .common-person-view .xqmmdv > p {
+    display: block;
+    font-size: 0.24rem;
+    color: #395983;
+    line-height: 0.48rem;
+    text-indent: 0.48rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 3;
+    text-align: justify; }
 
 .common-main-view {
   /****iconfont****/

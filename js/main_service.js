@@ -27,23 +27,22 @@ angular.module('main.service',[])
 
 
   var categories = [
-    {id: 1, child: true,  name: "公募基金",  key:'publicfunds',   image:'teImg/lbaitemimg2.png', products:{data:[]}},
-    {id: 2, child: false, name: "私募基金",  key:'privatefunds',  image:'teImg/lbaitemimg3.png', products:{data:[]}},
-    {id: 3, child: false, name: "信托产品",  key:'trusts',        image:'teImg/lbaitemimg4.png', products:{data:[]}},
-    {id: 4, child: false, name: "资管产品",  key:'portfolios',    image:'teImg/lbaitemimg5.png', products:{data:[]}},
-    {id: 5, child: false, name: "保险产品",  key:'insurances',    image:'teImg/lbaitemimg6.png', products:{data:[]}},
-    {id: 6, child: false, name: "家族信托",  key:'familytrusts',  image:'teImg/lbaitemimg7.png', products:{data:[]}},
+    {id: 1, child: true,  state: "common.publicfunds", name: "公募基金",  key:'publicfunds',   image:'teImg/gongmu.png', products:{data:[]}},
+    {id: 2, child: false, state: null,                 name: "私募基金",  key:'privatefunds',  image:'teImg/simu.png', products:{data:[]}},
+    {id: 3, child: false, state: null,                 name: "信托产品",  key:'trusts',        image:'teImg/xintuo.png', products:{data:[]}},
+    {id: 4, child: false, state: null,                 name: "资管产品",  key:'portfolios',    image:'teImg/ziguan.png', products:{data:[]}},
+    {id: 5, child: false, state: "common.service",     name: "保险产品",  key:'insurances',    image:'teImg/baoxian.png', products:{data:[]}},
+    {id: 6, child: false, state: "common.service",     name: "家族信托",  key:'familytrusts',  image:'teImg/jiazuxintuo.png', products:{data:[]}},
   ];
 
   var externals = [
-    {id: 7,  child: false, name: "海外保险",  key:'external1',    image:'teImg/lbaitemimg2.png', products:{data:[]}},
-    {id: 8,  child: false, name: "海外信托",  key:'external2',    image:'teImg/lbaitemimg3.png', products:{data:[]}},
-    {id: 9,  child: false, name: "海外投资",  key:'external3',    image:'teImg/lbaitemimg4.png', products:{data:[]}},
-    {id: 10, child: false, name: "身份安排",  key:'external4',    image:'teImg/lbaitemimg5.png', products:{data:[]}},
-    {id: 11, child: false, name: "海外置业",  key:'external5',    image:'teImg/lbaitemimg6.png', products:{data:[]}},
-    {id: 12, child: false, name: "其他服务",  key:'external5',    image:'teImg/lbaitemimg7.png', products:{data:[]}}
+    {id: 7,  child: false, state: 'common.service',   name: "海外保险",  key:'external1',    image:'teImg/lbaitemimg2.png', products:{data:[]}},
+    {id: 8,  child: false, state: 'common.service',   name: "海外信托",  key:'external2',    image:'teImg/lbaitemimg3.png', products:{data:[]}},
+    {id: 9,  child: false, state: 'common.service',   name: "海外投资",  key:'external3',    image:'teImg/lbaitemimg4.png', products:{data:[]}},
+    {id: 10, child: false, state: 'common.service',   name: "身份安排",  key:'external4',    image:'teImg/lbaitemimg5.png', products:{data:[]}},
+    {id: 11, child: false, state: 'common.service',   name: "海外置业",  key:'external5',    image:'teImg/lbaitemimg6.png', products:{data:[]}},
+    {id: 12, child: false, state: 'common.service',   name: "其他服务",  key:'external5',    image:'teImg/lbaitemimg7.png', products:{data:[]}}
   ]
-
 
 
   var optionBookingState = {
@@ -176,8 +175,7 @@ angular.module('main.service',[])
       roleConsultant.orders[type]   = new TypeOrders(optionProductType[type]);
     }
 
-    liked.data = Storage.getObject('liked') || [];
-
+    
   }();
   //console.log(roleCustomer);
 
@@ -212,6 +210,18 @@ angular.module('main.service',[])
   };
 
   return {
+    productGoState: function(product) {
+      var type = product.type.toLowerCase();
+      for(var i=0; i<categories.length; i++){
+        var str = categories[i].key.toLowerCase();
+        if(str.indexOf(type)>=0){
+          return {go: categories[i].state};
+        }
+      }
+
+      return {go:'common.service'};
+    },
+
     getProductType: function(){
       return optionProductType;
     },
@@ -223,8 +233,7 @@ angular.module('main.service',[])
     },
     getRole: function() {
       return role;
-    },
-    
+    },  
 
     login: function(param, successHandler, errorHandler, finallyHandler) {
       var username = null;
@@ -265,6 +274,9 @@ angular.module('main.service',[])
           console.log(id);
 
           Storage.setObject('login', {'username': username, 'password': password});
+          liked.data = Storage.getObject('liked'+id) || [];
+
+
           console.log('main.service login success:' + id);
           successHandler();
         }, function(res){
@@ -383,8 +395,9 @@ angular.module('main.service',[])
             return {ret: 0, msg: '请不要重复收藏'};
           }
         }
+       
         liked.data.unshift(product);
-        Storage.setObject('liked', liked.data);
+        Storage.setObject('liked'+id, liked.data);
         return {ret: 1, msg: '已收藏'};
       } else {
         return {ret: 0, msg: '超出最大收藏数量60'}
@@ -394,8 +407,9 @@ angular.module('main.service',[])
     hateIt: function(product) {
       for(var i=0; i<liked.data.length;i++) {
         if (liked.data[i].id==product.id) {
+         
           liked.data.splice(i,1);
-          Storage.setObject('liked', liked.data);
+          Storage.setObject('liked'+id, liked.data);
           return {ret: 1, msg: '已取消收藏'};
         }
       }

@@ -166,12 +166,13 @@ angular.module('starter', ['ionic', 'ngCordova', 'angular-flot', 'ionicMultipleV
     controller: 'commonCtrl'
   })
 
-  .state('common.public', {
-    url: '/public',
+ 
+  .state('common.service', {
+    url: '/service/:productId',
     views: {
-      'common-public': {
-         templateUrl: 'templates/public.html',
-         controller: 'commonPublicCtrl'
+      'common-service': {
+         templateUrl: 'templates/common/service.html'//,
+         //controller: 'commonServiceCtrl'
       }
     }
   })
