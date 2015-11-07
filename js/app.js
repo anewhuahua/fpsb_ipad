@@ -213,6 +213,25 @@ angular.module('starter', ['ionic', 'ngCordova', 'angular-flot', 'ionicMultipleV
     }
   })
 
+  .state('common.publicfund1', {
+    cache: false,
+    url: '/publicfund1',
+    views: {
+      'publicfund1': {
+         templateUrl: 'templates/common/publicfund1.html'
+         
+      }
+    }
+  })
+  .state('common.publicfund2', {
+    cache: false,
+    url: '/publicfund2',
+    views: {
+      'publicfund2': {
+         templateUrl: 'templates/common/publicfund2.html'
+      }
+    }
+  })
 
 
     // exam

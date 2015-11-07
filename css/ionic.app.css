@@ -41,7 +41,9 @@ $royal:                           #886aea !default;
   /*公墓列表10.30-s*/
   /*公墓列表10.30-s*/
   /*发现境内列表 详情11.5*/
-  /*发现境内列表 详情11.5*/ }
+  /*发现境内列表 详情11.5*/
+  /*公募内页详情两个11.7*/
+  /*公募内页详情两个11.7*/ }
   .booking-view a {
     text-decoration: none; }
   .booking-view .content {
@@ -1816,6 +1818,265 @@ $royal:                           #886aea !default;
     position: relative;
     z-index: 3;
     text-align: justify; }
+  .booking-view .gmnydv {
+    width: 100%;
+    padding: 0.5rem 5%;
+    background: #fff; }
+  .booking-view .gmfw1 {
+    width: 100%;
+    overflow: hidden;
+    padding: 0.35rem 0rem 0.4rem 0rem; }
+  .booking-view .gmfw1 > span {
+    float: left;
+    margin-right: 8%;
+    font-size: 0.3rem;
+    color: #395983;
+    line-height: 0.3rem; }
+  .booking-view .gmfw1 > span > em {
+    font-size: 0.48rem; }
+  .booking-view .gmtit {
+    display: block;
+    font-size: 0.26rem;
+    color: #395983;
+    line-height: 0.3rem; }
+  .booking-view .gmlbdv {
+    width: 100%;
+    margin: auto;
+    overflow: hidden; }
+  .booking-view .gmlbdv > span {
+    font-size: 0.26rem;
+    color: #395983;
+    line-height: 0.26rem;
+    width: 33%;
+    float: left;
+    margin-top: 0.15rem; }
+  .booking-view .gmlbdv > span > em {
+    color: #4ec25a; }
+  .booking-view .gmlbdv > span > i {
+    color: #dc0000; }
+  .booking-view .jnwfgma {
+    width: 100%;
+    margin: 0.5rem auto 0 auto;
+    height: 0.7rem;
+    background: #d32e00;
+    font-size: 0.36rem;
+    color: #fff;
+    line-height: 0.7rem;
+    text-align: center;
+    display: block;
+    border-radius: 0.03rem; }
+  .booking-view .jnfwyj2dv {
+    width: 100%;
+    background: #f3f2f5;
+    position: relative;
+    z-index: 1; }
+  .booking-view .jnfw2yy {
+    background: url(../teImg/gmyyq.jpg) repeat-x;
+    width: 100%;
+    height: 1.1rem; }
+  .booking-view .jnfw2d {
+    width: 96%;
+    margin: auto;
+    border: 0.01rem #a2a2a2 solid;
+    overflow: hidden; }
+  .booking-view .jnfw2d > a {
+    width: 33.2%;
+    float: left;
+    background: #fff;
+    border-left: 0.01rem #a2a2a2 solid;
+    font-size: 0.3rem;
+    color: #8b8b8b;
+    line-height: 0.45rem;
+    text-align: center; }
+  .booking-view .jnfw2d > a:first-child {
+    border-left: 0rem; }
+  .booking-view .jnfwcs {
+    background: #a2a2a2 !important;
+    color: #fff !important; }
+  .booking-view .jnfw2zt {
+    width: 96%;
+    margin: auto;
+    overflow: hidden;
+    border-top: 0.01rem #a2a2a2 solid;
+    border-right: 0.01rem #a2a2a2 solid;
+    margin-top: 0.3rem;
+    margin-bottom: 0.5rem; }
+  .booking-view .jnfw2zta {
+    width: 100%;
+    margin: auto;
+    overflow: hidden; }
+  .booking-view .jnfw2zta > span, .booking-view .jnfw2zta > em {
+    float: left;
+    border-left: 0.01rem #a2a2a2 solid;
+    border-bottom: 0.01rem #a2a2a2 solid;
+    background: #fff;
+    font-size: 0.24rem;
+    color: #395983;
+    line-height: 0.6rem;
+    text-indent: 4%; }
+  .booking-view .jnfw2zta > em {
+    width: 34.9%;
+    background: none !important; }
+  .booking-view .jnfw2zta > span {
+    width: 14.9%; }
+  .booking-view .jnfw2ztb {
+    width: 100%;
+    margin: auto;
+    overflow: hidden;
+    border-bottom: 0.01rem #a2a2a2 solid;
+    border-left: 0.01rem #a2a2a2 solid;
+    background: #fff; }
+  .booking-view .jnfw2ztb > span, .booking-view .jnfw2ztb > i {
+    float: left;
+    font-size: 0.24rem;
+    color: #395983;
+    line-height: 0.5rem;
+    padding: 0rem 4%; }
+  .booking-view .jnfw2ztb > span {
+    background: #fff;
+    width: 14.8%; }
+  .booking-view .jnfw2ztb > i {
+    background: #f3f2f5 !important;
+    border-left: 0.01rem #a2a2a2 solid;
+    width: 77%;
+    text-align: justify; }
+  .booking-view .jnfwtit {
+    width: 96%;
+    height: 0.55rem;
+    background: #fff;
+    margin: auto;
+    border-radius: 0.02rem; }
+  .booking-view .jnfwtit > span {
+    float: left;
+    width: 60%;
+    font-size: 0.28rem;
+    color: #395983;
+    line-height: 0.55rem;
+    padding-left: 1%; }
+  .booking-view .jnfwtr {
+    float: right;
+    position: relative;
+    margin-right: 0.05rem; }
+  .booking-view .jnfwtr > em {
+    font-size: 0.28rem;
+    color: #395983;
+    line-height: 0.55rem;
+    float: left;
+    margin-right: 0.05rem; }
+  .booking-view .jnfwtr > select {
+    font-size: 0.28rem;
+    color: #395983;
+    line-height: 0.55rem;
+    float: left;
+    width: 3rem;
+    height: 0.45rem;
+    margin-top: 0.05rem;
+    background: #f3f2f5;
+    border: none; }
+  .booking-view .jnfwtr > select > opation {
+    font-size: 0.28rem;
+    color: #395983;
+    line-height: 0.55rem; }
+  .booking-view .jnfwtr > span {
+    background: url(../teImg/khlbxia.png) no-repeat;
+    background-size: cover;
+    width: 0.39rem;
+    height: 0.21rem;
+    position: absolute;
+    right: 8%;
+    top: 0.2rem; }
+  .booking-view .jnfw3dv {
+    width: 96%;
+    margin: 0.1rem auto 0.25rem auto;
+    overflow: hidden;
+    border-top: 0.01rem #a2a2a2 solid;
+    border-right: 0.01rem #a2a2a2 solid; }
+  .booking-view .jnfwsp1 {
+    overflow: hidden; }
+  .booking-view .jnfwsp1 > em {
+    float: left;
+    width: 24.85%;
+    border-left: 0.01rem #a2a2a2 solid;
+    border-bottom: 0.01rem #a2a2a2 solid;
+    font-size: 0.24rem;
+    color: #8b8b8b;
+    line-height: 0.55rem;
+    text-align: center; }
+  .booking-view .jnfwsp2 {
+    overflow: hidden; }
+  .booking-view .jnfwsp2 > em {
+    float: left;
+    width: 24.85%;
+    border-left: 0.01rem #a2a2a2 solid;
+    border-bottom: 0.01rem #a2a2a2 solid;
+    font-size: 0.24rem;
+    color: #395983;
+    line-height: 0.55rem;
+    text-align: center; }
+  .booking-view .jnfwspb1 {
+    overflow: hidden;
+    display: block; }
+  .booking-view .jnfwspb1 > em {
+    float: left;
+    width: 14.146%;
+    border-left: 0.01rem #a2a2a2 solid;
+    border-bottom: 0.01rem #a2a2a2 solid;
+    font-size: 0.24rem;
+    color: #8b8b8b;
+    line-height: 0.55rem;
+    text-align: center; }
+  .booking-view .jnfwspb2 {
+    overflow: hidden;
+    display: block; }
+  .booking-view .jnfwspb2 > em {
+    float: left;
+    width: 14.146%;
+    border-left: 0.01rem #a2a2a2 solid;
+    border-bottom: 0.01rem #a2a2a2 solid;
+    font-size: 0.24rem;
+    color: #395983;
+    line-height: 0.55rem;
+    text-align: center; }
+  .booking-view .jnfwspc1 {
+    overflow: hidden;
+    display: block; }
+  .booking-view .jnfwspc1 > em {
+    float: left;
+    width: 16.53%;
+    border-left: 0.01rem #a2a2a2 solid;
+    border-bottom: 0.01rem #a2a2a2 solid;
+    font-size: 0.24rem;
+    color: #8b8b8b;
+    line-height: 0.55rem;
+    text-align: center; }
+  .booking-view .jnfwspc2 {
+    overflow: hidden;
+    display: block; }
+  .booking-view .jnfwspc2 > em {
+    float: left;
+    width: 16.53%;
+    border-left: 0.01rem #a2a2a2 solid;
+    border-bottom: 0.01rem #a2a2a2 solid;
+    font-size: 0.24rem;
+    color: #395983;
+    line-height: 0.55rem;
+    text-align: center; }
+  .booking-view .fhwwt {
+    width: 96%;
+    font-size: 0.24rem;
+    color: #fff;
+    line-height: 0.55rem;
+    background: #b9b9b9;
+    margin: auto;
+    display: block;
+    padding-left: 1%; }
+  .booking-view .fhwjtn {
+    display: block;
+    width: 94%;
+    margin: 0.2rem auto;
+    font-size: 0.24rem;
+    color: #7f7f7f;
+    line-height: 0.3rem; }
 
 .exam-view {
   /* 头部 */
@@ -5519,11 +5780,13 @@ $royal:                           #886aea !default;
     line-height: 0.65rem;
     text-align: right; }
   .common-person-view .khzlzz2br1 {
-    width: 78.9%;
+    width: 75.9%;
     float: right;
     line-height: 0.5rem;
     text-indent: 0.5rem;
-    margin-top: 0.1rem; }
+    margin-top: 0.1rem;
+    text-align: justify;
+    margin-right: 0.3rem; }
   .common-person-view .khzlzz1bfwu11 {
     width: 75%;
     margin: auto;
