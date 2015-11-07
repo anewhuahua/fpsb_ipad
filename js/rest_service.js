@@ -191,7 +191,7 @@ angular.module('rest.service', [])
         queryBookings: function (param, cid, successHandler, errorHandler, finallyHandler) {
           state  = param.state || 'all';
           offset = param.offset || '0';
-          limit  = param.limit || '25';
+          limit  = param.limit || '10000';  // 默认全读
           type   = param.type || 'all';
 
           var req = {
@@ -231,7 +231,7 @@ angular.module('rest.service', [])
         queryOrders: function (param, cid, successHandler, errorHandler, finallyHandler) {
           state  = param.state || 'all';
           offset = param.offset || '0';
-          limit  = param.limit || '25';
+          limit  = param.limit || '10000';
           type   = param.type || 'all';
 
           var req = {
@@ -264,9 +264,29 @@ angular.module('rest.service', [])
               '/orders/' + oid + '/documents' 
         },
 
+        queryConsultant: function(id, successHandler, errorHandler, finallyHandler) {
+          var req = {
+              method: 'GET',
+              url: domain+'ChiefFinancierService/api/consultant/v1/consultants/' + id,
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
+
+            //console.log(pid);
+          $http(req).success(function(data){
+            //console.log(data);
+            successHandler(data);
+          }).error(function(res, status){
+            errorHandler(status);
+          }).finally(function(){
+            finallyHandler();
+          });
+        },
+
         queryCustomers: function (param, id, successHandler, errorHandler, finallyHandler) {
           offset = param.offset || '0';
-          limit  = param.limit || '24';
+          limit  = param.limit || '25';
 
           var req = {
               method: 'GET',
@@ -288,7 +308,7 @@ angular.module('rest.service', [])
         queryBookings: function (param, id, successHandler, errorHandler, finallyHandler) {
           state  = param.state || 'all';
           offset = param.offset || '0';
-          limit  = param.limit || '25';
+          limit  = param.limit || '10000';
           type   = param.type || 'all';
 
           var req = {
@@ -331,7 +351,7 @@ angular.module('rest.service', [])
         queryOrders: function (param, id, successHandler, errorHandler, finallyHandler) {
           state  = param.state || 'all';
           offset = param.offset || '0';
-          limit  = param.limit || '25';
+          limit  = param.limit || '10000';
           type   = param.type || 'all';
 
           var req = {

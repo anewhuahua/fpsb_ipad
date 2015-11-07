@@ -58,8 +58,8 @@ angular.module('main.service',[])
     //initiated:       {state: 'initiated',      name: '已提交' ,       image: 'teImg/gnr2rabm1.png'},
     //paid:            {state: 'paid',           name: '已付款' ,       image: 'teImg/gnr2rabm3.png'},
     //documented:      {state: 'documented',     name: '资料已上传',     image: 'teImg/gnr2rabm4.png'},
-    completed:       {state: 'completed',      name: '已完成',        image: 'teImg/gnr2rabm2.png'},
-    todo:            {state: 'todo',           name: '未完成',        image: 'teImg/gnr2rabm4.png'}
+    completed:       {state: 'completed',      name: '已完成',        image: 'teImg/gnr2rabm3a.png'},
+    todo:            {state: 'todo',           name: '未完成',        image: 'teImg/gnr2rabm4a.png'}
     //cancelled:       {state: 'cancelled',      name: '已取消',        image: 'teImg/gnr2rabm4.png'},
     //rejected:        {state: 'rejected',       name: '已拒绝',        image: 'teImg/gnr2rabm4.png'},
   };
@@ -276,7 +276,6 @@ angular.module('main.service',[])
 
           Storage.setObject('login', {'username': username, 'password': password});
           liked.data = Storage.getObject('liked'+id) || [];
-
 
           console.log('main.service login success:' + id);
           successHandler();
@@ -697,6 +696,17 @@ angular.module('main.service',[])
           parseRestError('queryCustomers',  status, errorHandler);
         }, 
         finallyHandler());
+      },
+
+      queryConsultant: function(successHandler, errorHandler, finallyHandler) {
+        Rest.consultant.v1.queryConsultant(id, function(data){
+            if (parseRestSuccess('queryConsultant', data, successHandler, errorHandler)) { 
+              profile.data = data.result;
+            }
+          }, function(status){
+            parseRestError('queryConsultant',  status, errorHandler);
+          }, 
+          finallyHandler());
       },
 
       submitOrder: function(booking, money, successHandler, errorHandler, finallyHandler) {

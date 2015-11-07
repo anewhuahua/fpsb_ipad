@@ -488,7 +488,9 @@ $royal:                           #886aea !default;
     font-size: 0.18rem;
     line-height: 0.18rem;
     color: #395983;
-    text-align: center; }
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto; }
   .booking-view .gnr2nrbbmrig {
     width: 85%;
     height: 1.3rem;
@@ -5108,7 +5110,7 @@ $royal:                           #886aea !default;
     width: 92%;
     margin: auto;
     font-size: 0.3rem;
-    color: #395983;
+    color: #635f6b;
     line-height: 0.5rem;
     text-align: center; }
   .common-person-view .khzlzz1bfwu {
@@ -5279,7 +5281,7 @@ $royal:                           #886aea !default;
   .common-person-view .khzlzz3a > span {
     float: left;
     font-size: 0.3rem;
-    color: #635f6b;
+    color: #395983;
     line-height: 0.8rem; }
   .common-person-view .khzlzz3a > a {
     float: right;
@@ -5477,6 +5479,63 @@ $royal:                           #886aea !default;
     position: relative;
     z-index: 3;
     text-align: justify; }
+  .common-person-view .khzlzz3a11 {
+    overflow: hidden;
+    padding: 0rem 0%;
+    margin-top: 0.35rem;
+    margin-bottom: 0.1rem;
+    background: #fff; }
+  .common-person-view .khzlzz2b1 {
+    width: 100%;
+    height: 0.8rem;
+    background: #fff;
+    font-size: 0.28rem;
+    color: #635f6b;
+    line-height: 0.5rem; }
+  .common-person-view .khzlzz2bf1 {
+    width: 18%;
+    float: left;
+    white-space: pre;
+    text-align: right;
+    margin-top: 0.1rem; }
+  .common-person-view .khzlzz2cr1 {
+    width: 78.9%;
+    float: right;
+    margin-top: 0.3rem; }
+  .common-person-view .khzlzz2cr1 > li {
+    float: left;
+    width: 1.45rem;
+    height: 0.65rem;
+    margin-right: 0.2rem;
+    border-radius: 0.03rem;
+    margin-top: -0.27rem; }
+  .common-person-view .khzlzz2cr1 > li > img {
+    width: 100%; }
+  .common-person-view .khzlzz2cf1 {
+    width: 18%;
+    float: left;
+    font-size: 0.28rem;
+    color: #635f6b;
+    line-height: 0.65rem;
+    text-align: right; }
+  .common-person-view .khzlzz2br1 {
+    width: 78.9%;
+    float: right;
+    line-height: 0.5rem;
+    text-indent: 0.5rem;
+    margin-top: 0.1rem; }
+  .common-person-view .khzlzz1bfwu11 {
+    width: 75%;
+    margin: auto;
+    font-size: 0.28rem;
+    color: #395983;
+    line-height: 0.5rem;
+    text-align: center;
+    background: #f4f4f4;
+    border: none;
+    margin-left: 0.3rem;
+    text-indent: 0.5rem;
+    margin-top: 0.1rem; }
 
 .common-main-view {
   /****iconfont****/

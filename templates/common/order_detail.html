@@ -4,25 +4,30 @@
 
 
     <ion-content>
-      <ul class="ddxqtopqhul"><!--top分类-s-->
-                   	<li ng-class="{ddxqcss : data.win=='detail'}"><a href="" ng-click="selectWin('detail')">订单详情</a></li>
-                    <li ng-class="{ddxqcss : data.win=='status'}"><a href="" ng-click="selectWin('status')">订单状态</a></li>
-      </ul><!--top分类-e-->
-      <div class="main1" ng-if="data.win=='detail'">
+     <div class="gjxnrtopyy2"></div><!-- 内容top阴影 --> 
+      <div class="main1">
 
           <div class="gnr2dadv"><!--内容右侧开始-->
 
               <div class="gnr2ma" > 
                    <div class="gnr2nrb"><!--已完成订单-s-->
                      
-                       <div class="gnr2nrbtp">
-                          <span>订单状态：{{data.orderState[data.order.state.toLowerCase()].name}}</span>
+                       <div class="gnr2nrbtp" ng-if="data.order.state.toLowerCase()=='completed'">
+                          <span>交易状态：{{data.orderState[data.order.state.toLowerCase()].name}}</span>
+                       </div>
+
+                       <div class="gnr2nrbtp" ng-if="data.order.state.toLowerCase()!='completed'">
+                          <span>交易状态：{{data.orderState['todo'].name}}</span>
                        </div>
                        
                        <div class="gnr2nrbbm">
-                         <div class="gnr2nrblef">
+                         <div class="gnr2nrblef" ng-if="data.order.state.toLowerCase()=='completed'">
                             <div><img src="{{data.orderState[data.order.state.toLowerCase()].image}}" title="" alt="" /></div>
                             <em>{{data.orderState[data.order.state.toLowerCase()].name}}</em>
+                         </div>
+                          <div class="gnr2nrblef" ng-if="data.order.state.toLowerCase()!='completed'">
+                            <div><img src="{{data.orderState['todo'].image}}" title="" alt="" /></div>
+                            <em>{{data.orderState['todo'].name}}</em>
                          </div>
                          
                          <ul class="gnr2nrbbmrig">
@@ -35,7 +40,7 @@
                    </div><!--已完成订单-e-->
                    
                    
-                      <div class="twtwdv" ng-click="showProduct(data.order.product)">
+                      <div class="twtwdv">
                         <!--<div class="twtwdvf"><img src='teImg/gnr2rabm3.png' /></div>-->
                         <div class="twtwdvf"><img src='{{data.productType[data.order.product.type.toLowerCase()].image}}' /> <em>{{data.productType[data.order.product.type.toLowerCase()].name}}</em></div>
                         <span>{{data.order.product.issuer}}</span>
@@ -44,9 +49,9 @@
 
                   
                   <div class="ddxqxx"><!--订单信息-s-->
-                     <span>订单信息</span>
+                     <span>交易信息</span>
                      <p>
-                        <em>交  易  号：576877888766566</em>
+                        <em>交易编号：{{data.order.id}}</em>
                         <em>客户姓名：王海</em>
                         <em>创建时间：2015-08-08</em>
                      </p>
@@ -58,49 +63,6 @@
       </div> <!--main1-->
 
 
-      <div class="main1" ng-if="data.win=='status'">
-      	<div class="gnr2dadv" ><!--内容右侧开始-->
-              <div class="gnr2ma"> 
-  
-                  <div class="ddztdv">
-                  
-                    <div class="ddztf" ng-click="choosePicMenu()">
-                       <div class="ddztfimg"><img src="teImg/ddztwj_03.png" /></div>
-                       <a class="ddztspan"><img src="teImg/ddztjh.png" /></a>
-                    </div>
-                    
-                    <span class="ddztrrs">上传相关汇款证明</span>
-                    
-                  </div>  
-                  <input type="submit" class="ddztqd" value="提交" ng-click="upload()"/>
-
-                  
-                </div>
-
-                <div class="gnr2ma" style="height:600px;"> 
-                  <img ng-src="{{img}}" style="height:600px;"/>
-                </div>
-                  <!--
-                  <div class="ddztxz">
-                     <form>
-                     <span class="ddxtxzf">更改状态</span>
-                     <div class="ddxtzm">
-                       <div class="ddztxr"><img src="teImg/khlbxia.png" /></div>
-                       <select>
-                          <option value="volvo">待报备</option>
-                          <option value="saab">待审核</option>
-                          <option value="opel">已完成</option>
-                          <option value="audi">未通过</option>
-                        </select>
-                     </div>
-                     
-                     <input type="submit" class="ddztqd" />
-                    </form> 
-                  </div>-->
-              </div>
-        
-        </div><!--内容右侧结束-->
-      </div> <!--main1-->
        
 
     </ion-content>

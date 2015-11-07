@@ -77,7 +77,7 @@
                        <div class="khzlzz2a">
                           <div class="khzlzz2af"><img src="teImg/gnr2nrclef1.jpg" /></div> 
                           <div class="khzlzz2ar">
-                               <em>王海 </em>
+                               <em>李明 </em>
                                <span>手机  168000000</span>
                                <span>邮箱  1111111@sina.com</span>
                           </div>
@@ -99,8 +99,8 @@
                    </div>
                    
                    
-                   <div class="khzlzz3a"><span>密码修改</span> 
-                    <a href="" ng-click="updateProfile(3)" ng-if="!enableUpdatedProfile(3)">编辑</a>
+                   <div class="khzlzz3a"><span>我的密码</span> 
+                    <a href="" ng-click="updateProfile(3)" ng-if="!enableUpdatedProfile(3)">修改</a>
                     <a href="" ng-click="cancelUpdateProfile(3)" ng-if="enableUpdatedProfile(3)">取消</a>
                    </div>
 
@@ -156,7 +156,11 @@
                     查看未完成
                     </a>
                    </div>
-
+                  
+                <div>
+              
+                  <!--<ion-spinner icon="lines" style="position: absolute;display: block; left: 50%;" ng-if="data.refreshing.orders"></ion-spinner>-->
+                </div>
 
                   <ion-list>
 
@@ -212,7 +216,7 @@
                     </a>
                    </div>
 
-
+                   <!--<ion-spinner icon="lines" style="position: absolute;display: block; left: 50%;" ng-if="data.refreshing.bookings"></ion-spinner>-->
                   <ion-list>
 
                     <ion-item class="lcsslwsl" ng-repeat="booking in data.currentBooking.data" ng-click="showProduct(booking.product, 'NoBooking')" >

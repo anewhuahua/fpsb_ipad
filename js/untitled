@@ -928,7 +928,6 @@ angular.module('starter.controllers', [])
   $scope.consultant = {
     win: 'index',
     subWin: 'all',
-    updatedProfile: 0,
 
     orders: {},
     bookings: {},
@@ -950,9 +949,7 @@ angular.module('starter.controllers', [])
     currentOrderState: 'all',
     currentOrder: null,
     currentBookingState: 'all',
-    currentBooking: null,
-
-    liked: null
+    currentBooking: null
   };
 
 
@@ -962,7 +959,6 @@ angular.module('starter.controllers', [])
 //** initialize
   $scope.data.currentOrder = $scope.data.orders['all'];
   $scope.data.currentBooking = $scope.data.bookings['all'];
-  $scope.data.liked = Main.getLiked();
 
 
   //**
@@ -983,21 +979,7 @@ angular.module('starter.controllers', [])
 
 //**
 //** common function
-  $scope.updateProfile = function(num){
-    $scope.consultant.updatedProfile = num;
-  };
-  $scope.enableUpdatedProfile = function(num){
-    if ($scope.consultant.updatedProfile == num) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-  $scope.cancelUpdateProfile = function(num) {
-    if ($scope.consultant.updatedProfile == num) {
-      $scope.consultant.updatedProfile = 0;
-    }
-  };
+
   $scope.goOrderDetail = function(oid) {
     $state.go('common.order_detail', {orderId: oid});
   };
@@ -1008,16 +990,10 @@ angular.module('starter.controllers', [])
     Main.consultant.queryOrders($scope.data.currentOrder, function(data){
     }, function(status){}, function(){});
     Main.consultant.queryBookings($scope.data.currentBooking, function(data){
-    }, function(status){}, function(){
-      $scope.$broadcast('scroll.refreshComplete');    //因为booking比较多
-    });
-
-    // get crm
+    }, function(status){}, function(){});
     Main.consultant.queryCustomers($scope.data.customers, function(data){
     }, function(status){}, function(){});
-
-    // update profile
-    Main.consultant.queryConsultant(function(data){},function(status){}, function(){});
+    //console.log($scope.data.currentOrderState);
   };
   $scope.selectOrders = function(param){
     $scope.data.currentOrder = $scope.data.orders[param];
@@ -1132,6 +1108,23 @@ angular.module('starter.controllers', [])
   $scope.data.liked = Main.getLiked();
 
 
+
+  //**
+  //** event listen function
+  $rootScope.$on('ChangeWindow', function(event, args){
+    MultipleViewsManager.updateViewLeft('main-my-toolbox', {main: args.win, sub: args.subWin});
+    $scope.customer.win = args.win;
+    $scope.customer.subWin = args.subWin;
+
+    if($scope.customer.win == 'orders') {
+      $scope.data.currentOrder = $scope.data.orders['all'];
+      refreshData();
+    } else if ($scope.customer.win == 'bookings') {
+      $scope.data.currentBooking = $scope.data.bookings['all'];
+      refreshData();
+    }
+  });
+  
   //**
   //** common function
   $scope.updateProfile = function(num){
@@ -1181,21 +1174,7 @@ angular.module('starter.controllers', [])
   }
   refreshData();
   
-  //**
-  //** event listen function
-  $rootScope.$on('ChangeWindow', function(event, args){
-    MultipleViewsManager.updateViewLeft('main-my-toolbox', {main: args.win, sub: args.subWin});
-    $scope.customer.win = args.win;
-    $scope.customer.subWin = args.subWin;
-
-    if($scope.customer.win == 'orders') {
-      $scope.data.currentOrder = $scope.data.orders['all'];
-      refreshData();
-    } else if ($scope.customer.win == 'bookings') {
-      $scope.data.currentBooking = $scope.data.bookings['all'];
-      refreshData();
-    }
-  });
+  
 
   /*为了使增加orders或者bookings可以更新
   $scope.$on('$ionicView.enter', function() {
