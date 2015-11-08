@@ -9,7 +9,8 @@ navigation history that also transitions its views in and out.
 
   <div class="header">
            <ul class="leul">
-              <li class="lelib1"><a href="" ng-click="goMainPage()"><img src="teImg/fpsb-logo.png" title="" alt="" /></a></li>
+              <li class="lelib1" ng-if="!isOnline"><a href=""><img src="teImg/losenet.png" title="" alt="" /></a></li>
+              <li class="lelib1" ng-if="isOnline"><a href="" ng-click="goMainPage()"><img src="teImg/fpsb-logo.png" title="" alt="" /></a></li>
            </ul>
 
            <div class="logotop"><img src="teImg/logo.png" title="" alt="" /></div>
@@ -356,9 +357,9 @@ navigation history that also transitions its views in and out.
              </div>
              <div class="zctel zctelmm">
                <span>推 荐 人</span>
-               <input type="text" placeholder="请输入对方手机号码（选填）" /> 
+               <input type="text" placeholder="请输入理财师推荐码（选填）" ng-model="auth.register.referral"/> 
              </div>
-             <input  type="submit" class="zcwjnext" value="完成注册" ng-click="register_3(auth.register.username,auth.register.password, auth.register.password2, auth.register.verifyCode)"/>
+             <input  type="submit" class="zcwjnext" value="完成注册" ng-click="register_3(auth.register.username,auth.register.password, auth.register.password2, auth.register.verifyCode, auth.register.referral)"/>
              <p class="zcmmjs">
                 <span><img src="teImg/zcmmjslog.jpg" /></span>
                 <em>我已阅读并同意<i>《首席金服用户协议》</i></em>

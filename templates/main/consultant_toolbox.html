@@ -15,8 +15,6 @@
       </ion-refresher>
 
 
-
-
 <!-- index -->
 <div class="main1" ng-switch-when='index'>
 
@@ -46,8 +44,28 @@
                               <div ng-if="!enableUpdatedProfile(1)">111@gmail.com</div>
                               <input ng-if="enableUpdatedProfile(1)" placeholder="请输入您的邮箱地址"/>
                             </div>
-                            <div class="khzlzz1br2"><span>手 机 号 码</span><div>{{data.profile.data.phone}}</div></div>
+
+                            <div class="khzlzz1br2"><span>性 别</span>
+                              <div ng-if="!enableUpdatedProfile(1)">男</div>
+                              <div ng-if="enableUpdatedProfile(1)">
+                                   <select style="width:100%;border:0.1rem;" placeholder="请选择性别">
+                                   <option value='male'>男</option>
+                                   <option value='female'>女</option>
+                                   </select>
+                              </div>
+                            </div>
+
+                            <div class="khzlzz1br2"><span>手机号码</span><div>{{data.profile.data.phone}}</div></div>
                             <div class="khzlzz1br2"><span>推 荐 码</span><div>{{data.profile.data.barcode}}</div></div>
+
+                            <div class="khzlzz1br2"><span>联系地址</span>
+                              <div ng-if="!enableUpdatedProfile(1)">上海</div>
+                              <div ng-if="enableUpdatedProfile(1)">
+                                   <select style="width:100%;border:0.1rem;" placeholder="请选择所在地">
+                                    <option ng-repeat='p in provinceNames' value='p.key'>{{p.value}}</option>
+                                   </select>
+                              </div>
+                            </div>
 
                          </div>
 
@@ -65,7 +83,8 @@
                           <div ng-if="!enableUpdatedProfile(1)"  class="khzlzz2br1">兼任现代国际金融理财标准（上海）有限公司（FPSB China Ltd.）副总经理。曾任国际CFP上海中心主任。大陆及台湾地区首批CFP持证人，具有18年个人金融财富管理的的丰富经验。
 台湾东海大学、逢甲大学兼职讲师，兆丰金控国际投资信托投资顾问，元大金控元大证券、富邦金控富邦证券经纪业务部证券分析师。深入研究股权投资、衍生金融商品、固定收益商品；并参与设计各种套利对冲实时监控系统。
 </div>
-                          <input ng-if="enableUpdatedProfile(1)" class="khzlzz1bfwu11" placeholder="请输入背景信息" />
+                          
+                          <textarea type="text" ng-if="enableUpdatedProfile(1)" class="khzlzz2br7u" ></textarea>
                        </div>
                        <div class="khzlzz2c">
                           <div class="khzlzz2cf1">职业证书</div> 
@@ -127,44 +146,55 @@
 <!--待办事项-->
 <div class="main1" ng-switch-when='pendings'>
        <div class="gnr2dadv"><!--内容右侧开始-->
-              
-              <div class="gnr2ma"> 
-                  <div class="gnr2nrc">
-                    <div class="gnr2nrctop" ng-click="selectPage('orders', 'all')">
-                      <p> 
-                         <em><img src="teImg/gnr2nr1toplf1.jpg" /></em>  
-                         <span>查看全部订单</span> 
-                       </p>
-                       
+
+                <div class="gjxnrtopyy"></div>
+                <!-- 内容top阴影 -->
+
+                <div class="gnr2ma"> 
+                  <!--修改新增部分-s-->
+                    
+                   <div class="khzlzz3a"><span>咨询，预约</span> 
+                    <a href="" ng-click="selectPage('orders', 'all'); selectOrders('all');" ng-if="showContent('orders', 'todo')">
+                      查看全部
+                    </a>
+                    <a href="" ng-click="selectPage('orders', 'todo');  selectOrders('todo');"  ng-if="showContent('orders', 'all')">
+                    查看未完成
+                    </a>
                    </div>
+                  
+                <div>
+              
+                  <!--<ion-spinner icon="lines" style="position: absolute;display: block; left: 50%;" ng-if="data.refreshing.orders"></ion-spinner>-->
+                </div>
 
+                  <ion-list>
 
-                    <div class="twtwdv2" ng-repeat="order in data.orders['all'].data | limitTo: 5" ng-click="goOrderDetail(order.id)">
-                        <!--<div class="twtwdvf"><img src='teImg/gnr2rabm3.png' /></div>-->
-                        <div class="twtwdvf1"><img src="teImg/ghnr1lef.png" /> <em>王海</em></div>
-                        <div class="twtwdvf1"><img src='{{data.orderState[order.state.toLowerCase()].image}}' /> <em>{{data.orderState[order.state.toLowerCase()].name}}</em> </div>
+                    <ion-item class="lcsslwsl" ng-repeat="order in data.currentOrder.data" ng-click="goOrderDetail(order.id)">
+                       <div class="lcsslwslf1"><img src='{{data.productType[order.product.type.toLowerCase()].image}}' /> <span>{{data.productType[order.product.type.toLowerCase()].name}}</span></div>
+                       <span class="lccslwf2">{{order.product.issuer}}</span>
+                       <div class="lcssr3b">
+                        <img src="teImg/wwc11.png" ng-if="order.state.toLowerCase()!='completed'"/>
+                        <img src="teImg/ywc11.png" ng-if="order.state.toLowerCase()=='completed'"/>
+                       </div>
+                       <ion-option-button class="button-energized">
+                            投诉 
+                          </ion-option-button>
+                    </ion-item>
+
+                  </ion-list> 
+
+                    
+                    <!--
+                    <div class="twtwdv" ng-repeat="order in data.currentOrder.data" ng-click="goOrderDetail(order.id)">
+                        <div class="twtwdvf"><img src='{{data.orderState[order.state.toLowerCase()].image}}' /> <em>{{data.orderState[order.state.toLowerCase()].name}}</em> </div>
                         <span>[{{data.productType[order.product.type.toLowerCase()].name}}] {{order.product.issuer}}</span>
                     </div>   
-                 
-                   
-                   <div class="gnr2nrctopd" ng-click="selectPage('bookings', 'all')">
-                      <p> 
-                         <em><img src='teImg/gnr2nr1toplf1.jpg' /></em>  
-                         <span>查看全部预约</span> 
-                       </p>
-                   </div>
-                   
-                   <div class="twtwdv2" ng-repeat="booking in data.bookings['all'].data | limitTo: 5" ng-click="goBookingDetail(booking.id)">
-                        <div class="twtwdvf1"><img src="teImg/ghnr1lef.png" /> <em>王海</em></div>
-                      
-                        <!--<div class="twtwdvf"><img src='teImg/gnr2rabm3.png' /></div>-->
-                        <div class="twtwdvf1"><img src='{{data.bookingState[booking.state.toLowerCase()].image}}' /> <em>{{data.bookingState[booking.state.toLowerCase()].name}}</em> </div>
-                        <span>[{{data.productType[booking.product.type.toLowerCase()].name}}] {{booking.product.issuer}}</span>
-                    </div>   
-             
-
-                 </div>
-                 
+                    
+                    <div class="twtwdv">
+                        <div class="twtwdvf"><img src='teImg/gnr2rabm3.png' /></div>
+                        <span>[私募]粤财·瀚信中鼎盈丰2期</span>
+                    </div>-->
+         
             </div>
       </div>
 </div>
@@ -178,8 +208,10 @@
                   
                        <div class="sekkgdvbb">
                          <select class="kkxxbbsele">
-                            <option value="volvo">全 部</option>
-                            <option value="saab">我的好友</option>
+                            <option value="默认分组1">默认分组1</option>
+                            <option value="saab">默认分组2</option>
+                            <option value="opel">默认分组3</option>
+                            <option value="audi">默认分组4</option>
                          </select> 
                          <a class="aakhbb2" href=""></a> 
                        </div> 
@@ -191,16 +223,29 @@
                         </form>
                       </div> 
                   </div><!--内容top结束-->
-                </div> 
 
 
+                </div>  
+                
+                
+                <!--1021修改-->
+          
+                <div class="lbxzxzdv">
+                
+                    <div class="twtwdvkh">
+                        <div class="khtwtwdvf"><img src="teImg/ghnr1lef.png" /></div>
+                        <div class="khtwdvr">
+                          <p class="khtwrp1"><span>王海先生</span> <em>所在地：上海</em></p>
+                          <p class="khtwrp2"><span>电话：1300004500</span> <em>邮箱：123455@gmail.com</em></p>
+                        </div>
+                    </div>
 
-      <div class="gnr2ma"> <!--内容主体开始-->
-        <ul class="gnr2lbul">
-            <li><img src="teImg/ghnr1lef.png" /><span>王海</span> <em>new</em></li>
-           
-        </ul>              
-      </div><!--内容主体结束-->
+
+                </div>
+             
+                <!--1021修改-->
+  
+     
   </div><!--内容右侧结束-->
 </div>
 
@@ -325,163 +370,159 @@
 
 <!-- orders -->
 <div class="main1" ng-switch-when='orders'>
+            <div class="gnr2dadv"><!--内容右侧开始-->
 
-    <div class="gnr2dadv"><!--内容右侧开始-->
+                <div class="gjxnrtopyy"></div>
+                <!-- 内容top阴影 -->
 
-
-            <div class="gnr2ma"> 
-                <ion-scroll direction="x">
-                    <div class="lbanr1" style="width: 1000px">
-                      <ul class="qbgnr2nrul">
-                        <li ng-repeat="type in data.productType" ng-class="{gjxqbcss: showContent('orders', '{{type.type}}')}" ng-click="selectPage('orders', '{{type.type}}'); selectOrders('{{type.type}}');"><a href="#">
-                           <div><img src="{{type.image}}" title="" alt="" /></div>
-                           <em>{{type.name}}产品</em>
-                        </a></li>
-                      </ul>
-                    </div>   
-                  </ion-scroll>  
-                 
-                <div class="gjxnrtpyyre" style=" width:100%; height:0.9rem; overflow:hidden; margin-top:0.1rem;">  
-                  <div class="khlbtop" style="top:0;"><!--内容top开始--> 
+                <div class="gnr2ma"> 
+                  <!--修改新增部分-s-->
+                    
+                   <div class="khzlzz3a"><span>认购，申购</span> 
+                    <a href="" ng-click="selectPage('orders', 'all'); selectOrders('all');" ng-if="showContent('orders', 'todo')">
+                      查看全部
+                    </a>
+                    <a href="" ng-click="selectPage('orders', 'todo');  selectOrders('todo');"  ng-if="showContent('orders', 'all')">
+                    查看未完成
+                    </a>
+                   </div>
                   
-                       <div class="sekkgdvbb">
-                         <select class="kkxxbbsele">
-                            <option value="volvo">全 部</option>
-                            <option value="saab">已提交</option>
-                            <option value="opel">已付款</option>
-                            <option value="audi">资料已上传</option>
-                            <option value="audi">审核完毕</option>
-                            <option value="audi">成交</option>
+                <div>
+              
+                  <!--<ion-spinner icon="lines" style="position: absolute;display: block; left: 50%;" ng-if="data.refreshing.orders"></ion-spinner>-->
+                </div>
 
-                         </select> 
-                         <a class="aakhbb2" href=""></a> 
-                       </div> 
-                      
-                      <div class="khlbpr">
-                        <form>
-                             <input type="text"  class="khlbprput" placeholder="请输入客户的姓名"/>
-                             <input type="submit" class="khlbprtj" value="" />
-                        </form>
-                      </div> 
-                  </div><!--内容top结束-->
-                </div> 
-                 <div class="yczttjdv"><img src="teImg/ztzt.jpg" /></div> 
+                  <ion-list>
+                    <ion-item class="lcsslwsl" ng-repeat="order in data.currentOrder.data" ng-click="goOrderDetail(order.id)">
+                       <div class="lcsslwslf1"><img src="teImg/ghnr1lef.png" /> <span>王海</span></div>
+                       <div class="lcsslwslf1"><img src='{{data.productType[order.product.type.toLowerCase()].image}}' /> <span>{{data.productType[order.product.type.toLowerCase()].name}}</span></div>
+                       <span class="lccslwf2tyson">{{order.product.issuer}}</span>
+                       <div class="lcssr3b">
+                        <img src="teImg/ytj11.png" ng-if="order.state.toLowerCase()!='completed'"/>
+                        <img src="teImg/ywc11.png" ng-if="order.state.toLowerCase()=='completed'"/>
+                       </div>
+                       <ion-option-button class="button-energized">
+                            投诉 
+                          </ion-option-button>
+                    </ion-item>
 
+                  </ion-list> 
 
-            </div>
-
-
-
-            <div class="lbxzxzdv">
-                    <div class="twtwdv2" ng-repeat="order in data.currentOrder.data" ng-click="goOrderDetail(order.id)">
-                        <div class="twtwdvf1"><img src="teImg/ghnr1lef.png" /> <em>王海</em></div>
-                        <div class="twtwdvf1"><img src="{{data.orderState[order.state.toLowerCase()].image}}" /> <em>{{data.orderState[order.state.toLowerCase()].name}}</em></div>
-                        <span>[{{data.productType[order.product.type.toLowerCase()].name}}] {{order.product.issuer}}</span>
-                    </div>
-
+                    
                     <!--
-                    <div class="twtwdv2" ng-click="goOrderDetail(11)">
-                        <div class="twtwdvf1"><img src="teImg/ghnr1lef.png" /> <em>姓名</em></div>
-                        <div class="twtwdvf1"><img src="teImg/gnr2rabm1.png" /> <em>已完成</em></div>
-                        <span>[私募]粤财·瀚信中鼎盈丰3期</span>
-                    </div>
-                    <div class="twtwdv2" ng-click="goOrderDetail(11)">
-                        <div class="twtwdvf1"><img src="teImg/ghnr1lef.png" /> <em>姓名</em></div>
-                        <div class="twtwdvf1"><img src="teImg/gnr2rabm2.png" /> <em>资料已提交</em></div>
-                        <span>[私募]粤财·瀚信中鼎盈丰4期</span>
+                    <div class="twtwdv" ng-repeat="order in data.currentOrder.data" ng-click="goOrderDetail(order.id)">
+                        <div class="twtwdvf"><img src='{{data.orderState[order.state.toLowerCase()].image}}' /> <em>{{data.orderState[order.state.toLowerCase()].name}}</em> </div>
+                        <span>[{{data.productType[order.product.type.toLowerCase()].name}}] {{order.product.issuer}}</span>
+                    </div>   
+                    
+                    <div class="twtwdv">
+                        <div class="twtwdvf"><img src='teImg/gnr2rabm3.png' /></div>
+                        <span>[私募]粤财·瀚信中鼎盈丰2期</span>
                     </div>-->
+         
             </div>
-
-
-
-    </div>
+      </div>
 </div>
 <!-- orders -->
 
 <!-- bookings -->
 <div class="main1" ng-switch-when='bookings'>
-
     <div class="gnr2dadv"><!--内容右侧开始-->
 
+                <div class="gjxnrtopyy"></div>
+                <!-- 内容top阴影 -->
 
-            <div class="gnr2ma"> 
-                <ion-scroll direction="x">
-                    <div class="lbanr1" style="width: 1000px">
-                      <ul class="qbgnr2nrul">
-                        <li ng-repeat="type in data.productType" ng-class="{gjxqbcss: showContent('bookings', '{{type.type}}')}" ng-click="selectPage('bookings', '{{type.type}}'); selectBookings('{{type.type}}');"><a href="#">
-                           <div><img src="{{type.image}}" title="" alt="" /></div>
-                           <em>{{type.name}}产品</em>
-                        </a></li>
-                      </ul>
-                    </div>   
-                  </ion-scroll>  
-                 
-                <div class="gjxnrtpyyre" style=" width:100%; height:0.9rem; overflow:hidden; margin-top:0.1rem;">  
-                  <div class="khlbtop" style="top:0;"><!--内容top开始--> 
-                  
-                       <div class="sekkgdvbb">
-                         <select class="kkxxbbsele">
-                            <option value="volvo">全 部</option>
-                            <option value="saab">Saab</option>
-                            <option value="opel">Opel</option>
-                            <option value="audi">Audi</option>
-                         </select> 
-                         <a class="aakhbb2" href=""></a> 
-                       </div> 
-                      
-                      <div class="khlbpr">
-                        <form>
-                             <input type="text"  class="khlbprput" placeholder="请输入客户的姓名"/>
-                             <input type="submit" class="khlbprtj" value="" />
-                        </form>
-                      </div> 
-                  </div><!--内容top结束-->
-                </div> 
+                <div class="gnr2ma"> 
 
-
-             
-               
-
-
-            </div>
                   
 
-                  <div class="lbxzxzdv">
-                    <div class="twtwdv2" ng-repeat="booking in data.currentBooking.data" ng-click="goBookingDetail(booking.id)">
-                        <div class="twtwdvf1"><img src="teImg/ghnr1lef.png" /> <em>王海</em></div>
-                      
-                        <!--<div class="twtwdvf"><img src='teImg/gnr2rabm3.png' /></div>-->
-                        <div class="twtwdvf1"><img src='{{data.bookingState[booking.state.toLowerCase()].image}}' /> <em>{{data.bookingState[booking.state.toLowerCase()].name}}</em> </div>
+                   <div class="khzlzz3a"><span>咨询，预约</span> 
+                    <a href="" ng-click="selectPage('bookings','all');  selectBookings('all')" ng-if="showContent('bookings', 'todo')">
+                      查看全部
+                    </a>
+                    <a href="" ng-click="selectPage('bookings','todo'); selectBookings('todo')" ng-if="showContent('bookings','all')">
+                      查看未处理
+                    </a>
+                   </div>
+
+                   <!--<ion-spinner icon="lines" style="position: absolute;display: block; left: 50%;" ng-if="data.refreshing.bookings"></ion-spinner>-->
+                  <ion-list>
+
+                    <ion-item class="lcsslwsl" ng-repeat="booking in data.currentBooking.data" ng-click="goBookingDetail(booking.id)">
+                       <div class="lcsslwslf1"><img src="teImg/ghnr1lef.png" /> <span>王海</span></div>
+                       <div class="lcsslwslf1"><img src='{{data.productType[booking.product.type.toLowerCase()].image}}' /> <span>{{data.productType[booking.product.type.toLowerCase()].name}}</span></div>
+                       <span class="lccslwf2tyson">{{booking.product.issuer}}</span>
+                       <div class="lcssr3" ng-if="booking.state!='completed'"><img src="teImg/wfw11.png" /></div>
+                       <div class="lcssr3" ng-if="booking.state=='completed'"><img src="teImg/yfw11.png" /></div>
+                       <ion-option-button class="button-energized">
+                            投诉 
+                          </ion-option-button>
+                    </ion-item>
+
+                  
+
+                  </ion-list> 
+                  <!--
+                   <div class="twtwdv" ng-repeat="booking in data.bookings['all'].data" ng-click="showProduct(booking.product, 'NoBooking')">
+                        <div class="twtwdvf"><img src='{{data.bookingState[booking.state.toLowerCase()].image}}' /> <em>{{data.bookingState[booking.state.toLowerCase()].name}}</em> </div>
                         <span>[{{data.productType[booking.product.type.toLowerCase()].name}}] {{booking.product.issuer}}</span>
-                    </div>   
-                    <!--
-                    <div class="twtwdv2" ng-click="goBookingDetail(12)">
-                        <div class="twtwdvf1"><img src="teImg/ghnr1lef.png" /> <em>姓名</em></div>
-                        <div class="twtwdvf1"><img src="teImg/unserved.png" /> <em>未服务</em></div>
-                        <span>[私募]粤财·瀚信中鼎盈丰2期</span>
-                    </div>
-                    <div class="twtwdv2" ng-click="goBookingDetail(13)">
-                        <div class="twtwdvf1"><img src="teImg/ghnr1lef.png" /> <em>姓名</em></div>
-                        <div class="twtwdvf1"><img src="teImg/served.png" /> <em>服务完成</em></div>
-                        <span>[私募]粤财·瀚信中鼎盈丰3期</span>
-                    </div>
-                    <div class="twtwdv2" ng-click="goBookingDetail(14)">
-                        <div class="twtwdvf1"><img src="teImg/ghnr1lef.png" /> <em>姓名</em></div>
-                        <div class="twtwdvf1"><img src="teImg/served.png" /> <em>服务完成</em></div>
-                        <span>[私募]粤财·瀚信中鼎盈丰4期</span>
-                    </div>-->
-                  </div>
+                    </div>  --> 
 
-             
-    </div>
+              </div>
+         
+    </div><!--内容右侧结束-->
 </div>
 <!-- bookings --> 
 
-<!-- message --> 
-<div class="main1" ng-switch-when='message'>
 
+<!-- fav -->
+<div class="main1" ng-switch-when='like'>
     <div class="gnr2dadv"><!--内容右侧开始-->
-            <div class="gjxnrtopyy"></div> <!-- 内容top阴影 -->
+
+                <div class="gjxnrtopyy"></div>
+                <!-- 内容top阴影 -->
+
+                <div class="gnr2ma"> 
+
+                  
+
+                
+
+
+                  <ion-list>
+
+                    <ion-item class="lcsslwsl" ng-repeat="product in data.liked.data">
+                       <div class="lcsslwslf1"><img src='teImg/lbaitemimg3.png' /> <span>私募</span></div>
+                       <span class="lccslwf2">{{product.issuer}}</span>
+                    
+                          <ion-option-button class="button-assertive">
+                            删除
+                          </ion-option-button>
+                    </ion-item>
+
+                  
+
+                  </ion-list> 
+                  <!--
+                   <div class="twtwdv" ng-repeat="booking in data.bookings['all'].data" ng-click="showProduct(booking.product, 'NoBooking')">
+                        <div class="twtwdvf"><img src='{{data.bookingState[booking.state.toLowerCase()].image}}' /> <em>{{data.bookingState[booking.state.toLowerCase()].name}}</em> </div>
+                        <span>[{{data.productType[booking.product.type.toLowerCase()].name}}] {{booking.product.issuer}}</span>
+                    </div>  --> 
+
+              </div>
+         
+    </div><!--内容右侧结束-->
+</div>
+<!-- fav -->
+
+
+
+
+<!-- message -->
+<div class="main1" ng-switch-when='message'>
+  <div class="gnr2dadv"><!--内容右侧开始-->
+
+                <div class="gjxnrtopyy"></div> <!-- 内容top阴影 -->
                <!--
                 <ul class="grxxrzpul">
                    <li class="zhyhkpulcss"><a href="">业务通知</a></li>
@@ -506,9 +547,12 @@
                   <div><img src="teImg/grrexzimg2.png" /></div>  
                   <em>[预约成功]粤财·瀚信中鼎盈丰2期！</em>
                 </div>
-    </div>
+                
+            </div><!--内容右侧结束-->
+
 </div>
-<!-- message --> 
+<!-- message -->
+
 
 <!-- group -->
 <div class="main1" ng-switch-when='group'>

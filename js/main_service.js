@@ -308,8 +308,8 @@ angular.module('main.service',[])
         errorHandler(res);
       }, finallyHandler);
     },
-    register: function(username, password, code, successHandler, errorHandler, finallyHandler) {
-      Rest.register(username, password, code, function(res) {
+    register: function(username, password, code, referral, successHandler, errorHandler, finallyHandler) {
+      Rest.register(username, password, code, referral, function(res) {
         if (res.data.successful) {
           console.log('main.service register success:'+ res.data.successful);
           successHandler(res);
@@ -449,8 +449,8 @@ angular.module('main.service',[])
           finallyHandler());
       },
 
-      updataCustomer: function(pro, successHandler, errorHandler, finallyHandler) {
-
+      updateCustomer: function(pro, successHandler, errorHandler, finallyHandler) {
+        
       },
 
       addBooking: function(pid, successHandler, errorHandler, finallyHandler) {

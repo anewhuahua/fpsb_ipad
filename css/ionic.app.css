@@ -1383,6 +1383,14 @@ $royal:                           #886aea !default;
     background: #e79700; }
   .booking-view .gjjtqa3 {
     background: #a09d9d; }
+  .booking-view .gjxxztjtyson > a {
+    width: 100%;
+    float: left;
+    height: 100%;
+    font-size: 0.36rem;
+    line-height: 0.78rem;
+    color: #fff;
+    text-align: center; }
   .booking-view .gjxxztj1 {
     width: 100%;
     height: 0.78rem;
@@ -1877,13 +1885,15 @@ $royal:                           #886aea !default;
   .booking-view .jnfw2d {
     width: 96%;
     margin: auto;
-    border: 0.01rem #a2a2a2 solid;
-    overflow: hidden; }
+    border: 1px #a2a2a2 solid;
+    overflow: hidden;
+    margin-top: -0.6rem;
+    margin-bottom: 0.2rem; }
   .booking-view .jnfw2d > a {
     width: 33.2%;
     float: left;
     background: #fff;
-    border-left: 0.01rem #a2a2a2 solid;
+    border-left: 1px #a2a2a2 solid;
     font-size: 0.3rem;
     color: #8b8b8b;
     line-height: 0.45rem;
@@ -1897,8 +1907,8 @@ $royal:                           #886aea !default;
     width: 96%;
     margin: auto;
     overflow: hidden;
-    border-top: 0.01rem #a2a2a2 solid;
-    border-right: 0.01rem #a2a2a2 solid;
+    border-top: 1px #a2a2a2 solid;
+    border-right: 1px #a2a2a2 solid;
     margin-top: 0.3rem;
     margin-bottom: 0.5rem; }
   .booking-view .jnfw2zta {
@@ -1907,8 +1917,8 @@ $royal:                           #886aea !default;
     overflow: hidden; }
   .booking-view .jnfw2zta > span, .booking-view .jnfw2zta > em {
     float: left;
-    border-left: 0.01rem #a2a2a2 solid;
-    border-bottom: 0.01rem #a2a2a2 solid;
+    border-left: 1px #a2a2a2 solid;
+    border-bottom: 1px #a2a2a2 solid;
     background: #fff;
     font-size: 0.24rem;
     color: #395983;
@@ -1923,8 +1933,8 @@ $royal:                           #886aea !default;
     width: 100%;
     margin: auto;
     overflow: hidden;
-    border-bottom: 0.01rem #a2a2a2 solid;
-    border-left: 0.01rem #a2a2a2 solid;
+    border-bottom: 1px #a2a2a2 solid;
+    border-left: 1px #a2a2a2 solid;
     background: #fff; }
   .booking-view .jnfw2ztb > span, .booking-view .jnfw2ztb > i {
     float: left;
@@ -1937,7 +1947,7 @@ $royal:                           #886aea !default;
     width: 14.8%; }
   .booking-view .jnfw2ztb > i {
     background: #f3f2f5 !important;
-    border-left: 0.01rem #a2a2a2 solid;
+    border-left: 1px #a2a2a2 solid;
     width: 77%;
     text-align: justify; }
   .booking-view .jnfwtit {
@@ -1989,15 +1999,15 @@ $royal:                           #886aea !default;
     width: 96%;
     margin: 0.1rem auto 0.25rem auto;
     overflow: hidden;
-    border-top: 0.01rem #a2a2a2 solid;
-    border-right: 0.01rem #a2a2a2 solid; }
+    border-top: 1px #a2a2a2 solid;
+    border-right: 1px #a2a2a2 solid; }
   .booking-view .jnfwsp1 {
     overflow: hidden; }
   .booking-view .jnfwsp1 > em {
     float: left;
     width: 24.85%;
-    border-left: 0.01rem #a2a2a2 solid;
-    border-bottom: 0.01rem #a2a2a2 solid;
+    border-left: 1px #a2a2a2 solid;
+    border-bottom: 1px #a2a2a2 solid;
     font-size: 0.24rem;
     color: #8b8b8b;
     line-height: 0.55rem;
@@ -2007,8 +2017,8 @@ $royal:                           #886aea !default;
   .booking-view .jnfwsp2 > em {
     float: left;
     width: 24.85%;
-    border-left: 0.01rem #a2a2a2 solid;
-    border-bottom: 0.01rem #a2a2a2 solid;
+    border-left: 1px #a2a2a2 solid;
+    border-bottom: 1px #a2a2a2 solid;
     font-size: 0.24rem;
     color: #395983;
     line-height: 0.55rem;
@@ -2019,8 +2029,8 @@ $royal:                           #886aea !default;
   .booking-view .jnfwspb1 > em {
     float: left;
     width: 14.146%;
-    border-left: 0.01rem #a2a2a2 solid;
-    border-bottom: 0.01rem #a2a2a2 solid;
+    border-left: 1px #a2a2a2 solid;
+    border-bottom: 1px #a2a2a2 solid;
     font-size: 0.24rem;
     color: #8b8b8b;
     line-height: 0.55rem;
@@ -2031,8 +2041,8 @@ $royal:                           #886aea !default;
   .booking-view .jnfwspb2 > em {
     float: left;
     width: 14.146%;
-    border-left: 0.01rem #a2a2a2 solid;
-    border-bottom: 0.01rem #a2a2a2 solid;
+    border-left: 1px #a2a2a2 solid;
+    border-bottom: 1px #a2a2a2 solid;
     font-size: 0.24rem;
     color: #395983;
     line-height: 0.55rem;
@@ -2043,8 +2053,8 @@ $royal:                           #886aea !default;
   .booking-view .jnfwspc1 > em {
     float: left;
     width: 16.53%;
-    border-left: 0.01rem #a2a2a2 solid;
-    border-bottom: 0.01rem #a2a2a2 solid;
+    border-left: 1px #a2a2a2 solid;
+    border-bottom: 1px #a2a2a2 solid;
     font-size: 0.24rem;
     color: #8b8b8b;
     line-height: 0.55rem;
@@ -2055,8 +2065,8 @@ $royal:                           #886aea !default;
   .booking-view .jnfwspc2 > em {
     float: left;
     width: 16.53%;
-    border-left: 0.01rem #a2a2a2 solid;
-    border-bottom: 0.01rem #a2a2a2 solid;
+    border-left: 1px #a2a2a2 solid;
+    border-bottom: 1px #a2a2a2 solid;
     font-size: 0.24rem;
     color: #395983;
     line-height: 0.55rem;
@@ -2320,7 +2330,9 @@ $royal:                           #886aea !default;
   /*客户总览11.3-s*/
   /*客户总览11.3-s*/
   /*发现境内列表 详情11.5*/
-  /*发现境内列表 详情11.5*/ }
+  /*发现境内列表 详情11.5*/
+  /*客户列表10.28*/
+  /*客户列表10.28*/ }
   .common-person-view a {
     text-decoration: none; }
   .common-person-view .content {
@@ -5145,7 +5157,8 @@ $royal:                           #886aea !default;
   .common-person-view .lbxzxzdv {
     width: 93%;
     margin: 0.5rem auto;
-    overflow: hidden; }
+    overflow: hidden;
+    margin-top: 1.4rem; }
   .common-person-view .twtwdv2 {
     width: 100%;
     background: #fff;
@@ -5317,6 +5330,12 @@ $royal:                           #886aea !default;
     font-size: 0.3rem;
     color: #395983;
     line-height: 0.95rem; }
+  .common-person-view .lccslwf2tyson {
+    width: 60%;
+    float: left;
+    font-size: 0.3rem;
+    color: #395983;
+    line-height: 0.95rem; }
   .common-person-view .lcssr3 {
     width: 0.81rem;
     height: 0.73rem;
@@ -5404,7 +5423,7 @@ $royal:                           #886aea !default;
     color: #635f6b;
     line-height: 0.5rem; }
   .common-person-view .khzlzz1br1 > input {
-    width: 78%;
+    width: 76%;
     height: 0.5rem;
     float: right;
     font-size: 0.3rem;
@@ -5799,6 +5818,70 @@ $royal:                           #886aea !default;
     margin-left: 0.3rem;
     text-indent: 0.5rem;
     margin-top: 0.1rem; }
+  .common-person-view .khzlzz2br7u {
+    width: 75%;
+    height: 1.3rem;
+    border: none;
+    float: right;
+    margin-right: 3.9%;
+    background: #f4f4f4;
+    font-size: 0.26rem;
+    color: #395983;
+    line-height: 0.35rem;
+    text-align: justify;
+    padding: 1%;
+    overflow: hidden;
+    margin-top: 0.1rem; }
+  .common-person-view .twtwdvkh {
+    width: 100%;
+    height: 1.45rem;
+    background: #fff;
+    padding: 0.1rem 0;
+    border-radius: 3px;
+    overflow: hidden;
+    margin: auto;
+    margin-bottom: 0.15rem; }
+  .common-person-view .khtwtwdvf {
+    width: 18%;
+    float: left; }
+  .common-person-view .khtwtwdvf > img {
+    display: block;
+    width: 0.9rem;
+    height: 0.9rem;
+    margin: 0.22rem auto; }
+  .common-person-view .khtwdvr {
+    width: 81%;
+    float: right; }
+  .common-person-view .khtwrp1 {
+    margin-top: 0.22rem;
+    overflow: hidden;
+    height: 0.38rem; }
+  .common-person-view .khtwrp1 > span {
+    float: left;
+    font-size: 0.36rem;
+    line-height: 0.36rem;
+    color: #395983; }
+  .common-person-view .khtwrp1 > em {
+    float: left;
+    font-size: 0.26rem;
+    line-height: 0.36rem;
+    color: #a8a8aa;
+    margin-left: 0.75rem; }
+  .common-person-view .khtwrp2 {
+    margin-top: 0.24rem;
+    overflow: hidden;
+    height: 0.3rem; }
+  .common-person-view .khtwrp2 > span {
+    float: left;
+    font-size: 0.28rem;
+    line-height: 0.28rem;
+    color: #395983; }
+  .common-person-view .khtwrp2 > em {
+    float: left;
+    font-size: 0.28rem;
+    line-height: 0.28rem;
+    color: #395983;
+    margin-left: 0.5rem; }
 
 .common-main-view {
   /****iconfont****/

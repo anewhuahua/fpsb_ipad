@@ -29,7 +29,7 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('commonCtrl', function($scope, $state, $stateParams, $ionicHistory, Factory, Main, Notify) {
+.controller('commonCtrl', function($scope, $state, $stateParams, $ionicPopup, $ionicHistory, Factory, Main, Notify) {
   $scope.data = {
     warning: {
       status: '',
@@ -85,7 +85,7 @@ angular.module('starter.controllers', [])
 
     if ($scope.data.warning.words.indexOf('您的预约已成功提交')>=0) {
       
-    } else if ($scope.data.warning.words.indexOf('您的订单已成功提交')>=0) {
+    } else if ($scope.data.warning.words.indexOf('您已经成功为客户提交订单')>=0) {
       $scope.data.popup = '';  
       //Notify.notify('order');
     } else {
@@ -95,8 +95,8 @@ angular.module('starter.controllers', [])
   $scope.addOrder = function(booking) {
     Main.consultant.submitOrder(booking, $scope.data.order_option.quantity, function(data){
       $scope.data.warning.status = 'success';
-      $scope.data.warning.words = '您的订单已成功提交!' +
-                                       '您的理财师将马上与您联系进行后续服务，请保持电话通畅!';
+      $scope.data.warning.words = '您已经成功为客户提交订单!';
+                                       
       //$scope.$broadcast("AddOrder", data);
     }, function(error){
       $scope.data.warning.status = 'fail';
@@ -105,37 +105,56 @@ angular.module('starter.controllers', [])
     });
   }
 
-
-  $scope.acceptBooking = function(booking) {
-    Main.consultant.acceptBooking(booking, function(data){
-      $scope.data.warning.status= 'success';
-      $scope.data.warning.words = '您已接受客户预约，请尽快与客户取得联系!';
-      booking.state = 'accepted';
-      $scope.$apply();
-    }, function(error){
-      $scope.data.warning.status = 'fail';
-      $scope.data.warning.words = error;
-    }, function(){});
-  }
-
   $scope.completeBooking = function(booking) {
-    Main.consultant.completeBooking(booking, function(data){
-      $scope.data.warning.status= 'success';
-      $scope.data.warning.words = '预约服务完成!';
-      booking.state = 'completed';
-      $scope.$apply();
-    }, function(error){
-      $scope.data.warning.status = 'fail';
-      $scope.data.warning.words = error;
-    }, function(){});
+     var confirmPopup = $ionicPopup.confirm({
+       title: '接受预约',
+       template: '确认接受预约吗?'
+     });
+     confirmPopup.then(function(res) {
+       if(res) {
+        Main.consultant.completeBooking(booking, function(data){
+          $scope.data.warning.status= 'success';
+          $scope.data.warning.words = '预约服务完成!';
+          booking.state = 'completed';
+          $scope.$apply();
+        }, function(error){
+          $scope.data.warning.status = 'fail';
+          $scope.data.warning.words = error;
+        }, function(){});
+       } else {
+       }
+     });
   }
 
 })
 
+.controller('publicfundCtrl', function($scope, $state, $stateParams, $ionicScrollDelegate, $ionicHistory, Main){
+  $scope.data = {
+    index:1
+  }
+  $scope.isDetail = function(num) {
+    return ($scope.data.index==num);
+  }
+  $scope.showDetail = function(num){
+    $scope.data.index = num;
+  }
 
 
+  $scope.dataset = [{ data: [], yaxis: 1, label: 'sin' }]
+  $scope.options = {
+    legend: {
+      container: '#legend',
+      show: true
+    }
+  }
 
-.controller('publicfundsCtrl', function($scope, $stateParams, $ionicScrollDelegate, $ionicHistory, Main) {
+  for (var i = 0; i < 14; i += 0.5) {
+    $scope.dataset[0].data.push([i, Math.sin(i)])
+  }
+
+})
+
+.controller('publicfundsCtrl', function($scope, $state, $stateParams, $ionicScrollDelegate, $ionicHistory, Main) {
  
   //console.log($ionicScrollDelegate.$getByHandle('scroll-2').getScrollPosition());
   //$scope.products = {};
@@ -148,6 +167,9 @@ angular.module('starter.controllers', [])
   };
   $scope.sortKey = function(key) {
     $scope.data.key = key;
+  }
+  $scope.goPublicFundDetail = function() {
+    $state.go('common.publicfund1');
   }
 
   Main.getProducts($scope.data.category, function(data){
@@ -331,6 +353,9 @@ angular.module('starter.controllers', [])
       window.open('http://biaoweihui.idea-source.net/abstract/', '_system');
    }
 
+   
+
+
    document.addEventListener("deviceready", function () {
         $scope.network = $cordovaNetwork.getNetwork();
         $scope.isOnline = $cordovaNetwork.isOnline();
@@ -389,6 +414,43 @@ angular.module('starter.controllers', [])
     optionOperation: null
 
   };
+
+  $scope.provinceNames = [
+    {key:"anhui",value:"安徽"},
+    {key:"aomen",value:"澳门"},
+    {key:"shaanxi",value:"陕西"},
+    {key:"beijing",value:"北京"},
+    {key:"chongqing",value:"重庆"},
+    {key:"henan",value:"河南"},
+    {key:"fujian",value:"福建"},
+    {key:"guangdong",value:"广东"},
+    {key:"gansu",value:"甘肃"},
+    {key:"guangxi",value:"广西"},
+    {key:"guizhou",value:"贵州"},
+    {key:"hebei",value:"河北"},
+    {key:"heilongjiang",value:"黑龙江"},
+    {key:"hainan",value:"海南"},
+    {key:"jilin",value:"吉林"},
+    {key:"jiangsu",value:"江苏"},
+    {key:"jiangxi",value:"江西"},
+    {key:"liaoning",value:"辽宁"},
+    {key:"neimenggu",value:"内蒙古"},
+    {key:"ningxia",value:"宁夏"},
+    {key:"qinghai",value:"青海"},
+    {key:"sichuan",value:"四川"},
+    {key:"shandong",value:"山东"},
+    {key:"shanghai",value:"上海"},
+    {key:"shanxi",value:"山西"},
+    {key:"tianjin",value:"天津"},
+    {key:"taiwan",value:"台湾"},
+    {key:"hubei",value:"湖北"},
+    {key:"hunan",value:"湖南"},
+    {key:"xianggang",value:"香港"},
+    {key:"xinjiang",value:"新疆"},
+    {key:"xizang",value:"西藏"},
+    {key:"yunnan",value:"云南"},
+    {key:"zhejiang",value:"浙江"}
+  ];
 
   Main.login({}, function(){ 
       $scope.data.person.status = 1;
@@ -559,7 +621,8 @@ angular.module('starter.controllers', [])
       password: '',
       password2: '',
       verifyCode: '',
-      returnCode: ''
+      returnCode: '',
+      referral: ''
     },
     login: {
       username:'',
@@ -574,6 +637,7 @@ angular.module('starter.controllers', [])
     $scope.auth.register.usernmae = '';
     $scope.auth.register.password = '';
     $scope.auth.register.password2 = '';
+    $scope.auth.register.referral = '';
     //$scope.auth.login.username ='';
     //$scope.auth.login.password = '';
   }
@@ -656,7 +720,7 @@ angular.module('starter.controllers', [])
       $scope.win.notify = true;
     }*/
   }
-  $scope.register_3 = function(name, pwd, pwd2, code){
+  $scope.register_3 = function(name, pwd, pwd2, code, referral){
    if(pwd == '') {
       $scope.data.warning.status = 'fail';
       $scope.data.warning.words = '请正确输入密码';
@@ -664,7 +728,7 @@ angular.module('starter.controllers', [])
       $scope.data.warning.status = 'fail';
       $scope.data.warning.words = '两次密码输入不一致';
     } else {
-      Main.register(name,pwd,code, function(res){
+      Main.register(name,pwd,code,referral, function(res){
         $scope.data.warning.status = 'sucess';
         $scope.data.warning.words = '恭喜注册成功';
         $scope.auth.login.username = $scope.auth.register.username;
@@ -734,19 +798,7 @@ angular.module('starter.controllers', [])
 
 
 .controller('mainIndexCtrl', function($scope, $state,$ionicScrollDelegate, Main) {
-  /*
-  $scope.dataset = [{ data: [], yaxis: 1, label: 'sin' }]
-  $scope.options = {
-    legend: {
-      container: '#legend',
-      show: true
-    }
-  }
 
-  for (var i = 0; i < 14; i += 0.5) {
-    $scope.dataset[0].data.push([i, Math.sin(i)])
-  }
-  */
 
 
   $scope.data.categories = Main.getCategories(0);
@@ -921,7 +973,7 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('mainConsultantCtrl', function($scope, $rootScope, $state, $timeout, $cordovaCamera, MultipleViewsManager, Main) {
+.controller('mainConsultantCtrl', function($scope, $rootScope, $state, $timeout, $ionicScrollDelegate, $cordovaCamera, MultipleViewsManager, Main) {
 
 //** 
 //** controller data
@@ -956,8 +1008,6 @@ angular.module('starter.controllers', [])
   };
 
 
-
-
 //**
 //** initialize
   $scope.data.currentOrder = $scope.data.orders['all'];
@@ -975,7 +1025,7 @@ angular.module('starter.controllers', [])
     if($scope.consultant.win == 'orders') {
       $scope.data.currentOrder = $scope.data.orders['all'];
       refreshData();
-    } else if ($scope.customer.win == 'bookings') {
+    } else if ($scope.consultant.win == 'bookings') {
       $scope.data.currentBooking = $scope.data.bookings['all'];
       refreshData();
     }
@@ -1004,6 +1054,7 @@ angular.module('starter.controllers', [])
   $scope.goBookingDetail = function(bid) {
     $state.go('common.booking_detail', {bookingId: bid});
   };
+
   var refreshData = function() {
     Main.consultant.queryOrders($scope.data.currentOrder, function(data){
     }, function(status){}, function(){});
@@ -1019,6 +1070,7 @@ angular.module('starter.controllers', [])
     // update profile
     Main.consultant.queryConsultant(function(data){},function(status){}, function(){});
   };
+
   $scope.selectOrders = function(param){
     $scope.data.currentOrder = $scope.data.orders[param];
     refreshData();
@@ -1065,8 +1117,12 @@ angular.module('starter.controllers', [])
     
     $scope.consultant.win = first;
     $scope.consultant.subWin = second;
-  }
+    setTimeout(function(){$ionicScrollDelegate.$getByHandle('mainScroll').scrollTop(true);}, 500);
+  };
 
+  $scope.doRefresh = function() {
+    refreshData();
+  };
 
   $scope.takePhoto=function(){
     var options = {  

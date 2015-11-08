@@ -45,7 +45,8 @@ angular.module('rest.service', [])
         finallyHandler();
       });
     },
-    register: function(name, password, code, successHandler, errorHandler, finallyHandler) {
+    register: function(name, password, code, referral, successHandler, errorHandler, finallyHandler) {
+
       var req = {
         method: 'POST',
         url: domain+'ChiefFinancierService/api/common/v1/customers?verifyCode='
@@ -60,6 +61,11 @@ angular.module('rest.service', [])
           "phone": name
         }
       };
+
+      if(referral!='') {
+        req.data["referral"] = referral;
+      }
+      
       $http(req).then(function(res){  
           successHandler(res);
       }, function(res){

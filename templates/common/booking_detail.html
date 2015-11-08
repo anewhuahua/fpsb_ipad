@@ -19,13 +19,11 @@
                      
                          <p class="khxqrp1">
                             <span>王海先生</span>
-                            <em>白金用户</em>
-                            <i>已认证</i>
                             <b>财商测试得分：80</b>
                          </p>
                          <p class="khxqrp2">
                             <span>电话：1300004500</span>
-                            <em>微信：wanghai223</em>   
+                           
                          </p>
                          <p class="khxqrp3"><span>邮箱：123455@gmail.com</span></p>
                          
@@ -35,11 +33,9 @@
 
                   </div><!--客户详情-e-->
                   
-                  <div class="gjxxztj">
-                     <a ng-if="booking.state=='assigned'" href="" class="gjjtqa1" ng-click="acceptBooking(booking)">接受预约</a>
-                     <a ng-if="booking.state!='assigned'" href="" class="prxqaa119">接受预约</a>
-                     <a ng-if="booking.state=='accepted'" href="" class="gjjtqa2" ng-click="completeBooking(booking)">完成服务</a>
-                     <a ng-if="booking.state!='accepted'" href="" class="prxqaa119">完成服务</a>
+                  <div class="gjxxztjtyson">
+                     <a ng-if="booking.state!='completed'" href="" class="gjjtqa2" ng-click="completeBooking(booking)">接受预约</a>
+                     <a ng-if="booking.state=='completed'" href="" class="prxqaa119">接受预约</a>
                   </div>
                   
                   

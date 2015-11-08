@@ -57,13 +57,33 @@
                             <input ng-if="enableUpdatedProfile(1)" class="khzlzz1bfwu" placeholder="请输入姓名" />
                           
                          </div>
-                         <div class="khzlzz1br">
+                        <div class="khzlzz1br">
                             <div class="khzlzz1br1"><span>邮 箱</span>
                               <div ng-if="!enableUpdatedProfile(1)">111@gmail.com</div>
                               <input ng-if="enableUpdatedProfile(1)" placeholder="请输入您的邮箱地址"/>
                             </div>
+                            <div class="khzlzz1br2"><span>性 别</span>
+                              <div ng-if="!enableUpdatedProfile(1)">男</div>
+                              <div ng-if="enableUpdatedProfile(1)">
+                                   <select style="width:100%;border:0.1rem;" placeholder="请选择性别">
+                                   <option value='male'>男</option>
+                                   <option value='female'>女</option>
+                                   </select>
+                              </div>
+                            </div>
+
+
                             <div class="khzlzz1br2"><span>手 机 号 码</span><div>{{data.profile.data.phone}}</div></div>
                             <div class="khzlzz1br2"><span>财 商 得 分</span><div>{{data.profile.data.score}}</div></div>
+
+                             <div class="khzlzz1br2"><span>联系地址</span>
+                              <div ng-if="!enableUpdatedProfile(1)">上海</div>
+                              <div ng-if="enableUpdatedProfile(1)">
+                                   <select style="width:100%;border:0.1rem;" placeholder="请选择所在地">
+                                      <option ng-repeat='p in provinceNames' value='p.key'>{{p.value}}</option>
+                                   </select>
+                              </div>
+                            </div>
                          </div>
                          
                       </div>
@@ -148,7 +168,7 @@
                 <div class="gnr2ma"> 
                   <!--修改新增部分-s-->
                     
-                   <div class="khzlzz3a"><span>咨询，预约</span> 
+                   <div class="khzlzz3a"><span>认购，申购</span> 
                     <a href="" ng-click="selectPage('orders', 'all'); selectOrders('all');" ng-if="showContent('orders', 'todo')">
                       查看全部
                     </a>
@@ -165,6 +185,7 @@
                   <ion-list>
 
                     <ion-item class="lcsslwsl" ng-repeat="order in data.currentOrder.data" ng-click="goOrderDetail(order.id)">
+   
                        <div class="lcsslwslf1"><img src='{{data.productType[order.product.type.toLowerCase()].image}}' /> <span>{{data.productType[order.product.type.toLowerCase()].name}}</span></div>
                        <span class="lccslwf2">{{order.product.issuer}}</span>
                        <div class="lcssr3b">
@@ -177,6 +198,9 @@
                     </ion-item>
 
                   </ion-list> 
+
+
+
 
                     
                     <!--
@@ -219,7 +243,7 @@
                    <!--<ion-spinner icon="lines" style="position: absolute;display: block; left: 50%;" ng-if="data.refreshing.bookings"></ion-spinner>-->
                   <ion-list>
 
-                    <ion-item class="lcsslwsl" ng-repeat="booking in data.currentBooking.data" ng-click="showProduct(booking.product, 'NoBooking')" >
+                    <ion-item class="lcsslwsl" ng-repeat="booking in data.currentBooking.data" ng-click="showProduct(booking.product)" >
                        <div class="lcsslwslf1"><img src='{{data.productType[booking.product.type.toLowerCase()].image}}' /> <span>{{data.productType[booking.product.type.toLowerCase()].name}}</span></div>
                        <span class="lccslwf2">{{booking.product.issuer}}</span>
                        <div class="lcssr3" ng-if="booking.state!='completed'"><img src="teImg/wsl11.png" /></div>

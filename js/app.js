@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['ionic', 'ngCordova', 'angular-flot', 'ionicMultipleViews','starter.controllers', 
                            'rest.service', 'storage.service', 'factory.service',
-                           'notify.service', 'main.service'])
+                           'notify.service', 'main.service', 'selectAddress'])
   //
 
 .run(function($ionicPlatform) {
@@ -218,8 +218,9 @@ angular.module('starter', ['ionic', 'ngCordova', 'angular-flot', 'ionicMultipleV
     url: '/publicfund1',
     views: {
       'publicfund1': {
-         templateUrl: 'templates/common/publicfund1.html'
-         
+         templateUrl: 'templates/common/publicfund1.html',
+         controller: 'publicfundCtrl'
+
       }
     }
   })

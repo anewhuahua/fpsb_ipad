@@ -22,33 +22,25 @@
                 </div>
               </li>-->
               <li>
-                <div class="gfnulitp" ng-click="selectMenu('customers', 'all')" ng-class="{gjxtjcss: highLight('customers','all')}">
-                  <a>服务客户</a>
-                  <em><img src="teImg/glefultprg.png" /></em>
-                </div>
-              </li>
-
-
-              <li>
-                <div class="gfnulitp" ng-click="selectMenu('orders', 'all')" ng-class="{gjxtjcss: highLight('orders','all')}">
-                  <a>客户交易</a>
-                  <em><img src="teImg/glefultprg.png" /></em>
-                </div>
-                <div class="gfnulibm" ng-if="showSubMenu('orders')">
-                   <a ng-repeat="type in data.productType" href="" ng-click="selectMenu('orders', '{{type.type}}')" ng-class="{gjxtjcss : highLight('orders', '{{type.type}}')}">{{type.name}}</a>
-                </div>
-              </li>
-
-              <li>
-                <div class="gfnulitp" ng-click="selectMenu('bookings', 'all')" ng-class="{gjxtjcss: highLight('bookings','all')}">
+                <div class="gfnulitp" ng-click="selectMenu('bookings', 'todo')" ng-class="{gjxtjcss: showSubMenu('bookings')}">
                   <a>客户预约</a>
                   <em><img src="teImg/glefultprg.png" /></em>
                 </div>
-
-                <div class="gfnulibm" ng-if="showSubMenu('bookings')">
-                   <a ng-repeat="type in data.productType" href="" ng-click="selectMenu('bookings', '{{type.type}}')" ng-class="{gjxtjcss : highLight('bookings', '{{type.type}}')}">{{type.name}}</a>
+              </li>
+              <li>
+                <div class="gfnulitp" ng-click="selectMenu('orders', 'todo')" ng-class="{gjxtjcss: showSubMenu('orders')}">
+                  <a>客户交易</a>
+                  <em><img src="teImg/glefultprg.png" /></em>
                 </div>
               </li>
+
+              <li>
+                <div class="gfnulitp" ng-click="selectMenu('customers', 'all')" ng-class="{gjxtjcss: highLight('customers','all')}">
+                  <a>客户管理</a>
+                  <em><img src="teImg/glefultprg.png" /></em>
+                </div>
+              </li>
+
 
               <li>
                 <div class="gfnulitp" ng-click="selectMenu('commissions', 'all')" ng-class="{gjxtjcss: highLight('commissions','all')}">
@@ -68,17 +60,13 @@
                   <em><img src="teImg/glefultprg.png" /></em>
                 </div>
               </li>-->
-
               <li>
-               <div class="gfnulitp" ng-click="selectMenu('information','person')" ng-class="{gjxtjcss: highLight('information','person')}">
-                  <a>我的资料</a>
+                <div class="gfnulitp" ng-click="selectMenu('like', 'all')" ng-class="{gjxtjcss: highLight('like','all')}">
+                  <a>我的收藏</a>
                   <em><img src="teImg/glefultprg.png" /></em>
                 </div>
-                <div class="gfnulibm" ng-if="showSubMenu('information')">
-                  <a href="" ng-click="selectMenu('information', 'bank')" ng-class="{gjxtjcss : highLight('information','bank')}">银行卡信息</a>
-                  <a href="" ng-click="selectMenu('information', 'password')" ng-class="{gjxtjcss : highLight('information','password')}">登入密码</a>
-                </div>
               </li>
+             
 
               <li>
                 <div class="gfnulitp" ng-click="selectMenu('message', 'all')" ng-class="{gjxtjcss: highLight('message','all')}">
