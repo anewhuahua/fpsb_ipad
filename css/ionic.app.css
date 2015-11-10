@@ -4301,6 +4301,13 @@ $royal:                           #886aea !default;
     color: #fff !important; }
   .common-person-view .gjxtjcss > em {
     display: none !important; }
+  .common-person-view .gjxtjcss1 {
+    background: #87CEFF;
+    color: #fff !important; }
+  .common-person-view .gjxtjcss1 > a {
+    color: #fff !important; }
+  .common-person-view .gjxtjcss1 > em {
+    display: none !important; }
   .common-person-view .curdis {
     display: none !important; }
   .common-person-view .zcdv {
@@ -5677,6 +5684,7 @@ $royal:                           #886aea !default;
   .common-person-view .fxlbdvtmimg > img {
     width: 100%; }
   .common-person-view .fxlbdvtm > span {
+    text-indent: 0.6rem;
     float: right;
     width: 61%;
     font-size: 0.3rem;

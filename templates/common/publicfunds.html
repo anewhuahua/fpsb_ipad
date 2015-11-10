@@ -34,7 +34,10 @@
            <div class="gmlbnr2p">
               <div class="gmgmff1">
                 <a href="" style="width:23%;">基金名称</a>
-                <a href="">单位净值</a>
+             
+                <a href="" ng-click="sortKey(8)">单位净值
+                  <span class="gmlbzzjtbj" ng-if="data.key==8"></span>
+                </a>
 
                 <a href="" ng-click="sortKey(1)">近1周
                   <span class="gmlbzzjtbj" ng-if="data.key==1"></span>

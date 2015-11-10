@@ -169,11 +169,11 @@ angular.module('starter', ['ionic', 'ngCordova', 'angular-flot', 'ionicMultipleV
  
   .state('common.service', {
     cache: false,
-    url: '/service/:productId',
+    url: '/service/:categoryId/:productId',
     views: {
       'common-service': {
-         templateUrl: 'templates/common/service.html'//,
-         //controller: 'commonServiceCtrl'
+         templateUrl: 'templates/common/service.html',
+         controller: 'commonServiceCtrl'
       }
     }
   })

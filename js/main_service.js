@@ -432,6 +432,29 @@ angular.module('main.service',[])
       }
     },
 
+
+    getProductDetail: function(cid, pid) {
+      for (var i = 0; i < categories.length; i++) {
+        if (categories[i].id == cid) {
+         
+          for (var j = 0; j < categories[i].products.data.length; j++) {
+            if (categories[i].products.data[j].id == pid) {
+              return categories[i].products.data[j];
+            }
+          }
+        }
+      }
+      for (var i = 0; i < externals.length; i++) {
+        if (externals[i].id == cid) {
+          for (var j = 0; j < externals[i].products.data.length; j++) {
+            if (externals[i].products.data[j].id == pid) {
+              return externals[i].products.data[j];
+            }
+          }
+        }
+      }
+    },
+
     customer: {
       queryCustomer: function(successHandler, errorHandler, finallyHandler) {
         Rest.customer.v1.queryCustomer(id, function(data){

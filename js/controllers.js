@@ -44,13 +44,13 @@ angular.module('starter.controllers', [])
     console.log('goback');
     $ionicHistory.goBack();
   }
-  $scope.showProduct = function(product) {
+  $scope.showProduct = function(product, cid) {
 
     if(product){
       ret = Main.productGoState(product);
 
       if (ret.go) {
-        $state.go(ret.go, {productId: 2});
+        $state.go(ret.go, {categoryId: cid, productId: product.id});
       } else {
         $scope.data.popup = 'privateFund';
         $scope.data.looking_product = product;
@@ -130,6 +130,14 @@ angular.module('starter.controllers', [])
 
 })
 
+.controller('commonServiceCtrl', function($scope, $state, $stateParams, $ionicScrollDelegate, $ionicHistory, Main){
+  var cid = $stateParams.categoryId;
+  var pid = $stateParams.productId;
+
+  //console.log(cid + "  " + pid);
+  $scope.product = Main.getProductDetail(cid, pid);
+})
+
 .controller('publicfundCtrl', function($scope, $state, $stateParams, $ionicScrollDelegate, $ionicHistory, Main){
   $scope.data = {
     index:1
@@ -175,6 +183,7 @@ angular.module('starter.controllers', [])
   }
 
   Main.getProducts($scope.data.category, function(data){
+    console.log(data);
   }, function(status){}, function(){});
  
   /*
@@ -474,13 +483,13 @@ angular.module('starter.controllers', [])
     });
     }, 1000*60*10);
 
-  $scope.showProduct = function(product) {
+  $scope.showProduct = function(product, cid) {
 
     if(product){
       ret = Main.productGoState(product)
 
       if (ret.go) {
-        $state.go(ret.go, {productId: 2});
+        $state.go(ret.go, {categoryId: cid, productId: product.id});
       } else {
         $scope.data.popup = 'privateFund';
         $scope.data.looking_product = product;
@@ -1287,7 +1296,7 @@ angular.module('starter.controllers', [])
           cssClass: 'alert-text',
           template:  '更新资料成功!'
         }).then(function(res){
-            $scope.consultant.updatedProfile = 0;
+            $scope.customer.updatedProfile = 0;
         });
     }, function(status){
       $ionicPopup.alert({
@@ -1297,6 +1306,7 @@ angular.module('starter.controllers', [])
       });
     }, function(){
     })
+
   };
 
   $scope.updateProfile = function(num){
