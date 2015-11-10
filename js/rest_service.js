@@ -160,7 +160,7 @@ angular.module('rest.service', [])
         updateCustomer: function(param, cid, successHandler, errorHandler, finallyHandler) {
           var req = {
               method: 'PUT',
-              url: domain+'ChiefFinancierService/api/customer/v1/customers/' + id,
+              url: domain+'ChiefFinancierService/api/customer/v1/customers/' + cid,
               headers: {
                 'Content-Type': 'application/json'
               },
