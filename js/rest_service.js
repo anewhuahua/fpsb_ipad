@@ -157,6 +157,34 @@ angular.module('rest.service', [])
           });
         },
 
+        updateCustomer: function(param, cid, successHandler, errorHandler, finallyHandler) {
+          var req = {
+              method: 'PUT',
+              url: domain+'ChiefFinancierService/api/customer/v1/customers/' + id,
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              data: {
+              }
+            };
+          
+          for (key in param) {
+            if (param[key]!='') {
+              req.data[key] = param[key];
+            }
+          }
+
+          //console.log(pid);
+          $http(req).success(function(data){
+            //console.log(data);
+            successHandler(data);
+          }).error(function(res, status){
+            errorHandler(status);
+          }).finally(function(){
+            finallyHandler();
+          });
+        },
+
         addBooking: function(cid, pid, successHandler, errorHandler, finallyHandler) {
           var req = {
               method: 'POST',
@@ -298,7 +326,7 @@ angular.module('rest.service', [])
             if (req.data['certificates'].efp) {
               cert = cert + 8;
             }
-            req.data['certificates'] = cert;
+            req.data['certificates'] = -cert;
           }
 
             //console.log(pid);

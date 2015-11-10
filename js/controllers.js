@@ -1022,7 +1022,6 @@ angular.module('starter.controllers', [])
       cfp: 0,
       efp: 0,
 
-      phone: '',
       province: '',
       email: '',
       address: '',
@@ -1247,7 +1246,16 @@ angular.module('starter.controllers', [])
     currentBooking: null,
 
     liked: null,
-    refreshing: {bookings:false, orders:false}
+    refreshing: {bookings:false, orders:false},
+
+    update: {
+      province: '',
+      email: '',
+      address: '',
+      imageId: '',
+      fullname: '',
+      gender: ''
+    }
   };
 
 
@@ -1263,7 +1271,33 @@ angular.module('starter.controllers', [])
   //** common function
 
   $scope.updateProfileInformation = function(param) {
-  }
+
+    Main.customer.updateCustomer(param, function(data){
+      for (key in $scope.data.update) {
+        $scope.data.update[key] = data[key];
+      }
+      for (var i=0;i<$scope.provinceNames.length;i++) {
+        if($scope.provinceNames[i].key == data.province) {
+          $scope.data.provinceName =  $scope.provinceNames[i].value;
+          break;
+        } 
+      }
+      $ionicPopup.alert({
+          title: '提示信息',
+          cssClass: 'alert-text',
+          template:  '更新资料成功!'
+        }).then(function(res){
+            $scope.consultant.updatedProfile = 0;
+        });
+    }, function(status){
+      $ionicPopup.alert({
+        title: '提示信息',
+        cssClass: 'alert-text',
+        template:  '更新资料失败!'
+      });
+    }, function(){
+    })
+  };
 
   $scope.updateProfile = function(num){
     $scope.customer.updatedProfile = num;
@@ -1288,6 +1322,20 @@ angular.module('starter.controllers', [])
 
   var refreshData = function() {
 
+     // update profile
+    Main.customer.queryCustomer(function(data){
+      for (key in $scope.data.update) {
+        $scope.data.update[key] = data[key];
+      }
+      for (var i=0;i<$scope.provinceNames.length;i++) {
+          if($scope.provinceNames[i].key == data.province) {
+            $scope.data.provinceName =  $scope.provinceNames[i].value;
+             break;
+          } 
+      }
+    },function(status){}, function(){
+    });
+
     Main.customer.queryOrders($scope.data.currentOrder, function(data){
     }, function(status){}, function(){
     });
@@ -1296,9 +1344,6 @@ angular.module('starter.controllers', [])
       $scope.$broadcast('scroll.refreshComplete');    //因为booking比较多
     });
 
-    Main.customer.queryCustomer(function(data){},function(status){}, function(){});
-
-    //console.log($scope.data.currentOrderState);
   };
   $scope.selectOrders = function(param){
     $scope.data.currentOrder = $scope.data.orders[param];

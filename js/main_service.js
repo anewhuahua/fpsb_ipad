@@ -448,8 +448,15 @@ angular.module('main.service',[])
           finallyHandler());
       },
 
-      updateCustomer: function(pro, successHandler, errorHandler, finallyHandler) {
-        
+      updateCustomer: function(param, successHandler, errorHandler, finallyHandler) {
+        Rest.customer.v1.updateCustomer(param, id, function(data){
+          if(parseRestSuccess('updateCustomer', data, successHandler, errorHandler)) {
+            profile.data = data.result;
+          }
+        }, function(status){
+          parseRestError('updateCustomer', status, errorHandler);
+        }, 
+        finallyHandler());
       },
 
       addBooking: function(pid, successHandler, errorHandler, finallyHandler) {
