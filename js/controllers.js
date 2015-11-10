@@ -1217,7 +1217,7 @@ angular.module('starter.controllers', [])
 
 
 })
-.controller('mainCustomerCtrl', function($scope, $state, $ionicModal, $ionicScrollDelegate, $timeout, $rootScope,
+.controller('mainCustomerCtrl', function($scope, $state, $ionicPopup, $ionicModal, $ionicScrollDelegate, $timeout, $rootScope,
                                         $cordovaCamera, MultipleViewsManager, Main) {
   //**
   //** controller data
