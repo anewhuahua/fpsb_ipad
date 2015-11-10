@@ -5826,7 +5826,6 @@ $royal:                           #886aea !default;
     margin-right: 3.9%;
     background: #f4f4f4;
     font-size: 0.26rem;
-    color: #395983;
     line-height: 0.35rem;
     text-align: justify;
     padding: 1%;
@@ -5882,6 +5881,17 @@ $royal:                           #886aea !default;
     line-height: 0.28rem;
     color: #395983;
     margin-left: 0.5rem; }
+  .common-person-view .khzlzz2br7u11 {
+    width: 75%;
+    border: none;
+    float: right;
+    margin-right: 3.9%;
+    background: #f4f4f4;
+    font-size: 0.26rem;
+    line-height: 0.35rem;
+    padding: 1%;
+    overflow: hidden;
+    margin-top: 0.1rem; }
 
 .common-main-view {
   /****iconfont****/

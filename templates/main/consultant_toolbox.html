@@ -27,7 +27,7 @@
        
 
                    <div class="khzlzz1">
-                      <div class="khzlzz1a"><span>李明，您好！</span> 
+                      <div class="khzlzz1a"><span>{{data.profile.data.fullname}}，您好！</span> 
                         <a href="" ng-click="updateProfile(1)" ng-if="!enableUpdatedProfile(1)">完善资料</a>
                         <a href="" ng-click="cancelUpdateProfile(1)" ng-if="enableUpdatedProfile(1)">取消</a>
                       </div>
@@ -35,20 +35,20 @@
                       
                          <div class="khzlzz1bf">
                             <div class="khzlzz1bfimg"><img src="teImg/ghnr1lef.png" /></div>
-                            <div ng-if="!enableUpdatedProfile(1)" class="khzlzz1bfw">王海</div>
-                            <input ng-if="enableUpdatedProfile(1)" class="khzlzz1bfwu" placeholder="请输入姓名" />
+                            <div ng-if="!enableUpdatedProfile(1)" class="khzlzz1bfw">{{data.profile.data.fullname}}</div>
+                            <input ng-if="enableUpdatedProfile(1)" class="khzlzz1bfwu" placeholder="请输入姓名" ng-model="data.update.fullname"/>
                           
                          </div>
                          <div class="khzlzz1br">
                             <div class="khzlzz1br1"><span>邮 箱</span>
-                              <div ng-if="!enableUpdatedProfile(1)">111@gmail.com</div>
-                              <input ng-if="enableUpdatedProfile(1)" placeholder="请输入您的邮箱地址"/>
+                              <div ng-if="!enableUpdatedProfile(1)">{{data.profile.data.email}}</div>
+                              <input ng-if="enableUpdatedProfile(1)" placeholder="请输入您的邮箱地址" ng-model="data.update.email"/>
                             </div>
 
                             <div class="khzlzz1br2"><span>性 别</span>
-                              <div ng-if="!enableUpdatedProfile(1)">男</div>
+                              <div ng-if="!enableUpdatedProfile(1)">{{data.profile.data.gender}}</div>
                               <div ng-if="enableUpdatedProfile(1)">
-                                   <select style="width:100%;border:0.1rem;" placeholder="请选择性别">
+                                   <select style="width:100%;border:0.1rem;" placeholder="请选择性别" ng-model="data.update.gender">
                                    <option value='male'>男</option>
                                    <option value='female'>女</option>
                                    </select>
@@ -58,11 +58,11 @@
                             <div class="khzlzz1br2"><span>手机号码</span><div>{{data.profile.data.phone}}</div></div>
                             <div class="khzlzz1br2"><span>推 荐 码</span><div>{{data.profile.data.barcode}}</div></div>
 
-                            <div class="khzlzz1br2"><span>联系地址</span>
-                              <div ng-if="!enableUpdatedProfile(1)">上海</div>
+                            <div class="khzlzz1br2"><span>所 在 地</span>
+                              <div ng-if="!enableUpdatedProfile(1)">{{data.provinceName}}</div>
                               <div ng-if="enableUpdatedProfile(1)">
-                                   <select style="width:100%;border:0.1rem;" placeholder="请选择所在地">
-                                    <option ng-repeat='p in provinceNames' value='p.key'>{{p.value}}</option>
+                                   <select style="width:100%;border:0.1rem;" placeholder="请选择所在地" ng-model="data.update.province">
+                                    <option ng-repeat='p in provinceNames' value={{p.key}}>{{p.value}}</option>
                                    </select>
                               </div>
                             </div>
@@ -80,13 +80,12 @@
                    <div class="khzlzz3a11">
                       <div class="khzlzz2b1">
                           <div class="khzlzz2bf1">背  景</div> 
-                          <div ng-if="!enableUpdatedProfile(1)"  class="khzlzz2br1">兼任现代国际金融理财标准（上海）有限公司（FPSB China Ltd.）副总经理。曾任国际CFP上海中心主任。大陆及台湾地区首批CFP持证人，具有18年个人金融财富管理的的丰富经验。
-台湾东海大学、逢甲大学兼职讲师，兆丰金控国际投资信托投资顾问，元大金控元大证券、富邦金控富邦证券经纪业务部证券分析师。深入研究股权投资、衍生金融商品、固定收益商品；并参与设计各种套利对冲实时监控系统。
+                          <div ng-if="!enableUpdatedProfile(1)"  class="khzlzz2br1">{{data.profile.data.background}}
 </div>
                           
-                          <textarea type="text" ng-if="enableUpdatedProfile(1)" class="khzlzz2br7u" ></textarea>
+                          <textarea type="text" ng-if="enableUpdatedProfile(1)" class="khzlzz2br7u" ng-model="data.update.background"></textarea>
                        </div>
-                       <div class="khzlzz2c">
+                       <div ng-if="!enableUpdatedProfile(1)" class="khzlzz2c">
                           <div class="khzlzz2cf1">职业证书</div> 
                           <ul class="khzlzz2cr1">
                              <li><img src="teImg/zslog.jpg" /></li>
@@ -96,9 +95,20 @@
                           </ul>
                        </div>
 
+                       <div ng-if="enableUpdatedProfile(1)" class="khzlzz2c">
+                          <div class="khzlzz2cf1">职业证书</div> 
+                          <div class="khzlzz2br7u11">
+                            <label><input name="CPB" type="checkbox" value="1" ng-model='data.update.cpb'/>CPB </label>
+                            <label><input name="AFP" type="checkbox" value="2" ng-model='data.update.afp'/>AFP </label>
+                            <label><input name="CFP" type="checkbox" value="3" ng-model='data.update.cfp'/>CFP </label>
+                            <label><input name="EFP" type="checkbox" value="4" ng-model='data.update.efp'/>EFP </label>
+                          </div>
+
+                       </div>
+
                    </div>
 
-                   <input type="submit" ng-if="enableUpdatedProfile(1)" value="确定" class="khzlqdqd"/>
+                   <input type="submit" ng-if="enableUpdatedProfile(1)" value="确定" class="khzlqdqd" ng-click="updateProfileInformation(data.update)"/>
 
 
 

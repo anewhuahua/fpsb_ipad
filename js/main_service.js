@@ -27,21 +27,21 @@ angular.module('main.service',[])
 
 
   var categories = [
-    {id: 1, child: true,  state: "common.publicfunds", name: "公募基金",  key:'publicfunds',   image:'teImg/gongmu.png', products:{data:[]}},
-    {id: 2, child: false, state: null,                 name: "私募基金",  key:'privatefunds',  image:'teImg/simu.png', products:{data:[]}},
-    {id: 3, child: false, state: null,                 name: "信托产品",  key:'trusts',        image:'teImg/xintuo.png', products:{data:[]}},
-    {id: 4, child: false, state: null,                 name: "资管产品",  key:'portfolios',    image:'teImg/ziguan.png', products:{data:[]}},
-    {id: 5, child: false, state: "common.service",     name: "保险产品",  key:'insurances',    image:'teImg/baoxian.png', products:{data:[]}},
-    {id: 6, child: false, state: "common.service",     name: "家族信托",  key:'familytrusts',  image:'teImg/jiazuxintuo.png', products:{data:[]}},
+    {id: 1, childOf: true,   state: "common.publicfunds", name: "公募基金",  key:'publicfunds',   image:'teImg/gongmu.png', products:{data:[]}},
+    {id: 2, childOf: false,  state: null,                 name: "私募基金",  key:'privatefunds',  image:'teImg/simu.png',  products:{data:[]}},
+    {id: 3, childOf: false,  state: null,                 name: "信托产品",  key:'trusts',        image:'teImg/xintuo.png', products:{data:[]}},
+    {id: 4, childOf: false,  state: null,                 name: "资管产品",  key:'portfolios',    image:'teImg/ziguan.png', products:{data:[]}},
+    {id: 5, childOf: false,  state: null,                 name: "保险产品",  key:'insurances',    image:'teImg/baoxian.png', products:{data:[]}},
+    {id: 6, childOf: false,  state: "common.service",     name: "家族信托",  key:'familytrusts',  image:'teImg/jiazuxintuo.png', products:{data:[]}},
   ];
 
   var externals = [
-    {id: 7,  child: false, state: 'common.service',   name: "海外保险",  key:'external1',    image:'teImg/haiwaibaoxian.png', products:{data:[]}},
-    {id: 8,  child: false, state: 'common.service',   name: "海外信托",  key:'external2',    image:'teImg/haiwaixintuo.png', products:{data:[]}},
-    {id: 9,  child: false, state: 'common.service',   name: "海外投资",  key:'external3',    image:'teImg/haiwaitouzi.png', products:{data:[]}},
-    {id: 10, child: false, state: 'common.service',   name: "身份安排",  key:'external4',    image:'teImg/shenfenanpai.png', products:{data:[]}},
-    {id: 11, child: false, state: 'common.service',   name: "海外置业",  key:'external5',    image:'teImg/haiwaizhiye.png', products:{data:[]}},
-    {id: 12, child: false, state: 'common.service',   name: "其他服务",  key:'external5',    image:'teImg/qita.png', products:{data:[]}}
+    {id: 7,  childOf: false, state: 'common.service',     name: "海外保险",  key:'overseainsurances',     image:'teImg/haiwaibaoxian.png', products:{data:[]}},
+    {id: 8,  childOf: false, state: 'common.service',     name: "海外信托",  key:'overseatrusts',         image:'teImg/haiwaixintuo.png', products:{data:[]}},
+    {id: 9,  childOf: false, state: 'common.service',     name: "海外投资",  key:'overseainvestments',    image:'teImg/haiwaitouzi.png', products:{data:[]}},
+    {id: 10, childOf: false, state: 'common.service',     name: "身份安排",  key:'overseamigrations',     image:'teImg/shenfenanpai.png', products:{data:[]}},
+    {id: 11, childOf: false, state: 'common.service',     name: "海外置业",  key:'overseapropertys',      image:'teImg/haiwaizhiye.png', products:{data:[]}}
+    //{id: 12, childOf: false, state: 'common.service',     name: "其他服务",  key:'external5',    image:'teImg/qita.png', products:{data:[]}}
   ]
 
 
@@ -308,7 +308,7 @@ angular.module('main.service',[])
         errorHandler(res);
       }, finallyHandler);
     },
-    register: function(username, password, code, referral, successHandler, errorHandler, finallyHandler) {
+    register: function(username, password, code, referral, fullname, successHandler, errorHandler, finallyHandler) {
       Rest.register(username, password, code, referral, function(res) {
         if (res.data.successful) {
           console.log('main.service register success:'+ res.data.successful);
@@ -336,7 +336,6 @@ angular.module('main.service',[])
       }, function(status){
         parseRestError('getProducts', status, errorHandler);
       }, finallyHandler());
-        
     },
 
     getMoreProducts: function(category, successHandler, errorHandler, finallyHandler){
@@ -596,6 +595,8 @@ angular.module('main.service',[])
 
     consultant: {
 
+     
+
       getUploadUrl: function(oid) {
         return Rest.consultant.v1.queryUploadUrl(id, oid);
       },
@@ -643,6 +644,17 @@ angular.module('main.service',[])
       },
       getCustomers: function() {
         return roleConsultant.customers;
+      },
+
+      updateConsultant: function(param, successHandler, errorHandler, finallyHandler) {
+        Rest.consultant.v1.updateConsultant(param, id, function(data){
+          if(parseRestSuccess('updateConsultant', data, successHandler, errorHandler)) {
+            profile.data = data.result;
+          }
+        }, function(status){
+          parseRestError('updateConsultant', status, errorHandler);
+        }, 
+        finallyHandler());
       },
 
       queryBookings: function(bookings, successHandler, errorHandler, finallyHandler) {

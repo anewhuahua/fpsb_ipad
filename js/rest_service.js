@@ -45,8 +45,7 @@ angular.module('rest.service', [])
         finallyHandler();
       });
     },
-    register: function(name, password, code, referral, successHandler, errorHandler, finallyHandler) {
-
+    register: function(name, password, code, referral, fullname, successHandler, errorHandler, finallyHandler) {
       var req = {
         method: 'POST',
         url: domain+'ChiefFinancierService/api/common/v1/customers?verifyCode='
@@ -64,6 +63,9 @@ angular.module('rest.service', [])
 
       if(referral!='') {
         req.data["referral"] = referral;
+      }
+      if(fullname!='') {
+        req.data["fullname"] = fullname;
       }
       
       $http(req).then(function(res){  
@@ -264,6 +266,51 @@ angular.module('rest.service', [])
 
     consultant: {
       v1: {
+
+        updateConsultant: function(param, id, successHandler, errorHandler, finallyHandler) {
+          var req = {
+              method: 'PUT',
+              url: domain+'ChiefFinancierService/api/consultant/v1/consultants/' + id,
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              data: {
+              }
+            };
+          
+          for (key in param) {
+            if (param[key]!='') {
+              req.data[key] = param[key];
+            }
+          }
+
+          if (req.data['certificates']) {
+            var cert = 0;
+            if (req.data['certificates'].cpb) {
+              cert = 1;
+            }
+            if (req.data['certificates'].afp) {
+              cert = cert + 2;
+            }
+            if (req.data['certificates'].cfp) {
+              cert = cert + 4;
+            }
+            if (req.data['certificates'].efp) {
+              cert = cert + 8;
+            }
+            req.data['certificates'] = cert;
+          }
+
+            //console.log(pid);
+          $http(req).success(function(data){
+            //console.log(data);
+            successHandler(data);
+          }).error(function(res, status){
+            errorHandler(status);
+          }).finally(function(){
+            finallyHandler();
+          });
+        },
 
         queryUploadUrl: function(id, oid) {
           return domain+'ChiefFinancierService/api/consultant/v1/consultants/' + id + 

@@ -89,7 +89,7 @@
 
                   <!--发现境内列表11.5-->
 
-                     <div class="fxlbdvt" ng-if="data.category.state" ng-click="showProduct({type: 'external'})">
+                     <div class="fxlbdvt" ng-repeat="product in data.category.products.data" ng-click="showProduct({type: 'external'})">
                         <a href="">
                         <div class="fxlbdvtp">
                       

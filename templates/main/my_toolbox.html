@@ -45,7 +45,7 @@
        
 
                    <div class="khzlzz1">
-                      <div class="khzlzz1a"><span>王海，您好！</span> 
+                      <div class="khzlzz1a"><span>{{data.profile.data.fullname}}，您好！</span> 
                         <a href="" ng-click="updateProfile(1)" ng-if="!enableUpdatedProfile(1)">完善资料</a>
                         <a href="" ng-click="cancelUpdateProfile(1)" ng-if="enableUpdatedProfile(1)">取消</a>
                       </div>
@@ -53,9 +53,8 @@
                       
                          <div class="khzlzz1bf">
                             <div class="khzlzz1bfimg"><img src="teImg/ghnr1lef.png" /></div>
-                            <div ng-if="!enableUpdatedProfile(1)" class="khzlzz1bfw">王海</div>
-                            <input ng-if="enableUpdatedProfile(1)" class="khzlzz1bfwu" placeholder="请输入姓名" />
-                          
+                            <div ng-if="!enableUpdatedProfile(1)" class="khzlzz1bfw">{{data.profile.data.fullname}}</div>
+                            <input ng-if="enableUpdatedProfile(1)" class="khzlzz1bfwu" placeholder="请输入姓名" ng-model="data.update.fullname"/>
                          </div>
                         <div class="khzlzz1br">
                             <div class="khzlzz1br1"><span>邮 箱</span>
@@ -76,11 +75,11 @@
                             <div class="khzlzz1br2"><span>手 机 号 码</span><div>{{data.profile.data.phone}}</div></div>
                             <div class="khzlzz1br2"><span>财 商 得 分</span><div>{{data.profile.data.score}}</div></div>
 
-                             <div class="khzlzz1br2"><span>联系地址</span>
+                             <div class="khzlzz1br2"><span>所 在 地</span>
                               <div ng-if="!enableUpdatedProfile(1)">上海</div>
                               <div ng-if="enableUpdatedProfile(1)">
                                    <select style="width:100%;border:0.1rem;" placeholder="请选择所在地">
-                                      <option ng-repeat='p in provinceNames' value='p.key'>{{p.value}}</option>
+                                      <option ng-repeat='p in provinceNames' value={{p.key}}>{{p.value}}</option>
                                    </select>
                               </div>
                             </div>

@@ -108,7 +108,9 @@ angular.module('starter.controllers', [])
   $scope.completeBooking = function(booking) {
      var confirmPopup = $ionicPopup.confirm({
        title: '接受预约',
-       template: '确认接受预约吗?'
+       template: '确认接受预约吗?',
+       okText: '确认',
+       cancelText: '取消'
      });
      confirmPopup.then(function(res) {
        if(res) {
@@ -416,6 +418,8 @@ angular.module('starter.controllers', [])
   };
 
   $scope.provinceNames = [
+    {key:"",value:""},
+    {key:"shanghai",value:"上海"},
     {key:"anhui",value:"安徽"},
     {key:"aomen",value:"澳门"},
     {key:"shaanxi",value:"陕西"},
@@ -439,7 +443,6 @@ angular.module('starter.controllers', [])
     {key:"qinghai",value:"青海"},
     {key:"sichuan",value:"四川"},
     {key:"shandong",value:"山东"},
-    {key:"shanghai",value:"上海"},
     {key:"shanxi",value:"山西"},
     {key:"tianjin",value:"天津"},
     {key:"taiwan",value:"台湾"},
@@ -618,6 +621,7 @@ angular.module('starter.controllers', [])
       verifyWords : '发送验证码',
       askingVerify: false,
       username: '',
+      fullname: '',
       password: '',
       password2: '',
       verifyCode: '',
@@ -635,6 +639,7 @@ angular.module('starter.controllers', [])
     $scope.auth.register.verifyCode = '';
     $scope.auth.register.returnCode ='';
     $scope.auth.register.usernmae = '';
+    $scope.auth.register.fullname = '';
     $scope.auth.register.password = '';
     $scope.auth.register.password2 = '';
     $scope.auth.register.referral = '';
@@ -680,7 +685,9 @@ angular.module('starter.controllers', [])
   $scope.alertLogout = function() {
      var confirmPopup = $ionicPopup.confirm({
        title: '提醒',
-       template: '确认退出登入?'
+       template: '确认退出登入?',
+       okText: '确认',
+       cancelText: '取消'
      });
      confirmPopup.then(function(res) {
        if(res) {
@@ -720,15 +727,18 @@ angular.module('starter.controllers', [])
       $scope.win.notify = true;
     }*/
   }
-  $scope.register_3 = function(name, pwd, pwd2, code, referral){
+  $scope.register_3 = function(name, pwd, pwd2, code, referral, fullname){
    if(pwd == '') {
       $scope.data.warning.status = 'fail';
       $scope.data.warning.words = '请正确输入密码';
     } else if(pwd != pwd2) {
       $scope.data.warning.status = 'fail';
       $scope.data.warning.words = '两次密码输入不一致';
+    } else if (fullname =='') {
+      $scope.data.warning.status = 'fail';
+      $scope.data.warning.words = '请输入您的姓名';
     } else {
-      Main.register(name,pwd,code,referral, function(res){
+      Main.register(name,pwd,code,referral, fullname, function(res){
         $scope.data.warning.status = 'sucess';
         $scope.data.warning.words = '恭喜注册成功';
         $scope.auth.login.username = $scope.auth.register.username;
@@ -973,7 +983,7 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('mainConsultantCtrl', function($scope, $rootScope, $state, $timeout, $ionicScrollDelegate, $cordovaCamera, MultipleViewsManager, Main) {
+.controller('mainConsultantCtrl', function($scope, $rootScope, $ionicPopup, $state, $timeout, $ionicScrollDelegate, $cordovaCamera, MultipleViewsManager, Main) {
 
 //** 
 //** controller data
@@ -1004,7 +1014,24 @@ angular.module('starter.controllers', [])
     currentBookingState: 'all',
     currentBooking: null,
 
-    liked: null
+    liked: null,
+
+    update: {
+      cpb: 0,
+      afp: 0,
+      cfp: 0,
+      efp: 0,
+
+      phone: '',
+      province: '',
+      email: '',
+      address: '',
+      imageId: '',
+      fullname: '',
+      background: '',
+      gender: '',
+      certificates: 0 
+    }
   };
 
 
@@ -1033,6 +1060,35 @@ angular.module('starter.controllers', [])
 
 //**
 //** common function
+  $scope.updateProfileInformation = function(param) {
+
+    Main.consultant.updateConsultant(param, function(data){
+      for (key in $scope.data.update) {
+        $scope.data.update[key] = data[key];
+      }
+      for (var i=0;i<$scope.provinceNames.length;i++) {
+        if($scope.provinceNames[i].key == data.province) {
+          $scope.data.provinceName =  $scope.provinceNames[i].value;
+          break;
+        } 
+      }
+      $ionicPopup.alert({
+          title: '提示信息',
+          cssClass: 'alert-text',
+          template:  '更新资料成功!'
+        }).then(function(res){
+            $scope.consultant.updatedProfile = 0;
+        });
+    }, function(status){
+      $ionicPopup.alert({
+        title: '提示信息',
+        cssClass: 'alert-text',
+        template:  '更新资料失败!'
+      });
+    }, function(){
+    })
+  };
+
   $scope.updateProfile = function(num){
     $scope.consultant.updatedProfile = num;
   };
@@ -1056,6 +1112,22 @@ angular.module('starter.controllers', [])
   };
 
   var refreshData = function() {
+     // update profile
+    Main.consultant.queryConsultant(function(data){
+      for (key in $scope.data.update) {
+        $scope.data.update[key] = data[key];
+      }
+
+      for (var i=0;i<$scope.provinceNames.length;i++) {
+          if($scope.provinceNames[i].key == data.province) {
+            $scope.data.provinceName =  $scope.provinceNames[i].value;
+             break;
+          } 
+      }
+
+    },function(status){}, function(){
+    });
+
     Main.consultant.queryOrders($scope.data.currentOrder, function(data){
     }, function(status){}, function(){});
     Main.consultant.queryBookings($scope.data.currentBooking, function(data){
@@ -1066,9 +1138,7 @@ angular.module('starter.controllers', [])
     // get crm
     Main.consultant.queryCustomers($scope.data.customers, function(data){
     }, function(status){}, function(){});
-
-    // update profile
-    Main.consultant.queryConsultant(function(data){},function(status){}, function(){});
+   
   };
 
   $scope.selectOrders = function(param){
@@ -1188,8 +1258,13 @@ angular.module('starter.controllers', [])
   $scope.data.liked = Main.getLiked();
 
 
+
   //**
   //** common function
+
+  $scope.updateProfileInformation = function(param) {
+  }
+
   $scope.updateProfile = function(num){
     $scope.customer.updatedProfile = num;
   };

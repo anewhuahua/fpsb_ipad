@@ -347,6 +347,10 @@ navigation history that also transitions its views in and out.
            
            
            <form class="zcwjfrm zcwjfrmmm">
+            <div class="zctel zctelmm">
+               <span>您的姓名</span>
+               <input type="text" placeholder="请输入您的姓名" ng-model="auth.register.fullname"/> 
+             </div> 
              <div class="zctel zctelmm">
                <span>您的密码</span>
                <input type="password" placeholder="请输入你的密码" ng-model="auth.register.password"/> 
@@ -359,7 +363,7 @@ navigation history that also transitions its views in and out.
                <span>推 荐 人</span>
                <input type="text" placeholder="请输入理财师推荐码（选填）" ng-model="auth.register.referral"/> 
              </div>
-             <input  type="submit" class="zcwjnext" value="完成注册" ng-click="register_3(auth.register.username,auth.register.password, auth.register.password2, auth.register.verifyCode, auth.register.referral)"/>
+             <input  type="submit" class="zcwjnext" value="完成注册" ng-click="register_3(auth.register.username,auth.register.password, auth.register.password2, auth.register.verifyCode, auth.register.referral, auth.register.fullname)"/>
              <p class="zcmmjs">
                 <span><img src="teImg/zcmmjslog.jpg" /></span>
                 <em>我已阅读并同意<i>《首席金服用户协议》</i></em>
