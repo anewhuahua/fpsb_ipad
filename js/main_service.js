@@ -223,7 +223,7 @@ angular.module('main.service',[])
         }
       }
       return product.title;
-    }
+    },
 
     productGoState: function(product) {
       var type = product.type.toLowerCase();
