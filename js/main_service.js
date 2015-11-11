@@ -223,7 +223,8 @@ angular.module('main.service',[])
         if(str.indexOf(product.type)>=0){
           if (categories[i].state) {
             return product.title;
-          }else {
+          } else {
+            console.log(product);
             return product.issuer;
           }
         }
