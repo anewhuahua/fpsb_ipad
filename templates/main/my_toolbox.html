@@ -243,9 +243,14 @@
                    <!--<ion-spinner icon="lines" style="position: absolute;display: block; left: 50%;" ng-if="data.refreshing.bookings"></ion-spinner>-->
                   <ion-list>
 
-                    <ion-item class="lcsslwsl" ng-repeat="booking in data.currentBooking.data" ng-click="showProduct(booking.product)" >
+                    <ion-item class="lcsslwsl" ng-repeat="booking in data.currentBooking.data"> <!--ng-click="showProduct(booking.product)"-->
                        <div class="lcsslwslf1"><img src='{{data.productType[booking.product.type.toLowerCase()].image}}' /> <span>{{data.productType[booking.product.type.toLowerCase()].name}}</span></div>
-                       <span class="lccslwf2">{{booking.product.issuer}}</span>
+
+
+                       <span ng-if="!booking.product.state" class="lccslwf2">{{booking.product.issuer}}</span>
+                       <span ng-if="booking.product.state=='common.service'" class="lccslwf2">{{booking.product.title}}</span>
+
+
                        <div class="lcssr3" ng-if="booking.state!='completed'"><img src="teImg/wsl11.png" /></div>
                        <div class="lcssr3" ng-if="booking.state=='completed'"><img src="teImg/ysl11.png" /></div>
                        <ion-option-button class="button-energized">
