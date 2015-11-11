@@ -56,9 +56,9 @@ angular.module('starter.controllers', [])
         $scope.data.looking_product = product;
       }
     }
-    //console.log("looking product: "+product.id);
-    //console.log(product);
   }
+
+
   $scope.closeProduct = function() {
     $scope.data.popup = '';
     $scope.data.looking_product = null;
@@ -75,7 +75,7 @@ angular.module('starter.controllers', [])
 
   $scope.orderDialog = function(booking) {
     $scope.data.looking_booking = booking;
-    $scope.data.order_option = Factory.newOption(10000, 200000, 10000);
+    $scope.data.order_option = Factory.newOption(1000000, 2000000, 100000);
     $scope.data.popup = 'OrderDialog';
 
   }
@@ -130,12 +130,40 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('commonServiceCtrl', function($scope, $state, $stateParams, $ionicScrollDelegate, $ionicHistory, Main){
+.controller('commonServiceCtrl', function($scope, $state, $ionicPopup, $stateParams, $ionicScrollDelegate, $ionicHistory, Main, Notify){
   var cid = $stateParams.categoryId;
   var pid = $stateParams.productId;
 
-  //console.log(cid + "  " + pid);
   $scope.product = Main.getProductDetail(cid, pid);
+  var addBooking= function() {
+    // todo quantity
+      Main.customer.addBooking(pid, function(data){
+        $ionicPopup.alert({
+          title: '系统提示',
+          template: '您的预约已成功提交!' +
+                    '您的理财师将马上与您联系，请保持电话通畅!'
+        }).then(function(res){
+          Notify.notify('booking');
+        });
+        //console.log("tyson");
+      }, function(error){
+        $ionicPopup.alert({
+          title: '系统提示',
+          template: '您的预约未成功!'
+        });
+      }, function(){
+      });
+    }
+
+  $scope.data = {};
+  $scope.data.optionOperation = Main.getOperation($scope.product, addBooking, $scope.orderDialog, function(){
+    $ionicPopup.alert({
+      title: '系统提示',
+      template: '请先登入'
+    });
+  });
+
+  
 })
 
 .controller('publicfundCtrl', function($scope, $state, $stateParams, $ionicScrollDelegate, $ionicHistory, Main){
@@ -183,7 +211,6 @@ angular.module('starter.controllers', [])
   }
 
   Main.getProducts($scope.data.category, function(data){
-    console.log(data);
   }, function(status){}, function(){});
  
   /*
@@ -211,6 +238,23 @@ angular.module('starter.controllers', [])
       });
     }, 1000);
   };
+
+
+  $scope.loadMore = function(){
+    setTimeout(function(){
+      var count = $scope.data.category.products.data.length;
+      Main.getMoreProducts($scope.data.category, function(data){
+         if (count+data.length == count){
+            $scope.data.more=false;
+          }
+          console.log("infinite scroll stop");
+          $scope.$broadcast('scroll.infiniteScrollComplete');
+
+      }, function(status){}, function(){
+      });
+    }, 1000);
+  };
+
 
 })
 
@@ -889,12 +933,12 @@ angular.module('starter.controllers', [])
     setTimeout(function(){
       var count = $scope.data.category.products.data.length;
       Main.getMoreProducts($scope.data.category, function(data){
+         if (count+data.length == count){
+            $scope.data.more=false;
+          }
+          console.log("infinite scroll stop");
+          $scope.$broadcast('scroll.infiniteScrollComplete');
       }, function(status){}, function(){
-        if (count == $scope.data.category.products.data.length){
-          $scope.data.more=false;
-        }
-        console.log("infinite scroll stop");
-        $scope.$broadcast('scroll.infiniteScrollComplete');
       });
     }, 1000);
   };

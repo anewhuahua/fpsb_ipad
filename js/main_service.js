@@ -345,6 +345,7 @@ angular.module('main.service',[])
       Rest.getProductsCount(param, function(data){
         if(parseRestSuccess('getMoreProducts', data, successHandler, errorHandler)) {
           var count = data.result;
+
           if (count > category.products.data.length) {
             param.offset = category.products.data.length;
             param.limit = 10;       
@@ -352,13 +353,16 @@ angular.module('main.service',[])
             Rest.getProducts(param, function(res){
               if(parseRestSuccess('getProducts', res, successHandler, errorHandler)) {  
                 category.products.data = category.products.data.concat(res.result);
+                console.log('tyson:' + category.products.data.length);
               }
-            }, function(status){}, function(){});
+            }, function(status){}, finallyHandler());
+          } else {
+            successHandler({length:0});
           }
         }
       }, function(status){
         parseRestError('getMoreProducts', status, errorHandler);
-      }, finallyHandler());
+      }, function(){});
 
     },
 

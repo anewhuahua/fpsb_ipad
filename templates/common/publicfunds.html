@@ -70,10 +70,10 @@
            <div class="gmlbnrdv" ng-repeat="product in data.category.products.data" ng-click="goPublicFundDetail()">
             <div class="gmgmff">
              <i>{{product.name}}</i>
-             <span><em>1.3000</em><i>15-10-29</i></span>
-             <span>10.60%</span>
-             <span>10.50%</span>
-             <em class="curgreen"> -3.60%</em>
+             <span><em>{{product.fundNavNewest.nav}}</em><i>{{product.fundNavNewest.endDate | date:"yyyy-MM-dd"}}</i></span>
+             <span>{{product.fundNavNewest.weekRate*100|number:2}}%</span>
+             <span>{{product.fundNavNewest.monRate1*100|number:2}}%</span>
+             <em class="curgreen"> {{product.fundNavNewest.monRate3*100|number:2}}%</em>
              <span>10.60%</span>
              <em class="curgreen">-13.60%</em>
              <span>10.22% </span>
@@ -89,6 +89,14 @@
 
 
       </div> <!--main1-->
+
+  <ion-infinite-scroll
+    ng-if="data.more" 
+    on-infinite="loadMore()" 
+    immediate-check="false"
+    distance="1%"><p>小金奋力加载中...</p>
+  </ion-infinite-scroll>
+
     </ion-content>
   
 </ion-view>

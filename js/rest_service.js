@@ -6,6 +6,9 @@ angular.module('rest.service', [])
   var domain="http://115.29.194.11:8080/";
 
   return {
+    getProductImageUrl: function(){
+      return domain + 'ChiefFinancierService/api/common/v1/productimages/';
+    }, 
 
     login: function(name, password, successHandler, errorHandler,finallyHandler) {
       var id = "";
@@ -29,7 +32,7 @@ angular.module('rest.service', [])
     askVerifyCode: function(phone, successHandler, errorHandler, finallyHandler) {
       var req = {
         method: 'POST',
-        url: domain +'ChiefFinancierService/api/common/v1/verificationcodes?phone='
+        url: domain + 'ChiefFinancierService/api/common/v1/verificationcodes?phone='
                + phone,
         headers: {
          'Content-Type': 'application/json',
