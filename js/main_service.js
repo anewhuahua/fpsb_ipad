@@ -218,9 +218,10 @@ angular.module('main.service',[])
 
   return {
     getProductTitle: function(product) {
+      var type = product.type.toLowerCase();
       for(var i=0; i<categories.length; i++){
         var str = categories[i].key.toLowerCase();
-        if(str.indexOf(product.type)>=0){
+        if(str.indexOf(type)>=0){
           if (categories[i].state) {
             return product.title;
           } else {
