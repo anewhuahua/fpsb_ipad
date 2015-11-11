@@ -247,8 +247,8 @@
                        <div class="lcsslwslf1"><img src='{{data.productType[booking.product.type.toLowerCase()].image}}' /> <span>{{data.productType[booking.product.type.toLowerCase()].name}}</span></div>
 
 
-                       <span ng-if="!booking.product.state" class="lccslwf2">{{booking.product.issuer}}</span>
-                       <span ng-if="booking.product.state=='common.service'" class="lccslwf2">{{booking.product.title}}</span>
+                      
+                       <span  class="lccslwf2">{{getProductTitle(booking.product)}}</span>
 
 
                        <div class="lcssr3" ng-if="booking.state!='completed'"><img src="teImg/wsl11.png" /></div>

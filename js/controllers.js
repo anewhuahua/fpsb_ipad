@@ -856,6 +856,11 @@ angular.module('starter.controllers', [])
     });
   }
 
+
+  $scope.getProductTitle = function(pr){
+    return Main.getProductTitle(pr);
+  }
+
 })
 
 
