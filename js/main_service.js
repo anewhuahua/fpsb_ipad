@@ -65,11 +65,17 @@ angular.module('main.service',[])
   };
   var optionProductType = {
     all:             {type:  'all',            name: '全部',         image: 'teImg/gnr2rabm11.png'},
-    privatefund:     {type:  'privatefund',    name: '私募',         image: 'teImg/lbaitemimg3.png'},
-    publicfund:      {type:  'publicfund',     name: '公募',         image: 'teImg/lbaitemimg2.png'},
-    trust:           {type:  'trust',          name: '信托',         image: 'teImg/lbaitemimg4.png'},
-    portfolio:       {type:  'portfolio',      name: '资管',         image: 'teImg/lbaitemimg6.png'},
-    insurance:       {type:  'insurance',      name: '保险',         image: 'teImg/lbaitemimg5.png'}
+    privatefund:     {type:  'privatefund',    name: '私募',         image: 'teImg/simu.png'},
+    publicfund:      {type:  'publicfund',     name: '公募',         image: 'teImg/gongmu.png'},
+    trust:           {type:  'trust',          name: '信托',         image: 'teImg/xintuo.png'},
+    portfolio:       {type:  'portfolio',      name: '资管',         image: 'teImg/ziguan.png'},
+    insurance:       {type:  'insurance',      name: '保险',         image: 'teImg/baoxian.png'},
+    familytrust:     {type:  'familytrust',    name: '家族信托',      image: 'teImg/jiazuxintuo.png'},
+    overseainsurance:     {type:  'overseainsurance',    name: '海外保险',      image: 'teImg/haiwaibaoxian.png'},
+    overseatrust:         {type:  'overseatrust',        name: '海外信托',      image: 'teImg/haiwaixintuo.png'},
+    overseainvestment:    {type:  'overseainvestment',   name: '海外投资',      image: 'teImg/haiwaitouzi.png'},
+    overseamigration:     {type:  'overseamigration',    name: '身份安排',      image: 'teImg/shenfenanai.png'},
+    overseaproperty:      {type:  'overseaproperty',     name: '海外置业',      image: 'teImg/haiwaizhiye.png'},
   };
 
 
