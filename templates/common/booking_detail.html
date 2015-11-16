@@ -18,14 +18,14 @@
                      <div class="khxqpr">
                      
                          <p class="khxqrp1">
-                            <span>王海先生</span>
-                            <b>财商测试得分：80</b>
+                            <span>{{booking.customer.fullname}}</span>
+                            <b>财商测试得分：{{booking.customer.score}}</b>
                          </p>
                          <p class="khxqrp2">
-                            <span>电话：1300004500</span>
+                            <span>{{booking.customer.phone}}</span>
                            
                          </p>
-                         <p class="khxqrp3"><span>邮箱：123455@gmail.com</span></p>
+                         <p class="khxqrp3"><span>邮箱：{{booking.customer.email}}</span></p>
                          
                          
                          
@@ -48,7 +48,7 @@
                       <div class="twtwdv" ng-click="showProduct(booking.product)">
                         <!--<div class="twtwdvf"><img src='teImg/gnr2rabm3.png' /></div>-->
                         <div class="twtwdvf"><img src='{{data.productType[booking.product.type.toLowerCase()].image}}' /> <em>{{data.productType[booking.product.type.toLowerCase()].name}}</em></div>
-                        <span>{{booking.product.issuer}}</span>
+                        <span>{{booking.product.name}}</span>
                       </div>   
                   </div>
                   

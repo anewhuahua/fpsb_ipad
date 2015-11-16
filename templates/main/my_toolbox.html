@@ -52,7 +52,11 @@
                       <div class="khzlzz1b">
                       
                          <div class="khzlzz1bf">
-                            <div class="khzlzz1bfimg"><img src="teImg/ghnr1lef.png" /></div>
+
+                            <div class="khzlzz1bfimg" ng-if="!enableUpdatedProfile(1)"><img ng-src="{{imgProfile.data}}" /></div>
+                            <div class="khzlzz1bfimg" ng-if="enableUpdatedProfile(1)"> <img ng-src="{{imgProfile.data}}" ng-click="choosePicMenu()"/></div>
+
+
                             <div ng-if="!enableUpdatedProfile(1)" class="khzlzz1bfw">{{data.profile.data.fullname}}</div>
                             <input ng-if="enableUpdatedProfile(1)" class="khzlzz1bfwu" placeholder="请输入姓名" ng-model="data.update.fullname"/>
                          </div>
@@ -63,7 +67,7 @@
                             </div>
 
                             <div class="khzlzz1br2"><span>性 别</span>
-                              <div ng-if="!enableUpdatedProfile(1)">{{data.profile.data.gender}}</div>
+                              <div ng-if="!enableUpdatedProfile(1)">{{data.profile.data.gender | genderFilter}}</div>
                               <div ng-if="enableUpdatedProfile(1)">
                                    <select style="width:100%;border:0.1rem;" placeholder="请选择性别" ng-model="data.update.gender">
                                    <option value='male'>男</option>
@@ -73,10 +77,10 @@
                             </div>
 
                             <div class="khzlzz1br2"><span>手 机 号 码</span><div>{{data.profile.data.phone}}</div></div>
-                            <div class="khzlzz1br2"><span>财 商 得 分</span><div>{{data.profile.data.score}}</div></div>
+                            <div class="khzlzz1br2"><span>财 商 得 分</span><div>{{data.profile.data.score | scoreFilter}}</div></div>
 
                              <div class="khzlzz1br2"><span>所 在 地</span>
-                              <div ng-if="!enableUpdatedProfile(1)">{{data.provinceName}}</div>
+                              <div ng-if="!enableUpdatedProfile(1)">{{data.profile.data.province | provinceFilter}}</div>
                               <div ng-if="enableUpdatedProfile(1)">
                                    <select style="width:100%;border:0.1rem;" placeholder="请选择所在地" ng-model="data.update.province">
                                     <option ng-repeat='p in provinceNames' value={{p.key}}>{{p.value}}</option>
@@ -187,7 +191,7 @@
                     <ion-item class="lcsslwsl" ng-repeat="order in data.currentOrder.data" ng-click="goOrderDetail(order.id)">
    
                        <div class="lcsslwslf1"><img src='{{data.productType[order.product.type.toLowerCase()].image}}' /> <span>{{data.productType[order.product.type.toLowerCase()].name}}</span></div>
-                       <span class="lccslwf2">{{order.product.issuer}}</span>
+                       <span  class="lccslwf2">{{order.product.name}}</span>
                        <div class="lcssr3b">
                         <img src="teImg/wwc11.png" ng-if="order.state.toLowerCase()!='completed'"/>
                         <img src="teImg/ywc11.png" ng-if="order.state.toLowerCase()=='completed'"/>
@@ -243,11 +247,11 @@
                    <!--<ion-spinner icon="lines" style="position: absolute;display: block; left: 50%;" ng-if="data.refreshing.bookings"></ion-spinner>-->
                   <ion-list>
 
-                    <ion-item class="lcsslwsl" ng-repeat="booking in data.currentBooking.data"> <!--ng-click="showProduct(booking.product)"-->
+                    <ion-item class="lcsslwsl" ng-repeat="booking in data.currentBooking.data" ng-click="showProduct(booking.product)"> <!--ng-click="showProduct(booking.product)"-->
                        <div class="lcsslwslf1"><img src='{{data.productType[booking.product.type.toLowerCase()].image}}' /> <span>{{data.productType[booking.product.type.toLowerCase()].name}}</span></div>
 
 
-                       <span  class="lccslwf2">{{getProductTitle(booking.product)}}</span>
+                       <span  class="lccslwf2">{{booking.product.name}}</span>
 
 
                        <div class="lcssr3" ng-if="booking.state!='completed'"><img src="teImg/wsl11.png" /></div>
@@ -290,7 +294,7 @@
 
                     <ion-item class="lcsslwsl" ng-repeat="product in data.liked.data">
                        <div class="lcsslwslf1"><img src='teImg/lbaitemimg3.png' /> <span>私募</span></div>
-                       <span class="lccslwf2">{{product.issuer}}</span>
+                       <span class="lccslwf2">{{product.name}}</span>
                     
                           <ion-option-button class="button-assertive">
                             删除

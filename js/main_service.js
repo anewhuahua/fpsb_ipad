@@ -217,6 +217,12 @@ angular.module('main.service',[])
   };
 
   return {
+
+    queryUploadAccountUrl: function() {
+      return Rest.queryUploadAccountUrl(id);
+    },
+
+
     getProductTitle: function(product) {
       var type = product.type.toLowerCase();
       for(var i=0; i<categories.length; i++){
@@ -487,9 +493,7 @@ angular.module('main.service',[])
             if (parseRestSuccess('queryCustomer', data, successHandler, errorHandler)) { 
               //customer.bookings.unserved.unshift(data.result);
               profile.data = data.result;
-              if(profile.data.score==0) {
-                profile.data.score="还未进行财商测试";
-              }
+              
             }
           }, function(status){
             parseRestError('queryCustomer',  status, errorHandler);
@@ -501,6 +505,7 @@ angular.module('main.service',[])
         Rest.customer.v1.updateCustomer(param, id, function(data){
           if(parseRestSuccess('updateCustomer', data, successHandler, errorHandler)) {
             profile.data = data.result;
+            
           }
         }, function(status){
           parseRestError('updateCustomer', status, errorHandler);
@@ -651,11 +656,7 @@ angular.module('main.service',[])
 
     consultant: {
 
-     
-
-      getUploadUrl: function(oid) {
-        return Rest.consultant.v1.queryUploadUrl(id, oid);
-      },
+    
       
       getBookings: function() {
         return roleConsultant.bookings;
@@ -702,16 +703,7 @@ angular.module('main.service',[])
         return roleConsultant.customers;
       },
 
-      updateConsultant: function(param, successHandler, errorHandler, finallyHandler) {
-        Rest.consultant.v1.updateConsultant(param, id, function(data){
-          if(parseRestSuccess('updateConsultant', data, successHandler, errorHandler)) {
-            profile.data = data.result;
-          }
-        }, function(status){
-          parseRestError('updateConsultant', status, errorHandler);
-        }, 
-        finallyHandler());
-      },
+      
 
       queryBookings: function(bookings, successHandler, errorHandler, finallyHandler) {
         var param = {};
@@ -725,6 +717,8 @@ angular.module('main.service',[])
         Rest.consultant.v1.queryBookings(param, id, function(data){
           if(parseRestSuccess('queryBookings', data, successHandler, errorHandler)) {
             bookings.data = data.result;
+
+            
           }
         }, function(status){
           parseRestError('queryBookings', status, errorHandler);
@@ -746,6 +740,11 @@ angular.module('main.service',[])
         Rest.consultant.v1.queryOrders(param, id, function(data){
           if(parseRestSuccess('queryOrders', data, successHandler, errorHandler)) {
              orders.data = data.result; 
+            /*  通过queryCustomer走
+             for (var i = 0; i < orders.data.length; i++) {
+              orders.data[i].customer.image = Rest.queryUploadAccountUrl(orders.data[i].customer.id) + '/' + orders.data[i].customer.imageId;
+            }
+            */
           }
         }, function(status){
           parseRestError('queryOrders',  status, errorHandler);
@@ -775,6 +774,17 @@ angular.module('main.service',[])
             parseRestError('queryConsultant',  status, errorHandler);
           }, 
           finallyHandler());
+      },
+
+      updateConsultant: function(param, successHandler, errorHandler, finallyHandler) {
+        Rest.consultant.v1.updateConsultant(param, id, function(data){
+          if(parseRestSuccess('updateConsultant', data, successHandler, errorHandler)) {
+            profile.data = data.result;
+          }
+        }, function(status){
+          parseRestError('updateConsultant', status, errorHandler);
+        }, 
+        finallyHandler());
       },
 
       submitOrder: function(booking, money, successHandler, errorHandler, finallyHandler) {

@@ -153,62 +153,6 @@
 <!-- index -->
 
 
-<!--待办事项-->
-<div class="main1" ng-switch-when='pendings'>
-       <div class="gnr2dadv"><!--内容右侧开始-->
-
-                <div class="gjxnrtopyy"></div>
-                <!-- 内容top阴影 -->
-
-                <div class="gnr2ma"> 
-                  <!--修改新增部分-s-->
-                    
-                   <div class="khzlzz3a"><span>咨询，预约</span> 
-                    <a href="" ng-click="selectPage('orders', 'all'); selectOrders('all');" ng-if="showContent('orders', 'todo')">
-                      查看全部
-                    </a>
-                    <a href="" ng-click="selectPage('orders', 'todo');  selectOrders('todo');"  ng-if="showContent('orders', 'all')">
-                    查看未完成
-                    </a>
-                   </div>
-                  
-                <div>
-              
-                  <!--<ion-spinner icon="lines" style="position: absolute;display: block; left: 50%;" ng-if="data.refreshing.orders"></ion-spinner>-->
-                </div>
-
-                  <ion-list>
-
-                    <ion-item class="lcsslwsl" ng-repeat="order in data.currentOrder.data" ng-click="goOrderDetail(order.id)">
-                       <div class="lcsslwslf1"><img src='{{data.productType[order.product.type.toLowerCase()].image}}' /> <span>{{data.productType[order.product.type.toLowerCase()].name}}</span></div>
-                       <span class="lccslwf2">{{order.product.issuer}}</span>
-                       <div class="lcssr3b">
-                        <img src="teImg/wwc11.png" ng-if="order.state.toLowerCase()!='completed'"/>
-                        <img src="teImg/ywc11.png" ng-if="order.state.toLowerCase()=='completed'"/>
-                       </div>
-                       <ion-option-button class="button-energized">
-                            投诉 
-                          </ion-option-button>
-                    </ion-item>
-
-                  </ion-list> 
-
-                    
-                    <!--
-                    <div class="twtwdv" ng-repeat="order in data.currentOrder.data" ng-click="goOrderDetail(order.id)">
-                        <div class="twtwdvf"><img src='{{data.orderState[order.state.toLowerCase()].image}}' /> <em>{{data.orderState[order.state.toLowerCase()].name}}</em> </div>
-                        <span>[{{data.productType[order.product.type.toLowerCase()].name}}] {{order.product.issuer}}</span>
-                    </div>   
-                    
-                    <div class="twtwdv">
-                        <div class="twtwdvf"><img src='teImg/gnr2rabm3.png' /></div>
-                        <span>[私募]粤财·瀚信中鼎盈丰2期</span>
-                    </div>-->
-         
-            </div>
-      </div>
-</div>
-<!--待办事项完成-->
     
 <div class="main1" ng-switch-when='customers'>
   <div class="gnr2dadv"><!--内容右侧开始-->
@@ -259,124 +203,7 @@
   </div><!--内容右侧结束-->
 </div>
 
-<!-- information -->
-<div class="main1" ng-switch-when='information'>
-  <div class="gnr2dadv"><!--内容右侧开始-->
 
-      <div class="gjxnrtopyy"></div>
-                <!-- 内容top阴影 -->
-      <ul class="zhyhktpul">
-        <li ng-class="{zhyhkpulcss: showContent('information','person')}" ng-click="selectPage('information','person')"><a href="">个人信息设置</a></li>
-        <li ng-class="{zhyhkpulcss: showContent('information','bank')}" ng-click="selectPage('information','bank')"><a href="">银行卡认证</a></li>
-        <li ng-class="{zhyhkpulcss: showContent('information','password')}" ng-click="selectPage('information','password')"><a href="">密码设置</a></li>
-      </ul>
-                
-      <div class="zhyhknr"><!--我的账户-银行卡认证内容部分-s-->
-        <form ng-if="showContent('information','person')">           
-          <div class="zhkhimgdv">
-            <span>设置头像</span>
-            <p>
-              <img src={{consultant.information.profile.touxiang}} ng-click="takePhoto()"/>
-              <a href="" ng-click="takePhoto()"></a>
-            </p>           
-          </div>
-          <div class="hkgrdv2">
-            <div class="zhgdvf"><span>真实姓名</span> <input type="text" placeholder="请输入您的真实姓名" /></div>
-            <div class="shkdsr">
-              <label>男 <input name="first" type="radio" value="" class="shkdsrnan" /></label>
-              <label>女 <input name="first" type="radio" value="" class="shkdsrnan" /></label>
-            </div>
-          </div>
-                          
-          <div class="zhyhknr3"><span>手 机 号</span> <input type="text" placeholder="请输入您要修改的手机号证码"/> <a href="">修改</a></div>
-          <div class="zhyhknr3"><span>邮箱地址</span> <input type="text" placeholder="请输入您要绑定的邮箱"/> <a href="">绑定</a></div>
-          <input class="yhkqd" value="确定"  type="submit"/>
-      </form>
-      <form ng-if="showContent('information','bank')">
-        <div class="zhyhknr1"><span>开户人姓名</span> <input type="text"  placeholder="请输入您的姓名"/></div>
-        <div class="zhyhknr2"><span>选择银行</span> <a href="">请选择</a><input type="button" /></div>
-        <div class="zhyhknr1"><span>银行卡号</span> <input type="text" placeholder="该银行卡为您提现、回款时的默认银行卡" /></div>
-        <div class="zhyhknr1"><span>身份证号码</span> <input type="text" placeholder="请填写您的真实身份证号，验证后不得修改" /></div>
-        <div class="zhyhknr3"><span>验 证 码</span> <input type="text" placeholder="请填写您接收到的验证码"/> <a href="">43秒后重发</a></div>
-        <input class="yhkqd" value="确定"  type="submit"/>
-      </form>
-      <form ng-if="showContent('information','password')">
-          <div class="zhyhknr1"><span>当前密码</span> <input type="text"  placeholder="请输入您的原始登录密码"/></div>
-          <div class="zhyhknr1"><span>新 密 码</span> <input type="text" placeholder="8-20位，必须含有字母" /></div>
-          <div class="zhyhknr1"><span>确认新密码</span> <input type="text" placeholder="请重复输入你的密码" /></div>
-          <div class="zhyhknr3"><span>验 证 码</span> <input type="text" placeholder="请填写您接收到的验证码"/> <a href="">43秒后重发</a></div>
-          <input class="yhkqd" value="确定"  type="submit"/>
-      </form>      
-                
-    </div><!--我的账户-银行卡认证内容部分-e-->
-   
-  </div><!--内容右侧结束-->
-</div>
-<!-- information -->
-
-
-<!-- planning -->
-<div class="main1" ng-switch-when='planning'>
-  <div class="gnr2dadv">
-              
-              <div class="gzghp1">
-                 <span>总业绩(元)</span>
-                 <em>541300.20</em>
-                 <div class="gzghp1mx"></div>
-                 <p>
-                   <em>目标业绩：3500000 </em>
-                   <i>已获佣金：250030 </i>
-                 </p>
-              </div>
-              
-              <div class="gzghp2">
-                 <span></span>
-                 <em>月度规划</em>
-              </div>
-              <div class="gzghnr3dv">
-                <div class="gzghnr3f"><span>63%</span></div>
-                <div class="gzghnr3r">
-                   <p><span>2015年已完成业绩（ 元） <em> 541300.20</em></span></p>
-                   <p><span>2015年目标业绩（元） <em> 541300.20</em></span></p>
-                </div>
-              </div>
-              
-              
-              <div class="gzghp2">
-                 <span></span>
-                 <em>年度规划</em>
-              </div>
-              <div class="gzghnr3dv">
-                <div class="gzghnr3f"><span>63%</span></div>
-                <div class="gzghnr3r">
-                   <p><span>2015年已完成业绩（ 元） <em> 541300.20</em></span></p>
-                   <p><span>2015年目标业绩（元） <em> 541300.20</em></span></p>
-                </div>
-              </div>
-              
-              
-              <div class="gzghp5">
-                 <span></span>
-                 <em>历史记录</em>
-              </div>
-              <ul class="gzghnrjlul">
-                 <li>
-                    <span>2015.07</span>
-                    <span>最终业绩（元） <em> 541300.20</em></span>
-                    <span>目标业绩（元） <em> 3500000  </em></span>
-                    <span>完成率：<em>120%</em></span>
-                 </li>
-                 <li>
-                    <span>2015.06</span>
-                    <span>最终业绩（元） <em> 541300.20</em></span>
-                    <span>目标业绩（元） <em> 3500000  </em></span>
-                    <span>完成率：<em>120%</em></span>
-                 </li>
-              </ul>  
- 
-  </div><!--gnr2dadv-->
-</div>
-<!-- planning -->
 
 <!-- orders -->
 <div class="main1" ng-switch-when='orders'>
@@ -404,9 +231,12 @@
 
                   <ion-list>
                     <ion-item class="lcsslwsl" ng-repeat="order in data.currentOrder.data" ng-click="goOrderDetail(order.id)">
-                       <div class="lcsslwslf1"><img src="teImg/ghnr1lef.png" /> <span>王海</span></div>
+                       <div class="lcsslwslf1">
+                        <img ng-src="{{order.customer.image}}" /> 
+                        <span>{{order.customer.fullname}}</span>
+                      </div>
                        <div class="lcsslwslf1"><img src='{{data.productType[order.product.type.toLowerCase()].image}}' /> <span>{{data.productType[order.product.type.toLowerCase()].name}}</span></div>
-                       <span class="lccslwf2tyson">{{order.product.issuer}}</span>
+                       <span class="lccslwf2tyson">{{order.product.name}}</span>
                        <div class="lcssr3b">
                         <img src="teImg/ytj11.png" ng-if="order.state.toLowerCase()!='completed'"/>
                         <img src="teImg/ywc11.png" ng-if="order.state.toLowerCase()=='completed'"/>
@@ -459,9 +289,9 @@
                   <ion-list>
 
                     <ion-item class="lcsslwsl" ng-repeat="booking in data.currentBooking.data" ng-click="goBookingDetail(booking.id)">
-                       <div class="lcsslwslf1"><img src="teImg/ghnr1lef.png" /> <span>王海</span></div>
+                       <div class="lcsslwslf1"><img src="teImg/ghnr1lef.png" /> <span>{{booking.customer.fullname}}</span></div>
                        <div class="lcsslwslf1"><img src='{{data.productType[booking.product.type.toLowerCase()].image}}' /> <span>{{data.productType[booking.product.type.toLowerCase()].name}}</span></div>
-                       <span class="lccslwf2tyson">{{booking.product.issuer}}</span>
+                       <span class="lccslwf2tyson">{{booking.product.name}}</span>
                        <div class="lcssr3" ng-if="booking.state!='completed'"><img src="teImg/wfw11.png" /></div>
                        <div class="lcssr3" ng-if="booking.state=='completed'"><img src="teImg/yfw11.png" /></div>
                        <ion-option-button class="button-energized">
@@ -503,7 +333,7 @@
 
                     <ion-item class="lcsslwsl" ng-repeat="product in data.liked.data">
                        <div class="lcsslwslf1"><img src='teImg/lbaitemimg3.png' /> <span>私募</span></div>
-                       <span class="lccslwf2">{{product.issuer}}</span>
+                       <span class="lccslwf2">{{product.name}}</span>
                     
                           <ion-option-button class="button-assertive">
                             删除
@@ -589,7 +419,7 @@
                      <div class="twtwdv" ng-repeat="order in data.orders['all'].data | limitTo: 6" ng-click="goProductDetail(order.id)">
                         <!--<div class="twtwdvf"><img src='teImg/gnr2rabm3.png' /></div>-->
                         <div class="twtwdvf"><img src='{{data.orderState[order.state.toLowerCase()].image}}' /> <em>{{data.orderState[order.state.toLowerCase()].name}}</em> </div>
-                        <span>[{{data.productType[order.product.type.toLowerCase()].name}}] {{order.product.issuer}}</span>
+                        <span>[{{data.productType[order.product.type.toLowerCase()].name}}] {{order.product.name}}</span>
                     </div>   
 
                  
@@ -599,7 +429,7 @@
                       <div class="twtwdv" ng-repeat="booking in data.bookings['all'].data | limitTo: 6" ng-click="showProduct(booking.product, 'NoBooking')">
                         <!--<div class="twtwdvf"><img src='teImg/gnr2rabm3.png' /></div>-->
                         <div class="twtwdvf"><img src='{{data.bookingState[booking.state.toLowerCase()].image}}' /> <em>{{data.bookingState[booking.state.toLowerCase()].name}}</em> </div>
-                        <span>[{{data.productType[booking.product.type.toLowerCase()].name}}] {{booking.product.issuer}}</span>
+                        <span>[{{data.productType[booking.product.type.toLowerCase()].name}}] {{booking.product.name}}</span>
                     </div>   
             </div>
 

@@ -10,6 +10,10 @@ angular.module('rest.service', [])
       return domain + 'ChiefFinancierService/api/common/v1/productimages/';
     }, 
 
+    queryUploadAccountUrl: function(id) {
+      return domain+'ChiefFinancierService/api/common/v1/accounts/'+ id + '/images';
+    },
+
     login: function(name, password, successHandler, errorHandler,finallyHandler) {
       var id = "";
       var req = {
@@ -138,6 +142,9 @@ angular.module('rest.service', [])
     },
 
 
+
+
+
     customer: {
       v1: {
         queryCustomer: function(cid, successHandler, errorHandler, finallyHandler) {
@@ -176,6 +183,7 @@ angular.module('rest.service', [])
               req.data[key] = param[key];
             }
           }
+
 
           //console.log(pid);
           $http(req).success(function(data){
@@ -341,11 +349,6 @@ angular.module('rest.service', [])
           }).finally(function(){
             finallyHandler();
           });
-        },
-
-        queryUploadUrl: function(id, oid) {
-          return domain+'ChiefFinancierService/api/consultant/v1/consultants/' + id + 
-              '/orders/' + oid + '/documents' 
         },
 
         queryConsultant: function(id, successHandler, errorHandler, finallyHandler) {
