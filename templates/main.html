@@ -142,7 +142,7 @@ navigation history that also transitions its views in and out.
 
 
   <div class="prxqdv" ng-switch-when="privateFund"><!-- 私募产品详情页弹窗开始 -->
-  <div class="prxqdvma"><!-- 私募产品详情页弹窗主体 -->
+  <div class="prxqdvma" ng-if="data.looking_product.type.toLowerCase()!='insurance'"><!-- 私募产品详情页弹窗主体 -->
     
     <div class="prxqmanr1"><!-- 私募产品详情页弹窗主体 上半部分-->
     
@@ -181,9 +181,7 @@ navigation history that also transitions its views in and out.
         
         <ul class="prxqbmul">
           <li class="prxqbj">基本信息</li>
-          <li>募集账户</li>
-          <li>产品卖点</li>
-          <li>风险控制</li>
+          <li>产品备注</li>
         </ul><!-- 右边的下半部分 -->
         
         
@@ -271,6 +269,118 @@ navigation history that also transitions its views in and out.
     
 
   </div><!-- 私募产品详情页弹窗主体 --> 
+
+
+  <div class="prxqdvma" ng-if="data.looking_product.type.toLowerCase()=='insurance'">
+    <div class="prxqmanr1"><!-- 私募产品详情页弹窗主体 上半部分-->
+    
+      <div class="prxqhead">
+             <i class="xxlniuhuang1"></i>
+             <span class="prxqh3">{{data.looking_product.name}}</span>
+             
+
+             <em class="prxqh5" ng-click='closeProduct()'></em>
+             <em class="prxqh4" ng-click='likeIt()'></em>
+      </div>
+    
+    
+    
+      <div class="prxqnr2">
+      
+   
+      
+      <div class="prxqrig" style="float:left;  width:90%;">
+        
+        <div class="prxqrtop" style="width:100%;">
+          <div class="prxqrpnr1">
+            <span>{{data.looking_product.issuer}}</span>
+            <em>所属公司</em>
+          </div>
+          <div class="prxqrpnr1">
+            <span>{{data.looking_product.basicInsAmount}}万元</span>
+            <em>基本保额</em>
+          </div>
+          <div class="prxqrpnr1">
+            <span>{{data.looking_product.insAmount}}元/年</span>
+            <em>保障额度</em>
+          </div>
+           <div class="prxqrpnr1">
+            <span>{{data.looking_product.insAge}}</span>
+            <em>投保年龄</em>
+          </div>
+          <!--
+          <div class="prxqrpnr3">
+            <p><i>目标规模</i><em>100000000</em><span>万元</span></p>
+            <p><i>认购金额</i><em>300-599</em><span>万元</span></p>
+            <p><i>募集状态</i><em>剩余26</em><span>天</span></p>
+          </div>-->
+        </div><!-- 右边的上半部分 -->
+         <ul class="prxqbmul">
+          <li class="prxqbj">基本信息</li>
+          <li>产品备注</li>
+        </ul><!-- 右边的下半部分 -->
+        
+        
+        
+      </div>
+      
+      
+    </div>
+    
+
+    <div class="prxqbm"><!-- 私募产品详情页弹窗主体 底部部分-->
+
+      <a href="" class="prxqaa3"  ng-click="data.optionOperation.action()">{{data.optionOperation.name}}</a>
+  
+
+    </div><!-- 私募产品详情页弹窗主体 底部部分-->
+
+
+    </div><!-- 私募产品详情页弹窗主体 上半部分-->
+    
+    
+    
+    <div class="prxqtopbj"></div>
+    <div class="prxqmanr2"><!-- 私募产品详情页弹窗主体 中间部分-->
+      
+      <p>
+        <span>产品全称</span>
+        <em>{{data.looking_product.name}}</em>
+      </p>
+      <p>
+        <span>所属公司</span>
+        <em>{{data.looking_product.issuer}}</em>
+      </p>
+      <p>
+        <span>基本保额 </span>
+        <em>{{data.looking_product.basicInsAmount}}万元</em>
+      </p>
+      <p>
+        <span>保障额度  </span>
+        <em>{{data.looking_product.insAmount}}元/年</em>
+      </p>
+      <p>
+        <span>投保年龄 </span>
+        <em>{{data.looking_product.insAge}}</em>
+      </p>
+      <p>
+        <span>产品评测 </span>
+        <em>{{data.looking_product.accessment}}</em>
+      </p>
+      <p>
+        <span>缴费年限 </span>
+        <em>{{data.looking_product.paymentPeriod}}年/交</em>
+      </p>
+      <p>
+        <span>备注 </span>
+        <em>{{data.looking_product.remarks}}</em>
+      </p>
+      
+
+    </div><!-- 私募产品详情页弹窗主体 中间部分-->
+  </div>
+
+
 </div><!-- 私募产品详情页弹窗结束 -->
 
 

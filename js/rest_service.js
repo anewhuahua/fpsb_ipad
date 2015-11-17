@@ -6,8 +6,8 @@ angular.module('rest.service', [])
   var domain="http://115.29.194.11:8080/";
 
   return {
-    getProductImageUrl: function(){
-      return domain + 'ChiefFinancierService/api/common/v1/productimages/';
+    getProductImageUrl: function(pid,iid){
+      return domain + 'ChiefFinancierService/api/common/v1/products/' + pid + '/images/' + iid;
     }, 
 
     queryUploadAccountUrl: function(id) {

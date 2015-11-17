@@ -75,7 +75,7 @@
                           <em>{{product.name}}</em>
                         </div>
                         
-                        <div class="ssxqbmdv">
+                        <div class="ssxqbmdv" ng-if="data.category.key!='insurances'">
                             <span class="ssxqmf1">63%</span>
                             <p><span>10.50%</span> <em>预期年化</em></p>
                             <p><span>18个月</span> <em>产品期限</em></p>
@@ -84,6 +84,20 @@
                               <span>起购门槛 <em> 100 </em>万起</span>
                               <span>募集状态 <em> 剩余26 </em>天</span>
                             </div>
+                        </div>
+
+                        <div class="ssxqbmdv" ng-if="data.category.key=='insurances'">
+                           
+                            <p style="margin-left:0.6rem;"><span>{{product.issuer}}</span> <em>所属公司</em></p>
+                            <p><span>{{product.basicInsAmount}}万元</span> <em>基本保额</em></p>
+                            <p><span>{{product.insAmount}}元/年</span> <em>保障额度</em></p>
+                            <p><span>{{product.insAge}}</span> <em>投保年龄</em></p>
+                            <!--
+                            <div class="xxxqrr"> 
+                              <span>保障额度 <em> 36,500.00 </em>万元</span>
+                              <span>缴费年限 <em> 100 </em>万起</span>
+                              <span>募集状态 <em> 剩余26 </em>天</span>
+                            </div>-->
                         </div>
                         
                     </div>  <!--发现内容主体-->
@@ -100,8 +114,8 @@
                           <em class="fxlbem">{{product.name}}</em>
                         </div>
                         
-                        <div class="fxlbdvtm">
-                           <div class="fxlbdvtmimg"><img src="teImg/jnlbimg1.jpg" /></div>
+                        <div class="fxlbdvtm">                                
+                           <div class="fxlbdvtmimg"><img ng-src="{{product | productImageFilter}}" /></div>
                            <span>{{product.summary}}</span>
                         </div>
                         </a>

@@ -57,6 +57,11 @@ angular.module('starter.controllers', [])
       return Main.queryUploadAccountUrl()+'/'+input;
   }
 })
+.filter('productImageFilter',function(Main){
+  return function(input){
+      return Main.getProductImageUrl(input.id, input.imageId);
+  }
+})
 .filter('managerNameFilter',function(Main){
   return function(input){
       var o = JSON.parse(input);
@@ -966,7 +971,7 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('mainIndexCtrl', function($scope, $state,$ionicScrollDelegate, Main) {
+.controller('mainIndexCtrl', function($scope, $ionicPopup, $state,$ionicScrollDelegate, Main) {
 
   $scope.data.categories = Main.getCategories(0);
   $scope.data.externals = Main.getCategories(1);
@@ -974,6 +979,22 @@ angular.module('starter.controllers', [])
 
   $scope.goPromotion =  function(id){
     $state.go('promotion.product_detail', {promotionId: id});
+  }
+  $scope.goExam = function() {
+    var role = Main.getRole();
+    if(role=='Guest') {
+      $ionicPopup.alert({
+        title: '系统提示',
+        template: '请先登入'
+      });
+    } else if(role=='Consultant') {
+      $ionicPopup.alert({
+        title: '系统提示',
+        template: '只有客户可以进行理财评测'
+      });
+    } else if(role == 'Customer') {
+      $state.go('exam.customer');
+    } else {}
   }
 
   $scope.goMainCategory = function(main){

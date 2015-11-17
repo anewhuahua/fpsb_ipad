@@ -221,8 +221,9 @@ angular.module('main.service',[])
     queryUploadAccountUrl: function() {
       return Rest.queryUploadAccountUrl(id);
     },
-
-
+    getProductImageUrl: function(pid, iid) {
+      return Rest.getProductImageUrl(pid, iid);
+    },
     getProductTitle: function(product) {
       var type = product.type.toLowerCase();
       for(var i=0; i<categories.length; i++){

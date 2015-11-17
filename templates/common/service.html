@@ -11,9 +11,9 @@
 
  <!--发现境内列表11.5-->
             <div class="jnxqtop">
-              <div class="jnxqtopimg"><img src="teImg/jnlbimg1.jpg" /></div>
+              <div class="jnxqtopimg"><img ng-src="{{product | productImageFilter}}" /></div>
               <div class="jnxqtopr">
-                 <div class="jnxqtopr1"><i class="xxlniuhuang1"></i><span>{{product.title}}</span><p></p></div>
+                 <div class="jnxqtopr1"><i class="xxlniuhuang1"></i><span>{{product.name}}</span><p></p></div>
                  <span>{{product.summary}}</span>
 
                  <a href="" ng-click="data.optionOperation.action()">{{data.optionOperation.name}}</a>
