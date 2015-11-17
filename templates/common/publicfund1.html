@@ -13,7 +13,7 @@
  
               <!--发现境内列表11.7-->
             <div class="gmnydv">
-              <div class="jnxqtopr1"><span>全方位量身定制专属定制理财规划事业一对一服务</span><em></em></div>
+              <div class="jnxqtopr1"><span>{{data.product.data.fundName}}</span><em></em></div>
               <div class="gmfw1">
                  <span>最新净值<em>1.039</em></span>
                  <span>累计净值<em>1.232</em></span>
@@ -21,13 +21,13 @@
               </div>
               <span class="gmtit">产品说明：</span>
               <div class="gmlbdv">
-                <span>最近一周收益率：<em>-6.61%</em></span>
-                <span>最近一月收益率：<em>-14.88%</em></span>
-                <span>最近三月收益率：<em>-6.61%</em></span>
-                <span>最近一年收益率：<i>28.53%</i></span>
-                <span>最近三年收益率：<i>28.53%</i></span>
-                <span>今年以来收益率：<i>28.53%</i></span>
-                <span>成立以来收益率：<i>28.53%</i></span>
+                <span>最近一周收益率：<em>{{data.product.data.fundNavNewest.weekRate*100}}%</em></span>
+                <span>最近一月收益率：<em>{{data.product.data.fundNavNewest.monthRate1*100}}%</em></span>
+                <span>最近三月收益率：<em>{{data.product.data.fundNavNewest.monthRate3*100}}%</em></span>
+                <span>最近一年收益率：<i>{{data.product.data.fundNavNewest.yearRate1*100}}%</i></span>
+                <span>最近三年收益率：<i>{{data.product.data.fundNavNewest.yearRate3*100}}%</i></span>
+                <span>今年以来收益率：<i>{data.product.data.fundNavNewest.yearRate0*100}}%</i></span>
+                <span>成立以来收益率：<i>{data.product.data.fundNavNewest.sumRate*100}}%</i></span>
               </div>
               <a href="" class="jnwfgma">立即购买</a>
             </div>
@@ -37,7 +37,6 @@
                 <div class="jnfw2yy"></div>
                 <div class="jnfw2d">
 
-
                   <a href="" ng-class="{'jnfwcs': isDetail(1)}" ng-click="showDetail(1)">产品详情</a>
                   <a href="" ng-class="{'jnfwcs': isDetail(2)}" ng-click="showDetail(2)">资源配置</a>
                   <a href="" ng-class="{'jnfwcs': isDetail(3)}" ng-click="showDetail(3)">走势图</a>
@@ -46,9 +45,9 @@
                 <div class="jnfw2zt" ng-if="isDetail(1)">
                    <div class="jnfw2zta">
                      <span>产品全称</span>
-                     <em>景顺长城品质投资混合</em>
+                     <em>{{data.product.data.fundName}}</em>
                      <span>基金代码</span>
-                     <em>000020</em>
+                     <em>{{data.product.data.fundNavNewest.fundId}}</em>
                    </div>
                    <div class="jnfw2zta">
                      <span>产品全称</span>
