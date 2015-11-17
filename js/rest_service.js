@@ -84,6 +84,24 @@ angular.module('rest.service', [])
       });
     },
 
+    getPublicFundDetail: function(pid, successHandler, errorHandler, finallyHandler) {
+      var req = {
+          method: 'GET',
+          url: domain+'ChiefFinancierService/api/partner/v1/partners/cljj/publcfunds/' + pid, 
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        };
+
+      $http(req).success(function(data){
+        successHandler(data);
+      }).error(function(res, status){
+        errorHandler(status);
+      }).finally(function(){
+        finallyHandler();
+      });
+    },
+
     getProducts: function(param, successHandler, errorHandler, finallyHandler) {
       type = param.type
       state  = param.state || 'open';

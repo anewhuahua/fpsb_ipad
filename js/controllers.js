@@ -224,7 +224,11 @@ angular.module('starter.controllers', [])
 
 .controller('publicfundCtrl', function($scope, $state, $stateParams, $ionicScrollDelegate, $ionicHistory, Main){
   $scope.data = {
-    index:1
+    index:1,
+    product: {
+      pid:  null,
+      data: {}
+    }
   }
   $scope.isDetail = function(num) {
     return ($scope.data.index==num);
@@ -232,6 +236,9 @@ angular.module('starter.controllers', [])
   $scope.showDetail = function(num){
     $scope.data.index = num;
   }
+  $scope.data.product.pid = $stateParams.productId;
+
+  Main.getPublicFundDetail($scope.data.product, function(data){}, function(status){}, function(){});
 
 
   $scope.dataset = [{ data: [], yaxis: 1, label: 'sin' }]
@@ -241,7 +248,6 @@ angular.module('starter.controllers', [])
       show: true
     }
   }
-
   for (var i = 0; i < 14; i += 0.5) {
     $scope.dataset[0].data.push([i, Math.sin(i)])
   }
@@ -262,8 +268,8 @@ angular.module('starter.controllers', [])
   $scope.sortKey = function(key) {
     $scope.data.key = key;
   }
-  $scope.goPublicFundDetail = function() {
-    $state.go('common.publicfund1');
+  $scope.goPublicFundDetail = function(id) {
+    $state.go('common.publicfund1', {productId:id});
   }
 
   Main.getProducts($scope.data.category, function(data){

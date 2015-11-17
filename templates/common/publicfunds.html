@@ -67,7 +67,7 @@
            </div>
 
 
-           <div class="gmlbnrdv" ng-repeat="product in data.category.products.data" ng-click="goPublicFundDetail()">
+           <div class="gmlbnrdv" ng-repeat="product in data.category.products.data" ng-click="goPublicFundDetail(product.partnerFundId)">
             <div class="gmgmff">
              <i>{{product.name}}</i>
              <span><em>{{product.fundNavNewest.nav}}</em><i>{{product.fundNavNewest.endDate | date:"yyyy-MM-dd"}}</i></span>

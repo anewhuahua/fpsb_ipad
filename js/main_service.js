@@ -351,6 +351,18 @@ angular.module('main.service',[])
       }, finallyHandler);
     },
 
+    getPublicFundDetail: function(product, successHandler, errorHandler, finallyHandler){
+      Rest.getPublicFundDetail(product.pid, function(data){
+        if(parseRestSuccess('getPublicFundDetail', data, successHandler, errorHandler)) {  
+          console.log(data.result);
+          product.data = data.result;
+        }
+      }, function(status){
+        parseRestError('getPublicFundDetail', status, errorHandler);
+      }, finallyHandler());
+    },
+
+
     getProducts: function(category, successHandler, errorHandler, finallyHandler){
       var param = {};
       param.type = category.key;

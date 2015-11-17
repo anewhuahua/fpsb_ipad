@@ -215,7 +215,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'angular-flot', 'ionicMultipleV
 
   .state('common.publicfund1', {
     cache: false,
-    url: '/publicfund1',
+    url: '/publicfund1/:productId',
     views: {
       'publicfund1': {
          templateUrl: 'templates/common/publicfund1.html',
