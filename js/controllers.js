@@ -57,6 +57,17 @@ angular.module('starter.controllers', [])
       return Main.queryUploadAccountUrl()+'/'+input;
   }
 })
+.filter('managerNameFilter',function(Main){
+  return function(input){
+      var o = JSON.parse(input);
+      var str = "";
+      console.log(o);
+      for (var i = 0; i<o.length;i++) {
+        str = str + o[i].managerName + " ";
+      }
+      return str;
+  }
+})
 
 .controller('customersCtrl', function($scope, $ionicSideMenuDelegate,$timeout) {
   
