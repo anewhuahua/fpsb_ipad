@@ -26,8 +26,8 @@
                 <span>最近三月收益率：<em>{{data.product.data.fundNavNewest.monthRate3*100}}%</em></span>
                 <span>最近一年收益率：<i>{{data.product.data.fundNavNewest.yearRate1*100}}%</i></span>
                 <span>最近三年收益率：<i>{{data.product.data.fundNavNewest.yearRate3*100}}%</i></span>
-                <span>今年以来收益率：<i>{data.product.data.fundNavNewest.yearRate0*100}}%</i></span>
-                <span>成立以来收益率：<i>{data.product.data.fundNavNewest.sumRate*100}}%</i></span>
+                <span>今年以来收益率：<i>{{data.product.data.fundNavNewest.yearRate0*100}}%</i></span>
+                <span>成立以来收益率：<i>{{data.product.data.fundNavNewest.sumRate*100}}%</i></span>
               </div>
               <a href="" class="jnwfgma">立即购买</a>
             </div>
@@ -50,10 +50,10 @@
                      <em>{{data.product.data.fundNavNewest.fundId}}</em>
                    </div>
                    <div class="jnfw2zta">
-                     <span>产品全称</span>
-                     <em>景顺长城品质投资混合</em>
-                     <span>基金代码</span>
-                     <em>000020</em>
+                     <span>基金类型</span>
+                     <em>{{data.product.data.fundType}}</em>
+                     <span>成立日期</span>
+                     <em>{{data.product.data.setupDate | date: 'yyyy-MM-dd' }}</em>
                    </div>
                    <div class="jnfw2zta">
                      <span>产品全称</span>
