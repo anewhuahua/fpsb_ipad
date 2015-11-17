@@ -52,6 +52,11 @@ angular.module('starter.controllers', [])
       if(input === 0) return '您还未进行财商测试';
   }
 })
+.filter('imageFilter',function(Main){
+  return function(input){
+      return Main.queryUploadAccountUrl()+'/'+input;
+  }
+})
 
 .controller('customersCtrl', function($scope, $ionicSideMenuDelegate,$timeout) {
   
@@ -89,7 +94,6 @@ angular.module('starter.controllers', [])
     },
     popup: ''
   };
-
 
 
   $scope.goBack = function() {
