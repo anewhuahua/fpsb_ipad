@@ -21,13 +21,13 @@
               </div>
               <span class="gmtit">产品说明：</span>
               <div class="gmlbdv">
-                <span>最近一周收益率：<em>{{data.product.data.fundNavNewest.weekRate*100}}%</em></span>
-                <span>最近一月收益率：<em>{{data.product.data.fundNavNewest.monthRate1*100}}%</em></span>
-                <span>最近三月收益率：<em>{{data.product.data.fundNavNewest.monthRate3*100}}%</em></span>
-                <span>最近一年收益率：<i>{{data.product.data.fundNavNewest.yearRate1*100}}%</i></span>
-                <span>最近三年收益率：<i>{{data.product.data.fundNavNewest.yearRate3*100}}%</i></span>
-                <span>今年以来收益率：<i>{{data.product.data.fundNavNewest.yearRate0*100}}%</i></span>
-                <span>成立以来收益率：<i>{{data.product.data.fundNavNewest.sumRate*100}}%</i></span>
+                <span>最近一周收益率：<em>{{data.product.data.fundNavNewest.weekRate*100|number:2}}%</em></span>
+                <span>最近一月收益率：<em>{{data.product.data.fundNavNewest.monthRate1*100|number:2}}%</em></span>
+                <span>最近三月收益率：<em>{{data.product.data.fundNavNewest.monthRate3*100|number:2}}%</em></span>
+                <span>最近一年收益率：<i>{{data.product.data.fundNavNewest.yearRate1*100|number:2}}%</i></span>
+                <span>最近三年收益率：<i>{{data.product.data.fundNavNewest.yearRate3*100|number:2}}%</i></span>
+                <span>今年以来收益率：<i>{{data.product.data.fundNavNewest.yearRate0*100|number:2}}%</i></span>
+                <span>成立以来收益率：<i>{{data.product.data.fundNavNewest.sumRate*100|number:2}}%</i></span>
               </div>
               <a href="" class="jnwfgma">立即购买</a>
             </div>
@@ -56,16 +56,16 @@
                      <em>{{data.product.data.setupDate | date: 'yyyy-MM-dd' }}</em>
                    </div>
                    <div class="jnfw2zta">
-                     <span>产品全称</span>
-                     <em>景顺长城品质投资混合</em>
-                     <span>基金代码</span>
-                     <em>000020</em>
+                     <span>首募规模(万元) </span>
+                     <em>哪个字段？</em>
+                     <span>风险等级</span>
+                     <em>{{data.product.data.riskLevel}}</em>
                    </div>
                    <div class="jnfw2zta">
-                     <span>产品全称</span>
-                     <em>景顺长城品质投资混合</em>
-                     <span>基金代码</span>
-                     <em>000020</em>
+                     <span>基金公司</span>
+                     <em>{{data.product.data.companyId}}</em>
+                     <span>基金经理</span>
+                     <em>{{data.product.data.managers[0].managerName}}  {{data.product.data.managers[1].managerName}}</em>
                    </div>
                    
                    <div class="jnfw2ztb">
