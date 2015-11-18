@@ -394,7 +394,7 @@ angular.module('rest.service', [])
 
         queryCustomers: function (param, id, successHandler, errorHandler, finallyHandler) {
           offset = param.offset || '0';
-          limit  = param.limit || '25';
+          limit  = param.limit || '10000';
 
           var req = {
               method: 'GET',

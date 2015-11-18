@@ -186,11 +186,11 @@
           
                 <div class="lbxzxzdv">
                 
-                    <div class="twtwdvkh">
-                        <div class="khtwtwdvf"><img src="teImg/ghnr1lef.png" /></div>
+                    <div class="twtwdvkh" ng-repeat="customer in data.customers">
+                        <div class="khtwtwdvf"><img ng-src="{{customer | imageCustomerFilter}}" /></div>
                         <div class="khtwdvr">
-                          <p class="khtwrp1"><span>王海先生</span> <em>所在地：上海</em></p>
-                          <p class="khtwrp2"><span>电话：1300004500</span> <em>邮箱：123455@gmail.com</em></p>
+                          <p class="khtwrp1"><span>{{customer.fullname}}</span> <em>所在地：上海</em></p>
+                          <p class="khtwrp2"><span>电话：{{customer.phone}}</span> <em>邮箱：{{customer.email}}</em></p>
                         </div>
                     </div>
 
@@ -327,11 +327,6 @@
 
                 <div class="gnr2ma"> 
 
-                  
-
-                
-
-
                   <ion-list>
 
                     <ion-item class="lcsslwsl" ng-repeat="product in data.liked.data">
@@ -342,8 +337,6 @@
                             删除
                           </ion-option-button>
                     </ion-item>
-
-                  
 
                   </ion-list> 
                   <!--
