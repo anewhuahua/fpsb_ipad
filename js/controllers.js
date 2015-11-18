@@ -59,6 +59,10 @@ angular.module('starter.controllers', [])
 })
 .filter('imageCustomerFilter',function(Main){
   return function(input){
+      if (input.imageId==null || input.imageId=='') {
+        return 'teImg/ghnr1lef.png';
+      }
+
       return Main.consultant.queryCustomerProfileUrl(input.id, input.imageId);
   }
 })
