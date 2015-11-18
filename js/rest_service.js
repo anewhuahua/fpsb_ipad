@@ -325,7 +325,7 @@ angular.module('rest.service', [])
       v1: {
         queryCustomerProfileUrl: function(cid, iid){
           return domain+'ChiefFinancierService/api/common/v1/accounts/'+ cid + '/images/' + iid;
-        }
+        },
 
         updateConsultant: function(param, id, successHandler, errorHandler, finallyHandler) {
           var req = {
