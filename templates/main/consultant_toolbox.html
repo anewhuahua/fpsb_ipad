@@ -232,7 +232,7 @@
                   <ion-list>
                     <ion-item class="lcsslwsl" ng-repeat="order in data.currentOrder.data" ng-click="goOrderDetail(order.id)">
                        <div class="lcsslwslf1">
-                        <img ng-src="{{order.customer.imageId | imageFilter}}" /> 
+                        <img ng-src="{{order.customer | imageCustomerFilter}}" /> 
                         <span>{{order.customer.fullname}}</span>
                       </div>
                        <div class="lcsslwslf1"><img ng-src='{{data.productType[order.product.type.toLowerCase()].image}}' /> <span>{{data.productType[order.product.type.toLowerCase()].name}}</span></div>

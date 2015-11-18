@@ -87,7 +87,7 @@ angular.module('rest.service', [])
     getPublicFundDetail: function(pid, successHandler, errorHandler, finallyHandler) {
       var req = {
           method: 'GET',
-          url: domain+'ChiefFinancierService/api/partner/v1/partners/cljj/publcfunds/' + pid, 
+          url: domain+'ChiefFinancierService/api/partner/v1/partners/cljj/publicfunds/' + pid, 
           headers: {
             'Content-Type': 'application/json'
           }
@@ -323,6 +323,9 @@ angular.module('rest.service', [])
 
     consultant: {
       v1: {
+        queryCustomerProfileUrl: function(cid, iid){
+          return domain+'ChiefFinancierService/api/common/v1/accounts/'+ cid + '/images/' + iid;
+        }
 
         updateConsultant: function(param, id, successHandler, errorHandler, finallyHandler) {
           var req = {

@@ -57,6 +57,11 @@ angular.module('starter.controllers', [])
       return Main.queryUploadAccountUrl()+'/'+input;
   }
 })
+.filter('imageCustomerFilter',function(Main){
+  return function(input){
+      return Main.consultant.queryCustomerProfileUrl(input.id, input.imageId);
+  }
+})
 .filter('productImageFilter',function(Main){
   return function(input){
       return Main.getProductImageUrl(input.id, input.imageId);

@@ -221,6 +221,7 @@ angular.module('main.service',[])
     queryUploadAccountUrl: function() {
       return Rest.queryUploadAccountUrl(id);
     },
+
     getProductImageUrl: function(pid, iid) {
       return Rest.getProductImageUrl(pid, iid);
     },
@@ -668,9 +669,10 @@ angular.module('main.service',[])
 ////////////////////////////////////////////////
 
     consultant: {
-
+      queryCustomerProfileUrl: function(cid, iid){
+        return Rest.consultant.queryCustomerProfileUrl(cid, iid);
+      },
     
-      
       getBookings: function() {
         return roleConsultant.bookings;
       },
