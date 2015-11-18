@@ -1170,7 +1170,9 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('mainConsultantCtrl', function($scope, $rootScope, $ionicPopup, $state, $timeout, $ionicScrollDelegate, $cordovaCamera, MultipleViewsManager, Main) {
+.controller('mainConsultantCtrl', function($scope, $rootScope, $ionicPopup, $state, $timeout, $ionicScrollDelegate, $cordovaCamera, 
+  MultipleViewsManager, Main) {
+
 
 //** 
 //** controller data

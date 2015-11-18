@@ -9,6 +9,9 @@ angular.module('starter', ['ionic', 'ngCordova', 'angular-flot', 'ionicMultipleV
   //
 
 .run(function($ionicPlatform) {
+  ImgCache.options.debug = false;
+  ImgCache.options.chromeQuota = 50*1024*1024;      
+
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -34,12 +37,60 @@ angular.module('starter', ['ionic', 'ngCordova', 'angular-flot', 'ionicMultipleV
     window.plugins.jPushPlugin.receiveMessageIniOSCallback = function(data) {
       console.log('tyson' + data);
     }
-    
+
+    // write log to console
+    ImgCache.options.debug = false;
+    // increase allocated space on Chrome to 50MB, default was 10MB
+    ImgCache.options.chromeQuota = 500*1024*1024;
+    ImgCache.init(function() {
+      console.log('ImgCache init: success!');
+    }, function(){
+      console.log('ImgCache init: error! Check the log for errors');
+    });
     
     //window.plugins.jPushPlugin.setApplicationIconBadgeNumber(0);
 
 
   });
+})
+.service('CacheImages', function($q){
+    return {
+        checkCacheStatus : function(src){
+            var deferred = $q.defer();
+            ImgCache.isCached(src, function(path, success) {
+                if (success) {
+                    deferred.resolve(path);
+                } else {
+                    ImgCache.cacheFile(src, function() {
+                        ImgCache.isCached(src, function(path, success) {
+                            deferred.resolve(path);
+                        }, deferred.reject);
+                    }, deferred.reject);
+                }
+            }, deferred.reject);
+            return deferred.promise;
+        }
+    };
+})
+// <img ng-cache ng-src="..." />
+.directive('ngCache', function() {
+    return {
+        restrict: 'A',
+        link: function(scope, el, attrs) {
+            attrs.$observe('ngSrc', function(src) {
+                ImgCache.isCached(src, function(path, success) {
+                    if (success) {
+                        ImgCache.useCachedFile(el);
+                    } else {
+                        ImgCache.cacheFile(src, function() {
+                            ImgCache.useCachedFile(el);
+                        });
+                    }
+                });
+
+            });
+        }
+    };
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -48,17 +99,10 @@ angular.module('starter', ['ionic', 'ngCordova', 'angular-flot', 'ionicMultipleV
   // Learn more here: https://github.com/angular-ui/ui-router
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
-/*
-  $stateProvider
-  .state('product', {
-    url: '/product',
-    views: {
-      'product-detail': {
-         templateUrl: 'templates/product.html',
-         controller: 'productDetailCtrl'
-      }
-    }
-  });*/
+
+
+
+  
 
   $stateProvider
   

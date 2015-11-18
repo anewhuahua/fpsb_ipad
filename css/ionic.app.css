@@ -3918,7 +3918,8 @@ $royal:                           #886aea !default;
   .common-person-view .gfnleful > li {
     width: 100%;
     border-top: 0.01rem #f3f2f5 solid;
-    border-bottom: 0.01rem #f5f5f7 solid; }
+    border-bottom: 0.01rem #f5f5f7 solid;
+    position: relative; }
   .common-person-view .gfnleful > li:first-child {
     border-top: none; }
   .common-person-view .gfnulitp {
