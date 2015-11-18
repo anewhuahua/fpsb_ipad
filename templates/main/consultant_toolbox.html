@@ -289,7 +289,10 @@
                   <ion-list>
 
                     <ion-item class="lcsslwsl" ng-repeat="booking in data.currentBooking.data" ng-click="goBookingDetail(booking.id)">
-                       <div class="lcsslwslf1"><img src="teImg/ghnr1lef.png" /> <span>{{booking.customer.fullname}}</span></div>
+                       <div class="lcsslwslf1">
+                        <img ng-src="{{booking.customer | imageCustomerFilter}}" /> 
+                        <span>{{booking.customer.fullname}}</span>
+                       </div>
                        <div class="lcsslwslf1"><img src='{{data.productType[booking.product.type.toLowerCase()].image}}' /> <span>{{data.productType[booking.product.type.toLowerCase()].name}}</span></div>
                        <span class="lccslwf2tyson">{{booking.product.name}}</span>
                        <div class="lcssr3" ng-if="booking.state!='completed'"><img src="teImg/wfw11.png" /></div>
