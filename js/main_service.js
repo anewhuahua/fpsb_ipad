@@ -670,7 +670,7 @@ angular.module('main.service',[])
 
     consultant: {
       queryCustomerProfileUrl: function(cid, iid){
-        return Rest.consultant.queryCustomerProfileUrl(cid, iid);
+        return Rest.consultant.v1.queryCustomerProfileUrl(cid, iid);
       },
     
       getBookings: function() {
