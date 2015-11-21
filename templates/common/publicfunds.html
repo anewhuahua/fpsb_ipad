@@ -18,16 +18,11 @@
 
  
           <div class="gmlbtopp">
-              <a href="">全部</a>
-              <a href="">偏股</a>
-              <a href="">股票</a>
-              <a href="">混合</a>
-              <a href="">债券</a>
-              <a href="">货币</a>
-              <a href="">指数</a>
-              <a href="">保本</a>
-              <a href="">理财</a>
-              <a href="">更多</a>
+
+              <a ng-repeat="type in data.subTypes" href="" ng-class="{'tjtjtew': data.currentSubType=='{{type.key}}'}" ng-click="showSubType(type.key)">
+                {{type.name}}
+              </a>
+              <!--<a href="" class="tjtjtew">全部</a>-->
            </div>
           
            

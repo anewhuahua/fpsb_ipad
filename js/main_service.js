@@ -364,6 +364,19 @@ angular.module('main.service',[])
       }, finallyHandler());
     },
 
+    sortProducts: function(category, param, successHandler, errorHandler, finallyHandler){
+      param.offset = 0;
+      param.limit = 10;
+      param.type  = category.key;
+
+      Rest.getProducts(param, function(data){
+        if(parseRestSuccess('sortProducts', data, successHandler, errorHandler)) {  
+          category.products.data = data.result;
+        }
+      }, function(status){
+        parseRestError('sortProducts', status, errorHandler);
+      }, finallyHandler());
+    },
 
     getProducts: function(category, successHandler, errorHandler, finallyHandler){
       var param = {};

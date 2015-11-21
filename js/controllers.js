@@ -284,14 +284,55 @@ angular.module('starter.controllers', [])
   //console.log($ionicScrollDelegate.$getByHandle('scroll-2').getScrollPosition());
   //$scope.products = {};
   //$scope.products.data = Main.getMockProducts();
-
+  var param = {};
   $scope.data = {
+    currentSubType: 'all',
+    subTypes: [
+      {key:'all', name:'全部'}, 
+      {key:'xx',  name:'股票型'}, 
+      {key:'xx1',  name:'混合型'}, 
+      {key:'xx2',  name:'债券型'}, 
+      {key:'xx3',  name:'货币型'}, 
+      {key:'xx4',  name:'指数型'}, 
+      {key:'xx5',  name:'保本型'}, 
+      {key:'xx6',  name:'ETF型'}, 
+      {key:'xx7',  name:'LOF型'}, 
+      {key:'xx8',  name:'QDII型'}, 
+      {key:'xx9',  name:'分级型'}
+    ],
     key: 0,
     category: Main.getCategory(1),
     more: true
   };
+
+  $scope.showSubType = function(key) {
+    $scope.data.currentSubType = key;
+    param = {subtype: key};
+    Main.sortProducts($scope.data.category, param,
+        function(data){}, function(status){}, function(){});
+  }
+
   $scope.sortKey = function(key) {
     $scope.data.key = key;
+
+    if(key == 1) {  //近1周
+      param = {sortby: 'weekRate', sort: 'desc'};
+      Main.sortProducts($scope.data.category, param,
+        function(data){}, function(status){}, function(){});
+    } else if (key == 2) { //近1月
+      param = {sortby: 'monRate1', sort: 'desc'};
+      Main.sortProducts($scope.data.category, param,
+        function(data){}, function(status){}, function(){});
+    } else if (key == 3) { //近3月
+      param = {sortby: 'monRate3', sort: 'desc'};
+      Main.sortProducts($scope.data.category, param,
+        function(data){}, function(status){}, function(){});
+    } else if (key == 8) { // 近6月
+      param = {sortby: 'Nav', sort: 'desc'};
+      Main.sortProducts($scope.data.category, param,
+        function(data){}, function(status){}, function(){});
+    }
+
   }
   $scope.goPublicFundDetail = function(id) {
     $state.go('common.publicfund1', {productId:id});
@@ -709,6 +750,11 @@ angular.module('starter.controllers', [])
       $scope.data.popup = 'OrderDialog';
     }
   }
+
+  $scope.messageDialog = function() {
+    $scope.data.popup = 'MessageDialog';
+  }
+
   $scope.addBooking= function() {
     // todo quantity
     if($scope.data.looking_product) {

@@ -124,13 +124,19 @@ angular.module('rest.service', [])
           }
         };
 
-      $http(req).success(function(data){
-        //console.log(data);
-        //products = data.result;
-        successHandler(data);
+      if (param.sortby) {
+        req.url = req.url+'&sortby='+param.sortby;
+      }
+      if (param.sort) {
+        req.url = req.url+'&sort='+param.sort;
+      }
+      if (param.subtype) {
+        req.url = req.url+'&subtype='+param.subtype;
+      }
 
+      $http(req).success(function(data){
+        successHandler(data);
       }).error(function(res, status){
-        //console.error('error', status, res);
         errorHandler(status);
       }).finally(function(){
         finallyHandler();

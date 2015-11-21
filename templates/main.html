@@ -46,6 +46,31 @@ navigation history that also transitions its views in and out.
 
   <div ng-switch on="data.popup">
 
+    <!-- 工具箱消息弹窗开始11.18 -->
+    <div class="gjxtcdv" ng-switch-when="MessageDialog">
+      <div class="gjxtopv">
+        <div class="cbntc" ng-click="closePopup('MessageDialog')"></div>
+        <span class="gjtitc">消 息</span>
+        <div class="gjtctv">
+          <span></span>
+          <em>A股昨日资金净流出115.70亿元</em>
+          <i>2015/07/24    15:39:20</i>
+        </div>
+      </div>
+      
+      <div class="xxnrdv">
+          <div class="xxdnrbjtop"></div>
+          <p>【A股昨日资金净流出115.70亿元】11月16日，沪深两市合计净流出115.70亿元。行业方面，金融板块当天净流出额最高，为35.93亿元；信息技术板块当天唯一净流入，为5.62亿元。个股中，华丽家族（600503.SH）资金净流入最多，为5.93亿元；中信证券（600030.SH）净流出最多，为7.23亿元。
+          </p>
+          <p>点评：A股周一低开高走，指数翻红重新站上3600点在一定程度上稳定了市场近期不安情绪。资金面上，尽管A股资金继续呈现资金出逃状态，但流出幅度比起上一个交易日有明显缩小。不过，量能较大程度的萎缩还是反映出投资者参与市场的积极性有所下降，预计近期资金博弈的节奏还将维持。
+          </p>
+         
+     
+      </div>
+    </div>
+    <!-- 工具箱消息弹窗结束11.18 -->
+
+
    <!-- 产品详情预约开始 -->
     <div class="cpyyxxdv"  ng-switch-when="BookingDialog">
       <div class="cpyyxxdvm">

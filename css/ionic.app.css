@@ -2087,6 +2087,8 @@ $royal:                           #886aea !default;
     font-size: 0.24rem;
     color: #7f7f7f;
     line-height: 0.3rem; }
+  .booking-view .tjtjtew {
+    color: #E79700 !important; }
 
 .exam-view {
   /* 头部 */
@@ -5932,7 +5934,9 @@ $royal:                           #886aea !default;
   /*上下页10.20-s*/
   /*上下页10.20-e*/
   /*首页新增10.27-s*/
-  /*首页新增10.27-e*/ }
+  /*首页新增10.27-e*/
+  /*工具箱消息弹窗开始11.18*/
+  /*工具箱消息弹窗结束11.18*/ }
   .common-main-view ul, .common-main-view li {
     list-style-type: none; }
   .common-main-view input {
@@ -7328,6 +7332,84 @@ $royal:                           #886aea !default;
     left: 0rem;
     top: 0rem;
     z-index: 5; }
+  .common-main-view .gjxtcdv {
+    width: 83%;
+    height: 12.6rem;
+    margin: auto;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    margin-left: -41.5%;
+    z-index: 99999999999; }
+  .common-main-view .gjxtopv {
+    width: 100%;
+    height: 2.2rem;
+    background: #fff;
+    padding-top: 0.2rem; }
+  .common-main-view .cbntc {
+    background: url(../teImg/x.png) no-repeat;
+    width: 0.54rem;
+    height: 0.54rem;
+    background-size: cover;
+    position: absolute;
+    right: 1%;
+    top: 1%; }
+  .common-main-view .gjtitc {
+    width: 90%;
+    height: 0.36rem;
+    margin: auto;
+    display: block;
+    font-size: 0.36rem;
+    color: #a8a8aa;
+    line-height: 0.36rem;
+    text-align: center; }
+  .common-main-view .gjtctv {
+    width: 100%;
+    height: 0.44rem;
+    overflow: hidden;
+    padding: 0px 0.6rem;
+    margin-top: 0.65rem; }
+  .common-main-view .gjtctv > span {
+    background: url(../teImg/grrexzimg2.png) no-repeat;
+    background-size: contain;
+    width: 0.48rem;
+    height: 0.44rem;
+    float: left;
+    margin-right: 0.05rem; }
+  .common-main-view .gjtctv > em {
+    float: left;
+    width: 70%;
+    height: 0.4rem;
+    font-size: 0.3rem;
+    color: #395983;
+    line-height: 0.44rem;
+    overflow: hidden; }
+  .common-main-view .gjtctv > i {
+    float: right;
+    width: 24%;
+    height: 0.4rem;
+    font-size: 0.3rem;
+    color: #a8a8aa;
+    line-height: 0.44rem;
+    overflow: hidden; }
+  .common-main-view .xxnrdv {
+    width: 100%;
+    height: 10.4rem;
+    overflow-y: auto;
+    background: #f3f2f5; }
+  .common-main-view .xxdnrbjtop {
+    width: 100%;
+    height: 0.35rem;
+    background: url(../teImg/xxtcbj.jpg) repeat-x;
+    padding: 0.2rem 0rem 0.5rem 0rem; }
+  .common-main-view .xxnrdv > p {
+    font-size: 0.24rem;
+    color: #395983;
+    line-height: 0.36rem;
+    width: 90%;
+    margin: 0 auto 0.4rem auto;
+    text-indent: 0.48rem;
+    text-align: justify; }
 
 .common-register-view {
   /* 注册-忘记密码-开始 */
