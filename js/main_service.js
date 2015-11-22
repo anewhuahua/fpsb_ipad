@@ -421,31 +421,25 @@ angular.module('main.service',[])
 
     },
 
-    //tyson
-    getMockProducts: function(){
-      var data = [];
-      for(var i=0;i<20;i++) {
-        data[i] = [i,i,i,i,i,i,i,i,i,i,i,i,i];
-      }
-      return data;
-    },
-    getMoreMockProducts: function(){
-      var data = [];
-      for(var i=0;i<40;i++) {
-        data[i] = [i,i,i,i,i,i,i,i,i,i,i,i,i];
-      }
-      return data;
-    },
 
     // 身份相关
     getProfile: function() {
       return profile;
     },
 
-
     // 收藏相关
+
     getLiked: function(){
       return liked;
+    }
+    queryLiked: function(successHandler, errorHandler, finallyHandler) {
+      Rest.getFavorites(id, function(data){
+        if (parseRestSuccess('getFavorites', data, successHandler, errorHandler)) {
+          liked.data=data.result;
+        }
+      }, function(status){
+        parseRestError('getFavorites',  status, errorHandler);
+      }, finallyHandler());
     },
 
     likeIt: function(product) {
@@ -515,6 +509,10 @@ angular.module('main.service',[])
     },
 
     customer: {
+      queryConsultantProfileUrl: function(cid, iid){
+        return Rest.customer.v1.queryConsultantProfileUrl(cid, iid);
+      },
+
       queryCustomer: function(successHandler, errorHandler, finallyHandler) {
         Rest.customer.v1.queryCustomer(id, function(data){
             if (parseRestSuccess('queryCustomer', data, successHandler, errorHandler)) { 
@@ -859,9 +857,27 @@ angular.module('main.service',[])
           parseRestError('completeBooking', status, errorHandler);
         }, 
         finallyHandler()); 
+      },
+
+      queryCustomerOrders: function(customerId){
+        Rest.consultant.v1.queryCustomerOrders(id, customerId, function(data){
+          if (parseRestSuccess('queryCustomerOrders', data, successHandler, errorHandler)) { 
+          }
+        }, function(status){
+          parseRestError('queryCustomerOrders', status, errorHandler);
+        }, 
+        finallyHandler()); 
+      },
+
+      queryCustomerBookings: function(customerId){
+        Rest.consultant.v1.queryCustomerBookings(id, customerId, function(data){
+          if (parseRestSuccess('queryCustomerBookings', data, successHandler, errorHandler)) { 
+          }
+        }, function(status){
+          parseRestError('queryCustomerBookings', status, errorHandler);
+        }, 
+        finallyHandler()); 
       }
-
-
 
     }, // consultant
 

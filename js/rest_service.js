@@ -165,12 +165,64 @@ angular.module('rest.service', [])
       });
     },
 
+    getFavorites: function(id, successHandler, errorHandler, finallyHandler) {
+      var req = {
+          method: 'GET',
+          url: domain+'ChiefFinancierService/api/common/v1/accounts/' + id + '/favorites?' +
+                'offset=0&limit=1000',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        };
 
-
-
+      $http(req).success(function(data){
+        successHandler(data);
+      }).error(function(res, status){
+        errorHandler(status);
+      }).finally(function(){
+        finallyHandler();
+      });
+    },
+    addToFavorites: function(id, pid, successHandler, errorHandler, finallyHandler) {
+      var req = {
+          method: 'POST',
+          url: domain+'ChiefFinancierService/api/common/v1/accounts/' + id + '/favorites?' +
+               'productId=' + pid, 
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        };
+      $http(req).success(function(data){
+        successHandler(data);
+      }).error(function(res, status){
+        errorHandler(status);
+      }).finally(function(){
+        finallyHandler();
+      });
+    },
+    deleteFromFavorite: function(id, pid, successHandler, errorHandler, finallyHandler) {
+      var req = {
+          method: 'DELETE',
+          url: domain+'ChiefFinancierService/api/common/v1/accounts/' + id + '/favorites/' + pid,
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        };
+      $http(req).success(function(data){
+        successHandler(data);
+      }).error(function(res, status){
+        errorHandler(status);
+      }).finally(function(){
+        finallyHandler();
+      });
+    },
 
     customer: {
       v1: {
+        queryConsultantProfileUrl: function(cid, iid){
+          return domain+'ChiefFinancierService/api/common/v1/accounts/'+ cid + '/images/' + iid;
+        },
+
         queryCustomer: function(cid, successHandler, errorHandler, finallyHandler) {
           var req = {
               method: 'GET',
@@ -329,6 +381,43 @@ angular.module('rest.service', [])
 
     consultant: {
       v1: {
+
+        queryCustomerOrders: function(myid, cid){
+          var req = {
+              method: 'GET',
+              url: domain+'ChiefFinancierService/api/consultant/v1/consultants/' + myid + '/orders?customerId=' + cid,
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
+
+          $http(req).success(function(data){
+            successHandler(data);
+          }).error(function(res, status){
+            errorHandler(status);
+          }).finally(function(){
+            finallyHandler();
+          });
+        },
+
+        queryCustomerBookings: function(myid, cid){
+          var req = {
+              method: 'GET',
+              url: domain+'ChiefFinancierService/api/consultant/v1/consultants/' + myid + '/bookings?customerId=' + cid,
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
+
+          $http(req).success(function(data){
+            successHandler(data);
+          }).error(function(res, status){
+            errorHandler(status);
+          }).finally(function(){
+            finallyHandler();
+          });
+        },
+
         queryCustomerProfileUrl: function(cid, iid){
           return domain+'ChiefFinancierService/api/common/v1/accounts/'+ cid + '/images/' + iid;
         },

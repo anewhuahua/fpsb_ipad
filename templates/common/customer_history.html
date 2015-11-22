@@ -1,0 +1,72 @@
+
+
+<ion-view class="booking-view">
+
+
+    <ion-content>
+     <div class="gjxnrtopyy2"></div><!-- 内容top阴影 --> 
+      <div class="main1">
+
+          <div class="gnr2dadv"><!--内容右侧开始-->
+            <div class="gnr2ma" > 
+              
+                  <div class="khzlzz3a"><span>客户历史记录</span> 
+                    <a href="" ng-click="selectPage('orders', 'all'); selectOrders('all');" ng-if="showContent('orders', 'todo')">
+                      查看历史预约
+                    </a>
+                    <a href="" ng-click="selectPage('orders', 'todo');  selectOrders('todo');"  ng-if="showContent('orders', 'all')">
+                      查看历史申购
+                    </a>
+                  </div>
+
+
+                  <ion-list ng-if="showHistory('order')">
+                    <ion-item class="lcsslwsl" ng-repeat="order in data.customer.data" ng-click="goOrderDetail(order.id)">
+                       <div class="lcsslwslf1">
+                        <img ng-cache ng-src="{{order.customer | imageCustomerFilter}}" /> 
+                        <span>{{order.customer.fullname}}</span>
+                      </div>
+                       <div class="lcsslwslf1"><img ng-src='{{data.productType[order.product.type.toLowerCase()].image}}' /> <span>{{data.productType[order.product.type.toLowerCase()].name}}</span></div>
+                       <span class="lccslwf2tyson">{{order.product.name}}</span>
+                       <div class="lcssr3b">
+                        <img src="teImg/ytj11.png" ng-if="order.state.toLowerCase()!='completed'"/>
+                        <img src="teImg/ywc11.png" ng-if="order.state.toLowerCase()=='completed'"/>
+                       </div>
+                       <ion-option-button class="button-energized">
+                            投诉 
+                       </ion-option-button>
+                    </ion-item>
+                  </ion-list> 
+
+                  <ion-list ng-if="showHistory('booking')">
+                    <ion-item class="lcsslwsl" ng-repeat="booking in data.currentOrder.data" ng-click="goOrderDetail(order.id)">
+                       <div class="lcsslwslf1">
+                        <img ng-cache ng-src="{{booking.customer | imageCustomerFilter}}" /> 
+                        <span>{{order.customer.fullname}}</span>
+                      </div>
+                       <div class="lcsslwslf1"><img ng-src='{{data.productType[order.product.type.toLowerCase()].image}}' /> <span>{{data.productType[order.product.type.toLowerCase()].name}}</span></div>
+                       <span class="lccslwf2tyson">{{order.product.name}}</span>
+                       <div class="lcssr3b">
+                        <img src="teImg/ytj11.png" ng-if="order.state.toLowerCase()!='completed'"/>
+                        <img src="teImg/ywc11.png" ng-if="order.state.toLowerCase()=='completed'"/>
+                       </div>
+                       <ion-option-button class="button-energized">
+                            投诉 
+                       </ion-option-button>
+                    </ion-item>
+                  </ion-list> 
+
+            </div><!--内容右侧结束-->
+          </div>
+      </div> <!--main1-->
+
+    </ion-content>
+  
+</ion-view>
+
+
+
+
+
+
+

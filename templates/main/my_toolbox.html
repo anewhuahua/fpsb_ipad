@@ -94,21 +94,22 @@
                    </div>
                    <input type="submit" ng-if="enableUpdatedProfile(1)" value="确认更改" class="khzlqdqd" ng-click="updateProfileInformation(data.update)"/>
                    
-                   <div class="khzlzz2tit"><span></span><em>我的理财师</em></div>
+                   <div ng-if="data.profile.data.consultant" class="khzlzz2tit"><span></span><em>我的理财师</em></div>
                    
                    <div class="khzlzz2">
                        
                        <div class="khzlzz2a">
-                          <div class="khzlzz2af"><img src="teImg/gnr2nrclef1.jpg" /></div> 
+                          <!--<div class="khzlzz2af"><img src="teImg/gnr2nrclef1.jpg" /></div> -->
+                          <div class="khzlzz2af"><img ng-src="{{data.profile.data.consultant | imageConsultantFilter}}" /></div>
                           <div class="khzlzz2ar">
-                               <em>李明 </em>
-                               <span>手机  168000000</span>
-                               <span>邮箱  1111111@sina.com</span>
+                               <em>{{data.profile.data.consultant.fullname}} </em>
+                               <span>手机  {{data.profile.data.consultant.phone}}</span>
+                               <span>邮箱  {{data.profile.data.consultant.email}}</span>
                           </div>
                        </div>
                        <div class="khzlzz2b">
                           <div class="khzlzz2bf">         背   景   </div> 
-                          <div class="khzlzz2br">长江商学院mba</div>
+                          <div class="khzlzz2br">{{data.profile.data.consultant.background}}</div>
                        </div>
                        <div class="khzlzz2c">
                           <div class="khzlzz2cf">职业证书</div> 
@@ -453,7 +454,9 @@
 <div class="main1" ng-switch-when='message'>
   <div class="gnr2dadv"><!--内容右侧开始-->
 
-                <div class="gjxnrtopyy"></div> <!-- 内容top阴影 -->
+                <div class="gjxnrtopyy"></div><!-- 内容top阴影 -->
+                <div class="gnr2ma">
+              
                <!--
                 <ul class="grxxrzpul">
                    <li class="zhyhkpulcss"><a href="">业务通知</a></li>
@@ -461,26 +464,29 @@
                 </ul>-->
                 
                 <!--<a href="" class="grxzxzaa">系统消息</a>-->
-                
-                <div class="grxxlbdv" ng-click="messageDialog()">
-                  <div><img src="teImg/grrexzimg1.png" /></div>  
-                  <em>[预约成功]粤财·瀚信中鼎盈丰2期！</em>
-                </div>
-                <div class="grxxlbdv" ng-click="messageDialog()">
-                  <div><img src="teImg/grrexzimg2.png" /></div>  
-                  <em>[预约成功]粤财·瀚信中鼎盈丰2期！</em>
-                </div>
-                <div class="grxxlbdv" ng-click="messageDialog()">
-                  <div><img src="teImg/grrexzimg1.png" /></div>  
-                  <em>[预约成功]粤财·瀚信中鼎盈丰2期！</em>
-                </div>
-                <div class="grxxlbdv" ng-click="messageDialog()">
-                  <div><img src="teImg/grrexzimg2.png" /></div>  
-                  <em>[预约成功]粤财·瀚信中鼎盈丰2期！</em>
-                </div>
-                
-            </div><!--内容右侧结束-->
+                <div style="height:0.1rem;"></div>
+               
+                <ion-list>
+                    <ion-item class="lcsslwsl" ng-click="messageDialog()">
+                       <div class="lcsslwslf1"><img src="teImg/grrexzimg1.png"/></div>
+                       <span  class="lccslwf2">[预约成功]粤财·瀚信中鼎盈丰2期！</span>
+                       <ion-option-button class="button-energized">
+                            删除 
+                        </ion-option-button>
+                    </ion-item>
+                    <ion-item class="lcsslwsl" ng-click="messageDialog()">
+                       <div class="lcsslwslf1"><img src="teImg/grrexzimg2.png" /></div>
+                       <span  class="lccslwf2">[预约成功]粤财·瀚信中鼎盈丰2期！</span>
+                       <ion-option-button class="button-energized">
+                            删除
+                        </ion-option-button>
+                    </ion-item>
 
+                  </ion-list> 
+
+                  </div>
+                
+  </div><!--内容右侧结束-->
 </div>
 <!-- message -->
 

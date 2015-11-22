@@ -62,8 +62,15 @@ angular.module('starter.controllers', [])
       if (input.imageId==null || input.imageId=='') {
         return 'teImg/ghnr1lef.png';
       }
-
       return Main.consultant.queryCustomerProfileUrl(input.id, input.imageId);
+  }
+})
+.filter('imageConsultantFilter',function(Main){
+  return function(input){
+      if (input.imageId==null || input.imageId=='') {
+        return 'teImg/ghnr1lef.png';
+      }
+      return Main.customer.queryConsultantProfileUrl(input.id, input.imageId);
   }
 })
 .filter('productImageFilter',function(Main){
@@ -1233,6 +1240,7 @@ angular.module('starter.controllers', [])
     pendings: {},
     information: {},
     message:{}
+
   };
 
   $scope.data = {
@@ -1260,14 +1268,13 @@ angular.module('starter.controllers', [])
       province: '',
       email: '',
       address: '',
-      imageId: '',
+      imageId: $scope.imgProfile.id,
       fullname: '',
       background: '',
       gender: '',
       certificates: 0 
     }
   };
-
 
 //**
 //** initialize
@@ -1296,17 +1303,20 @@ angular.module('starter.controllers', [])
 //** common function
   $scope.updateProfileInformation = function(param) {
 
+    if ($scope.imgProfile.id != '') {
+      $scope.data.update.imageId = $scope.imgProfile.id;
+      param.imageId = $scope.imgProfile.id;
+    }
+
     Main.consultant.updateConsultant(param, function(data){
       for (key in $scope.data.update) {
         $scope.data.update[key] = data[key];
       }
 
-      for (var i=0;i<$scope.provinceNames.length;i++) {
-        if($scope.provinceNames[i].key == data.province) {
-          $scope.data.provinceName =  $scope.provinceNames[i].value;
-          break;
-        } 
-      }
+      if (data.imageId && data.imageId != '') {
+        $scope.imgProfile.data = Main.queryUploadAccountUrl() + '/' + data.imageId;
+      } 
+
       $ionicPopup.alert({
           title: '提示信息',
           cssClass: 'alert-text',
@@ -1323,8 +1333,6 @@ angular.module('starter.controllers', [])
     }, function(){
     })
   };
-
-  
 
   $scope.updateProfile = function(num){
     $scope.consultant.updatedProfile = num;
@@ -1354,13 +1362,9 @@ angular.module('starter.controllers', [])
       for (key in $scope.data.update) {
         $scope.data.update[key] = data[key];
       }
-
-      for (var i=0;i<$scope.provinceNames.length;i++) {
-          if($scope.provinceNames[i].key == data.province) {
-            $scope.data.provinceName =  $scope.provinceNames[i].value;
-             break;
-          } 
-      }
+      if (data.imageId && data.imageId != '') {
+        $scope.imgProfile.data = Main.queryUploadAccountUrl() + '/' + data.imageId;
+      } 
 
     },function(status){}, function(){
     });

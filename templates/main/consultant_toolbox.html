@@ -34,7 +34,9 @@
                       <div class="khzlzz1b">
                       
                          <div class="khzlzz1bf">
-                            <div class="khzlzz1bfimg"><img src="teImg/ghnr1lef.png" /></div>
+                            <div class="khzlzz1bfimg" ng-if="!enableUpdatedProfile(1)"><img ng-src="{{imgProfile.data}}" /></div>
+                            <div class="khzlzz1bfimg" ng-if="enableUpdatedProfile(1)"> <img ng-src="{{imgProfile.data}}" ng-click="choosePicMenu()"/></div>
+
                             <div ng-if="!enableUpdatedProfile(1)" class="khzlzz1bfw">{{data.profile.data.fullname}}</div>
                             <input ng-if="enableUpdatedProfile(1)" class="khzlzz1bfwu" placeholder="请输入姓名" ng-model="data.update.fullname"/>
                           
@@ -46,7 +48,7 @@
                             </div>
 
                             <div class="khzlzz1br2"><span>性 别</span>
-                              <div ng-if="!enableUpdatedProfile(1)">{{data.profile.data.gender}}</div>
+                              <div ng-if="!enableUpdatedProfile(1)">{{data.profile.data.gender | genderFilter}}</div>
                               <div ng-if="enableUpdatedProfile(1)">
                                    <select style="width:100%;border:0.1rem;" placeholder="请选择性别" ng-model="data.update.gender">
                                    <option value='male'>男</option>
@@ -59,7 +61,7 @@
                             <div class="khzlzz1br2"><span>推 荐 码</span><div>{{data.profile.data.barcode}}</div></div>
 
                             <div class="khzlzz1br2"><span>所 在 地</span>
-                              <div ng-if="!enableUpdatedProfile(1)">{{data.provinceName}}</div>
+                              <div ng-if="!enableUpdatedProfile(1)">{{data.profile.data.province | provinceFilter}}</div>
                               <div ng-if="enableUpdatedProfile(1)">
                                    <select style="width:100%;border:0.1rem;" placeholder="请选择所在地" ng-model="data.update.province">
                                     <option ng-repeat='p in provinceNames' value={{p.key}}>{{p.value}}</option>
@@ -185,15 +187,21 @@
                 <!--1021修改-->
           
                 <div class="lbxzxzdv">
-                
-                    <div class="twtwdvkh" ng-repeat="customer in data.customers.data">
-                        <div class="khtwtwdvf"><img ng-src="{{customer | imageCustomerFilter}}" /></div>
-                        <div class="khtwdvr">
-                          <p class="khtwrp1"><span>{{customer.fullname}}</span> <em>所在地：上海</em></p>
-                          <p class="khtwrp2"><span>电话：{{customer.phone}}</span> <em>邮箱：{{customer.email}}</em></p>
-                        </div>
-                    </div>
-
+                    <ion-list>
+                      <ion-item class="twtwdvkh" ng-repeat="customer in data.customers.data"> <!-- -->
+                          <div class="khtwtwdvf"><img ng-src="{{customer | imageCustomerFilter}}" /></div>
+                          <div class="khtwdvr">
+                            <p class="khtwrp1"><span>{{customer.fullname}}</span> <em>所在地：上海</em></p>
+                            <p class="khtwrp2"><span>电话：{{customer.phone}}</span> <em>邮箱：{{customer.email}}</em></p>
+                          </div>
+                          <ion-option-button class="button-energized">
+                            分组 
+                          </ion-option-button>
+                          <ion-option-button class="button-assertive">
+                            删除 
+                          </ion-option-button>
+                      </ion-item>
+                    </ion-list>
 
                 </div>
              
@@ -243,7 +251,7 @@
                        </div>
                        <ion-option-button class="button-energized">
                             投诉 
-                          </ion-option-button>
+                       </ion-option-button>
                     </ion-item>
 
                   </ion-list> 
@@ -358,34 +366,39 @@
 <div class="main1" ng-switch-when='message'>
   <div class="gnr2dadv"><!--内容右侧开始-->
 
-                <div class="gjxnrtopyy"></div> <!-- 内容top阴影 -->
+                <div class="gjxnrtopyy"></div><!-- 内容top阴影 -->
+                <div class="gnr2ma">
+              
                <!--
                 <ul class="grxxrzpul">
                    <li class="zhyhkpulcss"><a href="">业务通知</a></li>
                    <li><a href="">系统消息</a></li>
                 </ul>-->
                 
-                <a href="" class="grxzxzaa">系统消息</a>
-                
-                <div class="grxxlbdv">
-                  <div><img src="teImg/grrexzimg1.png" /></div>  
-                  <em>[预约成功]粤财·瀚信中鼎盈丰2期！</em>
-                </div>
-                <div class="grxxlbdv">
-                  <div><img src="teImg/grrexzimg2.png" /></div>  
-                  <em>[预约成功]粤财·瀚信中鼎盈丰2期！</em>
-                </div>
-                <div class="grxxlbdv">
-                  <div><img src="teImg/grrexzimg1.png" /></div>  
-                  <em>[预约成功]粤财·瀚信中鼎盈丰2期！</em>
-                </div>
-                <div class="grxxlbdv">
-                  <div><img src="teImg/grrexzimg2.png" /></div>  
-                  <em>[预约成功]粤财·瀚信中鼎盈丰2期！</em>
-                </div>
-                
-            </div><!--内容右侧结束-->
+                <!--<a href="" class="grxzxzaa">系统消息</a>-->
+                <div style="height:0.1rem;"></div>
+               
+                <ion-list>
+                    <ion-item class="lcsslwsl" ng-click="messageDialog()">
+                       <div class="lcsslwslf1"><img src="teImg/grrexzimg1.png"/></div>
+                       <span  class="lccslwf2">[预约成功]粤财·瀚信中鼎盈丰2期！</span>
+                       <ion-option-button class="button-energized">
+                            删除 
+                        </ion-option-button>
+                    </ion-item>
+                    <ion-item class="lcsslwsl" ng-click="messageDialog()">
+                       <div class="lcsslwslf1"><img src="teImg/grrexzimg2.png" /></div>
+                       <span  class="lccslwf2">[预约成功]粤财·瀚信中鼎盈丰2期！</span>
+                       <ion-option-button class="button-energized">
+                            删除
+                        </ion-option-button>
+                    </ion-item>
 
+                  </ion-list> 
+
+                  </div>
+                
+  </div><!--内容右侧结束-->
 </div>
 <!-- message -->
 
