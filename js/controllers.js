@@ -462,14 +462,9 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('commonCustomerHistoryCtrl', function($scope, $stateParams, Main) {
+.controller('commonCustomerHistoryCtrl', function($scope, $stateParams, $ionicPopup, Main) {
   
   var cid = $stateParams.customerId;
-
-  $scope.selectHistory = function(key){
-
-  }
-
   $scope.data = {   
     currentIndex: 'orders',
     orders:  {
@@ -496,6 +491,9 @@ angular.module('starter.controllers', [])
    Main.consultant.queryCustomerBookings(cid, function(data){
       $scope.data.bookings.data = data;
     }, function(status){}, function(){});
+
+
+
 })
 
 
@@ -1398,6 +1396,37 @@ angular.module('starter.controllers', [])
 
 //**
 //** common function
+  $scope.group = function() {
+     var myPopup = $ionicPopup.show({
+       //template: '<input type="text" ng-model="data.wifi">',
+       template: '<select style="width:100%"><option>默认分组</option><option>分组1</option></select>',
+       title: '加入分组',
+       subTitle: '选择客户分组',
+       scope: $scope,
+       buttons: [
+         { text: '新建分组' },
+         {
+           text: '<b>确认加入</b>',
+           type: 'button-positive',
+           onTap: function(e) {
+             if (!$scope.data.wifi) {
+               //不允许用户关闭，除非他键入wifi密码
+               e.preventDefault();
+             } else {
+               return $scope.data.wifi;
+             }
+           }
+         },
+       ]
+     });
+     myPopup.then(function(res) {
+       console.log('Tapped!', res);
+     });
+      /*
+     $timeout(function() {
+        myPopup.close(); //由于某种原因3秒后关闭弹出
+     }, 3000);*/
+  }
 
   $scope.goCustomerHistory = function(cus) {
     $state.go('common.customer_history', {customerId: cus.id});
