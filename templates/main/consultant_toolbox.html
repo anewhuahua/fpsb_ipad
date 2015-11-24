@@ -188,7 +188,7 @@
           
                 <div class="lbxzxzdv">
                     <ion-list>
-                      <ion-item class="twtwdvkh" ng-repeat="customer in data.customers.data"> <!-- -->
+                      <ion-item class="twtwdvkh" ng-repeat="customer in data.customers.data" ng-click="goCustomerHistory(customer)"> <!-- -->
                           <div class="khtwtwdvf"><img ng-src="{{customer | imageCustomerFilter}}" /></div>
                           <div class="khtwdvr">
                             <p class="khtwrp1"><span>{{customer.fullname}}</span> <em>所在地：上海</em></p>
@@ -341,7 +341,7 @@
                        <div class="lcsslwslf1"><img src='teImg/lbaitemimg3.png' /> <span>私募</span></div>
                        <span class="lccslwf2">{{product.name}}</span>
                     
-                          <ion-option-button class="button-assertive">
+                          <ion-option-button class="button-assertive" ng-click="hateIt(product)">
                             删除
                           </ion-option-button>
                     </ion-item>

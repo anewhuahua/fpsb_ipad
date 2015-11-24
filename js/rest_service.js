@@ -165,6 +165,25 @@ angular.module('rest.service', [])
       });
     },
 
+    isLikedProduct: function(id, pid, successHandler, errorHandler, finallyHandler) {
+      var req = {
+          method: 'GET',
+          url: domain+'ChiefFinancierService/api/common/v1/accounts/' + id + '/favorites?' +
+              'productId=' + pid,
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        };
+
+      $http(req).success(function(data){
+        successHandler(data);
+      }).error(function(res, status){
+        errorHandler(status);
+      }).finally(function(){
+        finallyHandler();
+      });
+    },
+
     getFavorites: function(id, successHandler, errorHandler, finallyHandler) {
       var req = {
           method: 'GET',
@@ -203,7 +222,8 @@ angular.module('rest.service', [])
     deleteFromFavorite: function(id, pid, successHandler, errorHandler, finallyHandler) {
       var req = {
           method: 'DELETE',
-          url: domain+'ChiefFinancierService/api/common/v1/accounts/' + id + '/favorites/' + pid,
+          url: domain+'ChiefFinancierService/api/common/v1/accounts/' + id + '/favorites?' + 
+               'productId=' + pid,
           headers: {
             'Content-Type': 'application/json'
           }
@@ -382,10 +402,11 @@ angular.module('rest.service', [])
     consultant: {
       v1: {
 
-        queryCustomerOrders: function(myid, cid){
+        queryCustomerOrders: function(myid, cid, successHandler, errorHandler, finallyHandler){
           var req = {
               method: 'GET',
-              url: domain+'ChiefFinancierService/api/consultant/v1/consultants/' + myid + '/orders?customerId=' + cid,
+              url: domain+'ChiefFinancierService/api/consultant/v1/consultants/' + myid + '/orders?customerId=' + cid +
+              '&offset=0&limit=10000',
               headers: {
                 'Content-Type': 'application/json'
               }
@@ -400,10 +421,11 @@ angular.module('rest.service', [])
           });
         },
 
-        queryCustomerBookings: function(myid, cid){
+        queryCustomerBookings: function(myid, cid, successHandler, errorHandler, finallyHandler){
           var req = {
               method: 'GET',
-              url: domain+'ChiefFinancierService/api/consultant/v1/consultants/' + myid + '/bookings?customerId=' + cid,
+              url: domain+'ChiefFinancierService/api/consultant/v1/consultants/' + myid + '/bookings?customerId=' + cid +
+              '&offset=0&limit=10000',
               headers: {
                 'Content-Type': 'application/json'
               }

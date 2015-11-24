@@ -222,6 +222,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'angular-flot', 'ionicMultipleV
     }
   })
 
+
+
   .state('common.booking_detail', {
     url: '/booking/detail/:bookingId',
     views: {
@@ -246,6 +248,22 @@ angular.module('starter', ['ionic', 'ngCordova', 'angular-flot', 'ionicMultipleV
       }
     }
   })
+
+  .state('common.customer_history', {
+    cache: false,
+    url: '/customer/history/:customerId',
+    views: {
+      'customer-history-menu': {
+         templateUrl: 'templates/common/customer_history_menu.html'
+      },
+      'customer-history': {
+         templateUrl: 'templates/common/customer_history.html',
+         controller: 'commonCustomerHistoryCtrl'
+      }
+    }
+  })
+
+
   .state('common.publicfunds', {
     cache: false,
     url: '/publicfunds',

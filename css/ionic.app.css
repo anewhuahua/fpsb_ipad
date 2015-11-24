@@ -1781,6 +1781,12 @@ $royal:                           #886aea !default;
     height: 0.49rem;
     background: url(../teImg/likeit.png) no-repeat;
     background-size: cover; }
+  .booking-view .jnxqtopr1 > i {
+    float: right;
+    width: 0.49rem;
+    height: 0.49rem;
+    background: url(../teImg/likedit.png) no-repeat;
+    background-size: cover; }
   .booking-view .jnxqtopr > span {
     text-align: justify;
     font-size: 0.26rem;
@@ -6404,6 +6410,12 @@ $royal:                           #886aea !default;
     margin-left: 0.2rem; }
   .common-main-view .prxqh4 {
     background: url(../teImg/likeit.png) no-repeat;
+    width: 0.54rem;
+    height: 0.54rem;
+    background-size: cover;
+    margin-right: 0.2rem; }
+  .common-main-view .prxqh4tyson {
+    background: url(../teImg/likedit.png) no-repeat;
     width: 0.54rem;
     height: 0.54rem;
     background-size: cover;

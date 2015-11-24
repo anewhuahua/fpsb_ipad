@@ -222,7 +222,39 @@ angular.module('starter.controllers', [])
   var cid = $stateParams.categoryId;
   var pid = $stateParams.productId;
 
+  Main.isLikedProduct(pid, function(data){
+          if(data.length>0) {
+            $scope.currentLiked = true;
+          } else {
+            $scope.currentLiked = false;
+          }
+          
+        }, function(status){
+          $scope.currentLiked = false;
+        }, function(){});
+
   $scope.product = Main.getProductDetail(cid, pid);
+
+  
+  $scope.likeIt = function(product) {
+      Main.likeIt(product, function(data){
+          $scope.currentLiked = true;
+          $ionicPopup.alert({
+                  title: '提示信息',
+                  cssClass: 'alert-text',
+                  template:  '收藏成功!'
+              });
+      }, function(status){
+        $scope.currentLiked = false;
+          $ionicPopup.alert({
+                  title: '提示信息',
+                  cssClass: 'alert-text',
+                  template:  '收藏失败!'
+              });
+      }, function(){});
+  }
+  
+
   var addBooking= function() {
     // todo quantity
       Main.customer.addBooking(pid, function(data){
@@ -427,7 +459,43 @@ angular.module('starter.controllers', [])
       return false;
     }
   }
+})
 
+
+.controller('commonCustomerHistoryCtrl', function($scope, $stateParams, Main) {
+  
+  var cid = $stateParams.customerId;
+
+  $scope.selectHistory = function(key){
+
+  }
+
+  $scope.data = {   
+    currentIndex: 'orders',
+    orders:  {
+      data:[]
+    }, 
+    bookings: {
+      data:[]
+    },
+    bookingState: Main.getBookingState(),
+    orderState: Main.getOrderState(),
+    productType: Main.getProductType()
+  };
+
+   $scope.selectHistory = function(index){
+     $scope.data.currentIndex = index;
+   }
+   $scope.showHistory = function(index){
+     return ($scope.data.currentIndex==index);
+   }
+
+   Main.consultant.queryCustomerOrders(cid, function(data){
+        $scope.data.orders.data = data;
+    }, function(status){}, function(){});
+   Main.consultant.queryCustomerBookings(cid, function(data){
+      $scope.data.bookings.data = data;
+    }, function(status){}, function(){});
 })
 
 
@@ -693,11 +761,22 @@ angular.module('starter.controllers', [])
   $scope.showProduct = function(product, cid) {
 
     if(product){
-      ret = Main.productGoState(product)
+      ret = Main.productGoState(product);
 
       if (ret.go) {
         $state.go(ret.go, {categoryId: cid, productId: product.id});
       } else {
+        Main.isLikedProduct(product.id, function(data){
+          if(data.length>0) {
+            $scope.data.currentLiked = true;
+          } else {
+            $scope.data.currentLiked = false;
+          }
+          
+        }, function(status){
+          $scope.data.currentLiked = false;
+        }, function(){});
+
         $scope.data.popup = 'privateFund';
         $scope.data.looking_product = product;
         $scope.data.optionOperation= Main.getOperation(product, $scope.addBooking, $scope.orderDialog, function(){
@@ -713,19 +792,37 @@ angular.module('starter.controllers', [])
   $scope.closeProduct = function() {
     $scope.data.popup = '';
     $scope.data.looking_product = null;
+    $scope.data.currentLiked = false;
   }
   $scope.likeIt = function() {
     if($scope.data.looking_product) {
-      console.log(Main.likeIt($scope.data.looking_product));
+      Main.likeIt($scope.data.looking_product, function(data){
+          $scope.data.currentLiked = true;
+          $ionicPopup.alert({
+                  title: '提示信息',
+                  cssClass: 'alert-text',
+                  template:  '收藏成功!'
+              });
+      }, function(status){
+        $scope.data.currentLiked = false;
+          $ionicPopup.alert({
+                  title: '提示信息',
+                  cssClass: 'alert-text',
+                  template:  '收藏失败!'
+              });
+      }, function(){});
     }
   }
-
+  $scope.hateIt = function(product) {
+    Main.hateIt(product, function(data){
+      }, function(status){
+      }, function(){});
+  }
   $scope.closePopup = function(win) {
     if ($scope.data.popup == win) {
       $scope.data.popup = '';
     }
     $scope.data.looking_booking = null;
-
 
     if (win == 'login') {
       $ionicHistory.goBack();
@@ -1257,7 +1354,7 @@ angular.module('starter.controllers', [])
     currentBookingState: 'all',
     currentBooking: null,
 
-    liked: null,
+    liked: Main.getLiked(),
 
     update: {
       cpb: 0,
@@ -1280,7 +1377,7 @@ angular.module('starter.controllers', [])
 //** initialize
   $scope.data.currentOrder = $scope.data.orders['all'];
   $scope.data.currentBooking = $scope.data.bookings['all'];
-  $scope.data.liked = Main.getLiked();
+  
 
 
   //**
@@ -1301,6 +1398,11 @@ angular.module('starter.controllers', [])
 
 //**
 //** common function
+
+  $scope.goCustomerHistory = function(cus) {
+    $state.go('common.customer_history', {customerId: cus.id});
+  }
+
   $scope.updateProfileInformation = function(param) {
 
     if ($scope.imgProfile.id != '') {
@@ -1365,7 +1467,6 @@ angular.module('starter.controllers', [])
       if (data.imageId && data.imageId != '') {
         $scope.imgProfile.data = Main.queryUploadAccountUrl() + '/' + data.imageId;
       } 
-
     },function(status){}, function(){
     });
 
@@ -1379,7 +1480,10 @@ angular.module('starter.controllers', [])
     // get crm
     Main.consultant.queryCustomers($scope.data.customers, function(data){
     }, function(status){}, function(){});
-   
+
+    Main.queryLiked(function(data){
+    }, function(status){}, function(){});
+
   };
 
   $scope.selectOrders = function(param){
@@ -1465,7 +1569,7 @@ angular.module('starter.controllers', [])
     currentBookingState: 'all',
     currentBooking: null,
 
-    liked: null,
+    liked: Main.getLiked(),
     refreshing: {bookings:false, orders:false},
 
     update: {
@@ -1483,7 +1587,6 @@ angular.module('starter.controllers', [])
   //** initialize
   $scope.data.currentOrder = $scope.data.orders['all'];
   $scope.data.currentBooking = $scope.data.bookings['all'];
-  $scope.data.liked = Main.getLiked();
 
 
   //**
@@ -1566,6 +1669,9 @@ angular.module('starter.controllers', [])
     }, function(status){}, function(){
       $scope.$broadcast('scroll.refreshComplete');    //因为booking比较多
     });
+
+    Main.queryLiked(function(data){
+    }, function(status){}, function(){});
 
   };
   $scope.selectOrders = function(param){

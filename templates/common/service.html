@@ -13,7 +13,12 @@
             <div class="jnxqtop">
               <div class="jnxqtopimg"><img ng-cache ng-src="{{product | productImageFilter}}" /></div>
               <div class="jnxqtopr">
-                 <div class="jnxqtopr1"><i class="xxlniuhuang1"></i><span>{{product.name}}</span><p></p></div>
+                 <div class="jnxqtopr1">
+                  <p ng-if="!currentLiked" class="xxlniuhuang1" ng-click="likeIt(product)"></p>
+                  <i ng-if="currentLiked" class="xxlniuhuang1"></i>
+                  <span>{{product.name}}</span>
+                 </div>
+               
                  <span>{{product.summary}}</span>
 
                  <a href="" ng-click="data.optionOperation.action()">{{data.optionOperation.name}}</a>

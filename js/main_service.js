@@ -305,7 +305,7 @@ angular.module('main.service',[])
           console.log(id);
 
           Storage.setObject('login', {'username': username, 'password': password});
-          liked.data = Storage.getObject('liked'+id) || [];
+          
 
           console.log('main.service login success:' + id);
           successHandler();
@@ -431,7 +431,18 @@ angular.module('main.service',[])
 
     getLiked: function(){
       return liked;
-    }
+    },
+
+    isLikedProduct: function(pid, successHandler, errorHandler, finallyHandler) {
+      Rest.isLikedProduct(id, pid, function(data){
+        if (parseRestSuccess('isLikedProduct', data, successHandler, errorHandler)) {
+          console.log(data);
+        }
+      }, function(status){
+        parseRestError('isLikedProduct',  status, errorHandler);
+      }, finallyHandler());
+    },
+
     queryLiked: function(successHandler, errorHandler, finallyHandler) {
       Rest.getFavorites(id, function(data){
         if (parseRestSuccess('getFavorites', data, successHandler, errorHandler)) {
@@ -442,31 +453,39 @@ angular.module('main.service',[])
       }, finallyHandler());
     },
 
-    likeIt: function(product) {
+    likeIt: function(product, successHandler, errorHandler, finallyHandler) {
       console.log(liked.data.length);
       if (liked.data.length <= 60) {
-        for(var i=0; i<liked.data.length;i++) {
-          if (liked.data[i].id==product.id) {
-            return {ret: 0, msg: '请不要重复收藏'};
+        Rest.addToFavorites(id, product.id, function(data){
+          if (parseRestSuccess('addToFavorites', data, successHandler, errorHandler)) {
+            liked.data=data.result;
+            return {ret: 1, msg: '已收藏'};
           }
-        }
-       
-        liked.data.unshift(product);
-        Storage.setObject('liked'+id, liked.data);
-        return {ret: 1, msg: '已收藏'};
+        }, function(status){
+          parseRestError('addToFavorites',  status, errorHandler);
+          return {ret: 0, msg: '网络错误'};
+        }, finallyHandler());
+        
       } else {
         return {ret: 0, msg: '超出最大收藏数量60'}
       }
     },
 
-    hateIt: function(product) {
-      for(var i=0; i<liked.data.length;i++) {
-        if (liked.data[i].id==product.id) {
-         
-          liked.data.splice(i,1);
-          Storage.setObject('liked'+id, liked.data);
-          return {ret: 1, msg: '已取消收藏'};
-        }
+    hateIt: function(product, successHandler, errorHandler, finallyHandler) {
+      console.log(liked.data.length);
+      if (liked.data.length > 0) {
+        Rest.deleteFromFavorite(id, product.id, function(data){
+          if (parseRestSuccess('deleteFromFavorite', data, successHandler, errorHandler)) {
+            liked.data=data.result;
+            return {ret: 1, msg: '已删除'};
+          }
+        }, function(status){
+          parseRestError('deleteFromFavorite',  status, errorHandler);
+          return {ret: 0, msg: '网络错误'};
+        }, finallyHandler());
+        
+      } else {
+        return {ret: 0, msg: '收藏夹是空得'}
       }
     },
 
@@ -859,7 +878,7 @@ angular.module('main.service',[])
         finallyHandler()); 
       },
 
-      queryCustomerOrders: function(customerId){
+      queryCustomerOrders: function(customerId, successHandler, errorHandler, finallyHandler){
         Rest.consultant.v1.queryCustomerOrders(id, customerId, function(data){
           if (parseRestSuccess('queryCustomerOrders', data, successHandler, errorHandler)) { 
           }
@@ -869,7 +888,7 @@ angular.module('main.service',[])
         finallyHandler()); 
       },
 
-      queryCustomerBookings: function(customerId){
+      queryCustomerBookings: function(customerId, successHandler, errorHandler, finallyHandler){
         Rest.consultant.v1.queryCustomerBookings(id, customerId, function(data){
           if (parseRestSuccess('queryCustomerBookings', data, successHandler, errorHandler)) { 
           }
