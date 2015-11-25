@@ -401,7 +401,90 @@ angular.module('rest.service', [])
 
     consultant: {
       v1: {
+        // group related
+        queryGroups: function(id, successHandler, errorHandler, finallyHandler) {
+          var req = {
+              method: 'GET',
+              url: domain+'ChiefFinancierService/api/consultant/v1/consultants/' + id + '/customergroups/groupnames',
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
 
+            //console.log(pid);
+          $http(req).success(function(data){
+            //console.log(data);
+            successHandler(data);
+          }).error(function(res, status){
+            errorHandler(status);
+          }).finally(function(){
+            finallyHandler();
+          });
+        },
+
+        
+
+        queryGroupMembers: function(id, gname, successHandler, errorHandler, finallyHandler) {
+          var req = {
+              method: 'GET',
+              url: domain+'ChiefFinancierService/api/consultant/v1/consultants/' + id + '/customergroups/' +
+                   gname + '/customers',
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
+            //console.log(pid);
+          $http(req).success(function(data){
+            //console.log(data);
+            successHandler(data);
+          }).error(function(res, status){
+            errorHandler(status);
+          }).finally(function(){
+            finallyHandler();
+          });
+        },
+
+        addGroupMember: function(id, gname, cid, successHandler, errorHandler, finallyHandler) {
+          var req = {
+              method: 'POST',
+              url: domain+'ChiefFinancierService/api/consultant/v1/consultants/' + id + '/customergroups' +
+                    '?groupName='+ gname + '&customerId='+cid,
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
+            //console.log(pid);
+          $http(req).success(function(data){
+            //console.log(data);
+            successHandler(data);
+          }).error(function(res, status){
+            errorHandler(status);
+          }).finally(function(){
+            finallyHandler();
+          });
+        },
+
+        delGroupMember: function(id, gname, cid, successHandler, errorHandler, finallyHandler) {
+          var req = {
+              method: 'DELETE',
+              url: domain+'ChiefFinancierService/api/consultant/v1/consultants/' + id + '/customergroups' +
+                    '?groupName='+ gname + '&customerId='+cid,
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
+            //console.log(pid);
+          $http(req).success(function(data){
+            //console.log(data);
+            successHandler(data);
+          }).error(function(res, status){
+            errorHandler(status);
+          }).finally(function(){
+            finallyHandler();
+          });
+        },
+
+        // CRM
         queryCustomerOrders: function(myid, cid, successHandler, errorHandler, finallyHandler){
           var req = {
               method: 'GET',
@@ -444,6 +527,7 @@ angular.module('rest.service', [])
           return domain+'ChiefFinancierService/api/common/v1/accounts/'+ cid + '/images/' + iid;
         },
 
+        // profile
         updateConsultant: function(param, id, successHandler, errorHandler, finallyHandler) {
           var req = {
               method: 'PUT',
