@@ -266,6 +266,33 @@ angular.module('main.service',[])
       return role;
     },  
 
+
+    queryBuyAccount: function(name, identity, successHandler, errorHandler, finallyHandler) {
+      Rest.queryBuyAccount(id, name, identity, function(data){
+        if(parseRestSuccess('queryBuyAccount', data, successHandler, errorHandler)) {
+          console.log('tyson11111111');
+          if(data.resullt) {
+            return {created: 'yes'};
+          } else {
+            return {created: 'no'};
+          }
+        }
+      }, function(status){
+        parseRestError('queryBuyAccount', status, errorHandler);
+      }, finallyHandler());
+    },
+    createBuyAccount: function(name, identity, pwd, mail, mobile, successHandler, errorHandler, finallyHandler) {
+      Rest.createBuyAccount(id, name, identity, pwd, mail, mobile, function(data){
+        if(parseRestSuccess('createBuyAccount', data, successHandler, errorHandler)) {
+          console.log('tyson11111111');
+          console.log(data);
+        }
+      }, function(status){
+        parseRestError('createBuyAccount', status, errorHandler);
+      }, finallyHandler());
+    },
+
+
     login: function(param, successHandler, errorHandler, finallyHandler) {
       var username = null;
       var password = null;
@@ -699,6 +726,52 @@ angular.module('main.service',[])
 ////////////////////////////////////////////////
 
     consultant: {
+
+      // CRM
+      queryGroups: function(successHandler, errorHandler, finallyHandler) {
+        Rest.consultant.v1.queryGroups(id, function(data){
+          if(parseRestSuccess('queryGroups', data, successHandler, errorHandler)) {
+            //bookings.data = data.result
+          }
+        }, function(status){
+          parseRestError('queryGroups', status, errorHandler);
+        }, 
+        finallyHandler());
+      },
+      queryGroupMembers: function(gname, successHandler, errorHandler, finallyHandler) {
+        Rest.consultant.v1.queryGroupMembers(id, gname, function(data){
+          if(parseRestSuccess('queryGroupMembers', data, successHandler, errorHandler)) {
+            //bookings.data = data.result;
+            
+          }
+        }, function(status){
+          parseRestError('queryGroupMembers', status, errorHandler);
+        }, 
+        finallyHandler());
+      },
+      addGroupMember: function(gname, cid, successHandler, errorHandler, finallyHandler) {
+        Rest.consultant.v1.addGroupMember(id, gname, cid, function(data){
+          if(parseRestSuccess('addGroupMember', data, successHandler, errorHandler)) {
+            //bookings.data = data.result;
+            
+          }
+        }, function(status){
+          parseRestError('addGroupMember', status, errorHandler);
+        }, 
+        finallyHandler());
+      },
+      delGroupMember: function(gname, cid, successHandler, errorHandler, finallyHandler) {
+        Rest.consultant.v1.delGroupMember(id, gname, cid, function(data){
+          if(parseRestSuccess('delGroupMember', data, successHandler, errorHandler)) {
+            //bookings.data = data.result;
+            
+          }
+        }, function(status){
+          parseRestError('delGroupMember', status, errorHandler);
+        }, 
+        finallyHandler());
+      },
+
       queryCustomerProfileUrl: function(cid, iid){
         return Rest.consultant.v1.queryCustomerProfileUrl(cid, iid);
       },

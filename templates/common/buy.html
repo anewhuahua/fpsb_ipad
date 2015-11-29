@@ -1,0 +1,131 @@
+
+<ion-view class="booking-view">
+
+
+    <ion-content>
+     <div class="main1">
+
+            <div class="sdlcdv">
+              <a href="" class="sdlcff"></a>
+              <ul class="sdlcul">
+                <li class="sdlccur"><span>1</span> <em>身份审核</em></li>
+                <li><i></i></li>
+                <li><span>2</span> <em>银行卡验证</em></li>
+                <li><i></i></li>
+                <li><span>3</span> <em>通过</em></li>
+              </ul>
+              <a href="" class="sdlcrr"></a>
+            </div> 
+            <div class="sdlcyy"></div>
+            
+            <div class="sdlcnrdv" ng-if="data.phase=='verify'">
+               <div class="sdlcnra">
+                 <span>真实姓名</span>
+                 <input type="text" placeholder="请输入真实姓名" ng-model="data.fullname"/> 
+               </div> 
+               <div class="sdlcnra">
+                 <span>身份证号码</span>
+                 <input type="text" placeholder="请输入身份证号码" ng-model="data.identity"/> 
+               </div>
+               <input type="submit" class="nexbn" value="下一步" ng-click="verify()"/>
+            </div>
+
+            <div class="sdlcnrdv" ng-if="data.phase=='register'">
+               
+               <div class="sdlcnra">
+                 <span>邮箱</span>
+                 <input type="text" placeholder="请输入您的邮箱" ng-model="data.email"/> 
+               </div> 
+               <div class="sdlcnra">
+                 <span>交易密码</span>
+                 <input type="password" placeholder="请输入交易密码" ng-model="data.pwd"/> 
+               </div> 
+               <div class="sdlcnra">
+                 <span>再次输入</span>
+                 <input type="password" placeholder="请再次输入交易密码" ng-model="data.pwd2"/> 
+               </div>
+
+
+
+               <p class="qrenpp"><span><img src="teImg/zcmmjslog2.jpg" /></span> <em>我已阅读并同意</em> <i>《首席金服用户协议》</i></p>
+               <p class="qrenpp"><span><img src="teImg/zcmmjslog.jpg" /></span> <em>投资人权益须知</em></p>
+               <p class="qrenpp" style="margin-bottom:0.3rem;"><span><img src="teImg/zcmmjslog2.jpg" /></span> <em>移动客户端基金交易三方协议</em></p>
+               <input type="submit" class="nexbn" value="立即开户" ng-click="register()" />
+            </div>
+
+            <div class="sdlcnrdv" ng-if="data.phase=='bank'">
+               <div class="sdlcnrb">
+                  <span>选择银行</span>
+                  <div class="xzxse">
+                     <select>
+                       <option>招商银行</option>
+                       <option>工商银行</option>
+                       <option>建设银行</option>
+                       <option>农业银行</option>
+                     </select> 
+                   </div>
+               </div>
+               <div class="sdlcnra">
+                 <span>银行卡</span>
+                 <input type="text" placeholder="请输入银行卡" /> 
+               </div> 
+               <div class="sdlcnra">
+                 <span>手机号</span>
+                 <input type="text" placeholder="请输入预留手机号" /> 
+               </div>
+               <div class="sdlcnrc">
+                 <span>验证码</span>
+                 <input type="text" placeholder="请输入验证码" /> 
+                 <div>43秒后重发</div>
+               </div>
+               <input type="submit" class="nexbn" value="立即绑定" />
+            </div>
+
+
+            <div class="sdlcnrdv" ng-if="data.phase=='buy'">   
+               <span class="xpqqyytcc">长盛电子信息主题基金 000063</span>
+               <div class="xpzz">
+                  <span>基金类型<em> 混合型基金</em></span>
+                  <span>赎回时间<em> 3个工作日</em></span>
+                  <span>风险等级<em> 4</em></span>
+               </div>
+               <div class="lcgmaa"><span>购买金额</span> <input type="text"  placeholder="最低10000起  每10000累加"/><em>元</em></div>
+               <div class="lcgmab"><span>输入密码</span> <input type="text"  placeholder="请输入您的密码"/></div>
+               <div class="sdlcnrb">
+                  <span>选择银行</span>
+                  <div class="xzxse">
+                     <select>
+                       <option>招商银行</option>
+                       <option>工商银行</option>
+                       <option>建设银行</option>
+                       <option>农业银行</option>
+                     </select> 
+                   </div>
+               </div>
+               <div class="lcgmab"><span>卡       号</span> <input type="text"  placeholder="请输入您的卡号"/></div>
+               <span class="lcgmcpdd">限额：每单最高<em>30</em>万元，单日最高<em>90</em>万元，单月最高<em>1000</em>万元</span>
+               <input type="submit" class="nexbnb" value="提交订单" />
+               <div class="tytygm">
+                <p class="zcmmjsaa">
+                  <span><img src="teImg/zcmmjslog2.jpg" /></span>
+                  <em>我确认购买超出我风险偏好的产品</em>
+                </p>
+                <p class="zcmmjsbb">
+                  <span><img src="teImg/zcmmjslog2.jpg" /></span>
+                  <em>我已阅读并同意<i>《首席金服用户协议》</i></em>
+                </p>
+             </div>
+            </div>
+          
+
+
+     </div>
+    </ion-content>
+</ion-view>
+
+
+
+
+
+
+

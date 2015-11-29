@@ -155,7 +155,7 @@
 <!-- index -->
 
 
-    
+<!-- CRM -->    
 <div class="main1" ng-switch-when='customers'>
   <div class="gnr2dadv"><!--内容右侧开始-->
 
@@ -164,10 +164,8 @@
                   
                        <div class="sekkgdvbb">
                          <select class="kkxxbbsele">
-                            <option value="默认分组1">默认分组1</option>
-                            <option value="saab">默认分组2</option>
-                            <option value="opel">默认分组3</option>
-                            <option value="audi">默认分组4</option>
+                            <option value="all">默认全部</option>
+                            <option ng-repeat="group in data.groups" value="">group</option>
                          </select> 
                          <a class="aakhbb2" href=""></a> 
                        </div> 

@@ -282,9 +282,57 @@ angular.module('starter.controllers', [])
       template: '请先登入'
     });
   });
-
-  
 })
+
+
+.controller('commonBuyCtrl', function($scope, $state, $stateParams, $ionicScrollDelegate, $ionicHistory, Main){
+  $scope.data = {
+    phase: 'verify',
+    fullname: '',
+    identity: '',
+    pwd: '',
+    pwd2: '',
+    mobile: '',
+    email: '11@baidu.com'
+  }
+
+  Main.customer.queryCustomer(function(data){
+      $scope.data.mobile = data.phone;
+      $scope.data.email = data.email;
+      //console.log(data);
+    },function(status){}, function(){
+    });
+
+  $scope.verify = function() {
+    if($scope.data.fullname == '' || $scope.data.identity == '') {
+      return;
+    } 
+    Main.queryBuyAccount($scope.data.fullname, $scope.data.identity, function(data){
+      if(data.created) {
+        $scope.data.phase = 'register';
+      } else {
+        $scope.data.phase = 'register';
+      }
+
+    }, function(status){
+
+    }, function(){
+
+    }); 
+    console.log('verify');
+    $scope.data.phase = 'register';
+  }
+  $scope.register = function() {
+    Main.createBuyAccount($scope.data.fullname, $scope.data.identity, 
+                                    $scope.data.pwd, $scope.data.email, $scope.data.mobile, 
+                                    function(data){}, function(status){}, function(){});
+  }
+  $scope.goPhase = function(p) {
+    $scope.data.phase = p;
+  } 
+
+})
+
 
 .controller('publicfundCtrl', function($scope, $state, $stateParams, $ionicScrollDelegate, $ionicHistory, Main){
   $scope.data = {
@@ -375,6 +423,9 @@ angular.module('starter.controllers', [])
   }
   $scope.goPublicFundDetail = function(id) {
     $state.go('common.publicfund1', {productId:id});
+  }
+  $scope.buy = function(p) {
+    $state.go('common.buy');
   }
 
   Main.getProducts($scope.data.category, function(data){
@@ -1346,13 +1397,18 @@ angular.module('starter.controllers', [])
     orders: Main.consultant.getOrders(),
     customers: Main.consultant.getCustomers(),
     profile: Main.getProfile(),
+    groups: [],
 
     currentOrderState: 'all',
     currentOrder: null,
     currentBookingState: 'all',
     currentBooking: null,
-
     liked: Main.getLiked(),
+
+    groupDialog: {
+      newGroupName: '',
+      selectedGroupName: ''
+    },
 
     update: {
       cpb: 0,
@@ -1371,13 +1427,11 @@ angular.module('starter.controllers', [])
     }
   };
 
-//**
-//** initialize
+  //**
+  //** initialize
   $scope.data.currentOrder = $scope.data.orders['all'];
   $scope.data.currentBooking = $scope.data.bookings['all'];
   
-
-
   //**
   //** event listen function
   $rootScope.$on('ChangeWindow', function(event, args){
@@ -1394,9 +1448,32 @@ angular.module('starter.controllers', [])
     }
   });
 
-//**
-//** common function
+  //**
+  //** common function
   $scope.group = function() {
+     var strGroups = '';
+     /*
+     var newGroupPopup = $ionicPopup.show({
+       template: '<input style="width:100%" type="text" ng-model="data.groupDialog.newGroupName"></input>',
+       title: '加入分组',
+       subTitle: '选择客户分组',
+       scope: $scope,
+       buttons: [
+         { text: '返回', 
+           onTap: function(e) {
+            
+           }
+         },
+         {
+           text: '<b>确认</b>',
+           type: 'button-positive',
+           onTap: function(e) {
+             console.log($scope.data.groupDialog.newGroupName);
+           }
+         },
+       ]
+     });*/
+
      var myPopup = $ionicPopup.show({
        //template: '<input type="text" ng-model="data.wifi">',
        template: '<select style="width:100%"><option>默认分组</option><option>分组1</option></select>',
@@ -1404,7 +1481,10 @@ angular.module('starter.controllers', [])
        subTitle: '选择客户分组',
        scope: $scope,
        buttons: [
-         { text: '新建分组' },
+         { text: '新建分组', 
+           onTap: function(e) {
+           }
+         },
          {
            text: '<b>确认加入</b>',
            type: 'button-positive',
@@ -1420,13 +1500,27 @@ angular.module('starter.controllers', [])
        ]
      });
      myPopup.then(function(res) {
-       console.log('Tapped!', res);
+       console.log(res);
+       var newGroupPopup = $ionicPopup.prompt({
+                   title: '新建分组',
+                   inputType: 'text',
+                   okText: '确认',
+                   cancelText: '取消',
+                   inputPlaceholder: '请输入新建客户分组名'
+                 }).then(function(res) {
+                   console.log('客户分组名', res);
+                 });
+        newGroupPopup.then(function(res) {
+          myPopup.close();
+        });
      });
       /*
      $timeout(function() {
         myPopup.close(); //由于某种原因3秒后关闭弹出
      }, 3000);*/
   }
+
+  
 
   $scope.goCustomerHistory = function(cus) {
     $state.go('common.customer_history', {customerId: cus.id});
@@ -1511,6 +1605,10 @@ angular.module('starter.controllers', [])
     }, function(status){}, function(){});
 
     Main.queryLiked(function(data){
+    }, function(status){}, function(){});
+
+    Main.consultant.queryGroups(function(data){
+      $scope.data.groups = data;
     }, function(status){}, function(){});
 
   };

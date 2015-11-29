@@ -296,6 +296,17 @@ angular.module('starter', ['ionic', 'ngCordova', 'angular-flot', 'ionicMultipleV
     }
   })
 
+  .state('common.buy', {
+    cache: false,
+    url: '/buy',
+    views: {
+      'common-buy': {
+         templateUrl: 'templates/common/buy.html',
+         controller: 'commonBuyCtrl'
+      }
+    }
+  })
+
 
     // exam
   .state('exam', {

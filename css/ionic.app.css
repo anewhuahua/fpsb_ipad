@@ -43,7 +43,11 @@ $royal:                           #886aea !default;
   /*发现境内列表 详情11.5*/
   /*发现境内列表 详情11.5*/
   /*公募内页详情两个11.7*/
-  /*公募内页详情两个11.7*/ }
+  /*公募内页详情两个11.7*/
+  /*3大流程11.23*/
+  /*3大流程11.23*/
+  /*购买新增css 11.21*/
+  /*购买新增css 11.21*/ }
   .booking-view a {
     text-decoration: none; }
   .booking-view .content {
@@ -2095,6 +2099,310 @@ $royal:                           #886aea !default;
     line-height: 0.3rem; }
   .booking-view .tjtjtew {
     color: #E79700 !important; }
+  .booking-view .sdlcdv {
+    width: 96%;
+    height: 1.65rem;
+    margin: 0.3rem auto 0rem auto;
+    background: #fff;
+    position: relative; }
+  .booking-view .sdlcff {
+    background: url(../teImg/lcjtff.jpg) no-repeat;
+    background-size: cover;
+    width: 1.2rem;
+    height: 1.6rem;
+    display: block;
+    position: absolute;
+    left: 0px;
+    top: 0px; }
+  .booking-view .sdlcrr {
+    background: url(../teImg/lcjtrr.jpg) no-repeat;
+    background-size: cover;
+    width: 1.2rem;
+    height: 1.6rem;
+    display: block;
+    position: absolute;
+    right: 0px;
+    top: 0px; }
+  .booking-view .sdlcul {
+    width: 60%;
+    margin: auto;
+    text-align: center;
+    overflow: hidden;
+    padding-top: 0.7rem; }
+  .booking-view .sdlcul > li {
+    float: left;
+    padding: 0rem 3%; }
+  .booking-view .sdlcul > li > span {
+    width: 0.38rem;
+    height: 0.38rem;
+    float: left;
+    border-radius: 50%;
+    background: #a4acb4;
+    text-align: center;
+    font-size: 0.3rem;
+    color: #ffffff;
+    line-height: 0.38rem; }
+  .booking-view .sdlcul > li > em {
+    float: left;
+    text-align: center;
+    font-size: 0.36rem;
+    color: #a4acb4;
+    line-height: 0.38rem;
+    margin-left: 0.1rem; }
+  .booking-view .sdlcul > li > i {
+    background: url(../teImg/lcljimg.jpg) no-repeat;
+    width: 0.23rem;
+    height: 0.26rem;
+    background-size: contain;
+    display: block;
+    margin-top: 0.08rem; }
+  .booking-view .sdlccur > span {
+    background: #e79700 !important; }
+  .booking-view .sdlccur > em {
+    color: #e79700 !important; }
+  .booking-view .sdlcyy {
+    background: url(../teImg/sdlcyy.jpg) repeat-x;
+    width: 96%;
+    height: 0.8rem;
+    margin: auto; }
+  .booking-view .sdlcnrdv {
+    width: 96%;
+    height: 100%;
+    margin: auto;
+    overflow: hidden;
+    background: #fff;
+    padding: 0rem 13% 1rem; }
+  .booking-view .sdlcnra {
+    width: 100%;
+    height: 0.86rem;
+    overflow: hidden;
+    background: #f3f2f5;
+    margin-bottom: 0.2rem; }
+  .booking-view .sdlcnra > span {
+    width: 21%;
+    height: 100%;
+    float: left;
+    font-size: 0.36rem;
+    line-height: 0.86rem;
+    color: #635f6b;
+    padding-left: 0.4rem; }
+  .booking-view .sdlcnra > input {
+    width: 77%;
+    height: 100%;
+    float: right;
+    font-size: 0.36rem;
+    line-height: 0.86rem;
+    color: #a09fa3 !important;
+    border: 0rem;
+    background: none; }
+  .booking-view .nexbn {
+    width: 100%;
+    height: 1.2rem;
+    background: #e79700;
+    font-size: 0.36rem;
+    line-height: 1.2rem;
+    color: #ffffff;
+    text-align: center;
+    border: none;
+    margin-top: 0.1rem; }
+  .booking-view .qrenpp {
+    width: 100%;
+    margin: 0.35rem auto 0rem 0.5rem;
+    overflow: hidden; }
+  .booking-view .qrenpp > span {
+    float: left;
+    width: 0.27rem;
+    height: 0.27rem; }
+  .booking-view .qrenpp > span > img {
+    width: 100%; }
+  .booking-view .qrenpp > em {
+    float: left;
+    font-size: 0.24rem;
+    line-height: 0.27rem;
+    color: #a8a8aa;
+    margin-left: 0.15rem; }
+  .booking-view .qrenpp > i {
+    float: left;
+    font-size: 0.24rem;
+    line-height: 0.27rem;
+    color: #e79700; }
+  .booking-view .sdlcntms {
+    display: block;
+    font-size: 0.3rem;
+    line-height: 0.3rem;
+    color: #426189;
+    margin: 0.5rem auto;
+    text-align: center; }
+  .booking-view .sdlcnrb {
+    width: 100%;
+    height: 0.86rem;
+    overflow: hidden;
+    background: #f3f2f5;
+    margin-bottom: 0.2rem; }
+  .booking-view .sdlcnrb > span {
+    width: 21%;
+    height: 100%;
+    float: left;
+    font-size: 0.36rem;
+    line-height: 0.86rem;
+    color: #635f6b;
+    padding-left: 0.4rem; }
+  .booking-view .sdlcnrb > div > select {
+    border: none;
+    width: 113%;
+    height: 100%;
+    font-size: 0.36rem;
+    color: #aeaeb0 !important;
+    line-height: 0.9rem;
+    background: url(../teImg/xzyhklo.png) no-repeat 87%;
+    text-indent: 1%; }
+  .booking-view .sdlcnrb > div {
+    width: 74%;
+    height: 100%;
+    overflow: hidden; }
+  .booking-view .sdlcnrc {
+    width: 100%;
+    height: 0.86rem;
+    overflow: hidden;
+    background: #f3f2f5;
+    margin-bottom: 0.2rem; }
+  .booking-view .sdlcnrc > span {
+    width: 21%;
+    height: 100%;
+    float: left;
+    font-size: 0.36rem;
+    line-height: 0.86rem;
+    color: #635f6b;
+    padding-left: 0.4rem; }
+  .booking-view .sdlcnrc > input {
+    width: 50%;
+    height: 100%;
+    float: left;
+    font-size: 0.36rem;
+    line-height: 0.86rem;
+    color: #a09fa3 !important;
+    border: 0rem;
+    background: none;
+    padding-left: 2%; }
+  .booking-view .sdlcnrc > div {
+    width: 15%;
+    height: 100%;
+    float: right;
+    font-size: 0.24rem;
+    line-height: 0.86rem;
+    color: #e79700 !important;
+    border: 0rem;
+    background: none; }
+  .booking-view .nexbnb {
+    width: 100%;
+    height: 1.2rem;
+    background: #d32e00;
+    font-size: 0.36rem;
+    line-height: 1.2rem;
+    color: #ffffff;
+    text-align: center;
+    border: none;
+    margin-top: 0.1rem; }
+  .booking-view .xpqqyytcc {
+    display: block;
+    font-size: 0.36rem;
+    color: #395983;
+    line-height: 0.36rem;
+    text-align: center; }
+  .booking-view .lcgmaa, .booking-view .lcgmab, .booking-view .lcgmac {
+    width: 100%;
+    height: 0.9rem;
+    background: #f3f2f5;
+    margin-bottom: 0.17rem;
+    overflow: hidden; }
+  .booking-view .lcgmaa > span, .booking-view .lcgmab > span {
+    float: left;
+    width: 21%;
+    height: 100%;
+    padding-left: 0.4rem;
+    font-size: 0.36rem;
+    color: #635f6b;
+    line-height: 0.9rem; }
+  .booking-view .lcgmaa > input {
+    width: 62%;
+    height: 0.5rem;
+    float: left;
+    margin-top: 0.18rem;
+    font-size: 0.36rem;
+    color: #635f6b;
+    line-height: 0.38rem;
+    border: none;
+    background: none; }
+  .booking-view .lcgmaa > em {
+    float: right;
+    width: 15%;
+    height: 100%;
+    font-size: 0.36rem;
+    color: #635f6b;
+    line-height: 0.9rem;
+    text-align: center; }
+  .booking-view .lcgmab > input {
+    width: 78%;
+    height: 0.5rem;
+    float: right;
+    margin-top: 0.18rem;
+    font-size: 0.36rem;
+    color: #635f6b;
+    line-height: 0.38rem;
+    border: none;
+    background: none; }
+  .booking-view .lcgmcpdd {
+    display: block;
+    font-size: 0.3rem;
+    color: #635f6b;
+    line-height: 0.3rem;
+    text-align: center;
+    margin: 0.3rem auto; }
+  .booking-view .lcgmcpdd > em {
+    color: #e79700; }
+  .booking-view .xpzz {
+    width: 90%;
+    margin: 0 auto 0.3rem auto;
+    text-align: center; }
+  .booking-view .xpzz > span {
+    display: inline-block;
+    width: 30%;
+    text-align: center;
+    font-size: 0.28rem;
+    color: #395983;
+    line-height: 0.28rem; }
+  .booking-view .xpzz > span > em {
+    display: inline-block;
+    text-align: center;
+    font-size: 0.28rem;
+    color: #e9aa3a;
+    line-height: 0.28rem;
+    text-indent: 0.1rem; }
+  .booking-view .tytygm {
+    width: 85%;
+    margin: 0.3rem auto;
+    overflow: hidden; }
+  .booking-view .zcmmjsaa, .booking-view .zcmmjsbb {
+    float: left;
+    font-size: 0.24rem;
+    line-height: 0.27rem;
+    color: #a8a8aa;
+    overflow: hidden; }
+  .booking-view .zcmmjsaa > span, .booking-view .zcmmjsbb > span {
+    display: block;
+    width: 0.27rem;
+    height: 0.27rem;
+    float: left; }
+  .booking-view .zcmmjsaa > span > img, .booking-view .zcmmjsbb > span > img {
+    width: 100%; }
+  .booking-view .zcmmjsaa > em, .booking-view .zcmmjsbb > em {
+    display: block;
+    float: left;
+    margin-left: 0.17rem; }
+  .booking-view .zcmmjsaa > em > i, .booking-view .zcmmjsbb > em > i {
+    color: #e79700; }
+  .booking-view .zcmmjsbb {
+    float: right; }
 
 .exam-view {
   /* 头部 */

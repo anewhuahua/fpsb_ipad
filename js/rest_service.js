@@ -237,6 +237,56 @@ angular.module('rest.service', [])
       });
     },
 
+    queryBuyAccount: function(id, name, identity, successHandler, errorHandler, finallyHandler) {
+        var req = {
+          method: 'GET',
+          url: domain+'ChiefFinancierService/api/partner/v1/customers/' + id + '/partners/cljj?username='+
+                name + '&identityId=' + identity + '&transaccount=any',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        };
+        
+        $http(req).success(function(data){
+          successHandler(data);
+        }).error(function(res, status){
+          errorHandler(status);
+        }).finally(function(){
+          finallyHandler();
+        });
+    },
+
+    createBuyAccount: function(id, name, identity, pwd, mail, mobile, successHandler, errorHandler, finallyHandler) {
+        var req = {
+            method: 'POST',
+            url: domain+'ChiefFinancierService/api/partner/v1/customers/' + id + '/partners/cljj/transaccounts',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            data: {
+              username: name,
+              identityId: identity,
+              email: mail,
+              mobile: mobile,
+              ownerId: id,
+              partner: 'cljj',
+              password: pwd, 
+              riskLevel: '1005'
+            }
+        };
+          
+        //console.log(pid);
+        $http(req).success(function(data){
+          //console.log(data);
+          successHandler(data);
+        }).error(function(res, status){
+          errorHandler(status);
+        }).finally(function(){
+          finallyHandler();
+        });
+    },
+
+
     customer: {
       v1: {
         queryConsultantProfileUrl: function(cid, iid){
@@ -401,7 +451,7 @@ angular.module('rest.service', [])
 
     consultant: {
       v1: {
-        // group related
+        // CRM
         queryGroups: function(id, successHandler, errorHandler, finallyHandler) {
           var req = {
               method: 'GET',
