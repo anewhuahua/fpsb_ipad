@@ -3,28 +3,17 @@ angular.module('main.service',[])
 
 // Dictionary
 
-  var sorts = {
-    publicfunds: [
-      {key:'lastMonth',      name:'近一月'},
-      {key:'lastThreeMonth', name:'近三月'},
-      {key:'lastHalfYear',   name:'近半年'}
-    ],
-
-    privatefunds: [
-    ],
-
-    trusts: [
-    ],
-
-    insurances: [
-    ]
+  var transaction = {
+    pwd: '',
+    tid: '',
+    apply_no: '',
+    token: '',
+    bank_id: '',
+    bank_name: '',
+    bank_card_no: '',
+    verify_code: '',
+    state: ''
   };
-  var filter = {
-    publicfunds: [
-
-    ]    
-  };
-
 
   var categories = [
     {id: 1, childOf: true,   state: "common.publicfunds", name: "公募基金",  key:'publicfunds',   image:'teImg/gongmu.png', products:{data:[]}},
@@ -266,31 +255,101 @@ angular.module('main.service',[])
       return role;
     },  
 
-
-    queryBuyAccount: function(name, identity, successHandler, errorHandler, finallyHandler) {
-      Rest.queryBuyAccount(id, name, identity, function(data){
-        if(parseRestSuccess('queryBuyAccount', data, successHandler, errorHandler)) {
-          console.log('tyson11111111');
-          if(data.resullt) {
-            return {created: 'yes'};
-          } else {
-            return {created: 'no'};
+    buy: {
+      queryTransAccount: function(name, identity, successHandler, errorHandler, finallyHandler) {
+        Rest.buy.queryBuyAccount(id, name, identity, function(data){
+          if(parseRestSuccess('queryBuyAccount', data, successHandler, errorHandler)) {
+            console.log('tyson11111111');
+            if(data.resullt) {
+              return {created: 'yes'};
+            } else {
+              return {created: 'no'};
+            }
           }
-        }
-      }, function(status){
-        parseRestError('queryBuyAccount', status, errorHandler);
-      }, finallyHandler());
+        }, function(status){
+          parseRestError('queryBuyAccount', status, errorHandler);
+        }, finallyHandler());
+      },
+      createTransAccount: function(name, identity, pwd, mail, mobile, successHandler, errorHandler, finallyHandler) {
+        Rest.buy.createBuyAccount(id, name, identity, pwd, mail, mobile, function(data){
+          if(parseRestSuccess('createBuyAccount', data, successHandler, errorHandler)) {
+            console.log('tyson11111111');
+            console.log(data);
+          }
+        }, function(status){
+          parseRestError('createBuyAccount', status, errorHandler);
+        }, finallyHandler());
+      },
+
+      authorizeTransAccount: function(successHandler, errorHandler, finallyHandler) {
+        Rest.buy.authorizeTransAccount(id, transaction.tid, transaction.pwd, function(data){
+          if(parseRestSuccess('authorizeTransAccount', data, successHandler, errorHandler)) {
+            console.log('tyson11111111');
+            console.log(data);
+          }
+        }, function(status){
+          parseRestError('authorizeTransAccount', status, errorHandler);
+        }, finallyHandler());
+      },
+
+      queryBankBinding: function(successHandler, errorHandler, finallyHandler) {
+        Rest.buy.queryBankBinding(id, transaction.tid, function(data){
+          if(parseRestSuccess('queryBankBinding', data, successHandler, errorHandler)) {
+            console.log('tyson11111111');
+            console.log(data);
+          }
+        }, function(status){
+          parseRestError('queryBankBinding', status, errorHandler);
+        }, finallyHandler());
+      },
+
+      queryValidBanks: function(successHandler, errorHandler, finallyHandler) {
+        Rest.buy.queryValidBanks(id, transaction.tid, function(data){
+          if(parseRestSuccess('queryValidBanks', data, successHandler, errorHandler)) {
+            console.log('tyson11111111');
+            console.log(data);
+          }
+        }, function(status){
+          parseRestError('queryValidBanks', status, errorHandler);
+        }, finallyHandler());
+      },
+
+      queryBindingBanks: function(successHandler, errorHandler, finallyHandler) {
+        Rest.buy.queryBindingBanks(id, transaction.tid, function(data){
+          if(parseRestSuccess('queryBindingBanks', data, successHandler, errorHandler)) {
+            console.log('tyson11111111');
+            console.log(data);
+          }
+        }, function(status){
+          parseRestError('queryBindingBanks', status, errorHandler);
+        }, finallyHandler());
+      },
+
+      initiateBankBinding: function(successHandler, errorHandler, finallyHandler) {
+        Rest.buy.initiateBankBinding(id, transaction.tid, function(data){
+          if(parseRestSuccess('initiateBankBinding', data, successHandler, errorHandler)) {
+            console.log('tyson11111111');
+            console.log(data);
+          }
+        }, function(status){
+          parseRestError('initiateBankBinding', status, errorHandler);
+        }, finallyHandler());
+      },
+
+      confirmBankBinding: function(successHandler, errorHandler, finallyHandler) {
+        Rest.buy.confirmBankBinding(id, transaction.tid, transaction.token, transaction.verify_code,
+                                    transaction.bank_id, transaction.bank_name, transaction.bank_card_no, function(data){
+          if(parseRestSuccess('confirmBankBinding', data, successHandler, errorHandler)) {
+            console.log('tyson11111111');
+            console.log(data);
+          }
+        }, function(status){
+          parseRestError('confirmBankBinding', status, errorHandler);
+        }, finallyHandler());
+      }
+
     },
-    createBuyAccount: function(name, identity, pwd, mail, mobile, successHandler, errorHandler, finallyHandler) {
-      Rest.createBuyAccount(id, name, identity, pwd, mail, mobile, function(data){
-        if(parseRestSuccess('createBuyAccount', data, successHandler, errorHandler)) {
-          console.log('tyson11111111');
-          console.log(data);
-        }
-      }, function(status){
-        parseRestError('createBuyAccount', status, errorHandler);
-      }, finallyHandler());
-    },
+    
 
 
     login: function(param, successHandler, errorHandler, finallyHandler) {

@@ -237,7 +237,9 @@ angular.module('rest.service', [])
       });
     },
 
-    queryBuyAccount: function(id, name, identity, successHandler, errorHandler, finallyHandler) {
+    buy: {
+
+      queryTransAccount: function(id, name, identity, successHandler, errorHandler, finallyHandler) {
         var req = {
           method: 'GET',
           url: domain+'ChiefFinancierService/api/partner/v1/customers/' + id + '/partners/cljj?username='+
@@ -254,9 +256,8 @@ angular.module('rest.service', [])
         }).finally(function(){
           finallyHandler();
         });
-    },
-
-    createBuyAccount: function(id, name, identity, pwd, mail, mobile, successHandler, errorHandler, finallyHandler) {
+      },
+      createTransAccount: function(id, name, identity, pwd, mail, mobile, successHandler, errorHandler, finallyHandler) {
         var req = {
             method: 'POST',
             url: domain+'ChiefFinancierService/api/partner/v1/customers/' + id + '/partners/cljj/transaccounts',
@@ -284,6 +285,130 @@ angular.module('rest.service', [])
         }).finally(function(){
           finallyHandler();
         });
+      },
+
+      authorizeTransAccount: function(id, tid, pwd) {
+        var req = {
+            method: 'POST',
+            url: domain+'ChiefFinancierService/api/partner/v1/customers/' + id + '/partners/cljj/transaccounts/' + tid,
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            data: {
+              trade_pwd: pwd
+            }
+        };
+          
+        $http(req).success(function(data){
+          successHandler(data);
+        }).error(function(res, status){
+          errorHandler(status);
+        }).finally(function(){
+          finallyHandler();
+        });
+      }
+
+      queryBankBinding: function(id, tid) {
+        var req = {
+            method: 'GET',
+            url: domain+'ChiefFinancierService/api/partner/v1/customers/' + id + '/partners/cljj/transaccounts/' + tid +
+                        '&action=querybankbinding',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+        };
+          
+        $http(req).success(function(data){
+          successHandler(data);
+        }).error(function(res, status){
+          errorHandler(status);
+        }).finally(function(){
+          finallyHandler();
+        });
+      },
+
+      queryValidBanks: function(id, tid) {
+        var req = {
+            method: 'GET',
+            url: domain+'ChiefFinancierService/api/partner/v1/customers/' + id + '/partners/cljj/transaccounts/' + tid +
+                        '&action=queryvalidbanks',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+        };
+        $http(req).success(function(data){
+          successHandler(data);
+        }).error(function(res, status){
+          errorHandler(status);
+        }).finally(function(){
+          finallyHandler();
+        });
+      },
+      queryBindingBanks: function(id, tid) {
+        var req = {
+            method: 'GET',
+            url: domain+'ChiefFinancierService/api/partner/v1/customers/' + id + '/partners/cljj/transaccounts/' + tid +
+                        '&action=querybindingbanks',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+        };
+        $http(req).success(function(data){
+          successHandler(data);
+        }).error(function(res, status){
+          errorHandler(status);
+        }).finally(function(){
+          finallyHandler();
+        });
+      },
+      initiateBankBinding: function(id,tid) {
+        var req = {
+            method: 'POST',
+            url: domain+'ChiefFinancierService/api/partner/v1/customers/' + id + '/partners/cljj/transaccounts/' + tid +
+                        '/banks?action=initiate',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+        };
+        $http(req).success(function(data){
+          successHandler(data);
+        }).error(function(res, status){
+          errorHandler(status);
+        }).finally(function(){
+          finallyHandler();
+        });
+      },
+
+      confirmBankBinding: function(id, tid, token, code, bid, bname, bcard) {
+        var req = {
+            method: 'PUT',
+            url: domain+'ChiefFinancierService/api/partner/v1/customers/' + id + '/partners/cljj/transaccounts/' + tid +
+                        'banks?&action=confirm&tokien='+token+'&verifyCode='+code+'&applyNo='+apply,
+            data: {
+              bank_id: bid,
+              bank_name: bname,
+              bank_card_no: bcard
+            },
+            headers: {
+              'Content-Type': 'application/json'
+            }
+        };
+        $http(req).success(function(data){
+          successHandler(data);
+        }).error(function(res, status){
+          errorHandler(status);
+        }).finally(function(){
+          finallyHandler();
+        });
+      },
+
+      purchasePublicFund: function() {
+
+      },
+      redeemPublicFund: function() {
+
+      }
+
     },
 
 
