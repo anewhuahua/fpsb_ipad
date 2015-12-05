@@ -384,7 +384,7 @@ angular.module('rest.service', [])
         });
       },
 
-      confirmBankBinding: function(id, tid, token, code, bid, bname, bcard, successHandler, errorHandler, finallyHandler) {
+      confirmBankBinding: function(id, tid, token, code, apply, bid, bname, bcard, successHandler, errorHandler, finallyHandler) {
         var req = {
             method: 'PUT',
             url: domain+'ChiefFinancierService/api/partner/v1/customers/' + id + '/partners/cljj/transaccounts/' + tid +

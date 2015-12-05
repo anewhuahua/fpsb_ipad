@@ -466,7 +466,7 @@ angular.module('starter.controllers', [])
   }
 
   $scope.confirmBankBinding = function() {
-    Main.buy.confirmBankBinding($scope.data.token,  $scope.data.verifyCode, 
+    Main.buy.confirmBankBinding($scope.data.token,  $scope.data.verifyCode, $scope.data.applyNo,
                                 $scope.data.bankId, $scope.data.bankName, $scope.data.bankCardNo, 
     function(data){
      

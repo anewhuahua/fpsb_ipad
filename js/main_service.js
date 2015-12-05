@@ -340,8 +340,8 @@ angular.module('main.service',[])
         }, finallyHandler());
       },
 
-      confirmBankBinding: function(token, code, bankId, bankName, bankCardNo, successHandler, errorHandler, finallyHandler) {
-        Rest.buy.confirmBankBinding(id, transAccount.id, token, code,
+      confirmBankBinding: function(token, code, apply, bankId, bankName, bankCardNo, successHandler, errorHandler, finallyHandler) {
+        Rest.buy.confirmBankBinding(id, transAccount.id, token, code, apply,
                                     bankId, bankName, bankCardNo, function(data){
           if(parseRestSuccess('confirmBankBinding', data, successHandler, errorHandler)) {
             console.log('tyson11111111');
