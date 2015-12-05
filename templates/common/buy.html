@@ -6,7 +6,7 @@
      <div class="main1">
 
             <div class="sdlcdv">
-              <a href="" class="sdlcff"></a>
+              <!--<a href="" class="sdlcff"></a>-->
               <ul class="sdlcul">
                 <li class="sdlccur"><span>1</span> <em>身份审核</em></li>
                 <li><i></i></li>
@@ -14,7 +14,7 @@
                 <li><i></i></li>
                 <li><span>3</span> <em>通过</em></li>
               </ul>
-              <a href="" class="sdlcrr"></a>
+              <!--<a href="" class="sdlcrr"></a>-->
             </div> 
             <div class="sdlcyy"></div>
             
@@ -57,29 +57,25 @@
                <div class="sdlcnrb">
                   <span>选择银行</span>
                   <div class="xzxse">
-                     <select>
-                       <option>招商银行</option>
-                       <option>工商银行</option>
-                       <option>建设银行</option>
-                       <option>农业银行</option>
+                     <select ng-model="data.bankId">
+                       <option ng-repeat="b in data.validBanks" value="{{b.bank_id}}">{{b.bank_name}}</option>
                      </select> 
                    </div>
                </div>
                <div class="sdlcnra">
                  <span>银行卡</span>
-                 <input type="text" placeholder="请输入银行卡" /> 
+                 <input type="text" placeholder="请输入银行卡" ng-model="data.bankCardNo" /> 
                </div> 
-               <div class="sdlcnra">
-                 <span>手机号</span>
-                 <input type="text" placeholder="请输入预留手机号" /> 
-               </div>
                <div class="sdlcnrc">
                  <span>验证码</span>
                  <input type="text" placeholder="请输入验证码" /> 
-                 <div>43秒后重发</div>
+                 <button ng-click="initiateBankBinding()" ng-disabled="data.askingVerifyCode">{{data.verifyCodeWarn}}</button>
                </div>
-               <input type="submit" class="nexbn" value="立即绑定" />
+               <input type="submit" class="nexbn" value="立即绑定"  ng-click="" />
             </div>
+
+
+
 
 
             <div class="sdlcnrdv" ng-if="data.phase=='buy'">   

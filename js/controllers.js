@@ -285,7 +285,7 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('commonBuyCtrl', function($scope, $state, $stateParams, $ionicScrollDelegate, $ionicHistory, Main){
+.controller('commonBuyCtrl', function($scope, $state, $stateParams, $timeout, $ionicPopup, $ionicScrollDelegate, $ionicHistory, Main){
   $scope.data = {
     phase: 'verify',
     fullname: '',
@@ -293,8 +293,25 @@ angular.module('starter.controllers', [])
     pwd: '',
     pwd2: '',
     mobile: '',
-    email: '11@baidu.com'
+    email: '11@baidu.com',
+
+    bindingBankCards: [],
+    validBanks: [],
+
+    bankName:'',
+    bankId:'',
+    bankCardNo: '',
+
+    applyNo: '',
+    token: '',
+    verifyCode: '',
+    verifyCodeWarn: '收取验证码',
+    askingVerifyCode: false
   }
+
+  $scope.$on("$ionicView.enter", function(){
+    $scope.data.phase = 'verify';
+  });
 
   Main.customer.queryCustomer(function(data){
       $scope.data.mobile = data.phone;
@@ -302,16 +319,47 @@ angular.module('starter.controllers', [])
       //console.log(data);
     },function(status){}, function(){
     });
+  
 
   $scope.verify = function() {
     if($scope.data.fullname == '' || $scope.data.identity == '') {
+      $ionicPopup.alert({
+          title: '提示信息',
+            cssClass: 'alert-text',
+            template:  '请输入有效身份信息!'
+        });
+
       return;
     } 
-    Main.queryBuyAccount($scope.data.fullname, $scope.data.identity, function(data){
-      if(data.created) {
+    Main.buy.queryTransAccount($scope.data.fullname, $scope.data.identity, function(data){
+      console.log('tyson111111');
+      console.log(data);
+      if(data==null) {
         $scope.data.phase = 'register';
-      } else {
-        $scope.data.phase = 'register';
+
+      } else {   // already registered
+        if (data.authorized) {
+          $scope.data.phase = 'buy';
+        } else {
+          var confirmPopup = $ionicPopup.confirm({
+            title: '提醒',
+            template: '确认授权?',
+            okText: '确认',
+            cancelText: '取消'
+          });
+          confirmPopup.then(function(res) {
+            if(res) {
+              /*
+              Main.buy.authorizeTransAccount($scope.data.pwd, 
+                function(data){}, function(status){}, function(){});*/
+              /*
+              Main.buy.queryValidBanks(function(data){
+                $scope.data.validBanks = data;
+              }, function(status){}, function(){});*/
+            } else {
+            }
+          });
+        }
       }
 
     }, function(status){
@@ -320,13 +368,108 @@ angular.module('starter.controllers', [])
 
     }); 
     console.log('verify');
-    $scope.data.phase = 'register';
   }
+
   $scope.register = function() {
-    Main.createBuyAccount($scope.data.fullname, $scope.data.identity, 
+    Main.buy.createTransAccount($scope.data.fullname, $scope.data.identity, 
                                     $scope.data.pwd, $scope.data.email, $scope.data.mobile, 
-                                    function(data){}, function(status){}, function(){});
+      function(data){
+        Main.buy.queryValidBanks(data.id, function(data1){
+          $scope.data.validBanks = data1;
+        }, function(status1){}, function(){});
+        $scope.data.phase = 'bank';
+      }, function(status){
+        $ionicPopup.alert({
+            title: '提示信息',
+            cssClass: 'alert-text',
+            template:  status
+        });
+      }, function(){});
   }
+  /*
+  $scope.authorize =  function() {
+    Main.buy.authorizeTransAccount($scope.data.pwd, 
+                                    function(data){}, function(status){}, function(){});
+  }*/
+  /*
+  $scope.queryValidBanks = function() {
+    Main.buy.queryBankBinding(function(data){
+      $scope.data.validBanks = data;
+    }, function(status){}, function(){});
+  }*/
+  $scope.queryBankBinding = function() {
+    Main.buy.queryBankBinding(function(data){
+      if(data) {
+        // have bond
+      } else {
+        // not bond yet
+      }
+    }, function(status){}, function(){});
+  }
+
+  $scope.queryBindingBanks = function() {
+    Main.buy.queryBindingBanks(function(data){
+     $scope.data.bindingBankCards = data;
+    }, function(status){}, function(){});
+  }
+
+
+  $scope.initiateBankBinding = function() {
+    if ($scope.data.bankId == "" || $scope.data.bankCardNo == "") {
+      $ionicPopup.alert({
+          title: '提示信息',
+            cssClass: 'alert-text',
+            template:  '请选择银行和正确填写卡号!'
+        });
+      return;
+    }
+
+    for (var i = 0; i < $scope.data.validBanks.length; i++) {
+      if ($scope.data.validBanks[i].bank_id == $scope.data.bankId) {
+        $scope.data.bankName = $scope.data.validBanks[i].bank_name;
+        break;
+      }
+    }
+
+    $scope.data.askingVerifyCode = true;
+    var loopVerifyWords = function(cnt) 
+    {
+      promise = $timeout(function () { loopVerifyWords(cnt); }, 1000); 
+      //console.log("timeout "+cnt);
+      $scope.data.verifyCodeWarn = cnt;
+      if (cnt == 0) {
+        $scope.data.askingVerifyCode = false;
+        $scope.data.verifyCodeWarn = "收取验证码";
+        $timeout.cancel(promise);
+      }     
+      cnt = cnt-1;
+    }; 
+    loopVerifyWords(30);
+    
+    Main.buy.initiateBankBinding($scope.data.bankId, $scope.data.bankName, $scope.data.bankCardNo, function(data){
+      $scope.data.applyNo = data.apply_no;
+      $scope.data.token   = data.token;
+    }, function(status){
+      $ionicPopup.alert({
+            title:    '提示信息',
+            cssClass: 'alert-text',
+            template:  status
+        });
+    }, function(){});
+  }
+
+  $scope.confirmBankBinding = function() {
+    Main.buy.confirmBankBinding($scope.data.token,  $scope.data.verifyCode, 
+                                $scope.data.bankId, $scope.data.bankName, $scope.data.bankCardNo, 
+    function(data){
+     
+    }, function(status){
+
+    }, function(){
+
+    });
+  }
+
   $scope.goPhase = function(p) {
     $scope.data.phase = p;
   } 

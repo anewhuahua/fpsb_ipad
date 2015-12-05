@@ -2293,6 +2293,16 @@ $royal:                           #886aea !default;
     color: #e79700 !important;
     border: 0rem;
     background: none; }
+  .booking-view .sdlcnrc > button {
+    width: 15%;
+    float: right;
+    height: 100%;
+    font-size: 0.24rem;
+    line-height: 0.86rem;
+    color: #e79700;
+    text-align: center;
+    background: none;
+    border: none; }
   .booking-view .nexbnb {
     width: 100%;
     height: 1.2rem;

@@ -2,18 +2,20 @@ angular.module('main.service',[])
 .factory('Main', function(Rest, Storage) {
 
 // Dictionary
-
-  var transaction = {
-    pwd: '',
-    tid: '',
-    apply_no: '',
-    token: '',
-    bank_id: '',
-    bank_name: '',
-    bank_card_no: '',
-    verify_code: '',
-    state: ''
+  var transAccount = {
+    username: '',
+    identityId: '',
+    mobile: '',
+    email: '',
+    password: '',
+    partnerId: '', // user id in partner system
+    partner: '',
+    ownerId: '',   // user id in fpsb system
+    authorized: false,
+    riskLevel: ''
   };
+
+
 
   var categories = [
     {id: 1, childOf: true,   state: "common.publicfunds", name: "公募基金",  key:'publicfunds',   image:'teImg/gongmu.png', products:{data:[]}},
@@ -255,37 +257,38 @@ angular.module('main.service',[])
       return role;
     },  
 
+
+
     buy: {
       queryTransAccount: function(name, identity, successHandler, errorHandler, finallyHandler) {
-        Rest.buy.queryBuyAccount(id, name, identity, function(data){
-          if(parseRestSuccess('queryBuyAccount', data, successHandler, errorHandler)) {
+        Rest.buy.queryTransAccount(id, name, identity, function(data){
+          if(parseRestSuccess('queryTransAccount', data, successHandler, errorHandler)) {
             console.log('tyson11111111');
-            if(data.resullt) {
-              return {created: 'yes'};
-            } else {
-              return {created: 'no'};
-            }
+            console.log(data);
+            transAccount = data.result;
           }
         }, function(status){
-          parseRestError('queryBuyAccount', status, errorHandler);
+          parseRestError('queryTransAccount', status, errorHandler);
         }, finallyHandler());
       },
       createTransAccount: function(name, identity, pwd, mail, mobile, successHandler, errorHandler, finallyHandler) {
-        Rest.buy.createBuyAccount(id, name, identity, pwd, mail, mobile, function(data){
-          if(parseRestSuccess('createBuyAccount', data, successHandler, errorHandler)) {
+        Rest.buy.createTransAccount(id, name, identity, pwd, mail, mobile, function(data){
+          if(parseRestSuccess('createTransAccount', data, successHandler, errorHandler)) {
             console.log('tyson11111111');
             console.log(data);
+            transAccount = data.result;
           }
         }, function(status){
-          parseRestError('createBuyAccount', status, errorHandler);
+          parseRestError('createTransAccount', status, errorHandler);
         }, finallyHandler());
       },
 
-      authorizeTransAccount: function(successHandler, errorHandler, finallyHandler) {
-        Rest.buy.authorizeTransAccount(id, transaction.tid, transaction.pwd, function(data){
+      authorizeTransAccount: function(pwd, successHandler, errorHandler, finallyHandler) {
+        Rest.buy.authorizeTransAccount(id, transAccount.id, pwd, function(data){
           if(parseRestSuccess('authorizeTransAccount', data, successHandler, errorHandler)) {
             console.log('tyson11111111');
             console.log(data);
+            transAccount = data.result;
           }
         }, function(status){
           parseRestError('authorizeTransAccount', status, errorHandler);
@@ -293,7 +296,7 @@ angular.module('main.service',[])
       },
 
       queryBankBinding: function(successHandler, errorHandler, finallyHandler) {
-        Rest.buy.queryBankBinding(id, transaction.tid, function(data){
+        Rest.buy.queryBankBinding(id, transAccount.id, function(data){
           if(parseRestSuccess('queryBankBinding', data, successHandler, errorHandler)) {
             console.log('tyson11111111');
             console.log(data);
@@ -303,11 +306,12 @@ angular.module('main.service',[])
         }, finallyHandler());
       },
 
-      queryValidBanks: function(successHandler, errorHandler, finallyHandler) {
-        Rest.buy.queryValidBanks(id, transaction.tid, function(data){
+      queryValidBanks: function(tid, successHandler, errorHandler, finallyHandler) {
+        Rest.buy.queryValidBanks(id, tid, function(data){
           if(parseRestSuccess('queryValidBanks', data, successHandler, errorHandler)) {
             console.log('tyson11111111');
             console.log(data);
+            //transValidBanks = data.result;
           }
         }, function(status){
           parseRestError('queryValidBanks', status, errorHandler);
@@ -315,7 +319,7 @@ angular.module('main.service',[])
       },
 
       queryBindingBanks: function(successHandler, errorHandler, finallyHandler) {
-        Rest.buy.queryBindingBanks(id, transaction.tid, function(data){
+        Rest.buy.queryBindingBanks(id, transAccount.id, function(data){
           if(parseRestSuccess('queryBindingBanks', data, successHandler, errorHandler)) {
             console.log('tyson11111111');
             console.log(data);
@@ -325,8 +329,8 @@ angular.module('main.service',[])
         }, finallyHandler());
       },
 
-      initiateBankBinding: function(successHandler, errorHandler, finallyHandler) {
-        Rest.buy.initiateBankBinding(id, transaction.tid, function(data){
+      initiateBankBinding: function(bankId, bankName, bankCardNo, successHandler, errorHandler, finallyHandler) {
+        Rest.buy.initiateBankBinding(id, transAccount.id, bankId, bankName, bankCardNo, function(data){
           if(parseRestSuccess('initiateBankBinding', data, successHandler, errorHandler)) {
             console.log('tyson11111111');
             console.log(data);
@@ -336,9 +340,9 @@ angular.module('main.service',[])
         }, finallyHandler());
       },
 
-      confirmBankBinding: function(successHandler, errorHandler, finallyHandler) {
-        Rest.buy.confirmBankBinding(id, transaction.tid, transaction.token, transaction.verify_code,
-                                    transaction.bank_id, transaction.bank_name, transaction.bank_card_no, function(data){
+      confirmBankBinding: function(token, code, bankId, bankName, bankCardNo, successHandler, errorHandler, finallyHandler) {
+        Rest.buy.confirmBankBinding(id, transAccount.id, token, code,
+                                    bankId, bankName, bankCardNo, function(data){
           if(parseRestSuccess('confirmBankBinding', data, successHandler, errorHandler)) {
             console.log('tyson11111111');
             console.log(data);
