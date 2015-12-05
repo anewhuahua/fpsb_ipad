@@ -342,11 +342,11 @@ angular.module('starter.controllers', [])
         if (data.authorized) {
           Main.buy.queryBankBinding(data.id, function(data1){
             if(data1) {
-              // have bond bank
-              $scope.data.phase = 'buy';
-            } else {
               // not bond bank yet
               $scope.data.phase = 'bank';
+            } else {
+              // have bond bank
+              $scope.data.phase = 'buy';
             }
           }, function(status1){}, function(){});
 
