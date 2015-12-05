@@ -388,7 +388,7 @@ angular.module('rest.service', [])
         var req = {
             method: 'PUT',
             url: domain+'ChiefFinancierService/api/partner/v1/customers/' + id + '/partners/cljj/transaccounts/' + tid +
-                        'banks?action=confirm&tokien='+token+'&verifyCode='+code+'&applyNo='+apply,
+                        'banks?action=confirm&token='+token+'&verifyCode='+code+'&applyNo='+apply,
             data: {
               bank_id: bid,
               bank_name: bname,
