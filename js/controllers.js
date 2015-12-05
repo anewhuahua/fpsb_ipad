@@ -295,6 +295,8 @@ angular.module('starter.controllers', [])
     mobile: '',
     email: '11@baidu.com',
 
+    productId: '',
+
     bindingBankCards: [],
     validBanks: [],
 
@@ -311,7 +313,7 @@ angular.module('starter.controllers', [])
   }
 
   $scope.$on("$ionicView.enter", function(){
-    $scope.data.phase = 'verify';
+    $scope.data.phase = 'buy';
     $scope.data.initiated = false;
   });
 
@@ -352,6 +354,9 @@ angular.module('starter.controllers', [])
               $scope.data.phase = 'bank';
             } else {
               // have bond bank
+              Main.buy.queryBindingBanks(data.id, function(data2){
+                $scope.data.bindingBankCards =  data2;
+              }, function(status2){}, function(){});
               $scope.data.phase = 'buy';
             }
           }, function(status1){}, function(){});
@@ -467,6 +472,22 @@ angular.module('starter.controllers', [])
 
   $scope.confirmBankBinding = function() {
     Main.buy.confirmBankBinding($scope.data.token,  $scope.data.verifyCode, $scope.data.applyNo,
+                                $scope.data.bankId, $scope.data.bankName, $scope.data.bankCardNo, 
+    function(data){
+
+    }, function(status){
+      $ionicPopup.alert({
+            title:    '提示信息',
+            cssClass: 'alert-text',
+            template:  status
+      });
+    }, function(){
+
+    });
+  }
+
+  $scope.purchase = function() {
+    Main.buy.purchasePublicFund($scope.data.productId,  $scope.data.verifyCode, $scope.data.applyNo,
                                 $scope.data.bankId, $scope.data.bankName, $scope.data.bankCardNo, 
     function(data){
      

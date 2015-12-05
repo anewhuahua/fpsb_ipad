@@ -318,7 +318,7 @@ angular.module('main.service',[])
         }, finallyHandler());
       },
 
-      queryBindingBanks: function(successHandler, errorHandler, finallyHandler) {
+      queryBindingBanks: function(tid, successHandler, errorHandler, finallyHandler) {
         Rest.buy.queryBindingBanks(id, transAccount.id, function(data){
           if(parseRestSuccess('queryBindingBanks', data, successHandler, errorHandler)) {
             console.log('tyson11111111');
@@ -350,11 +350,18 @@ angular.module('main.service',[])
         }, function(status){
           parseRestError('confirmBankBinding', status, errorHandler);
         }, finallyHandler());
+      },
+      purchasePublicFund: function(pid, bcard, amount, successHandler, errorHandler, finallyHandler) {
+        Rest.buy.purchasePublicFund(id, transAccount.id, pid, bcard, amount, function(data){
+          if(parseRestSuccess('purchasePublicFund', data, successHandler, errorHandler)) {
+            console.log('tyson11111111');
+            console.log(data);
+          }
+        }, function(status){
+          parseRestError('purchasePublicFund', status, errorHandler);
+        }, finallyHandler());
       }
-
     },
-    
-
 
     login: function(param, successHandler, errorHandler, finallyHandler) {
       var username = null;

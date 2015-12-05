@@ -81,24 +81,19 @@
             <div class="sdlcnrdv" ng-if="data.phase=='buy'">   
                <span class="xpqqyytcc">长盛电子信息主题基金 000063</span>
                <div class="xpzz">
-                  <span>基金类型<em> 混合型基金</em></span>
-                  <span>赎回时间<em> 3个工作日</em></span>
-                  <span>风险等级<em> 4</em></span>
+                  <span><em> </em></span>
                </div>
                <div class="lcgmaa"><span>购买金额</span> <input type="text"  placeholder="最低10000起  每10000累加"/><em>元</em></div>
                <div class="lcgmab"><span>输入密码</span> <input type="text"  placeholder="请输入您的密码"/></div>
                <div class="sdlcnrb">
                   <span>选择银行</span>
-                  <div class="xzxse">
+                  <div class="xzxse" ng-model="data.bankCardNo">
                      <select>
-                       <option>招商银行</option>
-                       <option>工商银行</option>
-                       <option>建设银行</option>
-                       <option>农业银行</option>
+                       <option ng-repeat="b in data.bindingBankCards" value="{{b.bank_card_no}}">{{b.bank_name}}</option>
                      </select> 
                    </div>
                </div>
-               <div class="lcgmab"><span>卡       号</span> <input type="text"  placeholder="请输入您的卡号"/></div>
+               <div class="lcgmab"><span>卡       号</span> <input type="text" readOnly="true" /> {{data.bankCardNo}}</div>
                <span class="lcgmcpdd">限额：每单最高<em>30</em>万元，单日最高<em>90</em>万元，单月最高<em>1000</em>万元</span>
                <input type="submit" class="nexbnb" value="提交订单" />
                <div class="tytygm">
