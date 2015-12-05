@@ -367,7 +367,7 @@ angular.module('rest.service', [])
             url: domain+'ChiefFinancierService/api/partner/v1/customers/' + id + '/partners/cljj/transaccounts/' + tid +
                         '/banks?action=initiate',
             data: {
-              bank_id: id,
+              bank_id: bid,
               bank_name: bname,
               bank_card_no: bcard
             },
