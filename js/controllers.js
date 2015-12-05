@@ -340,7 +340,7 @@ angular.module('starter.controllers', [])
       } else {   // already registered
 
         if (data.authorized) {
-          Main.buy.queryBankBinding(function(data1){
+          Main.buy.queryBankBinding(data.id, function(data1){
             if(data1) {
               // have bond bank
               $scope.data.phase = 'buy';
