@@ -338,8 +338,18 @@ angular.module('starter.controllers', [])
         $scope.data.phase = 'register';
 
       } else {   // already registered
+
         if (data.authorized) {
-          $scope.data.phase = 'buy';
+          Main.buy.queryBankBinding(function(data1){
+            if(data1) {
+              // have bond bank
+              $scope.data.phase = 'buy';
+            } else {
+              // not bond bank yet
+              $scope.data.phase = 'bank';
+            }
+          }, function(status1){}, function(){});
+
         } else {
           var confirmPopup = $ionicPopup.confirm({
             title: '提醒',
@@ -401,8 +411,10 @@ angular.module('starter.controllers', [])
     Main.buy.queryBankBinding(function(data){
       if(data) {
         // have bond
+
       } else {
         // not bond yet
+        
       }
     }, function(status){}, function(){});
   }
