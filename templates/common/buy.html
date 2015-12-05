@@ -71,7 +71,7 @@
                  <input type="text" placeholder="请输入验证码" /> 
                  <button ng-click="initiateBankBinding()" ng-disabled="data.askingVerifyCode">{{data.verifyCodeWarn}}</button>
                </div>
-               <input type="submit" class="nexbn" value="立即绑定"  ng-click="" />
+               <input type="submit" class="nexbn" value="立即绑定"  ng-click="confirmBankBinding()" ng-disabled="data.initiated==false" />
             </div>
 
 

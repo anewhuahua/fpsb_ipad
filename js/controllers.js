@@ -306,11 +306,13 @@ angular.module('starter.controllers', [])
     token: '',
     verifyCode: '',
     verifyCodeWarn: '收取验证码',
-    askingVerifyCode: false
+    askingVerifyCode: false,
+    initiated: false
   }
 
   $scope.$on("$ionicView.enter", function(){
     $scope.data.phase = 'verify';
+    $scope.data.initiated = false;
   });
 
   Main.customer.queryCustomer(function(data){
@@ -411,17 +413,6 @@ angular.module('starter.controllers', [])
       $scope.data.validBanks = data;
     }, function(status){}, function(){});
   }*/
-  $scope.queryBankBinding = function() {
-    Main.buy.queryBankBinding(function(data){
-      if(data) {
-        // have bond
-
-      } else {
-        // not bond yet
-        
-      }
-    }, function(status){}, function(){});
-  }
 
   $scope.queryBindingBanks = function() {
     Main.buy.queryBindingBanks(function(data){
@@ -429,14 +420,13 @@ angular.module('starter.controllers', [])
     }, function(status){}, function(){});
   }
 
-
   $scope.initiateBankBinding = function() {
     if ($scope.data.bankId == "" || $scope.data.bankCardNo == "") {
       $ionicPopup.alert({
           title: '提示信息',
-            cssClass: 'alert-text',
-            template:  '请选择银行和正确填写卡号!'
-        });
+          cssClass: 'alert-text',
+          template:  '请选择银行和正确填写卡号!'
+      });
       return;
     }
 
@@ -465,6 +455,7 @@ angular.module('starter.controllers', [])
     Main.buy.initiateBankBinding($scope.data.bankId, $scope.data.bankName, $scope.data.bankCardNo, function(data){
       $scope.data.applyNo = data.apply_no;
       $scope.data.token   = data.token;
+      $scope.data.initiated = true;
     }, function(status){
       $ionicPopup.alert({
             title:    '提示信息',
