@@ -313,7 +313,7 @@ angular.module('starter.controllers', [])
   }
 
   $scope.$on("$ionicView.enter", function(){
-    $scope.data.phase = 'buy';
+    $scope.data.phase = 'verify';
     $scope.data.initiated = false;
   });
 
