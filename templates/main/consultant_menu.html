@@ -25,12 +25,14 @@
                 <div class="gfnulitp" ng-click="selectMenu('bookings', 'todo')" ng-class="{gjxtjcss: showSubMenu('bookings')}">
                   <a>客户预约</a>
                   <em><img src="teImg/glefultprg.png" /></em>
+                  <span class="badge badge-assertive" ng-if="data.bookingsTodoCount>0">{{data.bookingsTodoCount}}</span>
                 </div>
               </li>
               <li>
                 <div class="gfnulitp" ng-click="selectMenu('orders', 'todo')" ng-class="{gjxtjcss: showSubMenu('orders')}">
-                  <a>客户交易</a>
+                  <a>客户投资</a>
                   <em><img src="teImg/glefultprg.png" /></em>
+                  <span class="badge badge-assertive" ng-if="data.ordersTodoCount>0">{{data.ordersTodoCount}}</span>
                 </div>
               </li>
 
@@ -76,6 +78,13 @@
                 </div>
               </li>
 
+              <li>
+                <ion-toggle toggle-class="toggle-assertive"
+                  ng-model="data.commissionCtrl.enabled">
+                <i style="position:absolute;left:36px;">佣金显示</i>
+               </ion-toggle>   
+              </li>
+
 
               <li>
                 <div class="gfnulitp">
@@ -100,13 +109,7 @@
               </li>
 
 
-          
-              <li>
-                <div class="gfnulitp" ng-click="logout()">
-                  <a>退出登入</a>
-                  <em><img src="teImg/glefultprg.png" /></em>
-                </div>
-              </li>
+ 
 
             </ul><!-- 左边大分类结束-->
     

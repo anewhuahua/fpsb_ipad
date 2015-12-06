@@ -16,12 +16,14 @@
                 <div class="gfnulitp" ng-click="selectMenu('bookings', 'todo')" ng-class="{gjxtjcss: showSubMenu('bookings')}">
                   <a>预约/咨询</a>
                   <em><img src="teImg/glefultprg.png" /></em>
+                  <span class="badge badge-assertive" ng-if="data.bookingsTodoCount>0">{{data.bookingsTodoCount}}</span>
                 </div>
               </li>
               <li>
                 <div class="gfnulitp" ng-click="selectMenu('orders', 'todo')" ng-class="{gjxtjcss: showSubMenu('orders')}">
                   <a>我的投资</a>
                   <em><img src="teImg/glefultprg.png" /></em>
+                  <span class="badge badge-assertive" ng-if="data.ordersTodoCount>0">{{data.ordersTodoCount}}</span>
                 </div>
               </li>
               <li>

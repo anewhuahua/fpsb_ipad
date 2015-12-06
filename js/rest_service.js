@@ -237,6 +237,8 @@ angular.module('rest.service', [])
       });
     },
 
+
+
     buy: {
 
       queryTransAccount: function(id, name, identity, successHandler, errorHandler, finallyHandler) {
@@ -441,6 +443,29 @@ angular.module('rest.service', [])
 
     customer: {
       v1: {
+
+        queryUserMessages: function(cid, successHandler, errorHandler, finallyHandler) {
+          var req = {
+              method: 'GET',
+              url: domain+'ChiefFinancierService/api/customer/v1/customers/' + cid + '/usermessages',
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
+            //console.log(pid);
+          $http(req).success(function(data){
+            //console.log(data);
+            successHandler(data);
+          }).error(function(res, status){
+            errorHandler(status);
+          }).finally(function(){
+            finallyHandler();
+          });
+        },
+
+
+
+
         queryConsultantProfileUrl: function(cid, iid){
           return domain+'ChiefFinancierService/api/common/v1/accounts/'+ cid + '/images/' + iid;
         },
@@ -519,6 +544,25 @@ angular.module('rest.service', [])
               method: 'GET',
               url: domain+'ChiefFinancierService/api/customer/v1/customers/' + cid + 
               '/bookings/count?' + '&productType=' + type + '&state=' + state,
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
+          $http(req).success(function(data){
+            successHandler(data);
+          }).error(function(res, status){
+            errorHandler(status);
+          }).finally(function(){
+            finallyHandler();
+          });
+        },
+        queryOrderssCount: function(param, cid, successHandler, errorHandler, finallyHandler) {
+          type  = param.type   || 'all';
+          state = param.state  || 'all';
+          var req = {
+              method: 'GET',
+              url: domain+'ChiefFinancierService/api/customer/v1/customers/' + cid + 
+              '/orders/count?' + '&productType=' + type + '&state=' + state,
               headers: {
                 'Content-Type': 'application/json'
               }
@@ -724,6 +768,47 @@ angular.module('rest.service', [])
             finallyHandler();
           });
         },
+
+
+        queryBookingsCount: function(param, id, successHandler, errorHandler, finallyHandler) {
+          type  = param.type   || 'all';
+          state = param.state  || 'all';
+          var req = {
+              method: 'GET',
+              url: domain+'ChiefFinancierService/api/consultant/v1/consultants/' + id + 
+              '/bookings/count?' + '&productType=' + type + '&state=' + state,
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
+          $http(req).success(function(data){
+            successHandler(data);
+          }).error(function(res, status){
+            errorHandler(status);
+          }).finally(function(){
+            finallyHandler();
+          });
+        },
+        queryOrderssCount: function(param, id, successHandler, errorHandler, finallyHandler) {
+          type  = param.type   || 'all';
+          state = param.state  || 'all';
+          var req = {
+              method: 'GET',
+              url: domain+'ChiefFinancierService/api/consultant/v1/consultants/' + id + 
+              '/orders/count?' + '&productType=' + type + '&state=' + state,
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
+          $http(req).success(function(data){
+            successHandler(data);
+          }).error(function(res, status){
+            errorHandler(status);
+          }).finally(function(){
+            finallyHandler();
+          });
+        },
+
 
         queryCustomerProfileUrl: function(cid, iid){
           return domain+'ChiefFinancierService/api/common/v1/accounts/'+ cid + '/images/' + iid;

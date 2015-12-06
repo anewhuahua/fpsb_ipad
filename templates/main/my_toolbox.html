@@ -197,15 +197,12 @@
                         <img src="teImg/wwc11.png" ng-if="order.state.toLowerCase()!='completed'"/>
                         <img src="teImg/ywc11.png" ng-if="order.state.toLowerCase()=='completed'"/>
                        </div>
-                       <ion-option-button class="button-energized">
+                       <ion-option-button class="button-energized" ng-click="complain()">
                             投诉 
                           </ion-option-button>
                     </ion-item>
 
                   </ion-list> 
-
-
-
 
                     
                     <!--
@@ -257,7 +254,7 @@
 
                        <div class="lcssr3" ng-if="booking.state!='completed'"><img src="teImg/wsl11.png" /></div>
                        <div class="lcssr3" ng-if="booking.state=='completed'"><img src="teImg/ysl11.png" /></div>
-                       <ion-option-button class="button-energized">
+                       <ion-option-button class="button-energized" ng-click="complain()">
                             投诉 
                           </ion-option-button>
                     </ion-item>

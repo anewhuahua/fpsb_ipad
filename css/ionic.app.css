@@ -7506,19 +7506,19 @@ $royal:                           #886aea !default;
     border: none; }
   .common-main-view .sytjdv1, .common-main-view .sytjdv2, .common-main-view .sytjdv3 {
     width: 96%;
-    height: 2.5rem;
+    height: 2.9rem;
     margin: 0.4rem auto;
     padding-top: 0.45rem;
     border-radius: 3px;
     overflow: hidden; }
   .common-main-view .sytjdv1 {
-    background: url(../teImg/sytjbj1.jpg) no-repeat;
+    background: url(../teImg/jwtz.png) no-repeat;
     background-size: cover; }
   .common-main-view .sytjdv2 {
-    background: url(../teImg/ycxzimg1.jpg) repeat-x;
+    background: url(../teImg/jzbgs.png) repeat-x;
     background-size: cover; }
   .common-main-view .sytjdv3 {
-    background: url(../teImg/sytjbj2.jpg) repeat-x; }
+    background: url(../teImg/hwbx.png) repeat-x; }
   .common-main-view .sytjdv1 > span, .common-main-view .sytjdv1 > em, .common-main-view .sytjdv1 > i, .common-main-view .sytjdv2 > span, .common-main-view .sytjdv2 > em, .common-main-view .sytjdv2 > i, .common-main-view .sytjdv3 > span, .common-main-view .sytjdv3 > em, .common-main-view .sytjdv3 > i {
     width: 100%;
     padding: 0rem 2%;
@@ -7546,19 +7546,19 @@ $royal:                           #886aea !default;
   .common-main-view .sytjdv2 > span {
     color: #8491a4; }
   .common-main-view .sytjdv3 > span {
-    color: #f3f2f5; }
+    color: #8491a4; }
   .common-main-view .sytjdv1 > em {
     color: #e89440; }
   .common-main-view .sytjdv2 > em {
     color: #e89440; }
   .common-main-view .sytjdv3 > em {
-    color: #dbe7ed; }
+    color: #e89440; }
   .common-main-view .sytjdv1 > i {
     color: #88aec9; }
   .common-main-view .sytjdv2 > i {
     color: #88aec9; }
   .common-main-view .sytjdv3 > i {
-    color: #f3f2f5; }
+    color: #88aec9; }
   .common-main-view .prxqaa119 {
     width: 50%;
     height: 0.8rem;

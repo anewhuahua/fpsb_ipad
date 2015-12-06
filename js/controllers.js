@@ -725,6 +725,13 @@ angular.module('starter.controllers', [])
    $scope.goMainPage = function() {
       window.open('http://biaoweihui.idea-source.net/abstract/', '_system');
    }
+   $scope.complain = function() {
+      $ionicPopup.alert({
+                  title: '投诉',
+                  cssClass: 'alert-text',
+                  template:  '请拨打400XXXXXXX进行投诉!'
+      });
+   }
 
    document.addEventListener("deviceready", function () {
         $scope.network = $cordovaNetwork.getNetwork();
@@ -789,8 +796,6 @@ angular.module('starter.controllers', [])
     data: "teImg/ghnr1lef.png",
     id: ""
   };
-
-
 
   $scope.provinceNames = [
     {key:"",value:""},
@@ -1467,7 +1472,10 @@ angular.module('starter.controllers', [])
   $scope.data = {
     mainMenu: "index",
     subMenu: "",
-    productType: Main.getProductType()
+    productType: Main.getProductType(),
+    commissionCtrl: Main.getCommissionCtrl(),
+    bookingsTodoCount: 0,
+    ordersTodoCount: 0
   }
 
   MultipleViewsManager.updatedLeft(function(params) {
@@ -1496,6 +1504,12 @@ angular.module('starter.controllers', [])
         return false;
       }
     }
+    Main.consultant.queryTodoBookingsCount(function(data){
+      $scope.data.bookingsTodoCount = data;
+    }, function(status){}, function(){})
+    Main.consultant.queryTodoOrdersCount(function(data){
+      $scope.data.ordersTodoCount = data;
+    }, function(status){}, function(){})
 })
 
 
@@ -1505,15 +1519,17 @@ angular.module('starter.controllers', [])
   $scope.data = {
     mainMenu: "index",
     subMenu: "",
-    productType: Main.getProductType()
+    productType: Main.getProductType(),
+    bookingsTodoCount: 0,
+    ordersTodoCount: 0
   }
   //delete $scope.data.productType['alltype'];
 
-  MultipleViewsManager.updatedLeft(function(params) {
-    //console.log(params);
-    $scope.data.mainMenu = params.main;
-    $scope.data.subMenu  = params.sub;
-  });
+    MultipleViewsManager.updatedLeft(function(params) {
+      //console.log(params);
+      $scope.data.mainMenu = params.main;
+      $scope.data.subMenu  = params.sub;
+    });
 
     /////////////
     $scope.selectMenu = function(first, second) {
@@ -1535,7 +1551,13 @@ angular.module('starter.controllers', [])
         return false;
       }
     }
-    
+
+    Main.customer.queryTodoBookingsCount(function(data){
+      $scope.data.bookingsTodoCount = data;
+    }, function(status){}, function(){})
+    Main.customer.queryTodoOrdersCount(function(data){
+      $scope.data.ordersTodoCount = data;
+    }, function(status){}, function(){})
 })
 
 
@@ -1595,7 +1617,9 @@ angular.module('starter.controllers', [])
       background: '',
       gender: '',
       certificates: 0 
-    }
+    },
+
+    commissionCtrl: Main.getCommissionCtrl()
   };
 
   //**

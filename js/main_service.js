@@ -15,7 +15,9 @@ angular.module('main.service',[])
     riskLevel: ''
   };
 
-
+  var commissionCtrl = {
+    enabled: false
+  };
 
   var categories = [
     {id: 1, childOf: true,   state: "common.publicfunds", name: "公募基金",  key:'publicfunds',   image:'teImg/gongmu.png', products:{data:[]}},
@@ -208,6 +210,9 @@ angular.module('main.service',[])
   };
 
   return {
+    getCommissionCtrl: function() {
+      return commissionCtrl;
+    },
 
     queryUploadAccountUrl: function() {
       return Rest.queryUploadAccountUrl(id);
@@ -718,6 +723,28 @@ angular.module('main.service',[])
         finallyHandler());
       },
 
+      queryTodoBookingsCount: function(successHandler, errorHandler, finallyHandler){ 
+         param = {state:'todo'};
+         Rest.customer.v1.queryBookingsCount(param, id, function(data){
+            if(parseRestSuccess('queryTodoBookingsCount', data, successHandler, errorHandler)) {
+              //var count = data.result;
+              console.log(data.result);
+            }
+          }, function(status){
+             parseRestError('queryTodoBookingsCount', status, errorHandler);
+          },  finallyHandler());
+      },
+      queryTodoOrdersCount: function(successHandler, errorHandler, finallyHandler){ 
+         param = {state:'todo'};
+         Rest.customer.v1.queryOrderssCount(param, id, function(data){
+            if(parseRestSuccess('queryTodoOrdersCount', data, successHandler, errorHandler)) {
+              //var count = data.result;
+              console.log(data.result);
+            }
+          }, function(status){
+             parseRestError('queryTodoOrdersCount', status, errorHandler);
+          },  finallyHandler());
+      },
 
       queryMoreBookings: function(bookings, successHandler, errorHandler, finallyHandler){  //currentBooking
         var param = {};
@@ -796,6 +823,29 @@ angular.module('main.service',[])
 ////////////////////////////////////////////////
 
     consultant: {
+
+      queryTodoBookingsCount: function(successHandler, errorHandler, finallyHandler){ 
+         param = {state:'todo'};
+         Rest.consultant.v1.queryBookingsCount(param, id, function(data){
+            if(parseRestSuccess('queryTodoBookingsCount', data, successHandler, errorHandler)) {
+              //var count = data.result;
+              console.log(data.result);
+            }
+          }, function(status){
+             parseRestError('queryTodoBookingsCount', status, errorHandler);
+          },  finallyHandler());
+      },
+      queryTodoOrdersCount: function(successHandler, errorHandler, finallyHandler){ 
+         param = {state:'todo'};
+         Rest.consultant.v1.queryOrderssCount(param, id, function(data){
+            if(parseRestSuccess('queryTodoOrdersCount', data, successHandler, errorHandler)) {
+              //var count = data.result;
+              console.log(data.result);
+            }
+          }, function(status){
+             parseRestError('queryTodoOrdersCount', status, errorHandler);
+          },  finallyHandler());
+      },
 
       // CRM
       queryGroups: function(successHandler, errorHandler, finallyHandler) {
