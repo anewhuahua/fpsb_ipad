@@ -7707,6 +7707,7 @@ $royal:                           #886aea !default;
     float: left;
     margin-right: 0.05rem; }
   .common-main-view .gjtctv > em {
+    font-weight: bold;
     float: left;
     width: 70%;
     height: 0.4rem;
@@ -7733,9 +7734,9 @@ $royal:                           #886aea !default;
     background: url(../teImg/xxtcbj.jpg) repeat-x;
     padding: 0.2rem 0rem 0.5rem 0rem; }
   .common-main-view .xxnrdv > p {
-    font-size: 0.24rem;
+    font-size: 0.3rem;
     color: #395983;
-    line-height: 0.36rem;
+    line-height: 0.44rem;
     width: 90%;
     margin: 0 auto 0.4rem auto;
     text-indent: 0.48rem;
