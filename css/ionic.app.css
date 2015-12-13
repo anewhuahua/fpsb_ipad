@@ -1791,6 +1791,10 @@ $royal:                           #886aea !default;
     height: 0.49rem;
     background: url(../teImg/likedit.png) no-repeat;
     background-size: cover; }
+  .booking-view .jnxqtopr1 > span > em {
+    color: #a2a2a2 !important; }
+  .booking-view .jnxqtopr1 > span > em > i {
+    color: #d32e00 !important; }
   .booking-view .jnxqtopr > span {
     text-align: justify;
     font-size: 0.26rem;
@@ -6049,6 +6053,10 @@ $royal:                           #886aea !default;
     height: 0.49rem;
     background: url(../teImg/jnxqax.png) no-repeat;
     background-size: cover; }
+  .common-person-view .jnxqtopr1 > span > em {
+    color: #a2a2a2 !important; }
+  .common-person-view .jnxqtopr1 > span > em > i {
+    color: #d32e00 !important; }
   .common-person-view .jnxqtopr > span {
     text-align: justify;
     font-size: 0.26rem;
@@ -6726,6 +6734,15 @@ $royal:                           #886aea !default;
     line-height: 0.3rem;
     color: #395983;
     margin-left: 0.2rem; }
+  .common-main-view .prxqh3 {
+    font-size: 0.3rem;
+    line-height: 0.3rem;
+    color: #395983;
+    margin-left: 0.2rem; }
+  .common-main-view .prxqh3 > em {
+    color: #a2a2a2 !important; }
+  .common-main-view .prxqh3 > em > i {
+    color: #d32e00 !important; }
   .common-main-view .prxqh4 {
     background: url(../teImg/likeit.png) no-repeat;
     width: 0.54rem;

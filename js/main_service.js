@@ -871,6 +871,39 @@ angular.module('main.service',[])
 ////////////////////////////////////////////////
 
     consultant: {
+      queryCommissions: function(successHandler, errorHandler, finallyHandler){
+        Rest.consultant.v1.queryCommissions(id, function(data){
+          if (parseRestSuccess('queryCommissions', data, successHandler, errorHandler)) { 
+              //customer.bookings.unserved.unshift(data.result);
+              //data.result;
+          }
+        }, function(status){
+          parseRestError('queryCommissions',  status, errorHandler);
+        }, 
+        finallyHandler());
+      },
+      withdrawCommission: function(cmsId, successHandler, errorHandler, finallyHandler){
+        Rest.consultant.v1.withdrawCommission(id, cmsId, function(data){
+          if (parseRestSuccess('withdrawCommission', data, successHandler, errorHandler)) { 
+              //customer.bookings.unserved.unshift(data.result);
+              //data.result;
+          }
+        }, function(status){
+          parseRestError('withdrawCommission',  status, errorHandler);
+        }, 
+        finallyHandler());
+      },
+      queryOrderCommission: function(oid, successHandler, errorHandler, finallyHandler){
+        Rest.consultant.v1.queryOrderCommission(id, oid, function(data){
+          if (parseRestSuccess('queryOrderCommission', data, successHandler, errorHandler)) { 
+              //customer.bookings.unserved.unshift(data.result);
+              //data.result;
+          }
+        }, function(status){
+          parseRestError('queryOrderCommission',  status, errorHandler);
+        }, 
+        finallyHandler());
+      },
 
       queryUserMessages: function(successHandler, errorHandler, finallyHandler) {
         Rest.consultant.v1.queryUserMessages(id, function(data){

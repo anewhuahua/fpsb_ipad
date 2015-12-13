@@ -701,6 +701,62 @@ angular.module('rest.service', [])
 
     consultant: {
       v1: {
+        queryCommissions: function(cid, successHandler, errorHandler, finallyHandler){
+          var req = {
+              method: 'GET',
+              url: domain+'ChiefFinancierService/api/consultant/v1/consultants/' + cid + '/commissions?offset=0&limit=100000',
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
+            //console.log(pid);
+          $http(req).success(function(data){
+            //console.log(data);
+            successHandler(data);
+          }).error(function(res, status){
+            errorHandler(status);
+          }).finally(function(){
+            finallyHandler();
+          }); 
+        },
+        withdrawCommission: function(cid, cmsId, successHandler, errorHandler, finallyHandler){
+          var req = {
+              method: 'PUT',
+              url: domain+'ChiefFinancierService/api/consultant/v1/consultants/' + cid + '/commissions/' + cmsId + '?action=withdraw',
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
+            //console.log(pid);
+          $http(req).success(function(data){
+            //console.log(data);
+            successHandler(data);
+          }).error(function(res, status){
+            errorHandler(status);
+          }).finally(function(){
+            finallyHandler();
+          }); 
+        },
+        queryOrderCommission: function(cid, oid, successHandler, errorHandler, finallyHandler){
+          var req = {
+              method: 'GET',
+              url: domain+'ChiefFinancierService/api/consultant/v1/consultants/' + cid + '/orders/' 
+              + oid + '/commissions',
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
+            //console.log(pid);
+          $http(req).success(function(data){
+            //console.log(data);
+            successHandler(data);
+          }).error(function(res, status){
+            errorHandler(status);
+          }).finally(function(){
+            finallyHandler();
+          }); 
+        },
+        
         queryUserMessages: function(cid, successHandler, errorHandler, finallyHandler) {
           var req = {
               method: 'GET',

@@ -16,7 +16,7 @@
                  <div class="jnxqtopr1">
                   <p ng-if="!currentLiked" class="xxlniuhuang1" ng-click="likeIt(product)"></p>
                   <i ng-if="currentLiked" class="xxlniuhuang1"></i>
-                  <span>{{product.name}}</span>
+                  <span>{{product.name}}<em ng-if="data.commissionCtrl.enabled"> (返佣比例 <i>{{product.commissionRate}}%</i>)</em></span>
                  </div>
                
                  <span>{{product.summary}}</span>

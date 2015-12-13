@@ -233,6 +233,7 @@ angular.module('starter.controllers', [])
   var cid = $stateParams.categoryId;
   var pid = $stateParams.productId;
 
+
   Main.isLikedProduct(pid, function(data){
           if(data.length>0) {
             $scope.currentLiked = true;
@@ -293,6 +294,8 @@ angular.module('starter.controllers', [])
       template: '请先登入'
     });
   });
+
+  $scope.data.commissionCtrl = Main.getCommissionCtrl();
 })
 
 
@@ -851,6 +854,7 @@ angular.module('starter.controllers', [])
     {key:"yunnan",value:"云南"},
     {key:"zhejiang",value:"浙江"}
   ];
+  $scope.data.commissionCtrl = Main.getCommissionCtrl();
 
   Main.login({}, function(){ 
       $scope.data.person.status = 1;
@@ -1635,6 +1639,7 @@ angular.module('starter.controllers', [])
     currentBookingState: 'all',
     currentBooking: null,
     liked: Main.getLiked(),
+    commissions: [],
 
     selectedGroupName: '',
     selectedGroup: 'all',
@@ -1875,6 +1880,10 @@ angular.module('starter.controllers', [])
       $scope.data.messages = data;
     }, function(status){}, function(){});
 
+    Main.consultant.queryCommissions(function(data){
+      $scope.data.commissions = data;
+    }, function(status){}, function(){});
+
   };
 
   $scope.selectOrders = function(param){
@@ -1974,16 +1983,13 @@ angular.module('starter.controllers', [])
     }
   };
 
-
   //**
   //** initialize
   $scope.data.currentOrder = $scope.data.orders['all'];
   $scope.data.currentBooking = $scope.data.bookings['all'];
 
-
   //**
   //** common function
-
   $scope.updateProfileInformation = function(param) {
     
     if ($scope.imgProfile.id != '') {
