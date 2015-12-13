@@ -1636,10 +1636,8 @@ angular.module('starter.controllers', [])
     currentBooking: null,
     liked: Main.getLiked(),
 
-    groupDialog: {
-      newGroupName: '',
-      selectedGroupName: ''
-    },
+    selectedGroupName: '',
+
 
     update: {
       cpb: 0,
