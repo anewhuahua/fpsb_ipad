@@ -1685,29 +1685,8 @@ angular.module('starter.controllers', [])
   //** common function
   $scope.group = function(person) {
      var success = false;
-     var step1 = false;
-     /*
-     var newGroupPopup = $ionicPopup.show({
-       template: '<input style="width:100%" type="text" ng-model="data.groupDialog.newGroupName"></input>',
-       title: '加入分组',
-       subTitle: '选择客户分组',
-       scope: $scope,
-       buttons: [
-         { text: '返回', 
-           onTap: function(e) {
-            
-           }
-         },
-         {
-           text: '<b>确认</b>',
-           type: 'button-positive',
-           onTap: function(e) {
-             console.log($scope.data.groupDialog.newGroupName);
-           }
-         },
-       ]
-     });*/
-
+     var step1 = '';
+     
      var myPopup = $ionicPopup.show({
        //template: '<input type="text" ng-model="data.wifi">',
        template: '<select style="width:100%" ng-model="data.selectedGroupName"><option ng-repeat="group in data.groups" value="{{group}}">{{group}}</option></select>',
@@ -1717,77 +1696,70 @@ angular.module('starter.controllers', [])
        buttons: [
          { text: '新建分组', 
            onTap: function(e) {
-             return 'step2'
+             step1 = 'new';
+             return step1；
            }
          },
          {
            text: '<b>确认加入</b>',
            type: 'button-positive',
            onTap: function(e) {
-             if ($scope.data.selectedGroupName!='') {
-               //不允许用户关闭，除非他键入wifi密码
-               //e.preventDefault();
-               Main.consultant.addGroupMember($scope.data.selectedGroupName, person.id, function(data){
-                success=true;
-                return 'step1'
-               }, function(status){return 'step1'}, function(){})
-             } else {
-                return 'step1';
-             }
+             step1 = 'existed';
+             return step1;  
            }
          },
        ]
      });
      myPopup.then(function(res) {
-       console.log(res);
-       if (step1=='step1') {
-          if(success) {
-            $ionicPopup.alert({
-              title: '系统提示',
-              template: '添加成功'
-            });
+        console.log(res);
+        if (res=='existed') {
+          if ($scope.data.selectedGroupName!='') {
+            Main.consultant.addGroupMember($scope.data.selectedGroupName, person.id, function(data){
+              $ionicPopup.alert({
+                title: '系统提示',
+                template: '添加分组成功'
+              });
+            }, function(status){
+              $ionicPopup.alert({
+                title: '系统提示',
+                template: '添加分组失败'
+              });
+            }, function(){})
           } else {
             $ionicPopup.alert({
               title: '系统提示',
-              template: '添加失败'
+              template: '请选择分组，添加失败'
             });
           }
-       } else {
-
-       var newGroupPopup = $ionicPopup.prompt({
-                   title: '新建分组',
-                   inputType: 'text',
-                   okText: '确认',
-                   cancelText: '取消',
-                   inputPlaceholder: '请输入新建客户分组名'
-                 }).then(function(res) {
-                   console.log('客户分组名', res);
-                   if (res!='') {
-                     Main.consultant.addGroupMember(res, person.id , function(data){
-                      success = true;
-                     }, function(status){}, function(){});
-                   } else {
-                    console.log('none');
-                   }
-                 });
-        newGroupPopup.then(function(res) {
-          Main.consultant.queryGroups(function(data){
-            $scope.data.groups = data;
-          }, function(status){}, function(){});
-          myPopup.close();
-          if(success) {
-            $ionicPopup.alert({
-              title: '系统提示',
-              template: '添加成功'
-            });
-          } else {
-            $ionicPopup.alert({
-              title: '系统提示',
-              template: '添加失败'
-            });
-          }
-        });
-      }
+        } else {
+          var newGroupPopup = $ionicPopup.prompt({
+            title: '新建分组',
+            inputType: 'text',
+            okText: '确认',
+            cancelText: '取消',
+            inputPlaceholder: '请输入新建客户分组名'
+          }).then(function(res1) {
+            console.log('客户分组名', res1);
+            if (res1!='') {
+              Main.consultant.addGroupMember(res1, person.id , function(data){
+                $ionicPopup.alert({
+                  title: '系统提示',
+                  template: '添加分组成功'
+                });
+              }, function(status){
+                $ionicPopup.alert({
+                  title: '系统提示',
+                  template: '添加分组失败'
+                });
+              }, function(){});
+            } else {
+              $ionicPopup.alert({
+                title: '系统提示',
+                template: '请选择分组，添加失败'
+              });
+            }
+          });
+        }
      });
       /*
      $timeout(function() {
