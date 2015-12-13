@@ -78,6 +78,15 @@ angular.module('starter.controllers', [])
       return Main.getProductImageUrl(input.id, input.imageId);
   }
 })
+.filter('imageMsgFilter',function(){
+  return function(input){
+      if (input.read==true) {
+        return 'teImg/grrexzimg1.png';
+      } else {
+        return 'teImg/grrexzimg2.png';
+      }
+  }
+})
 .filter('managerNameFilter',function(Main){
   return function(input){
       var o = JSON.parse(input);
@@ -1093,7 +1102,11 @@ angular.module('starter.controllers', [])
   $scope.messageDialog = function(msg) {
     $scope.data.popup = 'MessageDialog';
     $scope.data.looking_msg = msg;
-  }
+    Main.markUserMessageRead(msg.id, function(data){
+      msg.read = data.read;
+    }, function(status){}, function(){});
+
+  } 
 
   $scope.addBooking= function() {
     // todo quantity

@@ -391,8 +391,8 @@
                
                 <ion-list>
                     <ion-item class="lcsslwsl" ng-click="messageDialog(msg)" ng-repeat="msg in data.messages">
-                       <div class="lcsslwslf1"><img src="teImg/grrexzimg1.png"/></div>
-                       <span  class="lccslwf2">[预约成功]{{msg.title}}</span>
+                       <div class="lcsslwslf1"><img ng-src="{{msg | imageMsgFilter}}"/></div>
+                       <span  class="lccslwf2">{{msg.title}}</span>
                        <ion-option-button class="button-energized">
                             删除 
                         </ion-option-button>
