@@ -951,11 +951,11 @@ angular.module('main.service',[])
         }, 
         finallyHandler());
       },
-      queryGroupMembers: function(gname, successHandler, errorHandler, finallyHandler) {
+      queryGroupMembers: function(customers, gname, successHandler, errorHandler, finallyHandler) {
         Rest.consultant.v1.queryGroupMembers(id, gname, function(data){
           if(parseRestSuccess('queryGroupMembers', data, successHandler, errorHandler)) {
             //bookings.data = data.result;
-            
+            customers.data = data.result;
           }
         }, function(status){
           parseRestError('queryGroupMembers', status, errorHandler);

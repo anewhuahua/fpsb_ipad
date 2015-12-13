@@ -1637,7 +1637,7 @@ angular.module('starter.controllers', [])
     liked: Main.getLiked(),
 
     selectedGroupName: '',
-
+    selectedGroup: 'all',
 
     update: {
       cpb: 0,
@@ -1681,6 +1681,16 @@ angular.module('starter.controllers', [])
 
   //**
   //** common function
+  $scope.changeGroup = function(grp) {
+    if (grp=='all') {
+      Main.consultant.queryCustomers($scope.data.customers, function(data){
+      }, function(status){}, function(){});
+    } else {
+      Main.consultant.queryGroupMembers($scope.data.customers, grp, function(data){
+      }, function(status){}, function(){});
+    }
+  }
+
   $scope.group = function(person) {
      var success = false;
      var step1 = '';

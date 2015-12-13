@@ -174,7 +174,7 @@
                   <div class="khlbtop"><!--内容top开始--> 
                   
                        <div class="sekkgdvbb">
-                         <select class="kkxxbbsele">
+                         <select class="kkxxbbsele" ng-model="data.selectedGroup" ng-change="changeGroup(data.selectedGroup)"> 
                             <option value="all">默认分组</option>
                             <option ng-repeat="group in data.groups" value="{{group}}">{{group}}</option>
                          </select> 
@@ -207,9 +207,10 @@
                           <ion-option-button class="button-energized" ng-click="group(customer)">
                             分组 
                           </ion-option-button>
+                          <!--
                           <ion-option-button class="button-assertive">
                             删除 
-                          </ion-option-button>
+                          </ion-option-button>-->
                       </ion-item>
                     </ion-list>
 
