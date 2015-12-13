@@ -81,9 +81,9 @@ angular.module('starter.controllers', [])
 .filter('imageMsgFilter',function(){
   return function(input){
       if (input.read==true) {
-        return 'teImg/grrexzimg1.png';
-      } else {
         return 'teImg/grrexzimg2.png';
+      } else {
+        return 'teImg/grrexzimg1.png';
       }
   }
 })
