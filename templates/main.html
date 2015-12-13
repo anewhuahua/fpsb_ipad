@@ -409,7 +409,7 @@ navigation history that also transitions its views in and out.
     </div><!-- 私募产品详情页弹窗主体 中间部分-->
 
     <div class="prxqmanr2"  ng-if="data.looking_product_tab=='desc'">
-      <img src="http://115.29.194.11:8080/ChiefFinancierService/api/common/v1/products/402880ed50e67dab0150e680bf720003/images/402880ed50e67dab0150e680af5f0002"/>
+      <img ng-cache ng-src="{{data.looking_product | productImageFilter}}" />
 
     </div>
   </div>

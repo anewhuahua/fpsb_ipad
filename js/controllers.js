@@ -1687,6 +1687,7 @@ angular.module('starter.controllers', [])
       }, function(status){}, function(){});
     } else {
       Main.consultant.queryGroupMembers($scope.data.customers, grp, function(data){
+
       }, function(status){}, function(){});
     }
   }
@@ -1727,6 +1728,7 @@ angular.module('starter.controllers', [])
                 title: '系统提示',
                 template: '添加分组成功'
               });
+              
             }, function(status){
               $ionicPopup.alert({
                 title: '系统提示',
@@ -1754,6 +1756,9 @@ angular.module('starter.controllers', [])
                   title: '系统提示',
                   template: '添加分组成功'
                 });
+                Main.consultant.queryGroups(function(data1){
+                  $scope.data.groups = data1;
+                }, function(status1){}, function(){});
               }, function(status){
                 $ionicPopup.alert({
                   title: '系统提示',
