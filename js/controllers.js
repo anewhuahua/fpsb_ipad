@@ -1102,10 +1102,16 @@ angular.module('starter.controllers', [])
   $scope.messageDialog = function(msg) {
     $scope.data.popup = 'MessageDialog';
     $scope.data.looking_msg = msg;
-    Main.markUserMessageRead(msg.id, function(data){
-      msg.read = data.read;
-    }, function(status){}, function(){});
-
+    var role = Main.getRole();
+    if(role=='Consultant') {
+      Main.consultant.markUserMessageRead(msg.id, function(data){
+        msg.read = data.read;
+      }, function(status){}, function(){});
+    } else if(role == 'Customer') {
+      Main.customer.markUserMessageRead(msg.id, function(data){
+        msg.read = data.read;
+      }, function(status){}, function(){});
+    }
   } 
 
   $scope.addBooking= function() {
