@@ -53,7 +53,7 @@
                      <p>
                         <em>交易编号：{{data.order.id}}</em>
                         <em>客户姓名：{{data.order.customer.fullname}}</em>
-                        <em>创建时间：2015-08-08</em>
+                        <em>创建时间：{{data.order.timestamp | date:'yy-MM-dd  hh:mm:ss'}}</em>
                      </p>
                    
                   </div><!--订单信息-e-->
