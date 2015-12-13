@@ -235,6 +235,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'angular-flot', 'ionicMultipleV
     }
   })
   .state('common.order_detail', {
+    cache: false,
     url: '/order/detail/:orderId',
     views: {
       'order-menu': {
