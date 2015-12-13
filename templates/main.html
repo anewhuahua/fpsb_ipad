@@ -53,18 +53,16 @@ navigation history that also transitions its views in and out.
         <span class="gjtitc">消 息</span>
         <div class="gjtctv">
           <span></span>
-          <em>A股昨日资金净流出115.70亿元</em>
-          <i>2015/07/24    15:39:20</i>
+          <em>{{data.looking_msg.title}}</em>
+          <i>{{data.looking_msg.timestamp | date:'dd-MM-yy  hh:mm'}}" </i>
         </div>
       </div>
       
       <div class="xxnrdv">
           <div class="xxdnrbjtop"></div>
-          <p>{{data.looking_msg.title}}
+          <p>{{data.looking_msg.content}}
           </p>
-          <p>
-            {{data.looking_msg.content}}
-          </p>
+         
          
      
       </div>
