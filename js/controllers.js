@@ -1697,7 +1697,7 @@ angular.module('starter.controllers', [])
          { text: '新建分组', 
            onTap: function(e) {
              step1 = 'new';
-             return step1；
+             return step1;
            }
          },
          {
