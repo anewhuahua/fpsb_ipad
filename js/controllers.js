@@ -1638,7 +1638,7 @@ angular.module('starter.controllers', [])
 
     groupDialog: {
       newGroupName: '',
-      selectedGroupName: '默认'
+      selectedGroupName: ''
     },
 
     update: {
