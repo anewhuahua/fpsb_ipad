@@ -3333,7 +3333,7 @@ $royal:                           #886aea !default;
     background: rgba(55, 55, 55, 0.6);
     display: none; }
   .common-person-view .sekkgdvbb {
-    width: 30%;
+    width: 100%;
     height: 0.9rem;
     background: #fff;
     float: left;
@@ -6868,6 +6868,8 @@ $royal:                           #886aea !default;
     color: #8b8b8b;
     width: 17%;
     margin-left: 0.9rem; }
+  .common-main-view .prxqmanr2 > img {
+    width: 100%; }
   .common-main-view .prxqtopbjda {
     background: #f3f2f7; }
   .common-main-view .prxqtopbj {
@@ -7506,7 +7508,7 @@ $royal:                           #886aea !default;
     border: none; }
   .common-main-view .sytjdv1, .common-main-view .sytjdv2, .common-main-view .sytjdv3 {
     width: 96%;
-    height: 2.9rem;
+    height: 2.5rem;
     margin: 0.4rem auto;
     padding-top: 0.45rem;
     border-radius: 3px;
@@ -7518,7 +7520,8 @@ $royal:                           #886aea !default;
     background: url(../teImg/jzbgs.png) repeat-x;
     background-size: cover; }
   .common-main-view .sytjdv3 {
-    background: url(../teImg/hwbx.png) repeat-x; }
+    background: url(../teImg/hwbx.png) repeat-x;
+    background-size: cover; }
   .common-main-view .sytjdv1 > span, .common-main-view .sytjdv1 > em, .common-main-view .sytjdv1 > i, .common-main-view .sytjdv2 > span, .common-main-view .sytjdv2 > em, .common-main-view .sytjdv2 > i, .common-main-view .sytjdv3 > span, .common-main-view .sytjdv3 > em, .common-main-view .sytjdv3 > i {
     width: 100%;
     padding: 0rem 2%;

@@ -447,7 +447,7 @@ angular.module('rest.service', [])
         queryUserMessages: function(cid, successHandler, errorHandler, finallyHandler) {
           var req = {
               method: 'GET',
-              url: domain+'ChiefFinancierService/api/customer/v1/customers/' + cid + '/usermessages',
+              url: domain+'ChiefFinancierService/api/customer/v1/customers/' + cid + '/usermessages?state=all&offset=0&limit=100000',
               headers: {
                 'Content-Type': 'application/json'
               }
@@ -463,8 +463,62 @@ angular.module('rest.service', [])
           });
         },
 
+        markUserMessageRead: function(cid, mid, successHandler, errorHandler, finallyHandler) {
+          var req = {
+              method: 'PUT',
+              url: domain+'ChiefFinancierService/api/customer/v1/customers/' + cid + '/usermessages/' + mid,
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
+            //console.log(pid);
+          $http(req).success(function(data){
+            //console.log(data);
+            successHandler(data);
+          }).error(function(res, status){
+            errorHandler(status);
+          }).finally(function(){
+            finallyHandler();
+          });
+        },
 
+        queryCountOfUserMessages: function(cid, successHandler, errorHandler, finallyHandler) {
+          var req = {
+              method: 'GET',
+              url: domain+'ChiefFinancierService/api/customer/v1/customers/' + cid + '/usermessages?query=count&read=false',
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
+            //console.log(pid);
+          $http(req).success(function(data){
+            //console.log(data);
+            successHandler(data);
+          }).error(function(res, status){
+            errorHandler(status);
+          }).finally(function(){
+            finallyHandler();
+          });
+        },
 
+        deleteUserMessage: function(cid, mid, successHandler, errorHandler, finallyHandler) {
+          var req = {
+              method: 'DELETE',
+              url: domain+'ChiefFinancierService/api/customer/v1/customers/' + cid + '/usermessages/' + mid,
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
+            //console.log(pid);
+          $http(req).success(function(data){
+            //console.log(data);
+            successHandler(data);
+          }).error(function(res, status){
+            errorHandler(status);
+          }).finally(function(){
+            finallyHandler();
+          });
+        },
 
         queryConsultantProfileUrl: function(cid, iid){
           return domain+'ChiefFinancierService/api/common/v1/accounts/'+ cid + '/images/' + iid;
@@ -647,6 +701,83 @@ angular.module('rest.service', [])
 
     consultant: {
       v1: {
+        queryUserMessages: function(cid, successHandler, errorHandler, finallyHandler) {
+          var req = {
+              method: 'GET',
+              url: domain+'ChiefFinancierService/api/consultant/v1/consultants/' + cid + '/usermessages?state=all&offset=0&limit=100000',
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
+            //console.log(pid);
+          $http(req).success(function(data){
+            //console.log(data);
+            successHandler(data);
+          }).error(function(res, status){
+            errorHandler(status);
+          }).finally(function(){
+            finallyHandler();
+          });
+        },
+
+        markUserMessageRead: function(cid, mid, successHandler, errorHandler, finallyHandler) {
+          var req = {
+              method: 'PUT',
+              url: domain+'ChiefFinancierService/api/consultant/v1/consultants/' + cid + '/usermessages/' + mid,
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
+            //console.log(pid);
+          $http(req).success(function(data){
+            //console.log(data);
+            successHandler(data);
+          }).error(function(res, status){
+            errorHandler(status);
+          }).finally(function(){
+            finallyHandler();
+          });
+        },
+
+        queryCountOfUserMessages: function(cid, successHandler, errorHandler, finallyHandler) {
+          var req = {
+              method: 'GET',
+              url: domain+'ChiefFinancierService/api/consultant/v1/consultants/' + cid + '/usermessages?query=count&read=false',
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
+            //console.log(pid);
+          $http(req).success(function(data){
+            //console.log(data);
+            successHandler(data);
+          }).error(function(res, status){
+            errorHandler(status);
+          }).finally(function(){
+            finallyHandler();
+          });
+        },
+
+        deleteUserMessage: function(cid, mid, successHandler, errorHandler, finallyHandler) {
+          var req = {
+              method: 'DELETE',
+              url: domain+'ChiefFinancierService/api/consultant/v1/consultants/' + cid + '/usermessages/' + mid,
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
+            //console.log(pid);
+          $http(req).success(function(data){
+            //console.log(data);
+            successHandler(data);
+          }).error(function(res, status){
+            errorHandler(status);
+          }).finally(function(){
+            finallyHandler();
+          });
+        },
+
+
         // CRM
         queryGroups: function(id, successHandler, errorHandler, finallyHandler) {
           var req = {

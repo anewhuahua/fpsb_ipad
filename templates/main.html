@@ -60,9 +60,10 @@ navigation history that also transitions its views in and out.
       
       <div class="xxnrdv">
           <div class="xxdnrbjtop"></div>
-          <p>【A股昨日资金净流出115.70亿元】11月16日，沪深两市合计净流出115.70亿元。行业方面，金融板块当天净流出额最高，为35.93亿元；信息技术板块当天唯一净流入，为5.62亿元。个股中，华丽家族（600503.SH）资金净流入最多，为5.93亿元；中信证券（600030.SH）净流出最多，为7.23亿元。
+          <p>{{data.looking_msg.title}}
           </p>
-          <p>点评：A股周一低开高走，指数翻红重新站上3600点在一定程度上稳定了市场近期不安情绪。资金面上，尽管A股资金继续呈现资金出逃状态，但流出幅度比起上一个交易日有明显缩小。不过，量能较大程度的萎缩还是反映出投资者参与市场的积极性有所下降，预计近期资金博弈的节奏还将维持。
+          <p>
+            {{data.looking_msg.content}}
           </p>
          
      
@@ -206,8 +207,8 @@ navigation history that also transitions its views in and out.
         </div><!-- 右边的上半部分 -->
         
         <ul class="prxqbmul">
-          <li class="prxqbj">基本信息</li>
-          <li>产品备注</li>
+          <li ng-class="{prxqbj: data.looking_product_tab=='main'}" ng-click="showProductTab('main')">基本信息</li>
+          <li ng-class="{prxqbj: data.looking_product_tab=='desc'}" ng-click="showProductTab('desc')">产品备注</li>
         </ul><!-- 右边的下半部分 -->
         
         
@@ -230,8 +231,7 @@ navigation history that also transitions its views in and out.
     
     
     <div class="prxqtopbj"></div>
-    <div class="prxqmanr2"><!-- 私募产品详情页弹窗主体 中间部分-->
-      
+    <div class="prxqmanr2" ng-if="data.looking_product_tab=='main'"><!-- 私募产品详情页弹窗主体 中间部分-->
       <p>
         <span>产品全称</span>
         <em>粤财·瀚信中鼎盈丰2期</em>
@@ -289,7 +289,14 @@ navigation history that also transitions its views in and out.
 
     </div><!-- 私募产品详情页弹窗主体 中间部分-->
     
-    
+    <div class="prxqmanr2" ng-if="data.looking_product_tab=='desc'"><!-- 私募产品详情页弹窗主体 中间部分-->  
+      <p>
+        
+        <em>{{data.looking_product.description}}</em>
+      </p>
+      
+
+    </div><!-- 私募产品详情页弹窗主体 中间部分-->
     
     
     
@@ -343,12 +350,10 @@ navigation history that also transitions its views in and out.
           </div>-->
         </div><!-- 右边的上半部分 -->
          <ul class="prxqbmul">
-          <li class="prxqbj">基本信息</li>
-          <li>产品备注</li>
+          <li ng-class="{prxqbj: data.looking_product_tab=='main'}" ng-click="showProductTab('main')">基本信息</li>
+          <li ng-class="{prxqbj: data.looking_product_tab=='desc'}" ng-click="showProductTab('desc')">产品备注</li>
         </ul><!-- 右边的下半部分 -->
-        
-        
-        
+
       </div>
       
       
@@ -368,7 +373,7 @@ navigation history that also transitions its views in and out.
     
     
     <div class="prxqtopbj"></div>
-    <div class="prxqmanr2"><!-- 私募产品详情页弹窗主体 中间部分-->
+    <div class="prxqmanr2" ng-if="data.looking_product_tab=='main'"><!-- 私募产品详情页弹窗主体 中间部分-->
       
       <p>
         <span>产品全称</span>
@@ -403,8 +408,12 @@ navigation history that also transitions its views in and out.
         <em>{{data.looking_product.remarks}}</em>
       </p>
       
-
     </div><!-- 私募产品详情页弹窗主体 中间部分-->
+
+    <div class="prxqmanr2"  ng-if="data.looking_product_tab=='desc'">
+      <img src="http://115.29.194.11:8080/ChiefFinancierService/api/common/v1/products/402880ed50e67dab0150e680bf720003/images/402880ed50e67dab0150e680af5f0002"/>
+
+    </div>
   </div>
 
 

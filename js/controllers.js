@@ -103,8 +103,10 @@ angular.module('starter.controllers', [])
   //});
 })
 
-.controller('promotionDetailCtrl', function($scope){
-
+.controller('promotionDetailCtrl', function($scope, $stateParams, $state){
+  console.log($stateParams.promotionId);
+  $scope.promotionId = $stateParams.promotionId;
+  
 })
 
 .controller('examCtrl', function($scope) {
@@ -733,6 +735,10 @@ angular.module('starter.controllers', [])
       });
    }
 
+   $scope.showProductTab = function(tab) {
+     $scope.data.looking_product_tab = tab;
+   }
+
    document.addEventListener("deviceready", function () {
         $scope.network = $cordovaNetwork.getNetwork();
         $scope.isOnline = $cordovaNetwork.isOnline();
@@ -787,6 +793,8 @@ angular.module('starter.controllers', [])
     categories: [],
     toolbox:'index',
     looking_product: '',
+    looking_msg: '',
+    looking_product_tab: 'main',
     looking_booking: null,
     optionOperation: null
 
@@ -985,6 +993,8 @@ angular.module('starter.controllers', [])
 
   $scope.showProduct = function(product, cid) {
 
+    $scope.data.looking_product_tab = 'main';
+
     if(product){
       ret = Main.productGoState(product);
 
@@ -1080,8 +1090,9 @@ angular.module('starter.controllers', [])
     }
   }
 
-  $scope.messageDialog = function() {
+  $scope.messageDialog = function(msg) {
     $scope.data.popup = 'MessageDialog';
+    $scope.data.looking_msg = msg;
   }
 
   $scope.addBooking= function() {
@@ -1475,7 +1486,8 @@ angular.module('starter.controllers', [])
     productType: Main.getProductType(),
     commissionCtrl: Main.getCommissionCtrl(),
     bookingsTodoCount: 0,
-    ordersTodoCount: 0
+    ordersTodoCount: 0,
+    msgCount: 0
   }
 
   MultipleViewsManager.updatedLeft(function(params) {
@@ -1510,6 +1522,9 @@ angular.module('starter.controllers', [])
     Main.consultant.queryTodoOrdersCount(function(data){
       $scope.data.ordersTodoCount = data;
     }, function(status){}, function(){})
+    Main.consultant.queryCountOfUserMessages(function(data){
+      $scope.data.msgCount = data;
+    }, function(status){}, function(){})
 })
 
 
@@ -1521,7 +1536,8 @@ angular.module('starter.controllers', [])
     subMenu: "",
     productType: Main.getProductType(),
     bookingsTodoCount: 0,
-    ordersTodoCount: 0
+    ordersTodoCount: 0,
+    msgCount: 0
   }
   //delete $scope.data.productType['alltype'];
 
@@ -1558,13 +1574,15 @@ angular.module('starter.controllers', [])
     Main.customer.queryTodoOrdersCount(function(data){
       $scope.data.ordersTodoCount = data;
     }, function(status){}, function(){})
+    Main.customer.queryCountOfUserMessages(function(data){
+      $scope.data.msgCount = data;
+    }, function(status){}, function(){})
 })
 
 
 
 .controller('mainConsultantCtrl', function($scope, $rootScope, $ionicPopup, $state, $timeout, $ionicScrollDelegate, $cordovaCamera, 
   MultipleViewsManager, Main) {
-
 
 //** 
 //** controller data
@@ -1578,7 +1596,8 @@ angular.module('starter.controllers', [])
     customers: {},
     pendings: {},
     information: {},
-    message:{}
+    message:{},
+    messages: []
 
   };
 
@@ -1600,7 +1619,7 @@ angular.module('starter.controllers', [])
 
     groupDialog: {
       newGroupName: '',
-      selectedGroupName: ''
+      selectedGroupName: '默认'
     },
 
     update: {
@@ -1645,8 +1664,9 @@ angular.module('starter.controllers', [])
 
   //**
   //** common function
-  $scope.group = function() {
-     var strGroups = '';
+  $scope.group = function(person) {
+     var success = false;
+     var step1 = false;
      /*
      var newGroupPopup = $ionicPopup.show({
        template: '<input style="width:100%" type="text" ng-model="data.groupDialog.newGroupName"></input>',
@@ -1671,24 +1691,29 @@ angular.module('starter.controllers', [])
 
      var myPopup = $ionicPopup.show({
        //template: '<input type="text" ng-model="data.wifi">',
-       template: '<select style="width:100%"><option>默认分组</option><option>分组1</option></select>',
+       template: '<select style="width:100%" ng-model="data.selectedGroupName"><option ng-repeat="group in data.groups" value="{{group}}">{{group}}</option></select>',
        title: '加入分组',
        subTitle: '选择客户分组',
        scope: $scope,
        buttons: [
          { text: '新建分组', 
            onTap: function(e) {
+             return 'step2'
            }
          },
          {
            text: '<b>确认加入</b>',
            type: 'button-positive',
            onTap: function(e) {
-             if (!$scope.data.wifi) {
+             if ($scope.data.selectedGroupName!='') {
                //不允许用户关闭，除非他键入wifi密码
-               e.preventDefault();
+               //e.preventDefault();
+               Main.consultant.addGroupMember($scope.data.selectedGroupName, person.id, function(data){
+                success=true;
+                return 'step1'
+               }, function(status){return 'step1'}, function(){})
              } else {
-               return $scope.data.wifi;
+                return 'step1';
              }
            }
          },
@@ -1696,6 +1721,20 @@ angular.module('starter.controllers', [])
      });
      myPopup.then(function(res) {
        console.log(res);
+       if (step1=='step1') {
+          if(success) {
+            $ionicPopup.alert({
+              title: '系统提示',
+              template: '添加成功'
+            });
+          } else {
+            $ionicPopup.alert({
+              title: '系统提示',
+              template: '添加失败'
+            });
+          }
+       } else {
+
        var newGroupPopup = $ionicPopup.prompt({
                    title: '新建分组',
                    inputType: 'text',
@@ -1704,10 +1743,32 @@ angular.module('starter.controllers', [])
                    inputPlaceholder: '请输入新建客户分组名'
                  }).then(function(res) {
                    console.log('客户分组名', res);
+                   if (res!='') {
+                     Main.consultant.addGroupMember(res, person.id , function(data){
+                      success = true;
+                     }, function(status){}, function(){});
+                   } else {
+                    console.log('none');
+                   }
                  });
         newGroupPopup.then(function(res) {
+          Main.consultant.queryGroups(function(data){
+            $scope.data.groups = data;
+          }, function(status){}, function(){});
           myPopup.close();
+          if(success) {
+            $ionicPopup.alert({
+              title: '系统提示',
+              template: '添加成功'
+            });
+          } else {
+            $ionicPopup.alert({
+              title: '系统提示',
+              template: '添加失败'
+            });
+          }
         });
+      }
      });
       /*
      $timeout(function() {
@@ -1806,6 +1867,10 @@ angular.module('starter.controllers', [])
       $scope.data.groups = data;
     }, function(status){}, function(){});
 
+    Main.consultant.queryUserMessages(function(data){
+      $scope.data.messages = data;
+    }, function(status){}, function(){});
+
   };
 
   $scope.selectOrders = function(param){
@@ -1893,6 +1958,7 @@ angular.module('starter.controllers', [])
 
     liked: Main.getLiked(),
     refreshing: {bookings:false, orders:false},
+    messages: [],
 
     update: {
       province: '',
@@ -1995,6 +2061,9 @@ angular.module('starter.controllers', [])
     Main.queryLiked(function(data){
     }, function(status){}, function(){});
 
+    Main.customer.queryUserMessages(function(data){
+      $scope.data.messages = data;
+    }, function(status){}, function(){});
   };
   $scope.selectOrders = function(param){
     $scope.data.currentOrder = $scope.data.orders[param];

@@ -175,18 +175,18 @@
                   
                        <div class="sekkgdvbb">
                          <select class="kkxxbbsele">
-                            <option value="all">默认全部</option>
-                            <option ng-repeat="group in data.groups" value="">group</option>
+                            <option value="all">默认分组</option>
+                            <option ng-repeat="group in data.groups" value="{{group}}">{{group}}</option>
                          </select> 
                          <a class="aakhbb2" href=""></a> 
                        </div> 
-                      
+                      <!--
                       <div class="khlbpr">
                         <form>
                              <input type="text"  class="khlbprput" placeholder="请输入客户的姓名"/>
                              <input type="submit" class="khlbprtj" value="" />
                         </form>
-                      </div> 
+                      </div> -->
                   </div><!--内容top结束-->
 
 
@@ -204,7 +204,7 @@
                             <p class="khtwrp1"><span>{{customer.fullname}}</span> <em>所在地：上海</em></p>
                             <p class="khtwrp2"><span>电话：{{customer.phone}}</span> <em>邮箱：{{customer.email}}</em></p>
                           </div>
-                          <ion-option-button class="button-energized" ng-click="group()">
+                          <ion-option-button class="button-energized" ng-click="group(customer)">
                             分组 
                           </ion-option-button>
                           <ion-option-button class="button-assertive">
@@ -390,20 +390,21 @@
                 <div style="height:0.1rem;"></div>
                
                 <ion-list>
-                    <ion-item class="lcsslwsl" ng-click="messageDialog()">
+                    <ion-item class="lcsslwsl" ng-click="messageDialog(msg)" ng-repeat="msg in data.messages">
                        <div class="lcsslwslf1"><img src="teImg/grrexzimg1.png"/></div>
-                       <span  class="lccslwf2">[预约成功]粤财·瀚信中鼎盈丰2期！</span>
+                       <span  class="lccslwf2">[预约成功]{{msg.title}}</span>
                        <ion-option-button class="button-energized">
                             删除 
                         </ion-option-button>
                     </ion-item>
+                    <!--
                     <ion-item class="lcsslwsl" ng-click="messageDialog()">
                        <div class="lcsslwslf1"><img src="teImg/grrexzimg2.png" /></div>
                        <span  class="lccslwf2">[预约成功]粤财·瀚信中鼎盈丰2期！</span>
                        <ion-option-button class="button-energized">
                             删除
                         </ion-option-button>
-                    </ion-item>
+                    </ion-item>-->
 
                   </ion-list> 
 

@@ -630,6 +630,54 @@ angular.module('main.service',[])
     },
 
     customer: {
+
+      queryUserMessages: function(successHandler, errorHandler, finallyHandler) {
+        Rest.customer.v1.queryUserMessages(id, function(data){
+            if (parseRestSuccess('queryUserMessages', data, successHandler, errorHandler)) { 
+              //customer.bookings.unserved.unshift(data.result);
+              //data.result;
+            }
+          }, function(status){
+            parseRestError('queryUserMessages',  status, errorHandler);
+          }, 
+          finallyHandler());
+      },
+      markUserMessageRead: function(mid, successHandler, errorHandler, finallyHandler) {
+        Rest.customer.v1.markUserMessageRead(id, mid, function(data){
+            if (parseRestSuccess('markUserMessageRead', data, successHandler, errorHandler)) { 
+              //customer.bookings.unserved.unshift(data.result);
+              //data.result;
+            }
+          }, function(status){
+            parseRestError('markUserMessageRead',  status, errorHandler);
+          }, 
+          finallyHandler());
+      },
+      queryCountOfUserMessages: function(successHandler, errorHandler, finallyHandler) {
+        Rest.customer.v1.queryCountOfUserMessages(id, function(data){
+            if (parseRestSuccess('queryCountOfUserMessages', data, successHandler, errorHandler)) { 
+              //customer.bookings.unserved.unshift(data.result);
+              //data.result;
+            }
+          }, function(status){
+            parseRestError('queryCountOfUserMessages',  status, errorHandler);
+          }, 
+          finallyHandler());
+      },
+      deleteUserMessage: function(mid, successHandler, errorHandler, finallyHandler) {
+        Rest.customer.v1.queryCountOfUserMessages(id, mid, function(data){
+            if (parseRestSuccess('deleteUserMessage', data, successHandler, errorHandler)) { 
+              //customer.bookings.unserved.unshift(data.result);
+              //data.result;
+            }
+          }, function(status){
+            parseRestError('deleteUserMessage',  status, errorHandler);
+          }, 
+          finallyHandler());
+      },
+
+
+
       queryConsultantProfileUrl: function(cid, iid){
         return Rest.customer.v1.queryConsultantProfileUrl(cid, iid);
       },
@@ -823,6 +871,51 @@ angular.module('main.service',[])
 ////////////////////////////////////////////////
 
     consultant: {
+
+      queryUserMessages: function(successHandler, errorHandler, finallyHandler) {
+        Rest.consultant.v1.queryUserMessages(id, function(data){
+            if (parseRestSuccess('queryUserMessages', data, successHandler, errorHandler)) { 
+              //customer.bookings.unserved.unshift(data.result);
+              //data.result;
+            }
+          }, function(status){
+            parseRestError('queryUserMessages',  status, errorHandler);
+          }, 
+          finallyHandler());
+      },
+      markUserMessageRead: function(mid, successHandler, errorHandler, finallyHandler) {
+        Rest.consultant.v1.markUserMessageRead(id, mid, function(data){
+            if (parseRestSuccess('markUserMessageRead', data, successHandler, errorHandler)) { 
+              //customer.bookings.unserved.unshift(data.result);
+              //data.result;
+            }
+          }, function(status){
+            parseRestError('markUserMessageRead',  status, errorHandler);
+          }, 
+          finallyHandler());
+      },
+      queryCountOfUserMessages: function(successHandler, errorHandler, finallyHandler) {
+        Rest.consultant.v1.queryCountOfUserMessages(id, function(data){
+            if (parseRestSuccess('queryCountOfUserMessages', data, successHandler, errorHandler)) { 
+              //customer.bookings.unserved.unshift(data.result);
+              //data.result;
+            }
+          }, function(status){
+            parseRestError('queryCountOfUserMessages',  status, errorHandler);
+          }, 
+          finallyHandler());
+      },
+      deleteUserMessage: function(mid, successHandler, errorHandler, finallyHandler) {
+        Rest.consultant.v1.queryCountOfUserMessages(id, mid, function(data){
+            if (parseRestSuccess('deleteUserMessage', data, successHandler, errorHandler)) { 
+              //customer.bookings.unserved.unshift(data.result);
+              //data.result;
+            }
+          }, function(status){
+            parseRestError('deleteUserMessage',  status, errorHandler);
+          }, 
+          finallyHandler());
+      },
 
       queryTodoBookingsCount: function(successHandler, errorHandler, finallyHandler){ 
          param = {state:'todo'};
