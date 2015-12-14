@@ -358,10 +358,10 @@ angular.module('starter.controllers', [])
       } else {   // already registered
 
         if (data.authorized) {
-          Main.buy.queryBankBinding(data.id, function(data1){
+          Main.buy.queryBankBinding(function(data1){
             if(data1) {
               // not bond bank yet
-              Main.buy.queryValidBanks(data.id, function(data2){
+              Main.buy.queryValidBanks(function(data2){
                 $scope.data.validBanks = data2;
               }, function(status2){}, function(){});
 
@@ -409,7 +409,7 @@ angular.module('starter.controllers', [])
     Main.buy.createTransAccount($scope.data.fullname, $scope.data.identity, 
                                     $scope.data.pwd, $scope.data.email, $scope.data.mobile, 
       function(data){
-        Main.buy.queryValidBanks(data.id, function(data1){
+        Main.buy.queryValidBanks(function(data1){
           $scope.data.validBanks = data1;
         }, function(status1){}, function(){});
         $scope.data.phase = 'bank';
@@ -421,17 +421,7 @@ angular.module('starter.controllers', [])
         });
       }, function(){});
   }
-  /*
-  $scope.authorize =  function() {
-    Main.buy.authorizeTransAccount($scope.data.pwd, 
-                                    function(data){}, function(status){}, function(){});
-  }*/
-  /*
-  $scope.queryValidBanks = function() {
-    Main.buy.queryBankBinding(function(data){
-      $scope.data.validBanks = data;
-    }, function(status){}, function(){});
-  }*/
+ 
 
   $scope.queryBindingBanks = function() {
     Main.buy.queryBindingBanks(function(data){
@@ -488,6 +478,9 @@ angular.module('starter.controllers', [])
     Main.buy.confirmBankBinding($scope.data.token,  $scope.data.verifyCode, $scope.data.applyNo,
                                 $scope.data.bankId, $scope.data.bankName, $scope.data.bankCardNo, 
     function(data){
+      Main.buy.queryBindingBanks(data.id, function(data2){
+        $scope.data.bindingBankCards =  data2;
+      }, function(status2){}, function(){});
       $scope.data.phase = 'buy';
     }, function(status){
       $ionicPopup.alert({
