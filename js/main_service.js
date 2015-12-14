@@ -211,7 +211,7 @@ angular.module('main.service',[])
 
   return {
 
-    queryProductDetail: function(pid) {
+    queryProductDetail: function(pid, successHandler, errorHandler,finallyHandler) {
       Rest.queryProductDetail(pid, function(data){
           if(parseRestSuccess('queryProductDetail', data, successHandler, errorHandler)) {
             console.log('tyson11111111');

@@ -6,7 +6,7 @@ angular.module('rest.service', [])
   var domain="http://115.29.194.11:8080/";
 
   return {
-    queryProductDetail: function(pid) {
+    queryProductDetail: function(pid, successHandler, errorHandler,finallyHandler) {
       var req = {
           method: 'GET',
           url: domain+'ChiefFinancierService/api/common/v1/products/' + pid,
