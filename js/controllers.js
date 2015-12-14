@@ -488,7 +488,7 @@ angular.module('starter.controllers', [])
     Main.buy.confirmBankBinding($scope.data.token,  $scope.data.verifyCode, $scope.data.applyNo,
                                 $scope.data.bankId, $scope.data.bankName, $scope.data.bankCardNo, 
     function(data){
-
+      $scope.data.phase = 'buy';
     }, function(status){
       $ionicPopup.alert({
             title:    '提示信息',
