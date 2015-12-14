@@ -149,7 +149,7 @@ angular.module('starter.controllers', [])
       ret = Main.productGoState(product);
 
       if (ret.go) {
-        $state.go(ret.go, {categoryId: cid, productId: product.id});
+        $state.go(ret.go, {productId: product.id});
       } else {
         $scope.data.popup = 'privateFund';
         $scope.data.looking_product = product;
@@ -1027,7 +1027,7 @@ angular.module('starter.controllers', [])
       ret = Main.productGoState(product);
 
       if (ret.go) {
-        $state.go(ret.go, {categoryId: cid, productId: product.id});
+        $state.go(ret.go, {productId: product.id});
       } else {
         Main.isLikedProduct(product.id, function(data){
           if(data.length>0) {
