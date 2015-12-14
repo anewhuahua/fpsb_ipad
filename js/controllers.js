@@ -245,9 +245,12 @@ angular.module('starter.controllers', [])
           $scope.currentLiked = false;
         }, function(){});
 
-  $scope.product = Main.getProductDetail(cid, pid);
+  Main.queryProductDetail(pid, function(data){
+    $scope.product = data;
+  }, function(status){}, function(){})
 
-  
+  //$scope.product = Main.getProductDetail(cid, pid);
+
   $scope.likeIt = function(product) {
       Main.likeIt(product, function(data){
           $scope.currentLiked = true;

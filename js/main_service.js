@@ -210,6 +210,17 @@ angular.module('main.service',[])
   };
 
   return {
+
+    queryProductDetail: function(pid) {
+      Rest.queryProductDetail(pid, function(data){
+          if(parseRestSuccess('queryProductDetail', data, successHandler, errorHandler)) {
+            console.log('tyson11111111');
+          }
+        }, function(status){
+          parseRestError('queryProductDetail', status, errorHandler);
+        }, finallyHandler());
+    },
+
     getCommissionCtrl: function() {
       return commissionCtrl;
     },
