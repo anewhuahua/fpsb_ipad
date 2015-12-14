@@ -67,7 +67,7 @@ angular.module('main.service',[])
     overseainsurance:     {type:  'overseainsurance',    name: '海外保险',      image: 'teImg/haiwaibaoxian.png'},
     overseatrust:         {type:  'overseatrust',        name: '海外信托',      image: 'teImg/haiwaixintuo.png'},
     overseainvestment:    {type:  'overseainvestment',   name: '海外投资',      image: 'teImg/haiwaitouzi.png'},
-    overseamigration:     {type:  'overseamigration',    name: '身份安排',      image: 'teImg/shenfenanai.png'},
+    overseamigration:     {type:  'overseamigration',    name: '身份安排',      image: 'teImg/shenfenanpai.png'},
     overseaproperty:      {type:  'overseaproperty',     name: '海外置业',      image: 'teImg/haiwaizhiye.png'},
   };
 
