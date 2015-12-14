@@ -300,8 +300,8 @@ angular.module('main.service',[])
         }, finallyHandler());
       },
 
-      queryBankBinding: function(successHandler, errorHandler, finallyHandler) {
-        Rest.buy.queryBankBinding(id, transAccount.id, function(data){
+      queryBankBinding: function(tid, successHandler, errorHandler, finallyHandler) {
+        Rest.buy.queryBankBinding(id, tid, function(data){
           if(parseRestSuccess('queryBankBinding', data, successHandler, errorHandler)) {
             console.log('tyson11111111');
             console.log(data);
@@ -311,8 +311,8 @@ angular.module('main.service',[])
         }, finallyHandler());
       },
 
-      queryValidBanks: function(successHandler, errorHandler, finallyHandler) {
-        Rest.buy.queryValidBanks(id, transAccount.id, function(data){
+      queryValidBanks: function(tid, successHandler, errorHandler, finallyHandler) {
+        Rest.buy.queryValidBanks(id, tid, function(data){
           if(parseRestSuccess('queryValidBanks', data, successHandler, errorHandler)) {
             console.log('tyson11111111');
             console.log(data);

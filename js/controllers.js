@@ -359,10 +359,10 @@ angular.module('starter.controllers', [])
       } else {   // already registered
 
         if (data.authorized) {
-          Main.buy.queryBankBinding(function(data1){
+          Main.buy.queryBankBinding(data.id, function(data1){
             if(data1) {
               // not bond bank yet
-              Main.buy.queryValidBanks(function(data2){
+              Main.buy.queryValidBanks(data.id, function(data2){
                 $scope.data.validBanks = data2;
               }, function(status2){}, function(){});
 
@@ -410,7 +410,7 @@ angular.module('starter.controllers', [])
     Main.buy.createTransAccount($scope.data.fullname, $scope.data.identity, 
                                     $scope.data.pwd, $scope.data.email, $scope.data.mobile, 
       function(data){
-        Main.buy.queryValidBanks(function(data1){
+        Main.buy.queryValidBanks(data.id, function(data1){
           $scope.data.validBanks = data1;
         }, function(status1){}, function(){});
         $scope.data.phase = 'bank';
