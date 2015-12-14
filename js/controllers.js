@@ -143,7 +143,7 @@ angular.module('starter.controllers', [])
     console.log('goback');
     $ionicHistory.goBack();
   }
-  $scope.showProduct = function(product, cid) {
+  $scope.showProduct = function(product) {
 
     if(product){
       ret = Main.productGoState(product);
@@ -1019,7 +1019,7 @@ angular.module('starter.controllers', [])
 
 
 
-  $scope.showProduct = function(product, cid) {
+  $scope.showProduct = function(product) {
 
     $scope.data.looking_product_tab = 'main';
 

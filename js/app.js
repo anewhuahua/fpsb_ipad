@@ -213,7 +213,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'angular-flot', 'ionicMultipleV
  
   .state('common.service', {
     cache: false,
-    url: '/service/:categoryId/:productId',
+    url: '/service/:productId',
     views: {
       'common-service': {
          templateUrl: 'templates/common/service.html',
