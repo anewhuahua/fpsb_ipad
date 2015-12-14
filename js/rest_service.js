@@ -409,17 +409,11 @@ angular.module('rest.service', [])
         });
       },
 
-      purchasePublicFund: function(id, tid, pid, bcard, bname, bid, amount, successHandler, errorHandler, finallyHandler) {
+      purchasePublicFund: function(id, tid, pid, bcard,  amount, successHandler, errorHandler, finallyHandler) {
         var req = {
             method: 'PUT',
             url: domain+'ChiefFinancierService/api/partner/v1/customers/' + id + '/partners/cljj/transaccounts/' + tid +
                         '?action=purchase&fund_code='+pid+'&bank_card_no='+bcard+'&amount='+amount+'&discount=1',
-            
-            data: {
-              bank_id: bid,
-              bank_name: bname,
-              bank_card_no: bcard
-            },
             headers: {
               'Content-Type': 'application/json'
             }

@@ -494,7 +494,7 @@ angular.module('starter.controllers', [])
     });
   }
 
-  $scope.purchase = function() {
+  $scope.purchase = function(fundNo) {
     if (isNaN(parseInt($scope.data.buyAmount,10))) {
       $ionicPopup.alert({
             title:    '提示信息',
@@ -504,12 +504,19 @@ angular.module('starter.controllers', [])
       return;
     }
 
-    Main.buy.purchasePublicFund($scope.data.productId,  $scope.data.bankCardNo, $scope.data.bankName, 
-                                $scope.data.bankId, $scope.data.buyAmount,
+    Main.buy.purchasePublicFund(fundNo, $scope.data.bankCardNo, $scope.data.buyAmount,
     function(data){
-     
+      $ionicPopup.alert({
+            title:    '提示信息',
+            cssClass: 'alert-text',
+            template:  '购买成功'
+      });
     }, function(status){
-
+      $ionicPopup.alert({
+            title:    '提示信息',
+            cssClass: 'alert-text',
+            template:  status
+      });
     }, function(){
 
     });
