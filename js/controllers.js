@@ -317,6 +317,7 @@ angular.module('starter.controllers', [])
     bankName:'',
     bankId:'',
     bankCardNo: '',
+    buyAmount: 0,
 
     applyNo: '',
     token: '',
@@ -494,8 +495,7 @@ angular.module('starter.controllers', [])
   }
 
   $scope.purchase = function() {
-    Main.buy.purchasePublicFund($scope.data.productId,  $scope.data.verifyCode, $scope.data.applyNo,
-                                $scope.data.bankId, $scope.data.bankName, $scope.data.bankCardNo, 
+    Main.buy.purchasePublicFund($scope.data.productId,  $scope.data.bankCardNo,  $scope.data.buyAmount,
     function(data){
      
     }, function(status){
