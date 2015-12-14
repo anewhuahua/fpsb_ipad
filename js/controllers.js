@@ -247,6 +247,12 @@ angular.module('starter.controllers', [])
 
   Main.queryProductDetail(pid, function(data){
     $scope.product = data;
+    $scope.data.optionOperation = Main.getOperation($scope.product, addBooking, $scope.orderDialog, function(){
+      $ionicPopup.alert({
+        title: '系统提示',
+        template: '请先登入'
+      });
+    });
   }, function(status){}, function(){})
 
   //$scope.product = Main.getProductDetail(cid, pid);
@@ -291,12 +297,7 @@ angular.module('starter.controllers', [])
     }
 
   $scope.data = {};
-  $scope.data.optionOperation = Main.getOperation($scope.product, addBooking, $scope.orderDialog, function(){
-    $ionicPopup.alert({
-      title: '系统提示',
-      template: '请先登入'
-    });
-  });
+  
 
   $scope.data.commissionCtrl = Main.getCommissionCtrl();
 })
@@ -1020,7 +1021,6 @@ angular.module('starter.controllers', [])
 
 
   $scope.showProduct = function(product) {
-
     $scope.data.looking_product_tab = 'main';
 
     if(product){
