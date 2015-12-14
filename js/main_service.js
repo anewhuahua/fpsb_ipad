@@ -324,7 +324,7 @@ angular.module('main.service',[])
       },
 
       queryBindingBanks: function(tid, successHandler, errorHandler, finallyHandler) {
-        Rest.buy.queryBindingBanks(id, transAccount.id, function(data){
+        Rest.buy.queryBindingBanks(id, tid, function(data){
           if(parseRestSuccess('queryBindingBanks', data, successHandler, errorHandler)) {
             console.log('tyson11111111');
             console.log(data);
