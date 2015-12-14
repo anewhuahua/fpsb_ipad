@@ -411,7 +411,7 @@ angular.module('rest.service', [])
 
       purchasePublicFund: function(id, tid, pid, bcard,  amount, successHandler, errorHandler, finallyHandler) {
         var req = {
-            method: 'PUT',
+            method: 'POST',
             url: domain+'ChiefFinancierService/api/partner/v1/customers/' + id + '/partners/cljj/transaccounts/' + tid +
                         '?action=purchase&fund_code='+pid+'&bank_card_no='+bcard+'&amount='+amount+'&discount=1',
             headers: {
