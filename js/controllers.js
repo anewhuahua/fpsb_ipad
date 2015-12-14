@@ -495,7 +495,17 @@ angular.module('starter.controllers', [])
   }
 
   $scope.purchase = function() {
-    Main.buy.purchasePublicFund($scope.data.productId,  $scope.data.bankCardNo,  $scope.data.buyAmount,
+    if (isNaN(parseInt($scope.data.buyAmount,10))) {
+      $ionicPopup.alert({
+            title:    '提示信息',
+            cssClass: 'alert-text',
+            template:  '请输入正确金额'
+      });
+      return;
+    }
+
+    Main.buy.purchasePublicFund($scope.data.productId,  $scope.data.bankCardNo, $scope.data.bankName, 
+                                $scope.data.bankId, $scope.data.buyAmount,
     function(data){
      
     }, function(status){
@@ -503,6 +513,8 @@ angular.module('starter.controllers', [])
     }, function(){
 
     });
+
+
   }
 
   $scope.goPhase = function(p) {

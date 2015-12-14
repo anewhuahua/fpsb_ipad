@@ -356,8 +356,8 @@ angular.module('main.service',[])
           parseRestError('confirmBankBinding', status, errorHandler);
         }, finallyHandler());
       },
-      purchasePublicFund: function(pid, bcard, amount, successHandler, errorHandler, finallyHandler) {
-        Rest.buy.purchasePublicFund(id, transAccount.id, pid, bcard, amount, function(data){
+      purchasePublicFund: function(pid, bcard, bname, bid, amount, successHandler, errorHandler, finallyHandler) {
+        Rest.buy.purchasePublicFund(id, transAccount.id, pid, bcard, bname, bid, amount, function(data){
           if(parseRestSuccess('purchasePublicFund', data, successHandler, errorHandler)) {
             console.log('tyson11111111');
             console.log(data);
