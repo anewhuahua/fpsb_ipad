@@ -138,7 +138,6 @@ angular.module('starter.controllers', [])
     popup: ''
   };
 
-
   $scope.goBack = function() {
     console.log('goback');
     $ionicHistory.goBack();
@@ -157,12 +156,10 @@ angular.module('starter.controllers', [])
     }
   }
 
-
   $scope.closeProduct = function() {
     $scope.data.popup = '';
     $scope.data.looking_product = null;
   }
-
 
   $scope.closePopup = function(win) {
     if ($scope.data.popup == win) {
@@ -176,7 +173,6 @@ angular.module('starter.controllers', [])
     $scope.data.looking_booking = booking;
     $scope.data.order_option = Factory.newOption(1000000, 2000000, 100000);
     $scope.data.popup = 'OrderDialog';
-
   }
 
   $scope.closeWarning = function(win) {
@@ -337,6 +333,23 @@ angular.module('starter.controllers', [])
     $scope.data.initiated = false;
   });
 
+
+  if (Main.getRole() == 'Customer') {
+      Main.customer.queryCustomer(function(data){
+        $scope.data.mobile = data.phone;
+        $scope.data.email = data.email;
+        //console.log(data);
+      },function(status){}, function(){
+      });
+  } else if(Main.getRole() == 'Consultant') {
+     Main.customer.queryConsultant(function(data){
+        $scope.data.mobile = data.phone;
+        $scope.data.email = data.email;
+        //console.log(data);
+      },function(status){}, function(){
+      });
+  }
+
   Main.customer.queryCustomer(function(data){
       $scope.data.mobile = data.phone;
       $scope.data.email = data.email;
@@ -356,7 +369,7 @@ angular.module('starter.controllers', [])
       return;
     } 
     Main.buy.queryTransAccount($scope.data.fullname, $scope.data.identity, function(data){
-      console.log('tyson111111');
+      //console.log('tyson111111');
       console.log(data);
       if(data==null) {
         $scope.data.phase = 'register';
