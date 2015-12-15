@@ -1109,7 +1109,6 @@ angular.module('starter.controllers', [])
     }
   }
 
-
   $scope.orderDialog = function() {
     if ($scope.data.looking_product) {
       //$scope.data.looking_product = null;

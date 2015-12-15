@@ -121,7 +121,7 @@ navigation history that also transitions its views in and out.
     <div class="cpyyxxdv"  ng-switch-when="OrderDialog">
       <div class="cpyyxxdvm">
   
-          <div class="zcback" ng-click="backProduct()"><img src="teImg/zcback.png" /></div><!-- 返回 -->
+          <!-- <div class="zcback" ng-click="backProduct()"><img src="teImg/zcback.png" /></div>  -->
           <div class="zcclos" ng-click="closePopup('OrderDialog')"><img src="teImg/zcclose.png" /></div><!-- 关闭 -->
           
           <span class="zcwjtit1">申 购</span>
@@ -144,10 +144,10 @@ navigation history that also transitions its views in and out.
              <span class="cpxqyynrsp1">申购金额</span>
             <form>
              <div class="ccyyjjdv">
-               
-                  <input type="button" class="xpwwyyf" ng-click='data.dialog.decrease()' />
-                  <input type="text" class="xpwwyym" placeholder="{{data.dialog.order.quantity}}"/>
-                  <input type="button" class="xpwwyyr" ng-click='data.dialog.increase()' />
+
+                  <input type="button" class="xpwwyyf" ng-click='data.order_option.decrease()' />
+                  <input type="text" class="xpwwyym" placeholder="{{data.order_option.quantity}}"/>
+                  <input type="button" class="xpwwyyr" ng-click='data.order_option.increase()' />
                
              </div>
            
