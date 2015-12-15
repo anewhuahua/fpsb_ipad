@@ -509,7 +509,7 @@ angular.module('starter.controllers', [])
       return;
     }
 
-    Main.customer.submitOrder('8a2135b1512f96b80151323c5ad70158', $scope.data.order_option.quantity, function(data1){
+    Main.customer.submitOrder('8a2135b1512f96b80151323c5ad70158', $scope.data.buyAmount, function(data1){
         Main.buy.purchasePublicFund(fundNo, $scope.data.bankCardNo, $scope.data.buyAmount,
           function(data){
             $ionicPopup.alert({
