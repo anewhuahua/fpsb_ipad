@@ -335,7 +335,12 @@ angular.module('main.service',[])
       },
 
       queryBindingBanks: function(tid, successHandler, errorHandler, finallyHandler) {
+        if (tid=='magic') {
+          tid = transAccount.id;
+        }
+
         Rest.buy.queryBindingBanks(id, tid, function(data){
+
           if(parseRestSuccess('queryBindingBanks', data, successHandler, errorHandler)) {
             console.log('tyson11111111');
             console.log(data);

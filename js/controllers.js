@@ -484,7 +484,7 @@ angular.module('starter.controllers', [])
     Main.buy.confirmBankBinding($scope.data.token,  $scope.data.verifyCodeConfirm, $scope.data.applyNo,
                                 $scope.data.bankId, $scope.data.bankName, $scope.data.bankCardNo, 
     function(data){
-      Main.buy.queryBindingBanks(data.id, function(data2){
+      Main.buy.queryBindingBanks('magic', function(data2){
         $scope.data.bindingBankCards =  data2;
       }, function(status2){}, function(){});
       $scope.data.phase = 'buy';
