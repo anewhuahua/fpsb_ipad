@@ -509,23 +509,31 @@ angular.module('starter.controllers', [])
       return;
     }
 
-    Main.buy.purchasePublicFund(fundNo, $scope.data.bankCardNo, $scope.data.buyAmount,
-    function(data){
-      $ionicPopup.alert({
-            title:    '提示信息',
-            cssClass: 'alert-text',
-            template:  '购买成功'
-      });
-    }, function(status){
-      $ionicPopup.alert({
-            title:    '提示信息',
-            cssClass: 'alert-text',
-            template:  status
-      });
-    }, function(){
+    Main.customer.submitOrder('8a2135b1512f96b80151323c5ad70158', $scope.data.order_option.quantity, function(data1){
+        Main.buy.purchasePublicFund(fundNo, $scope.data.bankCardNo, $scope.data.buyAmount,
+          function(data){
+            $ionicPopup.alert({
+                  title:    '提示信息',
+                  cssClass: 'alert-text',
+                  template:  '购买成功'
+            });
+          }, function(status){
+            $ionicPopup.alert({
+                  title:    '提示信息',
+                  cssClass: 'alert-text',
+                  template:  status
+            });
+          }, function(){
 
-    });
-
+          });
+      }, function(error1){
+        $ionicPopup.alert({
+            title:    '购买失败',
+            cssClass: 'alert-text',
+            template:  error1
+        });
+      }, function(){
+    });    
 
   }
 
