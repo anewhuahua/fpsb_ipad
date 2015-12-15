@@ -87,8 +87,8 @@
                <!--<div class="lcgmab"><span>输入密码</span> <input type="text"  placeholder="请输入您的密码"/></div>-->
                <div class="sdlcnrb">
                   <span>选择银行</span>
-                  <div class="xzxse" ng-model="data.bankCardNo">
-                     <select>
+                  <div class="xzxse">
+                     <select ng-model="data.bankCardNo">
                        <option ng-repeat="b in data.bindingBankCards" value="{{b.bank_card_no}}">{{b.bank_name}}</option>
                      </select> 
                    </div>
