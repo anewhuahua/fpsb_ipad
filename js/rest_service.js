@@ -665,6 +665,7 @@ angular.module('rest.service', [])
             finallyHandler();
           });
         },
+
         submitOrder: function(cid, pid, money, successHandler, errorHandler, finallyHandler) {
           var req = {
               method: 'POST',

@@ -1115,6 +1115,7 @@ angular.module('starter.controllers', [])
   $scope.orderDialog = function() {
     if ($scope.data.looking_product) {
       //$scope.data.looking_product = null;
+      $scope.data.order_option = Factory.newOption(1000000, 2000000, 100000);
       $scope.data.popup = 'OrderDialog';
     }
   }
@@ -1163,31 +1164,20 @@ angular.module('starter.controllers', [])
   }
 
   $scope.addOrder = function() {
-
-    if ($scope.data.looking_booking) {
-        Main.consultant.submitOrder($scope.data.looking_booking, 20000, function(data){
-          $scope.data.warning.status = 'success';
-          $scope.data.warning.words = '您的订单已成功提交!' +
-                                       '您的理财师将马上与您联系进行后续服务，请保持电话通畅!';
-          $scope.$broadcast("AddOrder", data);
-          //console.log(data);
-          //console.log("tyson");
-        }, function(error){
-          $scope.data.warning.status = 'fail';
-          $scope.data.warning.words = error;
-        }, function(){
-        });
-        $scope.data.looking_product=null;
-        $scope.data.popup = '';
-        $scope.data.looking_booking=null;
-
-    } else {
+    var role = Main.getRole();
+    if(role=='Guest') {
+      $ionicPopup.alert({
+        title: '系统提示',
+        template: '请先登入'
+      });
+      return;
+    } else if(role == 'Consultant') {  
+    // only for consultant to order directly.
       if($scope.data.looking_product) {
         //console.log('booking add');
-        Main.customer.submitOrder($scope.data.looking_product.id, function(data){
+        Main.customer.submitOrder($scope.data.looking_product.id, $scope.data.order_option.quantity,  function(data){
           $scope.data.warning.status = 'success';
-          $scope.data.warning.words = '您的订单已成功提交!' +
-                                       '您的理财师将马上与您联系进行后续服务，请保持电话通畅!';
+          $scope.data.warning.words = '您的订单已成功提交!';
           $scope.$broadcast("AddOrder", data);
           //console.log(data);
           //console.log("tyson");
@@ -1195,16 +1185,9 @@ angular.module('starter.controllers', [])
           $scope.data.warning.status = 'fail';
           $scope.data.warning.words = error;
         }, function(){
-
         });
-      } else {
-        console.log("no product id for order");
-        $scope.data.warning.status = 'fail';
-        $scope.data.warning.words = '请去发现页购买产品';
-      }
-      $scope.data.looking_product=null;
-      $scope.data.popup = '';
-    }
+      } 
+    } 
   }
 
 
