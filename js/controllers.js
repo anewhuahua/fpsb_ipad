@@ -341,21 +341,14 @@ angular.module('starter.controllers', [])
         //console.log(data);
       },function(status){}, function(){
       });
-  } else if(Main.getRole() == 'Consultant') {
-     Main.customer.queryConsultant(function(data){
+  } else if (Main.getRole() == 'Consultant') {
+     Main.consultant.queryConsultant(function(data){
         $scope.data.mobile = data.phone;
         $scope.data.email = data.email;
         //console.log(data);
       },function(status){}, function(){
       });
   }
-
-  Main.customer.queryCustomer(function(data){
-      $scope.data.mobile = data.phone;
-      $scope.data.email = data.email;
-      //console.log(data);
-    },function(status){}, function(){
-    });
   
 
   $scope.verify = function() {
