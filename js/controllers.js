@@ -749,9 +749,7 @@ angular.module('starter.controllers', [])
 
 })
 
-
-
-.controller('mainCtrl', function($scope, $state, $window, $cordovaNetwork, $cordovaCamera, $ionicActionSheet, $ionicPopup, $rootScope, $ionicHistory, $timeout, Main, Notify) {
+.controller('mainCtrl', function($scope, $state, $window, $cordovaNetwork, $cordovaCamera, $ionicActionSheet, $ionicPopup, $rootScope, $ionicHistory, $timeout, Main, Notify, Factory) {
   
    $scope.goMainPage = function() {
       window.open('http://biaoweihui.idea-source.net/abstract/', '_system');
