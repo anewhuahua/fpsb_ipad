@@ -68,7 +68,7 @@
                </div> 
                <div class="sdlcnrc">
                  <span>验证码</span>
-                 <input type="text" placeholder="请输入验证码" /> 
+                 <input type="text" placeholder="请输入验证码" ng-model="data.verifyCodeConfirm" /> 
                  <button ng-click="initiateBankBinding()" ng-disabled="data.askingVerifyCode">{{data.verifyCodeWarn}}</button>
                </div>
                <input type="submit" class="nexbn" value="立即绑定"  ng-click="confirmBankBinding()" ng-disabled="data.initiated==false" />

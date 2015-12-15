@@ -327,6 +327,7 @@ angular.module('starter.controllers', [])
     token: '',
     verifyCode: '',
     verifyCodeWarn: '收取验证码',
+    verifyCodeConfirm: '',
     askingVerifyCode: false,
     initiated: false
   }
@@ -480,7 +481,7 @@ angular.module('starter.controllers', [])
   }
 
   $scope.confirmBankBinding = function() {
-    Main.buy.confirmBankBinding($scope.data.token,  $scope.data.verifyCode, $scope.data.applyNo,
+    Main.buy.confirmBankBinding($scope.data.token,  $scope.data.verifyCodeConfirm, $scope.data.applyNo,
                                 $scope.data.bankId, $scope.data.bankName, $scope.data.bankCardNo, 
     function(data){
       Main.buy.queryBindingBanks(data.id, function(data2){
