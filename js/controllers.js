@@ -62,7 +62,7 @@ angular.module('starter.controllers', [])
     if (input.state=='create') {
       return '创建'
     } else if (input.state=='withdraw') {
-      return '已申请提现'
+      return '已申请'
     } else if (input.state=='payoff') {
       return '已返现'
     }
@@ -1813,7 +1813,8 @@ angular.module('starter.controllers', [])
   
   $scope.withdrawCommission = function(cms) {
     Main.consultant.withdrawCommission(cms.id, function(data){
-      console.log(data);
+      //console.log(data);
+      cms.state = data.state;
     }, function(status){
       $ionicPopup.alert({
         title: '提示信息',
