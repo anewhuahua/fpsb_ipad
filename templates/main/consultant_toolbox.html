@@ -461,21 +461,22 @@
 <!-- commissions -->
 <div class="main1" ng-switch-when='commissions'>
             <div class="gnr2dadv"><!--内容右侧开始-->
-              
+              <!--
               <div class="gzghp1">
                  <span>佣金</span>
                  <em></em>
-              </div>
+              </div>-->
               
              
-              <ul class="gzghnrjlul2">
+              <!--<ul class="gzghnrjlul2">
                  <li ng-repeat="c in data.commissions">
                     <span><i></i>客户 : 王海先生</span>
                     <span>交易号: {{c.orderId}}</span>
-                    <span>完成时间: {{c.order.timestamp}}</span>
+                    <span>完成时间: {{c.timestamp | date:'yy-MM-dd  hh:mm:ss'}}</span>
                     <span>佣金: <em>{{c.commission}}</em></span>
                     <span>返佣状态: <em>{{c | commissionStateFilter}}</em></span>
                  </li>
+              </ul>-->
                  <!--
                  <li>
                     <span><i></i>客户 : 王海先生</span>
@@ -490,7 +491,56 @@
                     <span>时间 ：2015.08.07</span>
                  </li>-->
     
-              </ul>
+              
+
+
+                  <div class="lbxzxzdv">
+                    <ion-list>
+                      <ion-item class="twtwdvkh" ng-repeat="c in data.commissions"  ng-click="goCustomerHistory(customer)"> <!-- -->
+
+                          <div class="ssetjdv">
+                            <div class="ssejtv1">
+                               <span>客户：王海先生 </span>
+                               <em>交易号：{{c.orderId}}</em>
+                            </div>
+                            
+                            <div class="ssejtvb">
+                               <span>佣金：<em>{{c.commission}}</em></span>
+                               <span>返佣状态：<em>{{c | commissionStateFilter}}</em></span>
+                               <p>日期：{{c.timestamp | date:'yy-MM-dd  hh:mm:ss'}} </p>
+                            </div>
+                            
+                         </div>
+                         
+                          <ion-option-button class="button-energized" ng-click="group(customer)">
+                            分组 
+                          </ion-option-button>
+                          <!--
+                          <ion-option-button class="button-assertive">
+                            删除 
+                          </ion-option-button>-->
+                      </ion-item>
+                    </ion-list>
+                  </div>
+
+
+                <!--12.16添加-s
+                 
+                 <div class="ssetjdv">
+                    <div class="ssejtv1">
+                       <span>客户：王海先生 </span>
+                       <em>交易号：98f9dssgfdhgd89s8dfgfdfgfdfg</em>
+                    </div>
+                    
+                    <div class="ssejtvb">
+                       <span>佣金：<em>343423</em></span>
+                       <span>返佣状态：<em>已返佣</em></span>
+                       <p>完成时间：2015/10/23 10:39:30 </p>
+                    </div>
+                    
+                 </div>
+                 e12.16添加-e-->
+
               
             </div><!--内容右侧结束-->
 </div>
