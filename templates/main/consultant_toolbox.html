@@ -463,12 +463,20 @@
             <div class="gnr2dadv"><!--内容右侧开始-->
               
               <div class="gzghp1">
-                 <span>佣金金额</span>
-                 <em>541300.20</em>
+                 <span>佣金</span>
+                 <em></em>
               </div>
               
              
               <ul class="gzghnrjlul2">
+                 <li ng-repeat="c in data.commissions">
+                    <span><i></i>客户 : 王海先生</span>
+                    <span>交易号: {{c.orderId}}</span>
+                    <span>完成时间: {{c.order.timestamp}}</span>
+                    <span>佣金: <em>{{c.commission}}</em></span>
+                    <span>返佣状态: <em>{{c | commissionStateFilter}}</em></span>
+                 </li>
+                 <!--
                  <li>
                     <span><i></i>客户 : 王海先生</span>
                     <span>返佣: <em>353000</em></span>
@@ -480,13 +488,7 @@
                     <span>返佣: <em>353000</em></span>
                     <span>交易号： 0232011</span>
                     <span>时间 ：2015.08.07</span>
-                 </li>
-                 <li>
-                    <span><i></i>客户 : 王海先生</span>
-                    <span>返佣: <em>353000</em></span>
-                    <span>交易号： 0232011</span>
-                    <span>时间 ：2015.08.07</span>
-                 </li>
+                 </li>-->
     
               </ul>
               

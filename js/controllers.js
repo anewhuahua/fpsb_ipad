@@ -57,6 +57,17 @@ angular.module('starter.controllers', [])
       return Main.queryUploadAccountUrl()+'/'+input;
   }
 })
+.filter('commissionStateFilter',function(Main){
+  return function(input){
+    if (input.state=='created') {
+      return '创建'
+    } else if (input.state=='withdraw') {
+      return '已申请提现'
+    } else if (input.state=='payoff') {
+      return '已返现'
+    }
+  }
+})
 .filter('imageCustomerFilter',function(Main){
   return function(input){
       if (input.imageId==null || input.imageId=='') {
@@ -410,7 +421,11 @@ angular.module('starter.controllers', [])
       }
 
     }, function(status){
-
+      $ionicPopup.alert({
+          title: '提示信息',
+          cssClass: 'alert-text',
+          template:  status
+      });
     }, function(){
 
     }); 
