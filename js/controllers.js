@@ -57,9 +57,9 @@ angular.module('starter.controllers', [])
       return Main.queryUploadAccountUrl()+'/'+input;
   }
 })
-.filter('commissionStateFilter',function(Main){
+.filter('commissionStateFilter',function(){
   return function(input){
-    if (input.state=='created') {
+    if (input.state=='create') {
       return '创建'
     } else if (input.state=='withdraw') {
       return '已申请提现'
