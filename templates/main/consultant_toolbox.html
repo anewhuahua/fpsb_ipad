@@ -467,36 +467,10 @@
                  <em></em>
               </div>-->
               
-             
-              <!--<ul class="gzghnrjlul2">
-                 <li ng-repeat="c in data.commissions">
-                    <span><i></i>客户 : 王海先生</span>
-                    <span>交易号: {{c.orderId}}</span>
-                    <span>完成时间: {{c.timestamp | date:'yy-MM-dd  hh:mm:ss'}}</span>
-                    <span>佣金: <em>{{c.commission}}</em></span>
-                    <span>返佣状态: <em>{{c | commissionStateFilter}}</em></span>
-                 </li>
-              </ul>-->
-                 <!--
-                 <li>
-                    <span><i></i>客户 : 王海先生</span>
-                    <span>返佣: <em>353000</em></span>
-                    <span>交易号： 0232011</span>
-                    <span>时间 ：2015.08.07</span>
-                 </li>
-                 <li>
-                    <span><i></i>客户 : 王海先生</span>
-                    <span>返佣: <em>353000</em></span>
-                    <span>交易号： 0232011</span>
-                    <span>时间 ：2015.08.07</span>
-                 </li>-->
-    
-              
-
 
                   <div class="lbxzxzdv">
                     <ion-list>
-                      <ion-item class="twtwdvkh" ng-repeat="c in data.commissions"  ng-click="goCustomerHistory(customer)"> <!-- -->
+                      <ion-item class="twtwdvkh" ng-repeat="c in data.commissions"> <!-- -->
 
                           <div class="ssetjdv">
                             <div class="ssejtv1">
@@ -512,8 +486,8 @@
                             
                          </div>
                          
-                          <ion-option-button class="button-energized" ng-click="group(customer)">
-                            分组 
+                          <ion-option-button class="button-energized" ng-click="withdrawCommission(c)">
+                            申请提现 
                           </ion-option-button>
                           <!--
                           <ion-option-button class="button-assertive">
@@ -524,22 +498,7 @@
                   </div>
 
 
-                <!--12.16添加-s
-                 
-                 <div class="ssetjdv">
-                    <div class="ssejtv1">
-                       <span>客户：王海先生 </span>
-                       <em>交易号：98f9dssgfdhgd89s8dfgfdfgfdfg</em>
-                    </div>
-                    
-                    <div class="ssejtvb">
-                       <span>佣金：<em>343423</em></span>
-                       <span>返佣状态：<em>已返佣</em></span>
-                       <p>完成时间：2015/10/23 10:39:30 </p>
-                    </div>
-                    
-                 </div>
-                 e12.16添加-e-->
+                
 
               
             </div><!--内容右侧结束-->

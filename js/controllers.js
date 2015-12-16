@@ -1811,6 +1811,17 @@ angular.module('starter.controllers', [])
   }
 
   
+  $scope.withdrawCommission = function(cms) {
+    Main.consultant.withdrawCommission(cms.id, function(data){
+      console.log(data);
+    }, function(status){
+      $ionicPopup.alert({
+        title: '提示信息',
+        cssClass: 'alert-text',
+        template:  '申请提现失败!'
+      });
+    }, function(){});
+  }
 
   $scope.goCustomerHistory = function(cus) {
     $state.go('common.customer_history', {customerId: cus.id});
