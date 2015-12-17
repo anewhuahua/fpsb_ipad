@@ -318,7 +318,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'angular-flot', 'ionicMultipleV
   })
 
   .state('exam.customer', {
-    url: '/customer',
+    url: '/customer/:suite',
     views: {
       'exam-menu': {
          templateUrl: 'templates/exam/exam_menu.html'

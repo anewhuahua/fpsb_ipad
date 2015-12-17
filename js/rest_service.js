@@ -457,7 +457,7 @@ angular.module('rest.service', [])
         getRiskTest: function(id, suite, successHandler, errorHandler, finallyHandler) {
           var req = {
               method: 'GET',
-              url: domain+'ChiefFinancierService/api/customer/v1/customers/' + cid + '/risktests/' + suite,
+              url: domain+'ChiefFinancierService/api/customer/v1/customers/' + id + '/risktests/' + suite,
               headers: {
                 'Content-Type': 'application/json'
               }
@@ -475,7 +475,7 @@ angular.module('rest.service', [])
         submitRiskTest: function(id, suite, successHandler, errorHandler, finallyHandler) {
           var req = {
               method: 'POST',
-              url: domain+'ChiefFinancierService/api/customer/v1/customers/' + cid + '/risktestTry',
+              url: domain+'ChiefFinancierService/api/customer/v1/customers/' + id + '/risktestTry',
               headers: {
                 'Content-Type': 'application/json'
               }

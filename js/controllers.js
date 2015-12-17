@@ -1434,7 +1434,7 @@ angular.module('starter.controllers', [])
   $scope.goPromotion =  function(id){
     $state.go('promotion.product_detail', {promotionId: id});
   }
-  $scope.goExam = function() {
+  $scope.goExam = function(param) {
     var role = Main.getRole();
     if(role=='Guest') {
       $ionicPopup.alert({
@@ -1447,7 +1447,7 @@ angular.module('starter.controllers', [])
         template: '只有客户可以进行理财评测'
       });
     } else if(role == 'Customer') {
-      $state.go('exam.customer');
+      $state.go('exam.customer', {suite: param});
     } else {}
   }
 
