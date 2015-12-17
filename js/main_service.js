@@ -657,7 +657,18 @@ angular.module('main.service',[])
           }, 
           finallyHandler());
       },
-     
+      submitRiskTest: function(tid, answer, successHandler, errorHandler, finallyHandler) {
+         Rest.customer.v1.submitRiskTest(id, tid, answer, function(data){
+            if (parseRestSuccess('submitRiskTest', data, successHandler, errorHandler)) { 
+              //customer.bookings.unserved.unshift(data.result);
+              //data.result;
+            }
+          }, function(status){
+            parseRestError('submitRiskTest',  status, errorHandler);
+          }, 
+          finallyHandler());
+      },
+
       queryUserMessages: function(successHandler, errorHandler, finallyHandler) {
         Rest.customer.v1.queryUserMessages(id, function(data){
             if (parseRestSuccess('queryUserMessages', data, successHandler, errorHandler)) { 

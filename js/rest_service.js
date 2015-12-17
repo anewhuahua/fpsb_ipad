@@ -472,12 +472,16 @@ angular.module('rest.service', [])
             finallyHandler();
           });
         },
-        submitRiskTest: function(id, suite, successHandler, errorHandler, finallyHandler) {
+        submitRiskTest: function(id, tid, answer, successHandler, errorHandler, finallyHandler) {
           var req = {
               method: 'POST',
               url: domain+'ChiefFinancierService/api/customer/v1/customers/' + id + '/risktestTry',
               headers: {
                 'Content-Type': 'application/json'
+              },
+              data: {
+                testId: tid,
+                answerTries: answer
               }
             };
             //console.log(pid);

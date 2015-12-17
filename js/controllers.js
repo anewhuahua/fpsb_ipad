@@ -142,6 +142,15 @@ angular.module('starter.controllers', [])
   $scope.riskTest = {
     data: {}
   };
+  $scope.answer = {
+    data: {}
+  };
+  /*
+  $scope.submit = function() {
+    Main.customer.submitRiskTest($scope.riskTest.data.id, )
+
+  }*/
+
   var suite = $stateParams.suite;
   console.log(suite);
 
