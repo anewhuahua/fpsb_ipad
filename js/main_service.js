@@ -646,7 +646,18 @@ angular.module('main.service',[])
     },
 
     customer: {
-
+      getRiskTest: function(suite, successHandler, errorHandler, finallyHandler) {
+         Rest.customer.v1.getRiskTest(id, suite, function(data){
+            if (parseRestSuccess('getRiskTest', data, successHandler, errorHandler)) { 
+              //customer.bookings.unserved.unshift(data.result);
+              //data.result;
+            }
+          }, function(status){
+            parseRestError('getRiskTest',  status, errorHandler);
+          }, 
+          finallyHandler());
+      },
+     
       queryUserMessages: function(successHandler, errorHandler, finallyHandler) {
         Rest.customer.v1.queryUserMessages(id, function(data){
             if (parseRestSuccess('queryUserMessages', data, successHandler, errorHandler)) { 

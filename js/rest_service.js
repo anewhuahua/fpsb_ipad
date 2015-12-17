@@ -454,6 +454,42 @@ angular.module('rest.service', [])
 
     customer: {
       v1: {
+        getRiskTest: function(id, suite, successHandler, errorHandler, finallyHandler) {
+          var req = {
+              method: 'GET',
+              url: domain+'ChiefFinancierService/api/customer/v1/customers/' + cid + '/risktests/' + suite,
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
+            //console.log(pid);
+          $http(req).success(function(data){
+            //console.log(data);
+            successHandler(data);
+          }).error(function(res, status){
+            errorHandler(status);
+          }).finally(function(){
+            finallyHandler();
+          });
+        },
+        submitRiskTest: function(id, suite, successHandler, errorHandler, finallyHandler) {
+          var req = {
+              method: 'POST',
+              url: domain+'ChiefFinancierService/api/customer/v1/customers/' + cid + '/risktestTry',
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
+            //console.log(pid);
+          $http(req).success(function(data){
+            //console.log(data);
+            successHandler(data);
+          }).error(function(res, status){
+            errorHandler(status);
+          }).finally(function(){
+            finallyHandler();
+          });
+        },
 
         queryUserMessages: function(cid, successHandler, errorHandler, finallyHandler) {
           var req = {

@@ -6,7 +6,38 @@
        <div class="cstestrig"><!-- 财商测试右边 75%-->  
             
             <ul class="cstestrigul">
-              <li><form>
+
+                <li ng-repeat="q in riskTest.data.questions"><form>
+                  <span class="cststtit">{{q.subject}}</span>
+                  <div class="cststnr">
+                    <div class="cststnr1" ng-repeat="op in q.options"><label><input name="first" type="radio" value="" class="cststfxk" />{{op.content}} </label> </div>
+                    <!--
+                    <div class="cststnr1"><label><input name="first" type="radio" value="" class="cststfxk" />买前段时间想买贵重物品 </label> </div>
+                    <div class="cststnr1"><label><input name="first" type="radio" value="" class="cststfxk" />还是存着好了 </label> </div>
+                    <div class="cststnr1"><label><input name="first" type="radio" value="" class="cststfxk" />除了犒劳自己，也给父母或是伴侣买些东西。 </label> </div>-->
+                  </div>
+                </form></li>
+
+                <!--
+                <li><form>
+                  <span class="cststtit">发下一笔奖金，您会如何犒劳自己？</span>
+                  <div class="cststnr">
+                    <div class="cststnr1"><label><input name="first" type="radio" value="" class="cststfxk" />请自己大吃一顿 </label> </div>
+                    <div class="cststnr1"><label><input name="first" type="radio" value="" class="cststfxk" />还是存着好了 </label> </div>
+                  </div>
+                </form></li>
+                <li><form>
+                  <span class="cststtit">发下一笔奖金，您会如何犒劳自己？</span>
+                  <div class="cststnr">
+                    <div class="cststnr1"><label><input name="first" type="radio" value="" class="cststfxk" />请自己大吃一顿 </label> </div>
+                    <div class="cststnr1"><label><input name="first" type="radio" value="" class="cststfxk" />买前段时间想买贵重物品 </label> </div>
+                    <div class="cststnr1"><label><input name="first" type="radio" value="" class="cststfxk" />还是存着好了 </label> </div>
+                    <div class="cststnr1"><label><input name="first" type="radio" value="" class="cststfxk" />除了犒劳自己，也给父母或是伴侣买些东西。 </label> </div>
+                    <div class="cststnr1"><label><input name="first" type="radio" value="" class="cststfxk" />请自己大吃一顿 </label> </div>
+                    <div class="cststnr1"><label><input name="first" type="radio" value="" class="cststfxk" />还是存着好了 </label> </div>
+                  </div>
+                </form></li>
+                <li><form>
                   <span class="cststtit">发下一笔奖金，您会如何犒劳自己？</span>
                   <div class="cststnr">
                     <div class="cststnr1"><label><input name="first" type="radio" value="" class="cststfxk" />请自己大吃一顿 </label> </div>
@@ -32,34 +63,7 @@
                     <div class="cststnr1"><label><input name="first" type="radio" value="" class="cststfxk" />请自己大吃一顿 </label> </div>
                     <div class="cststnr1"><label><input name="first" type="radio" value="" class="cststfxk" />还是存着好了 </label> </div>
                   </div>
-                </form></li>
-                <li><form>
-                  <span class="cststtit">发下一笔奖金，您会如何犒劳自己？</span>
-                  <div class="cststnr">
-                    <div class="cststnr1"><label><input name="first" type="radio" value="" class="cststfxk" />请自己大吃一顿 </label> </div>
-                    <div class="cststnr1"><label><input name="first" type="radio" value="" class="cststfxk" />买前段时间想买贵重物品 </label> </div>
-                    <div class="cststnr1"><label><input name="first" type="radio" value="" class="cststfxk" />还是存着好了 </label> </div>
-                    <div class="cststnr1"><label><input name="first" type="radio" value="" class="cststfxk" />除了犒劳自己，也给父母或是伴侣买些东西。 </label> </div>
-                  </div>
-                </form></li>
-                <li><form>
-                  <span class="cststtit">发下一笔奖金，您会如何犒劳自己？</span>
-                  <div class="cststnr">
-                    <div class="cststnr1"><label><input name="first" type="radio" value="" class="cststfxk" />请自己大吃一顿 </label> </div>
-                    <div class="cststnr1"><label><input name="first" type="radio" value="" class="cststfxk" />还是存着好了 </label> </div>
-                  </div>
-                </form></li>
-                <li><form>
-                  <span class="cststtit">发下一笔奖金，您会如何犒劳自己？</span>
-                  <div class="cststnr">
-                    <div class="cststnr1"><label><input name="first" type="radio" value="" class="cststfxk" />请自己大吃一顿 </label> </div>
-                    <div class="cststnr1"><label><input name="first" type="radio" value="" class="cststfxk" />买前段时间想买贵重物品 </label> </div>
-                    <div class="cststnr1"><label><input name="first" type="radio" value="" class="cststfxk" />还是存着好了 </label> </div>
-                    <div class="cststnr1"><label><input name="first" type="radio" value="" class="cststfxk" />除了犒劳自己，也给父母或是伴侣买些东西。 </label> </div>
-                    <div class="cststnr1"><label><input name="first" type="radio" value="" class="cststfxk" />请自己大吃一顿 </label> </div>
-                    <div class="cststnr1"><label><input name="first" type="radio" value="" class="cststfxk" />还是存着好了 </label> </div>
-                  </div>
-                </form></li>
+                </form></li>-->
               
             </ul>
             

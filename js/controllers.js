@@ -134,10 +134,21 @@ angular.module('starter.controllers', [])
     result: false
   }
 })
-.controller('examCustomerCtrl', function($scope) {
+.controller('examCustomerCtrl', function($scope, Main, $stateParams) {
   $scope.showResult = function() {
     $scope.win.result = true;
   }
+
+  $scope.riskTest = {
+    data: {}
+  };
+  var suite = $stateParams.suite;
+  console.log(suite);
+
+  Main.customer.getRiskTest(suite, function(data){
+    $scope.riskTest.data = data;
+  }, function(status){}, function(){});
+
 })
 
 .controller('commonCtrl', function($scope, $state, $stateParams, $ionicPopup, $ionicHistory, Factory, Main, Notify) {
