@@ -134,21 +134,38 @@ angular.module('starter.controllers', [])
     result: false
   }
 })
-.controller('examCustomerCtrl', function($scope, Main, $stateParams) {
+.controller('examCustomerCtrl', function($scope, Main, $stateParams, $ionicPopup) {
   $scope.showResult = function() {
     $scope.win.result = true;
   }
 
   $scope.riskTest = {
     data: {},
-    answer: {}
+    answer: {
+      id:'',
+      data:[]
+    }
   };
 
-
-
   $scope.submit = function() {
-    Main.customer.submitRiskTest($scope.riskTest.data.id);
+    if ($scope.riskTest.answer.id=='') {
+      $ionicPopup.alert({
+            title: '提示信息',
+            cssClass: 'alert-text',
+            template:  '提交测试失败!'
+      });
+      return;
+    }
 
+    for(var i = 0;i<$scope.riskTest.data.questions.length; i++) {
+      $scope.riskTest.answer.data[i]= {
+        questionId: $scope.riskTest.data.questions[i].id, 
+        optionId: $scope.riskTest.data.questions[i].answer
+      }
+    }
+
+    Main.customer.submitRiskTest($scope.riskTest.answer.id, $scope.riskTest.answer.data, function(data){}, 
+      function(status){}, function(){});
   }
 
   var suite = $stateParams.suite;
@@ -156,7 +173,7 @@ angular.module('starter.controllers', [])
 
   Main.customer.getRiskTest(suite, function(data){
     $scope.riskTest.data = data;
-    $scope.riskTest.answer.testId = data.id;
+    $scope.riskTest.answer.id = data.id;
 
     for (var i=0; i<$scope.riskTest.data.questions.length; i++) {
       $scope.riskTest.data.questions[i].answer = $scope.riskTest.data.questions[i].options[0].id;
@@ -164,9 +181,7 @@ angular.module('starter.controllers', [])
 
   }, function(status){}, function(){});
 
-  $scope.change = function() {
-    console.log($scope.data.tyson);
-  }
+
 
 })
 
