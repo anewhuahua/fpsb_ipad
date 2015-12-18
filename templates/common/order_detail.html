@@ -61,7 +61,7 @@
                   <div class="ddxqxx" ng-if="data.order.type=='PublicFund'"><!--订单信息-s-->
                      <span>历史交易记录</span>
                      <p ng-repeat="hist in data.order.histories">
-                        <em>时间：{{hist.timestamp || date:'yy-MM-dd  hh:mm:ss'}}</em>
+                        <em>时间：{{hist.timestamp | date:'yyyy-MM-dd  hh:mm:ss'}}</em>
                         <em>交易金额：{{hist.quota}}</em>
                      </p>
                      <!--
