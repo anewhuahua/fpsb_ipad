@@ -147,6 +147,8 @@ angular.module('starter.controllers', [])
     }
   };
 
+  ///////////
+  ///////////
   $scope.submit = function() {
     if ($scope.riskTest.answer.id=='') {
       $ionicPopup.alert({
@@ -167,6 +169,14 @@ angular.module('starter.controllers', [])
     Main.customer.submitRiskTest($scope.riskTest.answer.id, $scope.riskTest.answer.data, function(data){}, 
       function(status){}, function(){});
   }
+
+  $scope.reset =  function() {
+    for (var i=0; i<$scope.riskTest.data.questions.length; i++) {
+      $scope.riskTest.data.questions[i].answer = $scope.riskTest.data.questions[i].options[0].id;
+    }
+  }
+  ///////////
+  ///////////
 
   var suite = $stateParams.suite;
   console.log(suite);
