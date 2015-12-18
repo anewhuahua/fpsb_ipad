@@ -142,14 +142,15 @@ angular.module('starter.controllers', [])
   $scope.riskTest = {
     data: {}
   };
-  $scope.answer = {
-    data: {}
-  };
-  /*
-  $scope.submit = function() {
-    Main.customer.submitRiskTest($scope.riskTest.data.id, )
 
-  }*/
+  $scope.data = {
+    tyson:""
+  };
+
+  $scope.submit = function() {
+    Main.customer.submitRiskTest($scope.riskTest.data.id);
+
+  }
 
   var suite = $stateParams.suite;
   console.log(suite);
@@ -157,6 +158,10 @@ angular.module('starter.controllers', [])
   Main.customer.getRiskTest(suite, function(data){
     $scope.riskTest.data = data;
   }, function(status){}, function(){});
+
+  $scope.change = function() {
+    console.log($scope.data.tyson);
+  }
 
 })
 

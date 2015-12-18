@@ -57,6 +57,24 @@
                      </p>
                    
                   </div><!--订单信息-e-->
+
+                  <div class="ddxqxx" ng-if="data.order.type=='PublicFund'"><!--订单信息-s-->
+                     <span>历史交易记录</span>
+                     <p ng-repeat="hist in data.order.histories">
+                        <em>时间：{{hist.timestamp || date:'yy-MM-dd  hh:mm:ss'}}</em>
+                        <em>交易金额：{{hist.quota}}</em>
+                     </p>
+                     <!--
+                     <p>
+                        <em>时间：2015-12-04 12:00:00</em>
+                        <em>交易金额：10000</em>
+                     </p>-->
+                   
+                  </div><!--订单信息-e-->
+
+
+
+
               </div>
 
            </div><!--内容右侧结束-->
