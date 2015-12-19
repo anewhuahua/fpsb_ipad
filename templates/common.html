@@ -42,16 +42,18 @@
 
 
  <div ng-switch on="data.popup">
-  <div class="prxqdv" ng-switch-when="privateFund"><!-- 私募产品详情页弹窗开始 -->
-  <div class="prxqdvma"><!-- 私募产品详情页弹窗主体 -->
+<div class="prxqdv" ng-switch-when="privateFund"><!-- 私募产品详情页弹窗开始 -->
+  <div class="prxqdvma" ng-if="data.looking_product.type.toLowerCase()!='insurance'"><!-- 私募产品详情页弹窗主体 -->
     
     <div class="prxqmanr1"><!-- 私募产品详情页弹窗主体 上半部分-->
     
       <div class="prxqhead">
              <i class="xxlniuhuang1"></i>
-             <span class="prxqh3">{{data.looking_product.name}}</span>
+             <span class="prxqh3">{{data.looking_product.name}} <em ng-if="data.commissionCtrl.enabled"> (返佣比例 <i>{{data.looking_product.commissionRate}}%</i>)</em></span>
+
              <em class="prxqh5" ng-click='closeProduct()'></em>
-             <em class="prxqh4"></em>
+             <em ng-if="!data.currentLiked" class="prxqh4" ng-click='likeIt()'></em>
+             <em ng-if="data.currentLiked" class="prxqh4tyson"></em>
       </div>
     
     
@@ -69,20 +71,18 @@
           </div>
           <div class="prxqrpnr1">
             <span>18个月</span>
-            <em>理财期限  </em>
+            <em>产品期限  </em>
           </div>
           <div class="prxqrpnr3">
             <p><i>目标规模</i><em>100000000</em><span>万元</span></p>
-            <p><i>认购金额</i><em>300-599</em><span>万元</span></p>
-            <p><i>剩余时间</i><em>26</em><span>天</span></p>
+            <p><i>起购门槛</i><em>300-599</em><span>万元</span></p>
+            <p><i>募集状态</i><em>剩余26</em><span>天</span></p>
           </div>
         </div><!-- 右边的上半部分 -->
         
         <ul class="prxqbmul">
-          <li class="prxqbj">基本信息</li>
-          <li>募集账户</li>
-          <li>产品卖点</li>
-          <li>风险控制</li>
+          <li ng-class="{prxqbj: data.looking_product_tab=='main'}" ng-click="showProductTab('main')">基本信息</li>
+          <li ng-class="{prxqbj: data.looking_product_tab=='desc'}" ng-click="showProductTab('desc')">产品备注</li>
         </ul><!-- 右边的下半部分 -->
         
         
@@ -91,13 +91,21 @@
       
     </div>
     
+
+    <div class="prxqbm"><!-- 私募产品详情页弹窗主体 底部部分-->
+
+      <!--<a href="" class="prxqaa3"  ng-click="data.optionOperation.action()">{{data.optionOperation.name}}</a>-->
+  
+
+    </div><!-- 私募产品详情页弹窗主体 底部部分-->
+
+
     </div><!-- 私募产品详情页弹窗主体 上半部分-->
     
     
     
     <div class="prxqtopbj"></div>
-    <div class="prxqmanr2"><!-- 私募产品详情页弹窗主体 中间部分-->
-      
+    <div class="prxqmanr2" ng-if="data.looking_product_tab=='main'"><!-- 私募产品详情页弹窗主体 中间部分-->
       <p>
         <span>产品全称</span>
         <em>粤财·瀚信中鼎盈丰2期</em>
@@ -155,16 +163,187 @@
 
     </div><!-- 私募产品详情页弹窗主体 中间部分-->
     
+    <div class="prxqmanr2" ng-if="data.looking_product_tab=='desc'"><!-- 私募产品详情页弹窗主体 中间部分-->  
+      <p>
+        
+        <em>{{data.looking_product.description}}</em>
+      </p>
+      
+
+    </div><!-- 私募产品详情页弹窗主体 中间部分-->
+    
+    
+    
+
   </div><!-- 私募产品详情页弹窗主体 --> 
+
+
+  <div class="prxqdvma" ng-if="data.looking_product.type.toLowerCase()=='insurance'">
+    <div class="prxqmanr1"><!-- 私募产品详情页弹窗主体 上半部分-->
+    
+      <div class="prxqhead">
+             <i class="xxlniuhuang1"></i>
+             <span class="prxqh3">{{data.looking_product.name}} <em ng-if="data.commissionCtrl.enabled"> (返佣比例 <i>{{data.looking_product.commissionRate}}%</i>)</em></span>
+             
+
+             <em class="prxqh5" ng-click='closeProduct()'></em>
+             <em ng-if="!data.currentLiked" class="prxqh4" ng-click='likeIt()'></em>
+             <em ng-if="data.currentLiked" class="prxqh4tyson"></em>
+      </div>
+    
+    
+    
+      <div class="prxqnr2">
+      
+   
+      
+      <div class="prxqrig" style="float:left;  width:90%;">
+        
+        <div class="prxqrtop" style="width:100%;">
+          <div class="prxqrpnr1">
+            <span>{{data.looking_product.issuer}}</span>
+            <em>所属公司</em>
+          </div>
+          <div class="prxqrpnr1">
+            <span>{{data.looking_product.basicInsAmount}}万元</span>
+            <em>基本保额</em>
+          </div>
+          <div class="prxqrpnr1">
+            <span>{{data.looking_product.insAmount}}元/年</span>
+            <em>保障额度</em>
+          </div>
+           <div class="prxqrpnr1">
+            <span>{{data.looking_product.insAge}}</span>
+            <em>投保年龄</em>
+          </div>
+          <!--
+          <div class="prxqrpnr3">
+            <p><i>目标规模</i><em>100000000</em><span>万元</span></p>
+            <p><i>认购金额</i><em>300-599</em><span>万元</span></p>
+            <p><i>募集状态</i><em>剩余26</em><span>天</span></p>
+          </div>-->
+        </div><!-- 右边的上半部分 -->
+         <ul class="prxqbmul">
+          <li ng-class="{prxqbj: data.looking_product_tab=='main'}" ng-click="showProductTab('main')">基本信息</li>
+          <li ng-class="{prxqbj: data.looking_product_tab=='desc'}" ng-click="showProductTab('desc')">产品备注</li>
+        </ul><!-- 右边的下半部分 -->
+
+      </div>
+      
+      
+    </div>
+    
+
+    <div class="prxqbm"><!-- 私募产品详情页弹窗主体 底部部分-->
+
+      <!--<a href="" class="prxqaa3"  ng-click="data.optionOperation.action()">{{data.optionOperation.name}}</a>-->
+  
+
+    </div><!-- 私募产品详情页弹窗主体 底部部分-->
+
+
+    </div><!-- 私募产品详情页弹窗主体 上半部分-->
+    
+    
+    
+    <div class="prxqtopbj"></div>
+    <div class="prxqmanr2" ng-if="data.looking_product_tab=='main'"><!-- 私募产品详情页弹窗主体 中间部分-->
+      
+      <p>
+        <span>产品全称</span>
+        <em>{{data.looking_product.name}}</em>
+      </p>
+      <p>
+        <span>所属公司</span>
+        <em>{{data.looking_product.issuer}}</em>
+      </p>
+      <p>
+        <span>基本保额 </span>
+        <em>{{data.looking_product.basicInsAmount}}万元</em>
+      </p>
+      <p>
+        <span>保障额度  </span>
+        <em>{{data.looking_product.insAmount}}元/年</em>
+      </p>
+      <p>
+        <span>投保年龄 </span>
+        <em>{{data.looking_product.insAge}}</em>
+      </p>
+      <p>
+        <span>产品评测 </span>
+        <em>{{data.looking_product.accessment}}</em>
+      </p>
+      <p>
+        <span>缴费年限 </span>
+        <em>{{data.looking_product.paymentPeriod}}年/交</em>
+      </p>
+      <p>
+        <span>备注 </span>
+        <em>{{data.looking_product.remarks}}</em>
+      </p>
+      
+    </div><!-- 私募产品详情页弹窗主体 中间部分-->
+
+    <div class="prxqmanr2"  ng-if="data.looking_product_tab=='desc'">
+      <img ng-cache ng-src="{{data.looking_product | productImageFilter}}" />
+
+    </div>
+  </div>
+
+
 </div><!-- 私募产品详情页弹窗结束 -->
 
 
+
+ <!-- 产品详情申购开始 -->
+    <div class="cpyyxxdv"  ng-switch-when="OrderDialog">
+      <div class="cpyyxxdvm">
+  
+          <!-- <div class="zcback" ng-click="backProduct()"><img src="teImg/zcback.png" /></div>  -->
+          <div class="zcclos" ng-click="closePopup('OrderDialog')"><img src="teImg/zcclose.png" /></div><!-- 关闭 -->
+          
+          <span class="zcwjtit1">申 购</span>
+          <span class="xpqqyyt2">{{data.looking_product.name}}</span>
+          
+          <div class="xpqqt3">
+            
+          </div>
+          
+          
+          <div class="cpxqyynrdv">
+             <div class="cpxqyynrdvyy"></div>
+             <span class="cpxqyynrsp1">申购金额</span>
+            <form>
+             <div class="ccyyjjdv">
+
+                  <input type="button" class="xpwwyyf" ng-click='data.order_option.decrease()' />
+                  <input type="text" class="xpwwyym" placeholder="{{data.order_option.quantity}}"/>
+                  <input type="button" class="xpwwyyr" ng-click='data.order_option.increase()' />
+               
+             </div>
+           
+             <p class="zcmmjs">
+                <span><img src="teImg/zcmmjslog2.jpg" /></span>
+                <em>我已阅读并同意<i>《首席金服用户协议》</i></em>
+             </p>
+          </div>
+          
+          <input type="submit"  class="ccxxdvtj" value="提交申购" ng-click="addOrder()"/>
+          
+        </form>  
+      </div>
+    </div>
+   <!-- 产品申购结束 -->
+
+
+
+
 <!-- 产品详情申购开始 -->
+<!--
 <div class="cpyyxxdv"  ng-switch-when="OrderDialog">
       <div class="cpyyxxdvm">
   
-          <div class="zcclos" ng-click="closePopup('OrderDialog')"><img src="teImg/zcclose.png" /></div><!-- 关闭 -->
-          <span class="zcwjtit1">申 购</span>
+          <div class="zcclos" ng-click="closePopup('OrderDialog')"><img src="teImg/zcclose.png" /></div>
           <span class="xpqqyyt2">{{data.looking_booking.product.name}}</span>
           
           <div class="xpqqt3">
@@ -201,7 +380,7 @@
           
         </form>  
       </div>
-</div>
+</div>-->
 <!-- 产品申购结束 -->
 
 

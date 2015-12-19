@@ -238,13 +238,22 @@ angular.module('starter.controllers', [])
       status: '',
       words: ''
     },
-    popup: ''
+    popup: '',
+    looking_product_tab: 'main',
+    looking_product: ''
   };
 
   $scope.goBack = function() {
     console.log('goback');
     $ionicHistory.goBack();
   }
+
+  $scope.showProductTab = function(tab) {
+    $scope.data.looking_product_tab = tab;
+  }
+
+
+  /*
   $scope.showProduct = function(product) {
 
     if(product){
@@ -257,11 +266,39 @@ angular.module('starter.controllers', [])
         $scope.data.looking_product = product;
       }
     }
+  }*/
+
+  $scope.showProduct = function(product) {
+    $scope.data.looking_product_tab = 'main';
+
+    if(product){
+      ret = Main.productGoState(product);
+
+      if (ret.go) {
+        $state.go(ret.go, {productId: product.id});
+      } else {
+        Main.isLikedProduct(product.id, function(data){
+          if(data.length>0) {
+            $scope.data.currentLiked = true;
+          } else {
+            $scope.data.currentLiked = false;
+          }
+          
+        }, function(status){
+          $scope.data.currentLiked = false;
+        }, function(){});
+
+        $scope.data.popup = 'privateFund';
+        $scope.data.looking_product = product;
+      }
+    }
   }
+
 
   $scope.closeProduct = function() {
     $scope.data.popup = '';
     $scope.data.looking_product = null;
+    $scope.data.currentLiked = false;
   }
 
   $scope.closePopup = function(win) {
