@@ -1,25 +1,9 @@
 
-<ion-nav-bar>
-</ion-nav-bar>
-<div class="common-main-view">
-   <div class="header">
-          <ul class="leul">
-              <li class="lelia"><a href="#main/index"><img src="teImg/zcback.png" title="" alt="" /></a></li>
-           </ul>
-           <div class="logotop"><img src="teImg/logo.png" title="" alt="" /></div>
-           
-           <!--
-           <ul class="heul">
-              <li class="helia"><a href=""><img src="teImg/nexbtn1.png" title="" alt="" /></a></li>
-              <li class="helib"><a href=""><img src="teImg/nexbtn2.png" title="" alt="" /></a></li>
-           </ul>-->
-  </div>
-</div>
 
 
-<ion-view class="booking-view has-header">
+<ion-view class="booking-view">
     <ion-content>
-
+       <div class="gjxnrtopyy2"></div><!-- 内容top阴影 --> 
       <div class="main1">
           <!--
           <div class="cpyyxzj">
@@ -58,9 +42,9 @@
               <!--<a class="ccdgaa2">预约产品</a>-->
            </div>
            
-           <div ng-if="promotionId=='1'" class="ccgdimg"><img src="teImg/jwtz_detail.jpg" /></div> 
-           <div ng-if="promotionId=='2'" class="ccgdimg"><img src="teImg/jzbgs_detail.jpg" /></div>   
-           <div ng-if="promotionId=='3'" class="ccgdimg"><img src="teImg/hwbx_detail.jpg" /></div>     
+           <div ng-if="product.position=='1'" class="ccgdimg"><img src="teImg/jwtz_detail.jpg" /></div> 
+           <div ng-if="product.position=='2'" class="ccgdimg"><img src="teImg/jzbgs_detail.jpg" /></div>   
+           <div ng-if="product.position=='3'" class="ccgdimg"><img src="teImg/hwbx_detail.jpg" /></div>     
         
       </div> <!--main1-->
     </ion-content>

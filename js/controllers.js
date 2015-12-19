@@ -123,10 +123,10 @@ angular.module('starter.controllers', [])
   //});
 })
 
-.controller('promotionDetailCtrl', function($scope, $stateParams, $state, Main){
+.controller('promotionDetailCtrl', function($scope, $stateParams, $state,$ionicPopup, Main){
   console.log($stateParams.promotionId);
   $scope.promotionId = $stateParams.promotionId;
-  $socpe.product = {};
+  $scope.product = {};
   $scope.data = {};
 
 
@@ -1544,11 +1544,13 @@ angular.module('starter.controllers', [])
   Main.getProducts($scope.barProducts, function(data){
   }, function(){}, function(){});
 
+
   $scope.goPromotion =  function(position){
     var pid = "";
-    for (var i = 0; i<$scope.barProducts.length; i++) {
-      if ($scope.barProducts[i].position == position) {
-        pid = $scope.barProducts[i].id;
+    for (var i = 0; i<$scope.barProducts.products.data.length; i++) {
+      //console.log($scope.barProducts[i]);
+      if ($scope.barProducts.products.data[i].position == position) {
+        pid = $scope.barProducts.products.data[i].id;
         break;
       }
     }
