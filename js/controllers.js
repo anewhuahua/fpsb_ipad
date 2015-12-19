@@ -123,13 +123,16 @@ angular.module('starter.controllers', [])
   //});
 })
 
-.controller('promotionDetailCtrl', function($scope, $stateParams, $state,$ionicPopup, Main){
+.controller('promotionDetailCtrl', function($scope, $stateParams, $state,$ionicPopup, Main, $window){
   console.log($stateParams.promotionId);
   $scope.promotionId = $stateParams.promotionId;
   $scope.product = {};
   $scope.data = {};
 
-
+  $scope.openPdf = function(pdf) {
+    console.log(pdf);
+    $window.open(pdf, 'location=yes');
+  }
   var addBooking= function() {
     // todo quantity
       Main.customer.addBooking($scope.promotionId, function(data){
