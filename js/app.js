@@ -186,14 +186,15 @@ angular.module('starter', ['ionic', 'ngCordova', 'angular-flot', 'ionicMultipleV
 
 
   // promotion
+  /*
   .state('promotion', {
     url: '/promotion',
     abstract: true,
     templateUrl: 'templates/promotion.html'
   })
-
-  .state('promotion.product_detail', {
-    url: '/product/detail/:promotionId',
+  */
+  .state('common.promotion_detail', {
+    url: '/promotion/detail/:promotionId',
     views: {
       'promotion-product-detail': {
          templateUrl: 'templates/promotion/product_detail.html',

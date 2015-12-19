@@ -123,10 +123,44 @@ angular.module('starter.controllers', [])
   //});
 })
 
-.controller('promotionDetailCtrl', function($scope, $stateParams, $state){
+.controller('promotionDetailCtrl', function($scope, $stateParams, $state, Main){
   console.log($stateParams.promotionId);
   $scope.promotionId = $stateParams.promotionId;
-  
+  $socpe.product = {};
+  $scope.data = {};
+
+
+  var addBooking= function() {
+    // todo quantity
+      Main.customer.addBooking($scope.promotionId, function(data){
+        $ionicPopup.alert({
+          title: '系统提示',
+          template: '您的预约已成功提交!' +
+                    '您的理财师将马上与您联系，请保持电话通畅!'
+        }).then(function(res){
+          Notify.notify('booking');
+        });
+        //console.log("tyson");
+      }, function(error){
+        $ionicPopup.alert({
+          title: '系统提示',
+          template: '您的预约未成功!'
+        });
+      }, function(){
+      });
+  }  
+
+  Main.queryProductDetail($scope.promotionId, function(data){
+    $scope.product = data;
+    $scope.data.optionOperation = Main.getOperation($scope.product, addBooking, $scope.orderDialog, function(){
+      $ionicPopup.alert({
+        title: '系统提示',
+        template: '请先登入'
+      });
+    });
+  }, function(status){}, function(){})
+
+
 })
 
 .controller('examCtrl', function($scope) {
@@ -1475,9 +1509,7 @@ angular.module('starter.controllers', [])
   $scope.data.externals = Main.getCategories(1);
   $scope.data.main = 'internal'
 
-  $scope.goPromotion =  function(id){
-    $state.go('promotion.product_detail', {promotionId: id});
-  }
+
   $scope.goExam = function(param) {
     var role = Main.getRole();
     if(role=='Guest') {
@@ -1511,6 +1543,19 @@ angular.module('starter.controllers', [])
   
   Main.getProducts($scope.barProducts, function(data){
   }, function(){}, function(){});
+
+  $scope.goPromotion =  function(position){
+    var pid = "";
+    for (var i = 0; i<$scope.barProducts.length; i++) {
+      if ($scope.barProducts[i].position == position) {
+        pid = $scope.barProducts[i].id;
+        break;
+      }
+    }
+    if (pid!="") {
+      $state.go('common.promotion_detail', {promotionId: pid});
+    }
+  }
   
 })
 

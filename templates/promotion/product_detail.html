@@ -52,7 +52,10 @@
            
            <div class="cpydgdv">
               <a href="#" onclick="window.open('http://115.29.194.11:8080/app/tyson/aaa.pdf', 'location=yes')" class="ccdgaa1">查看详情</a>
-              <a class="ccdgaa2">预约产品</a>
+
+
+              <a class="ccdgaa2" ng-click="data.optionOperation.action()">{{data.optionOperation.name}}</a>
+              <!--<a class="ccdgaa2">预约产品</a>-->
            </div>
            
            <div ng-if="promotionId=='1'" class="ccgdimg"><img src="teImg/jwtz_detail.jpg" /></div> 
