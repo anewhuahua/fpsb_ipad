@@ -648,6 +648,18 @@ angular.module('main.service',[])
     },
 
     customer: {
+      isProductBooked: function(pid, successHandler, errorHandler, finallyHandler) {
+         Rest.customer.v1.isProductBooked(id, pid, function(data){
+            if (parseRestSuccess('isProdcutBooked', data, successHandler, errorHandler)) { 
+              //customer.bookings.unserved.unshift(data.result);
+              //data.result;
+            }
+          }, function(status){
+            parseRestError('isProductBooked',  status, errorHandler);
+          }, 
+          finallyHandler());
+      },
+
       getRiskTest: function(suite, successHandler, errorHandler, finallyHandler) {
          Rest.customer.v1.getRiskTest(id, suite, function(data){
             if (parseRestSuccess('getRiskTest', data, successHandler, errorHandler)) { 
@@ -911,6 +923,17 @@ angular.module('main.service',[])
 ////////////////////////////////////////////////
 
     consultant: {
+      isProductOrdered: function(pid, successHandler, errorHandler, finallyHandler) {
+         Rest.consultant.v1.isProductOrdered(id, pid, function(data){
+          if (parseRestSuccess('isProductOrdered', data, successHandler, errorHandler)) { 
+              //customer.bookings.unserved.unshift(data.result);
+              //data.result;
+          }
+        }, function(status){
+          parseRestError('isProductOrdered',  status, errorHandler);
+        }, 
+        finallyHandler());
+      },
       queryCommissions: function(successHandler, errorHandler, finallyHandler){
         Rest.consultant.v1.queryCommissions(id, function(data){
           if (parseRestSuccess('queryCommissions', data, successHandler, errorHandler)) { 

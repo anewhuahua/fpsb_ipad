@@ -454,6 +454,23 @@ angular.module('rest.service', [])
 
     customer: {
       v1: {
+        isProductBooked: function(id, pid, successHandler, errorHandler, finallyHandler) {
+          var req = {
+              method: 'GET',
+              url: domain+'ChiefFinancierService/api/customer/v1/customers/' + id + '/bookings/count?productId=' + pid ,
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
+          $http(req).success(function(data){
+            successHandler(data);
+          }).error(function(res, status){
+            errorHandler(status);
+          }).finally(function(){
+            finallyHandler();
+          });
+        },
+
         getRiskTest: function(id, suite, successHandler, errorHandler, finallyHandler) {
           var req = {
               method: 'GET',
@@ -753,6 +770,22 @@ angular.module('rest.service', [])
 
     consultant: {
       v1: {
+        isProductOrdered: function(cid, pid, successHandler, errorHandler, finallyHandler) {
+          var req = {
+              method: 'GET',
+              url: domain+'ChiefFinancierService/api/consultant/v1/consultants/' + cid + '/orders/count?productId=' +pid ,
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
+          $http(req).success(function(data){
+            successHandler(data);
+          }).error(function(res, status){
+            errorHandler(status);
+          }).finally(function(){
+            finallyHandler();
+          });
+        },
         queryCommissions: function(cid, successHandler, errorHandler, finallyHandler){
           var req = {
               method: 'GET',
