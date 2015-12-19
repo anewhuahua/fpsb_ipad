@@ -37,7 +37,7 @@ angular.module('main.service',[])
     //{id: 12, childOf: false, state: 'common.service',     name: "其他服务",  key:'external5',    image:'teImg/qita.png', products:{data:[]}}
   ];
 
-  var barProducts={id: 12,  childOf: false, state:'promotion.service', name: "热门推荐",  key:'bar',  image:'teImg/barproduct.png', products:{data:[]}};
+  var barProducts={id: 12,  childOf: false, state:'promotion.service', name: "热门推荐",  key:'bars',  image:'teImg/barproduct.png', products:{data:[]}};
 
 
   var optionBookingState = {
