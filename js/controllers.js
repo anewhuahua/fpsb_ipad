@@ -134,6 +134,7 @@ angular.module('starter.controllers', [])
     result: false
   }
 })
+
 .controller('examCustomerCtrl', function($scope, Main, $stateParams, $ionicPopup) {
   $scope.showResult = function() {
     $scope.win.result = true;
@@ -175,9 +176,9 @@ angular.module('starter.controllers', [])
       $scope.riskTest.data.questions[i].answer = $scope.riskTest.data.questions[i].options[0].id;
     }
   }
-  ///////////
-  ///////////
 
+  ///////////
+  ///////////
   var suite = $stateParams.suite;
   console.log(suite);
 
@@ -191,9 +192,8 @@ angular.module('starter.controllers', [])
 
   }, function(status){}, function(){});
 
-
-
 })
+
 
 .controller('commonCtrl', function($scope, $state, $stateParams, $ionicPopup, $ionicHistory, Factory, Main, Notify) {
   $scope.data = {
@@ -1507,7 +1507,11 @@ angular.module('starter.controllers', [])
     }
   }
 
-
+  $scope.barProducts = Main.getBarProducts();
+  
+  Main.getProducts($scope.barProducts, function(data){
+  }, function(){}, function(){});
+  
 })
 
 .controller('mainGuestCtrl', function($scope, Main) {
