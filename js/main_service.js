@@ -1280,7 +1280,7 @@ angular.module('main.service',[])
       }
     },
 
-    geBarProducts: function() {
+    getBarProducts: function() {
       return barProducts;
     }
     
