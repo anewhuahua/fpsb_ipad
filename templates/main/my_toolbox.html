@@ -146,10 +146,12 @@
                      </div>
                      <div class="khzlzzyzm">
                          <span>验 证 码</span>
-                         <input value=""  placeholder="请输入验证码" />
+                         <input value=""  placeholder="请输入验证码" ng-model="modify.code"/>
                          <a href="" ng-click="getModifyVerifyCode(data.profile.data.phone)">{{modify.verify}}</a> 
                      </div>
-                     <input ng-if="modify.enabled" type="submit" value="确定" class="khzlqdqd" ng-click="modifyPassword()"/>
+                     <input ng-if="modify.enabled" type="submit" value="确定" class="khzlqdqd" 
+                     ng-click="modifyPassword(data.profile.data.phone, modify.code, data.profile.data.username,
+                     modify.password1, modify.password2)"/>
                     
                    </div>
 

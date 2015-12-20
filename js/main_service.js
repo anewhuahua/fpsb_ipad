@@ -213,7 +213,6 @@ angular.module('main.service',[])
   };
 
   return {
-
     queryProductDetail: function(pid, successHandler, errorHandler,finallyHandler) {
       Rest.queryProductDetail(pid, function(data){
           if(parseRestSuccess('queryProductDetail', data, successHandler, errorHandler)) {
@@ -221,6 +220,15 @@ angular.module('main.service',[])
           }
         }, function(status){
           parseRestError('queryProductDetail', status, errorHandler);
+        }, finallyHandler());
+    },
+
+    modifyPassword: function(phone, code, name, pwd, successHandler, errorHandler,finallyHandler) {
+      Rest.modifyPassword(phone, code, name, pwd, function(data){
+          if(parseRestSuccess('modifyPassword', data, successHandler, errorHandler)) {
+          }
+        }, function(status){
+          parseRestError('modifyPassword', status, errorHandler);
         }, finallyHandler());
     },
 

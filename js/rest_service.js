@@ -23,6 +23,25 @@ angular.module('rest.service', [])
       });
     },
 
+    modifyPassword: function(phone, code, name, pwd, successHandler, errorHandler,finallyHandler) {
+      var req = {
+          method: 'POST',
+          url: domain+'ChiefFinancierService/api/common/v1/passwords?action=reset&phone='+phone+'&verifyCode='+code,
+          headers: {
+            'Content-Type': 'application/json',
+            'username': name,
+            'password': pwd
+          }
+        };
+      $http(req).success(function(data){
+        successHandler(data);
+      }).error(function(res, status){
+        errorHandler(status);
+      }).finally(function(){
+        finallyHandler();
+      });
+    },
+
     getProductImageUrl: function(pid,iid){
       return domain + 'ChiefFinancierService/api/common/v1/products/' + pid + '/images/' + iid;
     }, 

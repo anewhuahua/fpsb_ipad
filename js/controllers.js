@@ -965,6 +965,7 @@ angular.module('starter.controllers', [])
     password1: "",
     password2: "",
     verify: '获取验证码',
+    code:"",
     enabled: false
    };
 
@@ -996,7 +997,47 @@ angular.module('starter.controllers', [])
       });
    }
 
-   $scope.modifyPassword = function(){
+   $scope.modifyPassword = function(phone, code, name, pwd1, pwd2){
+
+      if (pwd1=='') {
+        $ionicPopup.alert({
+           title: '提示信息',
+           cssClass: 'alert-text',
+           template:  '请输入新密码'
+          });
+        return;
+      }
+      if (pwd1!=pwd2){
+        $ionicPopup.alert({
+           title: '提示信息',
+           cssClass: 'alert-text',
+           template:  '请确认两次密码输入一致'
+          });
+        return;
+      }
+      if (code==''){
+         $ionicPopup.alert({
+           title: '提示信息',
+           cssClass: 'alert-text',
+           template:  '请输入验证码'
+          });
+        return;
+      }
+ 
+      Main.modifyPassword(phone, code, name, pwd1, function(data){
+        $ionicPopup.alert({
+           title: '提示信息',
+           cssClass: 'alert-text',
+           template:  '密码修改成功'
+          });
+
+      }, function(status){
+        $ionicPopup.alert({
+           title: '提示信息',
+           cssClass: 'alert-text',
+           template:  status
+          });
+      },function(){});
    }
 
    $scope.showProductTab = function(tab) {
