@@ -210,7 +210,8 @@ angular.module('starter.controllers', [])
     }
 
     Main.customer.submitRiskTest($scope.riskTest.answer.id, $scope.riskTest.answer.data, function(data){
-      examResult = data;
+      $scope.examResult = data;
+      $scope.win.result = true;
     }, function(status){}, function(){});
   }
 
