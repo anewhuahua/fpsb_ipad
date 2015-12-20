@@ -334,6 +334,7 @@ angular.module('starter.controllers', [])
   }
 
   $scope.addOrder = function(booking) {
+    console.log('addOrder');
     Main.consultant.submitOrder(booking, $scope.data.order_option.quantity, function(data){
       $scope.data.warning.status = 'success';
       $scope.data.warning.words = '您已经成功为客户提交订单!';
@@ -348,6 +349,7 @@ angular.module('starter.controllers', [])
 
 
   $scope.addConsultantOrder = function(product) {
+    console.log('addConsultantOrder');
     var role = Main.getRole();
     if(role=='Guest') {
       $ionicPopup.alert({
@@ -1390,6 +1392,7 @@ angular.module('starter.controllers', [])
   }
 
   $scope.addConsultantOrder = function(product) {
+    console.log('addConsultantOrder');
     var role = Main.getRole();
     if(role=='Guest') {
       $ionicPopup.alert({
