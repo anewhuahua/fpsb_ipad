@@ -1611,21 +1611,26 @@ angular.module('starter.controllers', [])
     }
   }
 
+  $scope.messageDialog1 = function(msg) {
+    $scope.data.popup = 'MessageDialog';
+    $scope.data.looking_msg = msg;
+  } 
+
+
   Main.queryBarMsgs(function(data){
     $scope.data.barMsgs = data;
     var loopBarMsgs = function(cnt) 
     {
-      promise = $timeout(function () { loopBarMsgs(cnt); }, 5000); 
       if (cnt-1>=0) {
         $scope.data.currentBarMsg = $scope.data.barMsgs[cnt-1];
       }
+      promise = $timeout(function () { loopBarMsgs(cnt); }, 5000); 
       if (cnt == 0) {
         $timeout.cancel(promise);
       }     
       cnt = cnt-1;
     }; 
     loopBarMsgs($scope.data.barMsgs.length);
-
   }, function(status){}, function(){});
   
 })
