@@ -171,10 +171,7 @@ angular.module('starter.controllers', [])
     result: false
   };
 
-  $scope.examResult = {
-    score: '',
-    level: ''
-  };
+  $scope.examResult = {};
 })
 
 .controller('examCustomerCtrl', function($scope, Main, $stateParams, $ionicPopup) {
