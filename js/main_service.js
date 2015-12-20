@@ -652,6 +652,17 @@ angular.module('main.service',[])
       }
     },
 
+    queryBarMsgs: function(successHandler, errorHandler, finallyHandler) {
+      Rest.queryBarMsgs(function(data){
+        if (parseRestSuccess('queryBarMsgs', data, successHandler, errorHandler)) { 
+
+        }
+      }, function(status){
+        parseRestError('queryBarMsgs',  status, errorHandler);
+      }, 
+      finallyHandler());
+    },
+
     customer: {
       isProductBooked: function(pid, successHandler, errorHandler, finallyHandler) {
          Rest.customer.v1.isProductBooked(id, pid, function(data){

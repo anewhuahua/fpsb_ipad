@@ -451,6 +451,22 @@ angular.module('rest.service', [])
 
     },
 
+    queryBarMsgs: function(successHandler, errorHandler, finallyHandler) {
+      var req = {
+        method: 'GET',
+        url: domain+'ChiefFinancierService/api/common/v1/barmsgs' ,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      };
+      $http(req).success(function(data){
+        successHandler(data);
+      }).error(function(res, status){
+        errorHandler(status);
+      }).finally(function(){
+        finallyHandler();
+      });
+    },
 
     customer: {
       v1: {

@@ -1553,11 +1553,13 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('mainIndexCtrl', function($scope, $ionicPopup, $state,$ionicScrollDelegate, Main) {
+.controller('mainIndexCtrl', function($scope, $ionicPopup, $state,$ionicScrollDelegate, $timeout, Main) {
 
   $scope.data.categories = Main.getCategories(0);
   $scope.data.externals = Main.getCategories(1);
   $scope.data.main = 'internal'
+  $scope.data.barMsgs = [];
+  $scope.data.currentBarMsg = {};
 
 
   $scope.goExam = function(param) {
@@ -1608,6 +1610,22 @@ angular.module('starter.controllers', [])
       $state.go('common.promotion_detail', {productId: pid});
     }
   }
+
+  Main.queryBarMsgs(function(data){
+    $scope.data.barMsgs = data;
+    var loopBarMsgs = function(cnt) 
+    {
+      promise = $timeout(function () { loopBarMsgs(cnt); }, 1000); 
+      $scope.data.currentBarMsg = $scope.data.barMsgs[cnt-1];
+
+      if (cnt == 0) {
+        $timeout.cancel(promise);
+      }     
+      cnt = cnt-1;
+    }; 
+    loopBarMsgs($scope.data.barMsgs.length);
+
+  }, function(status){}, function(){});
   
 })
 
