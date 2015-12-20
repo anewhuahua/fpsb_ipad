@@ -1950,6 +1950,7 @@ angular.module('starter.controllers', [])
     customers: Main.consultant.getCustomers(),
     profile: Main.getProfile(),
     groups: [],
+    investments:{},
 
     currentOrderState: 'all',
     currentOrder: null,
@@ -1984,6 +1985,7 @@ angular.module('starter.controllers', [])
   //** initialize
   $scope.data.currentOrder = $scope.data.orders['all'];
   $scope.data.currentBooking = $scope.data.bookings['all'];
+  $scope.data.investments = Main.customer.getOrders()['all'],
   
   //**
   //** event listen function
@@ -2213,6 +2215,8 @@ angular.module('starter.controllers', [])
       $scope.data.commissions = data;
     }, function(status){}, function(){});
 
+    Main.customer.queryOrders($scope.data.investments, function(data){
+    }, function(status){}, function(){});
   };
 
   $scope.selectOrders = function(param){
