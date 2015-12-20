@@ -40,7 +40,7 @@
                   </ion-list> 
                   
                   <ion-list ng-if="showHistory('bookings')">
-                    <ion-item class="lcsslwsl" ng-repeat="booking in data.bookings.data">
+                    <ion-item class="lcsslwsl" ng-repeat="booking in data.bookings.data" ng-click="goBookingDetail(booking.id)">
                        <div class="lcsslwslf1" style="margin-top:-0.3rem;">
                         <img ng-cache ng-src="{{booking.customer | imageCustomerFilter}}" /> 
                         <span>{{booking.customer.fullname}}</span>

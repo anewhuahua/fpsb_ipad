@@ -917,7 +917,7 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('commonCustomerHistoryCtrl', function($scope, $stateParams, $ionicPopup, Main) {
+.controller('commonCustomerHistoryCtrl', function($scope, $stateParams, $ionicPopup, $state, Main) {
   
   var cid = $stateParams.customerId;
   $scope.data = {   
@@ -939,6 +939,12 @@ angular.module('starter.controllers', [])
    $scope.showHistory = function(index){
      return ($scope.data.currentIndex==index);
    }
+   $scope.goOrderDetail = function(oid) {
+    $state.go('common.order_detail', {orderId: oid});
+   }
+   $scope.goBookingDetail = function(bid) {
+    $state.go('common.booking_detail', {bookingId: bid});
+   };
 
    Main.consultant.queryCustomerOrders(cid, function(data){
         $scope.data.orders.data = data;
