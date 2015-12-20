@@ -119,32 +119,35 @@
                     <a href="" ng-click="cancelUpdateProfile(3)" ng-if="enableUpdatedProfile(3)">取消</a>
                    </div>
 
+
+
                    <div ng-if="enableUpdatedProfile(3)">
-                     <div class="khzlzz3a1">
-                         <span>当前登录密码</span>
-                         <!--<div>32525fsgf</div>-->
-                         <input type='password' placeholder="请输入当前密码" />
-                     </div>
+                    
                      <div class="khzlzz3a1">
                          <span>新 密 码</span>
                          <!--<div>8-20位，必须含有字母</div>-->
-                         <input type='password' placeholder="请设置您的新密码" />
+                         <input type='password' placeholder="请设置您的新密码" ng-model="modify.password1" />
                      </div>
                      <div class="khzlzz3a1">
                          <span>确认新密码</span>
-                         <input type='password' placeholder="请重复输入您的密码" />
+                         <input type='password' placeholder="请重复输入您的密码" ng-model="modify.password2"/>
                      </div>
                      <div class="khzlzz3a1">
                          <span>手 机 号</span>
-                         <input placeholder="请输入您的手机号码" />
+                         <input placeholder="请输入您的手机号码" ng-model="data.profile.data.phone"/>
                      </div>
                      <div class="khzlzzyzm">
                          <span>验 证 码</span>
-                         <input value=""  placeholder="请输入验证码" />
-                         <a href="">43秒后重新发送</a> 
+                         <input value=""  placeholder="请输入验证码" ng-model="modify.code"/>
+                         <a ng-if="modify.verify=='获取验证码'" href="" ng-click="getModifyVerifyCode(data.profile.data.phone)">{{modify.verify}}</a>
+                         <a ng-if="modify.verify!='获取验证码'" href="">{{modify.verify}}</a>  
                      </div>
-                     <input type="submit" value="确定" class="khzlqdqd"/>
+                     <input ng-if="modify.enabled" type="submit" value="确定" class="khzlqdqd" 
+                     ng-click="modifyPassword(data.profile.data.phone, modify.code, data.profile.data.username,
+                     modify.password1, modify.password2)"/>
+                    
                    </div>
+
 
 
                     <div class="khzlzz3a"><span>佣金显示</span> 
