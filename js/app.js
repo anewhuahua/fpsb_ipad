@@ -194,7 +194,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'angular-flot', 'ionicMultipleV
   })
   */
   .state('common.promotion_detail', {
-    url: '/promotion/detail/:promotionId',
+    url: '/promotion/detail/:productId',
     views: {
       'promotion-product-detail': {
          templateUrl: 'templates/promotion/product_detail.html',

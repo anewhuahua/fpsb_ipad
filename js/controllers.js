@@ -124,8 +124,8 @@ angular.module('starter.controllers', [])
 })
 
 .controller('promotionDetailCtrl', function($scope, $stateParams, $state,$ionicPopup, Main, $window){
-  console.log($stateParams.promotionId);
-  $scope.promotionId = $stateParams.promotionId;
+  console.log($stateParams.productId);
+  $scope.productId = $stateParams.productId;
   $scope.product = {};
   $scope.data = {};
 
@@ -135,7 +135,7 @@ angular.module('starter.controllers', [])
   }
   var addBooking= function() {
     // todo quantity
-      Main.customer.addBooking($scope.promotionId, function(data){
+      Main.customer.addBooking($scope.productId, function(data){
         $ionicPopup.alert({
           title: '系统提示',
           template: '您的预约已成功提交!' +
@@ -153,7 +153,7 @@ angular.module('starter.controllers', [])
       });
   }  
 
-  Main.queryProductDetail($scope.promotionId, function(data){
+  Main.queryProductDetail($scope.productId, function(data){
     $scope.product = data;
     $scope.data.optionOperation = Main.getOperation($scope.product, addBooking, $scope.orderDialog, function(){
       $ionicPopup.alert({
@@ -252,6 +252,7 @@ angular.module('starter.controllers', [])
     $scope.data.looking_product_tab = tab;
   }
 
+  $scope.data.commissionCtrl = Main.getCommissionCtrl();
 
   /*
   $scope.showProduct = function(product) {
@@ -1595,7 +1596,7 @@ angular.module('starter.controllers', [])
       }
     }
     if (pid!="") {
-      $state.go('common.promotion_detail', {promotionId: pid});
+      $state.go('common.promotion_detail', {productId: pid});
     }
   }
   

@@ -60,6 +60,7 @@ angular.module('main.service',[])
   };
   var optionProductType = {
     all:             {type:  'all',            name: '全部',         image: 'teImg/gnr2rabm11.png'},
+    bar:             {type:  'bar',            name: '推荐',         image: 'teImg/barproduct.png'},
     privatefund:     {type:  'privatefund',    name: '私募',         image: 'teImg/simu.png'},
     publicfund:      {type:  'publicfund',     name: '公募',         image: 'teImg/gongmu.png'},
     trust:           {type:  'trust',          name: '信托',         image: 'teImg/xintuo.png'},
@@ -251,6 +252,10 @@ angular.module('main.service',[])
     },
 
     productGoState: function(product) {
+      if(product.type == 'Bar') {
+        return {go: 'common.promotion_detail'};
+      }
+
       var type = product.type.toLowerCase();
       for(var i=0; i<categories.length; i++){
         var str = categories[i].key.toLowerCase();
