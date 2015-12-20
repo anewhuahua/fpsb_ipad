@@ -1624,10 +1624,11 @@ angular.module('starter.controllers', [])
       if (cnt-1>=0) {
         $scope.data.currentBarMsg = $scope.data.barMsgs[cnt-1];
       }
-      promise = $timeout(function () { loopBarMsgs(cnt); }, 5000); 
       if (cnt == 0) {
-        $timeout.cancel(promise);
-      }     
+        promise = $timeout(function () { loopBarMsgs($scope.data.barMsgs.length); }, 5000); 
+      } else {
+        promise = $timeout(function () { loopBarMsgs(cnt); }, 5000); 
+      }    
       cnt = cnt-1;
     }; 
     loopBarMsgs($scope.data.barMsgs.length);
