@@ -49,7 +49,13 @@ angular.module('starter.controllers', [])
 })
 .filter('scoreFilter',function(){
   return function(input){
-      if(input === 0) return '您还未进行财商测试';
+      if(input === 0) {
+        return '您还未进行财商测试';
+      } 
+      if(input == null) {
+        return '您还未进行财商测试';
+      }
+      return input;
   }
 })
 .filter('imageFilter',function(Main){
