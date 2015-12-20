@@ -252,7 +252,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'angular-flot', 'ionicMultipleV
   })
 
   .state('common.customer_history', {
-    cache: false,
+    //cache: false,
     url: '/customer/history/:customerId',
     views: {
       'customer-history-menu': {
