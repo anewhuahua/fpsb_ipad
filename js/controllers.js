@@ -930,6 +930,44 @@ angular.module('starter.controllers', [])
       });
    }
 
+   $scope.modify = {
+    password: "",
+    password1: "",
+    password2: "",
+    verify: '获取验证码',
+    enabled: false
+   };
+
+  $scope.getModifyVerifyCode = function(phone){
+      var loopVerifyWords = function(cnt) 
+      {
+        promise = $timeout(function () { loopVerifyWords(cnt); }, 1000); 
+        $scope.modify.verify = cnt;
+        if (cnt == 0) {
+          $scope.modify.verify = "获取验证码";
+          $timeout.cancel(promise);
+        }     
+        cnt = cnt-1;
+        //$scope.$on('$ionicView.leave',function(){
+        //  $scope.auth.register.askingVerify = false;
+        //  $timeout.cancel(promise);
+        //}); 
+      }; 
+      loopVerifyWords(30);
+      Main.askVerifyCode(phone, function(code){
+        $scope.modify.enabled = true;
+      }, function(status){
+        $ionicPopup.alert({
+           title: '提示信息',
+           cssClass: 'alert-text',
+           template:  '验证码获取失败!'
+          });
+      }, function(){
+      });
+   }
+
+
+
    $scope.showProductTab = function(tab) {
      $scope.data.looking_product_tab = tab;
    }
