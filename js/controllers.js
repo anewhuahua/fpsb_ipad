@@ -892,12 +892,16 @@ angular.module('starter.controllers', [])
 .controller('orderDetailCtrl', function($scope, $stateParams, $ionicActionSheet, $cordovaCamera, $ionicPopup, Main) {
   //console.log('124455');
   var oid = $stateParams.orderId;
+  $scope.data.order = null;
 
   console.log(oid);
   if (Main.getRole() == 'Customer') {
     $scope.data.order = Main.customer.getOrder(oid);
   } else if(Main.getRole() == 'Consultant') {
     $scope.data.order = Main.consultant.getOrder(oid);
+    if ($scope.data.order == null) {
+      $scope.data.order = Main.customer.getOrder(oid);
+    }
   }
 
   $scope.data.orderState = Main.getOrderState();
