@@ -127,7 +127,7 @@ angular.module('starter.controllers', [])
   console.log($stateParams.productId);
   $scope.productId = $stateParams.productId;
   $scope.product = {};
-  $scope.data = {};
+  //$scope.data = {};
 
   $scope.openPdf = function(pdf) {
     console.log(pdf);
@@ -155,6 +155,7 @@ angular.module('starter.controllers', [])
 
   Main.queryProductDetail($scope.productId, function(data){
     $scope.product = data;
+    $scope.data.looking_product = $scope.product;
     $scope.data.optionOperation = Main.getOperation($scope.product, addBooking, $scope.orderDialog, function(){
       $ionicPopup.alert({
         title: '系统提示',
@@ -263,20 +264,7 @@ angular.module('starter.controllers', [])
 
   $scope.data.commissionCtrl = Main.getCommissionCtrl();
 
-  /*
-  $scope.showProduct = function(product) {
 
-    if(product){
-      ret = Main.productGoState(product);
-
-      if (ret.go) {
-        $state.go(ret.go, {productId: product.id});
-      } else {
-        $scope.data.popup = 'privateFund';
-        $scope.data.looking_product = product;
-      }
-    }
-  }*/
 
   $scope.showProduct = function(product) {
     $scope.data.looking_product_tab = 'main';
@@ -319,10 +307,18 @@ angular.module('starter.controllers', [])
     $scope.data.order_option = null;
   }
 
-  $scope.orderDialog = function(booking) {
+  $scope.orderDialog = function() {
+    if ($scope.data.looking_product) {
+      //$scope.data.looking_product = null;
+      $scope.data.order_option = Factory.newOption(1000000, 2000000, 100000);
+      $scope.data.popup = 'OrderDialog';
+    }
+  }
+
+  $scope.bookingOrderDialog = function(booking) {
     $scope.data.looking_booking = booking;
     $scope.data.order_option = Factory.newOption(1000000, 2000000, 100000);
-    $scope.data.popup = 'OrderDialog';
+    $scope.data.popup = 'BookingOrderDialog';
   }
 
   $scope.closeWarning = function(win) {
@@ -349,6 +345,34 @@ angular.module('starter.controllers', [])
     }, function(){
     });
   }
+
+
+  $scope.addConsultantOrder = function(product) {
+    var role = Main.getRole();
+    if(role=='Guest') {
+      $ionicPopup.alert({
+        title: '系统提示',
+        template: '请先登入'
+      });
+      return;
+    } else if(role == 'Consultant') {  
+    // only for consultant to order directly.
+      if($scope.data.looking_product) {
+        //console.log('booking add');
+        Main.customer.submitOrder($scope.data.looking_product.id, $scope.data.order_option.quantity,  function(data){
+          $scope.data.warning.status = 'success';
+          $scope.data.warning.words = '您的订单已成功提交!';
+          $scope.$broadcast("AddOrder", data);
+          //console.log(data);
+          //console.log("tyson");
+        }, function(error){
+          $scope.data.warning.status = 'fail';
+          $scope.data.warning.words = error;
+        }, function(){
+        });
+      } 
+    }
+  } 
 
   $scope.completeBooking = function(booking) {
      var confirmPopup = $ionicPopup.confirm({
@@ -393,6 +417,7 @@ angular.module('starter.controllers', [])
 
   Main.queryProductDetail(pid, function(data){
     $scope.product = data;
+    $scope.data.looking_product = $scope.product;
     $scope.data.optionOperation = Main.getOperation($scope.product, addBooking, $scope.orderDialog, function(){
       $ionicPopup.alert({
         title: '系统提示',
@@ -440,10 +465,7 @@ angular.module('starter.controllers', [])
         });
       }, function(){
       });
-    }
-
-  $scope.data = {};
-  
+    }  
 
   $scope.data.commissionCtrl = Main.getCommissionCtrl();
 })
@@ -966,7 +988,8 @@ angular.module('starter.controllers', [])
       });
    }
 
-
+   $scope.modifyPassword = function(){
+   }
 
    $scope.showProductTab = function(tab) {
      $scope.data.looking_product_tab = tab;
@@ -1366,7 +1389,7 @@ angular.module('starter.controllers', [])
     $scope.data.popup = '';
   }
 
-  $scope.addOrder = function() {
+  $scope.addConsultantOrder = function(product) {
     var role = Main.getRole();
     if(role=='Guest') {
       $ionicPopup.alert({

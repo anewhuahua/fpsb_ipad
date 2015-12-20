@@ -130,11 +130,7 @@
                    </div>
 
                    <div ng-if="enableUpdatedProfile(3)">
-                     <div class="khzlzz3a1">
-                         <span>当前登录密码</span>
-                         <!--<div>32525fsgf</div>-->
-                         <input type='password' placeholder="请输入当前密码" ng-model="modify.password"/>
-                     </div>
+                    
                      <div class="khzlzz3a1">
                          <span>新 密 码</span>
                          <!--<div>8-20位，必须含有字母</div>-->
@@ -151,9 +147,9 @@
                      <div class="khzlzzyzm">
                          <span>验 证 码</span>
                          <input value=""  placeholder="请输入验证码" />
-                         <a href="" ng-click="getModifyVerifyCode(data.profile.data.phone)">{{modify.verify}}}</a> 
+                         <a href="" ng-click="getModifyVerifyCode(data.profile.data.phone)">{{modify.verify}}</a> 
                      </div>
-                     <input ng-if="modify.enabled" type="submit" value="确定" class="khzlqdqd" ng-click="modifyPassword(data.profile.data.phone)"/>
+                     <input ng-if="modify.enabled" type="submit" value="确定" class="khzlqdqd" ng-click="modifyPassword()"/>
                     
                    </div>
 

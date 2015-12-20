@@ -327,59 +327,49 @@
              </p>
           </div>
           
-          <input type="submit"  class="ccxxdvtj" value="提交申购" ng-click="addOrder()"/>
+          <input type="submit"  class="ccxxdvtj" value="提交申购" ng-click="addConsultantOrder(data.looking_product)"/>
           
         </form>  
       </div>
     </div>
    <!-- 产品申购结束 -->
 
-
-
-
-<!-- 产品详情申购开始 -->
-<!--
-<div class="cpyyxxdv"  ng-switch-when="OrderDialog">
+  <div class="cpyyxxdv"  ng-switch-when="BookingOrderDialog">
       <div class="cpyyxxdvm">
   
-          <div class="zcclos" ng-click="closePopup('OrderDialog')"><img src="teImg/zcclose.png" /></div>
+          <!-- <div class="zcback" ng-click="backProduct()"><img src="teImg/zcback.png" /></div>  -->
+          <div class="zcclos" ng-click="closePopup('BookingOrderDialog')"><img src="teImg/zcclose.png" /></div><!-- 关闭 -->
+          
+          <span class="zcwjtit1">申 购</span>
           <span class="xpqqyyt2">{{data.looking_booking.product.name}}</span>
           
           <div class="xpqqt3">
-             <p>
-               <span>预期年化 </span>
-               <em> 10.50%</em>
-             </p>
-             <p>
-               <span>理财期限 </span>
-               <em>  18个月</em>
-             </p>
+            
           </div>
-          
           
           <div class="cpxqyynrdv">
              <div class="cpxqyynrdvyy"></div>
              <span class="cpxqyynrsp1">申购金额</span>
             <form>
              <div class="ccyyjjdv">
-               
                   <input type="button" class="xpwwyyf" ng-click='data.order_option.decrease()' />
                   <input type="text" class="xpwwyym" placeholder="{{data.order_option.quantity}}"/>
                   <input type="button" class="xpwwyyr" ng-click='data.order_option.increase()' />
-               
              </div>
-             
+           
              <p class="zcmmjs">
                 <span><img src="teImg/zcmmjslog2.jpg" /></span>
                 <em>我已阅读并同意<i>《首席金服用户协议》</i></em>
              </p>
           </div>
           
-          <input type="submit"  class="ccxxdvtj" value="提交申购" ng-click="addOrder(data.looking_booking, option)"/>
-          
+          <input type="submit"  class="ccxxdvtj" value="提交申购" ng-click="addOrder(data.looking_booking)"/>
         </form>  
       </div>
-</div>-->
+    </div>
+
+
+
 <!-- 产品申购结束 -->
 
 
