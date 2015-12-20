@@ -171,7 +171,7 @@ angular.module('starter.controllers', [])
     result: false
   };
 
-  $scope.examResult = {};
+  $scope.data = {};
 })
 
 .controller('examCustomerCtrl', function($scope, Main, $stateParams, $ionicPopup) {
@@ -207,8 +207,7 @@ angular.module('starter.controllers', [])
     }
 
     Main.customer.submitRiskTest($scope.riskTest.answer.id, $scope.riskTest.answer.data, function(data){
-      $scope.examResult = data;
-      console.log($scope.examResult);
+      $scope.data.examResult = data;
       $scope.win.result = true;
     }, function(status){}, function(){});
   }
