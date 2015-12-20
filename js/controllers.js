@@ -175,6 +175,11 @@ angular.module('starter.controllers', [])
 })
 
 .controller('examCustomerCtrl', function($scope, Main, $stateParams, $ionicPopup) {
+
+  $scope.$on("$ionicView.enter", function(){
+    $scope.win.result = false;
+  });
+
   $scope.showResult = function() {
     $scope.win.result = true;
   }
