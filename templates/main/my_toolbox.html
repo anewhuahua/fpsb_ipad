@@ -462,7 +462,7 @@
                     <ion-item class="lcsslwsl" ng-click="messageDialog(msg)" ng-repeat="msg in data.messages">
                        <div class="lcsslwslf1"><img ng-src="{{msg | imageMsgFilter}}"/></div>
                        <span  class="lccslwf2">{{msg.title}}</span>
-                       <ion-option-button class="button-energized">
+                       <ion-option-button class="button-energized" ng-click="deleteMsg(msg.id)">
                             删除 
                         </ion-option-button>
                     </ion-item>

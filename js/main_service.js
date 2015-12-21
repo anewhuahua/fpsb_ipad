@@ -741,7 +741,7 @@ angular.module('main.service',[])
           finallyHandler());
       },
       deleteUserMessage: function(mid, successHandler, errorHandler, finallyHandler) {
-        Rest.customer.v1.queryCountOfUserMessages(id, mid, function(data){
+        Rest.customer.v1.deleteUserMessage(id, mid, function(data){
             if (parseRestSuccess('deleteUserMessage', data, successHandler, errorHandler)) { 
               //customer.bookings.unserved.unshift(data.result);
               //data.result;
@@ -1026,7 +1026,7 @@ angular.module('main.service',[])
           finallyHandler());
       },
       deleteUserMessage: function(mid, successHandler, errorHandler, finallyHandler) {
-        Rest.consultant.v1.queryCountOfUserMessages(id, mid, function(data){
+        Rest.consultant.v1.deleteUserMessage(id, mid, function(data){
             if (parseRestSuccess('deleteUserMessage', data, successHandler, errorHandler)) { 
               //customer.bookings.unserved.unshift(data.result);
               //data.result;

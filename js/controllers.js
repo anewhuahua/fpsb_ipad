@@ -2247,6 +2247,13 @@ angular.module('starter.controllers', [])
     }, function(status){}, function(){});
   };
 
+  $scope.deleteMsg = function(mid) {
+    Main.consultant.deleteUserMessage(mid, function(data){
+       Main.consultant.queryUserMessages(function(data1){
+        $scope.data.messages = data1;
+       }, function(status1){}, function(){});
+    }, function(status){}, function(){});
+  }
   $scope.selectOrders = function(param){
     $scope.data.currentOrder = $scope.data.orders[param];
     refreshData();
@@ -2445,6 +2452,13 @@ angular.module('starter.controllers', [])
     $scope.data.currentBooking = $scope.data.bookings[param];
     //$scope.$apply();
     refreshData();
+  }
+  $scope.deleteMsg = function(mid) {
+    Main.customer.deleteUserMessage(mid, function(data){
+       Main.customer.queryUserMessages(function(data1){
+        $scope.data.messages = data1;
+       }, function(status1){}, function(){});
+    }, function(status){}, function(){});
   }
   refreshData();
   
