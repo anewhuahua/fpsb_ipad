@@ -1912,7 +1912,7 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('CustomerMenuCtrl', function($scope, $state, Main, MultipleViewsManager){
+.controller('CustomerMenuCtrl', function($scope, $rootScope, $state, Main, MultipleViewsManager){
   $scope.data = {
     mainMenu: "index",
     subMenu: "",
@@ -1949,6 +1949,18 @@ angular.module('starter.controllers', [])
         return false;
       }
     }
+
+  $rootScope.$on('RefreshMenu', function(event, args){
+    Main.customer.queryTodoBookingsCount(function(data){
+      $scope.data.bookingsTodoCount = data;
+    }, function(status){}, function(){})
+    Main.customer.queryTodoOrdersCount(function(data){
+      $scope.data.ordersTodoCount = data;
+    }, function(status){}, function(){})
+    Main.customer.queryCountOfUserMessages(function(data){
+      $scope.data.msgCount = data;
+    }, function(status){}, function(){})
+  });
 
     Main.customer.queryTodoBookingsCount(function(data){
       $scope.data.bookingsTodoCount = data;
@@ -2335,7 +2347,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('mainCustomerCtrl', function($scope, $state, $ionicPopup, $ionicModal, $ionicScrollDelegate, $timeout, $rootScope,
-                                        $cordovaCamera, MultipleViewsManager, Main) {
+                                        $cordovaCamera, MultipleViewsManager, Main, Notify) {
   //**
   //** controller data
   $scope.customer = {
@@ -2483,6 +2495,7 @@ angular.module('starter.controllers', [])
        Main.customer.queryUserMessages(function(data1){
         $scope.data.messages = data1;
        }, function(status1){}, function(){});
+       Notify.refreshMenu();
     }, function(status){}, function(){});
   }
   refreshData();
