@@ -1430,10 +1430,12 @@ angular.module('starter.controllers', [])
     if(role=='Consultant') {
       Main.consultant.markUserMessageRead(msg.id, function(data){
         msg.read = data.read;
+        Notify.refreshMenu();
       }, function(status){}, function(){});
     } else if(role == 'Customer') {
       Main.customer.markUserMessageRead(msg.id, function(data){
         msg.read = data.read;
+        Notify.refreshMenu();
       }, function(status){}, function(){});
     }
   } 
@@ -1864,6 +1866,18 @@ angular.module('starter.controllers', [])
     $scope.data.subMenu  = params.sub;
   });
 
+
+  $rootScope.$on('RefreshMenu', function(event, args){
+    Main.consultant.queryTodoBookingsCount(function(data){
+      $scope.data.bookingsTodoCount = data;
+    }, function(status){}, function(){})
+    Main.consultant.queryTodoOrdersCount(function(data){
+      $scope.data.ordersTodoCount = data;
+    }, function(status){}, function(){})
+    Main.consultant.queryCountOfUserMessages(function(data){
+      $scope.data.msgCount = data;
+    }, function(status){}, function(){})
+  });
     /////////////
     $scope.selectMenu = function(first, second) {
       $scope.data.mainMenu = first;
@@ -1950,7 +1964,7 @@ angular.module('starter.controllers', [])
 
 
 .controller('mainConsultantCtrl', function($scope, $rootScope, $ionicPopup, $state, $timeout, $ionicScrollDelegate, $cordovaCamera, 
-  MultipleViewsManager, Main) {
+  MultipleViewsManager, Main, Notify) {
 
 //** 
 //** controller data
@@ -2262,6 +2276,7 @@ angular.module('starter.controllers', [])
        Main.consultant.queryUserMessages(function(data1){
         $scope.data.messages = data1;
        }, function(status1){}, function(){});
+       Notify.refreshMenu();
     }, function(status){}, function(){});
   }
   $scope.selectOrders = function(param){

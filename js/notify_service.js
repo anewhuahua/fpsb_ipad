@@ -23,7 +23,11 @@ angular.module('notify.service',['main.service'])
       	//console.log(msg);
       }
     },*/
-
+    refreshMenu: function() {
+      $timeout(function() { 
+        $rootScope.$broadcast('RefreshMenu');
+      }, 500); 
+    }
     notify: function(msg) {
       var role   = Main.getRole();
       var state  = option[role][msg].state;
