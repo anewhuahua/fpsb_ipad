@@ -2281,6 +2281,8 @@ angular.module('starter.controllers', [])
 
     Main.customer.queryOrders($scope.data.investments, function(data){
     }, function(status){}, function(){});
+
+    Notify.refreshMenu();
   };
 
   $scope.deleteMsg = function(mid) {
@@ -2479,6 +2481,8 @@ angular.module('starter.controllers', [])
     Main.customer.queryUserMessages(function(data){
       $scope.data.messages = data;
     }, function(status){}, function(){});
+
+    Notify.refreshMenu();
   };
   $scope.selectOrders = function(param){
     $scope.data.currentOrder = $scope.data.orders[param];
