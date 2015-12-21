@@ -2069,10 +2069,20 @@ angular.module('starter.controllers', [])
              return step1;  
            }
          },
+         {
+          text: '取消',
+          onTap: function(e) {
+            step1 = 'close';
+            return step1;
+          }
+         }
        ]
      });
      myPopup.then(function(res) {
         console.log(res);
+        if (res=='close') {
+          return;
+        }
         if (res=='existed') {
           if ($scope.data.selectedGroupName!='') {
             Main.consultant.addGroupMember($scope.data.selectedGroupName, person.id, function(data){
