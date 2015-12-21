@@ -395,6 +395,7 @@ angular.module('starter.controllers', [])
           $scope.data.warning.status= 'success';
           $scope.data.warning.words = '预约服务完成!';
           booking.state = 'completed';
+          Notify.refreshMenu();
           $scope.$apply();
         }, function(error){
           $scope.data.warning.status = 'fail';
