@@ -1849,7 +1849,7 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('ConsultantMenuCtrl', function($scope, $state, Main, MultipleViewsManager){
+.controller('ConsultantMenuCtrl', function($scope, $rootScope, $state, Main, MultipleViewsManager){
   $scope.data = {
     mainMenu: "index",
     subMenu: "",
