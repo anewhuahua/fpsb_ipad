@@ -2112,7 +2112,7 @@ angular.module('starter.controllers', [])
             inputPlaceholder: '请输入新建客户分组名'
           }).then(function(res1) {
             console.log('客户分组名', res1);
-            if (res1!='') {
+            if (res1 && res1!='') {
               Main.consultant.addGroupMember(res1, person.id , function(data){
                 $ionicPopup.alert({
                   title: '系统提示',
