@@ -1668,7 +1668,7 @@ angular.module('starter.controllers', [])
         }, 500);
       }, function(res){
         $scope.data.warning.status = 'fail';
-        $scope.data.warning.words = '注册失败';
+        $scope.data.warning.words = res;
       }, function(){
       });
     }
