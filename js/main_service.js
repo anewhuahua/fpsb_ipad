@@ -482,7 +482,7 @@ angular.module('main.service',[])
         }
       }, function(res){
         console.log('main.service register error:'+res.statusText);
-        errorHandler(res);
+        errorHandler(res.data.message);
       }, finallyHandler);
     },
 
