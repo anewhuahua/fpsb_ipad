@@ -15,19 +15,19 @@
             <div class="gmnydv">
               <div class="jnxqtopr1"><span>{{data.product.data.fundName}}</span><em></em></div>
               <div class="gmfw1">
-                 <span>最新净值<em>1.039</em></span>
-                 <span>累计净值<em>1.232</em></span>
-                 <span>申购费率<em>18</em>%</span>
+                 <span>最新净值<em>{{data.product.data.fundNavNewest.nav}}</em></span>
+                 <!--<span>累计净值<em>1.232</em></span>
+                 <span>申购费率<em>18</em>%</span>-->
               </div>
               <span class="gmtit">产品说明：</span>
               <div class="gmlbdv">
-                <span>最近一周收益率：<em>{{data.product.data.fundNavNewest.weekRate*100|number:2}}%</em></span>
-                <span>最近一月收益率：<em>{{data.product.data.fundNavNewest.monthRate1*100|number:2}}%</em></span>
-                <span>最近三月收益率：<em>{{data.product.data.fundNavNewest.monthRate3*100|number:2}}%</em></span>
-                <span>最近一年收益率：<i>{{data.product.data.fundNavNewest.yearRate1*100|number:2}}%</i></span>
-                <span>最近三年收益率：<i>{{data.product.data.fundNavNewest.yearRate3*100|number:2}}%</i></span>
-                <span>今年以来收益率：<i>{{data.product.data.fundNavNewest.yearRate0*100|number:2}}%</i></span>
-                <span>成立以来收益率：<i>{{data.product.data.fundNavNewest.sumRate*100|number:2}}%</i></span>
+                <span>最近一周收益率：<em ng-class="{curgreen: data.product.data.fundNavNewest.weekRate<0}">{{data.product.data.fundNavNewest.weekRate*100|number:2}}%</em></span>
+                <span>最近一月收益率：<i ng-class="{curgreen: data.product.data.fundNavNewest.monRate1<0}" >{{data.product.data.fundNavNewest.monRate1*100|number:2}}%</i></span>
+                <span>最近三月收益率：<i ng-class="{curgreen: product.fundNavNewest.monRate3<0}">{{data.product.data.fundNavNewest.monRate3*100|number:2}}%</i></span>
+                <span>最近一年收益率：<i ng-class="{curgreen: data.product.data.fundNavNewest.yearRate1<0}">{{data.product.data.fundNavNewest.yearRate1*100|number:2}}%</i></span>
+                <span>最近三年收益率：<i ng-class="{curgreen: data.product.data.fundNavNewest.yearRate3<0}">{{data.product.data.fundNavNewest.yearRate3*100|number:2}}%</i></span>
+                <span>今年以来收益率：<i ng-class="{curgreen: data.product.data.fundNavNewest.yearRate0<0}">{{data.product.data.fundNavNewest.yearRate0*100|number:2}}%</i></span>
+                <span>成立以来收益率：<i ng-class="{curgreen: data.product.data.fundNavNewest.sumRate<0}">{{data.product.data.fundNavNewest.sumRate*100|number:2}}%</i></span>
               </div>
               <a href="#/common/buy" class="jnwfgma">立即购买</a>
             </div>
