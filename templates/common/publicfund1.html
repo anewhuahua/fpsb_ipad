@@ -29,7 +29,7 @@
                 <span>今年以来收益率：<i ng-class="{curgreen: data.product.data.fundNavNewest.yearRate0<0}">{{data.product.data.fundNavNewest.yearRate0*100|number:2}}%</i></span>
                 <span>成立以来收益率：<i ng-class="{curgreen: data.product.data.fundNavNewest.sumRate<0}">{{data.product.data.fundNavNewest.sumRate*100|number:2}}%</i></span>
               </div>
-              <a href="#/common/buy" class="jnwfgma">立即购买</a>
+              <a ng-click='buy(data.product.data)' class="jnwfgma">立即购买</a>
             </div>
             
             

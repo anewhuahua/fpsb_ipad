@@ -743,7 +743,7 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('publicfundCtrl', function($scope, $state, $stateParams, $ionicScrollDelegate, $ionicHistory, Main){
+.controller('publicfundCtrl', function($scope, $state, $stateParams, $ionicScrollDelegate, $ionicHistory, $ionicPopup, Main){
   $scope.data = {
     index:1,
     product: {
@@ -762,6 +762,18 @@ angular.module('starter.controllers', [])
   Main.getPublicFundDetail($scope.data.product, function(data){}, function(status){}, function(){});
 
 
+  $scope.buy = function(p) {
+    if (Main.getRole() == 'Guest') {
+      $ionicPopup.alert({
+                  title: '提示',
+                  cssClass: 'alert-text',
+                  template:  '请先登入!'
+      });
+      return;
+    } else {
+      $state.go('common.buy');
+    }
+  }
   $scope.dataset = [{ data: [], yaxis: 1, label: 'sin' }]
   $scope.options = {
     legend: {
@@ -775,7 +787,7 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('publicfundsCtrl', function($scope, $state, $stateParams, $ionicScrollDelegate, $ionicHistory, Main) {
+.controller('publicfundsCtrl', function($scope, $state, $stateParams, $ionicScrollDelegate, $ionicHistory, $ionicPopup, Main) {
  
   //console.log($ionicScrollDelegate.$getByHandle('scroll-2').getScrollPosition());
   //$scope.products = {};
@@ -850,7 +862,16 @@ angular.module('starter.controllers', [])
     $state.go('common.publicfund1', {productId:id});
   }
   $scope.buy = function(p) {
-    $state.go('common.buy');
+    if (Main.getRole() == 'Guest') {
+      $ionicPopup.alert({
+                  title: '提示',
+                  cssClass: 'alert-text',
+                  template:  '请先登入!'
+      });
+      return;
+    } else {
+      $state.go('common.buy');
+    }
   }
 
   Main.getProducts($scope.data.category, function(data){
