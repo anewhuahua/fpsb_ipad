@@ -823,11 +823,27 @@ angular.module('starter.controllers', [])
       param = {sortby: 'monRate3', sort: 'desc'};
       Main.sortProducts($scope.data.category, param,
         function(data){}, function(status){}, function(){});
-    } else if (key == 8) { // 近6月
+    } else if (key == 4) { // 今年来
+      param = {sortby: 'yearRate0', sort: 'desc'};
+      Main.sortProducts($scope.data.category, param,
+        function(data){}, function(status){}, function(){});
+    } else if (key == 5) { // 近1年
+      param = {sortby: 'yearRate1', sort: 'desc'};
+      Main.sortProducts($scope.data.category, param,
+        function(data){}, function(status){}, function(){});
+    } else if (key == 6) { // 近3年
+      param = {sortby: 'yearRate3', sort: 'desc'};
+      Main.sortProducts($scope.data.category, param,
+        function(data){}, function(status){}, function(){});
+    } else if (key == 7) { // 整体收益
+      param = {sortby: 'sumRate', sort: 'desc'};
+      Main.sortProducts($scope.data.category, param,
+        function(data){}, function(status){}, function(){});
+    } else if (key == 8) { // 单位净值
       param = {sortby: 'Nav', sort: 'desc'};
       Main.sortProducts($scope.data.category, param,
         function(data){}, function(status){}, function(){});
-    }
+    } 
 
   }
   $scope.goPublicFundDetail = function(id) {

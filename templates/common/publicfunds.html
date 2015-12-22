@@ -43,16 +43,16 @@
                 <a href="" ng-click="sortKey(3)">近3月
                   <span class="gmlbzzjtbj" ng-if="data.key==3"></span>
                 </a>
-                <a href="" ng-click="sortKey(4)">近6月
+                <a href="" ng-click="sortKey(4)">今年来
                   <span class="gmlbzzjtbj" ng-if="data.key==4"></span>
                 </a>
-                <a href="" ng-click="sortKey(5)">今年来
+                <a href="" ng-click="sortKey(5)">近1年
                   <span class="gmlbzzjtbj" ng-if="data.key==5"></span>
                 </a>
-                <a href="" ng-click="sortKey(6)">近1年
+                <a href="" ng-click="sortKey(6)">近3年
                   <span class="gmlbzzjtbj" ng-if="data.key==6"></span>
                 </a>
-                <a href="" ng-click="sortKey(7)">近2年
+                <a href="" ng-click="sortKey(7)">整体收益
                   <span class="gmlbzzjtbj" ng-if="data.key==7"></span>
                 </a>
               </div>
@@ -66,22 +66,18 @@
             <div class="gmgmff">
              <i>{{product.name}}</i>
              <span><em>{{product.fundNavNewest.nav}}</em><i>{{product.fundNavNewest.endDate | date:"yyyy-MM-dd"}}</i></span>
-             <span>{{product.fundNavNewest.weekRate*100|number:2}}%</span>
-             <span>{{product.fundNavNewest.monRate1*100|number:2}}%</span>
-             <em class="curgreen"> {{product.fundNavNewest.monRate3*100|number:2}}%</em>
-             <span>10.60%</span>
-             <em class="curgreen">-13.60%</em>
-             <span>10.22% </span>
-             <span>10.60%</span>
+             <span ng-class="{curgreen: product.fundNavNewest.weekRate<0}">{{product.fundNavNewest.weekRate*100|number:2}}%</span>
+             <span ng-class="{curgreen: product.fundNavNewest.monRate1<0}">{{product.fundNavNewest.monRate1*100|number:2}}%</span>
+             <em ng-class="{curgreen: product.fundNavNewest.monRate3<0}"> {{product.fundNavNewest.monRate3*100|number:2}}%</em>
+             <span ng-class="{curgreen: product.fundNavNewest.yearRate0<0}">{{product.fundNavNewest.yearRate0*100|number:2}}%</span>
+             <em ng-class="{curgreen: product.fundNavNewest.yearRate1<0}">{{product.fundNavNewest.yearRate1*100|number:2}}%</em>
+             <span ng-class="{curgreen: product.fundNavNewest.yearRate3<0}">{{product.fundNavNewest.yearRate3*100|number:2}}%</span>
+             <span ng-class="{curgreen: product.fundNavNewest.sumRate<0}">{{product.fundNavNewest.sumRate*100|number:2}}%</span>
             </div>
              <div class="gmgmrr">
                <a href="" ng-click="buy(product)">购买</a>
              </div>
            </div>
-
-           
-
-
 
       </div> <!--main1-->
 
