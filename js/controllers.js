@@ -585,6 +585,7 @@ angular.module('starter.controllers', [])
           });
           confirmPopup.then(function(res) {
             if(res) {
+              console.log('aaaaaaa');
               /*
               Main.buy.authorizeTransAccount($scope.data.pwd, 
                 function(data){}, function(status){}, function(){});*/

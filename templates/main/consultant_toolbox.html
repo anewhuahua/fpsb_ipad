@@ -352,7 +352,7 @@
 
                   <ion-list>
 
-                    <ion-item class="lcsslwsl" ng-repeat="product in data.liked.data">
+                    <ion-item class="lcsslwsl" ng-repeat="product in data.liked.data" ng-click="showProduct(product)">
                        <div class="lcsslwslf1"><img src='{{data.productType[product.type.toLowerCase()].image}}' /> <span>{{data.productType[product.type.toLowerCase()].name}}</span></div>
                        <span class="lccslwf2">{{product.name}}</span>
                           <ion-option-button class="button-assertive" ng-click="hateIt(product)">
@@ -499,7 +499,7 @@
                             
                          </div>
                          
-                          <ion-option-button class="button-energized" ng-click="withdrawCommission(c)">
+                          <ion-option-button class="button-energized" ng-click="withdrawCommission(c)" ng-if="c.state=='create'">
                             申请提现 
                           </ion-option-button>
                           <!--
