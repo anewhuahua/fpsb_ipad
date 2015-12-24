@@ -519,11 +519,15 @@ angular.module('starter.controllers', [])
     verifyCodeWarn: '收取验证码',
     verifyCodeConfirm: '',
     askingVerifyCode: false,
-    initiated: false
+    initiated: false,
+
+    product: null
   }
 
   $scope.data.productId = $stateParams.productId;
   $scope.data.fundNo = $stateParams.fundNo;
+  $scope.data.product.pid = $scope.data.fundNo;
+  Main.getPublicFundDetail($scope.data.product, function(data){}, function(status){}, function(){});
 
 
   $scope.$on("$ionicView.enter", function(){
