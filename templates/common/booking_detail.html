@@ -14,7 +14,10 @@
                   
                   <div class="khxqtop"><!--客户详情-s-->
                     
-                     <div class="khxqpf"><img src="teImg/ghnr1lef.png" /></div> <!--左边-s-->
+                     <div class="khxqpf">
+                      <img ng-cache ng-src="{{booking.customer | imageCustomerFilter}}" /> 
+                      <!--<img ng-src="teImg/ghnr1lef.png" />-->
+                    </div> <!--左边-s-->
                      <div class="khxqpr">
                      
                          <p class="khxqrp1">

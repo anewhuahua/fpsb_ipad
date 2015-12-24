@@ -279,7 +279,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'angular-flot', 'ionicMultipleV
 
   .state('common.publicfund1', {
     cache: false,
-    url: '/publicfund1/:productId',
+    url: '/publicfund1/:productId/:fundNo',
     views: {
       'publicfund1': {
          templateUrl: 'templates/common/publicfund1.html',
@@ -300,7 +300,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'angular-flot', 'ionicMultipleV
 
   .state('common.buy', {
     cache: false,
-    url: '/buy',
+    url: '/buy/:productId/:fundNo',
     views: {
       'common-buy': {
          templateUrl: 'templates/common/buy.html',

@@ -62,7 +62,7 @@
            </div>
 
 
-           <div class="gmlbnrdv" ng-repeat="product in data.category.products.data" ng-click="goPublicFundDetail(product.partnerFundId)">
+           <div class="gmlbnrdv" ng-repeat="product in data.category.products.data" ng-click="goPublicFundDetail(product.id, product.partnerFundId)">
             <div class="gmgmff">
              <i>{{product.name}}</i>
              <span><em>{{product.fundNavNewest.nav}}</em><i>{{product.fundNavNewest.endDate | date:"yyyy-MM-dd"}}</i></span>
@@ -75,7 +75,7 @@
              <span ng-class="{curgreen: product.fundNavNewest.sumRate<0}">{{product.fundNavNewest.sumRate*100|number:2}}%</span>
             </div>
              <div class="gmgmrr">
-               <a href="" ng-click="buy(product)">购买</a>
+               <a href="" ng-click="buy(product.id, product.partnerFundId)">购买</a>
              </div>
            </div>
 

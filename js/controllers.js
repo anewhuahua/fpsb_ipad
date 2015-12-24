@@ -499,6 +499,7 @@ angular.module('starter.controllers', [])
     email: '11@baidu.com',
 
     productId: '',
+    fundNo: '',
 
     bindingBankCards: [],
     validBanks: [],
@@ -516,6 +517,10 @@ angular.module('starter.controllers', [])
     askingVerifyCode: false,
     initiated: false
   }
+
+  $scope.data.productId = $stateParams.productId;
+  $scope.data.fundNo = $stateParams.fundNo;
+
 
   $scope.$on("$ionicView.enter", function(){
     $scope.data.phase = 'verify';
@@ -584,17 +589,28 @@ angular.module('starter.controllers', [])
             cancelText: '取消'
           });
           confirmPopup.then(function(res) {
+            /*
             if(res) {
-              console.log('aaaaaaa');
-              /*
+              console.log('authorize');
+              var newGroupPopup = $ionicPopup.prompt({
+                title: '请输入长量交易密码',
+                inputType: 'password',
+                okText: '确认',
+                cancelText: '取消',
+                inputPlaceholder: '请输入长量交易密码'
+              }).then(function(res1) {
+                
+              });
+
+
               Main.buy.authorizeTransAccount($scope.data.pwd, 
-                function(data){}, function(status){}, function(){});*/
-              /*
+                function(data){}, function(status){}, function(){});
+              
               Main.buy.queryValidBanks(function(data){
                 $scope.data.validBanks = data;
-              }, function(status){}, function(){});*/
+              }, function(status){}, function(){});
             } else {
-            }
+            }*/
           });
         }
       }
@@ -699,7 +715,7 @@ angular.module('starter.controllers', [])
     });
   }
 
-  $scope.purchase = function(fundNo) {
+  $scope.purchase = function() {
     if (isNaN(parseInt($scope.data.buyAmount,10))) {
       $ionicPopup.alert({
             title:    '提示信息',
@@ -709,8 +725,8 @@ angular.module('starter.controllers', [])
       return;
     }
 
-    Main.customer.submitOrder('8a2135b1512f96b80151323c5ad70158', $scope.data.buyAmount, function(data1){
-        Main.buy.purchasePublicFund(fundNo, $scope.data.bankCardNo, $scope.data.buyAmount,
+    Main.customer.submitOrder($scope.data.productId, $scope.data.buyAmount, function(data1){
+        Main.buy.purchasePublicFund($scope.data.fundNo, $scope.data.bankCardNo, $scope.data.buyAmount,
           function(data){
             $ionicPopup.alert({
                   title:    '提示信息',
@@ -758,12 +774,13 @@ angular.module('starter.controllers', [])
   $scope.showDetail = function(num){
     $scope.data.index = num;
   }
-  $scope.data.product.pid = $stateParams.productId;
+  $scope.data.product.pid = $stateParams.fundNo;
+  $scope.productId = $stateParams.productId;
 
   Main.getPublicFundDetail($scope.data.product, function(data){}, function(status){}, function(){});
 
 
-  $scope.buy = function(p) {
+  $scope.buy = function(p, f) {
     if (Main.getRole() == 'Guest') {
       $ionicPopup.alert({
                   title: '提示',
@@ -772,7 +789,7 @@ angular.module('starter.controllers', [])
       });
       return;
     } else {
-      $state.go('common.buy');
+      $state.go('common.buy', {productId:p, fundNo:f});
     }
   }
   $scope.dataset = [{ data: [], yaxis: 1, label: 'sin' }]
@@ -859,10 +876,11 @@ angular.module('starter.controllers', [])
     } 
 
   }
-  $scope.goPublicFundDetail = function(id) {
-    $state.go('common.publicfund1', {productId:id});
+  $scope.goPublicFundDetail = function(p, f) {
+    $state.go('common.publicfund1', {productId:p, fundNo:f});
   }
-  $scope.buy = function(p) {
+ 
+  $scope.buy = function(p, f) {
     if (Main.getRole() == 'Guest') {
       $ionicPopup.alert({
                   title: '提示',
@@ -871,7 +889,7 @@ angular.module('starter.controllers', [])
       });
       return;
     } else {
-      $state.go('common.buy');
+      $state.go('common.buy', {productId:p, fundNo:f});
     }
   }
 
