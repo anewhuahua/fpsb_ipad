@@ -280,7 +280,7 @@ angular.module('starter.controllers', [])
 
       if (ret.go) {
         if (product.type=='PublicFund') {
-          $state.go(ret.go, {productId: product.id, fundNo: product.fundNavNewest.fundId});
+          $state.go(ret.go, {productId: product.id, fundNo: product.partnerFundId});
         } else {
           $state.go(ret.go, {productId: product.id});
         }
@@ -1384,7 +1384,7 @@ angular.module('starter.controllers', [])
 
       if (ret.go) {
         if (product.type=='PublicFund') {
-          $state.go(ret.go, {productId: product.id, fundNo: product.fundNavNewest.fundId});
+          $state.go(ret.go, {productId: product.id, fundNo: product.partnerFundId});
         } else {
           $state.go(ret.go, {productId: product.id});
         }
