@@ -7,7 +7,7 @@ angular.module('notify.service',['main.service'])
     },
     Consultant: {
       booking: {state: 'main.toolbox', win:'bookings', sub:'all'},
-      order:   {state: 'main.toolbox', win:'orders', sub:'all'}
+      order:   {state: 'main.toolbox', win:'investment', sub:'all'}
     }
   };
 
