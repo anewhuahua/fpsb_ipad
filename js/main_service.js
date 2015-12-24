@@ -20,7 +20,7 @@ angular.module('main.service',[])
   };
 
   var categories = [
-    {id: 1, childOf: true,   state: "common.publicfunds", name: "公募基金",  key:'publicfunds',   image:'teImg/gongmu.png', products:{data:[]}},
+    {id: 1, childOf: true,   state: "common.publicfund",  name: "公募基金",  key:'publicfunds',   image:'teImg/gongmu.png', products:{data:[]}},
     {id: 2, childOf: false,  state: null,                 name: "私募基金",  key:'privatefunds',  image:'teImg/simu.png',  products:{data:[]}},
     {id: 3, childOf: false,  state: null,                 name: "信托产品",  key:'trusts',        image:'teImg/xintuo.png', products:{data:[]}},
     {id: 4, childOf: false,  state: null,                 name: "资管产品",  key:'portfolios',    image:'teImg/ziguan.png', products:{data:[]}},

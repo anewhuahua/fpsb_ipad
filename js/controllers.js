@@ -279,7 +279,11 @@ angular.module('starter.controllers', [])
       ret = Main.productGoState(product);
 
       if (ret.go) {
-        $state.go(ret.go, {productId: product.id});
+        if (product.type=='PublicFund') {
+          $state.go(ret.go, {productId: product.id, fundNo: product.fundNavNewest.fundId});
+        } else {
+          $state.go(ret.go, {productId: product.id});
+        }
       } else {
         Main.isLikedProduct(product.id, function(data){
           if(data.length>0) {
@@ -1379,7 +1383,11 @@ angular.module('starter.controllers', [])
       ret = Main.productGoState(product);
 
       if (ret.go) {
-        $state.go(ret.go, {productId: product.id});
+        if (product.type=='PublicFund') {
+          $state.go(ret.go, {productId: product.id, fundNo: product.fundNavNewest.fundId});
+        } else {
+          $state.go(ret.go, {productId: product.id});
+        }
       } else {
         Main.isLikedProduct(product.id, function(data){
           if(data.length>0) {
