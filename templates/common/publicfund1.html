@@ -13,7 +13,12 @@
  
               <!--发现境内列表11.7-->
             <div class="gmnydv">
-              <div class="jnxqtopr1"><span>{{data.product.data.fundName}}</span><em></em></div>
+              <div class="jnxqtopr1"><span>{{data.product.data.fundName}}</span>
+
+                <em ng-if="!data.currentLiked" ng-click='likeIt(data.product.data)'></em>
+                <p ng-if="data.currentLiked"></p>
+
+              </div>
               <div class="gmfw1">
                  <span>最新净值<em>{{data.product.data.fundNavNewest.nav}}</em></span>
                  <span>累计净值<em>1.232</em></span>

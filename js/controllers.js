@@ -778,8 +778,21 @@ angular.module('starter.controllers', [])
   $scope.showDetail = function(num){
     $scope.data.index = num;
   }
+
+
   $scope.data.product.pid = $stateParams.fundNo;
   $scope.productId = $stateParams.productId;
+
+    Main.isLikedProduct($scope.productId, function(data){
+          if(data.length>0) {
+            $scope.currentLiked = true;
+          } else {
+            $scope.currentLiked = false;
+          }
+          
+        }, function(status){
+          $scope.currentLiked = false;
+        }, function(){});
 
   Main.getPublicFundDetail($scope.data.product, function(data){}, function(status){}, function(){});
 
