@@ -779,6 +779,32 @@ angular.module('starter.controllers', [])
     $scope.data.index = num;
   }
 
+  $scope.likeIt = function(product) {
+      if (Main.getRole() == 'Guest') {
+         $ionicPopup.alert({
+                    title: '提示信息',
+                    cssClass: 'alert-text',
+                    template:  '请先登入!'
+                });
+         return;
+      }
+      Main.likeIt(product, function(data){
+          $scope.currentLiked = true;
+          $ionicPopup.alert({
+                  title: '提示信息',
+                  cssClass: 'alert-text',
+                  template:  '收藏成功!'
+              });
+      }, function(status){
+        $scope.currentLiked = false;
+          $ionicPopup.alert({
+                  title: '提示信息',
+                  cssClass: 'alert-text',
+                  template:  '收藏失败!'
+              });
+      }, function(){});
+  }
+
 
   $scope.data.product.pid = $stateParams.fundNo;
   $scope.productId = $stateParams.productId;
