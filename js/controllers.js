@@ -521,7 +521,7 @@ angular.module('starter.controllers', [])
     askingVerifyCode: false,
     initiated: false,
 
-    product: null
+    product: {}
   }
 
   $scope.data.productId = $stateParams.productId;
