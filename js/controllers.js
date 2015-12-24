@@ -788,6 +788,7 @@ angular.module('starter.controllers', [])
                 });
          return;
       }
+      product.id = $scope.productId;
       Main.likeIt(product, function(data){
           $scope.currentLiked = true;
           $ionicPopup.alert({
