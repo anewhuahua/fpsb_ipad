@@ -1557,7 +1557,7 @@ angular.module('starter.controllers', [])
         
         buttonClicked: function(index) {
             if(index == 0){
-              option.sourceType = Camera.PictureSourceType.CAMERA;
+              option.sourceType = Camera.PictureSourceType.CAM·ERA;
               //type = 'camera';
 
             }else if(index == 1){
@@ -1899,11 +1899,11 @@ angular.module('starter.controllers', [])
         clearRegister();
         $ionicPopup.alert({
           title: '系统提示',
-          template: '恭喜注册成功'
+          template: '注册成功，确认后返回登入'
         }).then(function(){
            setTimeout(function(){
               $scope.data.popup = 'login';
-            }, 500);
+            }, 200);
         });
       }, function(res){
         $scope.data.warning.status = 'fail';
