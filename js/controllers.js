@@ -879,6 +879,9 @@ angular.module('starter.controllers', [])
 
     share = parseInt($scope.data.redeemShare,10);
     maximum = parseInt($scope.data.order.extra.usableShare);
+    console.log($scope.data.order.extra.usableShare);
+    console.log($scope.data.order);
+
     if (share > maximum) {
       $ionicPopup.alert({
             title:    '提示信息',
