@@ -10,7 +10,7 @@ angular.module('main.service',[])
     password: '',
     partnerId: '', // user id in partner system
     partner: '',
-    ownerId: '',   // user id in fpsb system
+    ownerId: '',   // user id in fpsb systeƒ√m
     authorized: false,
     riskLevel: ''
   };
@@ -483,6 +483,14 @@ angular.module('main.service',[])
     },
     register: function(username, password, code, referral, fullname, successHandler, errorHandler, finallyHandler) {
       Rest.register(username, password, code, referral, function(res) {
+        if(parseRestSuccess('register', data, successHandler, errorHandler)) {  
+          console.log(data.result);
+        }
+      }, function(status){
+        parseRestError('register', status, errorHandler);
+      }, finallyHandler());
+
+      /*
         if (res.data.successful) {
           console.log('main.service register success:'+ res.data.successful);
           successHandler(res);
@@ -493,7 +501,7 @@ angular.module('main.service',[])
       }, function(res){
         console.log('main.service register error:'+res.statusText);
         errorHandler(res.data.message);
-      }, finallyHandler);
+      }, finallyHandler);*/
     },
 
     getPublicFundDetail: function(product, successHandler, errorHandler, finallyHandler){

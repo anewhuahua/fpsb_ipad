@@ -110,11 +110,19 @@ angular.module('rest.service', [])
       if(fullname!='') {
         req.data["fullname"] = fullname;
       }
-      
+      /*
       $http(req).then(function(res){  
           successHandler(res);
       }, function(res){
           errorHandler(res);
+      }).finally(function(){
+        finallyHandler();
+      });*/
+
+      $http(req).success(function(data){
+        successHandler(data);
+      }).error(function(res, status){
+        errorHandler(status);
       }).finally(function(){
         finallyHandler();
       });
