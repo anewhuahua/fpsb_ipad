@@ -484,17 +484,17 @@ angular.module('main.service',[])
     register: function(username, password, code, referral, fullname, successHandler, errorHandler, finallyHandler) {
       Rest.register(username, password, code, referral, function(data) {
         console.log(data);
-
         if(parseRestSuccess('register', data, successHandler, errorHandler)) {  
           console.log(data.result);
         }
       }, function(status){
         console.log(status);
+        // 注册成功进这里
         if(parseRestSuccess('register', status.data, successHandler, errorHandler)) {  
           console.log(status.data.result);
           return;
         }
-        parseRestError('register', status, errorHandler);
+        //parseRestError('register', status, errorHandler);
       }, finallyHandler());
 
       /*

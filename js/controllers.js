@@ -1900,6 +1900,7 @@ angular.module('starter.controllers', [])
         $scope.data.warning.words = '恭喜注册成功';
         $scope.auth.login.username = $scope.auth.register.username;
         clearRegister();
+        
         setTimeout(function(){
           $scope.data.popup = 'login';
         }, 500);
