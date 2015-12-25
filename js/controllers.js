@@ -1896,14 +1896,15 @@ angular.module('starter.controllers', [])
       $scope.data.warning.words = '请输入您的姓名';
     } else {
       Main.register(name,pwd,code,referral, fullname, function(res){
-        $scope.data.warning.status = 'sucess';
-        $scope.data.warning.words = '恭喜注册成功';
-        $scope.auth.login.username = $scope.auth.register.username;
         clearRegister();
-        
-        setTimeout(function(){
-          $scope.data.popup = 'login';
-        }, 500);
+        $ionicPopup.alert({
+          title: '系统提示',
+          template: '恭喜注册成功'
+        }).then(function(){
+           setTimeout(function(){
+              $scope.data.popup = 'login';
+            }, 500);
+        });
       }, function(res){
         $scope.data.warning.status = 'fail';
         $scope.data.warning.words = res;
