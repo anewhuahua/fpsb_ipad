@@ -118,7 +118,6 @@ angular.module('rest.service', [])
       }).finally(function(){
         finallyHandler();
       });
-
       
     },
 

@@ -70,7 +70,7 @@
                     <div class="xyglcsrrdv" ng-repeat="product in data.category.products.data" ng-click="showProduct(product)" ng-if="!data.category.state"><!--发现内容主体-->
                     
                         <div class="xxlsrrp">
-                          <span class="xxlniuhuang"></span>
+                          <span ng-if="product.hot" class="xxlniuhuang"></span>
                          
                           <em>{{product.name}}</em>
                         </div>
@@ -110,7 +110,7 @@
                         <a href="">
                         <div class="fxlbdvtp">
                       
-                          <span class="xxlniuhuang12"></span>
+                          <span ng-if="product.hot" class="xxlniuhuang12"></span>
                           <em class="fxlbem">{{product.name}}</em>
                         </div>
                         

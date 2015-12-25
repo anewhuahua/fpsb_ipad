@@ -171,7 +171,7 @@ navigation history that also transitions its views in and out.
     <div class="prxqmanr1"><!-- 私募产品详情页弹窗主体 上半部分-->
     
       <div class="prxqhead">
-             <i class="xxlniuhuang1"></i>
+             <i ng-if="data.looking_product.hot" class="xxlniuhuang1"></i>
              <span class="prxqh3">{{data.looking_product.name}} <em ng-if="data.commissionCtrl.enabled"> (返佣比例 <i>{{data.looking_product.commissionRate}}%</i>)</em></span>
 
              <em class="prxqh5" ng-click='closeProduct()'></em>
@@ -305,7 +305,7 @@ navigation history that also transitions its views in and out.
     <div class="prxqmanr1"><!-- 私募产品详情页弹窗主体 上半部分-->
     
       <div class="prxqhead">
-             <i class="xxlniuhuang1"></i>
+             <i ng-if='data.looking_product.hot' class="xxlniuhuang1"></i>
              <span class="prxqh3">{{data.looking_product.name}} <em ng-if="data.commissionCtrl.enabled"> (返佣比例 <i>{{data.looking_product.commissionRate}}%</i>)</em></span>
              
 
