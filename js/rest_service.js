@@ -463,10 +463,35 @@ angular.module('rest.service', [])
         });
       },
 
-  
-      redeemPublicFund: function() {
-
+      redeemPublicFund: function(id, tid, pid, bcard, share, successHandler, errorHandler, finallyHandler) {
+        var req = {
+            method: 'POST',
+            url: domain+'ChiefFinancierService/api/partner/v1/customers/' + id + '/partners/cljj/transaccounts/' + tid +
+                        '?action=redeem&fund_code='+pid+'&bank_card_no='+bcard+'&share='+share,
+            headers: {
+              'Content-Type': 'application/json'
+            }
+        };
+        $http(req).success(function(data){
+          successHandler(data);
+        }).error(function(res, status){
+          errorHandler(status);
+        }).finally(function(){
+          finallyHandler();
+        });
       }
+
+      /*
+      Return： Redeem{
+        apply_no
+        apply_date
+        apply_time
+        trade_date
+        captail_arrival_date
+        } 就像：
+        ｛"apply_no":"99972015080600000289","apply_date":"20150817","apply_time":"175614","trade_date":"20150807","cap
+        tail_arrival_date":"20150810"}
+      */
 
     },
 
@@ -489,6 +514,23 @@ angular.module('rest.service', [])
 
     customer: {
       v1: {
+        queryOrderDetail: function(id, oid, successHandler, errorHandler, finallyHandler) {
+          var req = {
+              method: 'GET',
+              url: domain+'ChiefFinancierService/api/customer/v1/customers/' + id + '/orders/' + oid ,
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
+          $http(req).success(function(data){
+            successHandler(data);
+          }).error(function(res, status){
+            errorHandler(status);
+          }).finally(function(){
+            finallyHandler();
+          });
+        },
+
         isProductBooked: function(id, pid, successHandler, errorHandler, finallyHandler) {
           var req = {
               method: 'GET',

@@ -768,6 +768,152 @@ angular.module('starter.controllers', [])
 })
 
 
+.controller('commonRedeemCtrl', function($scope, $state, $stateParams, $timeout, $ionicPopup, $ionicScrollDelegate, $ionicHistory, Main){
+  $scope.data = {
+    phase: 'verify',
+    fullname: '',
+    identity: '',
+
+   
+    bindingBankCards: [],
+
+    bankName:'',
+    bankId:'',
+    bankCardNo: '',
+    redeemShare: 0,
+
+    fundNo: '',
+    order: {}
+  }
+
+  $scope.data.orderId = $stateParams.orderId;
+  $scope.data.fundNo  = $stateParams.fundNo;
+  //$scope.data.product.pid = $scope.data.fundNo;
+  Main.customer.queryOrderDetail($scope.data.orderId, function(data){
+    $scope.data.order = data;
+  }, function(status){}, function(){});
+
+
+  $scope.$on("$ionicView.enter", function(){
+    $scope.data.phase = 'verify';
+  });
+
+
+
+  $scope.verify = function() {
+    if($scope.data.fullname == '' || $scope.data.identity == '') {
+      $ionicPopup.alert({
+          title: '提示信息',
+            cssClass: 'alert-text',
+            template:  '请输入有效身份信息!'
+        });
+
+      return;
+    } 
+    Main.buy.queryTransAccount($scope.data.fullname, $scope.data.identity, function(data){
+      console.log(data);
+      if(data==null) {  // not registered, not happen here
+        $ionicPopup.alert({
+          title: '提示信息',
+            cssClass: 'alert-text',
+            template:  '请输入有效身份信息!'
+        });
+      } else {   // already registered
+        if (data.authorized) {
+          Main.buy.queryBankBinding(data.id, function(data1){
+            if(data1) { // not happen here
+              // not bond bank yet
+              /*
+              Main.buy.queryValidBanks(data.id, function(data2){
+                $scope.data.validBanks = data2;
+              }, function(status2){}, function(){});
+              $scope.data.phase = 'bank';
+              */
+            } else {
+              // have bond bank
+              Main.buy.queryBindingBanks(data.id, function(data2){
+                $scope.data.bindingBankCards =  data2;
+              }, function(status2){}, function(){});
+              $scope.data.phase = 'redeem';
+            }
+          }, function(status1){}, function(){});
+
+        } else {  // not happen here
+          $ionicPopup.alert({
+            title: '提示信息',
+            cssClass: 'alert-text',
+            template:  '账号未授权'
+          });
+          
+        }
+      }
+
+    }, function(status){
+      $ionicPopup.alert({
+          title: '提示信息',
+          cssClass: 'alert-text',
+          template:  status
+      });
+    }, function(){
+
+    }); 
+    console.log('verify');
+  }
+
+
+  $scope.queryBindingBanks = function() {
+    Main.buy.queryBindingBanks(function(data){
+     $scope.data.bindingBankCards = data;
+    }, function(status){}, function(){});
+  }
+
+  $scope.redeem = function() {
+    if (isNaN(parseInt($scope.data.redeemShare,10))) {
+      $ionicPopup.alert({
+            title:    '提示信息',
+            cssClass: 'alert-text',
+            template:  '请输入正确金额'
+      });
+      return;
+    }
+
+    share = parseInt($scope.data.redeemShare,10);
+    maximum = parseInt($scope.data.order.extra.usableShare);
+    if (share > maximum) {
+      $ionicPopup.alert({
+            title:    '提示信息',
+            cssClass: 'alert-text',
+            template:  '赎回金额必须 >0, <{{$scope.data.order.extra.usableShare}}' 
+      });
+      return;
+    }
+
+    Main.buy.redeemPublicFund($scope.data.fundNo, $scope.data.bankCardNo, $scope.data.redeemShare,
+      function(data){
+        $ionicPopup.alert({
+          title:    '提示信息',
+          cssClass: 'alert-text',
+          template:  '赎回成功'
+        });
+      }, function(status){
+        $ionicPopup.alert({
+          title:    '提示信息',
+          cssClass: 'alert-text',
+          template:  status
+        });
+      }, function(){
+      });
+  }
+
+  $scope.goPhase = function(p) {
+    $scope.data.phase = p;
+  } 
+
+})
+
+
+
+
 .controller('publicfundCtrl', function($scope, $state, $stateParams, $ionicScrollDelegate, $ionicHistory, $ionicPopup, Main){
   $scope.data = {
     index:1,
@@ -1027,6 +1173,11 @@ angular.module('starter.controllers', [])
       return false;
     }
   }
+
+  $scope.redeemPublicFund = function() {
+    $state.go('common.redeem', {orderId: $scope.data.order.id, fundNo: $scope.data.order.product.partnerFundId})
+  }
+
 })
 
 

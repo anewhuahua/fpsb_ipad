@@ -1,0 +1,76 @@
+
+<ion-view class="booking-view">
+
+
+    <ion-content>
+     <div class="main1">
+
+            <div class="sdlcdv">
+              <!--<a href="" class="sdlcff"></a>-->
+              <ul class="sdlcul">
+                <li class="sdlccur"><span>1</span> <em>身份审核</em></li>
+                <li><i></i></li>
+                <li><span>2</span> <em>银行卡验证</em></li>
+                <li><i></i></li>
+                <li><span>3</span> <em>通过</em></li>
+              </ul>
+              <!--<a href="" class="sdlcrr"></a>-->
+            </div> 
+            <div class="sdlcyy"></div>
+            
+            <div class="sdlcnrdv" ng-if="data.phase=='verify'">
+               <div class="sdlcnra">
+                 <span>真实姓名</span>
+                 <input type="text" placeholder="请输入真实姓名" ng-model="data.fullname"/> 
+               </div> 
+               <div class="sdlcnra">
+                 <span>身份证号码</span>
+                 <input type="text" placeholder="请输入身份证号码" ng-model="data.identity"/> 
+               </div>
+               <input type="submit" class="nexbn" value="下一步" ng-click="verify()"/>
+            </div>
+
+
+            <div class="sdlcnrdv" ng-if="data.phase=='redeem'">   
+               <span class="xpqqyytcc">{{data.order.product.name}}</span>
+               <div class="xpzz">
+                  <span><em> </em></span>
+               </div>
+               <div class="lcgmaa"><span>赎回份数</span> <input type="number"  placeholder="请输入赎回份数(最大:{{data.order.extra.usableShare}})" ng-model="data.redeemShare" /><em>元</em></div>
+               <!--<div class="lcgmab"><span>输入密码</span> <input type="text"  placeholder="请输入您的密码"/></div>-->
+               <div class="sdlcnrb">
+                  <span>选择银行</span>
+                  <div class="xzxse">
+                     <select ng-model="data.bankCardNo">
+                       <option ng-repeat="b in data.bindingBankCards" value="{{b.bank_card_no}}">{{b.bank_name}}</option>
+                     </select> 
+                   </div>
+               </div>
+               <div class="lcgmab"><span>卡       号</span> <input type="text" readOnly="true" placeholder="{{data.bankCardNo}}" /> </div>
+               <!--<span class="lcgmcpdd">限额：每单最高<em>30</em>万元，单日最高<em>90</em>万元，单月最高<em>1000</em>万元</span>-->
+               <input type="submit" class="nexbnb" value="提交赎回申请"  ng-click="redeem()"/>
+               <div class="tytygm">
+                <!--
+                <p class="zcmmjsaa">
+                  <span><img src="teImg/zcmmjslog2.jpg" /></span>
+                  <em>我确认购买超出我风险偏好的产品</em>
+                </p>-->
+                <p class="zcmmjsbb">
+                  <span><img src="teImg/zcmmjslog2.jpg" /></span>
+                  <em>我已阅读并同意<i>《首席金服用户协议》</i></em>
+                </p>
+             </div>
+            </div>
+          
+
+
+     </div>
+    </ion-content>
+</ion-view>
+
+
+
+
+
+
+

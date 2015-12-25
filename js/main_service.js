@@ -396,6 +396,16 @@ angular.module('main.service',[])
         }, function(status){
           parseRestError('purchasePublicFund', status, errorHandler);
         }, finallyHandler());
+      },
+      redeemPublicFund: function(pid, bcard,  share, successHandler, errorHandler, finallyHandler) {
+        Rest.buy.redeemPublicFund(id, transAccount.id, pid, bcard,  share, function(data){
+          if(parseRestSuccess('redeemPublicFund', data, successHandler, errorHandler)) {
+            console.log('tyson11111111');
+            console.log(data);
+          }
+        }, function(status){
+          parseRestError('redeemPublicFund', status, errorHandler);
+        }, finallyHandler());
       }
     },
 
@@ -672,6 +682,18 @@ angular.module('main.service',[])
     },
 
     customer: {
+      queryOrderDetail: function(oid, successHandler, errorHandler, finallyHandler) {
+         Rest.customer.v1.queryOrderDetail(id, oid, function(data){
+            if (parseRestSuccess('queryOrderDetail', data, successHandler, errorHandler)) { 
+              //customer.bookings.unserved.unshift(data.result);
+              //data.result;
+            }
+          }, function(status){
+            parseRestError('queryOrderDetail',  status, errorHandler);
+          }, 
+          finallyHandler());
+      },
+
       isProductBooked: function(pid, successHandler, errorHandler, finallyHandler) {
          Rest.customer.v1.isProductBooked(id, pid, function(data){
             if (parseRestSuccess('isProdcutBooked', data, successHandler, errorHandler)) { 

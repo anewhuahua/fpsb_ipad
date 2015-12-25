@@ -309,6 +309,16 @@ angular.module('starter', ['ionic', 'ngCordova', 'angular-flot', 'ionicMultipleV
     }
   })
 
+  .state('common.redeem', {
+    cache: false,
+    url: '/redeem/:orderId/:fundNo',
+    views: {
+      'common-redeem': {
+         templateUrl: 'templates/common/redeem.html',
+         controller: 'commonRedeemCtrl'
+      }
+    }
+  })
 
     // exam
   .state('exam', {
