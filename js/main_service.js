@@ -483,6 +483,8 @@ angular.module('main.service',[])
     },
     register: function(username, password, code, referral, fullname, successHandler, errorHandler, finallyHandler) {
       Rest.register(username, password, code, referral, function(data) {
+        console.log(data);
+
         if(parseRestSuccess('register', data, successHandler, errorHandler)) {  
           console.log(data.result);
         }
