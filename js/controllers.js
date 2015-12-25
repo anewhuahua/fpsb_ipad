@@ -890,7 +890,7 @@ angular.module('starter.controllers', [])
       });
       return;
     }
-    Main.customer.submitOrder($scope.data.productId, '-'+$scope.data.redeemShare, function(data1){
+    Main.customer.submitOrder($scope.data.order.product.id, '-'+$scope.data.redeemShare, function(data1){
       Main.buy.redeemPublicFund($scope.data.fundNo, $scope.data.bankCardNo, $scope.data.redeemShare,
         function(data){
           $ionicPopup.alert({
