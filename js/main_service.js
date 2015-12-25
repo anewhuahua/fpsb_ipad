@@ -489,6 +489,7 @@ angular.module('main.service',[])
           console.log(data.result);
         }
       }, function(status){
+        console.log(status);
         parseRestError('register', status, errorHandler);
       }, finallyHandler());
 
