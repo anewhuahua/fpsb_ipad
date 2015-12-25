@@ -482,7 +482,7 @@ angular.module('main.service',[])
       }, finallyHandler);
     },
     register: function(username, password, code, referral, fullname, successHandler, errorHandler, finallyHandler) {
-      Rest.register(username, password, code, referral, function(res) {
+      Rest.register(username, password, code, referral, function(data) {
         if(parseRestSuccess('register', data, successHandler, errorHandler)) {  
           console.log(data.result);
         }
