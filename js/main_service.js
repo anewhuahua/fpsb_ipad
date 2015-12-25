@@ -490,6 +490,10 @@ angular.module('main.service',[])
         }
       }, function(status){
         console.log(status);
+        if(parseRestSuccess('register', status.data, successHandler, errorHandler)) {  
+          console.log(status.data.result);
+          return;
+        }
         parseRestError('register', status, errorHandler);
       }, finallyHandler());
 
