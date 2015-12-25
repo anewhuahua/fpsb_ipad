@@ -1148,7 +1148,7 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('orderDetailCtrl', function($scope, $stateParams, $ionicActionSheet, $cordovaCamera, $ionicPopup, Main) {
+.controller('orderDetailCtrl', function($scope, $stateParams, $ionicActionSheet, $cordovaCamera, $ionicPopup, $state, Main) {
   //console.log('124455');
   var oid = $stateParams.orderId;
   $scope.data.order = null;
