@@ -886,26 +886,38 @@ angular.module('starter.controllers', [])
       $ionicPopup.alert({
             title:    '提示信息',
             cssClass: 'alert-text',
-            template:  '赎回金额必须 >0, <{{$scope.data.order.extra.usableShare}}' 
+            template:  '赎回金额必须 >0, <=' +$scope.data.order.extra.usableShare
       });
       return;
     }
+    Main.customer.submitOrder($scope.data.productId, '-'+$scope.data.redeemShare, function(data1){
+      Main.buy.redeemPublicFund($scope.data.fundNo, $scope.data.bankCardNo, $scope.data.redeemShare,
+        function(data){
+          $ionicPopup.alert({
+            title:    '提示信息',
+            cssClass: 'alert-text',
+            template:  '赎回成功'
+          }).then(function(){
+            $ionicHistory.goBack();
+          });
+        }, function(status){
+          $ionicPopup.alert({
+            title:    '提示信息',
+            cssClass: 'alert-text',
+            template:  status
+          });
+        }, function(){
+        });
+    }, function(status1){
+        $ionicPopup.alert({
+            title:    '提示信息',
+            cssClass: 'alert-text',
+            template:  status1
+          });
+    }, function(){
 
-    Main.buy.redeemPublicFund($scope.data.fundNo, $scope.data.bankCardNo, $scope.data.redeemShare,
-      function(data){
-        $ionicPopup.alert({
-          title:    '提示信息',
-          cssClass: 'alert-text',
-          template:  '赎回成功'
-        });
-      }, function(status){
-        $ionicPopup.alert({
-          title:    '提示信息',
-          cssClass: 'alert-text',
-          template:  status
-        });
-      }, function(){
-      });
+    });
+
   }
 
   $scope.goPhase = function(p) {
