@@ -637,7 +637,7 @@ angular.module('starter.controllers', [])
                 }, function(status4){}, function(){});
                 
                 $scope.data.phase = 'buy';
-
+                console.log('go to buy');
               }, function(status3){
                 $ionicPopup.alert({
                     title: '提示信息',

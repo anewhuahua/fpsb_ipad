@@ -30,9 +30,20 @@
                             <em>{{data.orderState['todo'].name}}</em>
                          </div>
                          
-                         <ul class="gnr2nrbbmrig">
+
+                         <ul class="gnr2nrbbmrig" ng-if="data.order.product.type!='PublicFund'">
                            <li><span>投资金额(元)</span>  <em>{{data.order.quota}}</em></li>
                            <li><span>投资收益(元)</span>  <em>待计算</em></li>
+                           <li ng-if="enableCommission()"><span>佣金收益(元)</span>  <em>待计算</em></li>
+                         </ul>
+
+                         <ul class="gnr2nrbbmrig" ng-if="data.order.product.type=='PublicFund'">
+                           <li><span>持有份额(份)</span>  <em>{{data.extra.balance}}</em></li>
+                           <li><span>期末市值(元)</span>  <em>{{data.extra.marketValue}}}</em></li>
+                           <li><span>基金净值(元)</span>  <em>{{data.extra.fundNav}}}</em></li>
+                           <li><span>可用份额(份)</span>  <em>{{data.extra.usableShare}}}</em></li>
+                           <li><span>冻结份额(份)</span>  <em>{{data.extra.freezerShare}}}</em></li>
+                           <li><span>在途资金(元)</span>  <em>{{data.extra.underwayAmount}}}</em></li>
                            <li ng-if="enableCommission()"><span>佣金收益(元)</span>  <em>待计算</em></li>
                          </ul>
                          

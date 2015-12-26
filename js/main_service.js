@@ -53,6 +53,8 @@ angular.module('main.service',[])
     //initiated:       {state: 'initiated',      name: '已提交' ,       image: 'teImg/gnr2rabm1.png'},
     //paid:            {state: 'paid',           name: '已付款' ,       image: 'teImg/gnr2rabm3.png'},
     //documented:      {state: 'documented',     name: '资料已上传',     image: 'teImg/gnr2rabm4.png'},
+    holding:         {state: 'holding',        name: '持有中',        image: 'teImg/gnr2rabm4a.png'},
+    unconfirm:       {state: 'unconfirm',      name: '待确认',        image: 'teImg/gnr2rabm4a.png'},
     completed:       {state: 'completed',      name: '已完成',        image: 'teImg/gnr2rabm3a.png'},
     todo:            {state: 'todo',           name: '未完成',        image: 'teImg/gnr2rabm4a.png'}
     //cancelled:       {state: 'cancelled',      name: '已取消',        image: 'teImg/gnr2rabm4.png'},
