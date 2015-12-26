@@ -484,33 +484,16 @@ angular.module('main.service',[])
       }, finallyHandler);
     },
     register: function(username, password, code, referral, fullname, successHandler, errorHandler, finallyHandler) {
-      Rest.register(username, password, code, referral, function(data) {
+      Rest.register(username, password, code, referral, fullname, function(data) {
         console.log(data);
         if(parseRestSuccess('register', data, successHandler, errorHandler)) {  
           console.log(data.result);
         }
       }, function(status){
-        console.log(status);
-        // 注册成功进这里
-        if(parseRestSuccess('register', status.data, successHandler, errorHandler)) {  
-          console.log(status.data.result);
-          return;
-        }
+        parseRestError('register', status, errorHandler);
         //parseRestError('register', status, errorHandler);
       }, finallyHandler());
 
-      /*
-        if (res.data.successful) {
-          console.log('main.service register success:'+ res.data.successful);
-          successHandler(res);
-        } else {
-          console.log('main.service register error:'+res.data.successful);
-          errorHandler(res);
-        }
-      }, function(res){
-        console.log('main.service register error:'+res.statusText);
-        errorHandler(res.data.message);
-      }, finallyHandler);*/
     },
 
     getPublicFundDetail: function(product, successHandler, errorHandler, finallyHandler){
