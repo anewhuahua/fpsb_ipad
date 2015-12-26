@@ -12,11 +12,11 @@
               <div class="gnr2ma" > 
                    <div class="gnr2nrb"><!--已完成订单-s-->
                      
-                       <div class="gnr2nrbtp" ng-if="data.order.state.toLowerCase()=='completed'" ng-if="data.order.product.type!='PublicFund'">
+                       <div class="gnr2nrbtp" ng-if="data.order.state.toLowerCase()=='completed' && data.order.product.type!='PublicFund'">
                           <span>交易状态：{{data.orderState[data.order.state.toLowerCase()].name}}</span>
                        </div>
 
-                       <div class="gnr2nrbtp" ng-if="data.order.state.toLowerCase()!='completed'" ng-if="data.order.product.type!='PublicFund'">
+                       <div class="gnr2nrbtp" ng-if="data.order.state.toLowerCase()!='completed' && data.order.product.type!='PublicFund'">
                           <span>交易状态：{{data.orderState['todo'].name}}</span>
                        </div>
                        
@@ -27,11 +27,11 @@
                        <div class="gnr2nrbbm">
 
 
-                         <div class="gnr2nrblef" ng-if="data.order.state.toLowerCase()=='completed'" ng-if="data.order.product.type!='PublicFund'">
+                         <div class="gnr2nrblef" ng-if="data.order.state.toLowerCase()=='completed' && data.order.product.type!='PublicFund'">
                             <div><img src="{{data.orderState[data.order.state.toLowerCase()].image}}" title="" alt="" /></div>
                             <em>{{data.orderState[data.order.state.toLowerCase()].name}}</em>
                          </div>
-                          <div class="gnr2nrblef" ng-if="data.order.state.toLowerCase()!='completed'" ng-if="data.order.product.type!='PublicFund'">
+                          <div class="gnr2nrblef" ng-if="data.order.state.toLowerCase()!='completed' && data.order.product.type!='PublicFund'">
                             <div><img src="{{data.orderState['todo'].image}}" title="" alt="" /></div>
                             <em>{{data.orderState['todo'].name}}</em>
                          </div>
