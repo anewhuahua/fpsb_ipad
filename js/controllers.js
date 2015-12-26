@@ -1245,7 +1245,7 @@ angular.module('starter.controllers', [])
       console.log('refresh');
       Main.customer.queryOrderDetail(oid, function(data){
         $scope.data.order = data;
-        
+
         if (Main.customer.getOrder(oid)!=null) {
            Main.customer.getOrder(oid) = data;
            console.log(11);
@@ -2403,6 +2403,11 @@ angular.module('starter.controllers', [])
     }
   });
 
+  $scope.$on('$ionicView.enter', function() {
+    Main.customer.queryOrders($scope.data.investments, function(data){
+    }, function(status){}, function(){});
+  });
+
   //**
   //** common function
   $scope.changeGroup = function(grp) {
@@ -2796,7 +2801,12 @@ angular.module('starter.controllers', [])
   $scope.goOrderDetail = function(oid) {
     $state.go('common.order_detail', {orderId: oid});
   };
-
+  
+  $scope.$on('$ionicView.enter', function() {
+     Main.customer.queryOrders($scope.data.currentOrder, function(data){
+    }, function(status){}, function(){
+    });
+  });
 
   var refreshData = function() {
 
