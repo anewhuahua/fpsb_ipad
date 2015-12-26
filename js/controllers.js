@@ -1221,6 +1221,10 @@ angular.module('starter.controllers', [])
     $state.go('common.redeem', {orderId: $scope.data.order.id, fundNo: $scope.data.order.product.partnerFundId})
   }
 
+  $scope.buyMorePublicFund = function() {
+    $state.go('common.buy', {productId: $scope.data.order.product.id, fundNo: $scope.data.order.product.partnerFundId})
+  }
+
 })
 
 
