@@ -1245,6 +1245,12 @@ angular.module('starter.controllers', [])
       console.log('refresh');
       Main.customer.queryOrderDetail(oid, function(data){
         $scope.data.order = data;
+        
+        if (Main.customer.getOrder(oid)!=null) {
+           Main.customer.getOrder(oid) = data;
+           console.log(11);
+        }
+
       }, function(status){}, function(){
         $scope.$broadcast('scroll.refreshComplete');
       });
@@ -2095,9 +2101,10 @@ angular.module('starter.controllers', [])
 
 
   Main.queryBarMsgs(function(data){
+    /*
     if ($scope.dta.barMsgs.length){
       return;
-    }
+    }*/
     $scope.data.barMsgs = data;
     var loopBarMsgs = function(cnt) 
     {

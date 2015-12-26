@@ -21,7 +21,7 @@
               </div>
               <div class="gmfw1">
                  <span>最新净值<em>{{data.product.data.fundNavNewest.nav}}</em></span>
-                 <span>累计净值<em>1.232</em></span>
+                 <span>累计净值<em>{{data.product.data.fundNavNewest.sumOfNav}}</em></span>
                  <span>申购费率<em>18</em>%</span>
               </div>
               <span class="gmtit">产品说明：</span>
@@ -68,7 +68,7 @@
                    </div>
                    <div class="jnfw2zta">
                      <span>基金公司</span>
-                     <em>{{data.product.data.companyId}}</em>
+                     <em>{{data.product.data.companyName}}</em>
                      <span>基金经理</span>
                      <em>{{data.product.data.managers | managerNameFilter}}</em>
                    </div>
