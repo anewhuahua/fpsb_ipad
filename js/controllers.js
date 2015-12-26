@@ -1240,6 +1240,18 @@ angular.module('starter.controllers', [])
     $state.go('common.buy', {productId: $scope.data.order.product.id, fundNo: $scope.data.order.product.partnerFundId})
   }
 
+  $scope.doRefresh = function() {
+    setTimeout(function(){
+      console.log('refresh');
+      Main.customer.queryOrderDetail(oid, function(data){
+        $scope.data.order = data;
+      }, function(status){}, function(){
+        $scope.$broadcast('scroll.refreshComplete');
+      });
+
+    }, 1000);
+  };
+
 })
 
 
