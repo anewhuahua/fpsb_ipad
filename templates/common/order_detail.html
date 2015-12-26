@@ -43,10 +43,10 @@
                            <li ng-if="enableCommission()"><span>佣金收益(元)</span>  <em>待计算</em></li>
                          </ul>
 
-                         <ul class="gnr2nrbbmrig" ng-if="data.order.product.type=='PublicFund'">
+                         <ul class="gnr2nrbbmrig" ng-if="data.order.product.type=='PublicFund'" style="width:99%">
                            <li><span>持有份额(份)</span>  <em>{{data.order.extra.balance}}</em></li>
                            <li><span>期末市值(元)</span>  <em>{{data.order.extra.marketValue}}</em></li>
-                           <li><span>基金净值(元)</span>  <em>{{data.order.extra.fundNav}}}</em></li>
+                           <li><span>基金净值(元)</span>  <em>{{data.order.extra.fundNav}}</em></li>
                            <li><span>可用份额(份)</span>  <em>{{data.order.extra.usableShare}}</em></li>
                            <li><span>冻结份额(份)</span>  <em>{{data.order.extra.freezerShare}}</em></li>
                            <li><span>在途资金(元)</span>  <em>{{data.order.extra.underwayAmount}}</em></li>
