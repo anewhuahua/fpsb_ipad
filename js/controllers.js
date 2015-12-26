@@ -594,6 +594,7 @@ angular.module('starter.controllers', [])
         } else {
           var confirmPopup = $ionicPopup.show({
             title: '提醒',
+            scope: $scope,
             template: '<input type="password" ng-model="data.pwd3" placeholder="请输入长量交易密码进行授权"/>',
             buttons: [
              { text: '确认', 
