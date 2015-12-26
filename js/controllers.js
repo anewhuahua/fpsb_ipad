@@ -768,6 +768,8 @@ angular.module('starter.controllers', [])
                   title:    '提示信息',
                   cssClass: 'alert-text',
                   template:  '购买成功'
+            }).then(function(){
+              $ionicHistory.goBack();
             });
           }, function(status){
             $ionicPopup.alert({
@@ -1196,6 +1198,7 @@ angular.module('starter.controllers', [])
   var oid = $stateParams.orderId;
   $scope.data.order = null;
 
+
   console.log(oid);
   if (Main.getRole() == 'Customer') {
     $scope.data.order = Main.customer.getOrder(oid);
@@ -1205,6 +1208,18 @@ angular.module('starter.controllers', [])
       $scope.data.order = Main.customer.getOrder(oid);
     }
   }
+/*
+  $scope.$on('$ionicView.enter',function(){
+    if (Main.getRole() == 'Customer') {
+      $scope.data.order = Main.customer.getOrder(oid);
+    } else if(Main.getRole() == 'Consultant') {
+      $scope.data.order = Main.consultant.getOrder(oid);
+      if ($scope.data.order == null) {
+        $scope.data.order = Main.customer.getOrder(oid);
+      }
+    }
+  }); 
+*/
 
   $scope.data.orderState = Main.getOrderState();
   $scope.data.productType = Main.getProductType();
@@ -2068,6 +2083,9 @@ angular.module('starter.controllers', [])
 
 
   Main.queryBarMsgs(function(data){
+    if ($scope.dta.barMsgs.length){
+      return;
+    }
     $scope.data.barMsgs = data;
     var loopBarMsgs = function(cnt) 
     {
