@@ -502,6 +502,8 @@ angular.module('starter.controllers', [])
     mobile: '',
     email: '11@baidu.com',
 
+    pwd3: '',
+
     productId: '',
     fundNo: '',
 
@@ -592,7 +594,7 @@ angular.module('starter.controllers', [])
         } else {
           var confirmPopup = $ionicPopup.show({
             title: '提醒',
-            template: '<input type="password" ng-model="data.pwd" placeholder="请输入长量交易密码进行授权">',
+            template: '<input type="password" ng-model="data.pwd3" placeholder="请输入长量交易密码进行授权"/>',
             buttons: [
              { text: '确认', 
                onTap: function(e) {
@@ -614,9 +616,9 @@ angular.module('starter.controllers', [])
             }
 
             console.log('authorize');
-            console.log($scope.data.pwd);
+            console.log($scope.data.pwd3);
 
-            if ($scope.data.pwd == '') {
+            if ($scope.data.pwd3 == '') {
               $ionicPopup.alert({
                     title: '提示信息',
                     cssClass: 'alert-text',
@@ -626,7 +628,7 @@ angular.module('starter.controllers', [])
             }
 
 
-            Main.buy.authorizeTransAccount($scope.data.pwd, 
+            Main.buy.authorizeTransAccount($scope.data.pwd3, 
               function(data3){
 
                 Main.buy.queryBindingBanks(data.id, function(data4){
