@@ -598,9 +598,21 @@ angular.module('starter.controllers', [])
           });
           confirmPopup.then(function(res) {
             console.log('authorize');
+            console.log($scope.data.pwd);
+            
+            if ($scope.data.pwd == '') {
+              $ionicPopup.alert({
+                    title: '提示信息',
+                    cssClass: 'alert-text',
+                    template:  '请正确输入密码'
+              });
+              return;
+            }
+
+
             Main.buy.authorizeTransAccount($scope.data.pwd, 
               function(data3){
-                
+
                 Main.buy.queryBindingBanks(data.id, function(data4){
                   $scope.data.bindingBankCards =  data4;
                 }, function(status4){}, function(){});
