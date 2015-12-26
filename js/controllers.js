@@ -590,7 +590,7 @@ angular.module('starter.controllers', [])
           }, function(status1){}, function(){});
 
         } else {
-          var confirmPopup = $ionicPopup.confirm({
+          var confirmPopup = $ionicPopup.show({
             title: '提醒',
             template: '<input type="password" ng-model="data.pwd" placeholder="请输入长量交易密码进行授权">',
             okText: '确认',
@@ -599,7 +599,7 @@ angular.module('starter.controllers', [])
           confirmPopup.then(function(res) {
             console.log('authorize');
             console.log($scope.data.pwd);
-            
+
             if ($scope.data.pwd == '') {
               $ionicPopup.alert({
                     title: '提示信息',
