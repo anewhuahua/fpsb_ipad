@@ -592,34 +592,31 @@ angular.module('starter.controllers', [])
         } else {
           var confirmPopup = $ionicPopup.confirm({
             title: '提醒',
-            template: '确认授权?',
+            template: '<input type="password" ng-model="data.pwd" placeholder="请输入长量交易密码进行授权">',
             okText: '确认',
             cancelText: '取消'
           });
           confirmPopup.then(function(res) {
-            /*
-            if(res) {
-              console.log('authorize');
-              var newGroupPopup = $ionicPopup.prompt({
-                title: '请输入长量交易密码',
-                inputType: 'password',
-                okText: '确认',
-                cancelText: '取消',
-                inputPlaceholder: '请输入长量交易密码'
-              }).then(function(res1) {
+            console.log('authorize');
+            Main.buy.authorizeTransAccount($scope.data.pwd, 
+              function(data3){
                 
-              });
+                Main.buy.queryBindingBanks(data.id, function(data4){
+                  $scope.data.bindingBankCards =  data4;
+                }, function(status4){}, function(){});
+                
+                $scope.data.phase = 'buy';
 
+              }, function(status3){
+                $ionicPopup.alert({
+                    title: '提示信息',
+                    cssClass: 'alert-text',
+                    template:  status3
+                });
+              }, function(){});
 
-              Main.buy.authorizeTransAccount($scope.data.pwd, 
-                function(data){}, function(status){}, function(){});
-              
-              Main.buy.queryValidBanks(function(data){
-                $scope.data.validBanks = data;
-              }, function(status){}, function(){});
-            } else {
-            }*/
           });
+
         }
       }
 
