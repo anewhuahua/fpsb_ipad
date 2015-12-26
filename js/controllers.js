@@ -593,10 +593,26 @@ angular.module('starter.controllers', [])
           var confirmPopup = $ionicPopup.show({
             title: '提醒',
             template: '<input type="password" ng-model="data.pwd" placeholder="请输入长量交易密码进行授权">',
-            okText: '确认',
-            cancelText: '取消'
+            buttons: [
+             { text: '确认', 
+               onTap: function(e) {
+                 return 'ok';
+               }
+             },
+             {
+              text: '取消',
+              onTap: function(e) {
+                return 'cancel';
+              }
+             }]
           });
           confirmPopup.then(function(res) {
+            if (res == 'ok') {
+
+            } else if (res == 'cancel') {
+              return;
+            }
+
             console.log('authorize');
             console.log($scope.data.pwd);
 
