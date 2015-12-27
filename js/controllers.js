@@ -769,8 +769,8 @@ angular.module('starter.controllers', [])
             template:  '您必须先参加长量基金理财评测'
       }).then(function(){
         $state.go('exam.customer', {suite: 'cljj'});
-        return;
       });
+      return;
     }
 
     // $scope.data.product
