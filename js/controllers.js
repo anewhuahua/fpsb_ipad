@@ -756,6 +756,35 @@ angular.module('starter.controllers', [])
     });
   }
 
+  var pay = function() {
+    Main.customer.submitOrder($scope.data.productId, $scope.data.buyAmount, function(data1){
+        Main.buy.purchasePublicFund($scope.data.fundNo, $scope.data.bankCardNo, $scope.data.buyAmount,
+          function(data){
+            $ionicPopup.alert({
+                  title:    '提示信息',
+                  cssClass: 'alert-text',
+                  template:  '购买成功'
+            }).then(function(){
+              $ionicHistory.goBack();
+            });
+          }, function(status){
+            $ionicPopup.alert({
+                  title:    '提示信息',
+                  cssClass: 'alert-text',
+                  template:  status
+            });
+          }, function(){
+
+          });
+      }, function(error1){
+        $ionicPopup.alert({
+            title:    '购买失败',
+            cssClass: 'alert-text',
+            template:  error1
+        });
+      }, function(){
+    });   
+  }
   $scope.purchase = function() {
 
     if (isNaN(parseInt($scope.data.buyAmount,10))) {
@@ -782,16 +811,35 @@ angular.module('starter.controllers', [])
     // 低风险，较低风险，中等风险，较高风险，高风险
     // 1004            1005             1006
     riskLevel = parseInt($scope.data.product.riskLevel);
+    console.log($scope.data.product);
     console.log(riskLevel);
     currRiskLevel = parseInt(Main.buy.getBuyRiskLevel());
     console.log(currRiskLevel);
-    /*
+    
     if (currRiskLevel == 1004 && riskLevel>1) {
-      ionic.
+      $ionicPopup.confirm({
+       title: '提醒',
+       template: '确认购买高风险产品?',
+       okText: '确认',
+       cancelText: '取消'
+      }).then(function(res){
+        pay();
+      });
       return;
-    }
-    */
-
+    } 
+    if(currRiskLevel == 1005 && riskLevel>3) {
+      $ionicPopup.confirm({
+       title: '提醒',
+       template: '确认购买高风险产品?',
+       okText: '确认',
+       cancelText: '取消'
+      }).then(function(res){
+        pay();
+      });
+      return;
+    } 
+    
+    /*
 
     Main.customer.submitOrder($scope.data.productId, $scope.data.buyAmount, function(data1){
         Main.buy.purchasePublicFund($scope.data.fundNo, $scope.data.bankCardNo, $scope.data.buyAmount,
@@ -819,7 +867,7 @@ angular.module('starter.controllers', [])
             template:  error1
         });
       }, function(){
-    });    
+    });    */
 
   }
 
