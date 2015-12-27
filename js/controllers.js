@@ -823,7 +823,9 @@ angular.module('starter.controllers', [])
        okText: '确认',
        cancelText: '取消'
       }).then(function(res){
-        pay();
+        if (res) {
+          pay();
+        }
       });
       return;
     } 
@@ -834,7 +836,9 @@ angular.module('starter.controllers', [])
        okText: '确认',
        cancelText: '取消'
       }).then(function(res){
-        pay();
+        if (res){
+          pay();
+        }
       });
       return;
     } 
