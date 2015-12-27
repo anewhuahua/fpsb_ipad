@@ -752,6 +752,7 @@ angular.module('starter.controllers', [])
   }
 
   $scope.purchase = function() {
+
     if (isNaN(parseInt($scope.data.buyAmount,10))) {
       $ionicPopup.alert({
             title:    '提示信息',
@@ -760,6 +761,25 @@ angular.module('starter.controllers', [])
       });
       return;
     }
+
+    if (Main.buy.getBuyRiskLevel()=='1005') {
+      $ionicPopup.alert({
+            title:    '提示信息',
+            cssClass: 'alert-text',
+            template:  '您必须先参加长量基金理财评测'
+      }).then(function(){
+        $state.go('exam.customer', {suite: 'cljj'});
+      });
+    }
+
+    // $scope.data.product
+    /*
+    if (parseInt(Main.buy.getBuyRiskLevel()) >= parseInt()) {
+      if ($scope.data.product) {
+        $scope.data.product = 
+      }
+      
+    }*/
 
     Main.customer.submitOrder($scope.data.productId, $scope.data.buyAmount, function(data1){
         Main.buy.purchasePublicFund($scope.data.fundNo, $scope.data.bankCardNo, $scope.data.buyAmount,

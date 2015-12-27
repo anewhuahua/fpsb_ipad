@@ -408,6 +408,9 @@ angular.module('main.service',[])
         }, function(status){
           parseRestError('redeemPublicFund', status, errorHandler);
         }, finallyHandler());
+      },
+      getBuyRiskLevel: function() {
+        return transAccount.riskLevel;
       }
     },
 
