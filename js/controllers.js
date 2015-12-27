@@ -810,9 +810,9 @@ angular.module('starter.controllers', [])
     // $scope.data.product
     // 低风险，较低风险，中等风险，较高风险，高风险
     // 1004            1005             1006
-    riskLevel = parseInt($scope.data.product.riskLevel);
+    riskLevel = parseInt($scope.data.product.data.riskLevel);
     console.log($scope.data.product);
-    console.log(riskLevel);
+    //console.log(riskLevel);
     currRiskLevel = parseInt(Main.buy.getBuyRiskLevel());
     console.log(currRiskLevel);
     
