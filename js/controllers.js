@@ -173,12 +173,17 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('examCtrl', function($scope) {
+.controller('examCtrl', function($scope, $ionicHistory) {
   $scope.win = {
     result: false
   };
 
   $scope.data = {};
+
+  $scope.goBack = function() {
+    console.log('goback');
+    $ionicHistory.goBack();
+  }
 })
 
 .controller('examCustomerCtrl', function($scope, Main, $stateParams, $ionicPopup) {
