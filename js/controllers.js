@@ -762,7 +762,7 @@ angular.module('starter.controllers', [])
       return;
     }
 
-    if (Main.buy.getBuyRiskLevel()=='1005') {
+    if (Main.buy.getBuyRiskLevel()==null) {
       $ionicPopup.alert({
             title:    '提示信息',
             cssClass: 'alert-text',
@@ -774,13 +774,19 @@ angular.module('starter.controllers', [])
     }
 
     // $scope.data.product
+    // 低风险，较低风险，中等风险，较高风险，高风险
+    // 1004            1005             1006
+    riskLevel = parseInt($scope.data.product.riskLevel);
+    console.log(riskLevel);
+    currRiskLevel = parseInt(Main.buy.getBuyRiskLevel());
+    console.log(currRiskLevel);
     /*
-    if (parseInt(Main.buy.getBuyRiskLevel()) >= parseInt()) {
-      if ($scope.data.product) {
-        $scope.data.product = 
-      }
-      
-    }*/
+    if (currRiskLevel == 1004 && riskLevel>1) {
+      ionic.
+      return;
+    }
+    */
+
 
     Main.customer.submitOrder($scope.data.productId, $scope.data.buyAmount, function(data1){
         Main.buy.purchasePublicFund($scope.data.fundNo, $scope.data.bankCardNo, $scope.data.buyAmount,

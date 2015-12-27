@@ -318,8 +318,8 @@ angular.module('rest.service', [])
               mobile: mobile,
               ownerId: id,
               partner: 'cljj',
-              password: pwd, 
-              riskLevel: '1005'
+              password: pwd
+              // riskLevel: '1005'
             }
         };
           
