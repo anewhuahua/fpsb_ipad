@@ -2630,7 +2630,10 @@ angular.module('starter.controllers', [])
       $scope.data.update.imageId = $scope.imgProfile.id;
       param.imageId = $scope.imgProfile.id;
     }
+
+    // new certs
     found = false;
+    param.newCerts  = [];
     for(var key in $scope.tmpCerts){
       if ($scope.tmpCerts[key] == true) {
         if ($scope.data.profile.data.certs) {
@@ -2643,12 +2646,12 @@ angular.module('starter.controllers', [])
         }
 
         if (!found) {
-          param.newCerts  = [];
           param.newCerts.push(key);
         }
       }
     }
-
+    //
+    
     Main.consultant.updateConsultant(param, function(data){
       for (key in $scope.data.update) {
         $scope.data.update[key] = data[key];
