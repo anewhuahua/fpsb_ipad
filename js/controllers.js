@@ -2459,10 +2459,10 @@ angular.module('starter.controllers', [])
   
 
   $scope.tmpCerts = {
-    'cpb': 0, 
-    'afp': 0,
-    'cfp': 0,
-    'efp': 0
+    'cpb': false, 
+    'afp': false,
+    'cfp': false,
+    'efp': false
   }
   $scope.enableNewCert = function(c){
     if($scope.data.profile.data.certs!=null){
@@ -2629,6 +2629,22 @@ angular.module('starter.controllers', [])
     if ($scope.imgProfile.id != '') {
       $scope.data.update.imageId = $scope.imgProfile.id;
       param.imageId = $scope.imgProfile.id;
+    }
+    found = false;
+    for(var key in $scope.tmpCerts){
+      if ($scope.tmpCerts[key] == true) {
+        for (var i = 0; i < $scope.data.profile.data.certs.length; i++) {
+          if (key == $scope.data.profile.data.certs[i]) {
+            found = true;
+            break;
+          }
+        }
+
+        if (!found) {
+          param.newCerts  = {};
+          param.newCerts[] = key;
+        }
+      }
     }
 
     Main.consultant.updateConsultant(param, function(data){
