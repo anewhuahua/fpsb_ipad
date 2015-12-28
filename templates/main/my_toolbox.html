@@ -111,13 +111,14 @@
                           <div class="khzlzz2bf">         背   景   </div> 
                           <div class="khzlzz2br">{{data.profile.data.consultant.background}}</div>
                        </div>
+
+
+
                        <div class="khzlzz2c">
                           <div class="khzlzz2cf">职业证书</div> 
                           <ul class="khzlzz2cr">
-                             <li><img src="teImg/zslog.jpg" /></li>
-                             <li><img src="teImg/zslog2.jpg" /></li>
-                             <li><img src="teImg/zslog3.jpg" /></li>
-                             <li><img src="teImg/zslog4.jpg" /></li>
+                             <li ng-repeat="cert in data.profile.data.consultant.certs"><img src="{{cert | certImageFilter}}" /></li>
+                             
                           </ul>
                        </div>
                    
