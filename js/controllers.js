@@ -2642,7 +2642,7 @@ angular.module('starter.controllers', [])
 
         if (!found) {
           param.newCerts  = [];
-          param.newCerts[] = key;
+          param.newCerts.push(key);
         }
       }
     }
