@@ -1653,7 +1653,7 @@ angular.module('starter.controllers', [])
         
         buttonClicked: function(index) {
             if(index == 0){
-              option.sourceType = Camera.PictureSourceType.CAM·ERA;
+              option.sourceType = Camera.PictureSourceType.CAMERA;
               //type = 'camera';
 
             }else if(index == 1){
