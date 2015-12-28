@@ -58,6 +58,22 @@ angular.module('starter.controllers', [])
       return input;
   }
 })
+.filter('certImageFilter',function(){
+  return function(input){
+      if(input == 'cpb') {
+        return 'teImg/zslog.jpg';
+      } 
+      if(input == 'afp') {
+        return 'teImg/zslog2.jpg';
+      }
+      if (input == 'cfp'){
+        return 'teImg/zslog3.jpg';
+      }
+      if (input == 'efp'){
+        return 'teImg/zslog4.jpg';
+      }
+  }
+})
 .filter('imageFilter',function(Main){
   return function(input){
       return Main.queryUploadAccountUrl()+'/'+input;
@@ -844,7 +860,7 @@ angular.module('starter.controllers', [])
       return;
     } 
     
-    
+
   }
 
   $scope.goPhase = function(p) {
@@ -2419,10 +2435,8 @@ angular.module('starter.controllers', [])
     selectedGroup: 'all',
 
     update: {
-      cpb: 0,
-      afp: 0,
-      cfp: 0,
-      efp: 0,
+      certs: [],
+      newCerts: [],
 
       province: '',
       email: '',
@@ -2443,6 +2457,15 @@ angular.module('starter.controllers', [])
   $scope.data.currentBooking = $scope.data.bookings['all'];
   $scope.data.investments = Main.customer.getOrders()['all'],
   
+
+  $scope.enableNewCert = function(c){
+    for (var i = 0; i < $scope.data.profile.data.certs.length; i++){
+      if($scope.data.profile.data.certs[i] == c) {
+        return false;
+      }
+    }
+    return true;
+  }
   //**
   //** event listen function
   $rootScope.$on('ChangeWindow', function(event, args){

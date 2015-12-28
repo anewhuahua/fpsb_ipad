@@ -90,20 +90,25 @@
                        <div ng-if="!enableUpdatedProfile(1)" class="khzlzz2c">
                           <div class="khzlzz2cf1">职业证书</div> 
                           <ul class="khzlzz2cr1">
-                             <li><img src="teImg/zslog.jpg" /></li>
+                             <li ng-repeat="cert in data.profile.data.certs"><img src="{{cert | certImageFilter}}"></li>
+                             <!--<li><img src="teImg/zslog.jpg" /></li>
                              <li><img src="teImg/zslog2.jpg" /></li>
                              <li><img src="teImg/zslog3.jpg" /></li>
-                             <li><img src="teImg/zslog4.jpg" /></li>
+                             <li><img src="teImg/zslog4.jpg" /></li>-->
                           </ul>
                        </div>
 
                        <div ng-if="enableUpdatedProfile(1)" class="khzlzz2c">
                           <div class="khzlzz2cf1">职业证书</div> 
                           <div class="khzlzz2br7u11">
+                            <label ng-repeat="cert1 in ['cpb', 'afp', 'cfp', 'efp']" ng-if="enableNewCert(cert1)">
+                              <input name="cert1" type="checkbox" value="1" ng-model='data.update.cpb'/>CPB 
+                            </label>
+                            <!--
                             <label><input name="CPB" type="checkbox" value="1" ng-model='data.update.cpb'/>CPB </label>
                             <label><input name="AFP" type="checkbox" value="2" ng-model='data.update.afp'/>AFP </label>
                             <label><input name="CFP" type="checkbox" value="3" ng-model='data.update.cfp'/>CFP </label>
-                            <label><input name="EFP" type="checkbox" value="4" ng-model='data.update.efp'/>EFP </label>
+                            <label><input name="EFP" type="checkbox" value="4" ng-model='data.update.efp'/>EFP </label>-->
                           </div>
 
                        </div>
