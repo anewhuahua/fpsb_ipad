@@ -42,12 +42,12 @@
                 <div class="jnfw2yy"></div>
                 <div class="jnfw2d">
 
-                  <a href="" ng-class="{'jnfwcs': isDetail(1)}" ng-click="showDetail(1)">产品详情</a>
-                  <a href="" ng-class="{'jnfwcs': isDetail(2)}" ng-click="showDetail(2)">资源配置</a>
+                  <a href="" ng-class="{'jnfwcs': isDetail(1)}" ng-click="showDetail(1)" style="width:50%">产品详情</a>
+                  <a href="" ng-class="{'jnfwcs': isDetail(2)}" ng-click="showDetail(2)" style="width:50%">资源配置</a>
                   <!--<a href="" ng-class="{'jnfwcs': isDetail(3)}" ng-click="showDetail(3)">走势图</a>-->
                 </div>
                 
-                <div class="jnfw2zt" ng-if="isDetail(1)" style="width:50%">
+                <div class="jnfw2zt" ng-if="isDetail(1)">
                    <div class="jnfw2zta">
                      <span>产品全称</span>
                      <em>{{data.product.data.fundName}}</em>
@@ -98,7 +98,7 @@
                    
                 </div>
 
-                <div class="jnfw2zt" ng-if="isDetail(2)" style="width:50%">
+                <div class="jnfw2zt" ng-if="isDetail(2)">
 
                   <div class="jnfwtit">
                      <span>{{data.product.data.fundName}} 持仓股</span>
