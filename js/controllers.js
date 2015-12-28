@@ -2633,10 +2633,12 @@ angular.module('starter.controllers', [])
     found = false;
     for(var key in $scope.tmpCerts){
       if ($scope.tmpCerts[key] == true) {
-        for (var i = 0; i < $scope.data.profile.data.certs.length; i++) {
-          if (key == $scope.data.profile.data.certs[i]) {
-            found = true;
-            break;
+        if ($scope.data.profile.data.certs) {
+          for (var i = 0; i < $scope.data.profile.data.certs.length; i++) {
+            if (key == $scope.data.profile.data.certs[i]) {
+              found = true;
+              break;
+            }
           }
         }
 
