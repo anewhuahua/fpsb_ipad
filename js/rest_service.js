@@ -1190,22 +1190,6 @@ angular.module('rest.service', [])
             }
           }
 
-          if (req.data['certificates']) {
-            var cert = 0;
-            if (req.data['certificates'].cpb) {
-              cert = 1;
-            }
-            if (req.data['certificates'].afp) {
-              cert = cert + 2;
-            }
-            if (req.data['certificates'].cfp) {
-              cert = cert + 4;
-            }
-            if (req.data['certificates'].efp) {
-              cert = cert + 8;
-            }
-            req.data['certificates'] = -cert;
-          }
 
             //console.log(pid);
           $http(req).success(function(data){

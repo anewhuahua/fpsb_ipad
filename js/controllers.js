@@ -1423,48 +1423,7 @@ angular.module('starter.controllers', [])
       });
    }
 
-   $scope.modifyPassword = function(phone, code, name, pwd1, pwd2){
 
-      if (pwd1=='') {
-        $ionicPopup.alert({
-           title: '提示信息',
-           cssClass: 'alert-text',
-           template:  '请输入新密码'
-          });
-        return;
-      }
-      if (pwd1!=pwd2){
-        $ionicPopup.alert({
-           title: '提示信息',
-           cssClass: 'alert-text',
-           template:  '请确认两次密码输入一致'
-          });
-        return;
-      }
-      if (code==''){
-         $ionicPopup.alert({
-           title: '提示信息',
-           cssClass: 'alert-text',
-           template:  '请输入验证码'
-          });
-        return;
-      }
- 
-      Main.modifyPassword(phone, code, name, pwd1, function(data){
-        $ionicPopup.alert({
-           title: '提示信息',
-           cssClass: 'alert-text',
-           template:  '密码修改成功'
-          });
-
-      }, function(status){
-        $ionicPopup.alert({
-           title: '提示信息',
-           cssClass: 'alert-text',
-           template:  status
-          });
-      },function(){});
-   }
 
    $scope.showProductTab = function(tab) {
      $scope.data.looking_product_tab = tab;
@@ -2464,6 +2423,52 @@ angular.module('starter.controllers', [])
     'cfp': false,
     'efp': false
   }
+
+
+  $scope.modifyPassword = function(phone, code, name, pwd1, pwd2){
+      if (pwd1=='') {
+        $ionicPopup.alert({
+           title: '提示信息',
+           cssClass: 'alert-text',
+           template:  '请输入新密码'
+          });
+        return;
+      }
+      if (pwd1!=pwd2){
+        $ionicPopup.alert({
+           title: '提示信息',
+           cssClass: 'alert-text',
+           template:  '请确认两次密码输入一致'
+          });
+        return;
+      }
+      if (code==''){
+         $ionicPopup.alert({
+           title: '提示信息',
+           cssClass: 'alert-text',
+           template:  '请输入验证码'
+          });
+        return;
+      }
+ 
+      Main.modifyPassword(phone, code, name, pwd1, function(data){
+        $ionicPopup.alert({
+           title: '提示信息',
+           cssClass: 'alert-text',
+           template:  '密码修改成功'
+          }).then(function(){
+            $scope.consultant.updatedProfile = 0;
+          });
+
+      }, function(status){
+        $ionicPopup.alert({
+           title: '提示信息',
+           cssClass: 'alert-text',
+           template:  status
+          });
+      },function(){});
+   }
+
   $scope.enableNewCert = function(c){
     if($scope.data.profile.data.certs!=null){
       for (var i = 0; i < $scope.data.profile.data.certs.length; i++){
@@ -2651,7 +2656,7 @@ angular.module('starter.controllers', [])
       }
     }
     //
-    
+
     Main.consultant.updateConsultant(param, function(data){
       for (key in $scope.data.update) {
         $scope.data.update[key] = data[key];
@@ -2857,6 +2862,51 @@ angular.module('starter.controllers', [])
   $scope.data.currentOrder = $scope.data.orders['all'];
   $scope.data.currentBooking = $scope.data.bookings['all'];
 
+
+  $scope.modifyPassword = function(phone, code, name, pwd1, pwd2){
+      if (pwd1=='') {
+        $ionicPopup.alert({
+           title: '提示信息',
+           cssClass: 'alert-text',
+           template:  '请输入新密码'
+          });
+        return;
+      }
+      if (pwd1!=pwd2){
+        $ionicPopup.alert({
+           title: '提示信息',
+           cssClass: 'alert-text',
+           template:  '请确认两次密码输入一致'
+          });
+        return;
+      }
+      if (code==''){
+         $ionicPopup.alert({
+           title: '提示信息',
+           cssClass: 'alert-text',
+           template:  '请输入验证码'
+          });
+        return;
+      }
+ 
+      Main.modifyPassword(phone, code, name, pwd1, function(data){
+        $ionicPopup.alert({
+           title: '提示信息',
+           cssClass: 'alert-text',
+           template:  '密码修改成功'
+          }).then(function(){
+            $scope.customer.updatedProfile = 0;
+          });
+
+      }, function(status){
+        $ionicPopup.alert({
+           title: '提示信息',
+           cssClass: 'alert-text',
+           template:  status
+          });
+      },function(){});
+   }
+   
   //**
   //** common function
   $scope.updateProfileInformation = function(param) {
