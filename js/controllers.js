@@ -2641,7 +2641,7 @@ angular.module('starter.controllers', [])
         }
 
         if (!found) {
-          param.newCerts  = {};
+          param.newCerts  = [];
           param.newCerts[] = key;
         }
       }
