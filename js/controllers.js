@@ -2458,6 +2458,8 @@ angular.module('starter.controllers', [])
   $scope.data.investments = Main.customer.getOrders()['all'],
   
 
+  $scope.tmpCerts = {
+  }
   $scope.enableNewCert = function(c){
     if($scope.data.profile.data.certs!=null){
       for (var i = 0; i < $scope.data.profile.data.certs.length; i++){
@@ -2466,6 +2468,9 @@ angular.module('starter.controllers', [])
         }
       }
     }
+
+
+    $scope.tmpCerts[c] = 0
     return true;
   }
   //**
@@ -2674,6 +2679,9 @@ angular.module('starter.controllers', [])
   };
 
   var refreshData = function() {
+
+    console.log($scope.tmpCerts);
+
      // update profile
     Main.consultant.queryConsultant(function(data){
       for (key in $scope.data.update) {
