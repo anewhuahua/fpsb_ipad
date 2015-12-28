@@ -22,7 +22,7 @@
               <div class="gmfw1">
                  <span>最新净值<em>{{data.product.data.fundNavNewest.nav}}</em></span>
                  <span>累计净值<em>{{data.product.data.fundNavNewest.sumOfNav}}</em></span>
-                 <span>申购费率<em>18</em>%</span>
+                 <!--<span>申购费率<em>18</em>%</span>-->
               </div>
               <span class="gmtit">产品说明：</span>
               <div class="gmlbdv">
@@ -44,7 +44,7 @@
 
                   <a href="" ng-class="{'jnfwcs': isDetail(1)}" ng-click="showDetail(1)">产品详情</a>
                   <a href="" ng-class="{'jnfwcs': isDetail(2)}" ng-click="showDetail(2)">资源配置</a>
-                  <a href="" ng-class="{'jnfwcs': isDetail(3)}" ng-click="showDetail(3)">走势图</a>
+                  <!--<a href="" ng-class="{'jnfwcs': isDetail(3)}" ng-click="showDetail(3)">走势图</a>-->
                 </div>
                 
                 <div class="jnfw2zt" ng-if="isDetail(1)">
@@ -101,25 +101,34 @@
                 <div class="jnfw2zt" ng-if="isDetail(2)">
 
                   <div class="jnfwtit">
-                     <span>长盛电子信息产业混合资产配置</span>
+                     <span>{{data.product.data.fundName}} 持仓股</span>
                      <div class="jnfwtr">
                         <span></span>
+                        <!--
                         <em>请选择截止日期：</em>
                         <select>
                            <option>2015-01-30</option>
                            <option>2015-01-30</option>
                            <option>2015-01-30</option>
-                        </select>
+                        </select>-->
                      </div>
                   </div>
                   
                   <div class="jnfw3dv">
-                    <span class="jnfwsp1"><em>序号</em> <em>资产名称</em> <em>金额(万元)</em> <em>占净值比例(%)</em></span>
+                    <span class="jnfwsp1"><em>股票代码</em> <em>股票名称</em> <em>持有市值(万元)</em> <em>占净资产比例(%)</em></span>
+
+                    <span ng-repeat="stock in data.product.data.stockHoldings" class="jnfwsp2">
+                      <em>{{stock.code}}</em> 
+                      <em>{{stock.stockName}}</em> 
+                      <em>{{stock.holdSize}}</em> 
+                      <em>{{stock.netScale}}%</em>
+                    </span>
+                    <!--
                     <span class="jnfwsp2"><em>1</em> <em>股票</em> <em>1312424</em> <em>1412%</em></span>
-                    <span class="jnfwsp2"><em>1</em> <em>股票</em> <em>1312424</em> <em>1412%</em></span>
-                    <span class="jnfwsp2"><em>1</em> <em>股票</em> <em>1312424</em> <em>1412%</em></span>
+                    <span class="jnfwsp2"><em>1</em> <em>股票</em> <em>1312424</em> <em>1412%</em></span>-->
                   </div>
                   
+                  <!--
                   <div class="jnfwtit">
                      <span>长盛电子信息产业混合2015年2季度十大重仓股</span>
                      <div class="jnfwtr">
@@ -179,18 +188,16 @@
                     <span class="jnfwsp2"><em>1</em> <em>股票</em> <em>1312424</em> <em>1412%</em></span>
                   </div>
                 
-                
-                
-                
-                
                   <span class="fhwwt">长盛电子信息产业混合2015年2季度行业持仓明细</span>
                   <em class="fhwjtn">本基金股票资产占基金资产的比例不低于60%，其中，投资于基金合同界定的信息产业股票资产占非现金基金资产的比例不低于80%。基金三季报披露的仓位在八成左右。</em>
-                </div>
+                -->
 
+                </div>
+                <!--
                 <div class="jnfw2zt" ng-if="isDetail(3)">
                       <flot dataset="dataset" options="options" height="480px"></flot>
                       <div id="legend" style="width: 200px; height: 200px;"></div>
-                </div>
+                </div>-->
             </div>
            
 

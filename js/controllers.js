@@ -785,6 +785,7 @@ angular.module('starter.controllers', [])
       }, function(){
     });   
   }
+
   $scope.purchase = function() {
 
     if (isNaN(parseInt($scope.data.buyAmount,10))) {
@@ -811,7 +812,7 @@ angular.module('starter.controllers', [])
     // 低风险，较低风险，中等风险，较高风险，高风险
     // 1004            1005             1006
     riskLevel = parseInt($scope.data.product.data.riskLevel);
-    console.log($scope.data.product);
+    //console.log($scope.data.product);
     //console.log(riskLevel);
     currRiskLevel = parseInt(Main.buy.getBuyRiskLevel());
     console.log(currRiskLevel);
@@ -843,36 +844,7 @@ angular.module('starter.controllers', [])
       return;
     } 
     
-    /*
-
-    Main.customer.submitOrder($scope.data.productId, $scope.data.buyAmount, function(data1){
-        Main.buy.purchasePublicFund($scope.data.fundNo, $scope.data.bankCardNo, $scope.data.buyAmount,
-          function(data){
-            $ionicPopup.alert({
-                  title:    '提示信息',
-                  cssClass: 'alert-text',
-                  template:  '购买成功'
-            }).then(function(){
-              $ionicHistory.goBack();
-            });
-          }, function(status){
-            $ionicPopup.alert({
-                  title:    '提示信息',
-                  cssClass: 'alert-text',
-                  template:  status
-            });
-          }, function(){
-
-          });
-      }, function(error1){
-        $ionicPopup.alert({
-            title:    '购买失败',
-            cssClass: 'alert-text',
-            template:  error1
-        });
-      }, function(){
-    });    */
-
+    
   }
 
   $scope.goPhase = function(p) {
