@@ -101,7 +101,7 @@
                        <div ng-if="enableUpdatedProfile(1)" class="khzlzz2c">
                           <div class="khzlzz2cf1">职业证书</div> 
                           <div class="khzlzz2br7u11">
-                            <label ng-repeat="cert1 in ['cpb', 'afp', 'cfp', 'efp']" ng-if="enableNewCert('{{cert1}}')">
+                            <label ng-repeat="cert1 in ['cpb', 'afp', 'cfp', 'efp']" ng-if="enableNewCert(cert1)">
                               <input name="{{cert1}}" type="checkbox" ng-model="tmpCerts['{{cert1}}']"/>{{cert1}} 
                             </label>
                             <!--
