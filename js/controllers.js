@@ -2459,6 +2459,10 @@ angular.module('starter.controllers', [])
   
 
   $scope.tmpCerts = {
+    'cpb': 0, 
+    'afp': 0,
+    'cfp': 0,
+    'efp': 0
   }
   $scope.enableNewCert = function(c){
     if($scope.data.profile.data.certs!=null){
@@ -2468,9 +2472,6 @@ angular.module('starter.controllers', [])
         }
       }
     }
-
-
-    $scope.tmpCerts[c] = 0
     return true;
   }
   //**
