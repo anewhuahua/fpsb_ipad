@@ -102,7 +102,7 @@
                           <div class="khzlzz2cf1">职业证书</div> 
                           <div class="khzlzz2br7u11">
                             <label ng-repeat="cert1 in ['cpb', 'afp', 'cfp', 'efp']" ng-if="enableNewCert(cert1)">
-                              <input name="cert1" type="checkbox" value="1" ng-model="tmpCerts[cert1]"/>{{cert1}} 
+                              <input name="cert1" type="checkbox" value="1" ng-model="tmpCerts['{{cert1}}']"/>{{cert1}} 
                             </label>
                             <!--
                             <label><input name="CPB" type="checkbox" value="1" ng-model='data.update.cpb'/>CPB </label>
