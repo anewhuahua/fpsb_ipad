@@ -2459,7 +2459,7 @@ angular.module('starter.controllers', [])
   
 
   $scope.enableNewCert = function(c){
-    if（$scope.data.profile.data.certs!=null){
+    if($scope.data.profile.data.certs!=null){
       for (var i = 0; i < $scope.data.profile.data.certs.length; i++){
         if($scope.data.profile.data.certs[i] == c) {
           return false;
