@@ -1379,7 +1379,7 @@ angular.module('starter.controllers', [])
       window.open('http://biaoweihui.idea-source.net/abstract/', '_system');
    }
    $scope.goRegisterConsultant = function() {
-      window.open('http://115.29.207.154:8888', '_system');
+      window.open('http://115.29.207.154:8888/i_register', '_system');
    }
 
 
