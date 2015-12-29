@@ -1378,6 +1378,12 @@ angular.module('starter.controllers', [])
    $scope.goMainPage = function() {
       window.open('http://biaoweihui.idea-source.net/abstract/', '_system');
    }
+   $scope.goRegisterConsultant = function() {
+      window.open('http://115.29.207.154:8888', '_system');
+   }
+
+
+
    $scope.complain = function() {
       $ionicPopup.alert({
                   title: '投诉',
