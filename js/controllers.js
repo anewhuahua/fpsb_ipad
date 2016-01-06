@@ -441,10 +441,10 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('commonServiceCtrl', function($scope, $state, $ionicPopup, $stateParams, $ionicScrollDelegate, $ionicHistory, Main, Notify){
+.controller('commonServiceCtrl', function($scope, $state, $ionicPopup, $stateParams, $ionicScrollDelegate, 
+                    $ionicHistory, Main, Notify, SecurePopup){
   var cid = $stateParams.categoryId;
   var pid = $stateParams.productId;
-
 
   Main.isLikedProduct(pid, function(data){
           if(data.length>0) {
@@ -481,11 +481,19 @@ angular.module('starter.controllers', [])
       }
       Main.likeIt(product, function(data){
           $scope.currentLiked = true;
+          /*
           $ionicPopup.alert({
                   title: '提示信息',
                   cssClass: 'alert-text',
                   template:  '收藏成功!'
               });
+          */
+          var alertPopup = SecurePopup.show('alert', {
+             title: '提示信息',
+             cssClass: 'alert-text',
+             template:  '收藏成功!'
+           });
+
       }, function(status){
         $scope.currentLiked = false;
           $ionicPopup.alert({

@@ -31,9 +31,8 @@ angular.module('factory.service',[])
       return Option.create(min, max, step);
     }
 
-
-
-
-    
   }
+
+
+  
 });
