@@ -502,11 +502,13 @@ angular.module('starter.controllers', [])
 
       }, function(status){
         $scope.currentLiked = false;
-          $ionicPopup.alert({
+          var myPopup = $ionicPopup.alert({
                   title: '提示信息',
                   cssClass: 'alert-text',
                   template:  '收藏失败!'
-              }).then(function(res){});
+              }).then(function(res){
+                myPopup.close();
+              });
       }, function(){});
   }
   
