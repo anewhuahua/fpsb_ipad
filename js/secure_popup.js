@@ -19,9 +19,8 @@ angular.module('securePopup',[])
                 }
             };
         }
-  ])
+  ]);
 
-  
-});
+
 
 
