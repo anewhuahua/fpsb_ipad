@@ -86,6 +86,10 @@
                    
                   </div><!--订单信息-e-->
 
+
+                  <a ng-if="data.order.product.type=='PublicFund'" ng-click='redeemPublicFund()' class="jnwfgma">赎回</a>
+                  <a ng-if="data.order.product.type=='PublicFund'" ng-click='buyMorePublicFund()' class="jnwfgma">追加购买</a>
+
                   <div class="ddxqxx" ng-if="data.order.product.type=='PublicFund'"><!--订单信息-s-->
                      <span>历史交易记录</span>
                      <p ng-repeat="hist in data.order.histories">
@@ -100,8 +104,7 @@
                    
                   </div><!--订单信息-e-->
 
-                  <a ng-if="data.order.product.type=='PublicFund'" ng-click='redeemPublicFund()' class="jnwfgma">赎回</a>
-                  <a ng-if="data.order.product.type=='PublicFund'" ng-click='buyMorePublicFund()' class="jnwfgma">追加购买</a>
+           
 
               </div>
 
