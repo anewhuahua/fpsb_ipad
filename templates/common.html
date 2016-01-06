@@ -59,7 +59,7 @@
     
       <div class="prxqnr2">
       
-      <div class="prxqnr2lf">63%</div>
+      <div class="prxqnr2lf">{{data.looking_product.progress*100 / data.looking_product.quota / 10000}}%</div>
       
       <div class="prxqrig">
         
@@ -73,9 +73,9 @@
             <em>产品期限  </em>
           </div>
           <div class="prxqrpnr3">
-            <p><i>目标规模</i><em>100000000</em><span>万元</span></p>
-            <p><i>起购门槛</i><em>300-599</em><span>万元</span></p>
-            <p><i>募集状态</i><em>剩余26</em><span>天</span></p>
+            <p><i>目标规模</i><em>{{data.looking_product.quota}}</em><span>万元</span></p>
+            <p><i>起购门槛</i><em>{{data.looking_product.subscriptionQuota}}</em><span>万元</span></p>
+            <p><i>募集状态</i><em>截止:{{data.looking_product.rasing_finish_time | date:'yyyy-MM-dd'}}</em><span></span></p>
           </div>
         </div><!-- 右边的上半部分 -->
 

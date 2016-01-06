@@ -82,7 +82,7 @@ angular.module('starter.controllers', [])
 .filter('commissionStateFilter',function(){
   return function(input){
     if (input.state=='create') {
-      return '创建'
+      return '未申请'
     } else if (input.state=='withdraw') {
       return '已申请'
     } else if (input.state=='payoff') {
@@ -242,7 +242,13 @@ angular.module('starter.controllers', [])
     Main.customer.submitRiskTest($scope.riskTest.answer.id, $scope.riskTest.answer.data, function(data){
       $scope.data.examResult = data;
       $scope.win.result = true;
-    }, function(status){}, function(){});
+    }, function(status){
+      $ionicPopup.alert({
+            title: '提示信息',
+            cssClass: 'alert-text',
+            template:  status
+      });
+    }, function(){});
   }
 
   $scope.reset =  function() {
@@ -845,8 +851,7 @@ angular.module('starter.controllers', [])
         }
       });
       return;
-    } 
-    if(currRiskLevel == 1005 && riskLevel>3) {
+    } else if(currRiskLevel == 1005 && riskLevel>3) {
       $ionicPopup.confirm({
        title: '提醒',
        template: '确认购买高风险产品?',
@@ -858,9 +863,10 @@ angular.module('starter.controllers', [])
         }
       });
       return;
-    } 
+    } else {
+      pay();
+    }
     
-
   }
 
   $scope.goPhase = function(p) {
@@ -1376,7 +1382,7 @@ angular.module('starter.controllers', [])
 .controller('mainCtrl', function($scope, $state, $window, $cordovaNetwork, $cordovaCamera, $ionicActionSheet, $ionicPopup, $rootScope, $ionicHistory, $timeout, Main, Notify, Factory) {
   
    $scope.goMainPage = function() {
-      window.open('http://biaoweihui.idea-source.net/abstract/', '_system');
+      //window.open('http://biaoweihui.idea-source.net/abstract/', '_system');
    }
    $scope.goRegisterConsultant = function() {
       window.open('http://115.29.207.154:8888/i_register', '_system');

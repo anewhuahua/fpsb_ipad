@@ -81,7 +81,7 @@
                      <p>
                         <em>交易编号：{{data.order.id}}</em>
                         <em>客户姓名：{{data.order.customer.fullname}}</em>
-                        <em>创建时间：{{data.order.timestamp | date:'yy-MM-dd  hh:mm:ss'}}</em>
+                        <em>创建时间：{{data.order.timestamp | date:'yyyy-MM-dd  HH:mm:ss'}}</em>
                      </p>
                    
                   </div><!--订单信息-e-->
@@ -89,7 +89,7 @@
                   <div class="ddxqxx" ng-if="data.order.product.type=='PublicFund'"><!--订单信息-s-->
                      <span>历史交易记录</span>
                      <p ng-repeat="hist in data.order.histories">
-                        <em>时间：{{hist.timestamp | date:'yyyy-MM-dd  hh:mm:ss'}}</em>
+                        <em>时间：{{hist.timestamp | date:'yyyy-MM-dd  HH:mm:ss'}}</em>
                         <em>交易金额：{{hist.quota}}</em>
                      </p>
                      <!--
