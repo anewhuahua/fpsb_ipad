@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['ionic', 'ngCordova', 'angular-flot', 'ionicMultipleViews', 'starter.controllers', 
-                           'rest.service', 'storage.service', 'factory.service',
+                           'rest.service', 'storage.service', 'factory.service', 'securePopup'
                            'notify.service', 'main.service'])
   //
 
