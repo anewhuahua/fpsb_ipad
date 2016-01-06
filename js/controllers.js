@@ -484,7 +484,7 @@ angular.module('starter.controllers', [])
       Main.likeIt(product, function(data){
           $scope.currentLiked = true;
           
-          var myPopup = ionicPopup.alert({
+          var myPopup = $ionicPopup.alert({
                   title: '提示信息',
                   cssClass: 'alert-text',
                   template:  '收藏成功!'
