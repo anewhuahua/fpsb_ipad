@@ -76,6 +76,7 @@ angular.module('main.service',[])
     overseaproperty:      {type:  'overseaproperty',     name: '海外置业',      image: 'teImg/haiwaizhiye.png'},
   };
 
+  var enablePopup = true;
 
 // bookings
   var Bookings = function(){
@@ -628,6 +629,9 @@ angular.module('main.service',[])
     },
 
     likeIt: function(product, successHandler, errorHandler, finallyHandler) {
+      if (!enablePopup){return;}
+      enablePopup = false;
+
       console.log(liked.data.length);
       if (liked.data.length <= 60) {
         Rest.addToFavorites(id, product.id, function(data){
@@ -638,7 +642,7 @@ angular.module('main.service',[])
         }, function(status){
           parseRestError('addToFavorites',  status, errorHandler);
           return {ret: 0, msg: '网络错误'};
-        }, finallyHandler());
+        }, finallyHandler(enablePopup = true;));
         
       } else {
         return {ret: 0, msg: '超出最大收藏数量60'}
