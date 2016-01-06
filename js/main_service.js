@@ -642,7 +642,7 @@ angular.module('main.service',[])
         }, function(status){
           parseRestError('addToFavorites',  status, errorHandler);
           return {ret: 0, msg: '网络错误'};
-        }, finallyHandler(enablePopup = true;));
+        }, function(){enablePopup = true;});
         
       } else {
         return {ret: 0, msg: '超出最大收藏数量60'}
