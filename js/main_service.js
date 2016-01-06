@@ -295,9 +295,6 @@ angular.module('main.service',[])
 
     buy: {
       queryTransAccount: function(name, identity, successHandler, errorHandler, finallyHandler) {
-        if (!enablePopup){return;}
-        enablePopup = false;
-
         Rest.buy.queryTransAccount(id, name, identity, function(data){
           if(parseRestSuccess('queryTransAccount', data, successHandler, errorHandler)) {
             console.log('tyson11111111');
@@ -309,8 +306,6 @@ angular.module('main.service',[])
         }, function(){enablePopup = true;});
       },
       createTransAccount: function(name, identity, pwd, mail, mobile, successHandler, errorHandler, finallyHandler) {
-        if (!enablePopup){return;}
-        enablePopup = false;
         Rest.buy.createTransAccount(id, name, identity, pwd, mail, mobile, function(data){
           if(parseRestSuccess('createTransAccount', data, successHandler, errorHandler)) {
             console.log('tyson11111111');
@@ -323,8 +318,6 @@ angular.module('main.service',[])
       },
 
       authorizeTransAccount: function(pwd, successHandler, errorHandler, finallyHandler) {
-        if (!enablePopup){return;}
-        enablePopup = false;
         Rest.buy.authorizeTransAccount(id, transAccount.id, pwd, function(data){
           if(parseRestSuccess('authorizeTransAccount', data, successHandler, errorHandler)) {
             console.log('tyson11111111');
