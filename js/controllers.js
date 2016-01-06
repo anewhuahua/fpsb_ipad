@@ -442,7 +442,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('commonServiceCtrl', function($scope, $state, $ionicPopup, $stateParams, $ionicScrollDelegate, 
-                    $ionicHistory, Main, Notify){
+                    $ionicHistory, Main, Notify, SecurePopup){
   var cid = $stateParams.categoryId;
   var pid = $stateParams.productId;
 
@@ -471,33 +471,30 @@ angular.module('starter.controllers', [])
   //$scope.product = Main.getProductDetail(cid, pid);
 
   $scope.likeIt = function(product) {
-      if ($scope.like_flag) {
-        return;
-      }
-      $scope.like_flag = true;
+
       if (Main.getRole() == 'Guest') {
          $ionicPopup.alert({
                     title: '提示信息',
                     cssClass: 'alert-text',
                     template:  '请先登入!'
                 });
-         $scope.like_flag = false;
          return;
       }
+
       Main.likeIt(product, function(data){
           $scope.currentLiked = true;
-          
+          /*
           $ionicPopup.alert({
                   title: '提示信息',
                   cssClass: 'alert-text',
                   template:  '收藏成功!'
-              }).then(function(res){});
-          /*
+              }).then(function(res){});*/
+          
           var alertPopup = SecurePopup.show('alert', {
              title: '提示信息',
              cssClass: 'alert-text',
              template:  '收藏成功!'
-           });*/
+           });
 
       }, function(status){
         $scope.currentLiked = false;
@@ -505,10 +502,8 @@ angular.module('starter.controllers', [])
                   title: '提示信息',
                   cssClass: 'alert-text',
                   template:  '收藏失败!'
-              });
-      }, function(){
-        $scope.like_flag = false;
-      });
+              }).then(function(res){});
+      }, function(){});
   }
   
 
