@@ -480,11 +480,10 @@ angular.module('starter.controllers', [])
                 });
          return;
       }
-
+      var myPopup;
       Main.likeIt(product, function(data){
           $scope.currentLiked = true;
-          
-          var myPopup = $ionicPopup.alert({
+          myPopup = $ionicPopup.alert({
                   title: '提示信息',
                   cssClass: 'alert-text',
                   template:  '收藏成功!'
@@ -502,7 +501,7 @@ angular.module('starter.controllers', [])
 
       }, function(status){
         $scope.currentLiked = false;
-          var myPopup = $ionicPopup.alert({
+          myPopup = $ionicPopup.alert({
                   title: '提示信息',
                   cssClass: 'alert-text',
                   template:  '收藏失败!'
