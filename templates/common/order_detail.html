@@ -51,7 +51,7 @@
                          <ul class="gnr2nrbbmrig" ng-if="data.order.product.type!='PublicFund'">
                            <li><span>投资金额(元)</span>  <em>{{data.order.quota}}</em></li>
                            <li ng-if="data.order.product.type == 'PrivateFund' || data.order.product.type == 'Trust' || data.order.product.type == 'Portfolio'"><span>预期收益率</span>  <em>{{data.order.product.benefitRate}}%</em></li>
-                           <li ng-if="enableCommission()"><span>佣金收益(元)</span>  <em>待计算</em></li>
+                           <li ng-if="enableCommission()"><span>佣金收益(元)</span>  <em ng-if="data.order.extra!=null && data.order.extra.commission!=null">{{data.order.extra.commission}}}</em></li>
                          </ul>
 
                          <ul class="gnr2nrbbmrig" ng-if="data.order.product.type=='PublicFund'" style="width:99%">
@@ -61,7 +61,7 @@
                            <li><span>可用份额(份)</span>  <em>{{data.order.extra.usableShare}}</em></li>
                            <li><span>冻结份额(份)</span>  <em>{{data.order.extra.freezerShare}}</em></li>
                            <li><span>在途资金(元)</span>  <em>{{data.order.extra.underwayAmount}}</em></li>
-                           <li ng-if="enableCommission()"><span>佣金收益(元)</span>  <em>待计算</em></li>
+                           <li ng-if="enableCommission()"><span>佣金收益(元)</span>  <em ng-if="data.order.extra!=null && data.order.extra.commission!=null">{{data.order.extra.commission}}</em></li>
                          </ul>
                          
                        </div>

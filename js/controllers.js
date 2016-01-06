@@ -1137,7 +1137,7 @@ angular.module('starter.controllers', [])
       {key:'stock',  name:'股票型'}, 
       {key:'mixed',  name:'混合型'}, 
       {key:'bond',  name:'债券型'}, 
-      {key:'all',  name:'货币型'}, 
+      {key:'xx',  name:'货币型'}, 
       /*
       {key:'xx4',  name:'指数型'}, 
       {key:'xx5',  name:'保本型'}, 
@@ -1163,35 +1163,35 @@ angular.module('starter.controllers', [])
     $scope.data.key = key;
 
     if(key == 1) {  //近1周
-      param = {sortby: 'weekRate', sort: 'desc'};
+      param = {sortby: 'weekRate', sort: 'desc', subtype: $scope.data.currentSubType};
       Main.sortProducts($scope.data.category, param,
         function(data){}, function(status){}, function(){});
     } else if (key == 2) { //近1月
-      param = {sortby: 'monRate1', sort: 'desc'};
+      param = {sortby: 'monRate1', sort: 'desc', subtype: $scope.data.currentSubType};
       Main.sortProducts($scope.data.category, param,
         function(data){}, function(status){}, function(){});
     } else if (key == 3) { //近3月
-      param = {sortby: 'monRate3', sort: 'desc'};
+      param = {sortby: 'monRate3', sort: 'desc', subtype: $scope.data.currentSubType};
       Main.sortProducts($scope.data.category, param,
         function(data){}, function(status){}, function(){});
     } else if (key == 4) { // 今年来
-      param = {sortby: 'yearRate0', sort: 'desc'};
+      param = {sortby: 'yearRate0', sort: 'desc', subtype: $scope.data.currentSubType};
       Main.sortProducts($scope.data.category, param,
         function(data){}, function(status){}, function(){});
     } else if (key == 5) { // 近1年
-      param = {sortby: 'yearRate1', sort: 'desc'};
+      param = {sortby: 'yearRate1', sort: 'desc', subtype: $scope.data.currentSubType};
       Main.sortProducts($scope.data.category, param,
         function(data){}, function(status){}, function(){});
     } else if (key == 6) { // 近3年
-      param = {sortby: 'yearRate3', sort: 'desc'};
+      param = {sortby: 'yearRate3', sort: 'desc', subtype: $scope.data.currentSubType};
       Main.sortProducts($scope.data.category, param,
         function(data){}, function(status){}, function(){});
     } else if (key == 7) { // 整体收益
-      param = {sortby: 'sumRate', sort: 'desc'};
+      param = {sortby: 'sumRate', sort: 'desc', subtype: $scope.data.currentSubType};
       Main.sortProducts($scope.data.category, param,
         function(data){}, function(status){}, function(){});
     } else if (key == 8) { // 单位净值
-      param = {sortby: 'Nav', sort: 'desc'};
+      param = {sortby: 'Nav', sort: 'desc', subtype: $scope.data.currentSubType};
       Main.sortProducts($scope.data.category, param,
         function(data){}, function(status){}, function(){});
     } 
