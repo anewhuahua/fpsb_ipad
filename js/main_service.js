@@ -295,6 +295,9 @@ angular.module('main.service',[])
 
     buy: {
       queryTransAccount: function(name, identity, successHandler, errorHandler, finallyHandler) {
+        if (!enablePopup){return;}
+        enablePopup = false;
+
         Rest.buy.queryTransAccount(id, name, identity, function(data){
           if(parseRestSuccess('queryTransAccount', data, successHandler, errorHandler)) {
             console.log('tyson11111111');
@@ -303,9 +306,11 @@ angular.module('main.service',[])
           }
         }, function(status){
           parseRestError('queryTransAccount', status, errorHandler);
-        }, finallyHandler());
+        }, function(){enablePopup = true;});
       },
       createTransAccount: function(name, identity, pwd, mail, mobile, successHandler, errorHandler, finallyHandler) {
+        if (!enablePopup){return;}
+        enablePopup = false;
         Rest.buy.createTransAccount(id, name, identity, pwd, mail, mobile, function(data){
           if(parseRestSuccess('createTransAccount', data, successHandler, errorHandler)) {
             console.log('tyson11111111');
@@ -314,10 +319,12 @@ angular.module('main.service',[])
           }
         }, function(status){
           parseRestError('createTransAccount', status, errorHandler);
-        }, finallyHandler());
+        }, function(){enablePopup = true;});
       },
 
       authorizeTransAccount: function(pwd, successHandler, errorHandler, finallyHandler) {
+        if (!enablePopup){return;}
+        enablePopup = false;
         Rest.buy.authorizeTransAccount(id, transAccount.id, pwd, function(data){
           if(parseRestSuccess('authorizeTransAccount', data, successHandler, errorHandler)) {
             console.log('tyson11111111');
@@ -326,10 +333,12 @@ angular.module('main.service',[])
           }
         }, function(status){
           parseRestError('authorizeTransAccount', status, errorHandler);
-        }, finallyHandler());
+        }, function(){enablePopup = true;});
       },
 
       queryBankBinding: function(tid, successHandler, errorHandler, finallyHandler) {
+        if (!enablePopup){return;}
+        enablePopup = false;
         Rest.buy.queryBankBinding(id, tid, function(data){
           if(parseRestSuccess('queryBankBinding', data, successHandler, errorHandler)) {
             console.log('tyson11111111');
@@ -337,10 +346,12 @@ angular.module('main.service',[])
           }
         }, function(status){
           parseRestError('queryBankBinding', status, errorHandler);
-        }, finallyHandler());
+        }, function(){enablePopup = true;});
       },
 
       queryValidBanks: function(tid, successHandler, errorHandler, finallyHandler) {
+        if (!enablePopup){return;}
+        enablePopup = false;
         Rest.buy.queryValidBanks(id, tid, function(data){
           if(parseRestSuccess('queryValidBanks', data, successHandler, errorHandler)) {
             console.log('tyson11111111');
@@ -349,10 +360,13 @@ angular.module('main.service',[])
           }
         }, function(status){
           parseRestError('queryValidBanks', status, errorHandler);
-        }, finallyHandler());
+        }, function(){enablePopup = true;});
       },
 
       queryBindingBanks: function(tid, successHandler, errorHandler, finallyHandler) {
+        if (!enablePopup){return;}
+        enablePopup = false;
+
         if (tid=='magic') {
           tid = transAccount.id;
         }
@@ -365,10 +379,13 @@ angular.module('main.service',[])
           }
         }, function(status){
           parseRestError('queryBindingBanks', status, errorHandler);
-        }, finallyHandler());
+        }, function(){enablePopup = true;});
       },
 
       initiateBankBinding: function(bankId, bankName, bankCardNo, successHandler, errorHandler, finallyHandler) {
+        if (!enablePopup){return;}
+        enablePopup = false;
+
         Rest.buy.initiateBankBinding(id, transAccount.id, bankId, bankName, bankCardNo, function(data){
           if(parseRestSuccess('initiateBankBinding', data, successHandler, errorHandler)) {
             console.log('tyson11111111');
@@ -376,10 +393,12 @@ angular.module('main.service',[])
           }
         }, function(status){
           parseRestError('initiateBankBinding', status, errorHandler);
-        }, finallyHandler());
+        }, function(){enablePopup = true;});
       },
 
       confirmBankBinding: function(token, code, apply, bankId, bankName, bankCardNo, successHandler, errorHandler, finallyHandler) {
+        if (!enablePopup){return;}
+        enablePopup = false;
         Rest.buy.confirmBankBinding(id, transAccount.id, token, code, apply,
                                     bankId, bankName, bankCardNo, function(data){
           if(parseRestSuccess('confirmBankBinding', data, successHandler, errorHandler)) {
@@ -388,9 +407,11 @@ angular.module('main.service',[])
           }
         }, function(status){
           parseRestError('confirmBankBinding', status, errorHandler);
-        }, finallyHandler());
+        }, function(){enablePopup = true;});
       },
       purchasePublicFund: function(pid, bcard,  amount, successHandler, errorHandler, finallyHandler) {
+        if (!enablePopup){return;}
+        enablePopup = false;
         Rest.buy.purchasePublicFund(id, transAccount.id, pid, bcard,  amount, function(data){
           if(parseRestSuccess('purchasePublicFund', data, successHandler, errorHandler)) {
             console.log('tyson11111111');
@@ -398,9 +419,11 @@ angular.module('main.service',[])
           }
         }, function(status){
           parseRestError('purchasePublicFund', status, errorHandler);
-        }, finallyHandler());
+        }, function(){enablePopup = true;});
       },
       redeemPublicFund: function(pid, bcard,  share, successHandler, errorHandler, finallyHandler) {
+        if (!enablePopup){return;}
+        enablePopup = false;
         Rest.buy.redeemPublicFund(id, transAccount.id, pid, bcard,  share, function(data){
           if(parseRestSuccess('redeemPublicFund', data, successHandler, errorHandler)) {
             console.log('tyson11111111');
@@ -408,7 +431,7 @@ angular.module('main.service',[])
           }
         }, function(status){
           parseRestError('redeemPublicFund', status, errorHandler);
-        }, finallyHandler());
+        }, function(){enablePopup = true;});
       },
       getBuyRiskLevel: function() {
         return transAccount.riskLevel;
@@ -841,6 +864,10 @@ angular.module('main.service',[])
       },
 
       addBooking: function(pid, successHandler, errorHandler, finallyHandler) {
+
+        if (!enablePopup){return;}
+        enablePopup = false;
+
         if(id) {
           Rest.customer.v1.addBooking(id, pid, function(data){
             if (parseRestSuccess('addBooking', data, successHandler, errorHandler)) { 
@@ -849,7 +876,7 @@ angular.module('main.service',[])
           }, function(status){
             parseRestError('addBooking',  status, errorHandler);
           }, 
-          finallyHandler());
+          function(){enablePopup = true;});
         } else {
           console.log('main.service addBooking failed for no customer id');
           errorHandler('请先登入');
