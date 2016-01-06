@@ -187,6 +187,7 @@ angular.module('main.service',[])
 
   // todo  then.error.finally 后续做一下
   var parseRestSuccess = function(fname, data, successHandler, errorHandler) {
+    enablePopup = true;
     if (data.successful) {
       console.log('main.service '+ fname + ' success');
       successHandler(data.result);
@@ -199,6 +200,7 @@ angular.module('main.service',[])
   };
 
   var parseRestError = function(fname, status, errorHandler) {
+    enablePopup = true;
     console.log('main.service '+ fname + ' error status:'+ status);
     if (status == 401) {
       errorHandler('权限错误');
@@ -982,6 +984,9 @@ angular.module('main.service',[])
       },
 
       submitOrder: function(pid, money, successHandler, errorHandler, finallyHandler) {
+        if (!enablePopup){return;}
+        enablePopup = false;
+
         if(id) {
           Rest.customer.v1.submitOrder(id, pid, money, function(data){
             if (parseRestSuccess('submitOrder', data, successHandler, errorHandler)) { 
