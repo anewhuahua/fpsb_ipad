@@ -1137,13 +1137,15 @@ angular.module('starter.controllers', [])
       {key:'stock',  name:'股票型'}, 
       {key:'mixed',  name:'混合型'}, 
       {key:'bond',  name:'债券型'}, 
-      {key:'xx3',  name:'货币型'}, 
+      {key:'all',  name:'货币型'}, 
+      /*
       {key:'xx4',  name:'指数型'}, 
       {key:'xx5',  name:'保本型'}, 
       {key:'xx6',  name:'ETF型'}, 
-      {key:'xx7',  name:'LOF型'}, 
-      {key:'qd',  name:'QDII型'}, 
-      {key:'xx9',  name:'分级型'}
+      {key:'xx7',  name:'LOF型'},
+      */ 
+      {key:'qd',  name:'QDII型'}
+      /*{key:'xx9',  name:'分级型'}*/
     ],
     key: 0,
     category: Main.getCategory(1),
@@ -1278,7 +1280,7 @@ angular.module('starter.controllers', [])
   var oid = $stateParams.orderId;
   $scope.data.order = null;
   $scope.data.cms = null;
-
+  $scope.data.profile = Main.getProfile();
 
   console.log(oid);
   if (Main.getRole() == 'Customer') {
@@ -1312,6 +1314,14 @@ angular.module('starter.controllers', [])
       return true;
     } else {
       return false;
+    }
+  }
+
+  $scope.enableExtra = function() {
+    if ($scope.data.order.customer.id != $scope.data.profile.data.id) {
+      return false;
+    } else {
+      return true;
     }
   }
 

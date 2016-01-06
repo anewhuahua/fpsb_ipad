@@ -50,7 +50,7 @@
 
                          <ul class="gnr2nrbbmrig" ng-if="data.order.product.type!='PublicFund'">
                            <li><span>投资金额(元)</span>  <em>{{data.order.quota}}</em></li>
-                           <li ng-if="data.order.product.type == 'PrivateFund' || data.order.product.type == 'Trust' || data.order.product.type == 'Portfolio'"><span>投资收益(元)</span>  <em>{{data.order.product.benefitRate * data.order.quota}}</em></li>
+                           <li ng-if="data.order.product.type == 'PrivateFund' || data.order.product.type == 'Trust' || data.order.product.type == 'Portfolio'"><span>预期收益率</span>  <em>{{data.order.product.benefitRate}}%</em></li>
                            <li ng-if="enableCommission()"><span>佣金收益(元)</span>  <em>待计算</em></li>
                          </ul>
 
@@ -87,8 +87,8 @@
                   </div><!--订单信息-e-->
 
 
-                  <a ng-if="data.order.product.type=='PublicFund'" ng-click='redeemPublicFund()' class="jnwfgma">赎回</a>
-                  <a ng-if="data.order.product.type=='PublicFund'" ng-click='buyMorePublicFund()' class="jnwfgma">追加购买</a>
+                  <a ng-if="data.order.product.type=='PublicFund' && enableExtra()" ng-click='redeemPublicFund()' class="jnwfgma">赎回</a>
+                  <a ng-if="data.order.product.type=='PublicFund' && enableExtra()" ng-click='buyMorePublicFund()' class="jnwfgma">追加购买</a>
 
                   <div class="ddxqxx" ng-if="data.order.product.type=='PublicFund'"><!--订单信息-s-->
                      <span>历史交易记录</span>
