@@ -471,12 +471,17 @@ angular.module('starter.controllers', [])
   //$scope.product = Main.getProductDetail(cid, pid);
 
   $scope.likeIt = function(product) {
+      if ($scope.like_flag) {
+        return;
+      }
+      $scope.like_flag = true;
       if (Main.getRole() == 'Guest') {
          $ionicPopup.alert({
                     title: '提示信息',
                     cssClass: 'alert-text',
                     template:  '请先登入!'
                 });
+         $scope.like_flag = false;
          return;
       }
       Main.likeIt(product, function(data){
@@ -501,7 +506,9 @@ angular.module('starter.controllers', [])
                   cssClass: 'alert-text',
                   template:  '收藏失败!'
               });
-      }, function(){});
+      }, function(){
+        $scope.like_flag = false;
+      });
   }
   
 
