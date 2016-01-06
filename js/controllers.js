@@ -480,15 +480,15 @@ angular.module('starter.controllers', [])
                 });
          return;
       }
-      var myPopup;
+
       Main.likeIt(product, function(data){
           $scope.currentLiked = true;
-          myPopup = $ionicPopup.alert({
+          var myPopup1 = $ionicPopup.alert({
                   title: '提示信息',
                   cssClass: 'alert-text',
                   template:  '收藏成功!'
               }).then(function(res){
-                myPopup.close();
+                myPopup1.close();
               });
 
 
@@ -501,12 +501,12 @@ angular.module('starter.controllers', [])
 
       }, function(status){
         $scope.currentLiked = false;
-          myPopup = $ionicPopup.alert({
+          var myPopup2 = $ionicPopup.alert({
                   title: '提示信息',
                   cssClass: 'alert-text',
                   template:  '收藏失败!'
               }).then(function(res){
-                myPopup.close();
+                myPopup2.close();
               });
       }, function(){});
   }
