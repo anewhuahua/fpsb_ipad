@@ -483,18 +483,22 @@ angular.module('starter.controllers', [])
 
       Main.likeIt(product, function(data){
           $scope.currentLiked = true;
-          /*
-          $ionicPopup.alert({
+          
+          var myPopup = ionicPopup.alert({
                   title: '提示信息',
                   cssClass: 'alert-text',
                   template:  '收藏成功!'
-              }).then(function(res){});*/
-          
+              }).then(function(res){
+                myPopup.close();
+              });
+
+
+          /*
           var alertPopup = SecurePopup.show('alert', {
              title: '提示信息',
              cssClass: 'alert-text',
              template:  '收藏成功!'
-           });
+           });*/
 
       }, function(status){
         $scope.currentLiked = false;
