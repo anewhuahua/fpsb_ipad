@@ -87,6 +87,8 @@ angular.module('starter.controllers', [])
       return '已申请'
     } else if (input.state=='payoff') {
       return '已返现'
+    } else if (input.state=='rejected') {
+      return '提现驳回'
     }
   }
 })
@@ -1275,6 +1277,7 @@ angular.module('starter.controllers', [])
   //console.log('124455');
   var oid = $stateParams.orderId;
   $scope.data.order = null;
+  $scope.data.cms = null;
 
 
   console.log(oid);
@@ -1286,6 +1289,8 @@ angular.module('starter.controllers', [])
       $scope.data.order = Main.customer.getOrder(oid);
     }
   }
+
+
 /*
   $scope.$on('$ionicView.enter',function(){
     if (Main.getRole() == 'Customer') {

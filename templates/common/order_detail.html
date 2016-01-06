@@ -50,7 +50,7 @@
 
                          <ul class="gnr2nrbbmrig" ng-if="data.order.product.type!='PublicFund'">
                            <li><span>投资金额(元)</span>  <em>{{data.order.quota}}</em></li>
-                           <li><span>投资收益(元)</span>  <em>待计算</em></li>
+                           <li ng-if="data.order.product.type == 'PrivateFund' || data.order.product.type == 'Trust' || data.order.product.type == 'Portfolio'"><span>投资收益(元)</span>  <em>{{data.order.product.benefitRate * data.order.quota}}</em></li>
                            <li ng-if="enableCommission()"><span>佣金收益(元)</span>  <em>待计算</em></li>
                          </ul>
 
