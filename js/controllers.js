@@ -2628,6 +2628,11 @@ angular.module('starter.controllers', [])
     Main.consultant.withdrawCommission(cms.id, function(data){
       //console.log(data);
       cms.state = data.state;
+      $ionicPopup.alert({
+        title: '提示信息',
+        cssClass: 'alert-text',
+        template:  '申请成功!'
+      });
     }, function(status){
       $ionicPopup.alert({
         title: '提示信息',
