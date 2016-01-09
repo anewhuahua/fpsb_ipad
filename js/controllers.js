@@ -349,14 +349,14 @@ angular.module('starter.controllers', [])
   $scope.orderDialog = function() {
     if ($scope.data.looking_product) {
       //$scope.data.looking_product = null;
-      $scope.data.order_option = Factory.newOption(1000000, 2000000, 100000);
+      $scope.data.order_option = Factory.newOption(10000, 20000000, 10000);
       $scope.data.popup = 'OrderDialog';
     }
   }
 
   $scope.bookingOrderDialog = function(booking) {
     $scope.data.looking_booking = booking;
-    $scope.data.order_option = Factory.newOption(1000000, 2000000, 100000);
+    $scope.data.order_option = Factory.newOption(10000, 20000000, 10000);
     $scope.data.popup = 'BookingOrderDialog';
   }
 
@@ -1152,7 +1152,7 @@ angular.module('starter.controllers', [])
       {key:'stock',  name:'股票型'}, 
       {key:'mixed',  name:'混合型'}, 
       {key:'bond',  name:'债券型'}, 
-      {key:'xx',  name:'货币型'}, 
+      {key:'money',  name:'货币型'}, 
       /*
       {key:'xx4',  name:'指数型'}, 
       {key:'xx5',  name:'保本型'}, 
@@ -1866,7 +1866,7 @@ angular.module('starter.controllers', [])
   $scope.orderDialog = function() {
     if ($scope.data.looking_product) {
       //$scope.data.looking_product = null;
-      $scope.data.order_option = Factory.newOption(1000000, 2000000, 100000);
+      $scope.data.order_option = Factory.newOption(10000, 20000000, 10000);
       $scope.data.popup = 'OrderDialog';
     }
   }
