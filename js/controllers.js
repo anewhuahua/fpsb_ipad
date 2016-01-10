@@ -1380,7 +1380,7 @@ angular.module('starter.controllers', [])
 
       if($scope.data.key == 1) {  //近1周
         param = {sortby: 'weekRate', sort: 'desc', subtype: $scope.data.currentSubType};
-        Main.sortProducts($scope.data.category, param,
+        Main.sortMoreProducts($scope.data.category, param,
           function(data){
             if (count+data.length == count){
               $scope.data.more=false;
@@ -1393,7 +1393,7 @@ angular.module('starter.controllers', [])
           });
       } else if ($scope.data.key == 2) { //近1月
         param = {sortby: 'monRate1', sort: 'desc', subtype: $scope.data.currentSubType};
-        Main.sortProducts($scope.data.category, param,
+        Main.sortMoreProducts($scope.data.category, param,
           function(data){
             if (count+data.length == count){
               $scope.data.more=false;
@@ -1405,7 +1405,7 @@ angular.module('starter.controllers', [])
           });
       } else if ($scope.data.key == 3) { //近3月
         param = {sortby: 'monRate3', sort: 'desc', subtype: $scope.data.currentSubType};
-        Main.sortProducts($scope.data.category, param,
+        Main.sortMoreProducts($scope.data.category, param,
           function(data){
             if (count+data.length == count){
               $scope.data.more=false;
@@ -1417,14 +1417,14 @@ angular.module('starter.controllers', [])
           });
       } else if ($scope.data.key == 4) { // 今年来
         param = {sortby: 'yearRate0', sort: 'desc', subtype: $scope.data.currentSubType};
-        Main.sortProducts($scope.data.category, param,
+        Main.sortMoreProducts($scope.data.category, param,
           function(data){}, function(status){}, function(){
             $scope.$broadcast('scroll.refreshComplete');
             $scope.data.more=true;
           });
       } else if ($scope.data.key == 5) { // 近1年
         param = {sortby: 'yearRate1', sort: 'desc', subtype: $scope.data.currentSubType};
-        Main.sortProducts($scope.data.category, param,
+        Main.sortMoreProducts($scope.data.category, param,
           function(data){
             if (count+data.length == count){
               $scope.data.more=false;
@@ -1436,7 +1436,7 @@ angular.module('starter.controllers', [])
           });
       } else if ($scope.data.key == 6) { // 近3年
         param = {sortby: 'yearRate3', sort: 'desc', subtype: $scope.data.currentSubType};
-        Main.sortProducts($scope.data.category, param,
+        Main.sortMoreProducts($scope.data.category, param,
           function(data){
             if (count+data.length == count){
               $scope.data.more=false;
@@ -1448,7 +1448,7 @@ angular.module('starter.controllers', [])
           });
       } else if ($scope.data.key == 7) { // 整体收益
         param = {sortby: 'sumRate', sort: 'desc', subtype: $scope.data.currentSubType};
-        Main.sortProducts($scope.data.category, param,
+        Main.sortMoreProducts($scope.data.category, param,
           function(data){
             if (count+data.length == count){
               $scope.data.more=false;
@@ -1460,7 +1460,7 @@ angular.module('starter.controllers', [])
           });
       } else if ($scope.data.key == 8) { // 单位净值
         param = {sortby: 'Nav', sort: 'desc', subtype: $scope.data.currentSubType};
-        Main.sortProducts($scope.data.category, param,
+        Main.sortMoreProducts($scope.data.category, param,
           function(data){
             if (count+data.length == count){
               $scope.data.more=false;
@@ -1472,7 +1472,7 @@ angular.module('starter.controllers', [])
           });
       } else {
         param = {subtype: $scope.data.currentSubType};
-        Main.sortProducts($scope.data.category, param,
+        Main.sortMoreProducts($scope.data.category, param,
           function(data){
             if (count+data.length == count){
               $scope.data.more=false;
