@@ -805,6 +805,7 @@ angular.module('starter.controllers', [])
                   cssClass: 'alert-text',
                   template:  '购买成功'
             }).then(function(){
+              Main.putLock();
               $ionicHistory.goBack();
             });
           }, function(status){
@@ -812,28 +813,35 @@ angular.module('starter.controllers', [])
                   title:    '提示信息',
                   cssClass: 'alert-text',
                   template:  status
-            });
+            }).then(function(data){Main.putLock()});
           }, function(){
-
+            Main.putLock();
           });
       }, function(error1){
         $ionicPopup.alert({
             title:    '购买失败',
             cssClass: 'alert-text',
             template:  error1
-        });
+        }).then(function(data){Main.putLock()});
       }, function(){
+        Main.putLock();
     });   
   }
 
   $scope.purchase = function() {
+
+    if(Main.tryLock()) {
+      return;
+    } else {
+      Main.getLock();
+    }
 
     if (isNaN(parseInt($scope.data.buyAmount,10))) {
       $ionicPopup.alert({
             title:    '提示信息',
             cssClass: 'alert-text',
             template:  '请输入正确金额'
-      });
+      }).then(function(data){Main.putLock()});
       return;
     }
 
@@ -843,6 +851,7 @@ angular.module('starter.controllers', [])
             cssClass: 'alert-text',
             template:  '您必须先参加长量基金理财评测'
       }).then(function(){
+        Main.putLock();
         $state.go('exam.customer', {suite: 'cljj'});
       });
       return;
@@ -866,6 +875,8 @@ angular.module('starter.controllers', [])
       }).then(function(res){
         if (res) {
           pay();
+        } else {
+          Main.putLock();
         }
       });
       return;
@@ -878,6 +889,8 @@ angular.module('starter.controllers', [])
       }).then(function(res){
         if (res){
           pay();
+        } else {
+          Main.putLock();
         }
       });
       return;
@@ -1071,12 +1084,18 @@ angular.module('starter.controllers', [])
   }
 
   $scope.likeIt = function(product) {
+      if(Main.tryLock()) {
+        return;
+      } else {
+        Main.getLock();
+      }
+
       if (Main.getRole() == 'Guest') {
          $ionicPopup.alert({
                     title: '提示信息',
                     cssClass: 'alert-text',
                     template:  '请先登入!'
-                });
+                }).then(function(data){Main.putLock();});
          return;
       }
       product.id = $scope.productId;
@@ -1086,14 +1105,14 @@ angular.module('starter.controllers', [])
                   title: '提示信息',
                   cssClass: 'alert-text',
                   template:  '收藏成功!'
-              });
+              }).then(function(data){Main.putLock();});
       }, function(status){
         $scope.currentLiked = false;
           $ionicPopup.alert({
                   title: '提示信息',
                   cssClass: 'alert-text',
                   template:  '收藏失败!'
-              });
+              }).then(function(data){Main.putLock();});
       }, function(){});
   }
 
@@ -1980,13 +1999,18 @@ angular.module('starter.controllers', [])
     $scope.data.currentLiked = false;
   }
   $scope.likeIt = function() {
+    if(Main.tryLock()) {
+      return;
+    } else {
+      Main.getLock();
+    }
 
     if (Main.getRole() == 'Guest') {
        $ionicPopup.alert({
                   title: '提示信息',
                   cssClass: 'alert-text',
                   template:  '请先登入!'
-              });
+              }).then(function(data){Main.putLock();});
        return;
     }
 
@@ -1997,14 +2021,14 @@ angular.module('starter.controllers', [])
                   title: '提示信息',
                   cssClass: 'alert-text',
                   template:  '收藏成功!'
-              });
+              }).then(function(data){Main.putLock();});
       }, function(status){
         $scope.data.currentLiked = false;
           $ionicPopup.alert({
                   title: '提示信息',
                   cssClass: 'alert-text',
                   template:  '收藏失败!'
-              });
+              }).then(function(data){Main.putLock();});
       }, function(){});
     }
   }
