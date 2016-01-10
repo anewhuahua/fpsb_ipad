@@ -471,13 +471,18 @@ angular.module('starter.controllers', [])
   //$scope.product = Main.getProductDetail(cid, pid);
 
   $scope.likeIt = function(product) {
+      if(Main.tryLock()) {
+        return;
+      } else {
+        Main.getLock();
+      }
 
       if (Main.getRole() == 'Guest') {
          $ionicPopup.alert({
                     title: '提示信息',
                     cssClass: 'alert-text',
                     template:  '请先登入!'
-                });
+                }).then(function(data){Main.putLock();});
          return;
       }
 
@@ -487,9 +492,7 @@ angular.module('starter.controllers', [])
                   title: '提示信息',
                   cssClass: 'alert-text',
                   template:  '收藏成功!'
-              }).then(function(res){
-                myPopup1.close();
-              });
+              }).then(function(data){Main.putLock();});
 
 
           /*
@@ -505,9 +508,7 @@ angular.module('starter.controllers', [])
                   title: '提示信息',
                   cssClass: 'alert-text',
                   template:  '收藏失败!'
-              }).then(function(res){
-                myPopup2.close();
-              });
+              }).then(function(data){Main.putLock();});
       }, function(){});
   }
   

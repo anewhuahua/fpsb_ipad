@@ -77,6 +77,7 @@ angular.module('main.service',[])
   };
 
   var enablePopup = true;
+  var lockPopup = false;
 
 // bookings
   var Bookings = function(){
@@ -218,6 +219,17 @@ angular.module('main.service',[])
   };
 
   return {
+    putLock: function() {
+      lockPopup = false;
+    },
+
+    tryLock: function() {
+      return lockPopup;
+    },
+    getLock: function(){
+      lockPopup = true;
+    },
+
     queryProductDetail: function(pid, successHandler, errorHandler,finallyHandler) {
       Rest.queryProductDetail(pid, function(data){
           if(parseRestSuccess('queryProductDetail', data, successHandler, errorHandler)) {
