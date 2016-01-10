@@ -1007,12 +1007,18 @@ angular.module('starter.controllers', [])
   }
 
   $scope.redeem = function() {
+    if(Main.tryLock()) {
+      return;
+    } else {
+      Main.getLock();
+    }
+
     if (isNaN(parseInt($scope.data.redeemShare,10))) {
       $ionicPopup.alert({
             title:    '提示信息',
             cssClass: 'alert-text',
             template:  '请输入正确金额'
-      });
+      }).then(function(data){Main.putLock();});
       return;
     }
 
@@ -1026,7 +1032,7 @@ angular.module('starter.controllers', [])
             title:    '提示信息',
             cssClass: 'alert-text',
             template:  '赎回金额必须 >0, <=' +$scope.data.order.extra.usableShare
-      });
+      }).then(function(data){Main.putLock();});
       return;
     }
     Main.customer.submitOrder($scope.data.order.product.id, '-'+$scope.data.redeemShare, function(data1){
@@ -1037,6 +1043,7 @@ angular.module('starter.controllers', [])
             cssClass: 'alert-text',
             template:  '赎回成功'
           }).then(function(){
+            Main.putLock();
             $ionicHistory.goBack();
           });
         }, function(status){
@@ -1044,17 +1051,18 @@ angular.module('starter.controllers', [])
             title:    '提示信息',
             cssClass: 'alert-text',
             template:  status
-          });
+          }).then(function(data){Main.putLock();});
         }, function(){
+          Main.putLock();
         });
     }, function(status1){
         $ionicPopup.alert({
             title:    '提示信息',
             cssClass: 'alert-text',
             template:  status1
-          });
+          }).then(function(data){Main.putLock();});
     }, function(){
-
+      Main.putLock();
     });
 
   }
