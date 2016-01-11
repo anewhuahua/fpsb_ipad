@@ -451,7 +451,7 @@ angular.module('starter.controllers', [])
 
 
 .controller('commonNoticeCtrl', function($scope) {
-  
+
 })
 
 
@@ -594,6 +594,11 @@ angular.module('starter.controllers', [])
   $scope.$on("$ionicView.enter", function(){
     $scope.data.phase = 'verify';
     $scope.data.initiated = false;
+    Main.buy.queryTransAccount1(function(data){
+      console.log(data);
+      $scope.data.fullname = data.fullname;
+      $scope.data.identity = data.identity;
+    }, function(status){}, function(){});
   });
 
 

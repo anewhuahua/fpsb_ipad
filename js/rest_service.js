@@ -304,6 +304,25 @@ angular.module('rest.service', [])
           finallyHandler();
         });
       },
+
+      queryTransAccount1: function(id, name, identity, successHandler, errorHandler, finallyHandler) {
+        var req = {
+          method: 'GET',
+          url: domain+'ChiefFinancierService/api/partner/v1/customers/' + id + '/partners/cljj?transaccount=any',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        };
+        
+        $http(req).success(function(data){
+          successHandler(data);
+        }).error(function(res, status){
+          errorHandler(status);
+        }).finally(function(){
+          finallyHandler();
+        });
+      },
+
       createTransAccount: function(id, name, identity, pwd, mail, mobile, successHandler, errorHandler, finallyHandler) {
         var req = {
             method: 'POST',

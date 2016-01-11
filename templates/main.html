@@ -424,10 +424,17 @@ navigation history that also transitions its views in and out.
          <span>用户名和密码不能为空</span>
          
       </div>--><!--登陆提示-->
+      
       <div class="lbalncldbtn"><img src="teImg/lbalnclobtn.png" ng-click="closePopup('login')"></div><!--关闭按钮-->
       <div class="lbalnbmbj"><img src="teImg/lnbombj.jpg" title="" alt=""></div><!--左下角背景图-->
       
       <div class="lbalnlogo"><img src="teImg/lnlogo.png" title="" alt=""></div>
+
+      <p class="zcmmjs" ng-click="goNotice()">
+                <span><img src="teImg/zcmmjslog2.jpg" /></span>
+                <em>我已阅读并同意<i>《首席金服用户协议》</i></em>
+      </p>
+      
       <form class="lbalogonew">
         <div class="lbalnna">
            <span class="lbalnnalef"><img src="teImg/lbalnyhmlog.png" title="" alt=""></span>
@@ -442,7 +449,7 @@ navigation history that also transitions its views in and out.
             <a href="" class="lbalnbmlf" ng-click="register_1()">注册新用户</a>
             <!--<a href="" class="lbalnbrig">忘记密码？</a>-->
         </div>
-        
+          
       </form>
 
     </div>  
@@ -503,10 +510,11 @@ navigation history that also transitions its views in and out.
                <input type="text" placeholder="请输入理财师推荐码（选填）" ng-model="auth.register.referral"/> 
              </div>
              <input  type="submit" class="zcwjnext" value="完成注册" ng-click="register_3(auth.register.username,auth.register.password, auth.register.password2, auth.register.verifyCode, auth.register.referral, auth.register.fullname)"/>
+             <!--
              <p class="zcmmjs" ng-click="goNotice()">
                 <span><img src="teImg/zcmmjslog2.jpg" /></span>
                 <em>我已阅读并同意<i>《首席金服用户协议》</i></em>
-             </p>
+             </p>-->
           
            </form>
 

@@ -319,6 +319,17 @@ angular.module('main.service',[])
           parseRestError('queryTransAccount', status, errorHandler);
         }, function(){enablePopup = true;});
       },
+      queryTransAccount1: function(successHandler, errorHandler, finallyHandler) {
+        Rest.buy.queryTransAccount1(id, function(data){
+          if(parseRestSuccess('queryTransAccount1', data, successHandler, errorHandler)) {
+            console.log('tyson11111111');
+            console.log(data);
+            transAccount = data.result;
+          }
+        }, function(status){
+          parseRestError('queryTransAccount1', status, errorHandler);
+        }, function(){enablePopup = true;});
+      },
       createTransAccount: function(name, identity, pwd, mail, mobile, successHandler, errorHandler, finallyHandler) {
         Rest.buy.createTransAccount(id, name, identity, pwd, mail, mobile, function(data){
           if(parseRestSuccess('createTransAccount', data, successHandler, errorHandler)) {
