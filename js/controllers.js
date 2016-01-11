@@ -594,8 +594,10 @@ angular.module('starter.controllers', [])
   $scope.$on("$ionicView.enter", function(){
     $scope.data.phase = 'verify';
     $scope.data.initiated = false;
+    console.log('tyson2');
     Main.buy.queryTransAccount1(function(data){
       console.log(data);
+      console.log('tyson1');
       $scope.data.fullname = data.username;
       $scope.data.identity = data.identityId;
     }, function(status){}, function(){});
