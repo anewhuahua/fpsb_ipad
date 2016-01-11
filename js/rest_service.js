@@ -305,7 +305,7 @@ angular.module('rest.service', [])
         });
       },
 
-      queryTransAccount1: function(id, name, identity, successHandler, errorHandler, finallyHandler) {
+      queryTransAccount1: function(id, successHandler, errorHandler, finallyHandler) {
         var req = {
           method: 'GET',
           url: domain+'ChiefFinancierService/api/partner/v1/customers/' + id + '/partners/cljj?transaccount=any',

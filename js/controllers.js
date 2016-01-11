@@ -589,12 +589,7 @@ angular.module('starter.controllers', [])
   $scope.data.fundNo = $stateParams.fundNo;
   $scope.data.product.pid = $scope.data.fundNo;
   Main.getPublicFundDetail($scope.data.product, function(data){}, function(status){}, function(){});
-  Main.buy.queryTransAccount1(function(data){
-      console.log(data);
-      console.log('tyson1');
-      $scope.data.fullname = data.username;
-      $scope.data.identity = data.identityId;
-  }, function(status){}, function(){});
+  
 
   $scope.$on("$ionicView.enter", function(){
     $scope.data.phase = 'verify';
@@ -602,7 +597,7 @@ angular.module('starter.controllers', [])
     console.log('tyson2');
     Main.buy.queryTransAccount1(function(data){
       console.log(data);
-      console.log('tyson1');
+      //console.log('tyson1');
       $scope.data.fullname = data.username;
       $scope.data.identity = data.identityId;
     }, function(status){}, function(){});
