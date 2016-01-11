@@ -324,7 +324,7 @@ angular.module('main.service',[])
           if(parseRestSuccess('queryTransAccount1', data, successHandler, errorHandler)) {
             console.log('tyson11111111');
             console.log(data);
-            transAccount = data.result;
+            //transAccount = data.result;
           }
         }, function(status){
           parseRestError('queryTransAccount1', status, errorHandler);
