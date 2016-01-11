@@ -596,8 +596,8 @@ angular.module('starter.controllers', [])
     $scope.data.initiated = false;
     Main.buy.queryTransAccount1(function(data){
       console.log(data);
-      $scope.data.fullname = data.fullname;
-      $scope.data.identity = data.identity;
+      $scope.data.fullname = data.username;
+      $scope.data.identity = data.identityId;
     }, function(status){}, function(){});
   });
 
