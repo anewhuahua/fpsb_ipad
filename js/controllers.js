@@ -621,18 +621,18 @@ angular.module('starter.controllers', [])
         if (data.authorized) {
           Main.buy.queryBankBinding(data.id, function(data1){
             if(data1) {
-              // not bond bank yet
-              Main.buy.queryValidBanks(data.id, function(data2){
-                $scope.data.validBanks = data2;
-              }, function(status2){}, function(){});
-
-              $scope.data.phase = 'bank';
-            } else {
               // have bond bank
               Main.buy.queryBindingBanks(data.id, function(data2){
                 $scope.data.bindingBankCards =  data2;
               }, function(status2){}, function(){});
               $scope.data.phase = 'buy';
+              
+            } else {
+              // not bond bank yet
+              Main.buy.queryValidBanks(data.id, function(data2){
+                $scope.data.validBanks = data2;
+              }, function(status2){}, function(){});
+              $scope.data.phase = 'bank';
             }
           }, function(status1){}, function(){});
 
@@ -961,6 +961,13 @@ angular.module('starter.controllers', [])
         if (data.authorized) {
           Main.buy.queryBankBinding(data.id, function(data1){
             if(data1) { // not happen here
+              // have bond bank
+              Main.buy.queryBindingBanks(data.id, function(data2){
+                $scope.data.bindingBankCards =  data2;
+              }, function(status2){}, function(){});
+              $scope.data.phase = 'redeem';
+
+            } else {
               // not bond bank yet
               /*
               Main.buy.queryValidBanks(data.id, function(data2){
@@ -968,12 +975,7 @@ angular.module('starter.controllers', [])
               }, function(status2){}, function(){});
               $scope.data.phase = 'bank';
               */
-            } else {
-              // have bond bank
-              Main.buy.queryBindingBanks(data.id, function(data2){
-                $scope.data.bindingBankCards =  data2;
-              }, function(status2){}, function(){});
-              $scope.data.phase = 'redeem';
+              
             }
           }, function(status1){}, function(){});
 
