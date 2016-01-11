@@ -48,6 +48,7 @@ $royal:                           #886aea !default;
   /*3大流程11.23*/
   /*购买新增css 11.21*/
   /*购买新增css 11.21*/
+  /*会员服务协议1.11*/
   /*会员服务协议*/
   /*会员服务协议*/ }
   .booking-view a {
@@ -2419,6 +2420,13 @@ $royal:                           #886aea !default;
     color: #e79700; }
   .booking-view .zcmmjsbb {
     float: right; }
+  .booking-view .hyellow {
+    width: 84%;
+    display: block;
+    font-size: 0.28rem;
+    color: #f09800;
+    line-height: 0.34rem;
+    margin: 0rem auto 0.4rem auto; }
   .booking-view .hyxynrdv {
     width: 100%;
     background: #fafafa;
@@ -2465,13 +2473,15 @@ $royal:                           #886aea !default;
     font-size: 0.3rem;
     color: #1f1f1f;
     line-height: 0.3rem;
-    font-weight: bold; }
+    font-weight: bold;
+    margin-bottom: 0.4rem; }
   .booking-view .hytxnrb {
     width: 100%;
     font-size: 0.28rem;
     color: #1f1f1f;
     line-height: 0.4rem;
-    text-align: justify; }
+    text-align: justify;
+    margin-bottom: 0.4rem; }
   .booking-view .hytxnrb > span {
     color: #de0000 !important; }
 

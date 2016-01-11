@@ -454,8 +454,8 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('commonNoticeCtrl', function($scope) {
-
+.controller('commonNoticeCtrl', function($scope, $stateParams) {
+  $scope.data.nid = $stateParams.nid;
 })
 
 
