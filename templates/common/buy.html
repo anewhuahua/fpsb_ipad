@@ -16,7 +16,8 @@
               </ul>
               <!--<a href="" class="sdlcrr"></a>-->
             </div> 
-            <div class="sdlcyy"></div>
+            <div class="sdlcyy">
+            </div>
             
             <div class="sdlcnrdv" ng-if="data.phase=='verify'">
                <div class="sdlcnra">
@@ -29,6 +30,8 @@
                </div>
                <input type="submit" class="nexbn" value="下一步" ng-click="verify()"/>
             </div>
+
+
 
             <div class="sdlcnrdv" ng-if="data.phase=='register'">
                
@@ -108,7 +111,9 @@
              </div>
             </div>
           
-
+            <div class="sdlcdv" style="margin-top:-0.2rem" ng-if="data.phase=='verify'">
+              <img src="teImg/1234.png" />
+            </div> 
 
      </div>
     </ion-content>

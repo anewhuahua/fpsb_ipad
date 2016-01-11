@@ -225,7 +225,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'angular-flot', 'ionicMultipleV
 
   .state('common.notice', {
     cache: false,
-    url: '/notice',
+    url: '/notice/:nid',
     views: {
       'common-notice': {
          templateUrl: 'templates/common/notice.html',
@@ -233,7 +233,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'angular-flot', 'ionicMultipleV
       }
     }
   })
-
 
   .state('common.booking_detail', {
     url: '/booking/detail/:bookingId',
@@ -245,6 +244,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'angular-flot', 'ionicMultipleV
       }
     }
   })
+  
   .state('common.order_detail', {
     cache: false,
     url: '/order/detail/:orderId',

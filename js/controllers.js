@@ -296,6 +296,10 @@ angular.module('starter.controllers', [])
     looking_product: ''
   };
 
+  $scope.goNotice = function(id) {
+    $state.go('common.notice', {nid: id});
+  }
+
   $scope.goBack = function() {
     console.log('goback');
     $ionicHistory.goBack();
@@ -1688,15 +1692,15 @@ angular.module('starter.controllers', [])
       window.open('http://115.29.207.154:8888/i_register', '_system');
    }
 
-   $scope.goNotice = function(){
-      $state.go('common.notice');
+   $scope.goNotice = function(id){
+      $state.go('common.notice', {nid: id});
    }
 
    $scope.complain = function() {
       $ionicPopup.alert({
                   title: '投诉',
                   cssClass: 'alert-text',
-                  template:  '请拨打400XXXXXXX进行投诉!'
+                  template:  '请拨打4008638855进行投诉!'
       });
    }
 
@@ -2955,6 +2959,11 @@ angular.module('starter.controllers', [])
   }
 
   $scope.updateProfileInformation = function(param) {
+    if(Main.tryLock()) {
+      return;
+    } else {
+      Main.getLock();
+    }
 
     if ($scope.imgProfile.id != '') {
       $scope.data.update.imageId = $scope.imgProfile.id;
@@ -2997,14 +3006,18 @@ angular.module('starter.controllers', [])
           template:  '更新资料成功!'
         }).then(function(res){
             $scope.consultant.updatedProfile = 0;
+            Main.putLock();
         });
     }, function(status){
       $ionicPopup.alert({
         title: '提示信息',
         cssClass: 'alert-text',
         template:  '更新资料失败!'
+      }).then(function(res){
+        Main.putLock();
       });
     }, function(){
+       Main.putLock();
     })
   };
 
@@ -3235,7 +3248,12 @@ angular.module('starter.controllers', [])
   //**
   //** common function
   $scope.updateProfileInformation = function(param) {
-    
+    if(Main.tryLock()) {
+      return;
+    } else {
+      Main.getLock();
+    }
+
     if ($scope.imgProfile.id != '') {
       $scope.data.update.imageId = $scope.imgProfile.id;
       param.imageId = $scope.imgProfile.id;
@@ -3256,14 +3274,16 @@ angular.module('starter.controllers', [])
           template:  '更新资料成功!'
         }).then(function(res){
             $scope.customer.updatedProfile = 0;
+            Main.putLock();
         });
     }, function(status){
       $ionicPopup.alert({
         title: '提示信息',
         cssClass: 'alert-text',
         template:  '更新资料失败!'
-      });
+      }).then(function(data){Main.putLock();});
     }, function(){
+      Main.putLock();
     })
 
   };
