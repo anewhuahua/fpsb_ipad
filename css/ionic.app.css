@@ -47,7 +47,9 @@ $royal:                           #886aea !default;
   /*3大流程11.23*/
   /*3大流程11.23*/
   /*购买新增css 11.21*/
-  /*购买新增css 11.21*/ }
+  /*购买新增css 11.21*/
+  /*会员服务协议*/
+  /*会员服务协议*/ }
   .booking-view a {
     text-decoration: none; }
   .booking-view .content {
@@ -2417,6 +2419,61 @@ $royal:                           #886aea !default;
     color: #e79700; }
   .booking-view .zcmmjsbb {
     float: right; }
+  .booking-view .hyxynrdv {
+    width: 100%;
+    background: #fafafa;
+    padding: 0.8rem 0rem 1.5rem 0rem;
+    position: relative;
+    z-index: 1; }
+  .booking-view .hybj {
+    background: url(../teImg/hytybj.png) no-repeat;
+    background-size: contain;
+    width: 4.95rem;
+    height: 6.4rem;
+    position: fixed;
+    left: 0rem;
+    top: 30%;
+    z-index: 2; }
+  .booking-view .hyttrb {
+    width: 100%;
+    position: relative;
+    z-index: 3; }
+  .booking-view .hytita {
+    width: 84%;
+    display: block;
+    font-size: 0.34rem;
+    color: #0f3668;
+    line-height: 0.34rem;
+    text-align: center;
+    margin: auto; }
+  .booking-view .hytitb {
+    margin: 0rem auto 0.3rem auto;
+    width: 84%;
+    display: block;
+    font-size: 0.52rem;
+    color: #0f3668;
+    line-height: 0.52rem;
+    text-align: center;
+    font-weight: bold;
+    padding: 0.22rem 0rem 0.3rem 0rem;
+    border-bottom: 1px #c3c3c3 solid; }
+  .booking-view .hxnn {
+    width: 84%;
+    margin: 0rem auto 0.5rem auto; }
+  .booking-view .hytxnra {
+    width: 100%;
+    font-size: 0.3rem;
+    color: #1f1f1f;
+    line-height: 0.3rem;
+    font-weight: bold; }
+  .booking-view .hytxnrb {
+    width: 100%;
+    font-size: 0.28rem;
+    color: #1f1f1f;
+    line-height: 0.4rem;
+    text-align: justify; }
+  .booking-view .hytxnrb > span {
+    color: #de0000 !important; }
 
 .exam-view {
   /* 头部 */

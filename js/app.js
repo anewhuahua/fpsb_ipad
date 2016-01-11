@@ -223,6 +223,16 @@ angular.module('starter', ['ionic', 'ngCordova', 'angular-flot', 'ionicMultipleV
     }
   })
 
+  .state('common.notice', {
+    cache: false,
+    url: '/notice',
+    views: {
+      'common-notice': {
+         templateUrl: 'templates/common/notice.html',
+         controller: 'commonNoticeCtrl'
+      }
+    }
+  })
 
 
   .state('common.booking_detail', {

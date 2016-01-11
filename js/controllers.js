@@ -225,12 +225,19 @@ angular.module('starter.controllers', [])
   ///////////
   ///////////
   $scope.submit = function() {
+
+    if(Main.tryLock()) {
+      return;
+    } else {
+      Main.getLock();
+    }
+
     if ($scope.riskTest.answer.id=='') {
       $ionicPopup.alert({
             title: '提示信息',
             cssClass: 'alert-text',
             template:  '提交测试失败!'
-      });
+      }).then(function(data){Main.putLock();});
       return;
     }
 
@@ -244,13 +251,14 @@ angular.module('starter.controllers', [])
     Main.customer.submitRiskTest($scope.riskTest.answer.id, $scope.riskTest.answer.data, function(data){
       $scope.data.examResult = data;
       $scope.win.result = true;
+      Main.putLock();
     }, function(status){
       $ionicPopup.alert({
             title: '提示信息',
             cssClass: 'alert-text',
             template:  status
-      });
-    }, function(){});
+      }).then(function(data){Main.putLock();});
+    }, function(){Main.putLock();});
   }
 
   $scope.reset =  function() {
@@ -1661,7 +1669,9 @@ angular.module('starter.controllers', [])
       window.open('http://115.29.207.154:8888/i_register', '_system');
    }
 
-
+   $scope.goNotice = function(){
+      $state.go('common.notice');
+   }
 
    $scope.complain = function() {
       $ionicPopup.alert({
