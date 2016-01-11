@@ -2401,6 +2401,7 @@ angular.module('starter.controllers', [])
 
   $scope.goPromotion =  function(position){
     var pid = "";
+    console.log("i'm here");
     for (var i = 0; i<$scope.barProducts.products.data.length; i++) {
       //console.log($scope.barProducts[i]);
       if ($scope.barProducts.products.data[i].position == position) {
