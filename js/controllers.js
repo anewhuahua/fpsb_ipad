@@ -449,6 +449,12 @@ angular.module('starter.controllers', [])
 
 })
 
+
+.controller('commonNoticeCtrl', function($scope) {
+  
+})
+
+
 .controller('commonServiceCtrl', function($scope, $state, $ionicPopup, $stateParams, $ionicScrollDelegate, 
                     $ionicHistory, Main, Notify, SecurePopup){
   var cid = $stateParams.categoryId;
