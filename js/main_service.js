@@ -19,6 +19,8 @@ angular.module('main.service',[])
     enabled: false
   };
 
+  var checkNotice = [false,false,false,false,false];
+
   var categories = [
     {id: 1, childOf: true,   state: "common.publicfund1",  name: "公募基金",  key:'publicfunds',   image:'teImg/gongmu.png', products:{data:[]}},
     {id: 2, childOf: false,  state: null,                 name: "私募基金",  key:'privatefunds',  image:'teImg/simu.png',  products:{data:[]}},
@@ -219,6 +221,14 @@ angular.module('main.service',[])
   };
 
   return {
+
+    getNotice: function(id) {
+      return checkNotice[id];
+    }, 
+    changeNotice: function(id) {
+      checkNotice[id] = !checkNotice[id];
+    },
+
     putLock: function() {
       lockPopup = false;
     },

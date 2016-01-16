@@ -431,8 +431,11 @@ navigation history that also transitions its views in and out.
       <div class="lbalnlogo"><img src="teImg/lnlogo.png" title="" alt=""></div>
 
       <p class="zcmmjs" ng-click="goNotice(1)">
-                <span><img src="teImg/zcmmjslog2.jpg" /></span>
-                <em>我已阅读并同意<i>《首席金服用户协议》</i></em>
+                <span>
+                  <img src="teImg/zcmmjslog2.jpg" ng-if="getNotice(1)"/>
+                  <img src="teImg/zcmmjslog.jpg" ng-if="!getNotice(1)"/>
+                </span>
+                <em ng-click="changeNotice(1)">我已阅读并同意<i>《首席金服用户协议》</i></em>
       </p>
       
       <form class="lbalogonew">
@@ -510,11 +513,7 @@ navigation history that also transitions its views in and out.
                <input type="text" placeholder="请输入理财师推荐码（选填）" ng-model="auth.register.referral"/> 
              </div>
              <input  type="submit" class="zcwjnext" value="完成注册" ng-click="register_3(auth.register.username,auth.register.password, auth.register.password2, auth.register.verifyCode, auth.register.referral, auth.register.fullname)"/>
-             <!--
-             <p class="zcmmjs" ng-click="goNotice()">
-                <span><img src="teImg/zcmmjslog2.jpg" /></span>
-                <em>我已阅读并同意<i>《首席金服用户协议》</i></em>
-             </p>-->
+            
           
            </form>
 

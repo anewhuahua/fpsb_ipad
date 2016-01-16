@@ -299,6 +299,12 @@ angular.module('starter.controllers', [])
   $scope.goNotice = function(id) {
     $state.go('common.notice', {nid: id});
   }
+  $scope.changeNotice = function(id) {
+    return Main.changeNotice(id);
+  }
+  $scope.getNotice = function(id) {
+    return Main.getNotice(id);
+  }  
 
   $scope.goBack = function() {
     console.log('goback');
@@ -361,7 +367,7 @@ angular.module('starter.controllers', [])
   $scope.orderDialog = function() {
     if ($scope.data.looking_product) {
       //$scope.data.looking_product = null;
-     
+
       $scope.data.order_option = Factory.newOption(10000, 20000000, 10000);
       $scope.data.popup = 'OrderDialog';
     }
@@ -1696,6 +1702,14 @@ angular.module('starter.controllers', [])
    $scope.goNotice = function(id){
       $state.go('common.notice', {nid: id});
    }
+
+   $scope.changeNotice = function(id) {
+      return Main.changeNotice(id);
+   }
+   $scope.getNotice = function(id) {
+      return Main.getNotice(id);
+   }  
+
 
    $scope.complain = function() {
       $ionicPopup.alert({
