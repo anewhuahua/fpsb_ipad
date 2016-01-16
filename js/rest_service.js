@@ -3,8 +3,8 @@ angular.module('rest.service', [])
 .factory('Rest', function($http) {
 
   var verifyCode = "tyson";
-  var domain="http://115.29.194.11:8080/";
-  //var domain="http://app.global-ifa.com/";
+  //var domain="http://115.29.194.11:8080/";
+  var domain="http://app.global-ifa.com/";
 
   return {
     queryProductDetail: function(pid, successHandler, errorHandler,finallyHandler) {

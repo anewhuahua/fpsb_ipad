@@ -81,7 +81,7 @@
                    
                    <div class="khzlzz3a11">
                       <div class="khzlzz2b1">
-                          <div class="khzlzz2bf1">背  景</div> 
+                          <div class="khzlzz2bf1">个人介绍</div> 
                           <div ng-if="!enableUpdatedProfile(1)"  class="khzlzz2br1">{{data.profile.data.background}}
 </div>
                           
@@ -103,7 +103,7 @@
                           <div class="khzlzz2cf1">职业证书</div> 
                           <div class="khzlzz2br7u11">
                             <label ng-repeat="cert1 in ['cpb', 'afp', 'cfp', 'efp']" ng-if="enableNewCert(cert1)">
-                              <input name="{{cert1}}" type="checkbox" ng-model="tmpCerts[cert1]"/>{{cert1}} 
+                              <input name="{{cert1}}" type="checkbox" ng-model="tmpCerts[cert1]"/>{{cert1 | uppercase}} 
                             </label>
                             <!--
                             <label><input name="CPB" type="checkbox" value="1" ng-model='data.update.cpb'/>CPB </label>
@@ -144,11 +144,11 @@
                      <div class="khzlzz3a1">
                          <span>新 密 码</span>
                          <!--<div>8-20位，必须含有字母</div>-->
-                         <input type='password' placeholder="请设置您的新密码" ng-model="modify.password1" />
+                         <input type='password' placeholder="设置新密码" ng-model="modify.password1" />
                      </div>
                      <div class="khzlzz3a1">
                          <span>确认新密码</span>
-                         <input type='password' placeholder="请重复输入您的密码" ng-model="modify.password2"/>
+                         <input type='password' placeholder="确认新密码" ng-model="modify.password2"/>
                      </div>
                      <div class="khzlzz3a1">
                          <span>手 机 号</span>
@@ -196,7 +196,7 @@
                   
                        <div class="sekkgdvbb">
                          <select class="kkxxbbsele" ng-model="data.selectedGroup" ng-change="changeGroup(data.selectedGroup)"> 
-                            <option value="all">默认分组</option>
+                            <option value="all">全部</option>
                             <option ng-repeat="group in data.groups" value="{{group}}">{{group}}</option>
                          </select> 
                          <a class="aakhbb2" href=""></a> 
@@ -217,6 +217,12 @@
                 <!--1021修改-->
           
                 <div class="lbxzxzdv" style="margin-top:1.5rem">
+
+                  <div class="khzlzz3a"><span>向左滑动，申请提现</span> 
+                    <a href="">
+                    </a>
+                   </div>
+
                     <ion-list>
                     <!---->
                       <ion-item class="twtwdvkh" ng-repeat="customer in data.customers.data"  ng-click="goCustomerHistory(customer)"> <!-- -->

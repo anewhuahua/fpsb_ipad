@@ -361,6 +361,7 @@ angular.module('starter.controllers', [])
   $scope.orderDialog = function() {
     if ($scope.data.looking_product) {
       //$scope.data.looking_product = null;
+     
       $scope.data.order_option = Factory.newOption(10000, 20000000, 10000);
       $scope.data.popup = 'OrderDialog';
     }
@@ -1689,7 +1690,7 @@ angular.module('starter.controllers', [])
       //window.open('http://biaoweihui.idea-source.net/abstract/', '_system');
    }
    $scope.goRegisterConsultant = function() {
-      window.open('http://115.29.207.154:8888/i_register', '_system');
+      window.open('http://203.110.164.57/i_register', '_system');
    }
 
    $scope.goNotice = function(id){
