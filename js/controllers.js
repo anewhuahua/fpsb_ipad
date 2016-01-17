@@ -368,14 +368,29 @@ angular.module('starter.controllers', [])
     if ($scope.data.looking_product) {
       //$scope.data.looking_product = null;
 
-      $scope.data.order_option = Factory.newOption(10000, 20000000, 10000);
-      $scope.data.popup = 'OrderDialog';
+      if($scope.data.looking_product.type == 'PrivateFund' ||
+         $scope.data.looking_product.type == 'Portfolio' || 
+         $scope.data.looking_product.type == 'Trust') {
+          var count = $scope.data.looking_product.subscriptionQuota;
+          $scope.data.order_option = Factory.newOption(10000 * count, 50000000, 10000);
+      } else {
+        $scope.data.order_option = Factory.newOption(10000, 50000000, 10000);
+      }
     }
   }
 
   $scope.bookingOrderDialog = function(booking) {
     $scope.data.looking_booking = booking;
-    $scope.data.order_option = Factory.newOption(10000, 20000000, 10000);
+
+    if($scope.data.looking_booking.product.type == 'PrivateFund' ||
+       $scope.data.looking_booking.product.type == 'Portfolio' || 
+       $scope.data.looking_booking.product.type == 'Trust') {
+      var count = $scope.data.looking_booking.product.subscriptionQuota;
+      $scope.data.order_option = Factory.newOption(10000 * count, 50000000, 10000);
+    } else {
+      $scope.data.order_option = Factory.newOption(10000, 50000000, 10000);
+    }
+    
     $scope.data.popup = 'BookingOrderDialog';
   }
 
@@ -2168,7 +2183,16 @@ angular.module('starter.controllers', [])
   $scope.orderDialog = function() {
     if ($scope.data.looking_product) {
       //$scope.data.looking_product = null;
-      $scope.data.order_option = Factory.newOption(10000, 20000000, 10000);
+
+      if($scope.data.looking_product.type == 'PrivateFund' ||
+         $scope.data.looking_product.type == 'Portfolio' || 
+         $scope.data.looking_product.type == 'Trust') {
+          var count = $scope.data.looking_product.subscriptionQuota;
+          $scope.data.order_option = Factory.newOption(10000 * count, 50000000, 10000);
+      } else {
+        $scope.data.order_option = Factory.newOption(10000, 50000000, 10000);
+      }
+
       $scope.data.popup = 'OrderDialog';
     }
   }
