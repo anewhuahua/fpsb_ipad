@@ -1559,7 +1559,7 @@ angular.module('starter.controllers', [])
       }
       setTimeout(function(){
         Main.putLock();
-      }, 1000);
+      }, 2000);
   };
 
 
