@@ -1431,8 +1431,14 @@ angular.module('starter.controllers', [])
 
 
   $scope.loadMore = function(){
-    setTimeout(function(){
-      var count = $scope.data.category.products.data.length;
+
+    if(Main.tryLock()) {
+      return;
+    } else {
+      Main.getLock();
+    }
+
+    var count = $scope.data.category.products.data.length;
 
       /*
       Main.getMoreProducts($scope.data.category, function(data){
@@ -1551,8 +1557,9 @@ angular.module('starter.controllers', [])
             
           });
       }
-
-    }, 1000);
+      setTimeout(function(){
+        Main.putLock();
+      }, 1000);
   };
 
 
