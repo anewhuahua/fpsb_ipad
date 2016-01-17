@@ -1459,12 +1459,15 @@ angular.module('starter.controllers', [])
             if (count+data.length == count){
               $scope.data.more=false;
             }
-            console.log("infinite scroll stop");
-            $scope.$broadcast('scroll.infiniteScrollComplete');
-            Main.putLock();
+
+            setTimeout(function(){
+              console.log("infinite scroll stop");
+              $scope.$broadcast('scroll.infiniteScrollComplete');
+              Main.putLock();
+            }, 1000);
 
           }, function(status){Main.putLock();}, function(){
-            Main.putLock();  
+            
           });
       } else if ($scope.data.key == 2) { //近1月
         param = {sortby: 'monRate1', sort: 'desc', subtype: $scope.data.currentSubType};
@@ -1473,11 +1476,13 @@ angular.module('starter.controllers', [])
             if (count+data.length == count){
               $scope.data.more=false;
             }
-            console.log("infinite scroll stop");
-            $scope.$broadcast('scroll.infiniteScrollComplete');
-            Main.putLock();
+            setTimeout(function(){
+              console.log("infinite scroll stop");
+              $scope.$broadcast('scroll.infiniteScrollComplete');
+              Main.putLock();
+            }, 1000);
           }, function(status){Main.putLock();}, function(){
-            Main.putLock();
+           
           });
       } else if ($scope.data.key == 3) { //近3月
         param = {sortby: 'monRate3', sort: 'desc', subtype: $scope.data.currentSubType};
@@ -1486,11 +1491,13 @@ angular.module('starter.controllers', [])
             if (count+data.length == count){
               $scope.data.more=false;
             }
-            console.log("infinite scroll stop");
-            $scope.$broadcast('scroll.infiniteScrollComplete');
-            Main.putLock();
+            setTimeout(function(){
+              console.log("infinite scroll stop");
+              $scope.$broadcast('scroll.infiniteScrollComplete');
+              Main.putLock();
+            }, 1000);
           }, function(status){Main.putLock();}, function(){
-           Main.putLock();
+           
           });
       } else if ($scope.data.key == 4) { // 今年来
         param = {sortby: 'yearRate0', sort: 'desc', subtype: $scope.data.currentSubType};
@@ -1499,11 +1506,13 @@ angular.module('starter.controllers', [])
             if (count+data.length == count){
               $scope.data.more=false;
             }
-            console.log("infinite scroll stop");
-            $scope.$broadcast('scroll.infiniteScrollComplete');
-            Main.putLock();
+            setTimeout(function(){
+              console.log("infinite scroll stop");
+              $scope.$broadcast('scroll.infiniteScrollComplete');
+              Main.putLock();
+            }, 1000);
           }, function(status){Main.putLock();}, function(){
-            Main.putLock(); 
+           
           });
       } else if ($scope.data.key == 5) { // 近1年
         param = {sortby: 'yearRate1', sort: 'desc', subtype: $scope.data.currentSubType};
@@ -1512,11 +1521,13 @@ angular.module('starter.controllers', [])
             if (count+data.length == count){
               $scope.data.more=false;
             }
-            console.log("infinite scroll stop");
-            $scope.$broadcast('scroll.infiniteScrollComplete');
-            Main.putLock();
+            setTimeout(function(){
+              console.log("infinite scroll stop");
+              $scope.$broadcast('scroll.infiniteScrollComplete');
+              Main.putLock();
+            }, 1000);
           }, function(status){Main.putLock();}, function(){
-            Main.putLock();
+           
           });
       } else if ($scope.data.key == 6) { // 近3年
         param = {sortby: 'yearRate3', sort: 'desc', subtype: $scope.data.currentSubType};
@@ -1525,11 +1536,13 @@ angular.module('starter.controllers', [])
             if (count+data.length == count){
               $scope.data.more=false;
             }
-            console.log("infinite scroll stop");
-            $scope.$broadcast('scroll.infiniteScrollComplete');
-            Main.putLock();
+            setTimeout(function(){
+              console.log("infinite scroll stop");
+              $scope.$broadcast('scroll.infiniteScrollComplete');
+              Main.putLock();
+            }, 1000);
           }, function(status){Main.putLock();}, function(){
-            Main.putLock();
+            
           });
       } else if ($scope.data.key == 7) { // 整体收益
         param = {sortby: 'sumRate', sort: 'desc', subtype: $scope.data.currentSubType};
@@ -1538,11 +1551,13 @@ angular.module('starter.controllers', [])
             if (count+data.length == count){
               $scope.data.more=false;
             }
-            console.log("infinite scroll stop");
-            $scope.$broadcast('scroll.infiniteScrollComplete');
-            Main.putLock();
+            setTimeout(function(){
+              console.log("infinite scroll stop");
+              $scope.$broadcast('scroll.infiniteScrollComplete');
+              Main.putLock();
+            }, 1000);
           }, function(status){Main.putLock();}, function(){
-           Main.putLock();
+           
           });
       } else if ($scope.data.key == 8) { // 单位净值
         param = {sortby: 'Nav', sort: 'desc', subtype: $scope.data.currentSubType};
@@ -1551,11 +1566,13 @@ angular.module('starter.controllers', [])
             if (count+data.length == count){
               $scope.data.more=false;
             }
-            console.log("infinite scroll stop");
-            $scope.$broadcast('scroll.infiniteScrollComplete');
-            Main.putLock();
+            setTimeout(function(){
+              console.log("infinite scroll stop");
+              $scope.$broadcast('scroll.infiniteScrollComplete');
+              Main.putLock();
+            }, 1000);
           }, function(status){Main.putLock();}, function(){
-            Main.putLock();
+            
           });
       } else {
         param = {subtype: $scope.data.currentSubType};
@@ -1564,11 +1581,13 @@ angular.module('starter.controllers', [])
             if (count+data.length == count){
               $scope.data.more=false;
             }
-            console.log("infinite scroll stop");
-            $scope.$broadcast('scroll.infiniteScrollComplete');
-            Main.putLock();
+            setTimeout(function(){
+              console.log("infinite scroll stop");
+              $scope.$broadcast('scroll.infiniteScrollComplete');
+              Main.putLock();
+            }, 1000);
           }, function(status){Main.putLock();}, function(){
-            Main.putLock();
+            
           });
       }
       /*
