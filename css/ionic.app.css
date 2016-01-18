@@ -2484,6 +2484,15 @@ $royal:                           #886aea !default;
     margin-bottom: 0.4rem; }
   .booking-view .hytxnrb > span {
     color: #de0000 !important; }
+  .booking-view .zxbz115 {
+    width: 80%;
+    font-size: 0.26rem;
+    color: #0f3668;
+    line-height: 0.36rem;
+    text-align: center;
+    margin: 0.5rem auto 0rem auto; }
+  .booking-view .zxbz115 > span {
+    color: #e79700; }
 
 .exam-view {
   /* 头部 */
