@@ -581,7 +581,7 @@ angular.module('main.service',[])
       param.type = category.key;
       param.offset = 0;
       param.limit = 10;
-
+ 
       Rest.getProducts(param, function(data){
         if(parseRestSuccess('getProducts', data, successHandler, errorHandler)) {  
           category.products.data = data.result;

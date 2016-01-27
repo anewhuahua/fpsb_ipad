@@ -1257,7 +1257,7 @@ angular.module('starter.controllers', [])
 
   $scope.searchPublicFunds = function() {
     param = {search: $scope.data.searchKey, subtype: 'all'};
-    Main.getProducts($scope.data.category, param,
+    Main.sortProducts($scope.data.category, param,
         function(data){}, function(status){}, function(){});
   }
 
