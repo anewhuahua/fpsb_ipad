@@ -16,12 +16,19 @@
     <div class="gjxnrtopyy2"></div><!-- 内容top阴影 --> 
       <div class="main1">
 
+           <div class="ssk125" ng-if="data.search==true">
+                  <input type="text" class="inp125" placeholder="080012 或 长盛电子信息" />
+                  <input type="submit" class="sub125" value="提交"/>
+            </div> 
  
           <div class="gmlbtopp">
 
               <a ng-repeat="type in data.subTypes" href="" ng-class="{'tjtjtew': data.currentSubType=='{{type.key}}'}" ng-click="showSubType(type.key)">
                 {{type.name}}
               </a>
+
+              <a ng-click="showSearchBar()" ng-if="data.search==false">搜索基金</a>
+              <a ng-click="hideSearchBar()" ng-if="data.search==true">隐藏搜索</a>
               <!--<a href="" class="tjtjtew">全部</a>-->
            </div>
           
@@ -61,6 +68,7 @@
               </div>
            </div>
 
+          
 
            <div class="gmlbnrdv" ng-repeat="product in data.category.products.data" ng-click="goPublicFundDetail(product.id, product.partnerFundId)">
             <div class="gmgmff">

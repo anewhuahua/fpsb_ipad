@@ -1139,6 +1139,9 @@ angular.module('starter.controllers', [])
       data: {}
     }
   }
+
+
+
   $scope.isDetail = function(num) {
     return ($scope.data.index==num);
   }
@@ -1229,6 +1232,8 @@ angular.module('starter.controllers', [])
   //$scope.products.data = Main.getMockProducts();
   var param = {};
   $scope.data = {
+    search: false,
+    searchKey: '长盛电子信息',
     currentSubType: 'all',
     subTypes: [
       {key:'all', name:'全部'}, 
@@ -1249,6 +1254,22 @@ angular.module('starter.controllers', [])
     category: Main.getCategory(1),
     more: true
   };
+
+  $scope.searchPublicFunds = function() {
+    param = {search: $scope.data.searchKey, subtype: 'all'};
+    Main.getProducts($scope.data.category, param,
+        function(data){}, function(status){}, function(){});
+  }
+
+  $scope.showSearchBar = function() {
+    $scope.data.search = true;
+    $scope.data.more = false;
+  }
+  $scope.hideSearchBar = function() {
+    $scope.data.search = false;
+    $scope.data.key = 0;
+    $scope.data.more = true;
+  }
 
   $scope.showSubType = function(key) {
     $scope.data.currentSubType = key;
@@ -1366,6 +1387,11 @@ angular.module('starter.controllers', [])
   };
   */
   $scope.doRefresh = function() {
+
+    if ($scope.data.search) {
+      return;
+    }
+
     setTimeout(function(){
       console.log('refresh');
       /*
@@ -1446,6 +1472,9 @@ angular.module('starter.controllers', [])
 
 
   $scope.loadMore = function(){
+    if ($scope.data.search) {
+      return;
+    }
 
     if(Main.tryLock()) {
       return;

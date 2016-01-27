@@ -157,6 +157,9 @@ angular.module('rest.service', [])
       if (type.toLowerCase()=='publicfunds' && limit=='10') {
         limit = '25';
       }
+      if (param.search) {
+        limit = '100000';
+      }
 
       var req = {
           method: 'GET',
@@ -178,6 +181,10 @@ angular.module('rest.service', [])
       }
       if (param.subtype) {
         req.url = req.url+'&subtype='+param.subtype;
+      }
+
+      if (param.search) {
+        req.url = req.url+'&search='+param.search;
       }
 
       $http(req).success(function(data){

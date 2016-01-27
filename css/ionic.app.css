@@ -2493,6 +2493,42 @@ $royal:                           #886aea !default;
     margin: 0.5rem auto 0rem auto; }
   .booking-view .zxbz115 > span {
     color: #e79700; }
+  .booking-view .ssk125 {
+    width: 96%;
+    height: 0.7rem;
+    margin: 0.2rem auto 0.2rem auto;
+    background: url(../teImg/2wq125.jpg) no-repeat;
+    background-size: cover; }
+  .booking-view .inp125 {
+    float: left;
+    width: 86%;
+    height: 100%;
+    font-size: 0.3rem;
+    line-height: 0.3rem;
+    color: #a3a3a3;
+    border: none;
+    padding-left: 5%; }
+  .booking-view .sub125 {
+    float: right;
+    width: 14%;
+    height: 100%;
+    font-size: 0.3rem;
+    line-height: 0.3rem;
+    color: #426189;
+    border: none;
+    background: none;
+    cursor: pointer; }
+  .booking-view .khzlzz1a {
+    width: 96%;
+    height: 0.8rem;
+    overflow: hidden;
+    padding: 0rem 3%;
+    border-bottom: 2px #f3f2f5 solid; }
+  .booking-view .khzlzz1a > a {
+    font-size: 0.28rem;
+    color: #635f6b;
+    line-height: 0.8rem;
+    padding-left: 2%; }
 
 .exam-view {
   /* 头部 */
