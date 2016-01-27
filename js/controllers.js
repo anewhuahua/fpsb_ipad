@@ -1389,6 +1389,7 @@ angular.module('starter.controllers', [])
   $scope.doRefresh = function() {
 
     if ($scope.data.search) {
+      $scope.$broadcast('scroll.refreshComplete');
       return;
     }
 

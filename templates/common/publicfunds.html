@@ -17,8 +17,8 @@
       <div class="main1">
 
            <div class="ssk125" ng-if="data.search==true">
-                  <input type="text" class="inp125" placeholder="080012 或 长盛电子信息" />
-                  <input type="submit" class="sub125" value="提交"/>
+                  <input type="text" class="inp125" placeholder="080012 或 长盛电子信息" ng-model="data.searchKey" />
+                  <input type="submit" class="sub125" value="提交" ng-click="searchPublicFunds()" />
             </div> 
  
           <div class="gmlbtopp">
