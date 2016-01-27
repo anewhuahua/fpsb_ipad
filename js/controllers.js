@@ -1233,7 +1233,7 @@ angular.module('starter.controllers', [])
   var param = {};
   $scope.data = {
     search: false,
-    searchKey: '长盛电子信息',
+    searchKey: '长盛电子信息 或 080012',
     currentSubType: 'all',
     subTypes: [
       {key:'all', name:'全部'}, 
