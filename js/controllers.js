@@ -608,6 +608,8 @@ angular.module('starter.controllers', [])
     askingVerifyCode: false,
     initiated: false,
 
+    vcode: '',
+
     product: {}
   }
 
@@ -843,9 +845,30 @@ angular.module('starter.controllers', [])
     });
   }
 
+
+  $scope.beforePay = function() {
+    $scope.data.askingVerifyCode = true;
+    var loopVerifyWords = function(cnt) 
+    {
+      promise = $timeout(function () { loopVerifyWords(cnt); }, 1000); 
+      //console.log("timeout "+cnt);
+      $scope.data.verifyCodeWarn = cnt;
+      if (cnt == 0) {
+        $scope.data.askingVerifyCode = false;
+        $scope.data.verifyCodeWarn = "收取验证码";
+        $timeout.cancel(promise);
+      }     
+      cnt = cnt-1;
+    }; 
+    loopVerifyWords(30);
+
+    Main.askBuyVerifyCode(function(data){}, function(status){}, function(){});
+
+  }
+
   var pay = function() {
     Main.customer.submitOrder($scope.data.productId, $scope.data.buyAmount, function(data1){
-        Main.buy.purchasePublicFund($scope.data.fundNo, $scope.data.bankCardNo, $scope.data.buyAmount,
+        Main.buy.purchasePublicFund($scope.data.fundNo, $scope.data.bankCardNo, $scope.data.buyAmount, $scope.data.vcode,
           function(data){
             $ionicPopup.alert({
                   title:    '提示信息',
@@ -969,7 +992,13 @@ angular.module('starter.controllers', [])
     redeemShare: 0,
 
     fundNo: '',
-    order: {}
+    order: {},
+
+    vcode: '',
+    verifyCode: '',
+    verifyCodeWarn: '收取验证码',
+    verifyCodeConfirm: '',
+    askingVerifyCode: false
   }
 
   $scope.data.orderId = $stateParams.orderId;
@@ -1061,6 +1090,28 @@ angular.module('starter.controllers', [])
     }, function(status){}, function(){});
   }
 
+
+  $scope.beforeRedeem = function() {
+    $scope.data.askingVerifyCode = true;
+    var loopVerifyWords = function(cnt) 
+    {
+      promise = $timeout(function () { loopVerifyWords(cnt); }, 1000); 
+      //console.log("timeout "+cnt);
+      $scope.data.verifyCodeWarn = cnt;
+      if (cnt == 0) {
+        $scope.data.askingVerifyCode = false;
+        $scope.data.verifyCodeWarn = "收取验证码";
+        $timeout.cancel(promise);
+      }     
+      cnt = cnt-1;
+    }; 
+    loopVerifyWords(30);
+
+    Main.askBuyVerifyCode(function(data){}, function(status){}, function(){});
+
+  }
+
+
   $scope.redeem = function() {
     if(Main.tryLock()) {
       return;
@@ -1091,7 +1142,7 @@ angular.module('starter.controllers', [])
       return;
     }
     Main.customer.submitOrder($scope.data.order.product.id, '-'+$scope.data.redeemShare, function(data1){
-      Main.buy.redeemPublicFund($scope.data.fundNo, $scope.data.bankCardNo, $scope.data.redeemShare,
+      Main.buy.redeemPublicFund($scope.data.fundNo, $scope.data.bankCardNo, $scope.data.redeemShare, $scope.data.vcode,
         function(data){
           $ionicPopup.alert({
             title:    '提示信息',

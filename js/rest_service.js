@@ -89,6 +89,27 @@ angular.module('rest.service', [])
         finallyHandler();
       });
     },
+
+    askBuyVerifyCode: function(phone, successHandler, errorHandler, finallyHandler) {
+      var req = {
+        method: 'POST',
+        url: domain + 'ChiefFinancierService/api/common/v1/verificationcodes?phone='
+               + phone + '&purpose=purchase',
+        headers: {
+         'Content-Type': 'application/json',
+         'Pragma': 'pragma,sms'
+        }
+      };
+      $http(req).then(function(res){  
+          //console.log(res.headers('Pragma'));
+          successHandler(res.headers('Pragma'));
+      }, function(res){
+          errorHandler(res);
+      }).finally(function(){
+        finallyHandler();
+      });
+    },
+
     register: function(name, password, code, referral, fullname, successHandler, errorHandler, finallyHandler) {
       var req = {
         method: 'POST',
@@ -481,11 +502,12 @@ angular.module('rest.service', [])
         });
       },
 
-      purchasePublicFund: function(id, tid, pid, bcard,  amount, successHandler, errorHandler, finallyHandler) {
+      purchasePublicFund: function(id, tid, pid, bcard,  amount, phone, vcode, successHandler, errorHandler, finallyHandler) {
         var req = {
             method: 'POST',
             url: domain+'ChiefFinancierService/api/partner/v1/customers/' + id + '/partners/cljj/transaccounts/' + tid +
-                        '?action=purchase&fund_code='+pid+'&bank_card_no='+bcard+'&amount='+amount+'&discount=1',
+                        '?action=purchase&fund_code='+pid+'&bank_card_no='+bcard+'&phone='+phone + '&verifyCode='+vcode+
+                        '&amount='+amount+'&discount=1',
             headers: {
               'Content-Type': 'application/json'
             }
@@ -499,11 +521,12 @@ angular.module('rest.service', [])
         });
       },
 
-      redeemPublicFund: function(id, tid, pid, bcard, share, successHandler, errorHandler, finallyHandler) {
+      redeemPublicFund: function(id, tid, pid, bcard, share, phone, vcode, successHandler, errorHandler, finallyHandler) {
         var req = {
             method: 'POST',
             url: domain+'ChiefFinancierService/api/partner/v1/customers/' + id + '/partners/cljj/transaccounts/' + tid +
-                        '?action=redeem&fund_code='+pid+'&bank_card_no='+bcard+'&share='+share,
+                        '?action=redeem&fund_code='+pid+'&bank_card_no='+bcard+'&share='+share+
+                        '&phone='+phone+'&verifyCode='+vcode,
             headers: {
               'Content-Type': 'application/json'
             }

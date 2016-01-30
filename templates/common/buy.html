@@ -110,6 +110,13 @@
                </div>
                <div class="lcgmab"><span>卡       号</span> <input type="text" readOnly="true" placeholder="{{data.bankCardNo}}" /> </div>
                <!--<span class="lcgmcpdd">限额：每单最高<em>30</em>万元，单日最高<em>90</em>万元，单月最高<em>1000</em>万元</span>-->
+
+               <div class="sdlcnrc">
+                 <span>验证码</span>
+                 <input type="text" placeholder="请输入验证码" ng-model="data.vcode" /> 
+                 <button ng-click="beforePay()" ng-disabled="data.askingVerifyCode">{{data.verifyCodeWarn}}</button>
+               </div>
+
                <input type="submit" class="nexbnb" value="提交订单"  ng-click="purchase()"/>
                <div class="tytygm">
                 <!--
