@@ -1146,7 +1146,7 @@ angular.module('starter.controllers', [])
       }).then(function(data){Main.putLock()});
       return;
     }
-    
+
 
     share = parseInt($scope.data.redeemShare,10);
     maximum = parseInt($scope.data.order.extra.usableShare);
@@ -1157,7 +1157,7 @@ angular.module('starter.controllers', [])
       $ionicPopup.alert({
             title:    '提示信息',
             cssClass: 'alert-text',
-            template:  '赎回金额必须 >0, <=' +$scope.data.order.extra.usableShare
+            template:  '赎回金额必须小于持有数量'
       }).then(function(data){Main.putLock();});
       return;
     }
