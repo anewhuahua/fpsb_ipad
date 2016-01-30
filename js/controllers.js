@@ -862,7 +862,7 @@ angular.module('starter.controllers', [])
     }; 
     loopVerifyWords(30);
 
-    Main.askBuyVerifyCode(function(data){}, function(status){}, function(){});
+    Main.buy.askBuyVerifyCode(function(data){}, function(status){}, function(){});
 
   }
 
@@ -1107,7 +1107,7 @@ angular.module('starter.controllers', [])
     }; 
     loopVerifyWords(30);
 
-    Main.askBuyVerifyCode(function(data){}, function(status){}, function(){});
+    Main.buy.askBuyVerifyCode(function(data){}, function(status){}, function(){});
 
   }
 
