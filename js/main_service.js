@@ -437,6 +437,18 @@ angular.module('main.service',[])
           parseRestError('confirmBankBinding', status, errorHandler);
         }, function(){enablePopup = true;});
       },
+
+      askBuyVerifyCode: function(successHandler, errorHandler, finallyHandler) {
+        Rest.askBuyVerifyCode(transAccount.phone, function(code){
+          console.log('main.service ask buy verify code success code:'+code);
+          successHandler(code);
+        }, function(res){
+          console.log('main.service ask buy verify code error:'+res.statusText);
+          errorHandler(res);
+        }, finallyHandler);
+      },
+
+
       purchasePublicFund: function(pid, bcard,  amount, vcode, successHandler, errorHandler, finallyHandler) {
         if (!enablePopup){return;}
         enablePopup = false;
@@ -539,15 +551,7 @@ angular.module('main.service',[])
       }, finallyHandler);
     },
 
-    askBuyVerifyCode: function(phone, successHandler, errorHandler, finallyHandler) {
-      Rest.askBuyVerifyCode(phone, function(code){
-        console.log('main.service ask buy verify code success code:'+code);
-        successHandler(code);
-      }, function(res){
-        console.log('main.service ask buy verify code error:'+res.statusText);
-        errorHandler(res);
-      }, finallyHandler);
-    },
+    
     
     register: function(username, password, code, referral, fullname, successHandler, errorHandler, finallyHandler) {
       Rest.register(username, password, code, referral, fullname, function(data) {
