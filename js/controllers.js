@@ -915,6 +915,16 @@ angular.module('starter.controllers', [])
       return;
     }
 
+    if ($scope.data.vcode == '') {
+      $ionicPopup.alert({
+            title:    '提示信息',
+            cssClass: 'alert-text',
+            template:  '请输入验证码'
+      }).then(function(data){Main.putLock()});
+      return;
+    }
+
+
     if (Main.buy.getBuyRiskLevel()==null) {
       $ionicPopup.alert({
             title:    '提示信息',
@@ -1127,6 +1137,16 @@ angular.module('starter.controllers', [])
       }).then(function(data){Main.putLock();});
       return;
     }
+
+    if ($scope.data.vcode == '') {
+      $ionicPopup.alert({
+            title:    '提示信息',
+            cssClass: 'alert-text',
+            template:  '请输入验证码'
+      }).then(function(data){Main.putLock()});
+      return;
+    }
+    
 
     share = parseInt($scope.data.redeemShare,10);
     maximum = parseInt($scope.data.order.extra.usableShare);

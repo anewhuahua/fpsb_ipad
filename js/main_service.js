@@ -439,7 +439,7 @@ angular.module('main.service',[])
       },
 
       askBuyVerifyCode: function(successHandler, errorHandler, finallyHandler) {
-        Rest.askBuyVerifyCode(transAccount.phone, function(code){
+        Rest.askBuyVerifyCode(transAccount.mobile, function(code){
           console.log('main.service ask buy verify code success code:'+code);
           successHandler(code);
         }, function(res){
@@ -452,7 +452,7 @@ angular.module('main.service',[])
       purchasePublicFund: function(pid, bcard,  amount, vcode, successHandler, errorHandler, finallyHandler) {
         if (!enablePopup){return;}
         enablePopup = false;
-        Rest.buy.purchasePublicFund(id, transAccount.id, pid, bcard,  amount, transAccount.phone, vcode, function(data){
+        Rest.buy.purchasePublicFund(id, transAccount.id, pid, bcard,  amount, transAccount.mobile, vcode, function(data){
           if(parseRestSuccess('purchasePublicFund', data, successHandler, errorHandler)) {
             console.log('tyson11111111');
             console.log(data);
@@ -464,7 +464,7 @@ angular.module('main.service',[])
       redeemPublicFund: function(pid, bcard,  share, vcode, successHandler, errorHandler, finallyHandler) {
         if (!enablePopup){return;}
         enablePopup = false;
-        Rest.buy.redeemPublicFund(id, transAccount.id, pid, bcard,  share, transAccount.phone, vcode, function(data){
+        Rest.buy.redeemPublicFund(id, transAccount.id, pid, bcard,  share, transAccount.mobile, vcode, function(data){
           if(parseRestSuccess('redeemPublicFund', data, successHandler, errorHandler)) {
             console.log('tyson11111111');
             console.log(data);
